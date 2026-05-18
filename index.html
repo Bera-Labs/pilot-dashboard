@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PILOT DASHBOARD // SAI BERA</title>
+<style>
+  :root {
+    --bg: #0a0e14;
+    --surface: #131820;
+    --border: #1e2a3a;
+    --text: #b3c7d6;
+    --text-dim: #556678;
+    --accent: #39bae6;
+    --accent-glow: rgba(57, 186, 230, 0.15);
+    --green: #7fd962;
+    --yellow: #ffb454;
+    --red: #f26d78;
+    --purple: #d2a6ff;
+    --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 8px;
+    --gap: 14px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: var(--gap);
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .header-title { font-size: 18px; font-weight: 700; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
+  .header-sub { font-size: 11px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+  .mission-clock { font-family: var(--font-mono); font-size: 28px; color: var(--accent); font-weight: 700; }
+  .mission-label { font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  .status-online { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .status-idle { background: var(--yellow); box-shadow: 0 0 8px var(--yellow); }
+
+  /* GRID */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: var(--gap);
+  }
+
+  /* WIDGET */
+  .widget {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    transition: border-color 0.2s;
+  }
+  .widget:hover { border-color: rgba(57, 186, 230, 0.3); }
+  .widget-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .widget-title::before { content: '◆'; font-size: 8px; }
+  .widget-body { font-size: 13px; line-height: 1.6; }
+
+  /* METRICS */
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label { color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .metric-value { font-family: var(--font-mono); font-size: 15px; font-weight: 600; }
+
+  /* BARS */
+  .bar-track {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+  .bar-green { background: var(--green); }
+  .bar-accent { background: var(--accent); }
+  .bar-yellow { background: var(--yellow); }
+
+  /* BUTTONS */
+  .btn {
+    background: var(--border);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .btn:hover { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+  .btn-accent { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+  .btn-sm { padding: 4px 10px; font-size: 10px; }
+
+  /* INPUTS */
+  input, textarea, select {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    width: 100%;
+    margin: 4px 0 8px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus, textarea:focus { border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 60px; }
+
+  /* SKILL LIST */
+  .skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-name { color: var(--accent); font-weight: 600; }
+  .skill-tags { font-size: 10px; color: var(--text-dim); }
+
+  /* DECISION LOG */
+  .decision-entry {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .decision-entry:last-child { border-bottom: none; }
+  .decision-date { color: var(--text-dim); font-family: var(--font-mono); font-size: 10px; }
+  .decision-confidence { font-weight: 600; }
+  .conf-high { color: var(--green); }
+  .conf-mid { color: var(--yellow); }
+  .conf-low { color: var(--red); }
+
+  /* LOG */
+  .log-line {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(30, 42, 58, 0.5);
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 800px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .header { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <span class="status-dot status-online"></span>
+    <div>
+      <div class="header-title">◆ Pilot Dashboard</div>
+      <div class="header-sub">Modular Cockpit // Sai Bera</div>
+    </div>
+  </div>
+  <div style="text-align:right">
+    <div class="mission-label">Mission Elapsed</div>
+    <div class="mission-clock" id="mission-clock">00:00:00:00</div>
+  </div>
+</header>
+
+<!-- GRID -->
+<div class="dashboard-grid">
+
+  <!-- SPEED METRICS -->
+  <section class="widget" id="speed-metrics">
+    <h2 class="widget-title">Speed Metrics</h2>
+    <div class="widget-body">
+      <div class="metric-row">
+        <span class="metric-label">Open Loops (WIP)</span>
+        <span class="metric-value" id="wip-count">0</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Completed This Week</span>
+        <span class="metric-value" style="color:var(--green)" id="completed-week">0</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Avg Decision Latency</span>
+        <span class="metric-value" id="avg-latency">--</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">OODA Cycle (last)</span>
+        <span class="metric-value" id="ooda-time">--</span>
+      </div>
+      <div style="margin-top:12px">
+        <div class="metric-label">Weekly Velocity</div>
+        <div class="bar-track"><div class="bar-fill bar-accent" id="velocity-bar" style="width:0%"></div></div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-dim);margin-top:4px;text-align:right" id="velocity-label">0 / 10</div>
+      </div>
+      <div style="margin-top:16px">
+        <button class="btn btn-sm" onclick="logCompletion()">+ Log Completion</button>
+        <button class="btn btn-sm" onclick="startOODA()" style="margin-left:4px">▶ Start OODA</button>
+        <span id="ooda-timer" style="font-family:var(--font-mono);font-size:11px;color:var(--yellow);margin-left:8px;"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEM STACK -->
+  <section class="widget" id="stem-stack">
+    <h2 class="widget-title">STEM Stack</h2>
+    <div class="widget-body" id="stem-stack-list">
+      <div class="skill-item">
+        <span class="skill-name">probabilistic-thinking</span>
+        <span class="skill-tags">randomness, bias, causality</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">warp-speed-execution</span>
+        <span class="skill-tags">velocity, bottlenecks, compound</span>
+      </div>
+      <div class="skill-item">
+        <span class="skill-name">pilot-dashboard</span>
+        <span class="skill-tags">this dashboard itself</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DECISION JOURNAL -->
+  <section class="widget" id="decision-journal">
+    <h2 class="widget-title">Decision Journal</h2>
+    <div class="widget-body">
+      <input type="text" id="dj-title" placeholder="Decision / prediction...">
+      <input type="number" id="dj-confidence" placeholder="Confidence % (0-100)" min="0" max="100" style="width:120px">
+      <textarea id="dj-rationale" placeholder="Reasoning (why this confidence?)..."></textarea>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <button class="btn btn-accent btn-sm" onclick="logDecision()">Log Decision</button>
+        <button class="btn btn-sm" onclick="resolveLastDecision()">Resolve Last</button>
+      </div>
+      <div id="decision-log">
+        <div style="color:var(--text-dim);font-size:11px">No decisions logged yet.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTY PIPELINE -->
+  <section class="widget" id="property-pipeline">
+    <h2 class="widget-title">Property Pipeline</h2>
+    <div class="widget-body">
+      <div style="color:var(--text-dim);font-size:11px;margin-bottom:12px">Bentonville / Centerton, AR · Budget: &lt;$450K · 3+ bed / 2+ bath</div>
+      <div class="metric-row">
+        <span class="metric-label">Properties Tracked</span>
+        <span class="metric-value" id="prop-count">--</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Viewings Scheduled</span>
+        <span class="metric-value" style="color:var(--yellow)">0</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Offers Out</span>
+        <span class="metric-value" style="color:var(--accent)">0</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Days to Target Close</span>
+        <span class="metric-value" style="color:var(--green)">--</span>
+      </div>
+      <div style="margin-top:12px">
+        <button class="btn btn-sm" onclick="alert('Airtable integration coming. Use hermes property tracker.')">Sync Airtable</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITY LOG -->
+  <section class="widget" id="activity-log">
+    <h2 class="widget-title">Activity Log</h2>
+    <div class="widget-body" id="log-container">
+      <div class="log-line">[BOOT] Dashboard initialized</div>
+      <div class="log-line">[LOAD] STEM Stack v1.0 active</div>
+      <div class="log-line">[STATUS] Awaiting input...</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+// ── MISSION CLOCK ──────────────────────────────
+const MISSION_START = new Date('2026-05-18T04:00:00');
+function updateClock() {
+  const now = new Date();
+  const diff = now - MISSION_START;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('mission-clock').textContent =
+    `${String(d).padStart(2,'0')}:${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ── PERSISTENCE (localStorage) ──────────────────
+function loadStore() {
+  try { return JSON.parse(localStorage.getItem('pilot-dashboard') || '{}'); }
+  catch(e) { return {}; }
+}
+function saveStore(data) {
+  localStorage.setItem('pilot-dashboard', JSON.stringify(data));
+}
+
+// ── SPEED METRICS ──────────────────────────────
+let oodaStart = null;
+let oodaInterval = null;
+
+function updateMetrics() {
+  const store = loadStore();
+  document.getElementById('wip-count').textContent = store.wip || 0;
+  document.getElementById('completed-week').textContent = store.completed || 0;
+  const vel = Math.min((store.completed || 0) * 10, 100);
+  document.getElementById('velocity-bar').style.width = vel + '%';
+  document.getElementById('velocity-label').textContent = (store.completed || 0) + ' / 10';
+}
+
+function logCompletion() {
+  const store = loadStore();
+  store.completed = (store.completed || 0) + 1;
+  store.wip = Math.max(0, (store.wip || 0) - 1);
+  saveStore(store);
+  updateMetrics();
+  addLog('COMPLETE', 'Task finished. WIP: ' + store.wip + ' | Total: ' + store.completed);
+}
+
+function startOODA() {
+  if (oodaInterval) {
+    // Stop
+    clearInterval(oodaInterval);
+    oodaInterval = null;
+    const elapsed = Math.round((Date.now() - oodaStart) / 1000);
+    document.getElementById('ooda-time').textContent = elapsed + 's';
+    document.getElementById('ooda-timer').textContent = '';
+    addLog('OODA', 'Cycle complete: ' + elapsed + 's');
+  } else {
+    // Start
+    oodaStart = Date.now();
+    document.getElementById('ooda-timer').textContent = '⏱ running...';
+    oodaInterval = setInterval(() => {
+      const e = Math.round((Date.now() - oodaStart) / 1000);
+      document.getElementById('ooda-timer').textContent = '⏱ ' + e + 's';
+    }, 1000);
+  }
+}
+
+// ── DECISION JOURNAL ────────────────────────────
+function logDecision() {
+  const title = document.getElementById('dj-title').value.trim();
+  const conf = parseInt(document.getElementById('dj-confidence').value);
+  const rationale = document.getElementById('dj-rationale').value.trim();
+
+  if (!title || isNaN(conf)) {
+    alert('Enter a decision title and confidence %');
+    return;
+  }
+
+  const store = loadStore();
+  store.decisions = store.decisions || [];
+  store.decisions.push({
+    title, confidence: conf, rationale,
+    date: new Date().toISOString(),
+    resolved: false, outcome: null
+  });
+  saveStore(store);
+
+  document.getElementById('dj-title').value = '';
+  document.getElementById('dj-confidence').value = '';
+  document.getElementById('dj-rationale').value = '';
+  renderDecisions();
+  addLog('DECISION', `"${title}" — ${conf}% confidence`);
+}
+
+function resolveLastDecision() {
+  const store = loadStore();
+  if (!store.decisions || store.decisions.length === 0) {
+    alert('No decisions to resolve');
+    return;
+  }
+  const last = store.decisions[store.decisions.length - 1];
+  if (last.resolved) {
+    alert('Last decision already resolved');
+    return;
+  }
+  const outcome = confirm('Was the outcome CORRECT? (OK=Yes, Cancel=No)');
+  last.resolved = true;
+  last.outcome = outcome;
+  last.resolvedDate = new Date().toISOString();
+  saveStore(store);
+  renderDecisions();
+
+  // Calibration check
+  const correct = store.decisions.filter(d => d.resolved && d.outcome === true).length;
+  const total = store.decisions.filter(d => d.resolved).length;
+  const avgConf = store.decisions.filter(d => d.resolved)
+    .reduce((s, d) => s + d.confidence, 0) / total;
+  addLog('CALIBRATE', `${correct}/${total} correct (${Math.round(correct/total*100)}%) vs avg ${Math.round(avgConf)}% confidence`);
+}
+
+function renderDecisions() {
+  const store = loadStore();
+  const container = document.getElementById('decision-log');
+  if (!store.decisions || store.decisions.length === 0) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:11px">No decisions logged yet.</div>';
+    return;
+  }
+  container.innerHTML = store.decisions.slice().reverse().map(d => {
+    const date = new Date(d.date).toLocaleDateString();
+    const confClass = d.confidence >= 80 ? 'conf-high' : d.confidence >= 50 ? 'conf-mid' : 'conf-low';
+    let status = '';
+    if (d.resolved) {
+      status = d.outcome
+        ? ' <span style="color:var(--green)">✓ Correct</span>'
+        : ' <span style="color:var(--red)">✗ Wrong</span>';
+    } else {
+      status = ' <span style="color:var(--yellow)">○ Pending</span>';
+    }
+    return `<div class="decision-entry">
+      <div class="decision-date">${date}</div>
+      <strong>${d.title}</strong>
+      <span class="decision-confidence ${confClass}">[${d.confidence}%]</span>${status}
+      ${d.rationale ? `<div style="color:var(--text-dim);font-size:10px;margin-top:2px">${d.rationale}</div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ── ACTIVITY LOG ─────────────────────────────────
+function addLog(type, msg) {
+  const container = document.getElementById('log-container');
+  const time = new Date().toLocaleTimeString();
+  const line = document.createElement('div');
+  line.className = 'log-line';
+  line.textContent = `[${time}] [${type}] ${msg}`;
+  container.prepend(line);
+  if (container.children.length > 50) container.lastChild.remove();
+}
+
+// ── INIT ─────────────────────────────────────────
+updateMetrics();
+renderDecisions();
+</script>
+
+</body>
+</html>
