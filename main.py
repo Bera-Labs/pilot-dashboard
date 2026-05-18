@@ -9,8 +9,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
-DATA_DIR = Path(__file__).parent / "data"
-ASSETS_DIR = Path(__file__).parent / "assets"
+ROOT = Path(__file__).parent
+DATA_DIR = ROOT / "data"
 STATE_FILE = DATA_DIR / "state.json"
 
 app = FastAPI()
@@ -136,8 +136,8 @@ async def update_properties(req: Request):
 # ── STATIC ──────────────────────────────────
 @app.get("/")
 def index():
-    return FileResponse(ASSETS_DIR / "dashboard.html")
+    return FileResponse(ROOT / "index.html")
 
 @app.get("/dashboard.html")
 def dashboard():
-    return FileResponse(ASSETS_DIR / "dashboard.html")
+    return FileResponse(ROOT / "index.html")
