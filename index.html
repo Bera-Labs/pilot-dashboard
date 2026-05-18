@@ -64,7 +64,8 @@
     <span class="status-dot status-online" id="conn-dot"></span>
     <div>
       <div class="header-title">◆ Pilot Dashboard</div>
-      <div class="header-sub">Bidirectional // Sai Bera <span class="connection-status" id="conn-status">connecting...</span></div>
+      <div class="header-sub">Bidirectional // Sai Bera <span class="connection-status" id="conn-status">connecting...</span>
+        <button class="btn btn-sm" onclick="syncState()" style="margin-left:8px;font-size:9px" title="Manual refresh">↻</button></div>
     </div>
   </div>
   <div style="text-align:right">
@@ -342,9 +343,8 @@ function startOODA() {
   }
 }
 
-// ── AUTO-REFRESH ────────────────────────────
+// ── INIT ───────────────────────────────────
 syncState();
-setInterval(syncState, 10000); // Poll every 10s for Hermes updates
 </script>
 </body>
 </html>
