@@ -129,7 +129,7 @@ EDGES = [
 
 
 def read_frontmatter(path):
-    """Extract YAML frontmatter confidence from a wiki page."""
+    """Extract YAML frontmatter and body summary from a wiki page."""
     try:
         with open(path) as f:
             content = f.read()
@@ -137,6 +137,21 @@ def read_frontmatter(path):
             end = content.find("---", 3)
             if end > 0:
                 fm = yaml.safe_load(content[3:end])
+                body = content[end+3:].strip()
+                # Remove the H1 title line
+                body = re.sub(r'^# .+\n+', '', body)
+                # Take first paragraph (up to first ## or blank line + next section)
+                summary_match = re.match(r'(.+?)(?:\n##|\n\n##|\n\*\*|\n\n\*\*)', body, re.DOTALL)
+                if summary_match:
+                    summary = summary_match.group(1).strip()
+                else:
+                    # Just take first 300 chars
+                    summary = body[:300].strip()
+                # Clean up — remove markdown links, keep text
+                summary = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', summary)
+                summary = re.sub(r'\^\[[^\]]+\]', '', summary)
+                summary = re.sub(r'\n{3,}', '\n\n', summary)
+                fm['_summary'] = summary[:400]
                 return fm
     except Exception:
         pass
@@ -164,14 +179,17 @@ def build_graph():
         page_path = CONCEPTS / f"{slug}.md"
         fm = read_frontmatter(page_path) if page_path.exists() else {}
         conf = fm.get("confidence", "medium")
+        summary = fm.get("_summary", "")
         
         existing = next((n for n in nodes if n["id"] == nid), None)
         if existing:
             existing["confidence"] = conf
+            if summary:
+                existing["summary"] = summary
         else:
             nodes.append({
                 "id": nid, "label": label, "type": ntype,
-                "confidence": conf
+                "confidence": conf, "summary": summary
             })
     
     edges = [{"from": f, "to": t, "strength": s, "type": "evidence"} for f, t, s in EDGES]

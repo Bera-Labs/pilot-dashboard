@@ -50,7 +50,7 @@
   /* Wiki Graph Widget */
   #wiki-graph-widget { grid-column: 1 / -1; }
   #wiki-graph-container { width: 100%; height: 550px; position: relative; overflow: hidden; background: var(--bg); }
-  .wiki-tooltip { position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 6px 10px; font-size: 11px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 10; max-width: 220px; }
+  .wiki-tooltip { position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 8px 12px; font-size: 11px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 10; max-width: 320px; line-height: 1.5; }
   .wiki-tooltip strong { color: var(--accent); display: block; margin-bottom: 2px; }
   .graph-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; margin-bottom: 10px; }
   .graph-legend-item { display: flex; align-items: center; gap: 6px; }
@@ -322,17 +322,18 @@ async function renderWikiGraph() {
     .attr('pointer-events', 'none')
     .text(d => d.label);
 
-  // Hover: highlight node + show tooltip
+  // Hover: highlight node + show summary tooltip
   node.on('mouseenter', function(e, d) {
     d3.select(this).transition().duration(150).attr('r', d.radius * 1.8).attr('fill-opacity', 1);
     const color = CONF_COLORS[d.confidence] || '#b3c7d6';
     let html = `<strong style="color:${color}">${d.label}</strong>`;
-    if (d.desc) html += d.desc;
-    html += `<span style="color:var(--text-dim);font-size:10px">${(d.type||'').toUpperCase()} · ${(d.confidence||'none').toUpperCase()}</span>`;
+    const summary = d.summary || d.desc || '';
+    if (summary) html += `<div style="margin-top:4px;line-height:1.5;color:var(--text)">${summary}</div>`;
+    html += `<div style="margin-top:6px;color:var(--text-dim);font-size:10px">${(d.confidence||'none').toUpperCase()} evidence · ${(d.type||'').toUpperCase()}</div>`;
     tooltip.innerHTML = html;
     tooltip.style.opacity = 1;
   }).on('mousemove', function(e) {
-    tooltip.style.left = (e.offsetX + 12) + 'px';
+    tooltip.style.left = Math.min(e.offsetX + 12, container.clientWidth - 230) + 'px';
     tooltip.style.top = (e.offsetY - 10) + 'px';
   }).on('mouseleave', function() {
     d3.select(this).transition().duration(150).attr('r', d => d.radius).attr('fill-opacity', 0.85);

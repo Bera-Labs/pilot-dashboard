@@ -167,37 +167,43 @@
       "id": "exercise",
       "label": "Exercise",
       "type": "intervention",
-      "confidence": "high"
+      "confidence": "high",
+      "summary": "The academic evidence that physical exercise directly enhances cognitive function \u2014 the foundation underlying all \"exercise for brain fog\" recommendations."
     },
     {
       "id": "dopamine_recovery",
       "label": "Dopamine Recovery",
       "type": "outcome",
-      "confidence": "high"
+      "confidence": "high",
+      "summary": "What actually happens to the dopamine system during addiction recovery, based on direct neuroimaging evidence."
     },
     {
       "id": "mindfulness",
       "label": "Mindfulness",
       "type": "intervention",
-      "confidence": "high"
+      "confidence": "high",
+      "summary": "The neural evidence that mindfulness/meditation directly enhances attention and executive function."
     },
     {
       "id": "willpower_training",
       "label": "Willpower Training",
       "type": "intervention",
-      "confidence": "medium"
+      "confidence": "medium",
+      "summary": "The theory that willpower can be strengthened through repeated exercise, similar to a muscle."
     },
     {
       "id": "habit_formation",
       "label": "Habit Formation",
       "type": "intervention",
-      "confidence": "high"
+      "confidence": "high",
+      "summary": "The evidence-backed alternative to white-knuckling through life. High self-control isn't about resisting temptation \u2014 it's about never needing to."
     },
     {
       "id": "brain_fog",
       "label": "Brain Fog",
       "type": "outcome",
-      "confidence": "medium"
+      "confidence": "medium",
+      "summary": "Brain fog during porn abstinence is not a clinical diagnosis but a well-documented subjective experience with a plausible neurobiological mechanism."
     }
   ],
   "edges": [
