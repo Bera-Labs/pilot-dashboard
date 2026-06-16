@@ -49,16 +49,9 @@
   .log-line { font-family: var(--font-mono); font-size: 11px; padding: 4px 0; border-bottom: 1px solid rgba(30,42,58,0.5); color: var(--text-dim); }
   /* Wiki Graph Widget */
   #wiki-graph-widget { grid-column: 1 / -1; }
-  #wiki-graph-container { width: 100%; height: 600px; position: relative; overflow: hidden; }
-  #wiki-graph-container svg { width: 100%; height: 100%; }
-  .graph-node text { font-family: var(--font-sans); font-size: 12px; pointer-events: none; text-anchor: middle; }
-  .graph-node-title { font-weight: 700; font-size: 13px; }
-  .graph-node-desc { font-size: 10px; opacity: 0.7; }
-  .graph-edge { stroke-opacity: 0.6; }
-  .graph-edge-strong { stroke-width: 2.5px; stroke-dasharray: none; }
-  .graph-edge-moderate { stroke-width: 1.5px; stroke-dasharray: none; }
-  .graph-edge-weak { stroke-width: 1px; stroke-dasharray: 5,5; }
-  .graph-edge-none { stroke-width: 0.8px; stroke-dasharray: 3,5; stroke-opacity: 0.3; }
+  #wiki-graph-container { width: 100%; height: 550px; position: relative; overflow: hidden; background: var(--bg); }
+  .wiki-tooltip { position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 6px 10px; font-size: 11px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 10; max-width: 220px; }
+  .wiki-tooltip strong { color: var(--accent); display: block; margin-bottom: 2px; }
   .graph-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; margin-bottom: 10px; }
   .graph-legend-item { display: flex; align-items: center; gap: 6px; }
   .graph-legend-line { width: 24px; height: 3px; border-radius: 2px; }
@@ -107,14 +100,14 @@
   <section class="widget" id="wiki-graph-widget">
     <h2 class="widget-title">Superhuman Wiki — Evidence Graph</h2>
     <div class="graph-legend">
-      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--green)"></span> HIGH (meta-analysis / multiple RCTs)</span>
-      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--yellow)"></span> MEDIUM (some RCTs / extrapolated)</span>
-      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--red)"></span> LOW (weak / contradictory)</span>
-      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--text-dim)"></span> NONE (zero evidence)</span>
-      <span style="margin-left:12px">■ Intervention &nbsp; ● Outcome</span>
-      <span style="margin-left:8px">— Strong &nbsp; --- Weak &nbsp; ··· None &nbsp; <span style="color:#3a4a5a">- - Crosslink</span></span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--green)"></span> HIGH</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--yellow)"></span> MED</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--red)"></span> LOW</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--text-dim)"></span> NONE</span>
+      <span style="color:var(--text-dim);margin-left:8px">Hover nodes for details</span>
     </div>
     <div class="widget-body" id="wiki-graph-container"></div>
+    <div class="wiki-tooltip" id="wiki-tooltip"></div>
   </section>
 
   <section class="widget" id="decision-journal">
@@ -263,120 +256,94 @@ syncState();
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
 const CONF_COLORS = { high: '#7fd962', medium: '#ffb454', low: '#f26d78', none: '#556678' };
-const EDGE_COLORS = { strong: '#7fd962', moderate: '#ffb454', weak: '#f26d78', none: '#556678' };
-const EDGE_WIDTHS = { strong: 2, moderate: 1.2, weak: 0.6, none: 0.4 };
-const EDGE_DASH = { strong: '', moderate: '', weak: '6,4', none: '3,5', crosslink: '8,4' };
 
 async function renderWikiGraph() {
   const container = document.getElementById('wiki-graph-container');
+  const tooltip = document.getElementById('wiki-tooltip');
   const data = await apiGet('/api/wiki-graph');
-  if (!data || !data.nodes) { container.innerHTML = '<div style="color:var(--text-dim);padding:20px;text-align:center">Wiki graph data not available.</div>'; return; }
+  if (!data || !data.nodes) {
+    container.innerHTML = '<div style="color:var(--text-dim);padding:40px;text-align:center">No wiki data yet.</div>';
+    return;
+  }
 
   container.innerHTML = '';
-  const W = container.clientWidth, H = 600;
+  const W = container.clientWidth, H = 550;
 
-  // Pre-process: intervention strength = connected edge count
-  const connCount = {};
-  data.edges.forEach(e => { connCount[e.from] = (connCount[e.from]||0)+1; connCount[e.to] = (connCount[e.to]||0)+1; });
-  data.nodes.forEach(n => { n.connections = connCount[n.id] || 0; });
+  const nodeMap = {};
+  data.nodes.forEach(n => { nodeMap[n.id] = n; n.radius = n.type === 'intervention' ? 7 : 5; });
+
+  const links = data.edges
+    .filter(e => nodeMap[e.from] && nodeMap[e.to])
+    .map(e => ({ source: nodeMap[e.from], target: nodeMap[e.to] }));
 
   const svg = d3.select('#wiki-graph-container').append('svg')
-    .attr('viewBox', [0, 0, W, H]);
+    .attr('viewBox', [0, 0, W, H])
+    .attr('width', W).attr('height', H);
 
-  // Zoom
   const g = svg.append('g');
-  svg.call(d3.zoom().scaleExtent([0.3, 3]).on('zoom', (e) => g.attr('transform', e.transform)));
+  svg.call(d3.zoom().scaleExtent([0.3, 4]).on('zoom', (e) => g.attr('transform', e.transform)));
 
-  // Build link lookup
-  const nodeMap = {};
-  data.nodes.forEach(n => nodeMap[n.id] = n);
-
-  const links = data.edges.map(e => ({
-    source: nodeMap[e.from],
-    target: nodeMap[e.to],
-    strength: e.strength
-  }));
-
-  // Force simulation
   const sim = d3.forceSimulation(data.nodes)
-    .force('link', d3.forceLink(links).id(d => d.id).distance(d => {
-      const dists = { strong: 120, moderate: 160, weak: 200, none: 250, crosslink: 220 };
-      return dists[d.strength] || 200;
-    }).strength(d => {
-      const strs = { strong: 0.4, moderate: 0.2, weak: 0.1, none: 0.05, crosslink: 0.06 };
-      return strs[d.strength] || 0.1;
-    }))
-    .force('charge', d3.forceManyBody().strength(-400))
+    .force('link', d3.forceLink(links).id(d => d.id).distance(90).strength(0.15))
+    .force('charge', d3.forceManyBody().strength(-200))
     .force('center', d3.forceCenter(W/2, H/2))
-    .force('collision', d3.forceCollide().radius(d => Math.max(d.label.length * 4 + 10, 40)));
+    .force('collision', d3.forceCollide().radius(d => d.radius + 4));
 
-  // Draw edges
+  // Edges — thin, uniform, semi-transparent
   const link = g.append('g').selectAll('line')
     .data(links).join('line')
-    .attr('stroke', d => d.type === 'crosslink' ? '#3a4a5a' : (EDGE_COLORS[d.strength] || '#556678'))
-    .attr('stroke-width', d => d.type === 'crosslink' ? 0.5 : (EDGE_WIDTHS[d.strength] || 0.5))
-    .attr('stroke-dasharray', d => EDGE_DASH[d.strength] || '')
-    .attr('stroke-opacity', d => d.type === 'crosslink' ? 0.3 : (d.strength === 'none' ? 0.2 : 0.5));
+    .attr('stroke', '#2a3a4a')
+    .attr('stroke-width', 0.3)
+    .attr('stroke-opacity', 0.4);
 
-  // Draw nodes
-  const node = g.append('g').selectAll('g')
-    .data(data.nodes).join('g')
+  // Nodes — small circles
+  const node = g.append('g').selectAll('circle')
+    .data(data.nodes).join('circle')
+    .attr('r', d => d.radius)
+    .attr('fill', d => CONF_COLORS[d.confidence] || '#b3c7d6')
+    .attr('fill-opacity', 0.85)
+    .attr('stroke', d => CONF_COLORS[d.confidence] || '#b3c7d6')
+    .attr('stroke-width', 0.5)
+    .attr('stroke-opacity', 0.4)
+    .attr('cursor', 'pointer')
     .call(d3.drag()
       .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
       .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
       .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
 
-  node.each(function(d) {
-    const g = d3.select(this);
-    const color = d.confidence ? CONF_COLORS[d.confidence] : '#b3c7d6';
-    const isIntervention = d.type === 'intervention';
-    const w = Math.max(d.label.length * 9 + 24, 90);
-    const h = d.desc ? 46 : 32;
-    const rx = isIntervention ? 5 : 20;
+  // Labels — tiny, subtle, always visible
+  const label = g.append('g').selectAll('text')
+    .data(data.nodes).join('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', d => d.radius + 10)
+    .attr('fill', '#8899aa')
+    .attr('font-family', 'var(--font-sans)')
+    .attr('font-size', '8px')
+    .attr('pointer-events', 'none')
+    .text(d => d.label);
 
-    if (isIntervention) {
-      g.append('rect')
-        .attr('width', w).attr('height', h)
-        .attr('x', -w/2).attr('y', -h/2)
-        .attr('rx', rx).attr('ry', rx)
-        .attr('fill', color).attr('fill-opacity', 0.12)
-        .attr('stroke', color).attr('stroke-width', 1.5)
-        .attr('stroke-opacity', 0.8);
-    } else {
-      g.append('ellipse')
-        .attr('cx', 0).attr('cy', 0)
-        .attr('rx', w/2).attr('ry', h/2)
-        .attr('fill', color).attr('fill-opacity', 0.1)
-        .attr('stroke', color).attr('stroke-width', 1.2)
-        .attr('stroke-opacity', 0.7);
-    }
-
-    g.append('text')
-      .attr('text-anchor', 'middle')
-      .attr('dy', d.desc ? '-0.3em' : '0.35em')
-      .attr('fill', color)
-      .attr('font-family', 'var(--font-sans)')
-      .attr('font-weight', '700')
-      .attr('font-size', isIntervention ? '13px' : '12px')
-      .text(d.label);
-
-    if (d.desc) {
-      g.append('text')
-        .attr('text-anchor', 'middle')
-        .attr('dy', '1.2em')
-        .attr('fill', color)
-        .attr('font-family', 'var(--font-sans)')
-        .attr('font-size', '10px')
-        .attr('opacity', 0.65)
-        .text(d.desc);
-    }
+  // Hover: highlight node + show tooltip
+  node.on('mouseenter', function(e, d) {
+    d3.select(this).transition().duration(150).attr('r', d.radius * 1.8).attr('fill-opacity', 1);
+    const color = CONF_COLORS[d.confidence] || '#b3c7d6';
+    let html = `<strong style="color:${color}">${d.label}</strong>`;
+    if (d.desc) html += d.desc;
+    html += `<span style="color:var(--text-dim);font-size:10px">${(d.type||'').toUpperCase()} · ${(d.confidence||'none').toUpperCase()}</span>`;
+    tooltip.innerHTML = html;
+    tooltip.style.opacity = 1;
+  }).on('mousemove', function(e) {
+    tooltip.style.left = (e.offsetX + 12) + 'px';
+    tooltip.style.top = (e.offsetY - 10) + 'px';
+  }).on('mouseleave', function() {
+    d3.select(this).transition().duration(150).attr('r', d => d.radius).attr('fill-opacity', 0.85);
+    tooltip.style.opacity = 0;
   });
 
   sim.on('tick', () => {
-    link
-      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
-      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
-    node.attr('transform', d => `translate(${d.x},${d.y})`);
+    link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    node.attr('cx', d => d.x).attr('cy', d => d.y);
+    label.attr('x', d => d.x).attr('y', d => d.y);
   });
 }
 
