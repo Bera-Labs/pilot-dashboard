@@ -37,16 +37,25 @@
   .bar-track { height: 6px; background: var(--border); border-radius: 3px; margin-top: 6px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
   .bar-accent { background: var(--accent); }
-  .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
-  .skill-item:last-child { border-bottom: none; }
   .skill-name { color: var(--accent); font-weight: 600; }
   .skill-tags { font-size: 10px; color: var(--text-dim); }
-  .decision-entry { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+  .decision-entry { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12px; cursor: pointer; transition: background 0.15s; }
+  .decision-entry:hover { background: rgba(57,186,230,0.05); }
   .decision-entry:last-child { border-bottom: none; }
   .decision-date { color: var(--text-dim); font-family: var(--font-mono); font-size: 10px; }
   .decision-confidence { font-weight: 600; }
+  .decision-detail { display: none; margin-top: 6px; padding: 8px; background: var(--bg); border-radius: 4px; font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .decision-entry.expanded .decision-detail { display: block; }
   .conf-high { color: var(--green); } .conf-mid { color: var(--yellow); } .conf-low { color: var(--red); }
-  .log-line { font-family: var(--font-mono); font-size: 11px; padding: 4px 0; border-bottom: 1px solid rgba(30,42,58,0.5); color: var(--text-dim); }
+  .log-line { font-family: var(--font-mono); font-size: 11px; padding: 4px 0; border-bottom: 1px solid rgba(30,42,58,0.5); color: var(--text-dim); cursor: pointer; transition: background 0.15s; }
+  .log-line:hover { background: rgba(57,186,230,0.05); }
+  .log-line .log-full { display: none; margin-top: 3px; color: var(--text); font-size: 12px; }
+  .log-line.expanded .log-full { display: block; }
+  .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; cursor: pointer; transition: background 0.15s; }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-item:hover { background: rgba(57,186,230,0.05); }
+  .skill-detail { display: none; padding: 6px 0 2px; font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .skill-item.expanded .skill-detail { display: block; }
   /* Wiki Graph Widget */
   #wiki-graph-widget { grid-column: 1 / -1; }
   #wiki-graph-container { width: 100%; height: 550px; position: relative; overflow: hidden; background: var(--bg); }
@@ -223,11 +232,14 @@ function renderDecisions(decisions) {
         ? ' <span style="color:var(--green)">✓ Correct</span>'
         : ' <span style="color:var(--red)">✗ Wrong</span>';
     } else { status = ' <span style="color:var(--yellow)">○ Pending</span>'; }
+    const detail = d.rationale || d.resolvedDate
+      ? `<div class="decision-detail">${d.rationale || ''}${d.resolvedDate ? `<br><span style="font-size:10px">Resolved: ${new Date(d.resolvedDate).toLocaleDateString()}</span>` : ''}</div>`
+      : '';
     return `<div class="decision-entry">
       <div class="decision-date">${date}</div>
       <strong>${d.title}</strong>
       <span class="decision-confidence ${confClass}">[${d.confidence}%]</span>${status}
-      ${d.rationale ? `<div style="color:var(--text-dim);font-size:10px;margin-top:2px">${d.rationale}</div>` : ''}
+      ${detail}
     </div>`;
   }).join('');
 }
@@ -238,7 +250,9 @@ function renderLog(log) {
     container.innerHTML = '<div class="log-line">No activity yet.</div>';
     return;
   }
-  container.innerHTML = log.map(l => `<div class="log-line">[${l.time}] [${l.type}] ${l.message}</div>`).join('');
+  container.innerHTML = log.map((l, i) =>
+    `<div class="log-line">[${l.time}] [${l.type}] <span>${l.message.length > 80 ? l.message.substring(0,80)+'…' : l.message}</span><div class="log-full">[${l.time}] [${l.type}] ${l.message}</div></div>`
+  ).join('');
 }
 
 function renderSkills(skills) {
@@ -247,10 +261,19 @@ function renderSkills(skills) {
     container.innerHTML = '<div style="color:var(--text-dim);font-size:11px">No skills loaded.</div>';
     return;
   }
-  container.innerHTML = skills.map(s =>
-    `<div class="skill-item"><span class="skill-name">${s.name}</span><span class="skill-tags">${s.tags || ''}</span></div>`
-  ).join('');
+  container.innerHTML = skills.map(s => {
+    const desc = s.desc || s.description || '';
+    return `<div class="skill-item"><div><span class="skill-name">${s.name}</span><span class="skill-tags">${s.tags || ''}</span>${desc ? `<div class="skill-detail">${desc}</div>` : ''}</div></div>`;
+  }).join('');
 }
+
+// Click-to-expand handler for all widgets
+document.addEventListener('click', function(e) {
+  const entry = e.target.closest('.decision-entry, .log-line, .skill-item');
+  if (!entry) return;
+  e.stopPropagation();
+  entry.classList.toggle('expanded');
+});
 
 syncState();
 </script>
