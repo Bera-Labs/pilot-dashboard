@@ -106,8 +106,9 @@
       <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--text-dim)"></span> NONE</span>
       <span style="color:var(--text-dim);margin-left:8px">Hover nodes for details</span>
     </div>
-    <div class="widget-body" id="wiki-graph-container"></div>
-    <div class="wiki-tooltip" id="wiki-tooltip"></div>
+    <div class="widget-body" id="wiki-graph-container">
+      <div class="wiki-tooltip" id="wiki-tooltip"></div>
+    </div>
   </section>
 
   <section class="widget" id="decision-journal">
@@ -259,7 +260,6 @@ const CONF_COLORS = { high: '#7fd962', medium: '#ffb454', low: '#f26d78', none: 
 
 async function renderWikiGraph() {
   const container = document.getElementById('wiki-graph-container');
-  const tooltip = document.getElementById('wiki-tooltip');
   const data = await apiGet('/api/wiki-graph');
   if (!data || !data.nodes) {
     container.innerHTML = '<div style="color:var(--text-dim);padding:40px;text-align:center">No wiki data yet.</div>';
@@ -267,6 +267,13 @@ async function renderWikiGraph() {
   }
 
   container.innerHTML = '';
+  // Re-create tooltip div (wiped by innerHTML)
+  const tipDiv = document.createElement('div');
+  tipDiv.className = 'wiki-tooltip';
+  tipDiv.id = 'wiki-tooltip';
+  container.appendChild(tipDiv);
+  const tooltip = tipDiv;
+
   const W = container.clientWidth, H = 550;
 
   const nodeMap = {};
@@ -333,8 +340,9 @@ async function renderWikiGraph() {
     tooltip.innerHTML = html;
     tooltip.style.opacity = 1;
   }).on('mousemove', function(e) {
-    tooltip.style.left = Math.min(e.offsetX + 12, container.clientWidth - 230) + 'px';
-    tooltip.style.top = (e.offsetY - 10) + 'px';
+    const rect = container.getBoundingClientRect();
+    tooltip.style.left = (e.clientX - rect.left + 14) + 'px';
+    tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
   }).on('mouseleave', function() {
     d3.select(this).transition().duration(150).attr('r', d => d.radius).attr('fill-opacity', 0.85);
     tooltip.style.opacity = 0;
