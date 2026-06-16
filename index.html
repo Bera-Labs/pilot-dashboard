@@ -27,7 +27,7 @@
   .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: var(--gap); }
   .widget { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; transition: border-color 0.2s; }
   .widget:hover { border-color: rgba(57,186,230,0.3); }
-  .widget-title { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .widget-title { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; }
   .widget-title::before { content: '◆'; font-size: 8px; }
   .widget-body { font-size: 13px; line-height: 1.6; }
   .metric-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
@@ -98,6 +98,7 @@
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-dim);margin-top:4px;text-align:right" id="velocity-label">0 / 10</div>
       </div>
       <div style="margin-top:16px"></div>
+      <div id="speed-detail" style="display:none;margin-top:6px"></div>
     </div>
   </section>
 
@@ -135,6 +136,7 @@
       <div class="metric-row"><span class="metric-label">Viewings Scheduled</span><span class="metric-value" style="color:var(--yellow)" id="prop-viewings">--</span></div>
       <div class="metric-row"><span class="metric-label">Offers Out</span><span class="metric-value" style="color:var(--accent)" id="prop-offers">--</span></div>
       <div style="margin-top:12px"></div>
+      <div id="prop-detail" style="display:none;margin-top:6px"></div>
     </div>
   </section>
 
@@ -207,10 +209,30 @@ function renderAll(state) {
   document.getElementById('velocity-bar').style.width = vel + '%';
   document.getElementById('velocity-label').textContent = (m.completed || 0) + ' / 10';
 
+  // Speed Metrics detail — project breakdown
+  const smDetail = document.getElementById('speed-detail');
+  if (smDetail && m.detail) {
+    smDetail.innerHTML = Object.entries(m.detail).map(([proj, count]) =>
+      `<div class="metric-row"><span class="metric-label">${proj}</span><span class="metric-value" style="font-size:13px">${count} open</span></div>`
+    ).join('');
+  }
+
   const p = state.properties || {};
   document.getElementById('prop-tracked').textContent = p.tracked ?? '--';
   document.getElementById('prop-viewings').textContent = p.viewings ?? '--';
   document.getElementById('prop-offers').textContent = p.offers ?? '--';
+
+  // Property detail — top properties
+  const ppDetail = document.getElementById('prop-detail');
+  if (ppDetail && p.top) {
+    ppDetail.innerHTML = p.top.map(prop =>
+      `<div style="padding:4px 0;border-bottom:1px solid var(--border);font-size:11px">
+        <span style="color:var(--accent)">${prop.name}</span>
+        <span style="float:right;font-family:var(--font-mono)">${prop.price} · ${prop.score}/100</span>
+        <div style="color:var(--text-dim);font-size:10px">${prop.location}</div>
+      </div>`
+    ).join('');
+  }
 
   renderDecisions(state.decisions || []);
   renderLog(state.activity_log || []);
@@ -270,9 +292,21 @@ function renderSkills(skills) {
 // Click-to-expand handler for all widgets
 document.addEventListener('click', function(e) {
   const entry = e.target.closest('.decision-entry, .log-line, .skill-item');
-  if (!entry) return;
-  e.stopPropagation();
-  entry.classList.toggle('expanded');
+  if (entry) { e.stopPropagation(); entry.classList.toggle('expanded'); return; }
+
+  // Toggle widget detail sections
+  const widget = e.target.closest('.widget-title');
+  if (widget) {
+    const section = widget.closest('.widget');
+    if (section.id === 'speed-metrics') {
+      const d = document.getElementById('speed-detail');
+      d.style.display = d.style.display === 'none' ? 'block' : 'none';
+    }
+    if (section.id === 'property-pipeline') {
+      const d = document.getElementById('prop-detail');
+      d.style.display = d.style.display === 'none' ? 'block' : 'none';
+    }
+  }
 });
 
 syncState();

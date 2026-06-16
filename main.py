@@ -111,6 +111,8 @@ async def set_wip(req: Request):
     body = await req.json()
     state = load_state()
     state["metrics"]["wip"] = body.get("count", 0)
+    if "detail" in body:
+        state["metrics"]["detail"] = body["detail"]
     save_state(state)
     return {"status": "ok"}
 
@@ -119,6 +121,8 @@ async def set_completed(req: Request):
     body = await req.json()
     state = load_state()
     state["metrics"]["completed"] = body.get("count", 0)
+    if "detail" in body:
+        state["metrics"]["completed_detail"] = body["detail"]
     save_state(state)
     return {"status": "ok"}
 
@@ -150,6 +154,8 @@ async def update_properties(req: Request):
     for key in ["tracked", "viewings", "offers"]:
         if key in body:
             state["properties"][key] = body[key]
+    if "top" in body:
+        state["properties"]["top"] = body["top"]
     save_state(state)
     return {"status": "ok"}
 

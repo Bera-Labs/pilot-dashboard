@@ -117,9 +117,13 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
 
         elif path == '/api/set-wip':
             state['metrics']['wip'] = body.get('count', 0)
+            if 'detail' in body:
+                state['metrics']['detail'] = body['detail']
 
         elif path == '/api/set-completed':
             state['metrics']['completed'] = body.get('count', 0)
+            if 'detail' in body:
+                state['metrics']['completed_detail'] = body['detail']
 
         elif path == '/api/set-ooda':
             sec = body.get('seconds', 0)
@@ -133,6 +137,8 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
             for key in ['tracked', 'viewings', 'offers']:
                 if key in body:
                     state['properties'][key] = body[key]
+            if 'top' in body:
+                state['properties']['top'] = body['top']
 
         elif path == '/api/set-skills':
             state['skills'] = body.get('skills', state.get('skills', []))
