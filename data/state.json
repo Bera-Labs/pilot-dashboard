@@ -4,10 +4,42 @@
     "wip": 13,
     "completed": 0,
     "ooda_last": null,
-    "avg_latency": null
+    "avg_latency": null,
+    "detail": {
+      "Housing": 4,
+      "Taxes": 3,
+      "Parents trip": 3,
+      "maintenance": 4
+    },
+    "completed_detail": "Last: DMV (Jun 8), PMO streak (Jun 8)"
   },
   "decisions": [],
   "activity_log": [
+    {
+      "time": "03:16:21",
+      "type": "STATUS",
+      "message": "Housing: 10 properties scored, 4 action items open"
+    },
+    {
+      "time": "03:16:21",
+      "type": "STATUS",
+      "message": "Parents trip: flights booked, insurance + international comms pending"
+    },
+    {
+      "time": "03:16:21",
+      "type": "COMPLETE",
+      "message": "DMV vehicle registration renewed (Jun 8)"
+    },
+    {
+      "time": "03:16:21",
+      "type": "MILESTONE",
+      "message": "glimpse of might 1.0-alpha1 start \u2014 exercise habit active (4 sessions logged)"
+    },
+    {
+      "time": "03:16:21",
+      "type": "MILESTONE",
+      "message": "6-week PMO abstinence streak v1.0-alpha1 achieved (Jun 8)"
+    },
     {
       "time": "20:32:16",
       "type": "WEEKLY",
@@ -30,26 +62,62 @@
     }
   ],
   "properties": {
-    "tracked": 5,
+    "tracked": 10,
     "viewings": 0,
-    "offers": 0
+    "offers": 0,
+    "top": [
+      {
+        "name": "NAPLES Plan \u2013 Huber Place South",
+        "price": "$399K",
+        "score": 100,
+        "location": "Bentonville"
+      },
+      {
+        "name": "2050 Plan \u2013 Magnolia Landing",
+        "price": "$369K",
+        "score": 95,
+        "location": "Centerton"
+      },
+      {
+        "name": "8720 Majestic Rd",
+        "price": "$373K",
+        "score": 85,
+        "location": "Centerton"
+      },
+      {
+        "name": "2410 Max Ave",
+        "price": "$375K",
+        "score": 85,
+        "location": "Bentonville"
+      },
+      {
+        "name": "2330 Max Ave",
+        "price": "$375K",
+        "score": 80,
+        "location": "Bentonville"
+      }
+    ]
   },
   "skills": [
     {
       "name": "probabilistic-thinking",
-      "tags": "randomness, bias, causality"
+      "tags": "decisions, bias",
+      "desc": "Used in: housing scoring (10 properties ranked), \"model #1\" day-unit momentum system"
     },
     {
       "name": "warp-speed-execution",
-      "tags": "velocity, bottlenecks, compound"
+      "tags": "velocity, compound",
+      "desc": "Active in: 1-hour execution blocks, \"be in the jet stream everyday\", Q3 new config load"
     },
     {
       "name": "pilot-dashboard",
-      "tags": "this dashboard"
+      "tags": "cockpit",
+      "desc": "Tracked: 13 WIP across 7 projects. Weekly auto-refresh Sundays 11am."
     },
     {
       "name": "thinking-in-bets",
-      "tags": "decisions, uncertainty"
+      "tags": "decision quality",
+      "desc": "Applied to: property pipeline (10 scored, 0 offers), \"probable outcomes\" model"
     }
   ]
 }
