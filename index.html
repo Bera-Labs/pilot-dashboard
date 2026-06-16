@@ -8,7 +8,7 @@
   :root {
     --bg: #0a0e14; --surface: #131820; --border: #1e2a3a; --text: #b3c7d6;
     --text-dim: #556678; --accent: #39bae6; --accent-glow: rgba(57,186,230,0.15);
-    --green: #7fd962; --yellow: #ffb454; --red: #f26d78; --purple: #d2a6ff;
+    --green: #7fd962; --yellow: #ffb454; --red: #f26d78;
     --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --radius: 8px; --gap: 14px;
@@ -36,14 +36,7 @@
   .metric-value { font-family: var(--font-mono); font-size: 15px; font-weight: 600; }
   .bar-track { height: 6px; background: var(--border); border-radius: 3px; margin-top: 6px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
-  .bar-green { background: var(--green); } .bar-accent { background: var(--accent); } .bar-yellow { background: var(--yellow); }
-  .btn { background: var(--border); color: var(--text); border: 1px solid var(--border); padding: 8px 14px; border-radius: 4px; cursor: pointer; font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
-  .btn:hover { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
-  .btn-accent { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
-  .btn-sm { padding: 4px 10px; font-size: 10px; }
-  input, textarea, select { background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 8px 10px; font-family: var(--font-sans); font-size: 12px; width: 100%; margin: 4px 0 8px; outline: none; transition: border-color 0.2s; }
-  input:focus, textarea:focus { border-color: var(--accent); }
-  textarea { resize: vertical; min-height: 60px; }
+  .bar-accent { background: var(--accent); }
   .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
   .skill-item:last-child { border-bottom: none; }
   .skill-name { color: var(--accent); font-weight: 600; }
@@ -54,6 +47,22 @@
   .decision-confidence { font-weight: 600; }
   .conf-high { color: var(--green); } .conf-mid { color: var(--yellow); } .conf-low { color: var(--red); }
   .log-line { font-family: var(--font-mono); font-size: 11px; padding: 4px 0; border-bottom: 1px solid rgba(30,42,58,0.5); color: var(--text-dim); }
+  /* Wiki Graph Widget */
+  #wiki-graph-widget { grid-column: 1 / -1; }
+  #wiki-graph-container { width: 100%; height: 600px; position: relative; overflow: hidden; }
+  #wiki-graph-container svg { width: 100%; height: 100%; }
+  .graph-node text { font-family: var(--font-sans); font-size: 12px; pointer-events: none; text-anchor: middle; }
+  .graph-node-title { font-weight: 700; font-size: 13px; }
+  .graph-node-desc { font-size: 10px; opacity: 0.7; }
+  .graph-edge { stroke-opacity: 0.6; }
+  .graph-edge-strong { stroke-width: 2.5px; stroke-dasharray: none; }
+  .graph-edge-moderate { stroke-width: 1.5px; stroke-dasharray: none; }
+  .graph-edge-weak { stroke-width: 1px; stroke-dasharray: 5,5; }
+  .graph-edge-none { stroke-width: 0.8px; stroke-dasharray: 3,5; stroke-opacity: 0.3; }
+  .graph-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; margin-bottom: 10px; }
+  .graph-legend-item { display: flex; align-items: center; gap: 6px; }
+  .graph-legend-line { width: 24px; height: 3px; border-radius: 2px; }
+  .graph-legend-node { width: 12px; height: 12px; border-radius: 2px; }
   @media (max-width: 800px) { .dashboard-grid { grid-template-columns: 1fr; } .header { flex-direction: column; gap: 10px; text-align: center; } }
 </style>
 </head>
@@ -64,8 +73,7 @@
     <span class="status-dot status-online" id="conn-dot"></span>
     <div>
       <div class="header-title">◆ Pilot Dashboard</div>
-      <div class="header-sub">Bidirectional // Sai Bera <span class="connection-status" id="conn-status">connecting...</span>
-        <button class="btn btn-sm" onclick="syncState()" style="margin-left:8px;font-size:9px" title="Manual refresh">↻</button></div>
+      <div class="header-sub">Read-Only // Sai Bera <span class="connection-status" id="conn-status">connecting...</span></div>
     </div>
   </div>
   <div style="text-align:right">
@@ -76,97 +84,72 @@
 
 <div class="dashboard-grid">
 
-  <!-- SPEED METRICS -->
   <section class="widget" id="speed-metrics">
     <h2 class="widget-title">Speed Metrics</h2>
     <div class="widget-body">
-      <div class="metric-row">
-        <span class="metric-label">Open Loops (WIP)</span>
-        <span class="metric-value" id="wip-count">--</span>
-      </div>
-      <div class="metric-row">
-        <span class="metric-label">Completed This Week</span>
-        <span class="metric-value" style="color:var(--green)" id="completed-week">--</span>
-      </div>
-      <div class="metric-row">
-        <span class="metric-label">Last OODA Cycle</span>
-        <span class="metric-value" id="ooda-time">--</span>
-      </div>
+      <div class="metric-row"><span class="metric-label">Open Loops (WIP)</span><span class="metric-value" id="wip-count">--</span></div>
+      <div class="metric-row"><span class="metric-label">Completed This Week</span><span class="metric-value" style="color:var(--green)" id="completed-week">--</span></div>
+      <div class="metric-row"><span class="metric-label">Last OODA Cycle</span><span class="metric-value" id="ooda-time">--</span></div>
       <div style="margin-top:12px">
         <div class="metric-label">Weekly Velocity</div>
         <div class="bar-track"><div class="bar-fill bar-accent" id="velocity-bar" style="width:0%"></div></div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-dim);margin-top:4px;text-align:right" id="velocity-label">0 / 10</div>
       </div>
-      <div style="margin-top:16px">
-        <button class="btn btn-sm" onclick="logCompletion()">+ Log Completion</button>
-        <button class="btn btn-sm" onclick="startOODA()" style="margin-left:4px">▶ Start OODA</button>
-        <span id="ooda-timer" style="font-family:var(--font-mono);font-size:11px;color:var(--yellow);margin-left:8px;"></span>
-      </div>
+      <div style="margin-top:16px"></div>
     </div>
   </section>
 
-  <!-- STEM STACK -->
   <section class="widget" id="stem-stack">
     <h2 class="widget-title">STEM Stack</h2>
-    <div class="widget-body" id="stem-stack-list">
-      <div class="skill-item"><span class="skill-name">probabilistic-thinking</span><span class="skill-tags">randomness, bias, causality</span></div>
-      <div class="skill-item"><span class="skill-name">warp-speed-execution</span><span class="skill-tags">velocity, bottlenecks, compound</span></div>
-      <div class="skill-item"><span class="skill-name">pilot-dashboard</span><span class="skill-tags">this dashboard itself</span></div>
-    </div>
+    <div class="widget-body" id="stem-stack-list"></div>
   </section>
 
-  <!-- DECISION JOURNAL -->
+  <section class="widget" id="wiki-graph-widget">
+    <h2 class="widget-title">Superhuman Wiki — Evidence Graph</h2>
+    <div class="graph-legend">
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--green)"></span> HIGH (meta-analysis / multiple RCTs)</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--yellow)"></span> MEDIUM (some RCTs / extrapolated)</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--red)"></span> LOW (weak / contradictory)</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--text-dim)"></span> NONE (zero evidence)</span>
+      <span style="margin-left:12px">■ Intervention &nbsp; ● Outcome</span>
+      <span style="margin-left:8px">— Strong &nbsp; --- Weak &nbsp; ··· None &nbsp; <span style="color:#3a4a5a">- - Crosslink</span></span>
+    </div>
+    <div class="widget-body" id="wiki-graph-container"></div>
+  </section>
+
   <section class="widget" id="decision-journal">
     <h2 class="widget-title">Decision Journal</h2>
     <div class="widget-body">
-      <input type="text" id="dj-title" placeholder="Decision / prediction...">
-      <input type="number" id="dj-confidence" placeholder="Confidence % (0-100)" min="0" max="100" style="width:120px">
-      <textarea id="dj-rationale" placeholder="Reasoning (why this confidence?)..."></textarea>
-      <div style="display:flex;gap:8px;margin-bottom:12px">
-        <button class="btn btn-accent btn-sm" onclick="logDecision()">Log Decision</button>
-        <button class="btn btn-sm" onclick="resolveLastDecision()">Resolve Last</button>
-      </div>
       <div id="decision-log"><div style="color:var(--text-dim);font-size:11px">Loading...</div></div>
     </div>
   </section>
 
-  <!-- PROPERTY PIPELINE -->
   <section class="widget" id="property-pipeline">
     <h2 class="widget-title">Property Pipeline</h2>
     <div class="widget-body">
       <div style="color:var(--text-dim);font-size:11px;margin-bottom:12px">Bentonville / Centerton, AR · Budget: &lt;$450K · 3+ bed / 2+ bath</div>
-      <div class="metric-row">
-        <span class="metric-label">Properties Tracked</span>
-        <span class="metric-value" id="prop-tracked">--</span>
-      </div>
-      <div class="metric-row">
-        <span class="metric-label">Viewings Scheduled</span>
-        <span class="metric-value" style="color:var(--yellow)" id="prop-viewings">--</span>
-      </div>
-      <div class="metric-row">
-        <span class="metric-label">Offers Out</span>
-        <span class="metric-value" style="color:var(--accent)" id="prop-offers">--</span>
-      </div>
-      <div style="margin-top:12px">
-        <button class="btn btn-sm" onclick="updateProperties()">⟳ Refresh</button>
-      </div>
+      <div class="metric-row"><span class="metric-label">Properties Tracked</span><span class="metric-value" id="prop-tracked">--</span></div>
+      <div class="metric-row"><span class="metric-label">Viewings Scheduled</span><span class="metric-value" style="color:var(--yellow)" id="prop-viewings">--</span></div>
+      <div class="metric-row"><span class="metric-label">Offers Out</span><span class="metric-value" style="color:var(--accent)" id="prop-offers">--</span></div>
+      <div style="margin-top:12px"></div>
     </div>
   </section>
 
-  <!-- ACTIVITY LOG -->
   <section class="widget" id="activity-log">
     <h2 class="widget-title">Activity Log</h2>
-    <div class="widget-body" id="log-container">
-      <div class="log-line">[BOOT] Connecting to backend...</div>
-    </div>
+    <div class="widget-body" id="log-container"><div class="log-line">[BOOT] Connecting to backend...</div></div>
   </section>
 
 </div>
 
 <script>
-const API = window.location.origin;
+const API = (() => {
+  const saved = localStorage.getItem('pilot-backend-url');
+  if (saved) return saved.replace(/\/+$/, '');
+  if (window.location.hostname === 'localhost') return window.location.origin;
+  return window.location.origin;
+})();
 
-// ── MISSION CLOCK ──────────────────────────────
 const MISSION_START = new Date('2026-05-18T04:00:00');
 function updateClock() {
   const diff = Date.now() - MISSION_START;
@@ -180,7 +163,6 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// ── API HELPERS ──────────────────────────────
 let backendOnline = false;
 
 async function apiGet(endpoint) {
@@ -189,24 +171,7 @@ async function apiGet(endpoint) {
     if (!r.ok) throw new Error(r.status);
     backendOnline = true;
     return await r.json();
-  } catch(e) {
-    backendOnline = false;
-    return null;
-  }
-}
-
-async function apiPost(endpoint, data={}) {
-  try {
-    const r = await fetch(`${API}${endpoint}`, {
-      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)
-    });
-    if (!r.ok) throw new Error(r.status);
-    backendOnline = true;
-    return await r.json();
-  } catch(e) {
-    backendOnline = false;
-    return null;
-  }
+  } catch(e) { backendOnline = false; return null; }
 }
 
 function updateConnStatus() {
@@ -222,22 +187,15 @@ function updateConnStatus() {
   }
 }
 
-// ── SYNC STATE ──────────────────────────────
 let cachedState = null;
 
 async function syncState() {
   const state = await apiGet('/api/state');
-  if (state) {
-    cachedState = state;
-    renderAll(state);
-    updateConnStatus();
-  } else {
-    updateConnStatus();
-  }
+  if (state) { cachedState = state; renderAll(state); updateConnStatus(); }
+  else { updateConnStatus(); }
 }
 
 function renderAll(state) {
-  // Metrics
   const m = state.metrics || {};
   document.getElementById('wip-count').textContent = m.wip ?? '--';
   document.getElementById('completed-week').textContent = m.completed ?? '--';
@@ -246,17 +204,14 @@ function renderAll(state) {
   document.getElementById('velocity-bar').style.width = vel + '%';
   document.getElementById('velocity-label').textContent = (m.completed || 0) + ' / 10';
 
-  // Properties
   const p = state.properties || {};
   document.getElementById('prop-tracked').textContent = p.tracked ?? '--';
   document.getElementById('prop-viewings').textContent = p.viewings ?? '--';
   document.getElementById('prop-offers').textContent = p.offers ?? '--';
 
-  // Decisions
   renderDecisions(state.decisions || []);
-
-  // Activity log
   renderLog(state.activity_log || []);
+  renderSkills(state.skills || []);
 }
 
 function renderDecisions(decisions) {
@@ -273,9 +228,7 @@ function renderDecisions(decisions) {
       status = d.outcome
         ? ' <span style="color:var(--green)">✓ Correct</span>'
         : ' <span style="color:var(--red)">✗ Wrong</span>';
-    } else {
-      status = ' <span style="color:var(--yellow)">○ Pending</span>';
-    }
+    } else { status = ' <span style="color:var(--yellow)">○ Pending</span>'; }
     return `<div class="decision-entry">
       <div class="decision-date">${date}</div>
       <strong>${d.title}</strong>
@@ -291,60 +244,143 @@ function renderLog(log) {
     container.innerHTML = '<div class="log-line">No activity yet.</div>';
     return;
   }
-  container.innerHTML = log.map(l =>
-    `<div class="log-line">[${l.time}] [${l.type}] ${l.message}</div>`
+  container.innerHTML = log.map(l => `<div class="log-line">[${l.time}] [${l.type}] ${l.message}</div>`).join('');
+}
+
+function renderSkills(skills) {
+  const container = document.getElementById('stem-stack-list');
+  if (!skills || skills.length === 0) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:11px">No skills loaded.</div>';
+    return;
+  }
+  container.innerHTML = skills.map(s =>
+    `<div class="skill-item"><span class="skill-name">${s.name}</span><span class="skill-tags">${s.tags || ''}</span></div>`
   ).join('');
 }
 
-// ── ACTIONS ─────────────────────────────────
-async function logCompletion() {
-  await apiPost('/api/log-completion');
-  syncState();
-}
-
-async function logDecision() {
-  const title = document.getElementById('dj-title').value.trim();
-  const conf = parseInt(document.getElementById('dj-confidence').value);
-  const rationale = document.getElementById('dj-rationale').value.trim();
-  if (!title || isNaN(conf)) { alert('Enter a decision title and confidence %'); return; }
-  await apiPost('/api/log-decision', { title, confidence: conf, rationale });
-  document.getElementById('dj-title').value = '';
-  document.getElementById('dj-confidence').value = '';
-  document.getElementById('dj-rationale').value = '';
-  syncState();
-}
-
-async function resolveLastDecision() {
-  const outcome = confirm('Was the outcome CORRECT? (OK=Yes, Cancel=No)');
-  await apiPost('/api/resolve-decision', { outcome });
-  syncState();
-}
-
-async function updateProperties() {
-  syncState();
-}
-
-// ── OODA TIMER ──────────────────────────────
-let oodaStart = null, oodaInterval = null;
-
-function startOODA() {
-  if (oodaInterval) {
-    clearInterval(oodaInterval);
-    oodaInterval = null;
-    const elapsed = Math.round((Date.now() - oodaStart) / 1000);
-    document.getElementById('ooda-timer').textContent = '';
-    apiPost('/api/set-ooda', { seconds: elapsed }).then(() => syncState());
-  } else {
-    oodaStart = Date.now();
-    document.getElementById('ooda-timer').textContent = '⏱ running...';
-    oodaInterval = setInterval(() => {
-      document.getElementById('ooda-timer').textContent = '⏱ ' + Math.round((Date.now() - oodaStart) / 1000) + 's';
-    }, 1000);
-  }
-}
-
-// ── INIT ───────────────────────────────────
 syncState();
+</script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+const CONF_COLORS = { high: '#7fd962', medium: '#ffb454', low: '#f26d78', none: '#556678' };
+const EDGE_COLORS = { strong: '#7fd962', moderate: '#ffb454', weak: '#f26d78', none: '#556678' };
+const EDGE_WIDTHS = { strong: 2, moderate: 1.2, weak: 0.6, none: 0.4 };
+const EDGE_DASH = { strong: '', moderate: '', weak: '6,4', none: '3,5', crosslink: '8,4' };
+
+async function renderWikiGraph() {
+  const container = document.getElementById('wiki-graph-container');
+  const data = await apiGet('/api/wiki-graph');
+  if (!data || !data.nodes) { container.innerHTML = '<div style="color:var(--text-dim);padding:20px;text-align:center">Wiki graph data not available.</div>'; return; }
+
+  container.innerHTML = '';
+  const W = container.clientWidth, H = 600;
+
+  // Pre-process: intervention strength = connected edge count
+  const connCount = {};
+  data.edges.forEach(e => { connCount[e.from] = (connCount[e.from]||0)+1; connCount[e.to] = (connCount[e.to]||0)+1; });
+  data.nodes.forEach(n => { n.connections = connCount[n.id] || 0; });
+
+  const svg = d3.select('#wiki-graph-container').append('svg')
+    .attr('viewBox', [0, 0, W, H]);
+
+  // Zoom
+  const g = svg.append('g');
+  svg.call(d3.zoom().scaleExtent([0.3, 3]).on('zoom', (e) => g.attr('transform', e.transform)));
+
+  // Build link lookup
+  const nodeMap = {};
+  data.nodes.forEach(n => nodeMap[n.id] = n);
+
+  const links = data.edges.map(e => ({
+    source: nodeMap[e.from],
+    target: nodeMap[e.to],
+    strength: e.strength
+  }));
+
+  // Force simulation
+  const sim = d3.forceSimulation(data.nodes)
+    .force('link', d3.forceLink(links).id(d => d.id).distance(d => {
+      const dists = { strong: 120, moderate: 160, weak: 200, none: 250, crosslink: 220 };
+      return dists[d.strength] || 200;
+    }).strength(d => {
+      const strs = { strong: 0.4, moderate: 0.2, weak: 0.1, none: 0.05, crosslink: 0.06 };
+      return strs[d.strength] || 0.1;
+    }))
+    .force('charge', d3.forceManyBody().strength(-400))
+    .force('center', d3.forceCenter(W/2, H/2))
+    .force('collision', d3.forceCollide().radius(d => Math.max(d.label.length * 4 + 10, 40)));
+
+  // Draw edges
+  const link = g.append('g').selectAll('line')
+    .data(links).join('line')
+    .attr('stroke', d => d.type === 'crosslink' ? '#3a4a5a' : (EDGE_COLORS[d.strength] || '#556678'))
+    .attr('stroke-width', d => d.type === 'crosslink' ? 0.5 : (EDGE_WIDTHS[d.strength] || 0.5))
+    .attr('stroke-dasharray', d => EDGE_DASH[d.strength] || '')
+    .attr('stroke-opacity', d => d.type === 'crosslink' ? 0.3 : (d.strength === 'none' ? 0.2 : 0.5));
+
+  // Draw nodes
+  const node = g.append('g').selectAll('g')
+    .data(data.nodes).join('g')
+    .call(d3.drag()
+      .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+  node.each(function(d) {
+    const g = d3.select(this);
+    const color = d.confidence ? CONF_COLORS[d.confidence] : '#b3c7d6';
+    const isIntervention = d.type === 'intervention';
+    const w = Math.max(d.label.length * 9 + 24, 90);
+    const h = d.desc ? 46 : 32;
+    const rx = isIntervention ? 5 : 20;
+
+    if (isIntervention) {
+      g.append('rect')
+        .attr('width', w).attr('height', h)
+        .attr('x', -w/2).attr('y', -h/2)
+        .attr('rx', rx).attr('ry', rx)
+        .attr('fill', color).attr('fill-opacity', 0.12)
+        .attr('stroke', color).attr('stroke-width', 1.5)
+        .attr('stroke-opacity', 0.8);
+    } else {
+      g.append('ellipse')
+        .attr('cx', 0).attr('cy', 0)
+        .attr('rx', w/2).attr('ry', h/2)
+        .attr('fill', color).attr('fill-opacity', 0.1)
+        .attr('stroke', color).attr('stroke-width', 1.2)
+        .attr('stroke-opacity', 0.7);
+    }
+
+    g.append('text')
+      .attr('text-anchor', 'middle')
+      .attr('dy', d.desc ? '-0.3em' : '0.35em')
+      .attr('fill', color)
+      .attr('font-family', 'var(--font-sans)')
+      .attr('font-weight', '700')
+      .attr('font-size', isIntervention ? '13px' : '12px')
+      .text(d.label);
+
+    if (d.desc) {
+      g.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '1.2em')
+        .attr('fill', color)
+        .attr('font-family', 'var(--font-sans)')
+        .attr('font-size', '10px')
+        .attr('opacity', 0.65)
+        .text(d.desc);
+    }
+  });
+
+  sim.on('tick', () => {
+    link
+      .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    node.attr('transform', d => `translate(${d.x},${d.y})`);
+  });
+}
+
+setTimeout(renderWikiGraph, 500);
 </script>
 </body>
 </html>

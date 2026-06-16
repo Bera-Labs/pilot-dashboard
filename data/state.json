@@ -1,0 +1,55 @@
+{
+  "mission_start": "2026-05-18T04:00:00",
+  "metrics": {
+    "wip": 13,
+    "completed": 0,
+    "ooda_last": null,
+    "avg_latency": null
+  },
+  "decisions": [],
+  "activity_log": [
+    {
+      "time": "20:32:16",
+      "type": "WEEKLY",
+      "message": "Dashboard v2.0 \u2014 read-only, data-driven from Outliner + STEM skills + property pipeline"
+    },
+    {
+      "time": "20:32:16",
+      "type": "BOOT",
+      "message": "Dashboard initialized"
+    },
+    {
+      "time": "20:32:16",
+      "type": "LOAD",
+      "message": "STEM Stack v2.0 active"
+    },
+    {
+      "time": "20:32:16",
+      "type": "STATUS",
+      "message": "Read-Only mode active"
+    }
+  ],
+  "properties": {
+    "tracked": 5,
+    "viewings": 0,
+    "offers": 0
+  },
+  "skills": [
+    {
+      "name": "probabilistic-thinking",
+      "tags": "randomness, bias, causality"
+    },
+    {
+      "name": "warp-speed-execution",
+      "tags": "velocity, bottlenecks, compound"
+    },
+    {
+      "name": "pilot-dashboard",
+      "tags": "this dashboard"
+    },
+    {
+      "name": "thinking-in-bets",
+      "tags": "decisions, uncertainty"
+    }
+  ]
+}

@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Pilot Dashboard — FastAPI wrapper for Railway deployment.
-Same API, same state.json, but Railway-compatible.
+Read-only browser. All POSTs from Hermes/cron only.
 """
 import json, os, time
 from pathlib import Path
 from fastapi import FastAPI, Request
-from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
@@ -24,10 +23,15 @@ def default_state():
         "decisions": [],
         "activity_log": [
             {"time": time.strftime("%H:%M:%S"), "type": "BOOT", "message": "Dashboard initialized"},
-            {"time": time.strftime("%H:%M:%S"), "type": "LOAD", "message": "STEM Stack v1.0 active"},
-            {"time": time.strftime("%H:%M:%S"), "type": "STATUS", "message": "Bidirectional mode — Railway"}
+            {"time": time.strftime("%H:%M:%S"), "type": "LOAD", "message": "STEM Stack v2.0 active"},
+            {"time": time.strftime("%H:%M:%S"), "type": "STATUS", "message": "Read-Only mode active"}
         ],
-        "properties": {"tracked": 0, "viewings": 0, "offers": 0}
+        "properties": {"tracked": 0, "viewings": 0, "offers": 0},
+        "skills": [
+            {"name": "probabilistic-thinking", "tags": "randomness, bias, causality"},
+            {"name": "warp-speed-execution", "tags": "velocity, bottlenecks, compound"},
+            {"name": "pilot-dashboard", "tags": "this dashboard itself"}
+        ]
     }
 
 def load_state():
@@ -42,11 +46,19 @@ def save_state(state):
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     STATE_FILE.write_text(json.dumps(state, indent=2))
 
-# ── API ─────────────────────────────────────
+# ── GET (browser) ───────────────────────────
 @app.get("/api/state")
 def api_state():
     return load_state()
 
+@app.get("/api/wiki-graph")
+def api_wiki_graph():
+    try:
+        return json.loads((DATA_DIR / "wiki-graph.json").read_text())
+    except FileNotFoundError:
+        return JSONResponse({"error": "wiki-graph.json not found"}, status_code=404)
+
+# ── POST (Hermes/cron only) ────────────────
 @app.post("/api/log-decision")
 async def log_decision(req: Request):
     body = await req.json()
@@ -102,6 +114,14 @@ async def set_wip(req: Request):
     save_state(state)
     return {"status": "ok"}
 
+@app.post("/api/set-completed")
+async def set_completed(req: Request):
+    body = await req.json()
+    state = load_state()
+    state["metrics"]["completed"] = body.get("count", 0)
+    save_state(state)
+    return {"status": "ok"}
+
 @app.post("/api/set-ooda")
 async def set_ooda(req: Request):
     body = await req.json()
@@ -130,6 +150,14 @@ async def update_properties(req: Request):
     for key in ["tracked", "viewings", "offers"]:
         if key in body:
             state["properties"][key] = body[key]
+    save_state(state)
+    return {"status": "ok"}
+
+@app.post("/api/set-skills")
+async def set_skills(req: Request):
+    body = await req.json()
+    state = load_state()
+    state["skills"] = body.get("skills", state.get("skills", []))
     save_state(state)
     return {"status": "ok"}
 

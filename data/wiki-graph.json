@@ -1,0 +1,601 @@
+{
+  "nodes": [
+    {
+      "id": "sleep",
+      "label": "Sleep",
+      "type": "intervention",
+      "confidence": "high",
+      "desc": "7-9 hrs consistent"
+    },
+    {
+      "id": "creatine",
+      "label": "Creatine",
+      "type": "intervention",
+      "confidence": "high",
+      "desc": "5g/day"
+    },
+    {
+      "id": "nac",
+      "label": "NAC",
+      "type": "intervention",
+      "confidence": "high",
+      "desc": "1200-2400mg/day"
+    },
+    {
+      "id": "omega3",
+      "label": "Omega-3",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "1-2g EPA+DHA"
+    },
+    {
+      "id": "resistance",
+      "label": "Resistance Training",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "2-3x/wk, 12 wks"
+    },
+    {
+      "id": "iron",
+      "label": "Iron",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "Only if deficient"
+    },
+    {
+      "id": "rhodiola",
+      "label": "Rhodiola",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "SHR-5 extract"
+    },
+    {
+      "id": "curcumin",
+      "label": "Curcumin",
+      "type": "intervention",
+      "confidence": "low",
+      "desc": "800mg, \u226524 wks"
+    },
+    {
+      "id": "cold_exposure",
+      "label": "Cold Exposure",
+      "type": "intervention",
+      "confidence": "low",
+      "desc": "2-5 min cold shower"
+    },
+    {
+      "id": "omega3_addiction",
+      "label": "Omega-3 (addiction)",
+      "type": "intervention",
+      "confidence": "low",
+      "desc": "No addiction trials"
+    },
+    {
+      "id": "tyrosine_mg_zn",
+      "label": "Tyrosine, Mg, Zn",
+      "type": "intervention",
+      "confidence": "none",
+      "desc": "Zero clinical evidence"
+    },
+    {
+      "id": "taurine",
+      "label": "Taurine",
+      "type": "intervention",
+      "confidence": "none",
+      "desc": "No effect (meta-analysis)"
+    },
+    {
+      "id": "beetroot",
+      "label": "Beetroot",
+      "type": "intervention",
+      "confidence": "none",
+      "desc": "Inconclusive"
+    },
+    {
+      "id": "self_compassion",
+      "label": "Self-Compassion",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "Faster lapse recovery"
+    },
+    {
+      "id": "executive_function",
+      "label": "Executive Function",
+      "type": "outcome"
+    },
+    {
+      "id": "memory",
+      "label": "Memory",
+      "type": "outcome"
+    },
+    {
+      "id": "attention",
+      "label": "Attention",
+      "type": "outcome"
+    },
+    {
+      "id": "processing_speed",
+      "label": "Processing Speed",
+      "type": "outcome"
+    },
+    {
+      "id": "mental_fatigue",
+      "label": "Mental Fatigue",
+      "type": "outcome"
+    },
+    {
+      "id": "neuroplasticity",
+      "label": "Neuroplasticity",
+      "type": "outcome"
+    },
+    {
+      "id": "cravings",
+      "label": "Cravings",
+      "type": "outcome"
+    },
+    {
+      "id": "addiction_recovery",
+      "label": "Addiction Recovery",
+      "type": "outcome"
+    },
+    {
+      "id": "mood",
+      "label": "Mood / Depression",
+      "type": "outcome"
+    },
+    {
+      "id": "physical_fatigue",
+      "label": "Physical Fatigue",
+      "type": "outcome"
+    },
+    {
+      "id": "stress",
+      "label": "Stress",
+      "type": "outcome"
+    },
+    {
+      "id": "self_control",
+      "label": "Self-Control",
+      "type": "outcome"
+    },
+    {
+      "id": "relapse",
+      "label": "Relapse Prevention",
+      "type": "outcome"
+    },
+    {
+      "id": "exercise",
+      "label": "Exercise",
+      "type": "intervention",
+      "confidence": "high"
+    },
+    {
+      "id": "dopamine_recovery",
+      "label": "Dopamine Recovery",
+      "type": "outcome",
+      "confidence": "high"
+    },
+    {
+      "id": "mindfulness",
+      "label": "Mindfulness",
+      "type": "intervention",
+      "confidence": "high"
+    },
+    {
+      "id": "willpower_training",
+      "label": "Willpower Training",
+      "type": "intervention",
+      "confidence": "medium"
+    },
+    {
+      "id": "habit_formation",
+      "label": "Habit Formation",
+      "type": "intervention",
+      "confidence": "high"
+    },
+    {
+      "id": "brain_fog",
+      "label": "Brain Fog",
+      "type": "outcome",
+      "confidence": "medium"
+    }
+  ],
+  "edges": [
+    {
+      "from": "exercise",
+      "to": "executive_function",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "exercise",
+      "to": "neuroplasticity",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "exercise",
+      "to": "brain_fog",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "exercise",
+      "to": "mental_fatigue",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "exercise",
+      "to": "addiction_recovery",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "exercise",
+      "to": "dopamine_recovery",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "exercise",
+      "to": "mood",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "sleep",
+      "to": "brain_fog",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "sleep",
+      "to": "executive_function",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "sleep",
+      "to": "attention",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "sleep",
+      "to": "memory",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "mindfulness",
+      "to": "attention",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "mindfulness",
+      "to": "executive_function",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "mindfulness",
+      "to": "stress",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "mindfulness",
+      "to": "cravings",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "mindfulness",
+      "to": "self_control",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "memory",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "attention",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "processing_speed",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "mental_fatigue",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "brain_fog",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "nac",
+      "to": "cravings",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "nac",
+      "to": "addiction_recovery",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "nac",
+      "to": "relapse",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3",
+      "to": "attention",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3",
+      "to": "memory",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3",
+      "to": "brain_fog",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "resistance",
+      "to": "neuroplasticity",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "resistance",
+      "to": "executive_function",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "iron",
+      "to": "mental_fatigue",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "iron",
+      "to": "memory",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "rhodiola",
+      "to": "physical_fatigue",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "rhodiola",
+      "to": "stress",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "rhodiola",
+      "to": "mental_fatigue",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "curcumin",
+      "to": "memory",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "curcumin",
+      "to": "brain_fog",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "cold_exposure",
+      "to": "dopamine_recovery",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3_addiction",
+      "to": "addiction_recovery",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3_addiction",
+      "to": "brain_fog",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "tyrosine_mg_zn",
+      "to": "brain_fog",
+      "strength": "none",
+      "type": "evidence"
+    },
+    {
+      "from": "tyrosine_mg_zn",
+      "to": "dopamine_recovery",
+      "strength": "none",
+      "type": "evidence"
+    },
+    {
+      "from": "taurine",
+      "to": "brain_fog",
+      "strength": "none",
+      "type": "evidence"
+    },
+    {
+      "from": "beetroot",
+      "to": "brain_fog",
+      "strength": "none",
+      "type": "evidence"
+    },
+    {
+      "from": "habit_formation",
+      "to": "self_control",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "habit_formation",
+      "to": "addiction_recovery",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "habit_formation",
+      "to": "relapse",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "willpower_training",
+      "to": "self_control",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "self_compassion",
+      "to": "relapse",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "self_compassion",
+      "to": "addiction_recovery",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "brain_fog",
+      "to": "willpower_training",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "brain_fog",
+      "to": "habit_formation",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "dopamine_recovery",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "dopamine_recovery",
+      "to": "mindfulness",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "dopamine_recovery",
+      "to": "brain_fog",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "exercise",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "exercise",
+      "to": "mindfulness",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "exercise",
+      "to": "brain_fog",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "habit_formation",
+      "to": "willpower_training",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "mindfulness",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "mindfulness",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "nac",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "nac",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "creatine",
+      "to": "nac",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "creatine",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "creatine",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "willpower_training",
+      "to": "habit_formation",
+      "strength": "crosslink",
+      "type": "crosslink"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent / "data"
 ASSETS_DIR = Path(__file__).parent / "assets"
 STATE_FILE = DATA_DIR / "state.json"
-PORT = 8080
+PORT = 8081
 
 def default_state():
     return {
@@ -17,10 +17,15 @@ def default_state():
         "decisions": [],
         "activity_log": [
             {"time": time.strftime("%H:%M:%S"), "type": "BOOT", "message": "Dashboard initialized"},
-            {"time": time.strftime("%H:%M:%S"), "type": "LOAD", "message": "STEM Stack v1.0 active"},
-            {"time": time.strftime("%H:%M:%S"), "type": "STATUS", "message": "Bidirectional mode online"}
+            {"time": time.strftime("%H:%M:%S"), "type": "LOAD", "message": "STEM Stack v2.0 active"},
+            {"time": time.strftime("%H:%M:%S"), "type": "STATUS", "message": "Read-Only mode active"}
         ],
-        "properties": {"tracked": 0, "viewings": 0, "offers": 0}
+        "properties": {"tracked": 0, "viewings": 0, "offers": 0},
+        "skills": [
+            {"name": "probabilistic-thinking", "tags": "randomness, bias, causality"},
+            {"name": "warp-speed-execution", "tags": "velocity, bottlenecks, compound"},
+            {"name": "pilot-dashboard", "tags": "this dashboard itself"}
+        ]
     }
 
 def load_state():
@@ -62,6 +67,12 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
 
         if path == '/api/state':
             self._send_json(load_state())
+        elif path == '/api/wiki-graph':
+            try:
+                with open(DATA_DIR / "wiki-graph.json") as f:
+                    self._send_json(json.load(f))
+            except FileNotFoundError:
+                self._send_json({"error": "wiki-graph.json not found"}, 404)
         elif path.startswith('/api/'):
             self._send_json({"error": "unknown endpoint"}, 404)
         else:
@@ -107,6 +118,9 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
         elif path == '/api/set-wip':
             state['metrics']['wip'] = body.get('count', 0)
 
+        elif path == '/api/set-completed':
+            state['metrics']['completed'] = body.get('count', 0)
+
         elif path == '/api/set-ooda':
             sec = body.get('seconds', 0)
             state['metrics']['ooda_last'] = sec
@@ -119,6 +133,9 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
             for key in ['tracked', 'viewings', 'offers']:
                 if key in body:
                     state['properties'][key] = body[key]
+
+        elif path == '/api/set-skills':
+            state['skills'] = body.get('skills', state.get('skills', []))
 
         else:
             self._send_json({"error": "unknown endpoint"}, 404)
