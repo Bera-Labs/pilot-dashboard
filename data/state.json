@@ -5,6 +5,9 @@
     "completed": 0,
     "ooda_last": null,
     "avg_latency": null,
+    "compound_velocity": 3.5,
+    "bottleneck": "fix-brain-first axiom - progress possible in parallel",
+    "nightly_run": "2026-06-17",
     "detail": {
       "Housing": 4,
       "Taxes": 3,
@@ -129,5 +132,15 @@
       "tags": "synthesis, cron, briefing",
       "desc": "Autonomous 4-stage STEM pipeline running daily at 4:30am CT. Trajectory analysis, future simulation, top 3 actions."
     }
-  ]
+  ],
+  "momentum_analysis": {
+    "last_run": null,
+    "compound_velocity": null,
+    "velocity_trend": null,
+    "trajectories": {},
+    "bottleneck": null,
+    "forecast": null,
+    "top_actions": [],
+    "mantra": null
+  }
 }
