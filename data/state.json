@@ -123,6 +123,11 @@
       "name": "euclidean-thinking",
       "tags": "first-principles, axioms, reasoning",
       "desc": "Axiomatic method, progressive construction, reductio ad absurdum, minimal toolset. Foundation for certain reasoning."
+    },
+    {
+      "name": "nightly-momentum-engine",
+      "tags": "synthesis, cron, briefing",
+      "desc": "Autonomous 4-stage STEM pipeline running daily at 4:30am CT. Trajectory analysis, future simulation, top 3 actions."
     }
   ]
 }
