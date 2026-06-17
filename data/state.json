@@ -134,13 +134,31 @@
     }
   ],
   "momentum_analysis": {
-    "last_run": null,
-    "compound_velocity": null,
-    "velocity_trend": null,
-    "trajectories": {},
-    "bottleneck": null,
-    "forecast": null,
-    "top_actions": [],
-    "mantra": null
+    "last_run": "2026-06-17T14:19:00Z",
+    "compound_velocity": 3.5,
+    "velocity_trend": "flat",
+    "trajectories": {
+      "Housing": {"trend": "steady", "confidence": 55},
+      "Brain/ADHD": {"trend": "improving", "confidence": 50},
+      "Body/Health": {"trend": "down", "confidence": 40},
+      "Career": {"trend": "steady", "confidence": 35},
+      "Relationships": {"trend": "steady", "confidence": 30}
+    },
+    "bottleneck": {
+      "what": "The \"fix brain first\" axiom — belief that everything depends on brain repair",
+      "why": "Creates an invisible queue where housing, health, career, and relationships all wait for a condition with no clear \"done\" state. Evidence of parallel progress exists (PMO streak, DMV, 10 properties scored). The axiom is the throttle, not the engine.",
+      "unlocked_by": "Contacting an agent or completing one workout disproves the axiom in real time — proving parallel progress IS possible."
+    },
+    "forecast": {
+      "bear": "Housing stalls, 0 viewings. Exercise gap extends to 16 days. PMO streak at risk as momentum bleeds. WIP paralysis deepens.",
+      "base": "1-2 housing viewings scheduled. 2 exercise sessions logged. PMO streak holds. One maintenance task closed. WIP awareness increases.",
+      "bull": "Agent contacted, first viewing completed. 3+ exercise sessions. Sleep tracking begins. tDCS/TMS research produces actionable plan. WIP cut to 5."
+    },
+    "top_actions": [
+      {"action": "Contact Savannah & Kristy at Schuber Mitchell Homes", "time": "30m", "impact": "Unlocks viewings → offers → home ownership pipeline"},
+      {"action": "Complete one exercise session TODAY", "time": "30-45m", "impact": "Reverses health trajectory, directly improves cognition via BDNF/dopamine"},
+      {"action": "Defer 3 tasks — write 'not this week' list", "time": "15m", "impact": "Reduces cognitive load from 13 to 5 active, increases throughput"}
+    ],
+    "mantra": "The jet stream doesn't wait for the engine to be perfect — get in it today."
   }
 }
