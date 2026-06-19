@@ -1,0 +1,66 @@
+{
+  "last_updated": "2026-06-18",
+  "summary": "AI is entering the Agentic Era — autonomous systems that plan, use tools, and self-correct. Test-time compute makes small models reason like large ones. The next wave of startups will be built on agent infrastructure, vertical AI workers, and on-device intelligence.",
+  "trends": [
+    {
+      "domain": "Agentic AI",
+      "score": 98,
+      "direction": "↗ accelerating",
+      "signal": "Anthropic Claude Code, OpenAI Codex, Manus, Devin — autonomous coding agents shipping to production. Multi-agent frameworks (CrewAI, AutoGen) maturing.",
+      "learn": "Agent architectures, tool-use protocols (MCP, A2A), planning algorithms, multi-agent coordination, prompt engineering for tool calls",
+      "build": "Vertical AI workers for regulated industries (legal, healthcare, finance). Agent evaluation platforms. Human-in-the-loop oversight tools. Agent-to-agent communication standards.",
+      "papers": ["TTI framework: 12B model beats larger agents via test-time interaction", "SWEnergy: energy efficiency in agentic frameworks", "Plan Reuse for LLM-driven agents"]
+    },
+    {
+      "domain": "Reasoning at Inference",
+      "score": 95,
+      "direction": "↗ accelerating",
+      "signal": "Test-time compute scaling — giving models 'thinking time' dramatically improves results. DiffCoT, Buffer of Thoughts, hierarchical reasoning. RL for reasoning (DeepSeek-R1, o1/o3).",
+      "learn": "Chain-of-thought variants, test-time compute strategies, verifier models, reward modeling, constitutional AI alignment",
+      "build": "Reasoning-as-a-service APIs. Domain-specific reasoning models (math, code, science). Verifier-as-a-service. Reasoning model fine-tuning platforms.",
+      "papers": ["The Art of Scaling Test-Time Compute (30B tokens across 8 models)", "DiffCoT: Diffusion-styled Chain-of-Thought", "Does RL Really Incentivize Reasoning Capacity?"]
+    },
+    {
+      "domain": "Small & Efficient Models",
+      "score": 90,
+      "direction": "↗ accelerating",
+      "signal": "2026: shift from LLMs to SLMs. Gemma, Phi, Llama-mini. On-device AI. Quantization advances (1-bit, 2-bit). Mixture of Experts pruning.",
+      "learn": "Model compression, quantization (GPTQ, AWQ, GGUF), distillation, speculative decoding, edge deployment (CoreML, ONNX, MediaPipe)",
+      "build": "On-device AI SDKs. SLM fine-tuning platforms. Edge inference optimization tools. Domain-specific tiny models for IoT/sensors.",
+      "papers": ["Dell: 'Smaller AI Models Take Over' — 2026 prediction", "Efficient Expert Pruning for MoE LLMs", "1.5B reasoning model outranks 13B LLMs as discriminator"]
+    },
+    {
+      "domain": "Multimodal AI",
+      "score": 85,
+      "direction": "↗ steady",
+      "signal": "Vision-language models becoming default. Video understanding. Audio+text+vision fusion. 3D scene generation. JanusMesh for 3D illusions.",
+      "learn": "Vision transformers, CLIP-style contrastive learning, video understanding architectures, audio processing, cross-modal attention",
+      "build": "Video understanding APIs. Multimodal search. AR/VR AI assistants. Real-time video analytics. Multimodal content moderation.",
+      "papers": ["JanusMesh: zero-shot 3D visual illusion generation", "UniEgo: unified egocentric video representation", "MemoryWAM: world action modeling with persistent memory"]
+    },
+    {
+      "domain": "AI + Code",
+      "score": 88,
+      "direction": "↗ accelerating",
+      "signal": "Copilot, Cursor, Claude Code — AI writes production code. SWE-bench scores climbing. Agentic coding with full repo context becoming standard.",
+      "learn": "Code LLM architectures, repository-level understanding, program synthesis, test generation, code review automation, AST manipulation",
+      "build": "Vertical coding agents (security audit, refactoring, migration). Codebase knowledge graphs. AI-native IDEs. Automated dependency management.",
+      "papers": ["SWE-bench verified: coding benchmarks driving agent development", "Agentic issue resolution frameworks", "Repository-level code understanding"]
+    },
+    {
+      "domain": "Agent Infrastructure",
+      "score": 92,
+      "direction": "↗ accelerating",
+      "signal": "MCP (Model Context Protocol), A2A (Agent-to-Agent). Every model needs tools, memory, and orchestration. The 'picks and shovels' of the agent gold rush.",
+      "learn": "MCP/A2A protocols, vector databases, agent memory architectures, observability and tracing (OpenTelemetry for agents), sandboxing and security",
+      "build": "Agent hosting platforms. Tool registry/marketplace. Agent monitoring and observability. Memory-as-a-service. Agent security and guardrail platforms.",
+      "papers": ["MCP specification becoming de facto standard", "Agent evaluation frameworks and benchmarks", "Energy efficiency in agentic systems (SWEnergy)"]
+    }
+  ],
+  "startup_thesis": {
+    "wave_1_2023_2025": "Foundation models and chatbots — OpenAI, Anthropic, Cohere captured this",
+    "wave_2_2025_now": "Agentic AI and vertical applications — the current land grab. Winners will own specific domains, not general chat.",
+    "wave_3_2026_2028": "Physical AI + agent ecosystems. Agents that act in the real world (robotics, vehicles, manufacturing). Agent-to-agent economies. On-device intelligence everywhere.",
+    "where_to_play": "The biggest opportunity for a solo/small-team founder is in the 'agent infrastructure' layer — tools, protocols, and platforms that every AI agent needs — or in a deep vertical where you have domain expertise that AI generalists don't."
+  }
+}

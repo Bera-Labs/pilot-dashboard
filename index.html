@@ -172,6 +172,13 @@
     </div>
   </section>
 
+  <section class="widget" id="ai-research-radar" style="grid-column: 1 / -1;">
+    <h2 class="widget-title">AI Research Radar</h2>
+    <div class="widget-body" id="ai-research-summary" style="font-size:12px;color:var(--text-dim);margin-bottom:12px"></div>
+    <div id="ai-research-trends" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px"></div>
+    <div id="ai-research-detail" style="display:none;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)"></div>
+  </section>
+
   <section class="widget" id="activity-log">
     <h2 class="widget-title">Activity Log</h2>
     <div class="widget-body" id="log-container"><div class="log-line">[BOOT] Connecting to backend...</div></div>
@@ -270,6 +277,7 @@ function renderAll(state) {
   renderLog(state.activity_log || []);
   renderSkills(state.skills || []);
   renderMomentumAnalysis(state.momentum_analysis || null);
+  loadAIResearch();
 }
 
 function renderDecisions(decisions) {
@@ -396,6 +404,66 @@ function renderMomentumAnalysis(ma) {
   body.innerHTML = html;
 }
 
+async function loadAIResearch() {
+  try {
+    const r = await fetch('data/ai-research.json');
+    if (!r.ok) return;
+    const data = await r.json();
+    renderAIResearch(data);
+  } catch(e) {}
+}
+
+function renderAIResearch(data) {
+  // Summary
+  document.getElementById('ai-research-summary').textContent = data.summary || '';
+
+  // Trend cards
+  const container = document.getElementById('ai-research-trends');
+  if (!data.trends) return;
+  container.innerHTML = data.trends.map(t => {
+    const barColor = t.score >= 90 ? 'var(--green)' : t.score >= 80 ? 'var(--yellow)' : 'var(--accent)';
+    return `<div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;cursor:pointer" class="ai-trend-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span style="font-weight:600;font-size:12px;color:var(--accent)">${t.domain}</span>
+        <span style="font-family:var(--font-mono);font-size:11px;color:${barColor}">${t.score}%</span>
+      </div>
+      <div style="font-size:10px;color:var(--text-dim);margin-bottom:6px">${t.direction}</div>
+      <div class="bar-track" style="height:3px"><div class="bar-fill" style="width:${t.score}%;height:100%;background:${barColor};border-radius:2px"></div></div>
+      <div style="font-size:11px;color:var(--text);margin-top:6px;line-height:1.4">${t.signal.substring(0,120)}${t.signal.length>120?'…':''}</div>
+      <div class="ai-trend-detail" style="display:none;margin-top:8px;padding:8px;background:rgba(57,186,230,0.05);border-radius:4px;font-size:11px;line-height:1.6">
+        <div style="color:var(--green);margin-bottom:4px">📚 Learn: ${t.learn}</div>
+        <div style="color:var(--accent);margin-bottom:4px">🔨 Build: ${t.build}</div>
+        <div style="color:var(--text-dim);font-size:10px">📄 ${(t.papers||[]).join(' · ')}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Click to expand trend cards
+  container.querySelectorAll('.ai-trend-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const detail = this.querySelector('.ai-trend-detail');
+      detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+
+  // Startup thesis in the expandable detail section
+  const thesis = data.startup_thesis;
+  if (thesis) {
+    document.getElementById('ai-research-detail').innerHTML = `
+      <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px">🎯 Startup Opportunity Map</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px">
+        <div style="padding:8px;border-left:2px solid var(--text-dim);font-size:11px"><span style="color:var(--text-dim)">Wave 1 (2023-25)</span><br>${thesis.wave_1_2023_2025}</div>
+        <div style="padding:8px;border-left:2px solid var(--yellow);font-size:11px"><span style="color:var(--yellow)">Wave 2 (2025-now) ← YOU ARE HERE</span><br>${thesis.wave_2_2025_now}</div>
+        <div style="padding:8px;border-left:2px solid var(--green);font-size:11px"><span style="color:var(--green)">Wave 3 (2026-28)</span><br>${thesis.wave_3_2026_2028}</div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:rgba(127,217,98,0.08);border-left:2px solid var(--green);border-radius:4px;font-size:12px;line-height:1.5">
+        <strong style="color:var(--green)">💡 Where to play:</strong> ${thesis.where_to_play}
+      </div>
+    `;
+  }
+}
+
 // Click-to-expand handler for all widgets
 document.addEventListener('click', function(e) {
   const entry = e.target.closest('.decision-entry, .log-line, .skill-item');
@@ -415,6 +483,10 @@ document.addEventListener('click', function(e) {
     }
     if (section.id === 'momentum-analysis-widget') {
       const d = document.getElementById('momentum-detail');
+      if (d) d.style.display = d.style.display === 'none' ? 'block' : 'none';
+    }
+    if (section.id === 'ai-research-radar') {
+      const d = document.getElementById('ai-research-detail');
       if (d) d.style.display = d.style.display === 'none' ? 'block' : 'none';
     }
   }
