@@ -236,8 +236,10 @@ let cachedState = null;
 async function syncState() {
   const state = await apiGet('/api/state');
   if (state) { cachedState = state; renderAll(state); updateConnStatus(); }
-  else { updateConnStatus(); }
+  else { updateConnStatus(); renderAll({}); }
 }
+
+loadAIResearch();
 
 function renderAll(state) {
   const m = state.metrics || {};
@@ -277,7 +279,6 @@ function renderAll(state) {
   renderLog(state.activity_log || []);
   renderSkills(state.skills || []);
   renderMomentumAnalysis(state.momentum_analysis || null);
-  loadAIResearch();
 }
 
 function renderDecisions(decisions) {
