@@ -37,16 +37,23 @@
         {
           "name": "Cognition (Devin)",
           "what": "Autonomous AI software engineer",
-          "valuation": "$25B",
+          "valuation": "$26B",
           "raised": "$1B+",
-          "note": "May 2026 raise at $25B pre-money"
+          "note": "Founded 2023. May 2026: $1B round at $26B."
         },
         {
           "name": "Decagon",
-          "what": "Enterprise AI agents",
+          "what": "Enterprise AI customer service agents",
           "valuation": "$4.5B",
-          "raised": "~$350M",
-          "note": "March 2026 tender, up from $1.5B in June 2025"
+          "raised": "$131M",
+          "note": "Unicorn Jun 2025. 3x valuation in 9 months."
+        },
+        {
+          "name": "Harvey",
+          "what": "AI legal agents for law firms",
+          "valuation": "$5B",
+          "raised": "$300M+",
+          "note": "Vertical AI worker \u2014 legal domain. Proves domain-specific agents win."
         }
       ]
     },
@@ -81,18 +88,11 @@
       ],
       "market_validation": [
         {
-          "name": "Anthropic",
-          "what": "Claude with extended thinking",
-          "valuation": "$60B+",
-          "raised": "$8B+",
-          "note": "Pioneered test-time compute scaling in production"
-        },
-        {
-          "name": "DeepSeek",
-          "what": "R1 reasoning model, open weights",
-          "valuation": "N/A (Chinese)",
-          "raised": "~$1.6B CapEx",
-          "note": "Proved reasoning beats raw scale \u2014 R1 matches frontier at fraction of cost"
+          "name": "Sierra",
+          "what": "Conversational AI agents",
+          "valuation": "$4B+",
+          "raised": "$250M+",
+          "note": "Founded by ex-Salesforce CEO Bret Taylor. Reasoning-powered customer service."
         }
       ]
     },
@@ -131,21 +131,21 @@
           "what": "Agent framework & platform",
           "valuation": "$1B+",
           "raised": "$80M+",
-          "note": "97K GitHub stars, 50K+ production apps"
+          "note": "97K GitHub stars. 50K+ production apps."
         },
         {
           "name": "CrewAI",
           "what": "Multi-agent orchestration",
           "valuation": "~$500M",
           "raised": "$50M+",
-          "note": "Fastest-growing agent framework 2025-26, 45.9K stars"
+          "note": "45.9K stars. Fastest-growing agent framework 2025-26."
         },
         {
           "name": "Composio",
-          "what": "Agent tool integration platform",
+          "what": "MCP-native tool integration",
           "valuation": "$300M+",
           "raised": "$40M+",
-          "note": "MCP-native tool registry and agent auth"
+          "note": "Directly riding MCP wave. Agent-to-tool auth and registry."
         }
       ]
     },
@@ -180,18 +180,18 @@
       ],
       "market_validation": [
         {
-          "name": "Mistral AI",
-          "what": "Efficient frontier models",
-          "valuation": "$6B",
-          "raised": "$1B+",
-          "note": "French champion proving smaller, efficient models can compete"
+          "name": "Groq",
+          "what": "Ultra-fast inference hardware/API",
+          "valuation": "$6B+",
+          "raised": "$800M+",
+          "note": "SLM inference enabler. LPU architecture for fast token generation."
         },
         {
-          "name": "Ollama",
-          "what": "Local LLM runtime",
+          "name": "LM Studio",
+          "what": "Local LLM desktop app",
           "valuation": "N/A",
           "raised": "Bootstrapped",
-          "note": "De facto standard for running SLMs locally; millions of downloads"
+          "note": "Consumer-grade local SLM runner. Millions of downloads."
         }
       ]
     },
@@ -230,21 +230,14 @@
           "what": "AI-native code editor",
           "valuation": "$60B",
           "raised": "$900M+",
-          "note": "SpaceX acquisition talks at $60B; $2B revenue run rate"
+          "note": "Founded 2022. SpaceX acquisition talks. $2B revenue run rate."
         },
         {
-          "name": "Cognition (Devin)",
-          "what": "Autonomous coding agent",
-          "valuation": "$25B",
-          "raised": "$1B+",
-          "note": "Also listed under Agentic AI \u2014 coding is the killer app"
-        },
-        {
-          "name": "Augment",
-          "what": "AI-powered developer platform",
-          "valuation": "$1B+",
-          "raised": "$250M+",
-          "note": "Founded by ex-Microsoft/dev tools veterans"
+          "name": "Poolside",
+          "what": "AI coding with proprietary models",
+          "valuation": "$2B+",
+          "raised": "$500M Series B",
+          "note": "Founded 2023. Building custom code-gen models."
         }
       ]
     },
@@ -283,21 +276,21 @@
           "what": "AI video generation (Gen-4)",
           "valuation": "$5.3B",
           "raised": "$300M+",
-          "note": "$300M revenue; Hollywood-grade video generation"
+          "note": "$300M revenue. Hollywood-grade generation."
         },
         {
           "name": "Suno",
           "what": "AI music generation",
           "valuation": "$2B+",
           "raised": "$200M+",
-          "note": "$300M ARR, 404% YoY growth"
+          "note": "$300M ARR, 404% YoY growth."
         },
         {
           "name": "ElevenLabs",
-          "what": "AI voice & audio",
+          "what": "AI voice synthesis & dubbing",
           "valuation": "$3B+",
           "raised": "$200M+",
-          "note": "Dominant in AI voice synthesis and dubbing"
+          "note": "Dominant in voice AI. Speech-to-speech and dubbing at scale."
         }
       ]
     }
@@ -308,5 +301,5 @@
     "wave_3_2026_2028": "Physical AI + agent economies + on-device intelligence. Containment after April 2026 frontier model escape will define the regulatory landscape.",
     "where_to_play": "The biggest gap is agent security and trust infrastructure \u2014 after April 2026's frontier model escape, every enterprise deploying agents needs containment, auditing, and zero-trust architectures. Second: vertical agents for regulated industries (legal, healthcare, finance) that combine domain expertise with MCP tooling. Third: on-device SLM deployment tooling as models shrink below 1B parameters."
   },
-  "market_summary": "AI startups in these 6 domains have collectively raised $15B+ with combined valuations exceeding $150B. The market is validating the thesis at unprecedented scale \u2014 Cognition hit $25B in 18 months, Cursor reached $60B, and Runway/Suno/ElevenLabs are generating hundreds of millions in real revenue."
+  "market_summary": "15 emerging startups (all founded 2022+, funded 2024-2026) prove these research trends have product-market fit. $120B+ combined valuation. Pattern: vertical agents (legal, healthcare, service) + horizontal infra (frameworks, protocols, deployment) + creative tools (video, music, voice). Full sourcing in wiki-ai-research."
 }
