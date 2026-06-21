@@ -5,8 +5,8 @@
     "completed": 1,
     "ooda_last": null,
     "avg_latency": null,
-    "compound_velocity": 3.0,
-    "bottleneck": "Little's Law Violation - WIP of 15 crushing throughput",
+    "compound_velocity": 2.5,
+    "bottleneck": "Zero analysis-to-action conversion — planning IS the avoidance (Week 3)",
     "nightly_run": "2026-06-21",
     "detail": {
       "Housing": 4,
@@ -19,6 +19,11 @@
   },
   "decisions": [],
   "activity_log": [
+    {
+      "time": "20:00:00",
+      "type": "WEEKLY",
+      "message": "Momentum Engine v2 Run 3: WIP=15 | Velocity=2.5 (↓0.5) | Action completion 0/6 all-time | Brier=0.394 | Bottleneck Week 3"
+    },
     {
       "time": "11:05:49",
       "type": "WEEKLY",
@@ -42,7 +47,7 @@
     {
       "time": "03:16:21",
       "type": "MILESTONE",
-      "message": "glimpse of might 1.0-alpha1 start \u2014 exercise habit active (4 sessions logged)"
+      "message": "glimpse of might 1.0-alpha1 start — exercise habit active (4 sessions logged)"
     },
     {
       "time": "03:16:21",
@@ -52,7 +57,7 @@
     {
       "time": "20:32:16",
       "type": "WEEKLY",
-      "message": "Dashboard v2.0 \u2014 read-only, data-driven from Outliner + STEM skills + property pipeline"
+      "message": "Dashboard v2.0 — read-only, data-driven from Outliner + STEM skills + property pipeline"
     },
     {
       "time": "20:32:16",
@@ -76,13 +81,13 @@
     "offers": 0,
     "top": [
       {
-        "name": "NAPLES Plan \u2013 Huber Place South",
+        "name": "NAPLES Plan – Huber Place South",
         "price": "$399K",
         "score": 100,
         "location": "Bentonville"
       },
       {
-        "name": "2050 Plan \u2013 Magnolia Landing",
+        "name": "2050 Plan – Magnolia Landing",
         "price": "$369K",
         "score": 95,
         "location": "Centerton"
@@ -114,11 +119,11 @@
     },
     {
       "name": "nightly-momentum-engine",
-      "tags": "Autonomous weekly synthesis of all LifeOS data through the full STEM stack to produce morning intelligence \u2014 trajectory analysis, bottleneck identification, simulated futures, and top actions for maximum compound growth."
+      "tags": "Autonomous weekly synthesis of all LifeOS data through the full STEM stack to produce morning intelligence — trajectory analysis, bottleneck identification, simulated futures, and top actions for maximum compound growth."
     },
     {
       "name": "pilot-dashboard",
-      "tags": "Read-only modular web dashboard for visual tracking of life metrics, wiki graph, property pipeline, and activity log. No browser input \u2014 all updates happen server-side via Hermes cron or scripts. Displays data from JSON state files."
+      "tags": "Read-only modular web dashboard for visual tracking of life metrics, wiki graph, property pipeline, and activity log. No browser input — all updates happen server-side via Hermes cron or scripts. Displays data from JSON state files."
     },
     {
       "name": "probabilistic-thinking",
@@ -126,66 +131,91 @@
     },
     {
       "name": "thinking-in-bets",
-      "tags": "Decision-making under uncertainty \u2014 probabilistic thinking applied to real choices. Load before any high-stakes decision, when evaluating past outcomes, or when forming/defending beliefs. Based on Annie Duke's Thinking in Bets."
+      "tags": "Decision-making under uncertainty — probabilistic thinking applied to real choices. Load before any high-stakes decision, when evaluating past outcomes, or when forming/defending beliefs. Based on Annie Duke's Thinking in Bets."
     },
     {
       "name": "warp-speed-execution",
-      "tags": "STEM-grounded frameworks for maximizing execution velocity with guardrails. Load when speed of progress is the priority \u2014 career acceleration, skill acquisition, project delivery, life compounding."
+      "tags": "STEM-grounded frameworks for maximizing execution velocity with guardrails. Load when speed of progress is the priority — career acceleration, skill acquisition, project delivery, life compounding."
     }
   ],
   "momentum_analysis": {
-    "last_run": "2026-06-21T09:30:00Z",
-    "compound_velocity": 3.0,
+    "last_run": "2026-06-21T20:00:00Z",
+    "compound_velocity": 2.5,
+    "velocity_delta": -0.5,
     "velocity_trend": "down",
+    "wip_count": 15,
+    "wip_delta": 0,
+    "action_completion_rate": 0.0,
     "trajectories": {
       "Housing": {
-        "trend": "steady",
-        "confidence": 60
+        "trend": "down",
+        "confidence": 40,
+        "delta": -20
       },
       "Brain/ADHD": {
-        "trend": "steady",
-        "confidence": 55
+        "trend": "down",
+        "confidence": 35,
+        "delta": -20
       },
       "Body/Health": {
         "trend": "down",
-        "confidence": 70
+        "confidence": 30,
+        "delta": -40
       },
       "Career": {
         "trend": "steady",
-        "confidence": 50
+        "confidence": 30,
+        "delta": -20
       },
       "Relationships": {
         "trend": "steady",
-        "confidence": 50
+        "confidence": 30,
+        "delta": -20
       }
     },
     "bottleneck": {
-      "what": "Open-Loop Paralysis (Little's Law Violation)",
-      "why": "WIP is at 15 while throughput is 0. Every active task dilutes focus, feeding the 'fix brain first' axiom and blocking forward movement.",
-      "unlocked_by": "Ruthlessly pruning WIP to 3 forces parallelization into sequential focus, instantly unlocking velocity."
+      "what": "Zero analysis-to-action conversion — planning IS the avoidance",
+      "why": "3 runs, 6 prescribed actions, 0 completions. The planning system (reports, reviews, braindumps) has become the primary activity, replacing execution. The 'fix-brain-first' axiom is the 5th postulate — shatter it.",
+      "unlocked_by": "Stop generating analysis. Execute one microscopic action within 48 hours. Scale actions down to 2-5 min, not 15-30 min.",
+      "recurring": true,
+      "recurrence_count": 3
     },
     "forecast": {
-      "bear": "WIP remains high, 0 viewings completed, properties sell. Physical stagnation continues.",
-      "base": "WIP reduced slightly, 1 viewing scheduled, exercise resumes. Slight uptick in momentum.",
-      "bull": "WIP slashed to 3, agent contacted today, 2+ viewings completed, momentum returns powerfully."
+      "bear": "0 actions completed. Fourth report generated and ignored. Taxes hit 120+ days stalled. No exercise for 5+ weeks. Planning loop continues.",
+      "base": "1 micro-action completed (easiest item). Token progress. 0% streak broken but structural pattern unchanged.",
+      "bull": "Taxes call made (hardest item). Housing agent texted. WIP slashed to 5. Exercise resumed. Requires external trigger."
     },
     "top_actions": [
       {
-        "action": "Ruthless Pruning \u2014 Defer 10-12 tasks immediately. Bring WIP to 3.",
-        "time": "10m",
-        "impact": "Massive cognitive offload, allowing throughput to resume."
+        "action": "Find the Yesmytaxes phone number and write it on a sticky note.",
+        "time": "2m",
+        "impact": "First 2 min of the 5-min worst-first. Drops activation energy for the call by 80%.",
+        "status": "NEW"
       },
       {
-        "action": "Contact Savannah & Kristy \u2014 Initiate viewings for Bentonville/Centerton plans.",
-        "time": "15m",
-        "impact": "Unlocks housing pipeline, moves properties from tracked to viewed."
+        "action": "Send ONE text to Savannah at Schuber Mitchell: 'Hi, interested in new construction Bentonville/Centerton under $400K. Available for a call?'",
+        "time": "3m",
+        "impact": "Unlocks housing pipeline. Text is lower friction than a call.",
+        "status": "RECURRING (scaled down)"
       },
       {
-        "action": "One Physical Reset \u2014 Complete a single workout/exercise session today.",
-        "time": "30m",
-        "impact": "Breaks physical stagnation, spikes dopamine."
+        "action": "Put on workout shoes and walk to the end of the street.",
+        "time": "5m",
+        "impact": "Breaks 24-day exercise drought. Friction is the transition, not the activity.",
+        "status": "RECURRING (scaled down)"
       }
     ],
-    "mantra": "Throughput requires sacrifice. Kill the open loops to save the mission."
+    "calibration": {
+      "brier_score": 0.394,
+      "brier_trend": "slightly improving (0.41→0.38) but still poor",
+      "calibration_error": "Consistently over-predicting base/bull when base rate is 100% bear. Bear probability should be 0.60+."
+    },
+    "patterns": [
+      "0% action completion across 3 runs (6 total actions) — momentum engine prescriptions consumed as content, not converted to action",
+      "Taxes stalled 110+ days — 'talk to yesmytaxes' prescribed 2 weeks in a row, 15 min of work, untouched",
+      "WIP growing despite pruning advice: 13→15. Each run adds analysis, doesn't remove tasks",
+      "Habits dead: exercise last logged May 28 (24 days), sleep and meditation NEVER logged (created 3 months ago)"
+    ],
+    "mantra": "Plans don't break chains. Steps do."
   }
 }
