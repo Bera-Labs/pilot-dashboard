@@ -1,23 +1,29 @@
 {
   "mission_start": "2026-05-18T04:00:00",
   "metrics": {
-    "wip": 13,
-    "completed": 0,
+    "wip": 15,
+    "completed": 1,
     "ooda_last": null,
     "avg_latency": null,
-    "compound_velocity": 3.5,
-    "bottleneck": "fix-brain-first axiom - progress possible in parallel",
-    "nightly_run": "2026-06-17",
+    "compound_velocity": 3.0,
+    "bottleneck": "Little's Law Violation - WIP of 15 crushing throughput",
+    "nightly_run": "2026-06-21",
     "detail": {
       "Housing": 4,
       "Taxes": 3,
       "Parents trip": 3,
-      "maintenance": 4
+      "maintenance": 2,
+      "NYC & Niagara Trip": 3
     },
-    "completed_detail": "Last: DMV (Jun 8), PMO streak (Jun 8)"
+    "completed_detail": "Last: bathrooms cleaning (Jun 17)"
   },
   "decisions": [],
   "activity_log": [
+    {
+      "time": "11:05:49",
+      "type": "WEEKLY",
+      "message": "Week 25: WIP=15 | Completed=1 | Properties=31 tracked | 6 STEM skills active"
+    },
     {
       "time": "03:16:21",
       "type": "STATUS",
@@ -36,7 +42,7 @@
     {
       "time": "03:16:21",
       "type": "MILESTONE",
-      "message": "glimpse of might 1.0-alpha1 start — exercise habit active (4 sessions logged)"
+      "message": "glimpse of might 1.0-alpha1 start \u2014 exercise habit active (4 sessions logged)"
     },
     {
       "time": "03:16:21",
@@ -46,7 +52,7 @@
     {
       "time": "20:32:16",
       "type": "WEEKLY",
-      "message": "Dashboard v2.0 — read-only, data-driven from Outliner + STEM skills + property pipeline"
+      "message": "Dashboard v2.0 \u2014 read-only, data-driven from Outliner + STEM skills + property pipeline"
     },
     {
       "time": "20:32:16",
@@ -65,18 +71,18 @@
     }
   ],
   "properties": {
-    "tracked": 10,
+    "tracked": 31,
     "viewings": 0,
     "offers": 0,
     "top": [
       {
-        "name": "NAPLES Plan – Huber Place South",
+        "name": "NAPLES Plan \u2013 Huber Place South",
         "price": "$399K",
         "score": 100,
         "location": "Bentonville"
       },
       {
-        "name": "2050 Plan – Magnolia Landing",
+        "name": "2050 Plan \u2013 Magnolia Landing",
         "price": "$369K",
         "score": 95,
         "location": "Centerton"
@@ -103,62 +109,83 @@
   },
   "skills": [
     {
-      "name": "probabilistic-thinking",
-      "tags": "decisions, bias",
-      "desc": "Used in: housing scoring (10 properties ranked), \"model #1\" day-unit momentum system"
-    },
-    {
-      "name": "warp-speed-execution",
-      "tags": "velocity, compound",
-      "desc": "Active in: 1-hour execution blocks, \"be in the jet stream everyday\", Q3 new config load"
-    },
-    {
-      "name": "pilot-dashboard",
-      "tags": "cockpit",
-      "desc": "Tracked: 13 WIP across 7 projects. Weekly auto-refresh Sundays 11am."
-    },
-    {
-      "name": "thinking-in-bets",
-      "tags": "decision quality",
-      "desc": "Applied to: property pipeline (10 scored, 0 offers), \"probable outcomes\" model"
-    },
-    {
       "name": "euclidean-thinking",
-      "tags": "first-principles, axioms, reasoning",
-      "desc": "Axiomatic method, progressive construction, reductio ad absurdum, minimal toolset. Foundation for certain reasoning."
+      "tags": "First-principles reasoning, problem decomposition, and systematic truth-building via Euclid's axiomatic method. Load before decomposing complex problems, constructing arguments, debugging systems, building from scratch, or learning new domains."
     },
     {
       "name": "nightly-momentum-engine",
-      "tags": "synthesis, cron, briefing",
-      "desc": "Autonomous 4-stage STEM pipeline running daily at 4:30am CT. Trajectory analysis, future simulation, top 3 actions."
+      "tags": "Autonomous weekly synthesis of all LifeOS data through the full STEM stack to produce morning intelligence \u2014 trajectory analysis, bottleneck identification, simulated futures, and top actions for maximum compound growth."
+    },
+    {
+      "name": "pilot-dashboard",
+      "tags": "Read-only modular web dashboard for visual tracking of life metrics, wiki graph, property pipeline, and activity log. No browser input \u2014 all updates happen server-side via Hermes cron or scripts. Displays data from JSON state files."
+    },
+    {
+      "name": "probabilistic-thinking",
+      "tags": "Pre-analysis checklist for decisions involving data, uncertainty, or probability. Load before analyzing data, making forecasts, evaluating claims, or drawing conclusions from samples. Based on Mlodinow's The Drunkard's Walk + Kahneman & Tversky."
+    },
+    {
+      "name": "thinking-in-bets",
+      "tags": "Decision-making under uncertainty \u2014 probabilistic thinking applied to real choices. Load before any high-stakes decision, when evaluating past outcomes, or when forming/defending beliefs. Based on Annie Duke's Thinking in Bets."
+    },
+    {
+      "name": "warp-speed-execution",
+      "tags": "STEM-grounded frameworks for maximizing execution velocity with guardrails. Load when speed of progress is the priority \u2014 career acceleration, skill acquisition, project delivery, life compounding."
     }
   ],
   "momentum_analysis": {
-    "last_run": "2026-06-17T14:19:00Z",
-    "compound_velocity": 3.5,
-    "velocity_trend": "flat",
+    "last_run": "2026-06-21T09:30:00Z",
+    "compound_velocity": 3.0,
+    "velocity_trend": "down",
     "trajectories": {
-      "Housing": {"trend": "steady", "confidence": 55},
-      "Brain/ADHD": {"trend": "improving", "confidence": 50},
-      "Body/Health": {"trend": "down", "confidence": 40},
-      "Career": {"trend": "steady", "confidence": 35},
-      "Relationships": {"trend": "steady", "confidence": 30}
+      "Housing": {
+        "trend": "steady",
+        "confidence": 60
+      },
+      "Brain/ADHD": {
+        "trend": "steady",
+        "confidence": 55
+      },
+      "Body/Health": {
+        "trend": "down",
+        "confidence": 70
+      },
+      "Career": {
+        "trend": "steady",
+        "confidence": 50
+      },
+      "Relationships": {
+        "trend": "steady",
+        "confidence": 50
+      }
     },
     "bottleneck": {
-      "what": "The \"fix brain first\" axiom — belief that everything depends on brain repair",
-      "why": "Creates an invisible queue where housing, health, career, and relationships all wait for a condition with no clear \"done\" state. Evidence of parallel progress exists (PMO streak, DMV, 10 properties scored). The axiom is the throttle, not the engine.",
-      "unlocked_by": "Contacting an agent or completing one workout disproves the axiom in real time — proving parallel progress IS possible."
+      "what": "Open-Loop Paralysis (Little's Law Violation)",
+      "why": "WIP is at 15 while throughput is 0. Every active task dilutes focus, feeding the 'fix brain first' axiom and blocking forward movement.",
+      "unlocked_by": "Ruthlessly pruning WIP to 3 forces parallelization into sequential focus, instantly unlocking velocity."
     },
     "forecast": {
-      "bear": "Housing stalls, 0 viewings. Exercise gap extends to 16 days. PMO streak at risk as momentum bleeds. WIP paralysis deepens.",
-      "base": "1-2 housing viewings scheduled. 2 exercise sessions logged. PMO streak holds. One maintenance task closed. WIP awareness increases.",
-      "bull": "Agent contacted, first viewing completed. 3+ exercise sessions. Sleep tracking begins. tDCS/TMS research produces actionable plan. WIP cut to 5."
+      "bear": "WIP remains high, 0 viewings completed, properties sell. Physical stagnation continues.",
+      "base": "WIP reduced slightly, 1 viewing scheduled, exercise resumes. Slight uptick in momentum.",
+      "bull": "WIP slashed to 3, agent contacted today, 2+ viewings completed, momentum returns powerfully."
     },
     "top_actions": [
-      {"action": "Contact Savannah & Kristy at Schuber Mitchell Homes", "time": "30m", "impact": "Unlocks viewings → offers → home ownership pipeline"},
-      {"action": "Complete one exercise session TODAY", "time": "30-45m", "impact": "Reverses health trajectory, directly improves cognition via BDNF/dopamine"},
-      {"action": "Defer 3 tasks — write 'not this week' list", "time": "15m", "impact": "Reduces cognitive load from 13 to 5 active, increases throughput"}
+      {
+        "action": "Ruthless Pruning \u2014 Defer 10-12 tasks immediately. Bring WIP to 3.",
+        "time": "10m",
+        "impact": "Massive cognitive offload, allowing throughput to resume."
+      },
+      {
+        "action": "Contact Savannah & Kristy \u2014 Initiate viewings for Bentonville/Centerton plans.",
+        "time": "15m",
+        "impact": "Unlocks housing pipeline, moves properties from tracked to viewed."
+      },
+      {
+        "action": "One Physical Reset \u2014 Complete a single workout/exercise session today.",
+        "time": "30m",
+        "impact": "Breaks physical stagnation, spikes dopamine."
+      }
     ],
-    "mantra": "The jet stream doesn't wait for the engine to be perfect — get in it today."
+    "mantra": "Throughput requires sacrifice. Kill the open loops to save the mission."
   }
 }
