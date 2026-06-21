@@ -62,14 +62,23 @@
   .momentum-trend { font-size: 18px; margin-left: 2px; }
   .momentum-trend-up { color: var(--green); } .momentum-trend-down { color: var(--red); } .momentum-trend-flat { color: var(--yellow); }
   .momentum-meta { font-size: 10px; color: var(--text-dim); }
+  .momentum-stats-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; font-size: 11px; }
+  .momentum-stat { display: flex; flex-direction: column; gap: 2px; }
+  .momentum-stat-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
+  .momentum-stat-value { font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--text); }
+  .delta-up { color: var(--green); } .delta-down { color: var(--red); } .delta-flat { color: var(--yellow); } .delta-none { color: var(--text-dim); }
   .momentum-bottleneck { font-size: 12px; color: var(--yellow); padding: 8px 12px; background: rgba(255,180,84,0.08); border-left: 2px solid var(--yellow); border-radius: 2px; margin-bottom: 10px; }
+  .bottleneck-recur-badge { display: inline-block; font-size: 9px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  .bottleneck-recur-warn { background: rgba(242,109,120,0.15); color: var(--red); border: 1px solid rgba(242,109,120,0.3); }
+  .bottleneck-recur-new { background: rgba(127,217,98,0.15); color: var(--green); border: 1px solid rgba(127,217,98,0.3); }
   .momentum-detail { display: none; }
-  .momentum-detail .section-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 12px 0 6px; }
+  .momentum-detail .section-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 14px 0 6px; }
   .trajectory-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 11px; border-bottom: 1px solid rgba(30,42,58,0.5); }
   .trajectory-row:last-child { border-bottom: none; }
   .trajectory-domain { color: var(--text); font-weight: 500; }
   .trajectory-trend { font-size: 14px; }
   .trajectory-conf { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); }
+  .trajectory-delta { font-family: var(--font-mono); font-size: 10px; margin-left: 6px; }
   .forecast-box { padding: 8px 12px; margin: 4px 0; border-radius: 4px; font-size: 11px; }
   .forecast-bear { background: rgba(242,109,120,0.08); border-left: 2px solid var(--red); }
   .forecast-base { background: rgba(255,180,84,0.08); border-left: 2px solid var(--yellow); }
@@ -79,6 +88,22 @@
   .action-num { font-family: var(--font-mono); color: var(--accent); font-weight: 600; min-width: 16px; }
   .action-time { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); white-space: nowrap; }
   .action-impact { font-size: 10px; color: var(--green); }
+  .action-badge { font-size: 8px; font-weight: 600; padding: 1px 5px; border-radius: 3px; margin-left: 4px; white-space: nowrap; }
+  .action-badge-new { background: rgba(57,186,230,0.15); color: var(--accent); }
+  .action-badge-recur { background: rgba(242,109,120,0.15); color: var(--red); }
+  .stem-strategy-block { padding: 8px 10px; margin: 4px 0; background: rgba(57,186,230,0.04); border-radius: 4px; font-size: 11px; line-height: 1.6; }
+  .stem-strategy-block .stem-model { font-weight: 600; color: var(--accent); font-size: 10px; }
+  .stem-strategy-block .stem-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+  .stem-strategy-block .stem-value { color: var(--text); }
+  .stem-strategy-block .stem-arrow { color: var(--green); font-size: 10px; }
+  .calibration-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 4px 0; }
+  .calibration-cell { padding: 6px 8px; background: var(--bg); border-radius: 4px; font-size: 11px; }
+  .calibration-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
+  .calibration-value { font-family: var(--font-mono); font-size: 13px; font-weight: 600; }
+  .action-status-row { display: flex; gap: 6px; align-items: center; padding: 3px 0; font-size: 10px; }
+  .action-status-icon { font-size: 12px; }
+  .pattern-item { padding: 4px 0; font-size: 11px; color: var(--text); line-height: 1.5; display: flex; gap: 6px; }
+  .pattern-item::before { content: '▸'; color: var(--accent); font-size: 10px; }
   .mantra-line { font-size: 13px; font-style: italic; color: var(--accent); text-align: center; padding: 10px 0; border-top: 1px solid var(--border); margin-top: 10px; }
   .momentum-empty { color: var(--text-dim); font-size: 11px; text-align: center; padding: 20px; }
   /* Wiki Graph Widget */
@@ -342,35 +367,122 @@ function renderMomentumAnalysis(ma) {
   const trendClass = { up: 'momentum-trend-up', down: 'momentum-trend-down', flat: 'momentum-trend-flat' };
   const runDate = new Date(ma.last_run).toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
 
+  function fmtDelta(val, suffix) {
+    if (val == null) return { text: '—', cls: 'delta-none' };
+    if (val > 0) return { text: `+${val}${suffix||''}`, cls: 'delta-up' };
+    if (val < 0) return { text: `${val}${suffix||''}`, cls: 'delta-down' };
+    return { text: `→${suffix||''}`, cls: 'delta-flat' };
+  }
+
   let html = '';
 
-  // Summary row
+  // Summary row — velocity + delta
   html += `<div class="momentum-summary">`;
   if (ma.compound_velocity != null) {
     const trend = ma.velocity_trend || 'flat';
     html += `<div><span class="momentum-score">${ma.compound_velocity.toFixed(1)}</span><span class="momentum-trend ${trendClass[trend] || ''}">${trendIcon[trend] || ''}</span></div>`;
+    if (ma.velocity_delta != null) {
+      const vd = fmtDelta(ma.velocity_delta);
+      html += `<span class="momentum-stat-value ${vd.cls}" style="font-size:12px">${vd.text}</span>`;
+    }
   }
   html += `<div class="momentum-meta">Last run: ${runDate}<br>Compound velocity (0–10 scale)</div>`;
   html += `</div>`;
 
-  // Bottleneck
+  // Quick stats row — WIP, action completion
+  html += `<div class="momentum-stats-row">`;
+  if (ma.wip_count != null) {
+    html += `<div class="momentum-stat"><span class="momentum-stat-label">WIP</span><span class="momentum-stat-value">${ma.wip_count}`;
+    if (ma.wip_delta != null) { const wd = fmtDelta(ma.wip_delta); html += ` <span class="${wd.cls}" style="font-size:10px">${wd.text}</span>`; }
+    html += `</span></div>`;
+  }
+  if (ma.action_completion_rate != null) {
+    const pct = Math.round(ma.action_completion_rate * 100);
+    const cls = pct >= 67 ? 'delta-up' : pct >= 34 ? 'delta-flat' : 'delta-down';
+    html += `<div class="momentum-stat"><span class="momentum-stat-label">Action Completion</span><span class="momentum-stat-value ${cls}">${pct}%</span></div>`;
+  }
+  if (ma.calibration && ma.calibration.brier_score != null) {
+    const brier = ma.calibration.brier_score;
+    const cls = brier < 0.3 ? 'delta-up' : brier < 0.4 ? 'delta-flat' : 'delta-down';
+    html += `<div class="momentum-stat"><span class="momentum-stat-label">Brier Score</span><span class="momentum-stat-value ${cls}">${brier.toFixed(3)}</span></div>`;
+  }
+  html += `</div>`;
+
+  // Bottleneck with recurrence badge
   if (ma.bottleneck) {
-    html += `<div class="momentum-bottleneck">⚡ <strong>Bottleneck:</strong> ${ma.bottleneck.what || ma.bottleneck}</div>`;
+    html += `<div class="momentum-bottleneck">⚡ <strong>Bottleneck:</strong> ${ma.bottleneck.what || ma.bottleneck}`;
+    if (ma.bottleneck.recurring) {
+      const count = ma.bottleneck.recurrence_count || 1;
+      html += ` <span class="bottleneck-recur-badge bottleneck-recur-warn">RECURRING · WK ${count}</span>`;
+    } else {
+      html += ` <span class="bottleneck-recur-badge bottleneck-recur-new">NEW</span>`;
+    }
+    html += `</div>`;
   }
 
   // Expandable detail
   html += `<div class="momentum-detail" id="momentum-detail">`;
 
-  // Trajectories
+  // Trajectories with deltas
   if (ma.trajectories && Object.keys(ma.trajectories).length > 0) {
     html += `<div class="section-title">🎯 Trajectories</div>`;
     for (const [domain, t] of Object.entries(ma.trajectories)) {
       const tIcon = t.trend === 'up' ? '↗' : t.trend === 'down' ? '↘' : t.trend === 'improving' ? '↗' : '→';
+      let deltaHtml = '';
+      if (t.delta != null) {
+        const td = fmtDelta(t.delta, '%');
+        deltaHtml = `<span class="trajectory-delta ${td.cls}">${td.text}</span>`;
+      }
       html += `<div class="trajectory-row">
         <span class="trajectory-domain">${domain}</span>
-        <span><span class="trajectory-trend">${tIcon}</span> ${t.trend || ''}</span>
+        <span><span class="trajectory-trend">${tIcon}</span> ${t.trend || ''} ${deltaHtml}</span>
         <span class="trajectory-conf">${t.confidence || '?'}%</span>
       </div>`;
+    }
+  }
+
+  // STEM Strategy
+  if (ma.stem_strategy) {
+    const s = ma.stem_strategy;
+    html += `<div class="section-title">🧠 STEM Strategy</div>`;
+
+    if (s.euclidean) {
+      html += `<div class="stem-strategy-block">`;
+      html += `<div class="stem-model">Euclidean — Shatter the 5th Postulate</div>`;
+      if (s.euclidean.assumption) html += `<div><span class="stem-label">Assumption:</span> <span class="stem-value">${s.euclidean.assumption}</span></div>`;
+      if (s.euclidean.reframe) html += `<div><span class="stem-label">Reframe:</span> <span class="stem-value">${s.euclidean.reframe}</span></div>`;
+      if (s.euclidean.unlocked_action) html += `<div class="stem-arrow">→ ${s.euclidean.unlocked_action}</div>`;
+      html += `</div>`;
+    }
+
+    if (s.probabilistic) {
+      html += `<div class="stem-strategy-block">`;
+      html += `<div class="stem-model">Probabilistic — Optimal Bet Allocation</div>`;
+      if (s.probabilistic.highest_ev_domain) html += `<div><span class="stem-label">Highest EV:</span> <span class="stem-value">${s.probabilistic.highest_ev_domain}</span></div>`;
+      if (s.probabilistic.avoid_domain) html += `<div><span class="stem-label">Avoid:</span> <span class="stem-value">${s.probabilistic.avoid_domain}</span></div>`;
+      if (s.probabilistic.allocation) html += `<div class="stem-arrow">→ ${s.probabilistic.allocation}</div>`;
+      html += `</div>`;
+    }
+
+    if (s.bets) {
+      html += `<div class="stem-strategy-block">`;
+      html += `<div class="stem-model">Thinking in Bets — Highest-EV Decision</div>`;
+      if (s.bets.best_decision) html += `<div><span class="stem-label">Decision:</span> <span class="stem-value">${s.bets.best_decision}</span></div>`;
+      if (s.bets.reasoning) html += `<div><span class="stem-label">Reasoning:</span> <span class="stem-value">${s.bets.reasoning}</span></div>`;
+      if (s.bets.info_trigger) html += `<div><span class="stem-label">Bet-changer:</span> <span class="stem-value">${s.bets.info_trigger}</span></div>`;
+      if (s.bets.hedge) html += `<div><span class="stem-label">Hedge:</span> <span class="stem-value">${s.bets.hedge}</span></div>`;
+      html += `</div>`;
+    }
+
+    if (s.warp_speed) {
+      html += `<div class="stem-strategy-block">`;
+      html += `<div class="stem-model">Warp-Speed — Throughput Plan</div>`;
+      if (s.warp_speed.bottleneck) html += `<div><span class="stem-label">Bottleneck:</span> <span class="stem-value">${s.warp_speed.bottleneck}</span></div>`;
+      if (s.warp_speed.parallelize) html += `<div><span class="stem-label">Parallelize:</span> <span class="stem-value">${s.warp_speed.parallelize}</span></div>`;
+      if (s.warp_speed.sequence) html += `<div><span class="stem-label">Sequence:</span> <span class="stem-value">${s.warp_speed.sequence}</span></div>`;
+      if (s.warp_speed.kill_defer) html += `<div><span class="stem-label">Kill/Defer:</span> <span class="stem-value">${s.warp_speed.kill_defer}</span></div>`;
+      if (s.warp_speed.plan) html += `<div class="stem-arrow">→ ${s.warp_speed.plan}</div>`;
+      html += `</div>`;
     }
   }
 
@@ -382,16 +494,54 @@ function renderMomentumAnalysis(ma) {
     if (ma.forecast.bull) html += `<div class="forecast-box forecast-bull">🐂 <strong>Bull:</strong> ${ma.forecast.bull}</div>`;
   }
 
-  // Top Actions
+  // Top Actions with status badges
   if (ma.top_actions && ma.top_actions.length > 0) {
     html += `<div class="section-title">🚀 Top Actions</div>`;
     ma.top_actions.forEach((a, i) => {
+      let badge = '';
+      if (a.status && a.status.toUpperCase().includes('RECUR')) {
+        badge = `<span class="action-badge action-badge-recur">RECURRING</span>`;
+      } else if (a.status && a.status.toUpperCase().includes('NEW')) {
+        badge = `<span class="action-badge action-badge-new">NEW</span>`;
+      }
       html += `<div class="action-item">
         <span class="action-num">${i+1}.</span>
-        <span style="flex:1">${a.action}</span>
+        <span style="flex:1">${a.action}${badge}</span>
         <span class="action-time">⏱ ${a.time || '?'}</span>
         <span class="action-impact">${a.impact || ''}</span>
       </div>`;
+    });
+  }
+
+  // Calibration Report
+  if (ma.calibration || ma.action_completion_rate != null) {
+    html += `<div class="section-title">📊 Calibration Report</div>`;
+    html += `<div class="calibration-grid">`;
+    if (ma.action_completion_rate != null) {
+      const pct = Math.round(ma.action_completion_rate * 100);
+      const cls = pct >= 67 ? 'delta-up' : pct >= 34 ? 'delta-flat' : 'delta-down';
+      html += `<div class="calibration-cell"><div class="calibration-label">Action Completion</div><div class="calibration-value ${cls}">${pct}%</div></div>`;
+    }
+    if (ma.calibration) {
+      if (ma.calibration.brier_score != null) {
+        const cls = ma.calibration.brier_score < 0.3 ? 'delta-up' : ma.calibration.brier_score < 0.4 ? 'delta-flat' : 'delta-down';
+        html += `<div class="calibration-cell"><div class="calibration-label">Brier Score</div><div class="calibration-value ${cls}">${ma.calibration.brier_score.toFixed(3)}</div></div>`;
+      }
+      if (ma.calibration.brier_trend) {
+        html += `<div class="calibration-cell"><div class="calibration-label">Brier Trend</div><div class="calibration-value" style="font-size:11px">${ma.calibration.brier_trend}</div></div>`;
+      }
+      if (ma.calibration.calibration_error) {
+        html += `<div class="calibration-cell"><div class="calibration-label">Calibration Error</div><div class="calibration-value" style="font-size:11px">${ma.calibration.calibration_error}</div></div>`;
+      }
+    }
+    html += `</div>`;
+  }
+
+  // Patterns & Insights
+  if (ma.patterns && ma.patterns.length > 0) {
+    html += `<div class="section-title">🔍 Patterns & Insights</div>`;
+    ma.patterns.forEach(p => {
+      html += `<div class="pattern-item">${p}</div>`;
     });
   }
 
