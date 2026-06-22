@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/momentum.html", "destination": "/assets/momentum.html" },
+    { "source": "/index.html", "destination": "/assets/index.html" }
+  ]
+}

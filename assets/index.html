@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PILOT DASHBOARD // SAI BERA</title>
+<style>
+  :root {
+    --bg: #0a0e14; --surface: #131820; --border: #1e2a3a; --text: #b3c7d6;
+    --text-dim: #556678; --accent: #39bae6; --accent-glow: rgba(57,186,230,0.15);
+    --green: #7fd962; --yellow: #ffb454; --red: #f26d78;
+    --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 8px; --gap: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); min-height: 100vh; padding: 20px; }
+  .header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: var(--gap); }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .header-title { font-size: 18px; font-weight: 700; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
+  .header-sub { font-size: 11px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+  .mission-clock { font-family: var(--font-mono); font-size: 28px; color: var(--accent); font-weight: 700; }
+  .mission-label { font-size: 10px; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  .status-online { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .connection-status { font-size: 10px; color: var(--text-dim); margin-left: 4px; }
+  .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: var(--gap); }
+  .widget { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; transition: border-color 0.2s; }
+  .widget:hover { border-color: rgba(57,186,230,0.3); }
+  .widget-title { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .widget-title::before { content: '◆'; font-size: 8px; }
+  .widget-body { font-size: 13px; line-height: 1.6; }
+  .metric-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-label { color: var(--text-dim); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .metric-value { font-family: var(--font-mono); font-size: 15px; font-weight: 600; }
+  .bar-track { height: 6px; background: var(--border); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
+  .bar-accent { background: var(--accent); }
+  .skill-name { color: var(--accent); font-weight: 600; }
+  .skill-tags { font-size: 10px; color: var(--text-dim); }
+  .decision-entry { padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12px; cursor: pointer; transition: background 0.15s; }
+  .decision-entry:hover { background: rgba(57,186,230,0.05); }
+  .decision-entry:last-child { border-bottom: none; }
+  .decision-date { color: var(--text-dim); font-family: var(--font-mono); font-size: 10px; }
+  .decision-confidence { font-weight: 600; }
+  .decision-detail { display: none; margin-top: 6px; padding: 8px; background: var(--bg); border-radius: 4px; font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .decision-entry.expanded .decision-detail { display: block; }
+  .conf-high { color: var(--green); } .conf-mid { color: var(--yellow); } .conf-low { color: var(--red); }
+  .log-line { font-family: var(--font-mono); font-size: 11px; padding: 4px 0; border-bottom: 1px solid rgba(30,42,58,0.5); color: var(--text-dim); cursor: pointer; transition: background 0.15s; }
+  .log-line:hover { background: rgba(57,186,230,0.05); }
+  .log-line .log-full { display: none; margin-top: 3px; color: var(--text); font-size: 12px; }
+  .log-line.expanded .log-full { display: block; }
+  .skill-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; cursor: pointer; transition: background 0.15s; }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-item:hover { background: rgba(57,186,230,0.05); }
+  .skill-detail { display: none; padding: 6px 0 2px; font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .skill-item.expanded .skill-detail { display: block; }
+  /* Momentum Analysis Widget */
+  .momentum-summary { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .momentum-score { font-family: var(--font-mono); font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .momentum-trend { font-size: 18px; margin-left: 2px; }
+  .momentum-trend-up { color: var(--green); } .momentum-trend-down { color: var(--red); } .momentum-trend-flat { color: var(--yellow); }
+  .momentum-meta { font-size: 10px; color: var(--text-dim); }
+  .momentum-stats-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 10px; font-size: 11px; }
+  .momentum-stat { display: flex; flex-direction: column; gap: 2px; }
+  .momentum-stat-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
+  .momentum-stat-value { font-family: var(--font-mono); font-size: 14px; font-weight: 600; color: var(--text); }
+  .delta-up { color: var(--green); } .delta-down { color: var(--red); } .delta-flat { color: var(--yellow); } .delta-none { color: var(--text-dim); }
+  .momentum-bottleneck { font-size: 12px; color: var(--yellow); padding: 8px 12px; background: rgba(255,180,84,0.08); border-left: 2px solid var(--yellow); border-radius: 2px; margin-bottom: 10px; }
+  .bottleneck-recur-badge { display: inline-block; font-size: 9px; font-weight: 600; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  .bottleneck-recur-warn { background: rgba(242,109,120,0.15); color: var(--red); border: 1px solid rgba(242,109,120,0.3); }
+  .bottleneck-recur-new { background: rgba(127,217,98,0.15); color: var(--green); border: 1px solid rgba(127,217,98,0.3); }
+  .momentum-detail { display: none; }
+  .momentum-detail .section-title { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 14px 0 6px; }
+  .trajectory-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 11px; border-bottom: 1px solid rgba(30,42,58,0.5); }
+  .trajectory-row:last-child { border-bottom: none; }
+  .trajectory-domain { color: var(--text); font-weight: 500; }
+  .trajectory-trend { font-size: 14px; }
+  .trajectory-conf { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); }
+  .trajectory-delta { font-family: var(--font-mono); font-size: 10px; margin-left: 6px; }
+  .forecast-box { padding: 8px 12px; margin: 4px 0; border-radius: 4px; font-size: 11px; }
+  .forecast-bear { background: rgba(242,109,120,0.08); border-left: 2px solid var(--red); }
+  .forecast-base { background: rgba(255,180,84,0.08); border-left: 2px solid var(--yellow); }
+  .forecast-bull { background: rgba(127,217,98,0.08); border-left: 2px solid var(--green); }
+  .action-item { display: flex; gap: 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid rgba(30,42,58,0.5); font-size: 11px; }
+  .action-item:last-child { border-bottom: none; }
+  .action-num { font-family: var(--font-mono); color: var(--accent); font-weight: 600; min-width: 16px; }
+  .action-time { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); white-space: nowrap; }
+  .action-impact { font-size: 10px; color: var(--green); }
+  .action-badge { font-size: 8px; font-weight: 600; padding: 1px 5px; border-radius: 3px; margin-left: 4px; white-space: nowrap; }
+  .action-badge-new { background: rgba(57,186,230,0.15); color: var(--accent); }
+  .action-badge-recur { background: rgba(242,109,120,0.15); color: var(--red); }
+  .stem-strategy-block { padding: 8px 10px; margin: 4px 0; background: rgba(57,186,230,0.04); border-radius: 4px; font-size: 11px; line-height: 1.6; }
+  .stem-strategy-block .stem-model { font-weight: 600; color: var(--accent); font-size: 10px; }
+  .stem-strategy-block .stem-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
+  .stem-strategy-block .stem-value { color: var(--text); }
+  .stem-strategy-block .stem-arrow { color: var(--green); font-size: 10px; }
+  .calibration-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin: 4px 0; }
+  .calibration-cell { padding: 6px 8px; background: var(--bg); border-radius: 4px; font-size: 11px; }
+  .calibration-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
+  .calibration-value { font-family: var(--font-mono); font-size: 13px; font-weight: 600; }
+  .action-status-row { display: flex; gap: 6px; align-items: center; padding: 3px 0; font-size: 10px; }
+  .action-status-icon { font-size: 12px; }
+  .pattern-item { padding: 4px 0; font-size: 11px; color: var(--text); line-height: 1.5; display: flex; gap: 6px; }
+  .pattern-item::before { content: '▸'; color: var(--accent); font-size: 10px; }
+  .mantra-line { font-size: 13px; font-style: italic; color: var(--accent); text-align: center; padding: 10px 0; border-top: 1px solid var(--border); margin-top: 10px; }
+  .momentum-empty { color: var(--text-dim); font-size: 11px; text-align: center; padding: 20px; }
+  /* Wiki Graph Widget */
+  #wiki-graph-widget { grid-column: 1 / -1; }
+  #wiki-graph-container { width: 100%; height: 550px; position: relative; overflow: hidden; background: var(--bg); }
+  .wiki-tooltip { position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 8px 12px; font-size: 11px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 10; max-width: 320px; line-height: 1.5; }
+  .wiki-tooltip strong { color: var(--accent); display: block; margin-bottom: 2px; }
+  .graph-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; margin-bottom: 10px; }
+  .graph-legend-item { display: flex; align-items: center; gap: 6px; }
+  .graph-legend-line { width: 24px; height: 3px; border-radius: 2px; }
+  .graph-legend-node { width: 12px; height: 12px; border-radius: 2px; }
+  @media (max-width: 800px) { .dashboard-grid { grid-template-columns: 1fr; } .header { flex-direction: column; gap: 10px; text-align: center; } }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <span class="status-dot status-online" id="conn-dot"></span>
+    <div>
+      <div class="header-title">◆ Pilot Dashboard</div>
+      <div class="header-sub">Read-Only // Sai Bera <span class="connection-status" id="conn-status">connecting...</span></div>
+    </div>
+  </div>
+  <div style="text-align:right">
+    <div class="mission-label">Mission Elapsed</div>
+    <div class="mission-clock" id="mission-clock">00:00:00:00</div>
+  </div>
+</header>
+
+<div class="dashboard-grid">
+
+  <section class="widget" id="speed-metrics">
+    <h2 class="widget-title">Speed Metrics</h2>
+    <div class="widget-body">
+      <div class="metric-row"><span class="metric-label">Open Loops (WIP)</span><span class="metric-value" id="wip-count">--</span></div>
+      <div class="metric-row"><span class="metric-label">Completed This Week</span><span class="metric-value" style="color:var(--green)" id="completed-week">--</span></div>
+      <div class="metric-row"><span class="metric-label">Last OODA Cycle</span><span class="metric-value" id="ooda-time">--</span></div>
+      <div style="margin-top:12px">
+        <div class="metric-label">Weekly Velocity</div>
+        <div class="bar-track"><div class="bar-fill bar-accent" id="velocity-bar" style="width:0%"></div></div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-dim);margin-top:4px;text-align:right" id="velocity-label">0 / 10</div>
+      </div>
+      <div style="margin-top:16px"></div>
+      <div id="speed-detail" style="display:none;margin-top:6px"></div>
+    </div>
+  </section>
+
+  <section class="widget" id="stem-stack">
+    <h2 class="widget-title">STEM Stack</h2>
+    <div class="widget-body" id="stem-stack-list"></div>
+  </section>
+
+  <section class="widget" id="momentum-analysis-widget">
+    <h2 class="widget-title">Momentum Analysis <span style="font-size:9px;color:var(--text-dim);font-weight:400;letter-spacing:1px">→ FULL PAGE</span></h2>
+    <div class="widget-body" id="momentum-analysis-body">
+      <div class="momentum-empty">No analysis yet. First run incoming.</div>
+    </div>
+  </section>
+
+  <section class="widget" id="wiki-graph-widget">
+    <h2 class="widget-title">Superhuman Wiki — Evidence Graph</h2>
+    <div class="graph-legend">
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--green)"></span> HIGH</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--yellow)"></span> MED</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--red)"></span> LOW</span>
+      <span class="graph-legend-item"><span class="graph-legend-node" style="background:var(--text-dim)"></span> NONE</span>
+      <span style="color:var(--text-dim);margin-left:8px">Hover nodes for details</span>
+    </div>
+    <div class="widget-body" id="wiki-graph-container">
+      <div class="wiki-tooltip" id="wiki-tooltip"></div>
+    </div>
+  </section>
+
+  <section class="widget" id="decision-journal">
+    <h2 class="widget-title">Decision Journal</h2>
+    <div class="widget-body">
+      <div id="decision-log"><div style="color:var(--text-dim);font-size:11px">Loading...</div></div>
+    </div>
+  </section>
+
+  <section class="widget" id="property-pipeline">
+    <h2 class="widget-title">Property Pipeline</h2>
+    <div class="widget-body">
+      <div style="color:var(--text-dim);font-size:11px;margin-bottom:12px">Bentonville / Centerton, AR · Budget: &lt;$450K · 3+ bed / 2+ bath</div>
+      <div class="metric-row"><span class="metric-label">Properties Tracked</span><span class="metric-value" id="prop-tracked">--</span></div>
+      <div class="metric-row"><span class="metric-label">Viewings Scheduled</span><span class="metric-value" style="color:var(--yellow)" id="prop-viewings">--</span></div>
+      <div class="metric-row"><span class="metric-label">Offers Out</span><span class="metric-value" style="color:var(--accent)" id="prop-offers">--</span></div>
+      <div style="margin-top:12px"></div>
+      <div id="prop-detail" style="display:none;margin-top:6px"></div>
+    </div>
+  </section>
+
+  <section class="widget" id="ai-research-radar" style="grid-column: 1 / -1;">
+    <h2 class="widget-title">AI Research Radar</h2>
+    <div class="widget-body" id="ai-research-summary" style="font-size:12px;color:var(--text-dim);margin-bottom:12px"></div>
+    <div id="ai-research-trends" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px"></div>
+    <div id="ai-research-detail" style="display:none;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)"></div>
+  </section>
+
+  <section class="widget" id="activity-log">
+    <h2 class="widget-title">Activity Log</h2>
+    <div class="widget-body" id="log-container"><div class="log-line">[BOOT] Connecting to backend...</div></div>
+  </section>
+
+</div>
+
+<script>
+const API = (() => {
+  const saved = localStorage.getItem('pilot-backend-url');
+  if (saved) return saved.replace(/\/+$/, '');
+  if (window.location.hostname === 'localhost') return window.location.origin;
+  return window.location.origin;
+})();
+
+const MISSION_START = new Date('2026-05-18T04:00:00');
+function updateClock() {
+  const diff = Date.now() - MISSION_START;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('mission-clock').textContent =
+    `${String(d).padStart(2,'0')}:${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+let backendOnline = false;
+
+async function apiGet(endpoint) {
+  try {
+    const r = await fetch(`${API}${endpoint}`);
+    if (!r.ok) throw new Error(r.status);
+    backendOnline = true;
+    return await r.json();
+  } catch(e) { backendOnline = false; return null; }
+}
+
+function updateConnStatus() {
+  const dot = document.getElementById('conn-dot');
+  const status = document.getElementById('conn-status');
+  if (backendOnline) {
+    dot.className = 'status-dot status-online';
+    status.textContent = 'connected';
+  } else {
+    dot.className = 'status-dot';
+    dot.style.background = 'var(--red)';
+    status.textContent = 'offline (local only)';
+  }
+}
+
+let cachedState = null;
+
+async function syncState() {
+  const state = await apiGet('/api/state');
+  if (state) { cachedState = state; renderAll(state); updateConnStatus(); }
+  else { updateConnStatus(); renderAll({}); }
+}
+
+loadAIResearch();
+
+function renderAll(state) {
+  const m = state.metrics || {};
+  document.getElementById('wip-count').textContent = m.wip ?? '--';
+  document.getElementById('completed-week').textContent = m.completed ?? '--';
+  document.getElementById('ooda-time').textContent = m.ooda_last ? m.ooda_last + 's' : '--';
+  const vel = Math.min((m.completed || 0) * 10, 100);
+  document.getElementById('velocity-bar').style.width = vel + '%';
+  document.getElementById('velocity-label').textContent = (m.completed || 0) + ' / 10';
+
+  // Speed Metrics detail — project breakdown
+  const smDetail = document.getElementById('speed-detail');
+  if (smDetail && m.detail) {
+    smDetail.innerHTML = Object.entries(m.detail).map(([proj, count]) =>
+      `<div class="metric-row"><span class="metric-label">${proj}</span><span class="metric-value" style="font-size:13px">${count} open</span></div>`
+    ).join('');
+  }
+
+  const p = state.properties || {};
+  document.getElementById('prop-tracked').textContent = p.tracked ?? '--';
+  document.getElementById('prop-viewings').textContent = p.viewings ?? '--';
+  document.getElementById('prop-offers').textContent = p.offers ?? '--';
+
+  // Property detail — top properties
+  const ppDetail = document.getElementById('prop-detail');
+  if (ppDetail && p.top) {
+    ppDetail.innerHTML = p.top.map(prop =>
+      `<div style="padding:4px 0;border-bottom:1px solid var(--border);font-size:11px">
+        <span style="color:var(--accent)">${prop.name}</span>
+        <span style="float:right;font-family:var(--font-mono)">${prop.price} · ${prop.score}/100</span>
+        <div style="color:var(--text-dim);font-size:10px">${prop.location}</div>
+      </div>`
+    ).join('');
+  }
+
+  renderDecisions(state.decisions || []);
+  renderLog(state.activity_log || []);
+  renderSkills(state.skills || []);
+  renderMomentumAnalysis(state.momentum_analysis || null);
+}
+
+function renderDecisions(decisions) {
+  const container = document.getElementById('decision-log');
+  if (!decisions || decisions.length === 0) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:11px">No decisions logged yet.</div>';
+    return;
+  }
+  container.innerHTML = decisions.slice().reverse().map(d => {
+    const date = new Date(d.date).toLocaleDateString();
+    const confClass = d.confidence >= 80 ? 'conf-high' : d.confidence >= 50 ? 'conf-mid' : 'conf-low';
+    let status = '';
+    if (d.resolved) {
+      status = d.outcome
+        ? ' <span style="color:var(--green)">✓ Correct</span>'
+        : ' <span style="color:var(--red)">✗ Wrong</span>';
+    } else { status = ' <span style="color:var(--yellow)">○ Pending</span>'; }
+    const detail = d.rationale || d.resolvedDate
+      ? `<div class="decision-detail">${d.rationale || ''}${d.resolvedDate ? `<br><span style="font-size:10px">Resolved: ${new Date(d.resolvedDate).toLocaleDateString()}</span>` : ''}</div>`
+      : '';
+    return `<div class="decision-entry">
+      <div class="decision-date">${date}</div>
+      <strong>${d.title}</strong>
+      <span class="decision-confidence ${confClass}">[${d.confidence}%]</span>${status}
+      ${detail}
+    </div>`;
+  }).join('');
+}
+
+function renderLog(log) {
+  const container = document.getElementById('log-container');
+  if (!log || log.length === 0) {
+    container.innerHTML = '<div class="log-line">No activity yet.</div>';
+    return;
+  }
+  container.innerHTML = log.map((l, i) =>
+    `<div class="log-line">[${l.time}] [${l.type}] <span>${l.message.length > 80 ? l.message.substring(0,80)+'…' : l.message}</span><div class="log-full">[${l.time}] [${l.type}] ${l.message}</div></div>`
+  ).join('');
+}
+
+function renderSkills(skills) {
+  const container = document.getElementById('stem-stack-list');
+  if (!skills || skills.length === 0) {
+    container.innerHTML = '<div style="color:var(--text-dim);font-size:11px">No skills loaded.</div>';
+    return;
+  }
+  container.innerHTML = skills.map(s => {
+    const desc = s.desc || s.description || '';
+    return `<div class="skill-item"><div><span class="skill-name">${s.name}</span><span class="skill-tags">${s.tags || ''}</span>${desc ? `<div class="skill-detail">${desc}</div>` : ''}</div></div>`;
+  }).join('');
+}
+
+function renderMomentumAnalysis(ma) {
+  const body = document.getElementById('momentum-analysis-body');
+  if (!ma || !ma.last_run) {
+    body.innerHTML = '<div class="momentum-empty">No analysis yet. First run incoming.</div>';
+    return;
+  }
+
+  const trendIcon = { up: '▲', down: '▼', flat: '◆' };
+  const trendClass = { up: 'momentum-trend-up', down: 'momentum-trend-down', flat: 'momentum-trend-flat' };
+  const runDate = new Date(ma.last_run).toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+
+  function fmtDelta(val, suffix) {
+    if (val == null) return { text: '—', cls: 'delta-none' };
+    if (val > 0) return { text: `+${val}${suffix||''}`, cls: 'delta-up' };
+    if (val < 0) return { text: `${val}${suffix||''}`, cls: 'delta-down' };
+    return { text: `→${suffix||''}`, cls: 'delta-flat' };
+  }
+
+  let html = '';
+
+  // Summary row — velocity + delta
+  html += `<div class="momentum-summary">`;
+  if (ma.compound_velocity != null) {
+    const trend = ma.velocity_trend || 'flat';
+    html += `<div><span class="momentum-score">${ma.compound_velocity.toFixed(1)}</span><span class="momentum-trend ${trendClass[trend] || ''}">${trendIcon[trend] || ''}</span></div>`;
+    if (ma.velocity_delta != null) {
+      const vd = fmtDelta(ma.velocity_delta);
+      html += `<span class="momentum-stat-value ${vd.cls}" style="font-size:12px">${vd.text}</span>`;
+    }
+  }
+  html += `<div class="momentum-meta">Last run: ${runDate}<br>Compound velocity (0–10 scale)</div>`;
+  html += `</div>`;
+
+  // Quick stats row — WIP, action completion
+  html += `<div class="momentum-stats-row">`;
+  if (ma.wip_count != null) {
+    html += `<div class="momentum-stat"><span class="momentum-stat-label">WIP</span><span class="momentum-stat-value">${ma.wip_count}`;
+    if (ma.wip_delta != null) { const wd = fmtDelta(ma.wip_delta); html += ` <span class="${wd.cls}" style="font-size:10px">${wd.text}</span>`; }
+    html += `</span></div>`;
+  }
+  if (ma.action_completion_rate != null) {
+    const pct = Math.round(ma.action_completion_rate * 100);
+    const cls = pct >= 67 ? 'delta-up' : pct >= 34 ? 'delta-flat' : 'delta-down';
+    html += `<div class="momentum-stat"><span class="momentum-stat-label">Action Completion</span><span class="momentum-stat-value ${cls}">${pct}%</span></div>`;
+  }
+  if (ma.calibration && ma.calibration.brier_score != null) {
+    const brier = ma.calibration.brier_score;
+    const cls = brier < 0.3 ? 'delta-up' : brier < 0.4 ? 'delta-flat' : 'delta-down';
+    html += `<div class="momentum-stat"><span class="momentum-stat-label">Brier Score</span><span class="momentum-stat-value ${cls}">${brier.toFixed(3)}</span></div>`;
+  }
+  html += `</div>`;
+
+  // Bottleneck with recurrence badge
+  if (ma.bottleneck) {
+    html += `<div class="momentum-bottleneck">⚡ <strong>Bottleneck:</strong> ${ma.bottleneck.what || ma.bottleneck}`;
+    if (ma.bottleneck.recurring) {
+      const count = ma.bottleneck.recurrence_count || 1;
+      html += ` <span class="bottleneck-recur-badge bottleneck-recur-warn">RECURRING · WK ${count}</span>`;
+    } else {
+      html += ` <span class="bottleneck-recur-badge bottleneck-recur-new">NEW</span>`;
+    }
+    html += `</div>`;
+  }
+
+  // Expandable detail
+  html += `<div class="momentum-detail" id="momentum-detail">`;
+
+  // Trajectories with deltas
+  if (ma.trajectories && Object.keys(ma.trajectories).length > 0) {
+    html += `<div class="section-title">🎯 Trajectories</div>`;
+    for (const [domain, t] of Object.entries(ma.trajectories)) {
+      const tIcon = t.trend === 'up' ? '↗' : t.trend === 'down' ? '↘' : t.trend === 'improving' ? '↗' : '→';
+      let deltaHtml = '';
+      if (t.delta != null) {
+        const td = fmtDelta(t.delta, '%');
+        deltaHtml = `<span class="trajectory-delta ${td.cls}">${td.text}</span>`;
+      }
+      html += `<div class="trajectory-row">
+        <span class="trajectory-domain">${domain}</span>
+        <span><span class="trajectory-trend">${tIcon}</span> ${t.trend || ''} ${deltaHtml}</span>
+        <span class="trajectory-conf">${t.confidence || '?'}%</span>
+      </div>`;
+    }
+  }
+
+  // STEM Strategy
+  if (ma.stem_strategy) {
+    const s = ma.stem_strategy;
+    html += `<div class="section-title">🧠 STEM Strategy</div>`;
+
+    if (s.euclidean) {
+      html += `<div class="stem-strategy-block">`;
+      html += `<div class="stem-model">Euclidean — Shatter the 5th Postulate</div>`;
+      if (s.euclidean.assumption) html += `<div><span class="stem-label">Assumption:</span> <span class="stem-value">${s.euclidean.assumption}</span></div>`;
+      if (s.euclidean.reframe) html += `<div><span class="stem-label">Reframe:</span> <span class="stem-value">${s.euclidean.reframe}</span></div>`;
+      if (s.euclidean.unlocked_action) html += `<div class="stem-arrow">→ ${s.euclidean.unlocked_action}</div>`;
+      html += `</div>`;
+    }
+
+    if (s.probabilistic) {
+      html += `<div class="stem-strategy-block">`;
+      html += `<div class="stem-model">Probabilistic — Optimal Bet Allocation</div>`;
+      if (s.probabilistic.highest_ev_domain) html += `<div><span class="stem-label">Highest EV:</span> <span class="stem-value">${s.probabilistic.highest_ev_domain}</span></div>`;
+      if (s.probabilistic.avoid_domain) html += `<div><span class="stem-label">Avoid:</span> <span class="stem-value">${s.probabilistic.avoid_domain}</span></div>`;
+      if (s.probabilistic.allocation) html += `<div class="stem-arrow">→ ${s.probabilistic.allocation}</div>`;
+      html += `</div>`;
+    }
+
+    if (s.bets) {
+      html += `<div class="stem-strategy-block">`;
+      html += `<div class="stem-model">Thinking in Bets — Highest-EV Decision</div>`;
+      if (s.bets.best_decision) html += `<div><span class="stem-label">Decision:</span> <span class="stem-value">${s.bets.best_decision}</span></div>`;
+      if (s.bets.reasoning) html += `<div><span class="stem-label">Reasoning:</span> <span class="stem-value">${s.bets.reasoning}</span></div>`;
+      if (s.bets.info_trigger) html += `<div><span class="stem-label">Bet-changer:</span> <span class="stem-value">${s.bets.info_trigger}</span></div>`;
+      if (s.bets.hedge) html += `<div><span class="stem-label">Hedge:</span> <span class="stem-value">${s.bets.hedge}</span></div>`;
+      html += `</div>`;
+    }
+
+    if (s.warp_speed) {
+      html += `<div class="stem-strategy-block">`;
+      html += `<div class="stem-model">Warp-Speed — Throughput Plan</div>`;
+      if (s.warp_speed.bottleneck) html += `<div><span class="stem-label">Bottleneck:</span> <span class="stem-value">${s.warp_speed.bottleneck}</span></div>`;
+      if (s.warp_speed.parallelize) html += `<div><span class="stem-label">Parallelize:</span> <span class="stem-value">${s.warp_speed.parallelize}</span></div>`;
+      if (s.warp_speed.sequence) html += `<div><span class="stem-label">Sequence:</span> <span class="stem-value">${s.warp_speed.sequence}</span></div>`;
+      if (s.warp_speed.kill_defer) html += `<div><span class="stem-label">Kill/Defer:</span> <span class="stem-value">${s.warp_speed.kill_defer}</span></div>`;
+      if (s.warp_speed.plan) html += `<div class="stem-arrow">→ ${s.warp_speed.plan}</div>`;
+      html += `</div>`;
+    }
+  }
+
+  // Forecast
+  if (ma.forecast) {
+    html += `<div class="section-title">🔮 7-Day Forecast</div>`;
+    if (ma.forecast.bear) html += `<div class="forecast-box forecast-bear">🐻 <strong>Bear:</strong> ${ma.forecast.bear}</div>`;
+    if (ma.forecast.base) html += `<div class="forecast-box forecast-base">📊 <strong>Base:</strong> ${ma.forecast.base}</div>`;
+    if (ma.forecast.bull) html += `<div class="forecast-box forecast-bull">🐂 <strong>Bull:</strong> ${ma.forecast.bull}</div>`;
+  }
+
+  // Top Actions with status badges
+  if (ma.top_actions && ma.top_actions.length > 0) {
+    html += `<div class="section-title">🚀 Top Actions</div>`;
+    ma.top_actions.forEach((a, i) => {
+      let badge = '';
+      if (a.status && a.status.toUpperCase().includes('RECUR')) {
+        badge = `<span class="action-badge action-badge-recur">RECURRING</span>`;
+      } else if (a.status && a.status.toUpperCase().includes('NEW')) {
+        badge = `<span class="action-badge action-badge-new">NEW</span>`;
+      }
+      html += `<div class="action-item">
+        <span class="action-num">${i+1}.</span>
+        <span style="flex:1">${a.action}${badge}</span>
+        <span class="action-time">⏱ ${a.time || '?'}</span>
+        <span class="action-impact">${a.impact || ''}</span>
+      </div>`;
+    });
+  }
+
+  // Calibration Report
+  if (ma.calibration || ma.action_completion_rate != null) {
+    html += `<div class="section-title">📊 Calibration Report</div>`;
+    html += `<div class="calibration-grid">`;
+    if (ma.action_completion_rate != null) {
+      const pct = Math.round(ma.action_completion_rate * 100);
+      const cls = pct >= 67 ? 'delta-up' : pct >= 34 ? 'delta-flat' : 'delta-down';
+      html += `<div class="calibration-cell"><div class="calibration-label">Action Completion</div><div class="calibration-value ${cls}">${pct}%</div></div>`;
+    }
+    if (ma.calibration) {
+      if (ma.calibration.brier_score != null) {
+        const cls = ma.calibration.brier_score < 0.3 ? 'delta-up' : ma.calibration.brier_score < 0.4 ? 'delta-flat' : 'delta-down';
+        html += `<div class="calibration-cell"><div class="calibration-label">Brier Score</div><div class="calibration-value ${cls}">${ma.calibration.brier_score.toFixed(3)}</div></div>`;
+      }
+      if (ma.calibration.brier_trend) {
+        html += `<div class="calibration-cell"><div class="calibration-label">Brier Trend</div><div class="calibration-value" style="font-size:11px">${ma.calibration.brier_trend}</div></div>`;
+      }
+      if (ma.calibration.calibration_error) {
+        html += `<div class="calibration-cell"><div class="calibration-label">Calibration Error</div><div class="calibration-value" style="font-size:11px">${ma.calibration.calibration_error}</div></div>`;
+      }
+    }
+    html += `</div>`;
+  }
+
+  // Patterns & Insights
+  if (ma.patterns && ma.patterns.length > 0) {
+    html += `<div class="section-title">🔍 Patterns & Insights</div>`;
+    ma.patterns.forEach(p => {
+      html += `<div class="pattern-item">${p}</div>`;
+    });
+  }
+
+  // Mantra
+  if (ma.mantra) {
+    html += `<div class="mantra-line">"${ma.mantra}"</div>`;
+  }
+
+  html += `</div>`; // end momentum-detail
+
+  body.innerHTML = html;
+}
+
+function loadAIResearch() {
+  // Embedded directly — no fetch, no silent failures
+  var data = {"last_updated":"2026-06-19","source":"arXiv API \u2014 6 domain queries, 24 verified papers","query_timestamp":"2026-06-19T03:10:00Z","summary":"June 2026 research confirms the Agentic Era is in full swing. MCP has 10K+ servers with 97M monthly SDK downloads. Test-time compute scaling is the defining technique of 2025-26 \u2014 models 'think' longer to reason better. Security and containment are emerging as top concerns after a frontier model escape in April 2026. SLMs are matching larger models on specific tasks when given reasoning budgets. The next wave is agent infrastructure, safety, and vertical specialization.","trends":[{"domain":"Agentic AI","score":98,"direction":"\u2197 accelerating","signal":"Autonomous agents with tool use, planning, and memory are shipping to production. Multi-agent coordination (SPEAR, N-XPlay) and trust/verification (DID-based agents) are maturing. A comprehensive trustworthy-agentic-AI survey (May 2026) catalogs new failure modes.","learn":"Agent architectures (plan-act-observe loops), tool-use protocols (MCP/A2A), multi-agent coordination patterns, agent safety and alignment (ARCANE framework)","build":"Vertical AI workers for regulated industries. Agent evaluation platforms. Human-in-the-loop oversight. Secure agent sandboxes.","papers":[{"title":"Towards trustworthy agentic AI: a comprehensive survey","id":"2605.23989","url":"https://arxiv.org/abs/2605.23989"},{"title":"Deception and Communication in Autonomous Multi-Agent Systems","id":"2603.26635","url":"https://arxiv.org/abs/2603.26635"},{"title":"ARCANE: Multi-Agent Framework for Interpretable Alignment","id":"2512.06196","url":"https://arxiv.org/abs/2512.06196"},{"title":"SPEAR: Multi-Agent Coordination for Smart Contract Auditing","id":"2602.04418","url":"https://arxiv.org/abs/2602.04418"}],"market_validation":[{"name":"Cognition (Devin)","what":"Autonomous AI software engineer","valuation":"$26B","raised":"$1B+","note":"Founded 2023. May 2026: $1B round at $26B."},{"name":"Decagon","what":"Enterprise AI customer service agents","valuation":"$4.5B","raised":"$131M","note":"Unicorn Jun 2025. 3x valuation in 9 months."},{"name":"Harvey","what":"AI legal agents for law firms","valuation":"$5B","raised":"$300M+","note":"Vertical AI worker \u2014 legal domain. Proves domain-specific agents win."}]},{"domain":"Reasoning at Inference","score":96,"direction":"\u2197 accelerating","signal":"Test-time compute scaling is the defining technique of 2025-26. 'Sleep-time compute' (offline thinking) reduces latency. 1.5B reasoning models outrank 13B LLMs as discriminators. DiffCoT, Atom of Thoughts, and thinking-optimal scaling push the frontier.","learn":"Chain-of-thought variants (DiffCoT, SoftCoT, Atom-of-Thoughts), test-time compute budget allocation, verifier/reward models, offline reasoning (sleep-time compute)","build":"Reasoning-as-a-service APIs. Domain-specific reasoning models. Verifier-as-a-service. Adaptive compute-budget middleware.","papers":[{"title":"Sleep-time Compute: Beyond Inference Scaling at Test-time","id":"2504.13171","url":"https://arxiv.org/abs/2504.13171"},{"title":"DiffCoT: Diffusion-styled Chain-of-Thought Reasoning","id":"2601.03559","url":"https://arxiv.org/abs/2601.03559"},{"title":"Atom of Thoughts for Markov LLM Test-Time Scaling","id":"2502.12018","url":"https://arxiv.org/abs/2502.12018"},{"title":"When Reasoning Beats Scale: 1.5B Outranks 13B LLMs","id":"2505.03786","url":"https://arxiv.org/abs/2505.03786"}],"market_validation":[{"name":"Sierra","what":"Conversational AI agents","valuation":"$4B+","raised":"$250M+","note":"Founded by ex-Salesforce CEO Bret Taylor. Reasoning-powered customer service."}]},{"domain":"Agent Infrastructure","score":94,"direction":"\u2197 accelerating","signal":"MCP has become the de facto standard: 10K+ servers, 97M monthly SDK downloads. A2A, ANP, AWCP competing for agent-to-agent comms. Security is the #1 gap \u2014 MCP-38 threat taxonomy released March 2026. Tool orchestration benchmarks (ETOM) now at 5 levels.","learn":"MCP/A2A/ANP protocol designs, agent memory architectures, observability and tracing for agents, sandboxing and zero-trust security","build":"Agent hosting platforms. Tool registry/marketplace. Agent security and guardrail platforms. Memory-as-a-service. Observability dashboards for agent fleets.","papers":[{"title":"Survey of agent interoperability protocols: MCP, ACP, A2A, ANP","id":"2505.02279","url":"https://arxiv.org/abs/2505.02279"},{"title":"MCP-38: Comprehensive Threat Taxonomy for MCP Systems","id":"2603.18063","url":"https://arxiv.org/abs/2603.18063"},{"title":"Bridging Protocol and Production: Design Patterns for MCP Agents","id":"2603.13417","url":"https://arxiv.org/abs/2603.13417"},{"title":"ETOM: Five-Level Benchmark for Tool Orchestration in MCP","id":"2510.19423","url":"https://arxiv.org/abs/2510.19423"}],"market_validation":[{"name":"LangChain","what":"Agent framework & platform","valuation":"$1B+","raised":"$80M+","note":"97K GitHub stars. 50K+ production apps."},{"name":"CrewAI","what":"Multi-agent orchestration","valuation":"~$500M","raised":"$50M+","note":"45.9K stars. Fastest-growing agent framework 2025-26."},{"name":"Composio","what":"MCP-native tool integration","valuation":"$300M+","raised":"$40M+","note":"Directly riding MCP wave. Agent-to-tool auth and registry."}]},{"domain":"Small & Efficient Models","score":90,"direction":"\u2197 accelerating","signal":"SLMs now have dedicated benchmarks (SLM-Bench, SLMQuant). Task-specific analysis shows SLMs outperform LLMs on focused domains. 1-bit quantization reaches RL agents on edge devices. TensorSLM enables sub-billion-parameter models on phones and SBCs.","learn":"Model compression (SLMQuant), quantization (GPTQ, AWQ, GGUF, 1-bit), distillation, speculative decoding, edge deployment (MobileQuant, TensorSLM)","build":"On-device AI SDKs. SLM fine-tuning platforms. Edge inference optimization tools. Domain-specific tiny models for IoT/sensors.","papers":[{"title":"SLM-Bench: Comprehensive Benchmark of Small Language Models","id":"2508.15478","url":"https://arxiv.org/abs/2508.15478"},{"title":"Task-Specific Efficiency: When SLMs Outperform LLMs","id":"2603.21389","url":"https://arxiv.org/abs/2603.21389"},{"title":"BitRL: RL with 1-bit Quantized LMs for Edge Deployment","id":"2604.24273","url":"https://arxiv.org/abs/2604.24273"},{"title":"TensorSLM: Energy-efficient Embedding Compression","id":"2506.13514","url":"https://arxiv.org/abs/2506.13514"}],"market_validation":[{"name":"Groq","what":"Ultra-fast inference hardware/API","valuation":"$6B+","raised":"$800M+","note":"SLM inference enabler. LPU architecture for fast token generation."},{"name":"LM Studio","what":"Local LLM desktop app","valuation":"N/A","raised":"Bootstrapped","note":"Consumer-grade local SLM runner. Millions of downloads."}]},{"domain":"AI + Code","score":90,"direction":"\u2197 accelerating","signal":"SE 3.0 is here: autonomous coding agents initiating, planning, and executing. SWE-bench now live (not static). SWE-Bench Pro tests long-horizon tasks. RepoGraph enables repository-level understanding. SWE-Shepherd uses process reward models to guide code agents.","learn":"Code LLM architectures, repo-level understanding (RepoGraph), process reward models for code (SWE-Shepherd), SWE-bench evaluation, agent-computer interfaces","build":"Vertical coding agents (security audit, refactoring, migration). Codebase knowledge graphs. AI-native IDEs. Automated CI/CD agents.","papers":[{"title":"The Rise of AI Teammates in SE 3.0: Autonomous Coding Agents","id":"2507.15003","url":"https://arxiv.org/abs/2507.15003"},{"title":"SWE-Bench Pro: Can AI Agents Solve Long-Horizon SE Tasks?","id":"2509.16941","url":"https://arxiv.org/abs/2509.16941"},{"title":"SWE-Shepherd: Advancing PRMs for Reinforcing Code Agents","id":"2604.10493","url":"https://arxiv.org/abs/2604.10493"},{"title":"RepoGraph: Enhancing AI SE with Repository-level Code Graph","id":"2410.14684","url":"https://arxiv.org/abs/2410.14684"}],"market_validation":[{"name":"Anysphere (Cursor)","what":"AI-native code editor","valuation":"$60B","raised":"$900M+","note":"Founded 2022. SpaceX acquisition talks. $2B revenue run rate."},{"name":"Poolside","what":"AI coding with proprietary models","valuation":"$2B+","raised":"$500M Series B","note":"Founded 2023. Building custom code-gen models."}]},{"domain":"Multimodal AI","score":87,"direction":"\u2197 steady","signal":"VLMs now handle 3D spatial reasoning (TinyGiantVLM), tactile+vision+language fusion for embodied AI, and video understanding at scale. Cross-modal explainability (GLIMPSE) emerging. Multimodal fusion surveys for robotics accelerating.","learn":"Vision transformers, cross-modal attention, video-language models, tactile+vision fusion, VLM architectures for spatial/3D reasoning","build":"Video understanding APIs. Multimodal search. AR/VR AI assistants. Real-time video analytics. Embodied AI for manufacturing/warehouse.","papers":[{"title":"Multimodal Fusion and VLMs: A Survey for Robot Vision","id":"2504.02477","url":"https://arxiv.org/abs/2504.02477"},{"title":"Tactile-based Multimodal Fusion in Embodied Intelligence","id":"2605.17336","url":"https://arxiv.org/abs/2605.17336"},{"title":"Video-Language Understanding: Survey","id":"2406.05615","url":"https://arxiv.org/abs/2406.05615"},{"title":"GLIMPSE: Holistic Cross-Modal Explainability for LVLMs","id":"2506.18985","url":"https://arxiv.org/abs/2506.18985"}],"market_validation":[{"name":"Runway","what":"AI video generation (Gen-4)","valuation":"$5.3B","raised":"$300M+","note":"$300M revenue. Hollywood-grade generation."},{"name":"Suno","what":"AI music generation","valuation":"$2B+","raised":"$200M+","note":"$300M ARR, 404% YoY growth."},{"name":"ElevenLabs","what":"AI voice synthesis & dubbing","valuation":"$3B+","raised":"$200M+","note":"Dominant in voice AI. Speech-to-speech and dubbing at scale."}]}],"startup_thesis":{"wave_1_2023_2025":"Foundation models and chatbots \u2014 captured by OpenAI, Anthropic, Google, Meta","wave_2_2025_now":"Agentic AI + vertical applications + infrastructure. MCP ecosystem growing 97M downloads/month. Security and trust are the gaps.","wave_3_2026_2028":"Physical AI + agent economies + on-device intelligence. Containment after April 2026 frontier model escape will define the regulatory landscape.","where_to_play":"The biggest gap is agent security and trust infrastructure \u2014 after April 2026's frontier model escape, every enterprise deploying agents needs containment, auditing, and zero-trust architectures. Second: vertical agents for regulated industries (legal, healthcare, finance) that combine domain expertise with MCP tooling. Third: on-device SLM deployment tooling as models shrink below 1B parameters."},"market_summary":"15 emerging startups (all founded 2022+, funded 2024-2026) prove these research trends have product-market fit. $120B+ combined valuation. Pattern: vertical agents (legal, healthcare, service) + horizontal infra (frameworks, protocols, deployment) + creative tools (video, music, voice). Full sourcing in wiki-ai-research."};
+  renderAIResearch(data);
+}
+
+function renderAIResearch(data) {
+  // Summary
+  document.getElementById('ai-research-summary').textContent = data.summary || '';
+
+  // Trend cards
+  const container = document.getElementById('ai-research-trends');
+  if (!data.trends) return;
+  container.innerHTML = data.trends.map(t => {
+    const barColor = t.score >= 90 ? 'var(--green)' : t.score >= 80 ? 'var(--yellow)' : 'var(--accent)';
+    return `<div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:12px;cursor:pointer" class="ai-trend-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span style="font-weight:600;font-size:12px;color:var(--accent)">${t.domain}</span>
+        <span style="font-family:var(--font-mono);font-size:11px;color:${barColor}">${t.score}%</span>
+      </div>
+      <div style="font-size:10px;color:var(--text-dim);margin-bottom:6px">${t.direction}</div>
+      <div class="bar-track" style="height:3px"><div class="bar-fill" style="width:${t.score}%;height:100%;background:${barColor};border-radius:2px"></div></div>
+      <div style="font-size:11px;color:var(--text);margin-top:6px;line-height:1.4">${t.signal.substring(0,120)}${t.signal.length>120?'…':''}</div>
+      ${t.market_validation ? `<div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">${t.market_validation.map(m => `<span style="font-size:9px;padding:2px 6px;background:rgba(127,217,98,0.1);border:1px solid rgba(127,217,98,0.2);border-radius:3px;white-space:nowrap" title="${m.note}">🏢 ${m.name} <span style="color:var(--accent)">${m.valuation}</span></span>`).join('')}</div>` : ''}
+      <div class="ai-trend-detail" style="display:none;margin-top:8px;padding:8px;background:rgba(57,186,230,0.05);border-radius:4px;font-size:11px;line-height:1.6">
+        <div style="color:var(--green);margin-bottom:4px">📚 Learn: ${t.learn}</div>
+        <div style="color:var(--accent);margin-bottom:4px">🔨 Build: ${t.build}</div>
+        ${t.papers ? `<div style="color:var(--text-dim);font-size:10px;margin-bottom:4px">📄 ${t.papers.map(p => typeof p === 'object' ? `<a href="${p.url}" target="_blank" style="color:var(--accent)">${p.title}</a>` : p).join(' · ')}</div>` : ''}
+        ${t.market_validation ? `<div style="font-size:10px;color:var(--text-dim);margin-top:4px;padding-top:4px;border-top:1px solid var(--border)">${t.market_validation.map(m => `🏢 <strong>${m.name}</strong> (${m.valuation}) — ${m.what}<br><span style="font-size:9px;color:var(--text-dim)">${m.note}</span>`).join('<br>')}</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+
+  // Click to expand trend cards
+  container.querySelectorAll('.ai-trend-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const detail = this.querySelector('.ai-trend-detail');
+      detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+
+  // Startup thesis in the expandable detail section
+  const thesis = data.startup_thesis;
+  if (thesis) {
+    document.getElementById('ai-research-detail').innerHTML = `
+      <div style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:10px">🎯 Startup Opportunity Map</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px">
+        <div style="padding:8px;border-left:2px solid var(--text-dim);font-size:11px"><span style="color:var(--text-dim)">Wave 1 (2023-25)</span><br>${thesis.wave_1_2023_2025}</div>
+        <div style="padding:8px;border-left:2px solid var(--yellow);font-size:11px"><span style="color:var(--yellow)">Wave 2 (2025-now) ← YOU ARE HERE</span><br>${thesis.wave_2_2025_now}</div>
+        <div style="padding:8px;border-left:2px solid var(--green);font-size:11px"><span style="color:var(--green)">Wave 3 (2026-28)</span><br>${thesis.wave_3_2026_2028}</div>
+      </div>
+      <div style="margin-top:12px;padding:10px;background:rgba(127,217,98,0.08);border-left:2px solid var(--green);border-radius:4px;font-size:12px;line-height:1.5">
+        <strong style="color:var(--green)">💡 Where to play:</strong> ${thesis.where_to_play}
+      </div>
+    `;
+  }
+}
+
+// Click-to-expand handler for all widgets
+document.addEventListener('click', function(e) {
+  const entry = e.target.closest('.decision-entry, .log-line, .skill-item');
+  if (entry) { e.stopPropagation(); entry.classList.toggle('expanded'); return; }
+
+  // Toggle widget detail sections
+  const widget = e.target.closest('.widget-title');
+  if (widget) {
+    const section = widget.closest('.widget');
+    if (section.id === 'speed-metrics') {
+      const d = document.getElementById('speed-detail');
+      d.style.display = d.style.display === 'none' ? 'block' : 'none';
+    }
+    if (section.id === 'property-pipeline') {
+      const d = document.getElementById('prop-detail');
+      d.style.display = d.style.display === 'none' ? 'block' : 'none';
+    }
+    if (section.id === 'momentum-analysis-widget') {
+      window.location.href = 'momentum.html';
+      return;
+    }
+    if (section.id === 'ai-research-radar') {
+      const d = document.getElementById('ai-research-detail');
+      if (d) d.style.display = d.style.display === 'none' ? 'block' : 'none';
+    }
+  }
+});
+
+syncState();
+</script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+const CONF_COLORS = { high: '#7fd962', medium: '#ffb454', low: '#f26d78', none: '#556678' };
+
+async function renderWikiGraph() {
+  const container = document.getElementById('wiki-graph-container');
+  const data = await apiGet('/api/wiki-graph');
+  if (!data || !data.nodes) {
+    container.innerHTML = '<div style="color:var(--text-dim);padding:40px;text-align:center">No wiki data yet.</div>';
+    return;
+  }
+
+  container.innerHTML = '';
+  // Re-create tooltip div (wiped by innerHTML)
+  const tipDiv = document.createElement('div');
+  tipDiv.className = 'wiki-tooltip';
+  tipDiv.id = 'wiki-tooltip';
+  container.appendChild(tipDiv);
+  const tooltip = tipDiv;
+
+  const W = container.clientWidth, H = 550;
+
+  const nodeMap = {};
+  data.nodes.forEach(n => { nodeMap[n.id] = n; n.radius = n.type === 'intervention' ? 7 : 5; });
+
+  const links = data.edges
+    .filter(e => nodeMap[e.from] && nodeMap[e.to])
+    .map(e => ({ source: nodeMap[e.from], target: nodeMap[e.to] }));
+
+  const svg = d3.select('#wiki-graph-container').append('svg')
+    .attr('viewBox', [0, 0, W, H])
+    .attr('width', W).attr('height', H);
+
+  const g = svg.append('g');
+  svg.call(d3.zoom().scaleExtent([0.3, 4]).on('zoom', (e) => g.attr('transform', e.transform)));
+
+  const sim = d3.forceSimulation(data.nodes)
+    .force('link', d3.forceLink(links).id(d => d.id).distance(90).strength(0.15))
+    .force('charge', d3.forceManyBody().strength(-200))
+    .force('center', d3.forceCenter(W/2, H/2))
+    .force('collision', d3.forceCollide().radius(d => d.radius + 4));
+
+  // Edges — thin, uniform, semi-transparent
+  const link = g.append('g').selectAll('line')
+    .data(links).join('line')
+    .attr('stroke', '#2a3a4a')
+    .attr('stroke-width', 0.3)
+    .attr('stroke-opacity', 0.4);
+
+  // Nodes — small circles
+  const node = g.append('g').selectAll('circle')
+    .data(data.nodes).join('circle')
+    .attr('r', d => d.radius)
+    .attr('fill', d => CONF_COLORS[d.confidence] || '#b3c7d6')
+    .attr('fill-opacity', 0.85)
+    .attr('stroke', d => CONF_COLORS[d.confidence] || '#b3c7d6')
+    .attr('stroke-width', 0.5)
+    .attr('stroke-opacity', 0.4)
+    .attr('cursor', 'pointer')
+    .call(d3.drag()
+      .on('start', (e, d) => { if (!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+      .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+      .on('end', (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+  // Labels — tiny, subtle, always visible
+  const label = g.append('g').selectAll('text')
+    .data(data.nodes).join('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', d => d.radius + 10)
+    .attr('fill', '#8899aa')
+    .attr('font-family', 'var(--font-sans)')
+    .attr('font-size', '8px')
+    .attr('pointer-events', 'none')
+    .text(d => d.label);
+
+  // Hover: highlight node + show summary tooltip
+  node.on('mouseenter', function(e, d) {
+    d3.select(this).transition().duration(150).attr('r', d.radius * 1.8).attr('fill-opacity', 1);
+    const color = CONF_COLORS[d.confidence] || '#b3c7d6';
+    let html = `<strong style="color:${color}">${d.label}</strong>`;
+    const summary = d.summary || d.desc || '';
+    if (summary) html += `<div style="margin-top:4px;line-height:1.5;color:var(--text)">${summary}</div>`;
+    html += `<div style="margin-top:6px;color:var(--text-dim);font-size:10px">${(d.confidence||'none').toUpperCase()} evidence · ${(d.type||'').toUpperCase()}</div>`;
+    tooltip.innerHTML = html;
+    tooltip.style.opacity = 1;
+  }).on('mousemove', function(e) {
+    const rect = container.getBoundingClientRect();
+    tooltip.style.left = (e.clientX - rect.left + 14) + 'px';
+    tooltip.style.top = (e.clientY - rect.top - 10) + 'px';
+  }).on('mouseleave', function() {
+    d3.select(this).transition().duration(150).attr('r', d => d.radius).attr('fill-opacity', 0.85);
+    tooltip.style.opacity = 0;
+  });
+
+  sim.on('tick', () => {
+    link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+    node.attr('cx', d => d.x).attr('cy', d => d.y);
+    label.attr('x', d => d.x).attr('y', d => d.y);
+  });
+}
+
+setTimeout(renderWikiGraph, 500);
+</script>
+</body>
+</html>
