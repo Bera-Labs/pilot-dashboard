@@ -158,7 +158,7 @@
   </section>
 
   <section class="widget" id="momentum-analysis-widget">
-    <h2 class="widget-title">Momentum Analysis</h2>
+    <h2 class="widget-title">Momentum Analysis <span style="font-size:9px;color:var(--text-dim);font-weight:400;letter-spacing:1px">→ FULL PAGE</span></h2>
     <div class="widget-body" id="momentum-analysis-body">
       <div class="momentum-empty">No analysis yet. First run incoming.</div>
     </div>
@@ -632,8 +632,8 @@ document.addEventListener('click', function(e) {
       d.style.display = d.style.display === 'none' ? 'block' : 'none';
     }
     if (section.id === 'momentum-analysis-widget') {
-      const d = document.getElementById('momentum-detail');
-      if (d) d.style.display = d.style.display === 'none' ? 'block' : 'none';
+      window.location.href = 'momentum.html';
+      return;
     }
     if (section.id === 'ai-research-radar') {
       const d = document.getElementById('ai-research-detail');

@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOMENTUM ENGINE // CONSCIOUS OPERATING SYSTEM</title>
+<style>
+  :root {
+    --bg: #0a0e14; --surface: #131820; --border: #1e2a3a; --text: #b3c7d6;
+    --text-dim: #556678; --accent: #39bae6; --accent-glow: rgba(57,186,230,0.15);
+    --green: #7fd962; --yellow: #ffb454; --red: #f26d78;
+    --font-mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 8px; --gap: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--font-sans);
+    min-height: 100vh; padding: 20px; line-height: 1.5;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* === ANIMATIONS === */
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 6px var(--green), 0 0 12px rgba(127,217,98,0.3); opacity: 1; }
+    50% { box-shadow: 0 0 12px var(--green), 0 0 24px rgba(127,217,98,0.5); opacity: 0.7; }
+  }
+  @keyframes pulse-red {
+    0%, 100% { box-shadow: 0 0 6px var(--red), 0 0 12px rgba(242,109,120,0.3); opacity: 1; }
+    50% { box-shadow: 0 0 12px var(--red), 0 0 24px rgba(242,109,120,0.5); opacity: 0.7; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  @keyframes gauge-fill {
+    from { width: 0%; }
+  }
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+    background: var(--green); animation: pulse-glow 2s ease-in-out infinite;
+  }
+  .status-dot.offline {
+    background: var(--red); animation: pulse-red 2s ease-in-out infinite;
+  }
+  .fade-in { animation: fade-in 0.4s ease-out; }
+
+  /* === HEADER === */
+  .header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    margin-bottom: var(--gap);
+  }
+  .header-left { display: flex; align-items: center; gap: 14px; }
+  .header-title {
+    font-size: 20px; font-weight: 700; letter-spacing: 3px;
+    color: var(--accent); text-transform: uppercase;
+  }
+  .header-sub {
+    font-size: 11px; color: var(--text-dim); letter-spacing: 2px;
+    text-transform: uppercase; margin-top: 2px;
+  }
+  .header-right { display: flex; align-items: center; gap: 28px; }
+  .header-block { text-align: right; }
+  .header-block-label {
+    font-size: 10px; color: var(--text-dim); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 2px;
+  }
+  .header-block-value {
+    font-family: var(--font-mono); font-size: 13px; color: var(--text);
+  }
+  .mission-clock {
+    font-family: var(--font-mono); font-size: 28px; color: var(--accent);
+    font-weight: 700; letter-spacing: 1px;
+  }
+  .back-link {
+    font-size: 12px; color: var(--text-dim); letter-spacing: 1px;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  /* === SECTION SHELL === */
+  .section {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 22px; margin-bottom: var(--gap);
+    animation: fade-in 0.4s ease-out;
+  }
+  .section-title {
+    font-size: 12px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title::before { content: '◆'; font-size: 8px; }
+
+  /* === STATUS BANNER === */
+  .velocity-display { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+  .velocity-score {
+    font-family: var(--font-mono); font-size: 48px; font-weight: 700;
+    color: var(--accent); line-height: 1;
+  }
+  .velocity-trend-arrow { font-size: 24px; font-weight: 700; }
+  .velocity-trend-up { color: var(--green); }
+  .velocity-trend-down { color: var(--red); }
+  .velocity-trend-flat { color: var(--yellow); }
+  .velocity-delta {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  .delta-flat { color: var(--yellow); }
+  .delta-none { color: var(--text-dim); }
+
+  .velocity-gauge {
+    height: 8px; background: var(--border); border-radius: 4px;
+    margin-bottom: 20px; position: relative; overflow: visible;
+  }
+  .velocity-gauge-fill {
+    height: 100%; border-radius: 4px;
+    background: linear-gradient(90deg, var(--red), var(--yellow), var(--green));
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .velocity-gauge-marker {
+    position: absolute; top: -4px; width: 3px; height: 16px;
+    background: var(--text); border-radius: 2px;
+    box-shadow: 0 0 6px rgba(179,199,214,0.6);
+    transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .gauge-labels {
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 9px;
+    color: var(--text-dim); margin-top: -12px; margin-bottom: 12px;
+  }
+
+  .quick-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px; margin-bottom: 16px;
+  }
+  .stat-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 14px; transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: rgba(57,186,230,0.3); }
+  .stat-label {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim); margin-bottom: 4px;
+  }
+  .stat-value {
+    font-family: var(--font-mono); font-size: 22px; font-weight: 700;
+    line-height: 1.2;
+  }
+  .stat-delta {
+    font-family: var(--font-mono); font-size: 10px; margin-top: 2px;
+  }
+
+  .mantra-banner {
+    text-align: center; font-size: 16px; font-style: italic;
+    color: var(--accent); padding: 14px; margin-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+  .mantra-banner::before { content: '" '; opacity: 0.4; }
+  .mantra-banner::after { content: ' "'; opacity: 0.4; }
+
+  /* === TRAJECTORY GRID === */
+  .trajectory-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+  }
+  .traj-card {
+    background: var(--bg); border: 2px solid var(--border);
+    border-radius: 6px; padding: 14px; transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .traj-card:hover { transform: translateY(-2px); }
+  .traj-card.traj-up { border-color: rgba(127,217,98,0.4); }
+  .traj-card.traj-down { border-color: rgba(242,109,120,0.4); }
+  .traj-card.traj-steady { border-color: rgba(255,180,84,0.4); }
+  .traj-domain {
+    font-size: 12px; font-weight: 600; color: var(--text);
+    margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .traj-trend-row { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .traj-arrow { font-size: 20px; font-weight: 700; }
+  .traj-trend-text { font-size: 11px; color: var(--text-dim); text-transform: capitalize; }
+  .traj-delta {
+    font-family: var(--font-mono); font-size: 11px; margin-left: auto;
+  }
+  .traj-conf-label {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim); margin-bottom: 4px;
+  }
+  .traj-conf-bar {
+    height: 4px; background: var(--border); border-radius: 2px; overflow: hidden;
+  }
+  .traj-conf-fill { height: 100%; border-radius: 2px; transition: width 0.6s ease; }
+  .traj-conf-text {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    margin-top: 3px;
+  }
+
+  /* === STEM STRATEGY GRID === */
+  .stem-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .stem-block {
+    background: var(--bg); border-radius: 6px; padding: 16px;
+    border-left: 3px solid var(--border); transition: border-left-color 0.2s;
+  }
+  .stem-block:hover { border-left-width: 5px; }
+  .stem-block-euclidean { border-left-color: var(--accent); }
+  .stem-block-probabilistic { border-left-color: var(--green); }
+  .stem-block-bets { border-left-color: var(--yellow); }
+  .stem-block-warp { border-left-color: var(--red); }
+  .stem-model {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 12px; display: flex;
+    align-items: center; gap: 6px;
+  }
+  .stem-model-euclidean { color: var(--accent); }
+  .stem-model-probabilistic { color: var(--green); }
+  .stem-model-bets { color: var(--yellow); }
+  .stem-model-warp { color: var(--red); }
+  .stem-field { margin-bottom: 8px; font-size: 12px; line-height: 1.5; }
+  .stem-label {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim); display: block; margin-bottom: 2px;
+  }
+  .stem-value { color: var(--text); }
+  .stem-action {
+    font-size: 12px; color: var(--green); margin-top: 8px;
+    padding-top: 8px; border-top: 1px solid var(--border);
+  }
+  .stem-action::before { content: '→ '; }
+
+  /* === BOTTLENECK === */
+  .bottleneck-box {
+    background: rgba(255,180,84,0.06);
+    border: 1px solid rgba(255,180,84,0.3);
+    border-left: 4px solid var(--yellow);
+    border-radius: 6px; padding: 18px;
+  }
+  .bottleneck-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .bottleneck-what {
+    font-size: 15px; font-weight: 600; color: var(--yellow);
+  }
+  .bottleneck-badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 3px; letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .bottleneck-badge-recur {
+    background: rgba(242,109,120,0.15); color: var(--red);
+    border: 1px solid rgba(242,109,120,0.4);
+  }
+  .bottleneck-badge-new {
+    background: rgba(127,217,98,0.15); color: var(--green);
+    border: 1px solid rgba(127,217,98,0.4);
+  }
+  .bottleneck-why, .bottleneck-unlocked {
+    font-size: 12px; margin-top: 8px; line-height: 1.6;
+  }
+  .bottleneck-field-label {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim); display: block; margin-bottom: 3px;
+  }
+  .bottleneck-unlocked {
+    color: var(--green); padding: 10px 12px;
+    background: rgba(127,217,98,0.06); border-radius: 4px; margin-top: 10px;
+  }
+
+  /* === FORECAST === */
+  .forecast-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+  }
+  .forecast-card {
+    background: var(--bg); border-radius: 6px; padding: 18px;
+    border-left: 4px solid var(--border); transition: transform 0.2s;
+  }
+  .forecast-card:hover { transform: translateY(-2px); }
+  .forecast-bear { border-left-color: var(--red); }
+  .forecast-base { border-left-color: var(--yellow); }
+  .forecast-bull { border-left-color: var(--green); }
+  .forecast-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .forecast-name { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .forecast-bear .forecast-name { color: var(--red); }
+  .forecast-base .forecast-name { color: var(--yellow); }
+  .forecast-bull .forecast-name { color: var(--green); }
+  .forecast-prob {
+    font-family: var(--font-mono); font-size: 28px; font-weight: 700;
+  }
+  .forecast-scenario {
+    font-size: 12px; color: var(--text); line-height: 1.6; margin-top: 6px;
+  }
+  .forecast-premortem {
+    font-size: 11px; font-style: italic; color: var(--text-dim);
+    margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  /* === ACTION QUEUE === */
+  .action-queue { display: flex; flex-direction: column; gap: 8px; }
+  .action-row {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 12px 14px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .action-row:hover {
+    border-color: rgba(57,186,230,0.3);
+    background: rgba(57,186,230,0.02);
+  }
+  .action-num {
+    font-family: var(--font-mono); font-size: 18px; font-weight: 700;
+    color: var(--accent); min-width: 28px; text-align: right;
+  }
+  .action-check {
+    width: 16px; height: 16px; border: 2px solid var(--border);
+    border-radius: 3px; flex-shrink: 0; margin-top: 2px;
+  }
+  .action-body { flex: 1; }
+  .action-text { font-size: 14px; color: var(--text); line-height: 1.5; }
+  .action-meta {
+    display: flex; gap: 12px; align-items: center;
+    margin-top: 4px; flex-wrap: wrap;
+  }
+  .action-time {
+    font-family: var(--font-mono); font-size: 11px; color: var(--text-dim);
+  }
+  .action-impact { font-size: 11px; color: var(--green); }
+  .action-badge {
+    font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 3px;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .action-badge-new {
+    background: rgba(57,186,230,0.15); color: var(--accent);
+    border: 1px solid rgba(57,186,230,0.3);
+  }
+  .action-badge-recur {
+    background: rgba(242,109,120,0.15); color: var(--red);
+    border: 1px solid rgba(242,109,120,0.3);
+  }
+
+  /* === CALIBRATION === */
+  .calib-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .calib-cell {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 14px;
+  }
+  .calib-label {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim); margin-bottom: 6px;
+  }
+  .calib-value {
+    font-family: var(--font-mono); font-size: 22px; font-weight: 700;
+    line-height: 1.2;
+  }
+  .calib-value-small {
+    font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+    line-height: 1.4;
+  }
+  .calib-gauge {
+    height: 6px; background: var(--border); border-radius: 3px;
+    margin-top: 8px; overflow: hidden;
+  }
+  .calib-gauge-fill {
+    height: 100%; border-radius: 3px; transition: width 0.6s ease;
+  }
+
+  /* === PATTERNS === */
+  .pattern-list { display: flex; flex-direction: column; gap: 8px; }
+  .pattern-item {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 10px 14px; border-radius: 6px; font-size: 13px;
+    line-height: 1.6; transition: transform 0.15s;
+  }
+  .pattern-item:hover { transform: translateX(2px); }
+  .pattern-critical {
+    background: rgba(242,109,120,0.06);
+    border-left: 3px solid var(--red);
+    color: var(--text);
+  }
+  .pattern-warning {
+    background: rgba(255,180,84,0.06);
+    border-left: 3px solid var(--yellow);
+    color: var(--text);
+  }
+  .pattern-marker { font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+  .pattern-critical .pattern-marker { color: var(--red); }
+  .pattern-warning .pattern-marker { color: var(--yellow); }
+
+  /* === FOOTER === */
+  .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    margin-top: var(--gap); flex-wrap: wrap; gap: 10px;
+  }
+  .footer-left, .footer-right { display: flex; align-items: center; gap: 14px; }
+  .footer-text { font-size: 11px; color: var(--text-dim); }
+  .footer-run {
+    font-family: var(--font-mono); font-size: 12px; color: var(--accent);
+    font-weight: 600;
+  }
+  .alive-indicator {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--green); letter-spacing: 1px;
+    text-transform: uppercase; font-weight: 600;
+  }
+  .alive-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green); animation: breathe 2s ease-in-out infinite;
+  }
+
+  /* === CONNECTING STATE === */
+  .connecting {
+    text-align: center; padding: 80px 20px; color: var(--text-dim);
+  }
+  .connecting-dot {
+    display: inline-block; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); animation: breathe 1.5s ease-in-out infinite;
+    margin-bottom: 12px;
+  }
+  .connecting-text { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    .trajectory-grid { grid-template-columns: repeat(2, 1fr); }
+    .stem-grid { grid-template-columns: 1fr; }
+    .forecast-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    .header { flex-direction: column; gap: 12px; text-align: center; }
+    .header-right { flex-direction: column; gap: 8px; }
+    .trajectory-grid { grid-template-columns: 1fr; }
+    .velocity-score { font-size: 36px; }
+    .section { padding: 16px; }
+    .footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <span class="status-dot" id="status-dot"></span>
+    <div>
+      <div class="header-title">◆ Momentum Engine</div>
+      <div class="header-sub">Conscious Operating System <span style="color:var(--text-dim)" id="conn-status">connecting...</span></div>
+    </div>
+  </div>
+  <div class="header-right">
+    <a href="index.html" class="back-link">← Back to Dashboard</a>
+    <div class="header-block">
+      <div class="header-block-label">Last Run</div>
+      <div class="header-block-value" id="last-run">—</div>
+    </div>
+    <div class="header-block">
+      <div class="header-block-label">Mission Elapsed</div>
+      <div class="mission-clock" id="mission-clock">00:00:00:00</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+  <div class="connecting">
+    <div class="connecting-dot"></div>
+    <div class="connecting-text">Connecting to momentum engine...</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" id="footer" style="display:none">
+  <div class="footer-left">
+    <div class="footer-text" id="data-sources">Data sources: —</div>
+    <div class="footer-run" id="run-number"></div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-text">Auto-refresh: 60s</div>
+    <div class="alive-indicator">
+      <span class="alive-dot"></span>
+      System is alive
+    </div>
+  </div>
+</footer>
+
+<script>
+// === CONSTANTS ===
+const MISSION_START = new Date('2026-05-18T04:00:00');
+const REFRESH_INTERVAL = 60000;
+
+// === HELPERS ===
+function fmtDelta(val, suffix) {
+  if (val == null) return { text: '—', cls: 'delta-none' };
+  if (val > 0) return { text: `+${val}${suffix || ''}`, cls: 'delta-up' };
+  if (val < 0) return { text: `${val}${suffix || ''}`, cls: 'delta-down' };
+  return { text: `→${suffix || ''}`, cls: 'delta-flat' };
+}
+
+function trendIcon(trend) {
+  if (!trend) return '→';
+  const t = trend.toLowerCase();
+  if (t === 'up' || t === 'improving') return '↗';
+  if (t === 'down' || t === 'declining') return '↘';
+  return '→';
+}
+
+function trendClass(trend) {
+  if (!trend) return 'velocity-trend-flat';
+  const t = trend.toLowerCase();
+  if (t === 'up' || t === 'improving') return 'velocity-trend-up';
+  if (t === 'down' || t === 'declining') return 'velocity-trend-down';
+  return 'velocity-trend-flat';
+}
+
+function escapeHtml(s) {
+  if (s == null) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// === MISSION CLOCK ===
+function updateClock() {
+  const diff = Date.now() - MISSION_START;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('mission-clock').textContent =
+    `${String(d).padStart(2,'0')}:${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// === DATA FETCHING ===
+let backendOnline = false;
+
+async function fetchState() {
+  try {
+    const r = await fetch(`${window.location.origin}/api/state`);
+    if (!r.ok) throw new Error(r.status);
+    backendOnline = true;
+    return await r.json();
+  } catch(e) {
+    backendOnline = false;
+    // Try localStorage fallback
+    try {
+      const cached = localStorage.getItem('pilot-momentum-state');
+      if (cached) {
+        const data = JSON.parse(cached);
+        if (data && data.momentum_analysis) {
+          return data;
+        }
+      }
+    } catch(le) {}
+    return null;
+  }
+}
+
+function updateConnStatus() {
+  const dot = document.getElementById('status-dot');
+  const status = document.getElementById('conn-status');
+  if (backendOnline) {
+    dot.className = 'status-dot';
+    status.textContent = 'connected';
+  } else {
+    dot.className = 'status-dot offline';
+    status.textContent = 'offline (cached)';
+  }
+}
+
+// === RENDER ===
+function render(ma) {
+  const main = document.getElementById('main-content');
+  const footer = document.getElementById('footer');
+
+  if (!ma || !ma.last_run) {
+    main.innerHTML = `<div class="connecting">
+      <div class="connecting-dot"></div>
+      <div class="connecting-text">No momentum data yet. First run incoming...</div>
+    </div>`;
+    footer.style.display = 'none';
+    return;
+  }
+
+  // Cache to localStorage for fallback
+  try {
+    localStorage.setItem('pilot-momentum-state', JSON.stringify({ momentum_analysis: ma }));
+  } catch(e) {}
+
+  const runDate = new Date(ma.last_run).toLocaleString('en-US', {
+    month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+  });
+  document.getElementById('last-run').textContent = runDate;
+  footer.style.display = 'flex';
+
+  let html = '';
+
+  // === 1. SYSTEM STATUS BANNER ===
+  html += renderStatusBanner(ma);
+
+  // === 2. TRAJECTORY GRID ===
+  if (ma.trajectories && Object.keys(ma.trajectories).length > 0) {
+    html += renderTrajectories(ma.trajectories);
+  }
+
+  // === 3. STEM STRATEGY ===
+  if (ma.stem_strategy) {
+    html += renderStemStrategy(ma.stem_strategy);
+  }
+
+  // === 4. BOTTLENECK ANALYSIS ===
+  if (ma.bottleneck) {
+    html += renderBottleneck(ma.bottleneck);
+  }
+
+  // === 5. FORECAST ===
+  if (ma.forecast) {
+    html += renderForecast(ma.forecast, ma.calibration);
+  }
+
+  // === 6. ACTION QUEUE ===
+  if (ma.top_actions && ma.top_actions.length > 0) {
+    html += renderActions(ma.top_actions);
+  }
+
+  // === 7. CALIBRATION MATRIX ===
+  if (ma.calibration || ma.action_completion_rate != null) {
+    html += renderCalibration(ma);
+  }
+
+  // === 8. PATTERN DETECTION ===
+  if (ma.patterns && ma.patterns.length > 0) {
+    html += renderPatterns(ma.patterns);
+  }
+
+  main.innerHTML = html;
+
+  // Footer data
+  renderFooter(ma);
+}
+
+function renderStatusBanner(ma) {
+  let html = '<div class="section fade-in">';
+
+  // Velocity display
+  html += '<div class="velocity-display">';
+  if (ma.compound_velocity != null) {
+    html += `<span class="velocity-score">${ma.compound_velocity.toFixed(1)}</span>`;
+    const trend = ma.velocity_trend || 'flat';
+    html += `<span class="velocity-trend-arrow ${trendClass(trend)}">${trendIcon(trend)}</span>`;
+    if (ma.velocity_delta != null) {
+      const vd = fmtDelta(ma.velocity_delta);
+      html += `<span class="velocity-delta ${vd.cls}">${vd.text}</span>`;
+    }
+  }
+  html += '</div>';
+
+  // Velocity gauge (0-10 scale)
+  if (ma.compound_velocity != null) {
+    const pct = Math.min(Math.max(ma.compound_velocity / 10 * 100, 0), 100);
+    html += `<div class="velocity-gauge">
+      <div class="velocity-gauge-fill" style="width:${pct}%"></div>
+      <div class="velocity-gauge-marker" style="left:${pct}%"></div>
+    </div>`;
+    html += `<div class="gauge-labels"><span>0</span><span>5</span><span>10</span></div>`;
+  }
+
+  // Quick stats row
+  html += '<div class="quick-stats">';
+
+  // WIP count
+  if (ma.wip_count != null) {
+    let deltaHtml = '';
+    if (ma.wip_delta != null) {
+      const wd = fmtDelta(ma.wip_delta);
+      deltaHtml = `<div class="stat-delta ${wd.cls}">${wd.text}</div>`;
+    }
+    const wipColor = ma.wip_count > 10 ? 'var(--red)' : ma.wip_count > 5 ? 'var(--yellow)' : 'var(--green)';
+    html += `<div class="stat-card">
+      <div class="stat-label">WIP Count</div>
+      <div class="stat-value" style="color:${wipColor}">${ma.wip_count}</div>
+      ${deltaHtml}
+    </div>`;
+  }
+
+  // Action completion
+  if (ma.action_completion_rate != null) {
+    const pct = Math.round(ma.action_completion_rate * 100);
+    const cls = pct >= 67 ? 'var(--green)' : pct >= 34 ? 'var(--yellow)' : 'var(--red)';
+    html += `<div class="stat-card">
+      <div class="stat-label">Action Completion</div>
+      <div class="stat-value" style="color:${cls}">${pct}%</div>
+    </div>`;
+  }
+
+  // Brier score
+  if (ma.calibration && ma.calibration.brier_score != null) {
+    const brier = ma.calibration.brier_score;
+    const cls = brier < 0.3 ? 'var(--green)' : brier < 0.4 ? 'var(--yellow)' : 'var(--red)';
+    html += `<div class="stat-card">
+      <div class="stat-label">Brier Score</div>
+      <div class="stat-value" style="color:${cls}">${brier.toFixed(3)}</div>
+    </div>`;
+  }
+
+  // Bottleneck recurrence
+  if (ma.bottleneck) {
+    const count = ma.bottleneck.recurrence_count || (ma.bottleneck.recurring ? 1 : 0);
+    const isRecurring = ma.bottleneck.recurring;
+    const cls = isRecurring ? 'var(--red)' : 'var(--green)';
+    const label = isRecurring ? `Week ${count}` : 'New';
+    html += `<div class="stat-card">
+      <div class="stat-label">Bottleneck</div>
+      <div class="stat-value" style="color:${cls}">${label}</div>
+      <div class="stat-delta ${isRecurring ? 'delta-down' : 'delta-up'}">${isRecurring ? 'RECURRING' : 'RESOLVED'}</div>
+    </div>`;
+  }
+
+  html += '</div>'; // quick-stats
+
+  // Mantra
+  if (ma.mantra) {
+    html += `<div class="mantra-banner">${escapeHtml(ma.mantra)}</div>`;
+  }
+
+  html += '</div>'; // section
+  return html;
+}
+
+function renderTrajectories(trajectories) {
+  let html = '<div class="section fade-in">';
+  html += '<div class="section-title">Trajectory Grid</div>';
+  html += '<div class="trajectory-grid">';
+
+  for (const [domain, t] of Object.entries(trajectories)) {
+    const trend = t.trend || 'steady';
+    const tIcon = trendIcon(trend);
+    const tClass = trend === 'up' || trend === 'improving' ? 'traj-up'
+      : trend === 'down' || trend === 'declining' ? 'traj-down' : 'traj-steady';
+    const arrowColor = trend === 'up' || trend === 'improving' ? 'var(--green)'
+      : trend === 'down' || trend === 'declining' ? 'var(--red)' : 'var(--yellow)';
+
+    let deltaHtml = '';
+    if (t.delta != null) {
+      const td = fmtDelta(t.delta, '%');
+      deltaHtml = `<span class="traj-delta ${td.cls}">${td.text}</span>`;
+    }
+
+    const conf = t.confidence || 0;
+    const confColor = conf >= 60 ? 'var(--green)' : conf >= 40 ? 'var(--yellow)' : 'var(--red)';
+
+    html += `<div class="traj-card ${tClass}">
+      <div class="traj-domain">${escapeHtml(domain)}</div>
+      <div class="traj-trend-row">
+        <span class="traj-arrow" style="color:${arrowColor}">${tIcon}</span>
+        <span class="traj-trend-text">${escapeHtml(trend)}</span>
+        ${deltaHtml}
+      </div>
+      <div class="traj-conf-label">Confidence</div>
+      <div class="traj-conf-bar">
+        <div class="traj-conf-fill" style="width:${conf}%;background:${confColor}"></div>
+      </div>
+      <div class="traj-conf-text" style="color:${confColor}">${conf}%</div>
+    </div>`;
+  }
+
+  html += '</div></div>';
+  return html;
+}
+
+function renderStemStrategy(s) {
+  let html = '<div class="section fade-in">';
+  html += '<div class="section-title">STEM Strategy Matrix</div>';
+  html += '<div class="stem-grid">';
+
+  // Euclidean
+  if (s.euclidean) {
+    const e = s.euclidean;
+    html += `<div class="stem-block stem-block-euclidean">
+      <div class="stem-model stem-model-euclidean">⬡ Euclidean — Shatter the 5th Postulate</div>`;
+    if (e.assumption) html += `<div class="stem-field"><span class="stem-label">Assumption</span><span class="stem-value">${escapeHtml(e.assumption)}</span></div>`;
+    if (e.reframe) html += `<div class="stem-field"><span class="stem-label">Reframe</span><span class="stem-value">${escapeHtml(e.reframe)}</span></div>`;
+    if (e.unlocked_action) html += `<div class="stem-action">${escapeHtml(e.unlocked_action)}</div>`;
+    html += `</div>`;
+  }
+
+  // Probabilistic
+  if (s.probabilistic) {
+    const p = s.probabilistic;
+    html += `<div class="stem-block stem-block-probabilistic">
+      <div class="stem-model stem-model-probabilistic">📊 Probabilistic — Optimal Bet Allocation</div>`;
+    if (p.highest_ev_domain) html += `<div class="stem-field"><span class="stem-label">Highest EV Domain</span><span class="stem-value">${escapeHtml(p.highest_ev_domain)}</span></div>`;
+    if (p.avoid_domain) html += `<div class="stem-field"><span class="stem-label">Avoid Domain</span><span class="stem-value">${escapeHtml(p.avoid_domain)}</span></div>`;
+    if (p.allocation) html += `<div class="stem-action">${escapeHtml(p.allocation)}</div>`;
+    html += `</div>`;
+  }
+
+  // Thinking in Bets
+  if (s.bets) {
+    const b = s.bets;
+    html += `<div class="stem-block stem-block-bets">
+      <div class="stem-model stem-model-bets">🎰 Thinking in Bets — Highest-EV Decision</div>`;
+    if (b.best_decision) html += `<div class="stem-field"><span class="stem-label">Best Decision</span><span class="stem-value">${escapeHtml(b.best_decision)}</span></div>`;
+    if (b.reasoning) html += `<div class="stem-field"><span class="stem-label">Reasoning</span><span class="stem-value">${escapeHtml(b.reasoning)}</span></div>`;
+    if (b.info_trigger) html += `<div class="stem-field"><span class="stem-label">Info Trigger / Bet-Changer</span><span class="stem-value">${escapeHtml(b.info_trigger)}</span></div>`;
+    if (b.hedge) html += `<div class="stem-field"><span class="stem-label">Hedge</span><span class="stem-value">${escapeHtml(b.hedge)}</span></div>`;
+    html += `</div>`;
+  }
+
+  // Warp-Speed
+  if (s.warp_speed) {
+    const w = s.warp_speed;
+    html += `<div class="stem-block stem-block-warp">
+      <div class="stem-model stem-model-warp">🚀 Warp-Speed — Throughput Plan</div>`;
+    if (w.bottleneck) html += `<div class="stem-field"><span class="stem-label">Bottleneck</span><span class="stem-value">${escapeHtml(w.bottleneck)}</span></div>`;
+    if (w.parallelize) html += `<div class="stem-field"><span class="stem-label">Parallelize</span><span class="stem-value">${escapeHtml(w.parallelize)}</span></div>`;
+    if (w.sequence) html += `<div class="stem-field"><span class="stem-label">Sequence</span><span class="stem-value">${escapeHtml(w.sequence)}</span></div>`;
+    if (w.kill_defer) html += `<div class="stem-field"><span class="stem-label">Kill / Defer</span><span class="stem-value">${escapeHtml(w.kill_defer)}</span></div>`;
+    if (w.plan) html += `<div class="stem-action">${escapeHtml(w.plan)}</div>`;
+    html += `</div>`;
+  }
+
+  html += '</div></div>';
+  return html;
+}
+
+function renderBottleneck(b) {
+  const bn = typeof b === 'object' ? b : { what: b };
+  let html = '<div class="section fade-in">';
+  html += '<div class="section-title">Bottleneck Analysis</div>';
+
+  html += '<div class="bottleneck-box">';
+
+  // Header with what + badge
+  html += '<div class="bottleneck-header">';
+  html += `<div class="bottleneck-what">⚡ ${escapeHtml(bn.what || '—')}</div>`;
+  if (bn.recurring) {
+    const count = bn.recurrence_count || 1;
+    html += `<span class="bottleneck-badge bottleneck-badge-recur">RECURRING · WEEK ${count}</span>`;
+  } else {
+    html += `<span class="bottleneck-badge bottleneck-badge-new">NEW</span>`;
+  }
+  html += '</div>';
+
+  // Why
+  if (bn.why) {
+    html += `<div class="bottleneck-why">
+      <span class="bottleneck-field-label">Why it's the bottleneck</span>
+      ${escapeHtml(bn.why)}
+    </div>`;
+  }
+
+  // Unlocked by / what happens when cleared
+  if (bn.unlocked_by) {
+    html += `<div class="bottleneck-unlocked">
+      <span class="bottleneck-field-label">What happens when cleared</span>
+      ${escapeHtml(bn.unlocked_by)}
+    </div>`;
+  }
+
+  html += '</div></div>';
+  return html;
+}
+
+function renderForecast(forecast, calibration) {
+  let html = '<div class="section fade-in">';
+  html += '<div class="section-title">7-Day Forecast</div>';
+  html += '<div class="forecast-grid">';
+
+  const scenarios = [
+    { key: 'bear', name: '🐻 Bear', cls: 'forecast-bear', defaultProb: 60 },
+    { key: 'base', name: '📊 Base', cls: 'forecast-base', defaultProb: 25 },
+    { key: 'bull', name: '🐂 Bull', cls: 'forecast-bull', defaultProb: 15 },
+  ];
+
+  // If calibration suggests different probabilities, use those
+  // The calibration_error field might mention bear probability
+  let bearProb = null;
+  if (calibration && calibration.calibration_error) {
+    const match = calibration.calibration_error.match(/bear.*?(\d+(?:\.\d+)?)/i);
+    if (match) bearProb = parseFloat(match[1]);
+  }
+
+  scenarios.forEach(sc => {
+    const data = forecast[sc.key];
+    if (!data) return;
+
+    // Handle both string and object formats
+    let scenarioText = '';
+    let premortemText = '';
+    let prob = null;
+
+    if (typeof data === 'string') {
+      scenarioText = data;
+    } else if (typeof data === 'object') {
+      scenarioText = data.scenario || data.text || data.description || '';
+      premortemText = data.premortem || data.pre_mortem || data.pre-mortem || '';
+      prob = data.probability != null ? data.probability : null;
+    }
+
+    // Use derived probability if available
+    if (prob == null) {
+      if (sc.key === 'bear' && bearProb != null) prob = bearProb;
+      else prob = sc.defaultProb;
+    }
+    const probPct = Math.round(prob * (prob <= 1 ? 100 : 1));
+    const probColor = sc.key === 'bear' ? 'var(--red)' : sc.key === 'base' ? 'var(--yellow)' : 'var(--green)';
+
+    html += `<div class="forecast-card ${sc.cls}">
+      <div class="forecast-header">
+        <span class="forecast-name">${sc.name}</span>
+        <span class="forecast-prob" style="color:${probColor}">${probPct}%</span>
+      </div>
+      <div class="forecast-scenario">${escapeHtml(scenarioText)}</div>`;
+    if (premortemText) {
+      html += `<div class="forecast-premortem">${escapeHtml(premortemText)}</div>`;
+    }
+    html += `</div>`;
+  });
+
+  html += '</div></div>';
+  return html;
+}
+
+function renderActions(actions) {
+  let html = '<div class="section fade-in">';
+  html += '<div class="section-title">Action Queue</div>';
+  html += '<div class="action-queue">';
+
+  actions.forEach((a, i) => {
+    let badge = '';
+    const status = (a.status || '').toUpperCase();
+    if (status.includes('RECUR')) {
+      badge = '<span class="action-badge action-badge-recur">RECURRING</span>';
+    } else if (status.includes('NEW')) {
+      badge = '<span class="action-badge action-badge-new">NEW</span>';
+    }
+
+    html += `<div class="action-row">
+      <span class="action-num">${i + 1}</span>
+      <span class="action-check"></span>
+      <div class="action-body">
+        <div class="action-text">${escapeHtml(a.action || '')} ${badge}</div>
+        <div class="action-meta">
+          ${a.time ? `<span class="action-time">⏱ ${escapeHtml(a.time)}</span>` : ''}
+          ${a.impact ? `<span class="action-impact">↑ ${escapeHtml(a.impact)}</span>` : ''}
+        </div>
+      </div>
+    </div>`;
+  });
+
+  html += '</div></div>';
+  return html;
+}
+
+function renderCalibration(ma) {
+  let html = '<div class="section fade-in">';
+  html += '<div class="section-title">Calibration Matrix</div>';
+  html += '<div class="calib-grid">';
+
+  // Action completion rate with gauge
+  if (ma.action_completion_rate != null) {
+    const pct = Math.round(ma.action_completion_rate * 100);
+    const cls = pct >= 67 ? 'var(--green)' : pct >= 34 ? 'var(--yellow)' : 'var(--red)';
+    html += `<div class="calib-cell">
+      <div class="calib-label">Action Completion Rate</div>
+      <div class="calib-value" style="color:${cls}">${pct}%</div>
+      <div class="calib-gauge"><div class="calib-gauge-fill" style="width:${pct}%;background:${cls}"></div></div>
+    </div>`;
+  }
+
+  if (ma.calibration) {
+    const c = ma.calibration;
+
+    // Brier score with gauge
+    if (c.brier_score != null) {
+      const brier = c.brier_score;
+      const cls = brier < 0.3 ? 'var(--green)' : brier < 0.4 ? 'var(--yellow)' : 'var(--red)';
+      // Brier gauge: 0 = perfect (100%), 1 = worst (0%)
+      const brierPct = Math.max(0, Math.min(100, (1 - brier) * 100));
+      html += `<div class="calib-cell">
+        <div class="calib-label">Brier Score</div>
+        <div class="calib-value" style="color:${cls}">${brier.toFixed(3)}</div>
+        <div class="calib-gauge"><div class="calib-gauge-fill" style="width:${brierPct}%;background:${cls}"></div></div>
+      </div>`;
+    }
+
+    // Brier trend
+    if (c.brier_trend) {
+      const isImproving = c.brier_trend.toLowerCase().includes('improv');
+      const cls = isImproving ? 'var(--green)' : 'var(--yellow)';
+      html += `<div class="calib-cell">
+        <div class="calib-label">Brier Trend</div>
+        <div class="calib-value-small" style="color:${cls}">${escapeHtml(c.brier_trend)}</div>
+      </div>`;
+    }
+
+    // Calibration error
+    if (c.calibration_error) {
+      html += `<div class="calib-cell">
+        <div class="calib-label">Calibration Error</div>
+        <div class="calib-value-small" style="color:var(--yellow);font-size:12px;line-height:1.5">${escapeHtml(c.calibration_error)}</div>
+      </div>`;
+    }
+
+    // Total runs
+    if (c.total_runs != null) {
+      html += `<div class="calib-cell">
+        <div class="calib-label">Total Runs</div>
+        <div class="calib-value" style="color:var(--accent)">${c.total_runs}</div>
+      </div>`;
+    }
+  }
+
+  // Derive total runs from bottleneck recurrence if not in calibration
+  if (ma.calibration && ma.calibration.total_runs == null && ma.bottleneck) {
+    const runs = ma.bottleneck.recurrence_count || 1;
+    html += `<div class="calib-cell">
+      <div class="calib-label">Total Runs</div>
+      <div class="calib-value" style="color:var(--accent)">${runs}</div>
+    </div>`;
+  }
+
+  html += '</div></div>';
+  return html;
+}
+
+function renderPatterns(patterns) {
+  let html = '<div class="section fade-in">';
+  html += '<div class="section-title">Pattern Detection</div>';
+  html += '<div class="pattern-list">';
+
+  patterns.forEach((p, i) => {
+    // Classify severity: critical if contains keywords like "0%", "dead", "never", "stalled", "untouched"
+    const lower = (p || '').toLowerCase();
+    const critical = lower.includes('0%') || lower.includes('dead') || lower.includes('never')
+      || lower.includes('stalled') || lower.includes('untouched') || lower.includes('untouched')
+      || lower.includes('0/') || lower.includes('zero');
+    const cls = critical ? 'pattern-critical' : 'pattern-warning';
+
+    html += `<div class="pattern-item ${cls}">
+      <span class="pattern-marker">▸</span>
+      <span>${escapeHtml(p)}</span>
+    </div>`;
+  });
+
+  html += '</div></div>';
+  return html;
+}
+
+function renderFooter(ma) {
+  const sources = document.getElementById('data-sources');
+  const runNum = document.getElementById('run-number');
+
+  // Derive data source status from available fields
+  const available = [];
+  const degraded = [];
+
+  if (ma.compound_velocity != null) available.push('velocity');
+  if (ma.trajectories) available.push('trajectories');
+  if (ma.stem_strategy) available.push('stem');
+  if (ma.bottleneck) available.push('bottleneck');
+  if (ma.forecast) available.push('forecast');
+  if (ma.top_actions) available.push('actions');
+  if (ma.calibration) available.push('calibration');
+  if (ma.patterns) available.push('patterns');
+
+  if (!ma.stem_strategy) degraded.push('stem_strategy');
+  if (!ma.calibration || ma.calibration.total_runs == null) degraded.push('run_count');
+
+  let sourceText = 'Data sources: ';
+  sourceText += available.length > 0 ? available.join(' · ') : 'none';
+  if (degraded.length > 0) {
+    sourceText += ` <span style="color:var(--yellow)">[degraded: ${degraded.join(', ')}]</span>`;
+  }
+  sources.innerHTML = sourceText;
+
+  // Run number
+  let run = '—';
+  if (ma.calibration && ma.calibration.total_runs != null) {
+    run = `RUN #${ma.calibration.total_runs}`;
+  } else if (ma.bottleneck && ma.bottleneck.recurrence_count) {
+    run = `RUN #${ma.bottleneck.recurrence_count}`;
+  }
+  runNum.textContent = run;
+}
+
+// === INIT ===
+async function init() {
+  const state = await fetchState();
+  updateConnStatus();
+  if (state) {
+    render(state.momentum_analysis || null);
+  } else {
+    document.getElementById('main-content').innerHTML = `<div class="connecting">
+      <div class="connecting-dot"></div>
+      <div class="connecting-text">connecting...</div>
+    </div>`;
+    document.getElementById('footer').style.display = 'none';
+  }
+}
+
+init();
+setInterval(init, REFRESH_INTERVAL);
+</script>
+</body>
+</html>
