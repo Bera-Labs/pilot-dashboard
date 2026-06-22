@@ -175,3 +175,7 @@ def index():
 @app.get("/dashboard.html")
 def dashboard():
     return FileResponse(ROOT / "index.html")
+
+@app.get("/momentum.html")
+def momentum():
+    return FileResponse(ROOT / "assets" / "momentum.html")
