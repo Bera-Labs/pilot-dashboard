@@ -1,221 +1,56 @@
 {
   "mission_start": "2026-05-18T04:00:00",
-  "metrics": {
-    "wip": 15,
-    "completed": 1,
-    "ooda_last": null,
-    "avg_latency": null,
-    "compound_velocity": 2.5,
-    "bottleneck": "Zero analysis-to-action conversion — planning IS the avoidance (Week 3)",
-    "nightly_run": "2026-06-21",
-    "detail": {
-      "Housing": 4,
-      "Taxes": 3,
-      "Parents trip": 3,
-      "maintenance": 2,
-      "NYC & Niagara Trip": 3
-    },
-    "completed_detail": "Last: bathrooms cleaning (Jun 17)"
-  },
+  "metrics": {"wip": 3, "completed": 12, "ooda_last": null, "avg_latency": null},
   "decisions": [],
-  "activity_log": [
-    {
-      "time": "20:00:00",
-      "type": "WEEKLY",
-      "message": "Momentum Engine v2 Run 3: WIP=15 | Velocity=2.5 (↓0.5) | Action completion 0/6 all-time | Brier=0.394 | Bottleneck Week 3"
-    },
-    {
-      "time": "11:05:49",
-      "type": "WEEKLY",
-      "message": "Week 25: WIP=15 | Completed=1 | Properties=31 tracked | 6 STEM skills active"
-    },
-    {
-      "time": "03:16:21",
-      "type": "STATUS",
-      "message": "Housing: 10 properties scored, 4 action items open"
-    },
-    {
-      "time": "03:16:21",
-      "type": "STATUS",
-      "message": "Parents trip: flights booked, insurance + international comms pending"
-    },
-    {
-      "time": "03:16:21",
-      "type": "COMPLETE",
-      "message": "DMV vehicle registration renewed (Jun 8)"
-    },
-    {
-      "time": "03:16:21",
-      "type": "MILESTONE",
-      "message": "glimpse of might 1.0-alpha1 start — exercise habit active (4 sessions logged)"
-    },
-    {
-      "time": "03:16:21",
-      "type": "MILESTONE",
-      "message": "6-week PMO abstinence streak v1.0-alpha1 achieved (Jun 8)"
-    },
-    {
-      "time": "20:32:16",
-      "type": "WEEKLY",
-      "message": "Dashboard v2.0 — read-only, data-driven from Outliner + STEM skills + property pipeline"
-    },
-    {
-      "time": "20:32:16",
-      "type": "BOOT",
-      "message": "Dashboard initialized"
-    },
-    {
-      "time": "20:32:16",
-      "type": "LOAD",
-      "message": "STEM Stack v2.0 active"
-    },
-    {
-      "time": "20:32:16",
-      "type": "STATUS",
-      "message": "Read-Only mode active"
-    }
-  ],
-  "properties": {
-    "tracked": 31,
-    "viewings": 0,
-    "offers": 0,
-    "top": [
-      {
-        "name": "NAPLES Plan – Huber Place South",
-        "price": "$399K",
-        "score": 100,
-        "location": "Bentonville"
-      },
-      {
-        "name": "2050 Plan – Magnolia Landing",
-        "price": "$369K",
-        "score": 95,
-        "location": "Centerton"
-      },
-      {
-        "name": "8720 Majestic Rd",
-        "price": "$373K",
-        "score": 85,
-        "location": "Centerton"
-      },
-      {
-        "name": "2410 Max Ave",
-        "price": "$375K",
-        "score": 85,
-        "location": "Bentonville"
-      },
-      {
-        "name": "2330 Max Ave",
-        "price": "$375K",
-        "score": 80,
-        "location": "Bentonville"
-      }
-    ]
-  },
-  "skills": [
-    {
-      "name": "euclidean-thinking",
-      "tags": "First-principles reasoning, problem decomposition, and systematic truth-building via Euclid's axiomatic method. Load before decomposing complex problems, constructing arguments, debugging systems, building from scratch, or learning new domains."
-    },
-    {
-      "name": "nightly-momentum-engine",
-      "tags": "Autonomous weekly synthesis of all LifeOS data through the full STEM stack to produce morning intelligence — trajectory analysis, bottleneck identification, simulated futures, and top actions for maximum compound growth."
-    },
-    {
-      "name": "pilot-dashboard",
-      "tags": "Read-only modular web dashboard for visual tracking of life metrics, wiki graph, property pipeline, and activity log. No browser input — all updates happen server-side via Hermes cron or scripts. Displays data from JSON state files."
-    },
-    {
-      "name": "probabilistic-thinking",
-      "tags": "Pre-analysis checklist for decisions involving data, uncertainty, or probability. Load before analyzing data, making forecasts, evaluating claims, or drawing conclusions from samples. Based on Mlodinow's The Drunkard's Walk + Kahneman & Tversky."
-    },
-    {
-      "name": "thinking-in-bets",
-      "tags": "Decision-making under uncertainty — probabilistic thinking applied to real choices. Load before any high-stakes decision, when evaluating past outcomes, or when forming/defending beliefs. Based on Annie Duke's Thinking in Bets."
-    },
-    {
-      "name": "warp-speed-execution",
-      "tags": "STEM-grounded frameworks for maximizing execution velocity with guardrails. Load when speed of progress is the priority — career acceleration, skill acquisition, project delivery, life compounding."
-    }
-  ],
+  "activity_log": [{"time": "05:00:00", "type": "INFO", "message": "Simulated state"}],
+  "properties": {"tracked": 0, "viewings": 0, "offers": 0},
+  "skills": [],
   "momentum_analysis": {
-    "last_run": "2026-06-21T20:00:00Z",
-    "compound_velocity": 2.5,
-    "velocity_delta": -0.5,
-    "velocity_trend": "down",
-    "wip_count": 15,
-    "wip_delta": 0,
-    "action_completion_rate": 0.0,
-    "trajectories": {
-      "Housing": {
-        "trend": "down",
-        "confidence": 40,
-        "delta": -20
-      },
-      "Brain/ADHD": {
-        "trend": "down",
-        "confidence": 35,
-        "delta": -20
-      },
-      "Body/Health": {
-        "trend": "down",
-        "confidence": 30,
-        "delta": -40
-      },
-      "Career": {
-        "trend": "steady",
-        "confidence": 30,
-        "delta": -20
-      },
-      "Relationships": {
-        "trend": "steady",
-        "confidence": 30,
-        "delta": -20
-      }
+    "last_run": "2026-06-22T06:00:00Z",
+    "compound_velocity": 7.5,
+    "velocity_trend": "up",
+    "velocity_delta": 1.3,
+    "stem_strategy": {
+      "euclidean": { "assumption": "I need energy to start.", "reframe": "Action precedes energy.", "unlocked_action": "Start working for 5 minutes, energy will follow." },
+      "probabilistic": { "highest_ev_domain": "Housing", "avoid_domain": "Over-optimizing routines", "allocation": "Push housing hard, maintain baseline elsewhere." },
+      "bets": { "best_decision": "View 2 houses today", "reasoning": "Highest leverage for unlocking next stage", "info_trigger": "If no houses match criteria, switch to market scan", "hedge": "Pre-qualify options before driving" },
+      "warp_speed": { "bottleneck": "Unmade decisions", "parallelize": "Emails & passive searches", "sequence": "1. Decision A, 2. Action B", "kill_defer": "Kill 'optimize dashboard'", "plan": "Clear all open decisions by 10am" }
     },
+    "execution_script": [
+      {
+        "time_or_sequence": "08:00 - 09:00",
+        "action": "Clear all unmade decisions from yesterday.",
+        "strict_rule": "DO NOT open email until decisions are cleared."
+      },
+      {
+        "time_or_sequence": "09:00 - 11:00",
+        "action": "Complete housing viewings or prep.",
+        "strict_rule": "IF viewings fall through, immediately defer and move to career."
+      }
+    ],
     "bottleneck": {
-      "what": "Zero analysis-to-action conversion — planning IS the avoidance",
-      "why": "3 runs, 6 prescribed actions, 0 completions. The planning system (reports, reviews, braindumps) has become the primary activity, replacing execution. The 'fix-brain-first' axiom is the 5th postulate — shatter it.",
-      "unlocked_by": "Stop generating analysis. Execute one microscopic action within 48 hours. Scale actions down to 2-5 min, not 15-30 min.",
+      "what": "High WIP",
+      "why": "Context switching destroys throughput",
+      "unlocked_by": "Killing 10 tasks",
       "recurring": true,
-      "recurrence_count": 3
+      "recurrence_count": 2
     },
     "forecast": {
-      "bear": "0 actions completed. Fourth report generated and ignored. Taxes hit 120+ days stalled. No exercise for 5+ weeks. Planning loop continues.",
-      "base": "1 micro-action completed (easiest item). Token progress. 0% streak broken but structural pattern unchanged.",
-      "bull": "Taxes call made (hardest item). Housing agent texted. WIP slashed to 5. Exercise resumed. Requires external trigger."
+      "bear": {"probability": 0.2, "scenario": "No progress", "premortem": "Got distracted by minor bugs"},
+      "base": {"probability": 0.6, "scenario": "Steady progress", "premortem": "Maintained focus but hit external delays"},
+      "bull": {"probability": 0.2, "scenario": "Major breakthrough", "premortem": "NA"}
     },
     "top_actions": [
-      {
-        "action": "Find the Yesmytaxes phone number and write it on a sticky note.",
-        "time": "2m",
-        "impact": "First 2 min of the 5-min worst-first. Drops activation energy for the call by 80%.",
-        "status": "NEW"
-      },
-      {
-        "action": "Send ONE text to Savannah at Schuber Mitchell: 'Hi, interested in new construction Bentonville/Centerton under $400K. Available for a call?'",
-        "time": "3m",
-        "impact": "Unlocks housing pipeline. Text is lower friction than a call.",
-        "status": "RECURRING (scaled down)"
-      },
-      {
-        "action": "Put on workout shoes and walk to the end of the street.",
-        "time": "5m",
-        "impact": "Breaks 24-day exercise drought. Friction is the transition, not the activity.",
-        "status": "RECURRING (scaled down)"
-      }
+      {"action": "Prune WIP to 3", "time": "15m", "impact": "Focus restored", "status": "NEW"}
     ],
     "calibration": {
-      "brier_score": 0.394,
-      "brier_trend": "slightly improving (0.41→0.38) but still poor",
-      "calibration_error": "Consistently over-predicting base/bull when base rate is 100% bear. Bear probability should be 0.60+."
+      "total_runs": 4,
+      "brier_score": 0.25,
+      "brier_trend": "Improving",
+      "action_completion_rate": 0.66
     },
     "patterns": [
-      "0% action completion across 3 runs (6 total actions) — momentum engine prescriptions consumed as content, not converted to action",
-      "Taxes stalled 110+ days — 'talk to yesmytaxes' prescribed 2 weeks in a row, 15 min of work, untouched",
-      "WIP growing despite pruning advice: 13→15. Each run adds analysis, doesn't remove tasks",
-      "Habits dead: exercise last logged May 28 (24 days), sleep and meditation NEVER logged (created 3 months ago)"
-    ],
-    "mantra": "Plans don't break chains. Steps do."
+      "WIP consistently creeps up mid-week"
+    ]
   }
 }

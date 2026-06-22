@@ -633,7 +633,14 @@ function render(ma) {
     html += renderForecast(ma.forecast, ma.calibration);
   }
 
+
+  // === 5.5 EXECUTION SCRIPT ===
+  if (ma.execution_script && ma.execution_script.length > 0) {
+    html += renderExecutionScript(ma.execution_script);
+  }
+
   // === 6. ACTION QUEUE ===
+
   if (ma.top_actions && ma.top_actions.length > 0) {
     html += renderActions(ma.top_actions);
   }
@@ -937,7 +944,28 @@ function renderForecast(forecast, calibration) {
   return html;
 }
 
+
+function renderExecutionScript(script) {
+  let html = '<div class="section fade-in">';
+  html += '<div class="section-title">Deterministic Execution Script</div>';
+  html += '<div class="execution-script">';
+
+  script.forEach((step, i) => {
+    html += `<div class="exec-step">
+      <div class="exec-step-num">${escapeHtml(step.time_or_sequence || String(i+1))}</div>
+      <div class="exec-step-body">
+        <div class="exec-step-action">${escapeHtml(step.action)}</div>
+        ${step.strict_rule ? `<div class="exec-step-rule">STRICT RULE: ${escapeHtml(step.strict_rule)}</div>` : ''}
+      </div>
+    </div>`;
+  });
+
+  html += '</div></div>';
+  return html;
+}
+
 function renderActions(actions) {
+
   let html = '<div class="section fade-in">';
   html += '<div class="section-title">Action Queue</div>';
   html += '<div class="action-queue">';
