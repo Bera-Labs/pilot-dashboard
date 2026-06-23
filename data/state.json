@@ -1,56 +1,226 @@
 {
   "mission_start": "2026-05-18T04:00:00",
-  "metrics": {"wip": 3, "completed": 12, "ooda_last": null, "avg_latency": null},
-  "decisions": [],
-  "activity_log": [{"time": "05:00:00", "type": "INFO", "message": "Simulated state"}],
-  "properties": {"tracked": 0, "viewings": 0, "offers": 0},
-  "skills": [],
-  "momentum_analysis": {
-    "last_run": "2026-06-22T06:00:00Z",
-    "compound_velocity": 7.5,
-    "velocity_trend": "up",
-    "velocity_delta": 1.3,
-    "stem_strategy": {
-      "euclidean": { "assumption": "I need energy to start.", "reframe": "Action precedes energy.", "unlocked_action": "Start working for 5 minutes, energy will follow." },
-      "probabilistic": { "highest_ev_domain": "Housing", "avoid_domain": "Over-optimizing routines", "allocation": "Push housing hard, maintain baseline elsewhere." },
-      "bets": { "best_decision": "View 2 houses today", "reasoning": "Highest leverage for unlocking next stage", "info_trigger": "If no houses match criteria, switch to market scan", "hedge": "Pre-qualify options before driving" },
-      "warp_speed": { "bottleneck": "Unmade decisions", "parallelize": "Emails & passive searches", "sequence": "1. Decision A, 2. Action B", "kill_defer": "Kill 'optimize dashboard'", "plan": "Clear all open decisions by 10am" }
+  "metrics": {
+    "wip": 15,
+    "completed": 1,
+    "ooda_last": null,
+    "avg_latency": null,
+    "compound_velocity": 2.5,
+    "bottleneck": "Zero analysis-to-action conversion \u2014 planning IS the avoidance (Week 3)",
+    "nightly_run": "2026-06-21",
+    "detail": {
+      "Housing": 4,
+      "Taxes": 3,
+      "Parents trip": 3,
+      "maintenance": 2,
+      "NYC & Niagara Trip": 3
     },
-    "execution_script": [
+    "completed_detail": "Last: bathrooms cleaning (Jun 17)"
+  },
+  "decisions": [],
+  "activity_log": [
+    {
+      "time": "20:00:00",
+      "type": "WEEKLY",
+      "message": "Momentum Engine v2 Run 3: WIP=15 | Velocity=2.5 (\u21930.5) | Action completion 0/6 all-time | Brier=0.394 | Bottleneck Week 3"
+    },
+    {
+      "time": "11:05:49",
+      "type": "WEEKLY",
+      "message": "Week 25: WIP=15 | Completed=1 | Properties=31 tracked | 6 STEM skills active"
+    },
+    {
+      "time": "03:16:21",
+      "type": "STATUS",
+      "message": "Housing: 10 properties scored, 4 action items open"
+    },
+    {
+      "time": "03:16:21",
+      "type": "STATUS",
+      "message": "Parents trip: flights booked, insurance + international comms pending"
+    },
+    {
+      "time": "03:16:21",
+      "type": "COMPLETE",
+      "message": "DMV vehicle registration renewed (Jun 8)"
+    },
+    {
+      "time": "03:16:21",
+      "type": "MILESTONE",
+      "message": "glimpse of might 1.0-alpha1 start \u2014 exercise habit active (4 sessions logged)"
+    },
+    {
+      "time": "03:16:21",
+      "type": "MILESTONE",
+      "message": "6-week PMO abstinence streak v1.0-alpha1 achieved (Jun 8)"
+    },
+    {
+      "time": "20:32:16",
+      "type": "WEEKLY",
+      "message": "Dashboard v2.0 \u2014 read-only, data-driven from Outliner + STEM skills + property pipeline"
+    },
+    {
+      "time": "20:32:16",
+      "type": "BOOT",
+      "message": "Dashboard initialized"
+    },
+    {
+      "time": "20:32:16",
+      "type": "LOAD",
+      "message": "STEM Stack v2.0 active"
+    },
+    {
+      "time": "20:32:16",
+      "type": "STATUS",
+      "message": "Read-Only mode active"
+    }
+  ],
+  "properties": {
+    "tracked": 31,
+    "viewings": 0,
+    "offers": 0,
+    "top": [
       {
-        "time_or_sequence": "08:00 - 09:00",
-        "action": "Clear all unmade decisions from yesterday.",
-        "strict_rule": "DO NOT open email until decisions are cleared."
+        "name": "NAPLES Plan \u2013 Huber Place South",
+        "price": "$399K",
+        "score": 100,
+        "location": "Bentonville"
       },
       {
-        "time_or_sequence": "09:00 - 11:00",
-        "action": "Complete housing viewings or prep.",
-        "strict_rule": "IF viewings fall through, immediately defer and move to career."
+        "name": "2050 Plan \u2013 Magnolia Landing",
+        "price": "$369K",
+        "score": 95,
+        "location": "Centerton"
+      },
+      {
+        "name": "8720 Majestic Rd",
+        "price": "$373K",
+        "score": 85,
+        "location": "Centerton"
+      },
+      {
+        "name": "2410 Max Ave",
+        "price": "$375K",
+        "score": 85,
+        "location": "Bentonville"
+      },
+      {
+        "name": "2330 Max Ave",
+        "price": "$375K",
+        "score": 80,
+        "location": "Bentonville"
       }
-    ],
+    ]
+  },
+  "skills": [
+    {
+      "name": "euclidean-thinking",
+      "tags": "First-principles reasoning, problem decomposition, and systematic truth-building via Euclid's axiomatic method. Load before decomposing complex problems, constructing arguments, debugging systems, building from scratch, or learning new domains."
+    },
+    {
+      "name": "nightly-momentum-engine",
+      "tags": "Autonomous weekly synthesis of all LifeOS data through the full STEM stack to produce morning intelligence \u2014 trajectory analysis, bottleneck identification, simulated futures, and top actions for maximum compound growth."
+    },
+    {
+      "name": "pilot-dashboard",
+      "tags": "Read-only modular web dashboard for visual tracking of life metrics, wiki graph, property pipeline, and activity log. No browser input \u2014 all updates happen server-side via Hermes cron or scripts. Displays data from JSON state files."
+    },
+    {
+      "name": "probabilistic-thinking",
+      "tags": "Pre-analysis checklist for decisions involving data, uncertainty, or probability. Load before analyzing data, making forecasts, evaluating claims, or drawing conclusions from samples. Based on Mlodinow's The Drunkard's Walk + Kahneman & Tversky."
+    },
+    {
+      "name": "thinking-in-bets",
+      "tags": "Decision-making under uncertainty \u2014 probabilistic thinking applied to real choices. Load before any high-stakes decision, when evaluating past outcomes, or when forming/defending beliefs. Based on Annie Duke's Thinking in Bets."
+    },
+    {
+      "name": "warp-speed-execution",
+      "tags": "STEM-grounded frameworks for maximizing execution velocity with guardrails. Load when speed of progress is the priority \u2014 career acceleration, skill acquisition, project delivery, life compounding."
+    }
+  ],
+  "momentum_analysis": {
+    "last_run": "2026-06-23T00:36:47Z",
+    "compound_velocity": 2.0,
+    "velocity_delta": -0.5,
+    "velocity_trend": "down",
+    "wip_count": 15,
+    "wip_delta": 0,
+    "action_completion_rate": 0.0,
+    "trajectories": {
+      "Housing": {
+        "trend": "down",
+        "confidence": 30,
+        "delta": -10
+      },
+      "Taxes": {
+        "trend": "down",
+        "confidence": 20,
+        "delta": -10
+      },
+      "Brain/ADHD": {
+        "trend": "down",
+        "confidence": 30,
+        "delta": -5
+      },
+      "Body/Health": {
+        "trend": "down",
+        "confidence": 20,
+        "delta": -10
+      },
+      "Trips": {
+        "trend": "down",
+        "confidence": 40,
+        "delta": -10
+      }
+    },
     "bottleneck": {
-      "what": "High WIP",
-      "why": "Context switching destroys throughput",
-      "unlocked_by": "Killing 10 tasks",
+      "what": "Zero analysis-to-action conversion / Planning as avoidance",
+      "why": "4 runs, 0 completions. WIP is 15. Execution drought is 30+ days.",
+      "unlocked_by": "WIP limit of 1. Force a 2-minute action.",
       "recurring": true,
-      "recurrence_count": 2
+      "recurrence_count": 4
     },
     "forecast": {
-      "bear": {"probability": 0.2, "scenario": "No progress", "premortem": "Got distracted by minor bugs"},
-      "base": {"probability": 0.6, "scenario": "Steady progress", "premortem": "Maintained focus but hit external delays"},
-      "bull": {"probability": 0.2, "scenario": "Major breakthrough", "premortem": "NA"}
+      "bear": "0 actions completed. WIP remains 15. Total stagnation.",
+      "base": "1 micro-action completed (Yesmytaxes number found).",
+      "bull": "Taxes called and 10 tasks archived. WIP drops to 5."
     },
     "top_actions": [
-      {"action": "Prune WIP to 3", "time": "15m", "impact": "Focus restored", "status": "NEW"}
+      {
+        "action": "Find Yesmytaxes number and write on sticky note",
+        "time": "2m",
+        "impact": "Drops activation energy by 80%",
+        "status": "RECURRING"
+      },
+      {
+        "action": "Send ONE text to Savannah at Schuber Mitchell",
+        "time": "3m",
+        "impact": "Unlocks housing pipeline",
+        "status": "RECURRING"
+      },
+      {
+        "action": "Archive 10 open tasks from Outliner",
+        "time": "5m",
+        "impact": "Reduces WIP from 15 to 5",
+        "status": "NEW"
+      }
     ],
     "calibration": {
-      "total_runs": 4,
-      "brier_score": 0.25,
-      "brier_trend": "Improving",
-      "action_completion_rate": 0.66
+      "brier_score": 0.38,
+      "brier_trend": "improving (0.394\u21920.380)",
+      "calibration_error": "Base rate is 0% completion. Bear probabilities must remain 70%+ until streak breaks."
     },
     "patterns": [
-      "WIP consistently creeps up mid-week"
-    ]
+      "0% action completion across 4 runs (9 total actions ignored).",
+      "Taxes stalled for months; planning continues without execution.",
+      "Habit logs are dead (Exercise last logged May 28)."
+    ],
+    "mantra": "Plans don't break chains. Steps do.",
+    "stem_strategy": {
+      "euclidean": "Assumption: 'Planning and building systems precedes execution.' Reframe: 'The planning system is the exact mechanism of avoidance.' Strategy: Archive the 'High Value Male', 'Brain', and 'Housing Research' projects today to starve the avoidance mechanism.",
+      "probabilistic": "Highest EV domain: Unblocking Taxes (highest emotional drag). Avoid: Housing research (0% yield without a banker). Strategy: Allocate 100% of execution energy to a 2-minute micro-action on Taxes.",
+      "bets": "Decision: Calling the tax accountant for 2 minutes. Reasoning: 90% chance of immediate unblocking. Downside hedge: Set a 2-minute timer and hang up when it rings.",
+      "warp_speed": "Bottleneck: Action conversion barrier. Sequence: 1. Yesmytaxes. Kill/Defer: All NYC/Niagara and Parents Trip logistics. Strategy: WIP limit of 1. Freeze all other projects."
+    }
   }
 }
