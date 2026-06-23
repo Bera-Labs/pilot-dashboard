@@ -139,8 +139,8 @@
     }
   ],
   "momentum_analysis": {
-    "last_run": "2026-06-23T00:36:47Z",
-    "compound_velocity": 2.0,
+    "last_run": "2026-06-23T01:21:30.722300+00:00",
+    "compound_velocity": 1.5,
     "velocity_delta": -0.5,
     "velocity_trend": "down",
     "wip_count": 15,
@@ -149,41 +149,41 @@
     "trajectories": {
       "Housing": {
         "trend": "down",
-        "confidence": 30,
+        "confidence": 20,
         "delta": -10
       },
       "Taxes": {
         "trend": "down",
-        "confidence": 20,
+        "confidence": 10,
         "delta": -10
       },
       "Brain/ADHD": {
         "trend": "down",
-        "confidence": 30,
+        "confidence": 20,
         "delta": -5
       },
       "Body/Health": {
         "trend": "down",
-        "confidence": 20,
+        "confidence": 10,
         "delta": -10
       },
       "Trips": {
         "trend": "down",
-        "confidence": 40,
-        "delta": -10
+        "confidence": 20,
+        "delta": -20
       }
     },
     "bottleneck": {
-      "what": "Zero analysis-to-action conversion / Planning as avoidance",
-      "why": "4 runs, 0 completions. WIP is 15. Execution drought is 30+ days.",
-      "unlocked_by": "WIP limit of 1. Force a 2-minute action.",
+      "what": "Action conversion barrier (Planning as avoidance)",
+      "why": "5 runs, 0 completions. WIP remains 15. Execution drought continuing.",
+      "unlocked_by": "WIP limit of 1. Force a micro-action.",
       "recurring": true,
-      "recurrence_count": 4
+      "recurrence_count": 5
     },
     "forecast": {
-      "bear": "0 actions completed. WIP remains 15. Total stagnation.",
-      "base": "1 micro-action completed (Yesmytaxes number found).",
-      "bull": "Taxes called and 10 tasks archived. WIP drops to 5."
+      "bear": "0 actions completed. Total stagnation.",
+      "base": "1 micro-action completed.",
+      "bull": "Taxes unblocked and WIP reduced."
     },
     "top_actions": [
       {
@@ -202,25 +202,39 @@
         "action": "Archive 10 open tasks from Outliner",
         "time": "5m",
         "impact": "Reduces WIP from 15 to 5",
-        "status": "NEW"
+        "status": "RECURRING"
       }
     ],
     "calibration": {
       "brier_score": 0.38,
-      "brier_trend": "improving (0.394\u21920.380)",
-      "calibration_error": "Base rate is 0% completion. Bear probabilities must remain 70%+ until streak breaks."
+      "brier_trend": "flat (0.380)",
+      "calibration_error": "Base rate is 0% completion. Bear probabilities must dominate."
     },
     "patterns": [
-      "0% action completion across 4 runs (9 total actions ignored).",
+      "0% action completion across 5 runs.",
       "Taxes stalled for months; planning continues without execution.",
       "Habit logs are dead (Exercise last logged May 28)."
     ],
     "mantra": "Plans don't break chains. Steps do.",
     "stem_strategy": {
-      "euclidean": "Assumption: 'Planning and building systems precedes execution.' Reframe: 'The planning system is the exact mechanism of avoidance.' Strategy: Archive the 'High Value Male', 'Brain', and 'Housing Research' projects today to starve the avoidance mechanism.",
-      "probabilistic": "Highest EV domain: Unblocking Taxes (highest emotional drag). Avoid: Housing research (0% yield without a banker). Strategy: Allocate 100% of execution energy to a 2-minute micro-action on Taxes.",
-      "bets": "Decision: Calling the tax accountant for 2 minutes. Reasoning: 90% chance of immediate unblocking. Downside hedge: Set a 2-minute timer and hang up when it rings.",
-      "warp_speed": "Bottleneck: Action conversion barrier. Sequence: 1. Yesmytaxes. Kill/Defer: All NYC/Niagara and Parents Trip logistics. Strategy: WIP limit of 1. Freeze all other projects."
-    }
+      "euclidean": "Assumption: 'Planning and building systems precedes execution.' Reframe: 'The planning system is the exact mechanism of avoidance.' Strategy: Stop planning. Do the dumbest, smallest physical action.",
+      "probabilistic": "Highest EV domain: Unblocking Taxes. Avoid: Housing research. Strategy: Allocate 100% of execution energy to a 2-minute micro-action on Taxes.",
+      "bets": "Decision: Calling the tax accountant for 2 minutes. Reasoning: 90% chance of immediate unblocking. Downside hedge: Timebox to 2 minutes.",
+      "warp_speed": "Bottleneck: Action conversion barrier. Sequence: 1. Yesmytaxes. Kill/Defer: All trip logistics. Strategy: WIP limit of 1."
+    },
+    "execution_script": [
+      {
+        "step": "Find the Yesmytaxes phone number.",
+        "rule": "DO NOT open any other tab or app."
+      },
+      {
+        "step": "Write it on a physical sticky note.",
+        "rule": "Must be physical pen and paper."
+      },
+      {
+        "step": "Place sticky note on keyboard.",
+        "rule": "DO NOT advance until note is placed."
+      }
+    ]
   }
 }
