@@ -952,10 +952,10 @@ function renderExecutionScript(script) {
 
   script.forEach((step, i) => {
     html += `<div class="exec-step">
-      <div class="exec-step-num">${escapeHtml(step.time_or_sequence || String(i+1))}</div>
+      <div class="exec-step-num">${escapeHtml(step.time_or_sequence || step.step_num || String(i+1))}</div>
       <div class="exec-step-body">
-        <div class="exec-step-action">${escapeHtml(step.action)}</div>
-        ${step.strict_rule ? `<div class="exec-step-rule">STRICT RULE: ${escapeHtml(step.strict_rule)}</div>` : ''}
+        <div class="exec-step-action">${escapeHtml(step.action || step.step || '')}</div>
+        ${(step.strict_rule || step.rule) ? `<div class="exec-step-rule">STRICT RULE: ${escapeHtml(step.strict_rule || step.rule)}</div>` : ''}
       </div>
     </div>`;
   });
