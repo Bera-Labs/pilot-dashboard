@@ -1,136 +1,607 @@
 {
   "nodes": [
     {
-      "id": "Euclidean_Thinking",
-      "group": "concept"
+      "id": "sleep",
+      "label": "Sleep",
+      "type": "intervention",
+      "confidence": "high",
+      "desc": "7-9 hrs consistent"
     },
     {
-      "id": "Thinking_in_Bets",
-      "group": "concept"
+      "id": "creatine",
+      "label": "Creatine",
+      "type": "intervention",
+      "confidence": "high",
+      "desc": "5g/day"
     },
     {
-      "id": "Probabilistic_Thinking",
-      "group": "concept"
+      "id": "nac",
+      "label": "NAC",
+      "type": "intervention",
+      "confidence": "high",
+      "desc": "1200-2400mg/day"
     },
     {
-      "id": "Warp-Speed_Execution",
-      "group": "concept"
+      "id": "omega3",
+      "label": "Omega-3",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "1-2g EPA+DHA"
     },
     {
-      "id": "WIP Induced Paralysis",
-      "group": "connection"
+      "id": "resistance",
+      "label": "Resistance Training",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "2-3x/wk, 12 wks"
     },
     {
-      "id": "The 5th Postulate of Avoidance",
-      "group": "connection"
+      "id": "iron",
+      "label": "Iron",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "Only if deficient"
     },
     {
-      "id": "The Abstinence-Action Convergence",
-      "group": "connection"
+      "id": "rhodiola",
+      "label": "Rhodiola",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "SHR-5 extract"
     },
     {
-      "id": "Asymmetric Micro-Bets",
-      "group": "connection"
+      "id": "curcumin",
+      "label": "Curcumin",
+      "type": "intervention",
+      "confidence": "low",
+      "desc": "800mg, \u226524 wks"
     },
     {
-      "id": "Warp-Speed Execution",
-      "group": "unknown"
+      "id": "cold_exposure",
+      "label": "Cold Exposure",
+      "type": "intervention",
+      "confidence": "low",
+      "desc": "2-5 min cold shower"
     },
     {
-      "id": "Euclidean Thinking",
-      "group": "unknown"
+      "id": "omega3_addiction",
+      "label": "Omega-3 (addiction)",
+      "type": "intervention",
+      "confidence": "low",
+      "desc": "No addiction trials"
     },
     {
-      "id": "Probabilistic Thinking",
-      "group": "unknown"
+      "id": "tyrosine_mg_zn",
+      "label": "Tyrosine, Mg, Zn",
+      "type": "intervention",
+      "confidence": "none",
+      "desc": "Zero clinical evidence"
     },
     {
-      "id": "Thinking in Bets",
-      "group": "unknown"
+      "id": "taurine",
+      "label": "Taurine",
+      "type": "intervention",
+      "confidence": "none",
+      "desc": "No effect (meta-analysis)"
+    },
+    {
+      "id": "beetroot",
+      "label": "Beetroot",
+      "type": "intervention",
+      "confidence": "none",
+      "desc": "Inconclusive"
+    },
+    {
+      "id": "self_compassion",
+      "label": "Self-Compassion",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "Faster lapse recovery"
+    },
+    {
+      "id": "executive_function",
+      "label": "Executive Function",
+      "type": "outcome"
+    },
+    {
+      "id": "memory",
+      "label": "Memory",
+      "type": "outcome"
+    },
+    {
+      "id": "attention",
+      "label": "Attention",
+      "type": "outcome"
+    },
+    {
+      "id": "processing_speed",
+      "label": "Processing Speed",
+      "type": "outcome"
+    },
+    {
+      "id": "mental_fatigue",
+      "label": "Mental Fatigue",
+      "type": "outcome"
+    },
+    {
+      "id": "neuroplasticity",
+      "label": "Neuroplasticity",
+      "type": "outcome"
+    },
+    {
+      "id": "cravings",
+      "label": "Cravings",
+      "type": "outcome"
+    },
+    {
+      "id": "addiction_recovery",
+      "label": "Addiction Recovery",
+      "type": "outcome"
+    },
+    {
+      "id": "mood",
+      "label": "Mood / Depression",
+      "type": "outcome"
+    },
+    {
+      "id": "physical_fatigue",
+      "label": "Physical Fatigue",
+      "type": "outcome"
+    },
+    {
+      "id": "stress",
+      "label": "Stress",
+      "type": "outcome"
+    },
+    {
+      "id": "self_control",
+      "label": "Self-Control",
+      "type": "outcome"
+    },
+    {
+      "id": "relapse",
+      "label": "Relapse Prevention",
+      "type": "outcome"
+    },
+    {
+      "id": "exercise",
+      "label": "Exercise",
+      "type": "intervention",
+      "confidence": "high",
+      "summary": "The academic evidence that physical exercise directly enhances cognitive function \u2014 the foundation underlying all \"exercise for brain fog\" recommendations."
+    },
+    {
+      "id": "dopamine_recovery",
+      "label": "Dopamine Recovery",
+      "type": "outcome",
+      "confidence": "high",
+      "summary": "What actually happens to the dopamine system during addiction recovery, based on direct neuroimaging evidence."
+    },
+    {
+      "id": "mindfulness",
+      "label": "Mindfulness",
+      "type": "intervention",
+      "confidence": "high",
+      "summary": "The neural evidence that mindfulness/meditation directly enhances attention and executive function."
+    },
+    {
+      "id": "willpower_training",
+      "label": "Willpower Training",
+      "type": "intervention",
+      "confidence": "medium",
+      "summary": "The theory that willpower can be strengthened through repeated exercise, similar to a muscle."
+    },
+    {
+      "id": "habit_formation",
+      "label": "Habit Formation",
+      "type": "intervention",
+      "confidence": "high",
+      "summary": "The evidence-backed alternative to white-knuckling through life. High self-control isn't about resisting temptation \u2014 it's about never needing to."
+    },
+    {
+      "id": "brain_fog",
+      "label": "Brain Fog",
+      "type": "outcome",
+      "confidence": "medium",
+      "summary": "Brain fog during porn abstinence is not a clinical diagnosis but a well-documented subjective experience with a plausible neurobiological mechanism."
     }
   ],
-  "links": [
+  "edges": [
     {
-      "source": "Euclidean_Thinking",
-      "target": "The 5th Postulate of Avoidance"
+      "from": "exercise",
+      "to": "executive_function",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "Thinking_in_Bets",
-      "target": "Asymmetric Micro-Bets"
+      "from": "exercise",
+      "to": "neuroplasticity",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "Probabilistic_Thinking",
-      "target": "The Abstinence-Action Convergence"
+      "from": "exercise",
+      "to": "brain_fog",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "Warp-Speed_Execution",
-      "target": "WIP Induced Paralysis"
+      "from": "exercise",
+      "to": "mental_fatigue",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "WIP Induced Paralysis",
-      "target": "Warp-Speed Execution"
+      "from": "exercise",
+      "to": "addiction_recovery",
+      "strength": "moderate",
+      "type": "evidence"
     },
     {
-      "source": "WIP Induced Paralysis",
-      "target": "Asymmetric Micro-Bets"
+      "from": "exercise",
+      "to": "dopamine_recovery",
+      "strength": "moderate",
+      "type": "evidence"
     },
     {
-      "source": "The 5th Postulate of Avoidance",
-      "target": "Euclidean Thinking"
+      "from": "exercise",
+      "to": "mood",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "The 5th Postulate of Avoidance",
-      "target": "WIP Induced Paralysis"
+      "from": "sleep",
+      "to": "brain_fog",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "The 5th Postulate of Avoidance",
-      "target": "The Abstinence-Action Convergence"
+      "from": "sleep",
+      "to": "executive_function",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "The Abstinence-Action Convergence",
-      "target": "Probabilistic Thinking"
+      "from": "sleep",
+      "to": "attention",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "The Abstinence-Action Convergence",
-      "target": "The 5th Postulate of Avoidance"
+      "from": "sleep",
+      "to": "memory",
+      "strength": "moderate",
+      "type": "evidence"
     },
     {
-      "source": "Asymmetric Micro-Bets",
-      "target": "Thinking in Bets"
+      "from": "mindfulness",
+      "to": "attention",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "source": "Asymmetric Micro-Bets",
-      "target": "WIP Induced Paralysis"
-    }
-  ],
-  "syntheses": [
-    {
-      "title": "WIP Induced Paralysis",
-      "model": "Warp-Speed Execution",
-      "problem": "Little's Law dictates that Throughput = WIP / Cycle Time. \nCurrently, WIP is extraordinarily high (19 active, emotionally heavy loops like \"low interest rate banker\", \"submit tax paperwork\", \"book NYC hotel\"). \nBecause these are processed concurrently in the mind, the Cycle Time approaches infinity. Throughput is exactly 0.",
-      "solution": "**Ruthless Sequencing (Amdahl's Law applied to Life).**\nYou cannot parallel-process your life right now. You must sequence it.\n1. **Freeze 4 out of 5 Projects.** Put the Trips and Housing on complete pause. \n2. **WIP Limit = 1.** The *only* active project is \"Taxes\" or \"Maintenance\". The *only* active task is the immediate next physical step.\n3. **The Cleaver.** Move all non-active tasks into a \"Frozen\" folder. If you don't see them, your brain stops allocating RAM to them.\n\n**Links:**\n- [[Asymmetric Micro-Bets]]",
-      "raw": "# WIP Induced Paralysis\n\n**STEM Model:** [[Warp-Speed Execution]] (Little's Law)\n**Data Source:** Outliner Tasks (19 active tasks spanning Housing, Taxes, Maintenance, NYC/Niagara Trip, Parents Trip).\n\n## The Bottleneck\nLittle's Law dictates that Throughput = WIP / Cycle Time. \nCurrently, WIP is extraordinarily high (19 active, emotionally heavy loops like \"low interest rate banker\", \"submit tax paperwork\", \"book NYC hotel\"). \nBecause these are processed concurrently in the mind, the Cycle Time approaches infinity. Throughput is exactly 0.\n\n## The Symptoms\n- The 37-day execution drought.\n- The feeling of \"heavy\" resistance to 45-second tasks (e.g., calling the DMV or Yesmytaxes).\n- The brain is allocating RAM to keeping 19 open loops alive, leaving 0 RAM for execution.\n\n## Novel Solution\n**Ruthless Sequencing (Amdahl's Law applied to Life).**\nYou cannot parallel-process your life right now. You must sequence it.\n1. **Freeze 4 out of 5 Projects.** Put the Trips and Housing on complete pause. \n2. **WIP Limit = 1.** The *only* active project is \"Taxes\" or \"Maintenance\". The *only* active task is the immediate next physical step.\n3. **The Cleaver.** Move all non-active tasks into a \"Frozen\" folder. If you don't see them, your brain stops allocating RAM to them.\n\n**Links:**\n- [[Asymmetric Micro-Bets]]\n"
+      "from": "mindfulness",
+      "to": "executive_function",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "title": "The 5th Postulate of Avoidance",
-      "model": "Euclidean Thinking",
-      "problem": "The current operating system is built on a hidden, unquestioned assumption (the 5th Postulate): **\"I must fix my brain, perfect my systems, and map the optimal path BEFORE I can take physical action.\"**\n\nThis manifests in the Outliner as endless \"architecture\" phases and zero task completions over 30+ days. The system treats *planning* as a substitute for *doing*.",
-      "solution": "**The Execution-Only Sandbox.**\n1. **Ban all system modifications.** No new Outliner tags, no new Notion databases, no new dashboard widgets.\n2. **The 2-Minute Physical Rule.** If an action takes less than 2 minutes (e.g., dialing \"yesmytaxes\", or putting on shoes), it must be done before any planning is allowed.\n3. Shatter the postulate: Prove the brain works *by using it on the world*, not by analyzing it.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Abstinence-Action Convergence]]",
-      "raw": "# The 5th Postulate of Avoidance\n\n**STEM Model:** [[Euclidean Thinking]]\n**Data Source:** Outliner Notes (\"The architecture freeze didn't hold. More braindumps, more planning, zero execution.\")\n\n## The False Axiom\nThe current operating system is built on a hidden, unquestioned assumption (the 5th Postulate): **\"I must fix my brain, perfect my systems, and map the optimal path BEFORE I can take physical action.\"**\n\nThis manifests in the Outliner as endless \"architecture\" phases and zero task completions over 30+ days. The system treats *planning* as a substitute for *doing*.\n\n## The Reframe\nAction is not the *result* of a fixed brain; action is the *mechanism* that fixes the brain. \nThe neuroplasticity window (Days 14-21 of abstinence + Vyvanse) requires physical, real-world rewards to rewire the D2 receptors. Planning does not trigger this reward circuit effectively because the stakes aren't real.\n\n## Novel Solution\n**The Execution-Only Sandbox.**\n1. **Ban all system modifications.** No new Outliner tags, no new Notion databases, no new dashboard widgets.\n2. **The 2-Minute Physical Rule.** If an action takes less than 2 minutes (e.g., dialing \"yesmytaxes\", or putting on shoes), it must be done before any planning is allowed.\n3. Shatter the postulate: Prove the brain works *by using it on the world*, not by analyzing it.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Abstinence-Action Convergence]]\n"
+      "from": "mindfulness",
+      "to": "stress",
+      "strength": "strong",
+      "type": "evidence"
     },
     {
-      "title": "The Abstinence-Action Convergence",
-      "model": "Probabilistic Thinking",
-      "problem": "If the upregulating D2 receptors are not fed with the dopamine of *real-world task completion*, the brain will seek its old, high-intensity artificial rewards. The abstinence streak will break because the system is starved of healthy feedback loops.",
-      "solution": "**The Feedback Loop Hijack.**\nYou need 100% success-probability actions to feed the new receptors.\n1. Pick tasks with a base rate of success near 100% when attempted. (e.g., \"Clean bathrooms\", \"Call C Putnam\").\n2. Execute them specifically to generate the dopamine hit, explicitly acknowledging the chemical release.\n3. Stack these micro-wins. Do not attempt the \"low interest rate banker\" task until the base rate of daily task completion moves from 0% to >80%.\n\n**Links:**\n- [[The 5th Postulate of Avoidance]]",
-      "raw": "# The Abstinence-Action Convergence\n\n**STEM Model:** [[Probabilistic Thinking]]\n**Data Source:** Outliner Note (\"Day 18 of abstinence. Day 28 of Vyvanse. D2 dopamine receptors are actively upregulating.\")\n\n## The Base Rate\nThe historical base rate for completing complex, multi-step projects (like Housing or complex travel) during an execution drought is ~0%. \nHowever, the biological substrate is currently shifting. Abstinence combined with steady-state medication is creating a high-probability window for neuroplasticity. \n\n## The Danger of Missing the Window\nIf the upregulating D2 receptors are not fed with the dopamine of *real-world task completion*, the brain will seek its old, high-intensity artificial rewards. The abstinence streak will break because the system is starved of healthy feedback loops.\n\n## Novel Solution\n**The Feedback Loop Hijack.**\nYou need 100% success-probability actions to feed the new receptors.\n1. Pick tasks with a base rate of success near 100% when attempted. (e.g., \"Clean bathrooms\", \"Call C Putnam\").\n2. Execute them specifically to generate the dopamine hit, explicitly acknowledging the chemical release.\n3. Stack these micro-wins. Do not attempt the \"low interest rate banker\" task until the base rate of daily task completion moves from 0% to >80%.\n\n**Links:**\n- [[The 5th Postulate of Avoidance]]\n"
+      "from": "mindfulness",
+      "to": "cravings",
+      "strength": "moderate",
+      "type": "evidence"
     },
     {
-      "title": "Asymmetric Micro-Bets",
-      "model": "Thinking in Bets",
-      "problem": "Right now, attempting a task feels like an asymmetric bet *against* yourself: \"If I try to do my taxes and fail or get overwhelmed, I lose all my energy and feel worse.\" The downside feels massive.",
-      "solution": "**The 2-Minute Timebox Hedge.**\n1. **The Bet:** I wager 2 minutes of my time and comfort to dial the DMV or Yesmytaxes. \n2. **The Hedge:** I set a timer for exactly 120 seconds. If I am overwhelmed when it rings, I am legally allowed to hang up and walk away. Downside is strictly capped.\n3. **The Upside:** 90% of the friction is the activation energy. Once the phone is ringing, the task will likely be completed.\n\n**Execution:**\nApply this today to task `id: 0f5276b2` (\"talk to yesmytaxes\"). \n\n**Links:**\n- [[WIP Induced Paralysis]]",
-      "raw": "# Asymmetric Micro-Bets\n\n**STEM Model:** [[Thinking in Bets]]\n**Data Source:** Outliner Tasks & Execution Drought.\n\n## The Current Bet Frame\nRight now, attempting a task feels like an asymmetric bet *against* yourself: \"If I try to do my taxes and fail or get overwhelmed, I lose all my energy and feel worse.\" The downside feels massive.\n\n## The Reframe (10-10-10 Lens)\nIn 10 days, will it matter that you felt uncomfortable for 5 minutes calling a tax accountant? No. Will it matter if the taxes are still unfiled? Yes.\nThe actual asymmetric bet is taking *micro-actions* where the downside is capped at 2 minutes of discomfort, but the upside is breaking a 37-day psychological block.\n\n## Novel Solution\n**The 2-Minute Timebox Hedge.**\n1. **The Bet:** I wager 2 minutes of my time and comfort to dial the DMV or Yesmytaxes. \n2. **The Hedge:** I set a timer for exactly 120 seconds. If I am overwhelmed when it rings, I am legally allowed to hang up and walk away. Downside is strictly capped.\n3. **The Upside:** 90% of the friction is the activation energy. Once the phone is ringing, the task will likely be completed.\n\n**Execution:**\nApply this today to task `id: 0f5276b2` (\"talk to yesmytaxes\"). \n\n**Links:**\n- [[WIP Induced Paralysis]]\n"
+      "from": "mindfulness",
+      "to": "self_control",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "memory",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "attention",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "processing_speed",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "mental_fatigue",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "creatine",
+      "to": "brain_fog",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "nac",
+      "to": "cravings",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "nac",
+      "to": "addiction_recovery",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "nac",
+      "to": "relapse",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3",
+      "to": "attention",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3",
+      "to": "memory",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3",
+      "to": "brain_fog",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "resistance",
+      "to": "neuroplasticity",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "resistance",
+      "to": "executive_function",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "iron",
+      "to": "mental_fatigue",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "iron",
+      "to": "memory",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "rhodiola",
+      "to": "physical_fatigue",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "rhodiola",
+      "to": "stress",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "rhodiola",
+      "to": "mental_fatigue",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "curcumin",
+      "to": "memory",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "curcumin",
+      "to": "brain_fog",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "cold_exposure",
+      "to": "dopamine_recovery",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3_addiction",
+      "to": "addiction_recovery",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "omega3_addiction",
+      "to": "brain_fog",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "tyrosine_mg_zn",
+      "to": "brain_fog",
+      "strength": "none",
+      "type": "evidence"
+    },
+    {
+      "from": "tyrosine_mg_zn",
+      "to": "dopamine_recovery",
+      "strength": "none",
+      "type": "evidence"
+    },
+    {
+      "from": "taurine",
+      "to": "brain_fog",
+      "strength": "none",
+      "type": "evidence"
+    },
+    {
+      "from": "beetroot",
+      "to": "brain_fog",
+      "strength": "none",
+      "type": "evidence"
+    },
+    {
+      "from": "habit_formation",
+      "to": "self_control",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "habit_formation",
+      "to": "addiction_recovery",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "habit_formation",
+      "to": "relapse",
+      "strength": "strong",
+      "type": "evidence"
+    },
+    {
+      "from": "willpower_training",
+      "to": "self_control",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
+      "from": "self_compassion",
+      "to": "relapse",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "self_compassion",
+      "to": "addiction_recovery",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "brain_fog",
+      "to": "willpower_training",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "brain_fog",
+      "to": "habit_formation",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "dopamine_recovery",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "dopamine_recovery",
+      "to": "mindfulness",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "dopamine_recovery",
+      "to": "brain_fog",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "exercise",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "exercise",
+      "to": "mindfulness",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "exercise",
+      "to": "brain_fog",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "habit_formation",
+      "to": "willpower_training",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "mindfulness",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "mindfulness",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "nac",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "nac",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "creatine",
+      "to": "nac",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "creatine",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "creatine",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "willpower_training",
+      "to": "habit_formation",
+      "strength": "crosslink",
+      "type": "crosslink"
     }
   ]
 }

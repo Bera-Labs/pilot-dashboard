@@ -73,6 +73,12 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
                     self._send_json(json.load(f))
             except FileNotFoundError:
                 self._send_json({"error": "wiki-graph.json not found"}, 404)
+        elif path == '/api/augmented-graph':
+            try:
+                with open(DATA_DIR / "augmented-graph.json") as f:
+                    self._send_json(json.load(f))
+            except FileNotFoundError:
+                self._send_json({"error": "augmented-graph.json not found"}, 404)
         elif path.startswith('/api/'):
             self._send_json({"error": "unknown endpoint"}, 404)
         else:

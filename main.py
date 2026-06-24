@@ -58,6 +58,13 @@ def api_wiki_graph():
     except FileNotFoundError:
         return JSONResponse({"error": "wiki-graph.json not found"}, status_code=404)
 
+@app.get("/api/augmented-graph")
+def api_augmented_graph():
+    try:
+        return json.loads((DATA_DIR / "augmented-graph.json").read_text())
+    except FileNotFoundError:
+        return JSONResponse({"error": "augmented-graph.json not found"}, status_code=404)
+
 # ── POST (Hermes/cron only) ────────────────
 @app.post("/api/log-decision")
 async def log_decision(req: Request):
