@@ -1,0 +1,136 @@
+{
+  "nodes": [
+    {
+      "id": "Euclidean_Thinking",
+      "group": "concept"
+    },
+    {
+      "id": "Thinking_in_Bets",
+      "group": "concept"
+    },
+    {
+      "id": "Probabilistic_Thinking",
+      "group": "concept"
+    },
+    {
+      "id": "Warp-Speed_Execution",
+      "group": "concept"
+    },
+    {
+      "id": "WIP Induced Paralysis",
+      "group": "connection"
+    },
+    {
+      "id": "The 5th Postulate of Avoidance",
+      "group": "connection"
+    },
+    {
+      "id": "The Abstinence-Action Convergence",
+      "group": "connection"
+    },
+    {
+      "id": "Asymmetric Micro-Bets",
+      "group": "connection"
+    },
+    {
+      "id": "Warp-Speed Execution",
+      "group": "unknown"
+    },
+    {
+      "id": "Euclidean Thinking",
+      "group": "unknown"
+    },
+    {
+      "id": "Probabilistic Thinking",
+      "group": "unknown"
+    },
+    {
+      "id": "Thinking in Bets",
+      "group": "unknown"
+    }
+  ],
+  "links": [
+    {
+      "source": "Euclidean_Thinking",
+      "target": "The 5th Postulate of Avoidance"
+    },
+    {
+      "source": "Thinking_in_Bets",
+      "target": "Asymmetric Micro-Bets"
+    },
+    {
+      "source": "Probabilistic_Thinking",
+      "target": "The Abstinence-Action Convergence"
+    },
+    {
+      "source": "Warp-Speed_Execution",
+      "target": "WIP Induced Paralysis"
+    },
+    {
+      "source": "WIP Induced Paralysis",
+      "target": "Warp-Speed Execution"
+    },
+    {
+      "source": "WIP Induced Paralysis",
+      "target": "Asymmetric Micro-Bets"
+    },
+    {
+      "source": "The 5th Postulate of Avoidance",
+      "target": "Euclidean Thinking"
+    },
+    {
+      "source": "The 5th Postulate of Avoidance",
+      "target": "WIP Induced Paralysis"
+    },
+    {
+      "source": "The 5th Postulate of Avoidance",
+      "target": "The Abstinence-Action Convergence"
+    },
+    {
+      "source": "The Abstinence-Action Convergence",
+      "target": "Probabilistic Thinking"
+    },
+    {
+      "source": "The Abstinence-Action Convergence",
+      "target": "The 5th Postulate of Avoidance"
+    },
+    {
+      "source": "Asymmetric Micro-Bets",
+      "target": "Thinking in Bets"
+    },
+    {
+      "source": "Asymmetric Micro-Bets",
+      "target": "WIP Induced Paralysis"
+    }
+  ],
+  "syntheses": [
+    {
+      "title": "WIP Induced Paralysis",
+      "model": "Warp-Speed Execution",
+      "problem": "Little's Law dictates that Throughput = WIP / Cycle Time. \nCurrently, WIP is extraordinarily high (19 active, emotionally heavy loops like \"low interest rate banker\", \"submit tax paperwork\", \"book NYC hotel\"). \nBecause these are processed concurrently in the mind, the Cycle Time approaches infinity. Throughput is exactly 0.",
+      "solution": "**Ruthless Sequencing (Amdahl's Law applied to Life).**\nYou cannot parallel-process your life right now. You must sequence it.\n1. **Freeze 4 out of 5 Projects.** Put the Trips and Housing on complete pause. \n2. **WIP Limit = 1.** The *only* active project is \"Taxes\" or \"Maintenance\". The *only* active task is the immediate next physical step.\n3. **The Cleaver.** Move all non-active tasks into a \"Frozen\" folder. If you don't see them, your brain stops allocating RAM to them.\n\n**Links:**\n- [[Asymmetric Micro-Bets]]",
+      "raw": "# WIP Induced Paralysis\n\n**STEM Model:** [[Warp-Speed Execution]] (Little's Law)\n**Data Source:** Outliner Tasks (19 active tasks spanning Housing, Taxes, Maintenance, NYC/Niagara Trip, Parents Trip).\n\n## The Bottleneck\nLittle's Law dictates that Throughput = WIP / Cycle Time. \nCurrently, WIP is extraordinarily high (19 active, emotionally heavy loops like \"low interest rate banker\", \"submit tax paperwork\", \"book NYC hotel\"). \nBecause these are processed concurrently in the mind, the Cycle Time approaches infinity. Throughput is exactly 0.\n\n## The Symptoms\n- The 37-day execution drought.\n- The feeling of \"heavy\" resistance to 45-second tasks (e.g., calling the DMV or Yesmytaxes).\n- The brain is allocating RAM to keeping 19 open loops alive, leaving 0 RAM for execution.\n\n## Novel Solution\n**Ruthless Sequencing (Amdahl's Law applied to Life).**\nYou cannot parallel-process your life right now. You must sequence it.\n1. **Freeze 4 out of 5 Projects.** Put the Trips and Housing on complete pause. \n2. **WIP Limit = 1.** The *only* active project is \"Taxes\" or \"Maintenance\". The *only* active task is the immediate next physical step.\n3. **The Cleaver.** Move all non-active tasks into a \"Frozen\" folder. If you don't see them, your brain stops allocating RAM to them.\n\n**Links:**\n- [[Asymmetric Micro-Bets]]\n"
+    },
+    {
+      "title": "The 5th Postulate of Avoidance",
+      "model": "Euclidean Thinking",
+      "problem": "The current operating system is built on a hidden, unquestioned assumption (the 5th Postulate): **\"I must fix my brain, perfect my systems, and map the optimal path BEFORE I can take physical action.\"**\n\nThis manifests in the Outliner as endless \"architecture\" phases and zero task completions over 30+ days. The system treats *planning* as a substitute for *doing*.",
+      "solution": "**The Execution-Only Sandbox.**\n1. **Ban all system modifications.** No new Outliner tags, no new Notion databases, no new dashboard widgets.\n2. **The 2-Minute Physical Rule.** If an action takes less than 2 minutes (e.g., dialing \"yesmytaxes\", or putting on shoes), it must be done before any planning is allowed.\n3. Shatter the postulate: Prove the brain works *by using it on the world*, not by analyzing it.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Abstinence-Action Convergence]]",
+      "raw": "# The 5th Postulate of Avoidance\n\n**STEM Model:** [[Euclidean Thinking]]\n**Data Source:** Outliner Notes (\"The architecture freeze didn't hold. More braindumps, more planning, zero execution.\")\n\n## The False Axiom\nThe current operating system is built on a hidden, unquestioned assumption (the 5th Postulate): **\"I must fix my brain, perfect my systems, and map the optimal path BEFORE I can take physical action.\"**\n\nThis manifests in the Outliner as endless \"architecture\" phases and zero task completions over 30+ days. The system treats *planning* as a substitute for *doing*.\n\n## The Reframe\nAction is not the *result* of a fixed brain; action is the *mechanism* that fixes the brain. \nThe neuroplasticity window (Days 14-21 of abstinence + Vyvanse) requires physical, real-world rewards to rewire the D2 receptors. Planning does not trigger this reward circuit effectively because the stakes aren't real.\n\n## Novel Solution\n**The Execution-Only Sandbox.**\n1. **Ban all system modifications.** No new Outliner tags, no new Notion databases, no new dashboard widgets.\n2. **The 2-Minute Physical Rule.** If an action takes less than 2 minutes (e.g., dialing \"yesmytaxes\", or putting on shoes), it must be done before any planning is allowed.\n3. Shatter the postulate: Prove the brain works *by using it on the world*, not by analyzing it.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Abstinence-Action Convergence]]\n"
+    },
+    {
+      "title": "The Abstinence-Action Convergence",
+      "model": "Probabilistic Thinking",
+      "problem": "If the upregulating D2 receptors are not fed with the dopamine of *real-world task completion*, the brain will seek its old, high-intensity artificial rewards. The abstinence streak will break because the system is starved of healthy feedback loops.",
+      "solution": "**The Feedback Loop Hijack.**\nYou need 100% success-probability actions to feed the new receptors.\n1. Pick tasks with a base rate of success near 100% when attempted. (e.g., \"Clean bathrooms\", \"Call C Putnam\").\n2. Execute them specifically to generate the dopamine hit, explicitly acknowledging the chemical release.\n3. Stack these micro-wins. Do not attempt the \"low interest rate banker\" task until the base rate of daily task completion moves from 0% to >80%.\n\n**Links:**\n- [[The 5th Postulate of Avoidance]]",
+      "raw": "# The Abstinence-Action Convergence\n\n**STEM Model:** [[Probabilistic Thinking]]\n**Data Source:** Outliner Note (\"Day 18 of abstinence. Day 28 of Vyvanse. D2 dopamine receptors are actively upregulating.\")\n\n## The Base Rate\nThe historical base rate for completing complex, multi-step projects (like Housing or complex travel) during an execution drought is ~0%. \nHowever, the biological substrate is currently shifting. Abstinence combined with steady-state medication is creating a high-probability window for neuroplasticity. \n\n## The Danger of Missing the Window\nIf the upregulating D2 receptors are not fed with the dopamine of *real-world task completion*, the brain will seek its old, high-intensity artificial rewards. The abstinence streak will break because the system is starved of healthy feedback loops.\n\n## Novel Solution\n**The Feedback Loop Hijack.**\nYou need 100% success-probability actions to feed the new receptors.\n1. Pick tasks with a base rate of success near 100% when attempted. (e.g., \"Clean bathrooms\", \"Call C Putnam\").\n2. Execute them specifically to generate the dopamine hit, explicitly acknowledging the chemical release.\n3. Stack these micro-wins. Do not attempt the \"low interest rate banker\" task until the base rate of daily task completion moves from 0% to >80%.\n\n**Links:**\n- [[The 5th Postulate of Avoidance]]\n"
+    },
+    {
+      "title": "Asymmetric Micro-Bets",
+      "model": "Thinking in Bets",
+      "problem": "Right now, attempting a task feels like an asymmetric bet *against* yourself: \"If I try to do my taxes and fail or get overwhelmed, I lose all my energy and feel worse.\" The downside feels massive.",
+      "solution": "**The 2-Minute Timebox Hedge.**\n1. **The Bet:** I wager 2 minutes of my time and comfort to dial the DMV or Yesmytaxes. \n2. **The Hedge:** I set a timer for exactly 120 seconds. If I am overwhelmed when it rings, I am legally allowed to hang up and walk away. Downside is strictly capped.\n3. **The Upside:** 90% of the friction is the activation energy. Once the phone is ringing, the task will likely be completed.\n\n**Execution:**\nApply this today to task `id: 0f5276b2` (\"talk to yesmytaxes\"). \n\n**Links:**\n- [[WIP Induced Paralysis]]",
+      "raw": "# Asymmetric Micro-Bets\n\n**STEM Model:** [[Thinking in Bets]]\n**Data Source:** Outliner Tasks & Execution Drought.\n\n## The Current Bet Frame\nRight now, attempting a task feels like an asymmetric bet *against* yourself: \"If I try to do my taxes and fail or get overwhelmed, I lose all my energy and feel worse.\" The downside feels massive.\n\n## The Reframe (10-10-10 Lens)\nIn 10 days, will it matter that you felt uncomfortable for 5 minutes calling a tax accountant? No. Will it matter if the taxes are still unfiled? Yes.\nThe actual asymmetric bet is taking *micro-actions* where the downside is capped at 2 minutes of discomfort, but the upside is breaking a 37-day psychological block.\n\n## Novel Solution\n**The 2-Minute Timebox Hedge.**\n1. **The Bet:** I wager 2 minutes of my time and comfort to dial the DMV or Yesmytaxes. \n2. **The Hedge:** I set a timer for exactly 120 seconds. If I am overwhelmed when it rings, I am legally allowed to hang up and walk away. Downside is strictly capped.\n3. **The Upside:** 90% of the friction is the activation energy. Once the phone is ringing, the task will likely be completed.\n\n**Execution:**\nApply this today to task `id: 0f5276b2` (\"talk to yesmytaxes\"). \n\n**Links:**\n- [[WIP Induced Paralysis]]\n"
+    }
+  ]
+}
