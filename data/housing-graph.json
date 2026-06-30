@@ -1,0 +1,1127 @@
+{
+  "nodes": [
+    {
+      "id": "brandon-schrock-construction",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "medium",
+      "sources": [
+        "raw/articles/nwa-builder-research-2026-06.md"
+      ]
+    },
+    {
+      "id": "concord-pea-ridge",
+      "group": "community",
+      "stem_models": [
+        "thinking-in-bets"
+      ],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "1150-garrett-lane",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "crye-leike",
+        "tomsrealestatestore",
+        "mcgrawrealtors",
+        "kayvankampen",
+        "venturegroup",
+        "simplicityres"
+      ]
+    },
+    {
+      "id": "schuber-mitchell-floorplans",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "medium",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md",
+        "raw/articles/quick-move-in-master-list.md"
+      ]
+    },
+    {
+      "id": "lexington-pea-ridge",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "yorktown",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "featherston-west",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "magnolia-landing",
+      "group": "community",
+      "stem_models": [
+        "probabilistic-thinking",
+        "thinking-in-bets"
+      ],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "johnson-builders",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "low",
+      "sources": [
+        "raw/articles/nwa-builder-research-2026-06.md"
+      ]
+    },
+    {
+      "id": "schuber-mitchell-homes",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "schubermitchell.com",
+        "bbb.org",
+        "reddit",
+        "facebook",
+        "linkedin",
+        "zoominfo",
+        "wanderboat",
+        "yelp",
+        "zillow"
+      ]
+    },
+    {
+      "id": "woodcrest-walk",
+      "group": "community",
+      "stem_models": [
+        "thinking-in-bets",
+        "warp-speed-execution"
+      ],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "booth-building-design",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "medium",
+      "sources": [
+        "raw/articles/nwa-builder-research-2026-06.md"
+      ]
+    },
+    {
+      "id": "craines-construction",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "medium",
+      "sources": [
+        "raw/articles/nwa-builder-research-2026-06.md"
+      ]
+    },
+    {
+      "id": "the-pines",
+      "group": "community",
+      "stem_models": [
+        "euclidean-thinking",
+        "thinking-in-bets"
+      ],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "celtic-custom-homes",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/nwa-builder-research-2026-06.md"
+      ]
+    },
+    {
+      "id": "riverwood-homes",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "riverwoodhomesnwa.com",
+        "birdeye.com",
+        "houzz.com",
+        "reddit",
+        "guildquality.com",
+        "ubh.com",
+        "facebook"
+      ]
+    },
+    {
+      "id": "buffington-homes",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "buffingtonhomesar.com",
+        "guildquality.com",
+        "bbb.org",
+        "reddit",
+        "armoneyandpolitics.com",
+        "globenewswire.com",
+        "investors.tollbrothers.com",
+        "realtor.com",
+        "yahoo finance",
+        "facebook",
+        "instagram"
+      ]
+    },
+    {
+      "id": "5903-sw-bear-creek",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "zillow",
+        "redfin",
+        "realtor.com",
+        "mcgrawrealtors",
+        "brittenumconstructioncompanyinc.com"
+      ]
+    },
+    {
+      "id": "tuscany-centerton",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "brittenum-residential",
+      "group": "community",
+      "stem_models": [],
+      "confidence": "medium",
+      "sources": [
+        "web/brittenum-residential",
+        "web/bbb",
+        "reddit/r-bentonville",
+        "yelp",
+        "facebook",
+        "zillow"
+      ]
+    },
+    {
+      "id": "nwa-builder-comparison",
+      "group": "comparison",
+      "stem_models": [],
+      "confidence": "medium",
+      "sources": [
+        "raw/articles/nwa-builder-research-2026-06.md"
+      ]
+    },
+    {
+      "id": "schuber-mitchell-community-comparison",
+      "group": "comparison",
+      "stem_models": [],
+      "confidence": "high",
+      "sources": [
+        "raw/articles/schuber-mitchell-website-scrape.md"
+      ]
+    },
+    {
+      "id": "school-district-comparison",
+      "group": "comparison",
+      "stem_models": [
+        "probabilistic-thinking",
+        "thinking-in-bets"
+      ],
+      "confidence": "high",
+      "sources": [
+        "greatschools.org",
+        "niche.com",
+        "homes.com",
+        "trulia.com"
+      ]
+    },
+    {
+      "id": "magnolia-asymmetric-school-value",
+      "group": "connection",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "woodcrest-infrastructure-asymmetric-bet",
+      "group": "connection",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "floorplan-arbitrage-same-house-different-price",
+      "group": "connection",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "pines-prestige-premium-paradox",
+      "group": "connection",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "pea-ridge-school-cost-tradeoff",
+      "group": "connection",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "nwa-builder-research-2026-06",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "quick-move-in-master-list",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "property-scoring-system",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "prospects",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "community-lot-map-data",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "toll-brothers-acquisition",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "861-lakeview-dr",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "osage-hills",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "bentonville-builders-comparison",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "home-inspection-checklist",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "Probabilistic Thinking",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "Thinking in Bets",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    },
+    {
+      "id": "Euclidean Thinking",
+      "group": "unknown",
+      "stem_models": [],
+      "confidence": "",
+      "sources": []
+    }
+  ],
+  "links": [
+    {
+      "source": "brandon-schrock-construction",
+      "target": "celtic-custom-homes"
+    },
+    {
+      "source": "brandon-schrock-construction",
+      "target": "booth-building-design"
+    },
+    {
+      "source": "brandon-schrock-construction",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "brandon-schrock-construction",
+      "target": "nwa-builder-research-2026-06"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "lexington-pea-ridge"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "the-pines"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "concord-pea-ridge",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "schuber-mitchell-community-comparison"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "5903-sw-bear-creek"
+    },
+    {
+      "source": "1150-garrett-lane",
+      "target": "prospects"
+    },
+    {
+      "source": "schuber-mitchell-floorplans",
+      "target": "community-lot-map-data"
+    },
+    {
+      "source": "schuber-mitchell-floorplans",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "schuber-mitchell-floorplans",
+      "target": "schuber-mitchell-community-comparison"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "yorktown"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "yorktown"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "lexington-pea-ridge",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "yorktown",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "yorktown",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "yorktown",
+      "target": "lexington-pea-ridge"
+    },
+    {
+      "source": "yorktown",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "yorktown",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "yorktown",
+      "target": "lexington-pea-ridge"
+    },
+    {
+      "source": "yorktown",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "yorktown",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "yorktown",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "yorktown",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "yorktown",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "yorktown",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "featherston-west",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "featherston-west",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "featherston-west",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "featherston-west",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "featherston-west",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "the-pines"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "the-pines"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "community-lot-map-data"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "magnolia-landing",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "johnson-builders",
+      "target": "craines-construction"
+    },
+    {
+      "source": "johnson-builders",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "johnson-builders",
+      "target": "nwa-builder-research-2026-06"
+    },
+    {
+      "source": "schuber-mitchell-homes",
+      "target": "schuber-mitchell-community-comparison"
+    },
+    {
+      "source": "schuber-mitchell-homes",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "schuber-mitchell-homes",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "schuber-mitchell-homes",
+      "target": "community-lot-map-data"
+    },
+    {
+      "source": "schuber-mitchell-homes",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "schuber-mitchell-homes",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "schuber-mitchell-homes",
+      "target": "riverwood-homes"
+    },
+    {
+      "source": "schuber-mitchell-homes",
+      "target": "brittenum-residential"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "the-pines"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "quick-move-in-master-list"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "the-pines"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "community-lot-map-data"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "woodcrest-walk",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "booth-building-design",
+      "target": "celtic-custom-homes"
+    },
+    {
+      "source": "booth-building-design",
+      "target": "brandon-schrock-construction"
+    },
+    {
+      "source": "booth-building-design",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "booth-building-design",
+      "target": "nwa-builder-research-2026-06"
+    },
+    {
+      "source": "craines-construction",
+      "target": "johnson-builders"
+    },
+    {
+      "source": "craines-construction",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "craines-construction",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "craines-construction",
+      "target": "nwa-builder-research-2026-06"
+    },
+    {
+      "source": "the-pines",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "the-pines",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "the-pines",
+      "target": "community-lot-map-data"
+    },
+    {
+      "source": "the-pines",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "the-pines",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "the-pines",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "celtic-custom-homes",
+      "target": "booth-building-design"
+    },
+    {
+      "source": "celtic-custom-homes",
+      "target": "buffington-homes"
+    },
+    {
+      "source": "celtic-custom-homes",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "celtic-custom-homes",
+      "target": "nwa-builder-research-2026-06"
+    },
+    {
+      "source": "riverwood-homes",
+      "target": "buffington-homes"
+    },
+    {
+      "source": "riverwood-homes",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "riverwood-homes",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "riverwood-homes",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "buffington-homes",
+      "target": "riverwood-homes"
+    },
+    {
+      "source": "buffington-homes",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "buffington-homes",
+      "target": "brittenum-residential"
+    },
+    {
+      "source": "buffington-homes",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "buffington-homes",
+      "target": "toll-brothers-acquisition"
+    },
+    {
+      "source": "5903-sw-bear-creek",
+      "target": "brittenum-residential"
+    },
+    {
+      "source": "5903-sw-bear-creek",
+      "target": "861-lakeview-dr"
+    },
+    {
+      "source": "5903-sw-bear-creek",
+      "target": "brittenum-residential"
+    },
+    {
+      "source": "5903-sw-bear-creek",
+      "target": "osage-hills"
+    },
+    {
+      "source": "5903-sw-bear-creek",
+      "target": "property-scoring-system"
+    },
+    {
+      "source": "5903-sw-bear-creek",
+      "target": "nwa-builder-comparison"
+    },
+    {
+      "source": "tuscany-centerton",
+      "target": "schuber-mitchell-homes"
+    },
+    {
+      "source": "tuscany-centerton",
+      "target": "schuber-mitchell-community-comparison"
+    },
+    {
+      "source": "tuscany-centerton",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "brittenum-residential",
+      "target": "bentonville-builders-comparison"
+    },
+    {
+      "source": "brittenum-residential",
+      "target": "home-inspection-checklist"
+    },
+    {
+      "source": "nwa-builder-comparison",
+      "target": "schuber-mitchell-community-comparison"
+    },
+    {
+      "source": "nwa-builder-comparison",
+      "target": "celtic-custom-homes"
+    },
+    {
+      "source": "nwa-builder-comparison",
+      "target": "craines-construction"
+    },
+    {
+      "source": "nwa-builder-comparison",
+      "target": "riverwood-homes"
+    },
+    {
+      "source": "nwa-builder-comparison",
+      "target": "nwa-builder-research-2026-06"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "the-pines"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "lexington-pea-ridge"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "yorktown"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "the-pines"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "lexington-pea-ridge"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "yorktown"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "featherston-west"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "tuscany-centerton"
+    },
+    {
+      "source": "schuber-mitchell-community-comparison",
+      "target": "community-lot-map-data"
+    },
+    {
+      "source": "school-district-comparison",
+      "target": "the-pines"
+    },
+    {
+      "source": "school-district-comparison",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "school-district-comparison",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "school-district-comparison",
+      "target": "featherston-west"
+    },
+    {
+      "source": "school-district-comparison",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "school-district-comparison",
+      "target": "lexington-pea-ridge"
+    },
+    {
+      "source": "school-district-comparison",
+      "target": "yorktown"
+    },
+    {
+      "source": "magnolia-asymmetric-school-value",
+      "target": "Probabilistic Thinking"
+    },
+    {
+      "source": "magnolia-asymmetric-school-value",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "magnolia-asymmetric-school-value",
+      "target": "the-pines"
+    },
+    {
+      "source": "magnolia-asymmetric-school-value",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "magnolia-asymmetric-school-value",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "woodcrest-infrastructure-asymmetric-bet",
+      "target": "Thinking in Bets"
+    },
+    {
+      "source": "woodcrest-infrastructure-asymmetric-bet",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "woodcrest-infrastructure-asymmetric-bet",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "woodcrest-infrastructure-asymmetric-bet",
+      "target": "the-pines"
+    },
+    {
+      "source": "floorplan-arbitrage-same-house-different-price",
+      "target": "Euclidean Thinking"
+    },
+    {
+      "source": "floorplan-arbitrage-same-house-different-price",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "floorplan-arbitrage-same-house-different-price",
+      "target": "woodcrest-walk"
+    },
+    {
+      "source": "floorplan-arbitrage-same-house-different-price",
+      "target": "the-pines"
+    },
+    {
+      "source": "floorplan-arbitrage-same-house-different-price",
+      "target": "schuber-mitchell-floorplans"
+    },
+    {
+      "source": "pines-prestige-premium-paradox",
+      "target": "Euclidean Thinking"
+    },
+    {
+      "source": "pines-prestige-premium-paradox",
+      "target": "the-pines"
+    },
+    {
+      "source": "pines-prestige-premium-paradox",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "pines-prestige-premium-paradox",
+      "target": "school-district-comparison"
+    },
+    {
+      "source": "pea-ridge-school-cost-tradeoff",
+      "target": "Thinking in Bets"
+    },
+    {
+      "source": "pea-ridge-school-cost-tradeoff",
+      "target": "concord-pea-ridge"
+    },
+    {
+      "source": "pea-ridge-school-cost-tradeoff",
+      "target": "magnolia-landing"
+    },
+    {
+      "source": "pea-ridge-school-cost-tradeoff",
+      "target": "school-district-comparison"
+    }
+  ],
+  "syntheses": [
+    {
+      "title": "magnolia-asymmetric-school-value",
+      "model": "Probabilistic Thinking",
+      "problem": "\"Bentonville address means better schools.\" In this specific case, the Centerton-addressed community feeds identical schools. The address premium is a perception tax, not a quality delta.",
+      "solution": "Buy Magnolia Landing at the discount, capture the same school quality, and use the $80K savings to buy down the rate or invest in the house. The market is mispricing school quality across Centerton vs Bentonville boundaries."
+    },
+    {
+      "title": "woodcrest-infrastructure-asymmetric-bet",
+      "model": "Thinking in Bets",
+      "problem": "Woodcrest Walk homes sit 0.3\u20130.4 miles from the planned $26M Centerton Community Center (indoor aquatics, recreation) and the new 178,000 sqft Walmart Supercenter breaking ground September 2026. The commercial hub hasn't materialized yet \u2014 prices haven't fully priced in the finished infrastructure premium.",
+      "solution": "- **Downside:** You pay ~$386K\u2013$435K for a home in a community already well-supported by Centerton infrastructure\n- **Upside:** By late 2027, when the aquatics center and Walmart are both operational, the Main St & Hwy 102 intersection becomes Centerton's primary hub, driving demand in the immediately adjacent neighborhoods\n- **Probability:** The Walmart is fully approved (groundbreaking Sep 2026). The community center is fully funded without debt and under active construction. These aren't speculative \u2014 they're committed projects"
+    },
+    {
+      "title": "floorplan-arbitrage-same-house-different-price",
+      "model": "Euclidean Thinking",
+      "problem": "The same floorplan costs roughly the same regardless of community.",
+      "solution": "Floorplan-arbitrage the build: pick the floorplan you want, then buy it in Magnolia Landing. You get the same house at $186/sqft instead of $202/sqft in Woodcrest or $197/sqft in The Pines \u2014 same builder, same schools, same city."
+    },
+    {
+      "title": "pines-prestige-premium-paradox",
+      "model": "Euclidean Thinking",
+      "problem": "A Bentonville address is unconditionally superior to a Centerton address for property value retention and school quality.",
+      "solution": "The Pines is optimal only if:\n1. Coler Mountain Bike Trail proximity (~10 min) is worth the premium\n2. Resale psychology of \"Bentonville\" on the listing outweighs the rate incentive gap\n3. You plan to sell/refi within 7 years (Flex Cash beats rate lock short-term)\n\nIf none of these apply, Magnolia Landing captures identical school quality at $73K less with a more valuable incentive structure."
+    },
+    {
+      "title": "pea-ridge-school-cost-tradeoff",
+      "model": "Thinking in Bets",
+      "problem": "Trading ~$30K\u2013$73K in purchase price for a demonstrably weaker school pipeline.",
+      "solution": "Pea Ridge is viable only if:\n1. Schools are not a factor (no kids, or private school planned)\n2. The $31K savings is reinvested in tutoring/enrichment to compensate\n3. You plan to move before high school\n\nOtherwise, the 4-point GS gap between BWHS (9/10) and PRHS (5/10) is the largest single delta in this entire housing analysis \u2014 and the most consequential for long-term value."
+    }
+  ]
+}

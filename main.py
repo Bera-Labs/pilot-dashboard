@@ -65,6 +65,13 @@ def api_augmented_graph():
     except FileNotFoundError:
         return JSONResponse({"error": "augmented-graph.json not found"}, status_code=404)
 
+@app.get("/api/housing-graph")
+def api_housing_graph():
+    try:
+        return json.loads((DATA_DIR / "housing-graph.json").read_text())
+    except FileNotFoundError:
+        return JSONResponse({"error": "housing-graph.json not found"}, status_code=404)
+
 # ── POST (Hermes/cron only) ────────────────
 @app.post("/api/log-decision")
 async def log_decision(req: Request):
