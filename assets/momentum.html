@@ -66,6 +66,31 @@
   @media (max-width: 768px) {
     .syntheses-grid { grid-template-columns: 1fr; }
   }
+
+  /* === HOUSING INSIGHTS === */
+  .housing-section { margin-top: 60px; border-top: 1px solid var(--border); padding-top: 40px; }
+  .housing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+  .housing-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 24px; border-left: 4px solid var(--accent);
+  }
+  .housing-card.model-probabilistic-thinking { border-left-color: var(--green); }
+  .housing-card.model-thinking-in-bets { border-left-color: var(--yellow); }
+  .housing-card.model-euclidean-thinking { border-left-color: var(--accent); }
+  .housing-card .hc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .housing-card .hc-stem-tag {
+    font-family: var(--font-mono); font-size: 9px; text-transform: uppercase;
+    letter-spacing: 1.5px; padding: 3px 8px; border-radius: 3px;
+    background: rgba(57,186,230,0.1); color: var(--accent);
+  }
+  .housing-card .hc-title { font-size: 17px; font-weight: 600; color: #fff; flex: 1; }
+  .housing-card .hc-label {
+    font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+  }
+  .housing-card .hc-text { font-size: 13px; line-height: 1.6; color: var(--text); margin-bottom: 12px; }
+  .housing-card .hc-solution { color: var(--green); }
+  @media (max-width: 768px) { .housing-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -86,6 +111,14 @@
 <div class="section-title">Novel Syntheses & Emergent Solutions</div>
 <div class="syntheses-grid" id="syntheses-container">
   <!-- Filled by JS -->
+</div>
+
+<div class="housing-section">
+  <div class="section-title">🏠 Housing Insights · STEM-Synthesized</div>
+  <div class="housing-grid" id="housing-container">
+    <!-- Filled by JS -->
+    <div style="padding:20px;color:var(--text-dim);">Loading housing insights...</div>
+  </div>
 </div>
 
 <script>
@@ -119,6 +152,53 @@
       card.innerHTML = html;
       container.appendChild(card);
     });
+  }
+
+  function renderHousingInsights(syntheses) {
+    const container = document.getElementById('housing-container');
+    container.innerHTML = '';
+
+    if (!syntheses || syntheses.length === 0) {
+      container.innerHTML = '<div style="padding:20px;color:var(--text-dim);">No housing insights available.</div>';
+      return;
+    }
+
+    syntheses.forEach(s => {
+      const card = document.createElement('div');
+      // kebab-case the model for CSS class matching
+      const modelClass = s.model.toLowerCase().replace(/\s+/g, '-');
+      card.className = 'housing-card model-' + modelClass;
+
+      let html = '<div class="hc-header">';
+      html += '<span class="hc-stem-tag">' + s.model + '</span>';
+      html += '<span class="hc-title">' + s.title + '</span>';
+      html += '</div>';
+
+      if (s.problem) {
+        html += '<div class="hc-label">Problem / Axiom</div>';
+        html += '<div class="hc-text">' + s.problem.replace(/\n/g, '<br>') + '</div>';
+      }
+
+      if (s.solution) {
+        html += '<div class="hc-label">Solution / Strategy</div>';
+        html += '<div class="hc-text hc-solution">' + s.solution.replace(/\n/g, '<br>') + '</div>';
+      }
+
+      card.innerHTML = html;
+      container.appendChild(card);
+    });
+  }
+
+  async function loadHousingInsights() {
+    const container = document.getElementById('housing-container');
+    try {
+      const res = await fetch('/api/housing-graph');
+      if (!res.ok) throw new Error('API Error');
+      const data = await res.json();
+      renderHousingInsights(data.syntheses || []);
+    } catch(e) {
+      container.innerHTML = '<div style="padding:20px;color:var(--red);">Housing insights unavailable. Run generate-housing-graph.py to refresh.</div>';
+    }
   }
 
   function renderGraph(data) {
@@ -231,6 +311,7 @@
       const data = await res.json();
       renderGraph(data);
       renderSyntheses(data.syntheses || []);
+      loadHousingInsights();
       document.getElementById('data-status').innerText = `Graph loaded: ${data.nodes.length} nodes, ${data.links.length} connections`;
     } catch(e) {
       document.getElementById('graph-container').innerHTML = `<div style="padding:40px;text-align:center;color:var(--red);">Error loading graph data.</div>`;
