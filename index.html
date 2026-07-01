@@ -124,6 +124,24 @@
   .growth-legend-line { width: 16px; height: 2px; }
   .growth-tooltip { position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 6px 10px; font-size: 10px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 10; font-family: var(--font-mono); }
   .growth-empty { color: var(--text-dim); font-size: 11px; text-align: center; padding: 40px 20px; }
+  /* Robinhood-style Sparkline Card */
+  .rh-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+  .rh-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .rh-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; }
+  .rh-value { font-family: var(--font-mono); font-size: 42px; font-weight: 700; line-height: 1; margin: 4px 0; }
+  .rh-value.up { color: var(--green); } .rh-value.down { color: var(--red); } .rh-value.flat { color: var(--text); }
+  .rh-change { font-family: var(--font-mono); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+  .rh-change.up { color: var(--green); } .rh-change.down { color: var(--red); }
+  .rh-sparkline { width: 100%; height: 80px; margin: 8px 0 6px; }
+  .rh-sparkline svg { width: 100%; height: 100%; display: block; }
+  .rh-range-row { display: flex; gap: 6px; }
+  .rh-range-btn { 
+    font-family: var(--font-mono); font-size: 10px; padding: 4px 10px; border-radius: 4px;
+    border: 1px solid var(--border); background: transparent; color: var(--text-dim);
+    cursor: pointer; transition: all 0.15s;
+  }
+  .rh-range-btn:hover { border-color: var(--accent); color: var(--text); }
+  .rh-range-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 600; }
   @media (max-width: 800px) { .dashboard-grid { grid-template-columns: 1fr; } .header { flex-direction: column; gap: 10px; text-align: center; } }
 </style>
 </head>
@@ -180,6 +198,13 @@
     <h2 class="widget-title">Momentum Analysis <span style="font-size:9px;color:var(--text-dim);font-weight:400;letter-spacing:1px">→ FULL PAGE</span></h2>
     <div class="widget-body" id="momentum-analysis-body">
       <div class="momentum-empty">No analysis yet. First run incoming.</div>
+    </div>
+  </section>
+
+  <section class="widget" id="rh-velocity-card">
+    <h2 class="widget-title">Velocity</h2>
+    <div class="widget-body" id="rh-velocity-body">
+      <div class="growth-empty">Loading...</div>
     </div>
   </section>
 
@@ -689,9 +714,117 @@ async function loadGrowthChart() {
   const data = await apiGet('/api/growth');
   if (data) {
     renderGrowthChart(data);
+    renderVelocityCard(data);
   } else {
     container.innerHTML = '<div class="growth-empty">Growth data unavailable.</div>';
   }
+}
+
+function renderVelocityCard(data) {
+  const body = document.getElementById('rh-velocity-body');
+  if (!data || !data.history || data.history.length < 2) {
+    body.innerHTML = '<div class="growth-empty">Need at least 2 data points.</div>';
+    return;
+  }
+
+  const all = data.history;
+  let range = 'ALL';
+  let series = all;
+
+  function draw(pts) {
+    const first = pts[0], last = pts[pts.length - 1];
+    const delta = last.velocity - first.velocity;
+    const pct = first.velocity > 0 ? ((delta / first.velocity) * 100) : 0;
+    const trend = delta > 0.05 ? 'up' : delta < -0.05 ? 'down' : 'flat';
+    const arrow = trend === 'up' ? '▲' : trend === 'down' ? '▼' : '◆';
+    const sign = delta >= 0 ? '+' : '';
+
+    // Sparkline
+    const maxV = Math.max(...pts.map(d => d.velocity), 0.1);
+    const minV = Math.min(...pts.map(d => d.velocity), 0);
+    const range = maxV - minV || 1;
+    const W = 400, H = 80, pad = 2;
+
+    let pathD = '';
+    pts.forEach((d, i) => {
+      const x = pad + (i / Math.max(pts.length - 1, 1)) * (W - 2 * pad);
+      const y = H - pad - ((d.velocity - minV) / range) * (H - 2 * pad);
+      pathD += `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`;
+    });
+
+    // Fill area
+    const fillD = pathD + ` L${pad + (W - 2 * pad)},${H - pad} L${pad},${H - pad} Z`;
+    const strokeColor = trend === 'up' ? 'var(--green)' : trend === 'down' ? 'var(--red)' : 'var(--accent)';
+    const fillColor = trend === 'up' ? 'rgba(127,217,98,0.12)' : trend === 'down' ? 'rgba(242,109,120,0.12)' : 'rgba(57,186,230,0.08)';
+
+    // Date labels
+    let dateLabels = '';
+    pts.forEach((d, i) => {
+      if (i === 0 || i === pts.length - 1 || (pts.length > 5 && i % Math.max(1, Math.floor(pts.length / 3)) === 0)) {
+        const x = pad + (i / Math.max(pts.length - 1, 1)) * (W - 2 * pad);
+        dateLabels += `<text x="${x.toFixed(1)}" y="${H - 1}" text-anchor="${i===0?'start':i===pts.length-1?'end':'middle'}" fill="var(--text-dim)" font-size="7" font-family="var(--font-mono)">${d.date.slice(5)}</text>`;
+      }
+    });
+
+    body.innerHTML = `
+      <div class="rh-card">
+        <div class="rh-header">
+          <span class="rh-label">Compound Velocity</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--text-dim)">${range}</span>
+        </div>
+        <div class="rh-value ${trend}">${last.velocity.toFixed(1)}</div>
+        <div class="rh-change ${trend}">
+          <span>${arrow}</span>
+          <span>${sign}${pct.toFixed(1)}%</span>
+          <span style="font-weight:400;font-size:10px;color:var(--text-dim);margin-left:4px">${trend === 'up' ? 'rising' : trend === 'down' ? 'falling' : 'steady'}</span>
+        </div>
+        <div class="rh-sparkline">
+          <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="rh-fill-up" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--green)" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="var(--green)" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="rh-fill-down" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--red)" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="var(--red)" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="${fillD}" fill="${fillColor}"/>
+            <path d="${pathD}" fill="none" stroke="${strokeColor}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            ${dateLabels}
+          </svg>
+        </div>
+        <div class="rh-range-row">
+          ${['1M', '6W', 'ALL'].map(r => 
+            `<button class="rh-range-btn${r === range ? ' active' : ''}" data-range="${r}">${r}</button>`
+          ).join('')}
+        </div>
+      </div>`;
+
+    // Range selector click handlers
+    body.querySelectorAll('.rh-range-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const r = this.getAttribute('data-range');
+        let filtered;
+        if (r === '1M') {
+          const cutoff = new Date();
+          cutoff.setDate(cutoff.getDate() - 30);
+          filtered = all.filter(d => new Date(d.date) >= cutoff);
+          if (filtered.length < 2) filtered = all.slice(-3);
+        } else if (r === '6W') {
+          filtered = all.slice(-6);
+        } else {
+          filtered = all;
+        }
+        if (filtered.length < 2) filtered = all.slice(-2);
+        range = r;
+        draw(filtered);
+      });
+    });
+  }
+
+  draw(series);
 }
 
 function loadAIResearch() {
