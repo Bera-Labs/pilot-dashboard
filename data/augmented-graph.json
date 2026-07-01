@@ -17,7 +17,19 @@
       "group": "concept"
     },
     {
+      "id": "The Signal Collapse",
+      "group": "connection"
+    },
+    {
       "id": "WIP Induced Paralysis",
+      "group": "connection"
+    },
+    {
+      "id": "System Decay & Entropy",
+      "group": "connection"
+    },
+    {
+      "id": "The Utilization Trap",
       "group": "connection"
     },
     {
@@ -26,6 +38,10 @@
     },
     {
       "id": "The Abstinence-Action Convergence",
+      "group": "connection"
+    },
+    {
+      "id": "The Calibration Gap",
       "group": "connection"
     },
     {
@@ -67,12 +83,68 @@
       "target": "WIP Induced Paralysis"
     },
     {
+      "source": "Warp-Speed_Execution",
+      "target": "System Decay & Entropy"
+    },
+    {
+      "source": "Warp-Speed_Execution",
+      "target": "The Signal Collapse"
+    },
+    {
+      "source": "Warp-Speed_Execution",
+      "target": "The Utilization Trap"
+    },
+    {
+      "source": "Warp-Speed_Execution",
+      "target": "The Calibration Gap"
+    },
+    {
+      "source": "The Signal Collapse",
+      "target": "Warp-Speed Execution"
+    },
+    {
+      "source": "The Signal Collapse",
+      "target": "WIP Induced Paralysis"
+    },
+    {
+      "source": "The Signal Collapse",
+      "target": "System Decay & Entropy"
+    },
+    {
       "source": "WIP Induced Paralysis",
       "target": "Warp-Speed Execution"
     },
     {
       "source": "WIP Induced Paralysis",
       "target": "Asymmetric Micro-Bets"
+    },
+    {
+      "source": "System Decay & Entropy",
+      "target": "Warp-Speed Execution"
+    },
+    {
+      "source": "System Decay & Entropy",
+      "target": "WIP Induced Paralysis"
+    },
+    {
+      "source": "System Decay & Entropy",
+      "target": "The Utilization Trap"
+    },
+    {
+      "source": "The Utilization Trap",
+      "target": "Warp-Speed Execution"
+    },
+    {
+      "source": "The Utilization Trap",
+      "target": "WIP Induced Paralysis"
+    },
+    {
+      "source": "The Utilization Trap",
+      "target": "System Decay & Entropy"
+    },
+    {
+      "source": "The Utilization Trap",
+      "target": "The Signal Collapse"
     },
     {
       "source": "The 5th Postulate of Avoidance",
@@ -95,6 +167,18 @@
       "target": "The 5th Postulate of Avoidance"
     },
     {
+      "source": "The Calibration Gap",
+      "target": "Warp-Speed Execution"
+    },
+    {
+      "source": "The Calibration Gap",
+      "target": "The Utilization Trap"
+    },
+    {
+      "source": "The Calibration Gap",
+      "target": "WIP Induced Paralysis"
+    },
+    {
       "source": "Asymmetric Micro-Bets",
       "target": "Thinking in Bets"
     },
@@ -105,11 +189,32 @@
   ],
   "syntheses": [
     {
+      "title": "The Signal Collapse",
+      "model": "Warp-Speed Execution",
+      "problem": "Shannon's Channel Capacity theorem: $C = B \\times \\log_2(1 + S/N)$. Your brain has a finite information processing capacity (C). Every input consumes bandwidth (B). If 75% of what you process is noise, your effective capacity drops to ~32% of theoretical maximum.\n\nThe math is brutal: you can be \"working\" 10 hours a day at 32% effective capacity. The alternative is 4 hours a day at 90% effective capacity. The 4-hour version produces MORE output. Hours worked is a vanity metric. Signal throughput is the only metric that matters.",
+      "solution": "**The Information Diet: Three-Tier Filtering System.**\n\n**Tier 1: Noise Attenuation (immediate, 5 minutes)**\n- Unsubscribe from all newsletters you haven't read in 2 weeks\n- Mute all non-essential group chats and notification channels\n- Remove news and social apps from phone home screen (or delete entirely)\n- Email: check at 11am and 4pm only. Never before deep work.\n\n**Tier 2: Signal Amplification (weekly, 15 minutes)**\n- Identify the 3 highest-signal inputs in your life (specific people, data sources, communities)\n- Schedule protected time to consume ONLY these inputs\n- The test: \"Does this input change what I will DO today?\" If no \u2192 it's noise, regardless of how interesting it is.\n\n**Tier 3: Channel Protection (daily)**\n- Deep work blocks: 90-120 minutes with zero inputs. No phone, no email, no interruptions.\n- The first 90 minutes of the day are highest-bandwidth. Protect them ruthlessly.\n- Batch all reactive work (email, messages, admin) into a single afternoon block.\n\n**Signal Ratio Audit (weekly):**\nTrack for one day: every input consumed. Label each as Signal (changes what you do) or Noise (entertainment, distraction, redundant). Calculate S/(S+N). If below 0.5, you're running on less than half your cognitive engine.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[System Decay & Entropy]]",
+      "raw": "# The Signal Collapse\n\n**STEM Model:** [[Warp-Speed Execution]] (Information Theory / Shannon)\n**Data Source:** Modern digital environment \u2014 notifications, feeds, inboxes, news cycles, social media.\n\n## The Bottleneck\nShannon's Channel Capacity theorem: $C = B \\times \\log_2(1 + S/N)$. Your brain has a finite information processing capacity (C). Every input consumes bandwidth (B). If 75% of what you process is noise, your effective capacity drops to ~32% of theoretical maximum.\n\nThe math is brutal: you can be \"working\" 10 hours a day at 32% effective capacity. The alternative is 4 hours a day at 90% effective capacity. The 4-hour version produces MORE output. Hours worked is a vanity metric. Signal throughput is the only metric that matters.\n\n## The Danger\n**The Noise Cascade:**\n1. Morning: check phone (news, emails, social) \u2192 45 minutes of noise processing\n2. Context switch cost: ~23 minutes to refocus on deep work (UC Irvine study)\n3. Throughout day: notifications, Slack/Telegram, \"quick checks\" \u2192 cumulative noise\n4. Evening: exhausted but can't identify what was actually accomplished\n5. Net result: 10 hours of \"work,\" 3 hours of signal, 7 hours of noise + switching costs\n\nThe worst part: noise FEELS like work. Processing emails feels productive. Reading news feels informed. But the channel capacity math doesn't care about feelings \u2014 it only cares about signal-to-noise ratio.\n\n## Novel Solution\n**The Information Diet: Three-Tier Filtering System.**\n\n**Tier 1: Noise Attenuation (immediate, 5 minutes)**\n- Unsubscribe from all newsletters you haven't read in 2 weeks\n- Mute all non-essential group chats and notification channels\n- Remove news and social apps from phone home screen (or delete entirely)\n- Email: check at 11am and 4pm only. Never before deep work.\n\n**Tier 2: Signal Amplification (weekly, 15 minutes)**\n- Identify the 3 highest-signal inputs in your life (specific people, data sources, communities)\n- Schedule protected time to consume ONLY these inputs\n- The test: \"Does this input change what I will DO today?\" If no \u2192 it's noise, regardless of how interesting it is.\n\n**Tier 3: Channel Protection (daily)**\n- Deep work blocks: 90-120 minutes with zero inputs. No phone, no email, no interruptions.\n- The first 90 minutes of the day are highest-bandwidth. Protect them ruthlessly.\n- Batch all reactive work (email, messages, admin) into a single afternoon block.\n\n**Signal Ratio Audit (weekly):**\nTrack for one day: every input consumed. Label each as Signal (changes what you do) or Noise (entertainment, distraction, redundant). Calculate S/(S+N). If below 0.5, you're running on less than half your cognitive engine.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[System Decay & Entropy]]\n"
+    },
+    {
       "title": "WIP Induced Paralysis",
       "model": "Warp-Speed Execution",
       "problem": "Little's Law dictates that Throughput = WIP / Cycle Time. \nCurrently, WIP is extraordinarily high (19 active, emotionally heavy loops like \"low interest rate banker\", \"submit tax paperwork\", \"book NYC hotel\"). \nBecause these are processed concurrently in the mind, the Cycle Time approaches infinity. Throughput is exactly 0.",
       "solution": "**Ruthless Sequencing (Amdahl's Law applied to Life).**\nYou cannot parallel-process your life right now. You must sequence it.\n1. **Freeze 4 out of 5 Projects.** Put the Trips and Housing on complete pause. \n2. **WIP Limit = 1.** The *only* active project is \"Taxes\" or \"Maintenance\". The *only* active task is the immediate next physical step.\n3. **The Cleaver.** Move all non-active tasks into a \"Frozen\" folder. If you don't see them, your brain stops allocating RAM to them.\n\n**Links:**\n- [[Asymmetric Micro-Bets]]",
       "raw": "# WIP Induced Paralysis\n\n**STEM Model:** [[Warp-Speed Execution]] (Little's Law)\n**Data Source:** Outliner Tasks (19 active tasks spanning Housing, Taxes, Maintenance, NYC/Niagara Trip, Parents Trip).\n\n## The Bottleneck\nLittle's Law dictates that Throughput = WIP / Cycle Time. \nCurrently, WIP is extraordinarily high (19 active, emotionally heavy loops like \"low interest rate banker\", \"submit tax paperwork\", \"book NYC hotel\"). \nBecause these are processed concurrently in the mind, the Cycle Time approaches infinity. Throughput is exactly 0.\n\n## The Symptoms\n- The 37-day execution drought.\n- The feeling of \"heavy\" resistance to 45-second tasks (e.g., calling the DMV or Yesmytaxes).\n- The brain is allocating RAM to keeping 19 open loops alive, leaving 0 RAM for execution.\n\n## Novel Solution\n**Ruthless Sequencing (Amdahl's Law applied to Life).**\nYou cannot parallel-process your life right now. You must sequence it.\n1. **Freeze 4 out of 5 Projects.** Put the Trips and Housing on complete pause. \n2. **WIP Limit = 1.** The *only* active project is \"Taxes\" or \"Maintenance\". The *only* active task is the immediate next physical step.\n3. **The Cleaver.** Move all non-active tasks into a \"Frozen\" folder. If you don't see them, your brain stops allocating RAM to them.\n\n**Links:**\n- [[Asymmetric Micro-Bets]]\n"
+    },
+    {
+      "title": "System Decay & Entropy",
+      "model": "Warp-Speed Execution",
+      "problem": "\"Once I set up this system (habit tracker, weekly review, inbox zero), it will sustain itself.\" This violates the Second Law of Thermodynamics: in any isolated system, entropy always increases. Order requires continuous energy input. Without active maintenance, every system decays to disorder.",
+      "solution": "**Weekly Anti-Entropy Maintenance Protocol.**\n\nThe insight is not \"try harder to maintain systems.\" It's that maintenance IS the system. A system that requires daily energy input has a half-life of 2 weeks. A system requiring weekly energy can last months. Monthly = years.\n\nThree concrete rules:\n\n1. **Energy Budget Per System:** Before adopting any new habit or system, ask: \"What's the minimum maintenance energy?\" If it requires daily energy (e.g., journaling, detailed time tracking), the failure probability is >80% within 30 days. Design for weekly energy or lower.\n\n2. **The Weekly Reset as Non-Negotiable:** One hour every Sunday. Clear inboxes, review priorities, purge accumulated noise. This single hour is the energy input that resets entropy across ALL systems. Skip it once \u2192 minor decay. Skip it twice \u2192 systems begin failing. Skip it three times \u2192 you're back at Setup phase.\n\n3. **Entropy Tolerance Threshold:** Not every instance of decay requires intervention. Define the critical threshold. A car doesn't need detailing weekly \u2014 it needs oil changes. For each system: what's the \"oil change\" (minimum maintenance) and what's \"detailing\" (nice but optional)? Only fight entropy at the oil-change level. Let the detailing go.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Utilization Trap]]",
+      "raw": "# System Decay & Entropy\n\n**STEM Model:** [[Warp-Speed Execution]] (Thermodynamics / 2nd Law)\n**Data Source:** LifeOS Historical Patterns \u2014 recurring cycle of system setup \u2192 2-week honeymoon \u2192 abandonment.\n\n## The False Axiom\n\"Once I set up this system (habit tracker, weekly review, inbox zero), it will sustain itself.\" This violates the Second Law of Thermodynamics: in any isolated system, entropy always increases. Order requires continuous energy input. Without active maintenance, every system decays to disorder.\n\n## The Symptoms\n- Productivity systems that work brilliantly for 2 weeks, then silently die\n- Habits that feel automatic for 21 days, then vanish without explanation\n- The \"fresh start\" effect: each new system feels like THE solution because its energy reservoir is full\n- The guilt spiral: \"I failed to maintain it, therefore I lack discipline\"\n\n## The Entropy Cycle\n```\nSetup (high energy) \u2192 Honeymoon (system works) \u2192 Drift (small decays accumulate)\n\u2192 Crisis (system visibly broken) \u2192 Abandonment \u2192 New Setup (different system, same cycle)\n```\n\n## Novel Solution\n**Weekly Anti-Entropy Maintenance Protocol.**\n\nThe insight is not \"try harder to maintain systems.\" It's that maintenance IS the system. A system that requires daily energy input has a half-life of 2 weeks. A system requiring weekly energy can last months. Monthly = years.\n\nThree concrete rules:\n\n1. **Energy Budget Per System:** Before adopting any new habit or system, ask: \"What's the minimum maintenance energy?\" If it requires daily energy (e.g., journaling, detailed time tracking), the failure probability is >80% within 30 days. Design for weekly energy or lower.\n\n2. **The Weekly Reset as Non-Negotiable:** One hour every Sunday. Clear inboxes, review priorities, purge accumulated noise. This single hour is the energy input that resets entropy across ALL systems. Skip it once \u2192 minor decay. Skip it twice \u2192 systems begin failing. Skip it three times \u2192 you're back at Setup phase.\n\n3. **Entropy Tolerance Threshold:** Not every instance of decay requires intervention. Define the critical threshold. A car doesn't need detailing weekly \u2014 it needs oil changes. For each system: what's the \"oil change\" (minimum maintenance) and what's \"detailing\" (nice but optional)? Only fight entropy at the oil-change level. Let the detailing go.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Utilization Trap]]\n"
+    },
+    {
+      "title": "The Utilization Trap",
+      "model": "Warp-Speed Execution",
+      "problem": "\"The more hours I work and the fuller my calendar, the more I get done.\" This is mathematically false. Little's Law shows that as utilization approaches 100%, wait times approach infinity. Margin of Safety shows that systems at 100% utilization are brittle \u2014 a single disruption cascades into total stoppage.",
+      "solution": "**The 80% Capacity Rule + Slack Budget.**\n\n1. **Calendar Slack:** Block exactly 80% of available work hours. Leave 20% unallocated \u2014 visible as empty blocks on the calendar. This is NOT wasted time. It's shock absorption capacity. When disruptions hit, they consume slack, not your productive hours.\n\n2. **The Slack Budget Mindset:** Treat the 20% slack as a finite resource. When someone asks \"can you fit this in,\" check: does it fit in the slack budget? If yes, accept. If no: \"I'm at capacity. I can do it next week, or you can talk to [delegate].\" The slack budget makes saying no mathematical, not emotional.\n\n3. **WIP Cap:** Maximum 3 active projects/tasks at any time. Adding a 4th requires completing or freezing one of the first 3. This is non-negotiable. The WIP cap IS the utilization governor.\n\n4. **The 80% Throughput Paradox:**\n   - 80% utilization \u00d7 100% uptime = 80 units of output\n   - 100% utilization \u00d7 60% uptime (constant disruptions, burnout pauses) = 60 units of output\n   - The 80% system wins by 33%, with less stress.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[System Decay & Entropy]]\n- [[The Signal Collapse]]",
+      "raw": "# The Utilization Trap\n\n**STEM Model:** [[Warp-Speed Execution]] (Margin of Safety + Little's Law)\n**Data Source:** Universal productivity pattern \u2014 mistaking \"being busy\" for \"producing results.\"\n\n## The False Axiom\n\"The more hours I work and the fuller my calendar, the more I get done.\" This is mathematically false. Little's Law shows that as utilization approaches 100%, wait times approach infinity. Margin of Safety shows that systems at 100% utilization are brittle \u2014 a single disruption cascades into total stoppage.\n\n## The Utilization Math\n```\nUtilization \u2192 Wait Time Multiplier \u2192 Effective Throughput\n50% \u2192 1\u00d7  \u2192 predictable, responsive\n80% \u2192 4\u00d7  \u2192 manageable, some delays\n90% \u2192 9\u00d7  \u2192 constant firefighting\n95% \u2192 19\u00d7 \u2192 everything is late, quality crashes\n99% \u2192 99\u00d7 \u2192 complete paralysis, burnout imminent\n```\n\nAt 95% utilization, a 15-minute disruption (someone asks a question, a bug appears, an urgent email) doesn't cost 15 minutes. It costs 15 minutes \u00d7 19 = **4.75 hours** of cascading delay because there's zero buffer to absorb it.\n\n## The Symptoms\n- Calendar is back-to-back with no gaps\n- A single 30-minute interruption destroys the entire afternoon\n- Constantly \"catching up\" but never ahead\n- Saying yes to everything because \"I can fit it in\"\n- Working longer hours but completing fewer meaningful things\n- The paradox: 60-hour weeks producing less output than 40-hour weeks\n\n## The Danger\nThe utilization trap is self-reinforcing. High utilization \u2192 delays \u2192 pressure to work more \u2192 even higher utilization \u2192 more delays. Breaking out requires the counterintuitive move: intentionally REDUCE utilization. The temporary drop in output (going from 100% to 80%) is recovered within 2 weeks because throughput actually INCREASES when you stop fighting cascading delays.\n\n## Novel Solution\n**The 80% Capacity Rule + Slack Budget.**\n\n1. **Calendar Slack:** Block exactly 80% of available work hours. Leave 20% unallocated \u2014 visible as empty blocks on the calendar. This is NOT wasted time. It's shock absorption capacity. When disruptions hit, they consume slack, not your productive hours.\n\n2. **The Slack Budget Mindset:** Treat the 20% slack as a finite resource. When someone asks \"can you fit this in,\" check: does it fit in the slack budget? If yes, accept. If no: \"I'm at capacity. I can do it next week, or you can talk to [delegate].\" The slack budget makes saying no mathematical, not emotional.\n\n3. **WIP Cap:** Maximum 3 active projects/tasks at any time. Adding a 4th requires completing or freezing one of the first 3. This is non-negotiable. The WIP cap IS the utilization governor.\n\n4. **The 80% Throughput Paradox:**\n   - 80% utilization \u00d7 100% uptime = 80 units of output\n   - 100% utilization \u00d7 60% uptime (constant disruptions, burnout pauses) = 60 units of output\n   - The 80% system wins by 33%, with less stress.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[System Decay & Entropy]]\n- [[The Signal Collapse]]\n"
     },
     {
       "title": "The 5th Postulate of Avoidance",
@@ -124,6 +229,13 @@
       "problem": "If the upregulating D2 receptors are not fed with the dopamine of *real-world task completion*, the brain will seek its old, high-intensity artificial rewards. The abstinence streak will break because the system is starved of healthy feedback loops.",
       "solution": "**The Feedback Loop Hijack.**\nYou need 100% success-probability actions to feed the new receptors.\n1. Pick tasks with a base rate of success near 100% when attempted. (e.g., \"Clean bathrooms\", \"Call C Putnam\").\n2. Execute them specifically to generate the dopamine hit, explicitly acknowledging the chemical release.\n3. Stack these micro-wins. Do not attempt the \"low interest rate banker\" task until the base rate of daily task completion moves from 0% to >80%.\n\n**Links:**\n- [[The 5th Postulate of Avoidance]]",
       "raw": "# The Abstinence-Action Convergence\n\n**STEM Model:** [[Probabilistic Thinking]]\n**Data Source:** Outliner Note (\"Day 18 of abstinence. Day 28 of Vyvanse. D2 dopamine receptors are actively upregulating.\")\n\n## The Base Rate\nThe historical base rate for completing complex, multi-step projects (like Housing or complex travel) during an execution drought is ~0%. \nHowever, the biological substrate is currently shifting. Abstinence combined with steady-state medication is creating a high-probability window for neuroplasticity. \n\n## The Danger of Missing the Window\nIf the upregulating D2 receptors are not fed with the dopamine of *real-world task completion*, the brain will seek its old, high-intensity artificial rewards. The abstinence streak will break because the system is starved of healthy feedback loops.\n\n## Novel Solution\n**The Feedback Loop Hijack.**\nYou need 100% success-probability actions to feed the new receptors.\n1. Pick tasks with a base rate of success near 100% when attempted. (e.g., \"Clean bathrooms\", \"Call C Putnam\").\n2. Execute them specifically to generate the dopamine hit, explicitly acknowledging the chemical release.\n3. Stack these micro-wins. Do not attempt the \"low interest rate banker\" task until the base rate of daily task completion moves from 0% to >80%.\n\n**Links:**\n- [[The 5th Postulate of Avoidance]]\n"
+    },
+    {
+      "title": "The Calibration Gap",
+      "model": "Warp-Speed Execution",
+      "problem": "\"I'm a good estimator. I know how long my tasks take.\" No. The Planning Fallacy is universal and persistent. Without explicit Bayesian updating, your time estimates are systematically biased \u2014 typically 50-70% of actual required time. This isn't a character flaw; it's a cognitive bias baked into human brains.",
+      "solution": "**The Calibrated Day:**\n1. Morning: list today's tasks with raw estimates\n2. Multiply each by your calibration ratio\n3. Sum the calibrated estimates\n4. If total > 6 hours (80% of an 8-hour day): CUT tasks, don't squeeze them\n5. End of day: log actuals. Update your running ratio.\n\nAfter 2 weeks, you'll know exactly how much you can actually do in a day \u2014 and it's probably 40-60% of what you currently plan. That's not failure. That's accuracy.\n\n**Links:**\n- [[The Utilization Trap]]\n- [[WIP Induced Paralysis]]",
+      "raw": "# The Calibration Gap\n\n**STEM Model:** [[Warp-Speed Execution]] (Bayesian Updating)\n**Data Source:** Universal human bias \u2014 the Planning Fallacy (Kahneman & Tversky). Everyone systematically underestimates how long things take.\n\n## The False Axiom\n\"I'm a good estimator. I know how long my tasks take.\" No. The Planning Fallacy is universal and persistent. Without explicit Bayesian updating, your time estimates are systematically biased \u2014 typically 50-70% of actual required time. This isn't a character flaw; it's a cognitive bias baked into human brains.\n\n## The Symptoms\n- Consistently starting projects that \"should take 2 hours\" and take 5\n- Daily todo lists with 12 items, completing 3\n- Sprint planning that's always \"optimistic\"\n- The feeling of constant lateness despite \"working hard all day\"\n- Promising deliverables by Friday, delivering Tuesday\n- The guilt: \"I'm just bad at time management\"\n\n## The Bayesian Fix\nBayesian updating: $P(H|E) = P(E|H) \\times P(H) / P(E)$. Start with a prior belief (your estimate), then update it with evidence (actual time taken). Over iterations, the estimate converges to reality.\n\n**The Calibration Protocol:**\n\n1. **Log Every Completion:** For one week, log every task: estimated time vs actual time.\n   ```\n   Task: \"Write proposal draft\"\n   Estimated: 2 hours\n   Actual: 4.5 hours\n   Calibration Ratio: 4.5/2 = 2.25\u00d7\n   ```\n\n2. **Calculate Your Calibration Ratio:** After 20+ data points, compute your average ratio (actual/estimated). Most people's ratio is 1.5-3.0\u00d7. This IS your prior bias. Own it.\n\n3. **Apply the Multiplier:** Multiply ALL future estimates by your calibration ratio. If your ratio is 2.0\u00d7 and you estimate 3 hours, your calibrated estimate is 6 hours. This feels pessimistic. It's not. It's accurate.\n\n4. **Quarterly Recalibration:** As you improve at estimation, your ratio will drift toward 1.0. Recalculate quarterly. The ratio IS a metric of your self-awareness.\n\n## The Meta-Insight\nUncertainty about duration IS drag. When you estimate 2 hours but deep down know it's probably 5, you spend mental energy:\n- Ruminating about being \"behind\"\n- Replanning your day\n- Feeling guilty about \"poor time management\"\n- Making promises you can't keep\n\nCalibrated estimates eliminate this drag. When you KNOW a task takes 5 hours, you plan for 5 hours, and you feel fine when it takes 5 hours. The stress doesn't come from tasks taking time \u2014 it comes from the GAP between expectation and reality. Bayesian updating closes the gap.\n\n## Novel Solution\n**The Calibrated Day:**\n1. Morning: list today's tasks with raw estimates\n2. Multiply each by your calibration ratio\n3. Sum the calibrated estimates\n4. If total > 6 hours (80% of an 8-hour day): CUT tasks, don't squeeze them\n5. End of day: log actuals. Update your running ratio.\n\nAfter 2 weeks, you'll know exactly how much you can actually do in a day \u2014 and it's probably 40-60% of what you currently plan. That's not failure. That's accuracy.\n\n**Links:**\n- [[The Utilization Trap]]\n- [[WIP Induced Paralysis]]\n"
     },
     {
       "title": "Asymmetric Micro-Bets",
