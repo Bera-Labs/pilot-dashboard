@@ -72,6 +72,40 @@ def api_housing_graph():
     except FileNotFoundError:
         return JSONResponse({"error": "housing-graph.json not found"}, status_code=404)
 
+@app.get("/api/growth")
+def api_growth():
+    try:
+        return json.loads((DATA_DIR / "growth.json").read_text())
+    except FileNotFoundError:
+        return JSONResponse({"error": "growth.json not found"}, status_code=404)
+
+@app.post("/api/growth")
+async def post_growth(req: Request):
+    body = await req.json()
+    growth_file = DATA_DIR / "growth.json"
+    try:
+        growth = json.loads(growth_file.read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        growth = {"last_updated": "", "history": []}
+    growth["last_updated"] = time.strftime("%Y-%m-%d")
+    # Append new data point (or merge if same date)
+    new_entry = {
+        "date": body.get("date", time.strftime("%Y-%m-%d")),
+        "cumulative_completions": body.get("cumulative_completions", 0),
+        "wip": body.get("wip", 0),
+        "velocity": body.get("velocity", 0),
+        "completion_rate": body.get("completion_rate", 0)
+    }
+    # Replace existing entry for same date, otherwise append
+    existing = [i for i, h in enumerate(growth["history"]) if h["date"] == new_entry["date"]]
+    if existing:
+        growth["history"][existing[0]] = new_entry
+    else:
+        growth["history"].append(new_entry)
+    growth["history"].sort(key=lambda x: x["date"])
+    growth_file.write_text(json.dumps(growth, indent=2))
+    return {"status": "ok"}
+
 # ── POST (Hermes/cron only) ────────────────
 @app.post("/api/log-decision")
 async def log_decision(req: Request):

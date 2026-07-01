@@ -115,6 +115,15 @@
   .graph-legend-item { display: flex; align-items: center; gap: 6px; }
   .graph-legend-line { width: 24px; height: 3px; border-radius: 2px; }
   .graph-legend-node { width: 12px; height: 12px; border-radius: 2px; }
+  /* Growth Chart */
+  .growth-chart-container { position: relative; width: 100%; height: 200px; }
+  .growth-chart-svg { width: 100%; height: 100%; }
+  .growth-legend { display: flex; gap: 20px; margin-bottom: 8px; font-size: 10px; flex-wrap: wrap; }
+  .growth-legend-item { display: flex; align-items: center; gap: 6px; }
+  .growth-legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .growth-legend-line { width: 16px; height: 2px; }
+  .growth-tooltip { position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 6px 10px; font-size: 10px; pointer-events: none; opacity: 0; transition: opacity 0.15s; z-index: 10; font-family: var(--font-mono); }
+  .growth-empty { color: var(--text-dim); font-size: 11px; text-align: center; padding: 40px 20px; }
   @media (max-width: 800px) { .dashboard-grid { grid-template-columns: 1fr; } .header { flex-direction: column; gap: 10px; text-align: center; } }
 </style>
 </head>
@@ -155,6 +164,16 @@
   <section class="widget" id="stem-stack">
     <h2 class="widget-title">STEM Stack</h2>
     <div class="widget-body" id="stem-stack-list"></div>
+  </section>
+
+  <section class="widget" id="growth-chart-widget">
+    <h2 class="widget-title">Growth Trajectory</h2>
+    <div class="widget-body">
+      <div class="growth-legend" id="growth-legend"></div>
+      <div class="growth-chart-container" id="growth-chart-container">
+        <div class="growth-tooltip" id="growth-tooltip"></div>
+      </div>
+    </div>
   </section>
 
   <section class="widget" id="momentum-analysis-widget">
@@ -262,6 +281,7 @@ async function syncState() {
   const state = await apiGet('/api/state');
   if (state) { cachedState = state; renderAll(state); updateConnStatus(); }
   else { updateConnStatus(); renderAll({}); }
+  loadGrowthChart();
 }
 
 loadAIResearch();
@@ -553,6 +573,125 @@ function renderMomentumAnalysis(ma) {
   html += `</div>`; // end momentum-detail
 
   body.innerHTML = html;
+}
+
+function renderGrowthChart(data) {
+  const container = document.getElementById('growth-chart-container');
+  const legend = document.getElementById('growth-legend');
+  const tooltip = document.getElementById('growth-tooltip');
+
+  if (!data || !data.history || data.history.length === 0) {
+    container.innerHTML = '<div class="growth-empty">No growth data yet. Log your first completion to seed the chart.</div>';
+    legend.innerHTML = '';
+    return;
+  }
+
+  const h = data.history;
+  const W = container.clientWidth;
+  const H = 200;
+  const pad = { top: 20, right: 30, bottom: 28, left: 32 };
+  const cw = W - pad.left - pad.right;
+  const ch = H - pad.top - pad.bottom;
+
+  // Scales
+  const maxCompletions = Math.max(1, ...h.map(d => d.cumulative_completions));
+  const maxWip = Math.max(10, ...h.map(d => d.wip));
+  const minWip = Math.min(8, ...h.map(d => d.wip));
+
+  function x(i) { return pad.left + (i / (h.length - 1)) * cw; }
+  function yCompletions(v) { return pad.top + ch - (v / maxCompletions) * ch; }
+  function yWip(v) { return pad.top + ch - ((v - minWip) / (maxWip - minWip)) * ch; }
+  function yVelocity(v) { return pad.top + ch - (v / 10) * ch; }
+
+  // Legend
+  legend.innerHTML = `
+    <span class="growth-legend-item"><span class="growth-legend-dot" style="background:var(--green)"></span> Completions</span>
+    <span class="growth-legend-item"><span class="growth-legend-line" style="background:var(--red)"></span> WIP (lower = better)</span>
+    <span class="growth-legend-item"><span class="growth-legend-dot" style="background:var(--accent);border-radius:2px;width:8px;height:2px"></span> Velocity (0-10)</span>
+  `;
+
+  // Build SVG
+  let svg = `<svg class="growth-chart-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`;
+
+  // Grid lines
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + (i / 4) * ch;
+    svg += `<line x1="${pad.left}" y1="${y}" x2="${pad.left + cw}" y2="${y}" stroke="var(--border)" stroke-width="0.5" stroke-opacity="0.4"/>`;
+  }
+
+  // Y-axis labels
+  svg += `<text x="${pad.left - 6}" y="${pad.top + 4}" text-anchor="end" fill="var(--text-dim)" font-size="8" font-family="var(--font-mono)">${maxCompletions}</text>`;
+  svg += `<text x="${pad.left - 6}" y="${pad.top + ch}" text-anchor="end" fill="var(--text-dim)" font-size="8" font-family="var(--font-mono)">0</text>`;
+  svg += `<text x="${pad.left + cw}" y="${pad.top + ch + 16}" text-anchor="end" fill="var(--text-dim)" font-size="8" font-family="var(--font-mono)">WIP scale: ${minWip}-${maxWip}</text>`;
+
+  // Completions line (area + line)
+  let completionsPath = '', completionsArea = '';
+  h.forEach((d, i) => {
+    const cmd = i === 0 ? 'M' : 'L';
+    completionsPath += `${cmd}${x(i).toFixed(1)},${yCompletions(d.cumulative_completions).toFixed(1)}`;
+    completionsArea += `${cmd}${x(i).toFixed(1)},${yCompletions(d.cumulative_completions).toFixed(1)}`;
+  });
+  completionsArea += `L${x(h.length-1).toFixed(1)},${pad.top + ch}L${x(0).toFixed(1)},${pad.top + ch}Z`;
+  svg += `<path d="${completionsArea}" fill="var(--green)" fill-opacity="0.08"/>`;
+  svg += `<path d="${completionsPath}" fill="none" stroke="var(--green)" stroke-width="2" stroke-opacity="0.9"/>`;
+
+  // WIP line
+  let wipPath = '';
+  h.forEach((d, i) => {
+    wipPath += `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${yWip(d.wip).toFixed(1)}`;
+  });
+  svg += `<path d="${wipPath}" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-opacity="0.7" stroke-dasharray="4,2"/>`;
+
+  // Velocity line
+  let velPath = '';
+  h.forEach((d, i) => {
+    velPath += `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${yVelocity(d.velocity).toFixed(1)}`;
+  });
+  svg += `<path d="${velPath}" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-opacity="0.6" stroke-dasharray="3,3"/>`;
+
+  // Data dots (only completions)
+  h.forEach((d, i) => {
+    svg += `<circle cx="${x(i).toFixed(1)}" cy="${yCompletions(d.cumulative_completions).toFixed(1)}" r="3" fill="var(--green)" stroke="var(--bg)" stroke-width="1" style="cursor:pointer" data-idx="${i}"/>`;
+  });
+
+  // X-axis date labels (every other)
+  h.forEach((d, i) => {
+    if (i % Math.max(1, Math.floor(h.length / 4)) === 0 || i === h.length - 1) {
+      const label = d.date.slice(5); // MM-DD
+      svg += `<text x="${x(i).toFixed(1)}" y="${pad.top + ch + 14}" text-anchor="middle" fill="var(--text-dim)" font-size="7" font-family="var(--font-mono)">${label}</text>`;
+    }
+  });
+
+  svg += '</svg>';
+  container.innerHTML = svg;
+
+  // Hover tooltip
+  container.querySelectorAll('circle[data-idx]').forEach(circle => {
+    circle.addEventListener('mouseenter', function(e) {
+      const idx = parseInt(this.getAttribute('data-idx'));
+      const d = h[idx];
+      tooltip.innerHTML = `<strong>${d.date}</strong><br>Completions: ${d.cumulative_completions}<br>WIP: ${d.wip}<br>Velocity: ${d.velocity.toFixed(1)}`;
+      tooltip.style.opacity = 1;
+    });
+    circle.addEventListener('mousemove', function(e) {
+      const rect = container.getBoundingClientRect();
+      tooltip.style.left = (e.clientX - rect.left + 12) + 'px';
+      tooltip.style.top = (e.clientY - rect.top - 40) + 'px';
+    });
+    circle.addEventListener('mouseleave', function() {
+      tooltip.style.opacity = 0;
+    });
+  });
+}
+
+async function loadGrowthChart() {
+  const container = document.getElementById('growth-chart-container');
+  const data = await apiGet('/api/growth');
+  if (data) {
+    renderGrowthChart(data);
+  } else {
+    container.innerHTML = '<div class="growth-empty">Growth data unavailable.</div>';
+  }
 }
 
 function loadAIResearch() {

@@ -1,0 +1,11 @@
+{
+  "last_updated": "2026-06-22",
+  "history": [
+    {"date": "2026-05-18", "cumulative_completions": 0, "wip": 10, "velocity": 5.0, "completion_rate": 0.0},
+    {"date": "2026-05-25", "cumulative_completions": 2, "wip": 12, "velocity": 3.0, "completion_rate": 0.15},
+    {"date": "2026-06-01", "cumulative_completions": 3, "wip": 14, "velocity": 2.8, "completion_rate": 0.08},
+    {"date": "2026-06-08", "cumulative_completions": 4, "wip": 15, "velocity": 2.5, "completion_rate": 0.05},
+    {"date": "2026-06-15", "cumulative_completions": 4, "wip": 15, "velocity": 2.0, "completion_rate": 0.0},
+    {"date": "2026-06-22", "cumulative_completions": 4, "wip": 15, "velocity": 1.5, "completion_rate": 0.0}
+  ]
+}
