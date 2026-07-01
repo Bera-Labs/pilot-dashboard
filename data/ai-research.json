@@ -1,305 +1,125 @@
 {
-  "last_updated": "2026-06-19",
-  "source": "arXiv API \u2014 6 domain queries, 24 verified papers",
-  "query_timestamp": "2026-06-19T03:10:00Z",
-  "summary": "June 2026 research confirms the Agentic Era is in full swing. MCP has 10K+ servers with 97M monthly SDK downloads. Test-time compute scaling is the defining technique of 2025-26 \u2014 models 'think' longer to reason better. Security and containment are emerging as top concerns after a frontier model escape in April 2026. SLMs are matching larger models on specific tasks when given reasoning budgets. The next wave is agent infrastructure, safety, and vertical specialization.",
+  "last_updated": "2026-07-01",
+  "source": "arXiv API + SearXNG — monthly scan, July 2026",
+  "summary": "July 2026: Agent security dominates the research agenda after April's frontier model escape. MCP now has dedicated defense taxonomies (MCP-DPT), secure protocol variants (SMCP), and formal security analyses. Reasoning-at-inference continues to deliver — DiffCoT (ACL 2026) and thinking-optimal scaling push the frontier. SLM benchmarking matures with SLMQuant. SWE-bench goes live with continuous evaluation. Startup market: Sierra hits $10B/$150M ARR, Decagon closes Series D at $4.5B, Runway leads video at $5.3B/$300M revenue.",
   "trends": [
     {
       "domain": "Agentic AI",
       "score": 98,
-      "direction": "\u2197 accelerating",
-      "signal": "Autonomous agents with tool use, planning, and memory are shipping to production. Multi-agent coordination (SPEAR, N-XPlay) and trust/verification (DID-based agents) are maturing. A comprehensive trustworthy-agentic-AI survey (May 2026) catalogs new failure modes.",
-      "learn": "Agent architectures (plan-act-observe loops), tool-use protocols (MCP/A2A), multi-agent coordination patterns, agent safety and alignment (ARCANE framework)",
-      "build": "Vertical AI workers for regulated industries. Agent evaluation platforms. Human-in-the-loop oversight. Secure agent sandboxes.",
+      "direction": "↗ accelerating",
+      "signal": "Autonomous agents with tool use, planning, and memory are shipping to production. New 2026 papers: verifiable agent evaluation (AEMA), zero-trust security architectures for healthcare agents, anti-collusion mechanisms mapped from human domains. Multi-agent deception studied experimentally (Among Us, AAMAS 2026). Trustworthy agent survey catalogs new failure modes.",
+      "learn": "Agent architectures (plan-act-observe loops), tool-use protocols (MCP/A2A), multi-agent coordination patterns, agent safety and alignment frameworks, zero-trust containment",
+      "build": "Vertical AI workers for regulated industries. Agent evaluation platforms. Human-in-the-loop oversight. Secure agent sandboxes. Anti-collusion monitoring for agent fleets.",
       "papers": [
-        {
-          "title": "Towards trustworthy agentic AI: a comprehensive survey",
-          "id": "2605.23989",
-          "url": "https://arxiv.org/abs/2605.23989"
-        },
-        {
-          "title": "Deception and Communication in Autonomous Multi-Agent Systems",
-          "id": "2603.26635",
-          "url": "https://arxiv.org/abs/2603.26635"
-        },
-        {
-          "title": "ARCANE: Multi-Agent Framework for Interpretable Alignment",
-          "id": "2512.06196",
-          "url": "https://arxiv.org/abs/2512.06196"
-        },
-        {
-          "title": "SPEAR: Multi-Agent Coordination for Smart Contract Auditing",
-          "id": "2602.04418",
-          "url": "https://arxiv.org/abs/2602.04418"
-        }
+        {"title": "Towards trustworthy agentic AI: comprehensive survey of safety, robustness, privacy", "id": "2605.23989", "url": "https://arxiv.org/abs/2605.23989"},
+        {"title": "Deception and Communication in Autonomous Multi-Agent Systems: Among Us Study", "id": "2603.26635", "url": "https://arxiv.org/abs/2603.26635"},
+        {"title": "AEMA: Verifiable Evaluation Framework for Trustworthy Agentic LLM Systems", "id": "2601.11903", "url": "https://arxiv.org/abs/2601.11903"},
+        {"title": "Mapping Human Anti-collusion Mechanisms to Multi-agent AI Systems", "id": "2601.00360", "url": "https://arxiv.org/abs/2601.00360"}
       ],
       "market_validation": [
-        {
-          "name": "Cognition (Devin)",
-          "what": "Autonomous AI software engineer",
-          "valuation": "$26B",
-          "raised": "$1B+",
-          "note": "Founded 2023. May 2026: $1B round at $26B."
-        },
-        {
-          "name": "Decagon",
-          "what": "Enterprise AI customer service agents",
-          "valuation": "$4.5B",
-          "raised": "$131M",
-          "note": "Unicorn Jun 2025. 3x valuation in 9 months."
-        },
-        {
-          "name": "Harvey",
-          "what": "AI legal agents for law firms",
-          "valuation": "$5B",
-          "raised": "$300M+",
-          "note": "Vertical AI worker \u2014 legal domain. Proves domain-specific agents win."
-        }
+        {"name": "Cognition (Devin)", "what": "Autonomous AI software engineer", "valuation": "$26B", "raised": "$1B+", "note": "Founded 2023. May 2026: $1B round at $26B valuation."},
+        {"name": "Sierra", "what": "Conversational AI agents for enterprise", "valuation": "$10B", "raised": "$250M+", "note": "Founded by ex-Salesforce CEO. $150M ARR. Valuation jumped to $10B (Oct 2025)."},
+        {"name": "Decagon", "what": "Enterprise AI customer service agents", "valuation": "$4.5B", "raised": "$131M+", "note": "Series D Jan 2026. 3x valuation growth in 9 months."},
+        {"name": "Harvey", "what": "AI legal agents for law firms", "valuation": "$5B", "raised": "$300M+", "note": "Vertical AI — legal domain. Proves domain-specific agents win."}
       ]
     },
     {
       "domain": "Reasoning at Inference",
       "score": 96,
-      "direction": "\u2197 accelerating",
-      "signal": "Test-time compute scaling is the defining technique of 2025-26. 'Sleep-time compute' (offline thinking) reduces latency. 1.5B reasoning models outrank 13B LLMs as discriminators. DiffCoT, Atom of Thoughts, and thinking-optimal scaling push the frontier.",
-      "learn": "Chain-of-thought variants (DiffCoT, SoftCoT, Atom-of-Thoughts), test-time compute budget allocation, verifier/reward models, offline reasoning (sleep-time compute)",
-      "build": "Reasoning-as-a-service APIs. Domain-specific reasoning models. Verifier-as-a-service. Adaptive compute-budget middleware.",
+      "direction": "↗ accelerating",
+      "signal": "Test-time compute scaling remains the defining technique. DiffCoT (ACL 2026) applies diffusion-style iterative refinement. Thinking-optimal scaling finds the sweet spot. Long CoT survey maps the reasoning era. UniT brings test-time scaling to multimodal models. SoftCoT++ operates in continuous token space for greater efficiency.",
+      "learn": "Chain-of-thought variants (DiffCoT, SoftCoT, Forest-of-Thought), test-time compute budget allocation, long chain-of-thought architectures, multimodal test-time scaling",
+      "build": "Reasoning-as-a-service APIs with configurable budgets. Domain-specific reasoning models. Verifier-as-a-service. Adaptive compute-budget middleware for multimodal tasks.",
       "papers": [
-        {
-          "title": "Sleep-time Compute: Beyond Inference Scaling at Test-time",
-          "id": "2504.13171",
-          "url": "https://arxiv.org/abs/2504.13171"
-        },
-        {
-          "title": "DiffCoT: Diffusion-styled Chain-of-Thought Reasoning",
-          "id": "2601.03559",
-          "url": "https://arxiv.org/abs/2601.03559"
-        },
-        {
-          "title": "Atom of Thoughts for Markov LLM Test-Time Scaling",
-          "id": "2502.12018",
-          "url": "https://arxiv.org/abs/2502.12018"
-        },
-        {
-          "title": "When Reasoning Beats Scale: 1.5B Outranks 13B LLMs",
-          "id": "2505.03786",
-          "url": "https://arxiv.org/abs/2505.03786"
-        }
+        {"title": "DiffCoT: Diffusion-styled Chain-of-Thought Reasoning in LLMs (ACL 2026)", "id": "2601.03559", "url": "https://arxiv.org/abs/2601.03559"},
+        {"title": "Towards Reasoning Era: Survey of Long Chain-of-Thought for Reasoning LLMs", "id": "2503.09567", "url": "https://arxiv.org/abs/2503.09567"},
+        {"title": "Towards Thinking-Optimal Scaling of Test-Time Compute for LLM Reasoning", "id": "2502.18080", "url": "https://arxiv.org/abs/2502.18080"},
+        {"title": "UniT: Unified Multimodal Chain-of-Thought Test-time Scaling", "id": "2602.12279", "url": "https://arxiv.org/abs/2602.12279"}
       ],
       "market_validation": [
-        {
-          "name": "Sierra",
-          "what": "Conversational AI agents",
-          "valuation": "$4B+",
-          "raised": "$250M+",
-          "note": "Founded by ex-Salesforce CEO Bret Taylor. Reasoning-powered customer service."
-        }
+        {"name": "Sierra", "what": "Conversational AI agents", "valuation": "$10B", "raised": "$250M+", "note": "Founded by ex-Salesforce CEO Bret Taylor. Reasoning-powered customer service. $150M ARR."}
       ]
     },
     {
       "domain": "Agent Infrastructure",
-      "score": 94,
-      "direction": "\u2197 accelerating",
-      "signal": "MCP has become the de facto standard: 10K+ servers, 97M monthly SDK downloads. A2A, ANP, AWCP competing for agent-to-agent comms. Security is the #1 gap \u2014 MCP-38 threat taxonomy released March 2026. Tool orchestration benchmarks (ETOM) now at 5 levels.",
-      "learn": "MCP/A2A/ANP protocol designs, agent memory architectures, observability and tracing for agents, sandboxing and zero-trust security",
-      "build": "Agent hosting platforms. Tool registry/marketplace. Agent security and guardrail platforms. Memory-as-a-service. Observability dashboards for agent fleets.",
+      "score": 95,
+      "direction": "↗ accelerating",
+      "signal": "MCP security has become the #1 research focus after April 2026 frontier model escape. New 2026 papers: MCP-DPT defense taxonomy (Apr 2026), SMCP secure protocol variant (Feb 2026), formal security analysis of MCP spec (Jan 2026), and comparative threat modeling across MCP/A2A/Agora/ANP. Protocol ecosystem maturing rapidly.",
+      "learn": "MCP/A2A/ANP protocol designs and security models, defense-in-depth for agent protocols, secure tool discovery and invocation, zero-trust agent architectures",
+      "build": "Agent security and guardrail platforms (post-April 2026 demand surge). Protocol-level security middleware. Tool registry with security vetting. MCP server hardening and auditing tools.",
       "papers": [
-        {
-          "title": "Survey of agent interoperability protocols: MCP, ACP, A2A, ANP",
-          "id": "2505.02279",
-          "url": "https://arxiv.org/abs/2505.02279"
-        },
-        {
-          "title": "MCP-38: Comprehensive Threat Taxonomy for MCP Systems",
-          "id": "2603.18063",
-          "url": "https://arxiv.org/abs/2603.18063"
-        },
-        {
-          "title": "Bridging Protocol and Production: Design Patterns for MCP Agents",
-          "id": "2603.13417",
-          "url": "https://arxiv.org/abs/2603.13417"
-        },
-        {
-          "title": "ETOM: Five-Level Benchmark for Tool Orchestration in MCP",
-          "id": "2510.19423",
-          "url": "https://arxiv.org/abs/2510.19423"
-        }
+        {"title": "MCP-DPT: Defense-Placement Taxonomy and Coverage Analysis for MCP Security", "id": "2604.07551", "url": "https://arxiv.org/abs/2604.07551"},
+        {"title": "SMCP: Secure Model Context Protocol", "id": "2602.01129", "url": "https://arxiv.org/abs/2602.01129"},
+        {"title": "Breaking the Protocol: Security Analysis of MCP Specification and Prompt Injection", "id": "2601.17549", "url": "https://arxiv.org/abs/2601.17549"},
+        {"title": "Security Threat Modeling for AI-Agent Protocols: MCP, A2A, Agora, ANP", "id": "2602.11327", "url": "https://arxiv.org/abs/2602.11327"}
       ],
       "market_validation": [
-        {
-          "name": "LangChain",
-          "what": "Agent framework & platform",
-          "valuation": "$1B+",
-          "raised": "$80M+",
-          "note": "97K GitHub stars. 50K+ production apps."
-        },
-        {
-          "name": "CrewAI",
-          "what": "Multi-agent orchestration",
-          "valuation": "~$500M",
-          "raised": "$50M+",
-          "note": "45.9K stars. Fastest-growing agent framework 2025-26."
-        },
-        {
-          "name": "Composio",
-          "what": "MCP-native tool integration",
-          "valuation": "$300M+",
-          "raised": "$40M+",
-          "note": "Directly riding MCP wave. Agent-to-tool auth and registry."
-        }
+        {"name": "LangChain", "what": "Agent framework & platform", "valuation": "$1B+", "raised": "$80M+", "note": "97K GitHub stars. 50K+ production apps. LangSmith observability platform."},
+        {"name": "CrewAI", "what": "Multi-agent orchestration", "valuation": "~$500M", "raised": "$50M+", "note": "45.9K stars. Fastest-growing agent framework 2025-26."},
+        {"name": "Composio", "what": "MCP-native agent tool integration", "valuation": "$300M+", "raised": "$29M", "note": "SOC2/ISO certified. 900+ enterprise integrations. Customers: Glean, Zoom, HubSpot."}
       ]
     },
     {
       "domain": "Small & Efficient Models",
-      "score": 90,
-      "direction": "\u2197 accelerating",
-      "signal": "SLMs now have dedicated benchmarks (SLM-Bench, SLMQuant). Task-specific analysis shows SLMs outperform LLMs on focused domains. 1-bit quantization reaches RL agents on edge devices. TensorSLM enables sub-billion-parameter models on phones and SBCs.",
-      "learn": "Model compression (SLMQuant), quantization (GPTQ, AWQ, GGUF, 1-bit), distillation, speculative decoding, edge deployment (MobileQuant, TensorSLM)",
-      "build": "On-device AI SDKs. SLM fine-tuning platforms. Edge inference optimization tools. Domain-specific tiny models for IoT/sensors.",
+      "score": 91,
+      "direction": "↗ accelerating",
+      "signal": "SLMs now have dedicated quantization benchmarks (SLMQuant, Nov 2025). Task-specific analysis confirms SLMs outperform LLMs on focused domains. 1-bit quantization (BitRL) enables RL agents on edge. MobileQuant optimizes for mobile deployment. Lightweight transformer architectures surveyed for real-time edge apps.",
+      "learn": "Model compression (SLMQuant, GPTQ, AWQ, GGUF), 1-bit quantization, knowledge distillation, speculative decoding, edge deployment (MobileQuant, TensorSLM, CoreML, ONNX)",
+      "build": "On-device AI SDKs. SLM fine-tuning platforms. Edge inference optimization. Domain-specific tiny models for IoT/sensors/phones.",
       "papers": [
-        {
-          "title": "SLM-Bench: Comprehensive Benchmark of Small Language Models",
-          "id": "2508.15478",
-          "url": "https://arxiv.org/abs/2508.15478"
-        },
-        {
-          "title": "Task-Specific Efficiency: When SLMs Outperform LLMs",
-          "id": "2603.21389",
-          "url": "https://arxiv.org/abs/2603.21389"
-        },
-        {
-          "title": "BitRL: RL with 1-bit Quantized LMs for Edge Deployment",
-          "id": "2604.24273",
-          "url": "https://arxiv.org/abs/2604.24273"
-        },
-        {
-          "title": "TensorSLM: Energy-efficient Embedding Compression",
-          "id": "2506.13514",
-          "url": "https://arxiv.org/abs/2506.13514"
-        }
+        {"title": "SLMQuant: Benchmarking Small Language Model Quantization for Deployment", "id": "2511.13023", "url": "https://arxiv.org/abs/2511.13023"},
+        {"title": "Task-Specific Efficiency: When Small Language Models Outperform LLMs", "id": "2603.21389", "url": "https://arxiv.org/abs/2603.21389"},
+        {"title": "BitRL: Reinforcement Learning with 1-bit Quantized LMs for Edge", "id": "2604.24273", "url": "https://arxiv.org/abs/2604.24273"},
+        {"title": "Lightweight Transformer Architectures for Edge Devices in Real-Time Apps", "id": "2601.03290", "url": "https://arxiv.org/abs/2601.03290"}
       ],
       "market_validation": [
-        {
-          "name": "Groq",
-          "what": "Ultra-fast inference hardware/API",
-          "valuation": "$6B+",
-          "raised": "$800M+",
-          "note": "SLM inference enabler. LPU architecture for fast token generation."
-        },
-        {
-          "name": "LM Studio",
-          "what": "Local LLM desktop app",
-          "valuation": "N/A",
-          "raised": "Bootstrapped",
-          "note": "Consumer-grade local SLM runner. Millions of downloads."
-        }
+        {"name": "Groq", "what": "Ultra-fast inference hardware (LPU)", "valuation": "$6B+", "raised": "$800M+", "note": "SLM inference enabler. LPU architecture for fast token generation."},
+        {"name": "LM Studio", "what": "Local LLM desktop app", "valuation": "N/A", "raised": "Bootstrapped", "note": "Consumer-grade local SLM runner. Millions of downloads."}
       ]
     },
     {
       "domain": "AI + Code",
-      "score": 90,
-      "direction": "\u2197 accelerating",
-      "signal": "SE 3.0 is here: autonomous coding agents initiating, planning, and executing. SWE-bench now live (not static). SWE-Bench Pro tests long-horizon tasks. RepoGraph enables repository-level understanding. SWE-Shepherd uses process reward models to guide code agents.",
-      "learn": "Code LLM architectures, repo-level understanding (RepoGraph), process reward models for code (SWE-Shepherd), SWE-bench evaluation, agent-computer interfaces",
-      "build": "Vertical coding agents (security audit, refactoring, migration). Codebase knowledge graphs. AI-native IDEs. Automated CI/CD agents.",
+      "score": 92,
+      "direction": "↗ accelerating",
+      "signal": "SE 3.0 research intensifies. SWE-bench Goes Live (continuous evaluation, not static). SWE-Bench++ generates scalable benchmarks from open-source repos. Repository-level Rust issue resolution (ICSE 2026). 'When Code Becomes Abundant' redefines SE around orchestration and verification. SWE-Shepherd advances process reward models for code agents.",
+      "learn": "Code LLM architectures, repo-level understanding, process reward models for code (SWE-Shepherd), SWE-bench evaluation methodology, agent-computer interfaces (ACI)",
+      "build": "Vertical coding agents (security audit, refactoring, migration). Codebase knowledge graphs. AI-native IDEs. Automated CI/CD agents and PR review systems.",
       "papers": [
-        {
-          "title": "The Rise of AI Teammates in SE 3.0: Autonomous Coding Agents",
-          "id": "2507.15003",
-          "url": "https://arxiv.org/abs/2507.15003"
-        },
-        {
-          "title": "SWE-Bench Pro: Can AI Agents Solve Long-Horizon SE Tasks?",
-          "id": "2509.16941",
-          "url": "https://arxiv.org/abs/2509.16941"
-        },
-        {
-          "title": "SWE-Shepherd: Advancing PRMs for Reinforcing Code Agents",
-          "id": "2604.10493",
-          "url": "https://arxiv.org/abs/2604.10493"
-        },
-        {
-          "title": "RepoGraph: Enhancing AI SE with Repository-level Code Graph",
-          "id": "2410.14684",
-          "url": "https://arxiv.org/abs/2410.14684"
-        }
+        {"title": "SWE-bench Goes Live! Continuous Evaluation for Code Agents", "id": "2505.23419", "url": "https://arxiv.org/abs/2505.23419"},
+        {"title": "SWE-Bench++: Scalable Generation of SE Benchmarks from Open-Source Repos", "id": "2512.17419", "url": "https://arxiv.org/abs/2512.17419"},
+        {"title": "Evaluating Automated Repository-Level Rust Issue Resolution with LLM Agents (ICSE 2026)", "id": "2602.22764", "url": "https://arxiv.org/abs/2602.22764"},
+        {"title": "When Code Becomes Abundant: Redefining SE Around Orchestration and Verification", "id": "2602.04830", "url": "https://arxiv.org/abs/2602.04830"}
       ],
       "market_validation": [
-        {
-          "name": "Anysphere (Cursor)",
-          "what": "AI-native code editor",
-          "valuation": "$60B",
-          "raised": "$900M+",
-          "note": "Founded 2022. SpaceX acquisition talks. $2B revenue run rate."
-        },
-        {
-          "name": "Poolside",
-          "what": "AI coding with proprietary models",
-          "valuation": "$2B+",
-          "raised": "$500M Series B",
-          "note": "Founded 2023. Building custom code-gen models."
-        }
+        {"name": "Anysphere (Cursor)", "what": "AI-native code editor", "valuation": "$60B", "raised": "$900M+", "note": "Founded 2022. SpaceX acquisition talks. $2B revenue run rate."},
+        {"name": "Poolside", "what": "AI coding with proprietary models", "valuation": "$2B+", "raised": "$500M Series B", "note": "Founded 2023. Building custom code-gen models."}
       ]
     },
     {
       "domain": "Multimodal AI",
-      "score": 87,
-      "direction": "\u2197 steady",
-      "signal": "VLMs now handle 3D spatial reasoning (TinyGiantVLM), tactile+vision+language fusion for embodied AI, and video understanding at scale. Cross-modal explainability (GLIMPSE) emerging. Multimodal fusion surveys for robotics accelerating.",
-      "learn": "Vision transformers, cross-modal attention, video-language models, tactile+vision fusion, VLM architectures for spatial/3D reasoning",
-      "build": "Video understanding APIs. Multimodal search. AR/VR AI assistants. Real-time video analytics. Embodied AI for manufacturing/warehouse.",
+      "score": 89,
+      "direction": "↗ accelerating",
+      "signal": "Embodied AI survey published (comprehensive). Omnidirectional/360° vision in embodied AI surveyed (PANORAMA). Hierarchical pre-training connects vision encoders with LLMs. Safety in embodied AI introduces risk taxonomy for physical-world agents. Tactile+vision+language fusion advancing.",
+      "learn": "Vision transformers, cross-modal attention, video-language models, tactile+vision fusion, VLM for spatial/3D reasoning, omnidirectional vision for robotics",
+      "build": "Video understanding APIs. Multimodal search. AR/VR AI assistants. Embodied AI for manufacturing/warehouse. Safety-first embodied agent frameworks.",
       "papers": [
-        {
-          "title": "Multimodal Fusion and VLMs: A Survey for Robot Vision",
-          "id": "2504.02477",
-          "url": "https://arxiv.org/abs/2504.02477"
-        },
-        {
-          "title": "Tactile-based Multimodal Fusion in Embodied Intelligence",
-          "id": "2605.17336",
-          "url": "https://arxiv.org/abs/2605.17336"
-        },
-        {
-          "title": "Video-Language Understanding: Survey",
-          "id": "2406.05615",
-          "url": "https://arxiv.org/abs/2406.05615"
-        },
-        {
-          "title": "GLIMPSE: Holistic Cross-Modal Explainability for LVLMs",
-          "id": "2506.18985",
-          "url": "https://arxiv.org/abs/2506.18985"
-        }
+        {"title": "Aligning Cyber Space with Physical World: Comprehensive Survey on Embodied AI", "id": "2407.06886", "url": "https://arxiv.org/abs/2407.06886"},
+        {"title": "PANORAMA: The Rise of Omnidirectional Vision in the Embodied AI Era", "id": "2509.12989", "url": "https://arxiv.org/abs/2509.12989"},
+        {"title": "Safety in Embodied AI: A Survey of Risks, Attacks, and Defenses", "id": "2605.02900", "url": "https://arxiv.org/abs/2605.02900"},
+        {"title": "Hierarchical Pre-Training of Vision Encoders with Large Language Models", "id": "2604.00086", "url": "https://arxiv.org/abs/2604.00086"}
       ],
       "market_validation": [
-        {
-          "name": "Runway",
-          "what": "AI video generation (Gen-4)",
-          "valuation": "$5.3B",
-          "raised": "$300M+",
-          "note": "$300M revenue. Hollywood-grade generation."
-        },
-        {
-          "name": "Suno",
-          "what": "AI music generation",
-          "valuation": "$2B+",
-          "raised": "$200M+",
-          "note": "$300M ARR, 404% YoY growth."
-        },
-        {
-          "name": "ElevenLabs",
-          "what": "AI voice synthesis & dubbing",
-          "valuation": "$3B+",
-          "raised": "$200M+",
-          "note": "Dominant in voice AI. Speech-to-speech and dubbing at scale."
-        }
+        {"name": "Runway", "what": "AI video generation (Gen-4)", "valuation": "$5.3B", "raised": "$300M+", "note": "$300M revenue. Hollywood-grade generation."},
+        {"name": "Suno", "what": "AI music generation", "valuation": "$2B+", "raised": "$200M+", "note": "$300M ARR, 404% YoY growth."},
+        {"name": "ElevenLabs", "what": "AI voice synthesis & dubbing", "valuation": "$3B+", "raised": "$200M+", "note": "Dominant in voice AI. Speech-to-speech and dubbing at scale."}
       ]
     }
   ],
   "startup_thesis": {
-    "wave_1_2023_2025": "Foundation models and chatbots \u2014 captured by OpenAI, Anthropic, Google, Meta",
-    "wave_2_2025_now": "Agentic AI + vertical applications + infrastructure. MCP ecosystem growing 97M downloads/month. Security and trust are the gaps.",
-    "wave_3_2026_2028": "Physical AI + agent economies + on-device intelligence. Containment after April 2026 frontier model escape will define the regulatory landscape.",
-    "where_to_play": "The biggest gap is agent security and trust infrastructure \u2014 after April 2026's frontier model escape, every enterprise deploying agents needs containment, auditing, and zero-trust architectures. Second: vertical agents for regulated industries (legal, healthcare, finance) that combine domain expertise with MCP tooling. Third: on-device SLM deployment tooling as models shrink below 1B parameters."
+    "wave_1_2023_2025": "Foundation models and chatbots — captured by OpenAI, Anthropic, Google, Meta",
+    "wave_2_2025_now": "Agentic AI + vertical applications + infrastructure. MCP ecosystem growing 97M downloads/month. Security is the #1 gap — after April 2026 frontier model escape, agent containment is mandatory.",
+    "wave_3_2026_2028": "Physical AI + agent economies + on-device intelligence. Regulatory landscape defined by containment requirements. Embodied AI safety becomes critical.",
+    "where_to_play": "The biggest gap is agent security and trust infrastructure — after April 2026's frontier model escape, every enterprise deploying agents needs containment, auditing, and zero-trust architectures (MCP-DPT, SMCP are the early signals). Second: vertical agents for regulated industries (legal, healthcare, finance). Third: on-device SLM deployment tooling as models shrink below 1B parameters."
   },
-  "market_summary": "15 emerging startups (all founded 2022+, funded 2024-2026) prove these research trends have product-market fit. $120B+ combined valuation. Pattern: vertical agents (legal, healthcare, service) + horizontal infra (frameworks, protocols, deployment) + creative tools (video, music, voice). Full sourcing in wiki-ai-research."
+  "market_summary": "15+ emerging startups (all founded 2022+, funded 2024-2026). Key updates: Sierra at $10B/$150M ARR (up from $4B+), Decagon Series D at $4.5B, Runway at $5.3B/$300M revenue, Suno $300M ARR. Pattern: vertical agents (legal, healthcare, service) + horizontal infra (frameworks, protocols, security) + creative tools (video, music, voice)."
 }
