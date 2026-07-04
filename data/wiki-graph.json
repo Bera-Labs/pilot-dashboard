@@ -564,6 +564,12 @@
       "type": "crosslink"
     },
     {
+      "from": "dopamine_recovery",
+      "to": "stress_protocol",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
       "from": "exercise",
       "to": "dopamine_recovery",
       "strength": "crosslink",
@@ -588,6 +594,12 @@
       "type": "crosslink"
     },
     {
+      "from": "habit_formation",
+      "to": "stress_protocol",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
       "from": "mindfulness",
       "to": "exercise",
       "strength": "crosslink",
@@ -602,6 +614,12 @@
     {
       "from": "stress_protocol",
       "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "stress_protocol",
+      "to": "habit_formation",
       "strength": "crosslink",
       "type": "crosslink"
     },
