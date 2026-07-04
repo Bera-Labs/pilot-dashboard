@@ -115,27 +115,67 @@
   "skills": [
     {
       "name": "euclidean-thinking",
-      "tags": "First-principles reasoning, problem decomposition, and systematic truth-building via Euclid's axiomatic method. Load before decomposing complex problems, constructing arguments, debugging systems, building from scratch, or learning new domains."
-    },
-    {
-      "name": "nightly-momentum-engine",
-      "tags": "Autonomous weekly synthesis of all LifeOS data through the full STEM stack to produce morning intelligence \u2014 trajectory analysis, bottleneck identification, simulated futures, and top actions for maximum compound growth."
-    },
-    {
-      "name": "pilot-dashboard",
-      "tags": "Read-only modular web dashboard for visual tracking of life metrics, wiki graph, property pipeline, and activity log. No browser input \u2014 all updates happen server-side via Hermes cron or scripts. Displays data from JSON state files."
+      "tags": [
+        "STEM",
+        "first-principles"
+      ],
+      "desc": "Axioms, primitives, constructive proofs"
     },
     {
       "name": "probabilistic-thinking",
-      "tags": "Pre-analysis checklist for decisions involving data, uncertainty, or probability. Load before analyzing data, making forecasts, evaluating claims, or drawing conclusions from samples. Based on Mlodinow's The Drunkard's Walk + Kahneman & Tversky."
+      "tags": [
+        "STEM",
+        "uncertainty"
+      ],
+      "desc": "Base rates, regression, Bayesian updating"
     },
     {
       "name": "thinking-in-bets",
-      "tags": "Decision-making under uncertainty \u2014 probabilistic thinking applied to real choices. Load before any high-stakes decision, when evaluating past outcomes, or when forming/defending beliefs. Based on Annie Duke's Thinking in Bets."
+      "tags": [
+        "STEM",
+        "decisions"
+      ],
+      "desc": "Decision-making under uncertainty"
     },
     {
       "name": "warp-speed-execution",
-      "tags": "STEM-grounded frameworks for maximizing execution velocity with guardrails. Load when speed of progress is the priority \u2014 career acceleration, skill acquisition, project delivery, life compounding."
+      "tags": [
+        "STEM",
+        "velocity"
+      ],
+      "desc": "15-framework STEM synthesis for life velocity"
+    },
+    {
+      "name": "personal-algorithm-architecture",
+      "tags": [
+        "STEM",
+        "systems"
+      ],
+      "desc": "Quarterly-versioned life OS, protocol design patterns"
+    },
+    {
+      "name": "fear-avoidance-loop",
+      "tags": [
+        "STEM",
+        "systems"
+      ],
+      "desc": "7-phase positive feedback loop, 3 intervention windows"
+    },
+    {
+      "name": "rules-engineering-gap-analysis",
+      "tags": [
+        "STEM",
+        "measurement"
+      ],
+      "desc": "88 rules to 4 measured to 1 holding"
+    },
+    {
+      "name": "stress-protocol-katana",
+      "tags": [
+        "performance",
+        "protocol"
+      ],
+      "desc": "Biometric-triggered behavioral interrupt"
     }
   ],
   "momentum_analysis": {
@@ -236,5 +276,13 @@
         "rule": "DO NOT advance until note is placed."
       }
     ]
-  }
+  },
+  "wiki_stats": {
+    "superhuman_pages": 22,
+    "stem_pages": 15,
+    "superhuman_concepts": 11,
+    "stem_concepts": 7,
+    "updated": "2026-07-04"
+  },
+  "updated": "2026-07-04T18:30:00Z"
 }
