@@ -51,6 +51,7 @@ OUTCOME_DESC = {
     "stress": "Physiological and psychological stress response — HPA axis activation, cortisol, sympathetic arousal. Strongly reduced by mindfulness, Rhodiola, exercise, and sleep. The stress protocol targets the stress→avoidance transition specifically.",
     "self_control": "Capacity to override impulses and align behavior with long-term goals. Habit formation strongest evidence (100-study meta-analysis). Willpower training weak evidence. Mindfulness moderate (creates awareness gap). Stress protocol moderate (pre-loaded decisions).",
     "relapse": "Return to addictive behavior after period of abstinence. NAC strongest evidence for prevention (2 meta-analyses). Habit formation strong (automatic alternatives). Self-compassion moderate (prevents shame spiral → full relapse). The 5-7 day window is the highest-risk period during dopamine recovery.",
+    "adhd_connectivity": "Neural network integration in ADHD — DMN, Salience Network, Executive Control Network. Core deficit: DMN fails to deactivate during task performance. Exercise strongest intervention (medium-to-large effects on executive function via BDNF, cerebral blood flow, dopamine). Mindfulness moderate (DMN modulation, transfer effects unproven). Neurofeedback and brain stimulation not supported by current evidence.",
 }
 
 # === EDGE EVIDENCE DETAILS ===
@@ -124,6 +125,9 @@ EDGE_EVIDENCE = {
     ("stress_protocol", "self_control"): "Pre-loaded decisions bypass the deliberation that fails under stress. When PFC is compromised, having a pre-decided action ready prevents the avoidance default from loading. Complements habit formation — protocol is a specific implementation of if-then planning.",
     ("stress_protocol", "relapse"): "The protocol targets the critical Phase 1→2 transition in the stress-avoidance-relapse cycle. By interrupting at the physiological signal (before cognitive shutdown and escape behavior), it prevents the cascade that leads to relapse. Moderate confidence — protocol design is sound, not yet independently tested.",
     ("stress_protocol", "cravings"): "Weak direct evidence for craving reduction. The protocol does not target cravings directly — it prevents the stress→avoidance→relapse chain. However, if cravings are stress-triggered, the protocol indirectly reduces craving frequency by reducing stress triggers.",
+    # ADHD connectivity edges
+    ("exercise", "adhd_connectivity"): "Multiple meta-analyses: cognitive-aerobic and skill-based exercise show medium-to-large effects on working memory, inhibition, and cognitive flexibility in ADHD. Mechanism: BDNF elevation, increased cerebral blood flow to PFC, dopamine normalization, myokine signaling (irisin, cathepsin B cross blood-brain barrier). Dose: moderate intensity, 30min, 3x/week, 5+ weeks minimum. The strongest single intervention for ADHD neural network integration.",
+    ("mindfulness", "adhd_connectivity"): "Focused attention meditation reduces DMN activation — directly targeting the core ADHD connectivity deficit (DMN failure to deactivate during tasks). Multiple studies show symptom reduction. Caveat: systematic review (bioRxiv 2024) found lack of transfer effects and inadequate sham controls. Moderate confidence — mechanism is sound, clinical durability unproven.",
 }
 
 # Map wiki pages to graph nodes
@@ -138,6 +142,7 @@ WIKI_TO_NODE = [
     ("brain-fog-mechanism", "brain_fog", "Brain Fog", "outcome", None),
     ("exercise-sleep-nutrition-synthesis", None, None, None, None),
     ("stress-protocol-katana", "stress_protocol", "Stress Protocol (Katana)", "intervention", None),
+    ("adhd-connectivity-interventions", "adhd_connectivity", "ADHD Connectivity", "outcome", None),
 ]
 
 EXTRA_INTERVENTIONS = [
@@ -172,6 +177,7 @@ EXTRA_OUTCOMES = [
     ("stress", "Stress"),
     ("self_control", "Self-Control"),
     ("relapse", "Relapse Prevention"),
+    ("adhd_connectivity", "ADHD Connectivity"),
 ]
 
 EDGES = [
@@ -228,6 +234,9 @@ EDGES = [
     ("stress_protocol", "self_control", "moderate"),
     ("stress_protocol", "relapse", "moderate"),
     ("stress_protocol", "cravings", "weak"),
+    # ADHD connectivity
+    ("exercise", "adhd_connectivity", "strong"),
+    ("mindfulness", "adhd_connectivity", "moderate"),
 ]
 
 page_to_node = {
@@ -242,7 +251,8 @@ page_to_node = {
     "supplements-brainfog-cognition": "creatine",
     "willpower-training": "willpower_training",
     "stress-protocol-katana": "stress_protocol",
-}
+    "adhd-connectivity-interventions": "adhd_connectivity",
+    }
 
 
 def read_frontmatter(path):

@@ -183,6 +183,14 @@
       "label": "Relapse Prevention",
       "type": "outcome",
       "desc": "Return to addictive behavior after period of abstinence. NAC strongest evidence for prevention (2 meta-analyses). Habit formation strong (automatic alternatives). Self-compassion moderate (prevents shame spiral \u2192 full relapse). The 5-7 day window is the highest-risk period during dopamine recovery."
+    },
+    {
+      "id": "adhd_connectivity",
+      "label": "ADHD Connectivity",
+      "type": "outcome",
+      "desc": "Neural network integration in ADHD \u2014 DMN, Salience Network, Executive Control Network. Core deficit: DMN fails to deactivate during task performance. Exercise strongest intervention (medium-to-large effects on executive function via BDNF, cerebral blood flow, dopamine). Mindfulness moderate (DMN modulation, transfer effects unproven). Neurofeedback and brain stimulation not supported by current evidence.",
+      "confidence": "high",
+      "wiki_page": "concepts/adhd-connectivity-interventions"
     }
   ],
   "edges": [
@@ -556,6 +564,50 @@
       "strength": "weak",
       "type": "evidence",
       "evidence": "Weak direct evidence for craving reduction. The protocol does not target cravings directly \u2014 it prevents the stress\u2192avoidance\u2192relapse chain. However, if cravings are stress-triggered, the protocol indirectly reduces craving frequency by reducing stress triggers."
+    },
+    {
+      "from": "exercise",
+      "to": "adhd_connectivity",
+      "strength": "strong",
+      "type": "evidence",
+      "evidence": "Multiple meta-analyses: cognitive-aerobic and skill-based exercise show medium-to-large effects on working memory, inhibition, and cognitive flexibility in ADHD. Mechanism: BDNF elevation, increased cerebral blood flow to PFC, dopamine normalization, myokine signaling (irisin, cathepsin B cross blood-brain barrier). Dose: moderate intensity, 30min, 3x/week, 5+ weeks minimum. The strongest single intervention for ADHD neural network integration."
+    },
+    {
+      "from": "mindfulness",
+      "to": "adhd_connectivity",
+      "strength": "moderate",
+      "type": "evidence",
+      "evidence": "Focused attention meditation reduces DMN activation \u2014 directly targeting the core ADHD connectivity deficit (DMN failure to deactivate during tasks). Multiple studies show symptom reduction. Caveat: systematic review (bioRxiv 2024) found lack of transfer effects and inadequate sham controls. Moderate confidence \u2014 mechanism is sound, clinical durability unproven."
+    },
+    {
+      "from": "adhd_connectivity",
+      "to": "exercise",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "adhd_connectivity",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "adhd_connectivity",
+      "to": "mindfulness",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "adhd_connectivity",
+      "to": "stress_protocol",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "adhd_connectivity",
+      "to": "brain_fog",
+      "strength": "crosslink",
+      "type": "crosslink"
     },
     {
       "from": "brain_fog",
