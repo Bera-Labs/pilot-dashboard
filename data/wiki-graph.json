@@ -107,6 +107,20 @@
       "wiki_page": "concepts/stress-protocol-katana"
     },
     {
+      "id": "stimulants",
+      "label": "Stimulants (MPH/AMP)",
+      "type": "intervention",
+      "confidence": "high",
+      "desc": "Methylphenidate and amphetamine derivatives. Recent large-scale rs-fMRI reveals they do NOT simply boost attention networks \u2014 they induce connectivity shifts across sensorimotor, salience, and reward networks, placing the brain in a 'highly rewarded configuration.' Negate sleep-deprivation connectivity disruptions. Chronic use normalizes nucleus accumbens, amygdala, and insula volumes. Enhance rIFC and insula activation during inhibitory control. Normalize Degree Centrality in fronto-cingulo-parieto-cerebellar circuits."
+    },
+    {
+      "id": "precision_neuromod",
+      "label": "Precision Neuromodulation",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "Clinician-administered neuromodulation: fMRI neurofeedback (rt-fMRI-NF strengthens CEN-DMN anticorrelation), TMS (SNT-guided fcMRI targeting, 90% remission in depression, adapting for ADHD), eTNS (FDA-approved trigeminal nerve stimulation, bottom-up brainstem\u2192frontal modulation, biomarker-stratified for low right frontal EEG power). Also covers digital therapeutics (EndeavorRx: FDA-approved, sensory-motor interference\u2192PFC activation, 47% response rate). These are clinical interventions, not self-directed."
+    },
+    {
       "id": "executive_function",
       "label": "Executive Function",
       "type": "outcome",
@@ -580,6 +594,34 @@
       "evidence": "Focused attention meditation reduces DMN activation \u2014 directly targeting the core ADHD connectivity deficit (DMN failure to deactivate during tasks). Multiple studies show symptom reduction. Caveat: systematic review (bioRxiv 2024) found lack of transfer effects and inadequate sham controls. Moderate confidence \u2014 mechanism is sound, clinical durability unproven."
     },
     {
+      "from": "stimulants",
+      "to": "adhd_connectivity",
+      "strength": "strong",
+      "type": "evidence",
+      "evidence": "Large-scale rs-fMRI: stimulants induce connectivity shifts across sensorimotor, salience, and reward networks \u2014 overlapping with arousal and wakefulness markers. They negate sleep-deprivation disruptions and place the brain in a 'highly rewarded configuration' that increases motivation for low-reward tasks. Chronic use normalizes nucleus accumbens, amygdala, and insula volumes. Acute use enhances rIFC and insula activation during inhibitory control. Degree Centrality normalized in fronto-cingulo-parieto-cerebellar circuits."
+    },
+    {
+      "from": "stimulants",
+      "to": "dopamine_recovery",
+      "strength": "moderate",
+      "type": "evidence",
+      "evidence": "Stimulants enhance dopamine and norepinephrine signaling acutely but chronic use induces structural normalization of reward-circuit structures (nucleus accumbens, amygdala). This is distinct from addiction recovery \u2014 stimulants are prescribed, not abused. The neuroplastic changes are toward normalization, not pathology."
+    },
+    {
+      "from": "stimulants",
+      "to": "executive_function",
+      "strength": "strong",
+      "type": "evidence",
+      "evidence": "Stimulants enhance rIFC activation during inhibitory control tasks and normalize Degree Centrality in executive networks. Effect on executive function is well-established clinically. Mechanism: increased catecholamine availability in PFC \u2192 improved signal-to-noise ratio in working memory and response inhibition circuits."
+    },
+    {
+      "from": "precision_neuromod",
+      "to": "adhd_connectivity",
+      "strength": "moderate",
+      "type": "evidence",
+      "evidence": "Combined evidence from: fMRI neurofeedback (strengthens CEN-DMN anticorrelation via rIFC training, transfer effects confirmed), SNT-guided TMS (personalized fcMRI targeting of DLPFC, 90% remission in depression, adapting for ADHD), eTNS (FDA-approved, bottom-up brainstem\u2192frontal modulation, effective in biomarker-stratified low right frontal EEG patients). These are clinical interventions requiring specialist administration. Moderate aggregate confidence \u2014 each modality has independent evidence."
+    },
+    {
       "from": "adhd_connectivity",
       "to": "exercise",
       "strength": "crosslink",
@@ -606,6 +648,12 @@
     {
       "from": "adhd_connectivity",
       "to": "brain_fog",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "adhd_connectivity",
+      "to": "habit_formation",
       "strength": "crosslink",
       "type": "crosslink"
     },

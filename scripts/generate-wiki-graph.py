@@ -28,6 +28,8 @@ NODE_DESC = {
     "beetroot": "Beetroot juice/supplementation. Systematic review (2025): inconclusive for cognitive function. Nitric oxide mechanism plausible for cerebral blood flow but cognitive outcome data is insufficient.",
     "self_compassion": "Self-compassion practices: faster lapse recovery after relapse. Moderate evidence — self-compassion reduces shame spiraling that extends single misses into full behavioral collapse. Complements habit formation (reduces reset-button pattern). Not a standalone intervention.",
     "stress_protocol": "Biometric-triggered behavioral interrupt. Architecture: Whoop HRV/HR stress detection → Claude routes next action from Outliner task list → Katana single-slice execution (this hour only, no outcome thinking). Grounded in implementation intentions research (Gollwitzer, 1999). Design constraint: must be single-line under stress. Friction asymmetry: rule-following requires fewer steps than rule-breaking.",
+    "stimulants": "Methylphenidate and amphetamine derivatives. Recent large-scale rs-fMRI reveals they do NOT simply boost attention networks — they induce connectivity shifts across sensorimotor, salience, and reward networks, placing the brain in a 'highly rewarded configuration.' Negate sleep-deprivation connectivity disruptions. Chronic use normalizes nucleus accumbens, amygdala, and insula volumes. Enhance rIFC and insula activation during inhibitory control. Normalize Degree Centrality in fronto-cingulo-parieto-cerebellar circuits.",
+    "precision_neuromod": "Clinician-administered neuromodulation: fMRI neurofeedback (rt-fMRI-NF strengthens CEN-DMN anticorrelation), TMS (SNT-guided fcMRI targeting, 90% remission in depression, adapting for ADHD), eTNS (FDA-approved trigeminal nerve stimulation, bottom-up brainstem→frontal modulation, biomarker-stratified for low right frontal EEG power). Also covers digital therapeutics (EndeavorRx: FDA-approved, sensory-motor interference→PFC activation, 47% response rate). These are clinical interventions, not self-directed.",
     "exercise": "Aerobic + resistance exercise. Strongest evidence for cognitive enhancement: improves executive function, neuroplasticity (BDNF), reduces brain fog, accelerates dopamine recovery. 150+ min/week moderate or 75+ min/week vigorous. Multiple meta-analyses and RCTs across populations.",
     "mindfulness": "8-week MBSR or daily meditation practice. Strong evidence for attention (DMN-dlPFC anticorrelation), executive function, and stress reduction. Moderate evidence for craving reduction and self-control. Creates awareness gap between urge and action — the critical intervention window.",
     "habit_formation": "Building automatic routines instead of relying on willpower. 100-study meta-analysis (33K participants): high self-control individuals don't resist better — they automate. Key methods: implementation intentions (if-then plans, 2x success rate), environmental design (friction asymmetry), mindfulness (urge awareness). Fundamentally more sustainable than willpower training.",
@@ -128,6 +130,10 @@ EDGE_EVIDENCE = {
     # ADHD connectivity edges
     ("exercise", "adhd_connectivity"): "Multiple meta-analyses: cognitive-aerobic and skill-based exercise show medium-to-large effects on working memory, inhibition, and cognitive flexibility in ADHD. Mechanism: BDNF elevation, increased cerebral blood flow to PFC, dopamine normalization, myokine signaling (irisin, cathepsin B cross blood-brain barrier). Dose: moderate intensity, 30min, 3x/week, 5+ weeks minimum. The strongest single intervention for ADHD neural network integration.",
     ("mindfulness", "adhd_connectivity"): "Focused attention meditation reduces DMN activation — directly targeting the core ADHD connectivity deficit (DMN failure to deactivate during tasks). Multiple studies show symptom reduction. Caveat: systematic review (bioRxiv 2024) found lack of transfer effects and inadequate sham controls. Moderate confidence — mechanism is sound, clinical durability unproven.",
+    ("stimulants", "adhd_connectivity"): "Large-scale rs-fMRI: stimulants induce connectivity shifts across sensorimotor, salience, and reward networks — overlapping with arousal and wakefulness markers. They negate sleep-deprivation disruptions and place the brain in a 'highly rewarded configuration' that increases motivation for low-reward tasks. Chronic use normalizes nucleus accumbens, amygdala, and insula volumes. Acute use enhances rIFC and insula activation during inhibitory control. Degree Centrality normalized in fronto-cingulo-parieto-cerebellar circuits.",
+    ("stimulants", "dopamine_recovery"): "Stimulants enhance dopamine and norepinephrine signaling acutely but chronic use induces structural normalization of reward-circuit structures (nucleus accumbens, amygdala). This is distinct from addiction recovery — stimulants are prescribed, not abused. The neuroplastic changes are toward normalization, not pathology.",
+    ("stimulants", "executive_function"): "Stimulants enhance rIFC activation during inhibitory control tasks and normalize Degree Centrality in executive networks. Effect on executive function is well-established clinically. Mechanism: increased catecholamine availability in PFC → improved signal-to-noise ratio in working memory and response inhibition circuits.",
+    ("precision_neuromod", "adhd_connectivity"): "Combined evidence from: fMRI neurofeedback (strengthens CEN-DMN anticorrelation via rIFC training, transfer effects confirmed), SNT-guided TMS (personalized fcMRI targeting of DLPFC, 90% remission in depression, adapting for ADHD), eTNS (FDA-approved, bottom-up brainstem→frontal modulation, effective in biomarker-stratified low right frontal EEG patients). These are clinical interventions requiring specialist administration. Moderate aggregate confidence — each modality has independent evidence.",
 }
 
 # Map wiki pages to graph nodes
@@ -161,6 +167,8 @@ EXTRA_INTERVENTIONS = [
     ("beetroot", "Beetroot", "intervention", "none"),
     ("self_compassion", "Self-Compassion", "intervention", "medium"),
     ("stress_protocol", "Stress Protocol (Katana)", "intervention", "medium"),
+    ("stimulants", "Stimulants (MPH/AMP)", "intervention", "high"),
+    ("precision_neuromod", "Precision Neuromodulation", "intervention", "medium"),
 ]
 
 EXTRA_OUTCOMES = [
@@ -237,6 +245,10 @@ EDGES = [
     # ADHD connectivity
     ("exercise", "adhd_connectivity", "strong"),
     ("mindfulness", "adhd_connectivity", "moderate"),
+    ("stimulants", "adhd_connectivity", "strong"),
+    ("stimulants", "dopamine_recovery", "moderate"),
+    ("stimulants", "executive_function", "strong"),
+    ("precision_neuromod", "adhd_connectivity", "moderate"),
 ]
 
 page_to_node = {
