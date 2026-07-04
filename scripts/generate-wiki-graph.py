@@ -22,6 +22,7 @@ WIKI_TO_NODE = [
     ("habit-formation-vs-willpower", "habit_formation", "Habit Formation", "intervention", None),
     ("brain-fog-mechanism", "brain_fog", "Brain Fog", "outcome", None),
     ("exercise-sleep-nutrition-synthesis", None, None, None, None),  # synthesis, not a single node
+    ("stress-protocol-katana", "stress_protocol", "Stress Protocol (Katana)", "intervention", None),
 ]
 
 # Additional intervention nodes with their confidence and descriptions
@@ -40,6 +41,7 @@ EXTRA_INTERVENTIONS = [
     ("taurine", "Taurine", "intervention", "none", "No effect (meta-analysis)"),
     ("beetroot", "Beetroot", "intervention", "none", "Inconclusive"),
     ("self_compassion", "Self-Compassion", "intervention", "medium", "Faster lapse recovery"),
+    ("stress_protocol", "Stress Protocol (Katana)", "intervention", "medium", "Biometric trigger + single-slice execution"),
 ]
 
 EXTRA_OUTCOMES = [
@@ -125,6 +127,11 @@ EDGES = [
     # Self-compassion
     ("self_compassion", "relapse", "moderate"),
     ("self_compassion", "addiction_recovery", "moderate"),
+    # Stress Protocol (Katana) — biometric-triggered behavioral interrupt
+    ("stress_protocol", "stress", "moderate"),
+    ("stress_protocol", "self_control", "moderate"),
+    ("stress_protocol", "relapse", "moderate"),
+    ("stress_protocol", "cravings", "weak"),
 ]
 
 
@@ -206,6 +213,7 @@ def build_graph():
         "supplements-addiction-recovery": "nac",
         "supplements-brainfog-cognition": "creatine",
         "willpower-training": "willpower_training",
+        "stress-protocol-katana": "stress_protocol",
     }
     
     seen_crosslinks = set()

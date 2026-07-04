@@ -99,6 +99,14 @@
       "desc": "Faster lapse recovery"
     },
     {
+      "id": "stress_protocol",
+      "label": "Stress Protocol (Katana)",
+      "type": "intervention",
+      "confidence": "medium",
+      "desc": "Biometric trigger + single-slice execution",
+      "summary": "A closed-loop personal algorithm using physiological signal detection, AI-assisted decision routing, and single-slice execution to interrupt the stress \u2192 avoidance \u2192 shame cycle."
+    },
+    {
       "id": "executive_function",
       "label": "Executive Function",
       "type": "outcome"
@@ -502,6 +510,30 @@
       "type": "evidence"
     },
     {
+      "from": "stress_protocol",
+      "to": "stress",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "stress_protocol",
+      "to": "self_control",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "stress_protocol",
+      "to": "relapse",
+      "strength": "moderate",
+      "type": "evidence"
+    },
+    {
+      "from": "stress_protocol",
+      "to": "cravings",
+      "strength": "weak",
+      "type": "evidence"
+    },
+    {
       "from": "brain_fog",
       "to": "willpower_training",
       "strength": "crosslink",
@@ -563,6 +595,12 @@
     },
     {
       "from": "mindfulness",
+      "to": "dopamine_recovery",
+      "strength": "crosslink",
+      "type": "crosslink"
+    },
+    {
+      "from": "stress_protocol",
       "to": "dopamine_recovery",
       "strength": "crosslink",
       "type": "crosslink"
