@@ -5,213 +5,184 @@
       "label": "Sleep",
       "type": "intervention",
       "confidence": "high",
-      "desc": "7-9 hrs consistent"
+      "desc": "7-9 hours of consistent sleep. Strongest single intervention for cognitive function: improves executive function, attention, memory consolidation, and emotional regulation. Sleep deprivation directly impairs prefrontal cortex function \u2014 the same region compromised by stress and addiction."
     },
     {
       "id": "creatine",
       "label": "Creatine",
       "type": "intervention",
       "confidence": "high",
-      "desc": "5g/day"
+      "desc": "5g/day creatine monohydrate. Meta-analysis of 16 RCTs (Xu et al., 2024): improves memory (SMD +0.31), attention, processing speed, and reduces mental fatigue. More effective in stressed/sleep-deprived populations. One of only two supplements with strong evidence for cognitive enhancement."
     },
     {
       "id": "nac",
       "label": "NAC",
       "type": "intervention",
       "confidence": "high",
-      "desc": "1200-2400mg/day"
+      "desc": "N-acetylcysteine 1200-2400mg/day. Targets glutamate system, not dopamine directly. 2 meta-analyses + 4 RCTs showing craving reduction across methamphetamine, cocaine, nicotine, alcohol, and cannabis. Restores cystine-glutamate antiporter \u2192 normalizes glutamate in nucleus accumbens \u2192 reduces cravings. Does NOT directly reduce brain fog."
     },
     {
       "id": "omega3",
       "label": "Omega-3",
       "type": "intervention",
       "confidence": "medium",
-      "desc": "1-2g EPA+DHA"
+      "desc": "1-2g EPA+DHA/day. 58-RCT dose-response meta-analysis (Shahinfar et al., 2025): per 2000mg improves attention (SMD=0.98), memory (SMD=0.87), global cognition (SMD=1.08). GRADE: low-moderate certainty. Supports neuronal membrane fluidity and dopamine receptor function. No addiction-specific trials."
     },
     {
       "id": "resistance",
       "label": "Resistance Training",
       "type": "intervention",
       "confidence": "medium",
-      "desc": "2-3x/wk, 12 wks"
+      "desc": "Resistance training 2-3x/week for 12+ weeks. Strong evidence for neuroplasticity (BDNF elevation, IGF-1 signaling). Moderate evidence for executive function improvement. Works through myokine signaling \u2014 muscles release irisin and cathepsin B that cross the blood-brain barrier."
     },
     {
       "id": "iron",
       "label": "Iron",
       "type": "intervention",
       "confidence": "medium",
-      "desc": "Only if deficient"
+      "desc": "Iron supplementation ONLY if deficient (low ferritin). Meta-analysis of 18 studies (Fiani et al., 2025): improves fatigue (d=0.34) and cognition (d=0.46) in iron-deficient individuals. Zero effect if iron levels are normal. Test ferritin before supplementing."
     },
     {
       "id": "rhodiola",
       "label": "Rhodiola",
       "type": "intervention",
       "confidence": "medium",
-      "desc": "SHR-5 extract"
+      "desc": "Rhodiola rosea SHR-5 extract. Strong evidence for physical fatigue reduction and stress resilience. Evidence for mental/cognitive fatigue is mixed \u2014 2025 RCT found 'trivial' effect on mental fog. Phase III RCT (2009) confirmed anti-fatigue effects under stress."
     },
     {
       "id": "curcumin",
       "label": "Curcumin",
       "type": "intervention",
       "confidence": "low",
-      "desc": "800mg, \u226524 wks"
+      "desc": "Curcumin 800mg/day for \u226524 weeks. Meta-analysis of 9 RCTs (2025): improves global cognition but slow onset, effects primarily in older/Asian populations. Anti-inflammatory mechanism \u2014 reduces neuroinflammation. Not recommended for acute cognitive enhancement."
     },
     {
       "id": "cold_exposure",
       "label": "Cold Exposure",
       "type": "intervention",
       "confidence": "low",
-      "desc": "2-5 min cold shower"
+      "desc": "2-5 minute cold shower or cold plunge. Weak evidence for dopamine recovery \u2014 primarily mechanistic (cold shock proteins, norepinephrine surge). No clinical trials for addiction recovery. May provide acute mood/motivation boost via sympathetic activation."
     },
     {
       "id": "omega3_addiction",
       "label": "Omega-3 (addiction)",
       "type": "intervention",
       "confidence": "low",
-      "desc": "No addiction trials"
+      "desc": "Omega-3 for addiction recovery specifically. Plausible mechanism (neuronal membrane support, dopamine receptor function, BDNF) but ZERO addiction-specific clinical trials exist. Recommendation: reasonable for general health, no evidence for recovery acceleration."
     },
     {
       "id": "tyrosine_mg_zn",
       "label": "Tyrosine, Mg, Zn",
       "type": "intervention",
       "confidence": "none",
-      "desc": "Zero clinical evidence"
+      "desc": "L-Tyrosine (dopamine precursor), Magnesium (NMDA modulation), Zinc (dopamine cofactor). Commonly recommended in recovery communities. Zero clinical trials for addiction recovery or cognitive enhancement from supplementation in non-deficient populations."
     },
     {
       "id": "taurine",
       "label": "Taurine",
       "type": "intervention",
       "confidence": "none",
-      "desc": "No effect (meta-analysis)"
+      "desc": "Taurine supplementation. Meta-analysis of 7 RCTs (2025): no significant effect on cognitive function. Previously thought to reduce mental fatigue \u2014 evidence does not support this claim."
     },
     {
       "id": "beetroot",
       "label": "Beetroot",
       "type": "intervention",
       "confidence": "none",
-      "desc": "Inconclusive"
+      "desc": "Beetroot juice/supplementation. Systematic review (2025): inconclusive for cognitive function. Nitric oxide mechanism plausible for cerebral blood flow but cognitive outcome data is insufficient."
     },
     {
       "id": "self_compassion",
       "label": "Self-Compassion",
       "type": "intervention",
       "confidence": "medium",
-      "desc": "Faster lapse recovery"
+      "desc": "Self-compassion practices: faster lapse recovery after relapse. Moderate evidence \u2014 self-compassion reduces shame spiraling that extends single misses into full behavioral collapse. Complements habit formation (reduces reset-button pattern). Not a standalone intervention."
     },
     {
       "id": "stress_protocol",
       "label": "Stress Protocol (Katana)",
       "type": "intervention",
       "confidence": "medium",
-      "desc": "Biometric trigger + single-slice execution",
-      "summary": "A closed-loop personal algorithm using physiological signal detection, AI-assisted decision routing, and single-slice execution to interrupt the stress \u2192 avoidance \u2192 shame cycle."
+      "desc": "Biometric-triggered behavioral interrupt. Architecture: Whoop HRV/HR stress detection \u2192 Claude routes next action from Outliner task list \u2192 Katana single-slice execution (this hour only, no outcome thinking). Grounded in implementation intentions research (Gollwitzer, 1999). Design constraint: must be single-line under stress. Friction asymmetry: rule-following requires fewer steps than rule-breaking.",
+      "wiki_page": "concepts/stress-protocol-katana"
     },
     {
       "id": "executive_function",
       "label": "Executive Function",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Prefrontal cortex-mediated functions: planning, inhibition, working memory, cognitive flexibility. The 'CEO' of the brain. Impaired by stress, sleep deprivation, dopamine dysfunction. Improved by exercise, sleep, mindfulness, creatine."
     },
     {
       "id": "memory",
       "label": "Memory",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Declarative and working memory \u2014 encoding, storage, retrieval. Strongly improved by creatine (SMD +0.31), omega-3, exercise, and sleep. Consolidation occurs during sleep \u2014 sleep deprivation directly impairs memory formation."
     },
     {
       "id": "attention",
       "label": "Attention",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Sustained and selective attention. Strongly improved by sleep, mindfulness (DMN-dlPFC anticorrelation), creatine, and omega-3. Impaired by stress (amygdala hijack of attentional resources) and dopamine dysfunction."
     },
     {
       "id": "processing_speed",
       "label": "Processing Speed",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Rate of information processing \u2014 how fast the brain converts input to output. Strongly improved by creatine. Affected by sleep deprivation, mental fatigue, and neuroinflammation. Measurable via reaction time and cognitive test batteries."
     },
     {
       "id": "mental_fatigue",
       "label": "Mental Fatigue",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Subjective sense of cognitive exhaustion \u2014 the 'brain fog' proxy in academic research. Improved by creatine (strong), exercise (strong), sleep (strong), iron (if deficient). Not improved by taurine or beetroot (negative evidence)."
     },
     {
       "id": "neuroplasticity",
       "label": "Neuroplasticity",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Brain's capacity to reorganize and form new connections \u2014 BDNF, synaptogenesis, dendritic arborization. Strongly improved by exercise (especially resistance training) and sleep. The biological substrate of learning, recovery, and behavioral change."
     },
     {
       "id": "cravings",
       "label": "Cravings",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Intense urge to engage in addictive behavior. Driven by glutamate dysregulation in nucleus accumbens. NAC strongest evidence for craving reduction (2 meta-analyses). Mindfulness moderate evidence (urge surfing). Exercise moderate (dopamine alternative)."
     },
     {
       "id": "addiction_recovery",
       "label": "Addiction Recovery",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Global recovery from substance or behavioral addiction. Multifactorial: requires craving reduction + cognitive recovery + habit replacement. NAC + exercise + habit formation is the evidence-backed stack. Self-compassion prevents relapse spirals."
     },
     {
       "id": "mood",
       "label": "Mood / Depression",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Emotional state \u2014 depression and anxiety symptoms. Strongly improved by exercise (effect size comparable to antidepressants for mild-moderate depression). Also improved by sleep and mindfulness. Affected by dopamine dysfunction in abstinence."
     },
     {
       "id": "physical_fatigue",
       "label": "Physical Fatigue",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Muscular and cardiovascular exhaustion. Strongly reduced by Rhodiola (Phase III RCT), exercise training (paradoxical \u2014 acute fatigue, chronic improvement), and sleep. Distinct from mental fatigue \u2014 different mechanisms."
     },
     {
       "id": "stress",
       "label": "Stress",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Physiological and psychological stress response \u2014 HPA axis activation, cortisol, sympathetic arousal. Strongly reduced by mindfulness, Rhodiola, exercise, and sleep. The stress protocol targets the stress\u2192avoidance transition specifically."
     },
     {
       "id": "self_control",
       "label": "Self-Control",
-      "type": "outcome"
+      "type": "outcome",
+      "desc": "Capacity to override impulses and align behavior with long-term goals. Habit formation strongest evidence (100-study meta-analysis). Willpower training weak evidence. Mindfulness moderate (creates awareness gap). Stress protocol moderate (pre-loaded decisions)."
     },
     {
       "id": "relapse",
       "label": "Relapse Prevention",
-      "type": "outcome"
-    },
-    {
-      "id": "exercise",
-      "label": "Exercise",
-      "type": "intervention",
-      "confidence": "high",
-      "summary": "The academic evidence that physical exercise directly enhances cognitive function \u2014 the foundation underlying all \"exercise for brain fog\" recommendations."
-    },
-    {
-      "id": "dopamine_recovery",
-      "label": "Dopamine Recovery",
       "type": "outcome",
-      "confidence": "high",
-      "summary": "What actually happens to the dopamine system during addiction recovery, based on direct neuroimaging evidence."
-    },
-    {
-      "id": "mindfulness",
-      "label": "Mindfulness",
-      "type": "intervention",
-      "confidence": "high",
-      "summary": "The neural evidence that mindfulness/meditation directly enhances attention and executive function."
-    },
-    {
-      "id": "willpower_training",
-      "label": "Willpower Training",
-      "type": "intervention",
-      "confidence": "medium",
-      "summary": "The theory that willpower can be strengthened through repeated exercise, similar to a muscle."
-    },
-    {
-      "id": "habit_formation",
-      "label": "Habit Formation",
-      "type": "intervention",
-      "confidence": "high",
-      "summary": "The evidence-backed alternative to white-knuckling through life. High self-control isn't about resisting temptation \u2014 it's about never needing to."
-    },
-    {
-      "id": "brain_fog",
-      "label": "Brain Fog",
-      "type": "outcome",
-      "confidence": "medium",
-      "summary": "Brain fog during porn abstinence is not a clinical diagnosis but a well-documented subjective experience with a plausible neurobiological mechanism."
+      "desc": "Return to addictive behavior after period of abstinence. NAC strongest evidence for prevention (2 meta-analyses). Habit formation strong (automatic alternatives). Self-compassion moderate (prevents shame spiral \u2192 full relapse). The 5-7 day window is the highest-risk period during dopamine recovery."
     }
   ],
   "edges": [
@@ -219,319 +190,372 @@
       "from": "exercise",
       "to": "executive_function",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Multiple meta-analyses: aerobic exercise improves PFC-dependent executive functions. BDNF-mediated neuroplasticity. Effect strongest for moderate-intensity, 30-60 min sessions."
     },
     {
       "from": "exercise",
       "to": "neuroplasticity",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Resistance training \u2192 myokine release (irisin, cathepsin B) \u2192 BDNF elevation \u2192 hippocampal neurogenesis. Aerobic exercise \u2192 increased cerebral blood flow \u2192 synaptogenesis. Well-replicated across animal and human studies."
     },
     {
       "from": "exercise",
       "to": "brain_fog",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "150+ min/week moderate exercise reduces subjective cognitive complaints. Mechanism: increased cerebral blood flow, dopamine normalization, anti-inflammatory effects. Strongest non-pharmacological intervention for brain fog."
     },
     {
       "from": "exercise",
       "to": "mental_fatigue",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Acute exercise may increase mental fatigue but chronic training reduces baseline fatigue. Effect is dose-dependent \u2014 moderate intensity optimal. Complements sleep and creatine."
     },
     {
       "from": "exercise",
       "to": "addiction_recovery",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Exercise provides alternative dopamine source during abstinence. Reduces cravings via endogenous opioid and endocannabinoid release. Moderate evidence \u2014 mechanism established, addiction-specific trials ongoing."
     },
     {
       "from": "exercise",
       "to": "dopamine_recovery",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Costa et al. model: exercise accelerates dopamine system normalization through BDNF-TrkB signaling and reduced oxidative stress in dopaminergic neurons. Moderate evidence \u2014 mechanism established, human timeline data limited."
     },
     {
       "from": "exercise",
       "to": "mood",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Effect size comparable to antidepressants for mild-moderate depression. Immediate mood elevation (endorphins) + sustained improvement (BDNF, neuroplasticity). Strongest evidence in all of exercise psychology."
     },
     {
       "from": "sleep",
       "to": "brain_fog",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Sleep deprivation directly impairs PFC function \u2014 reduced glucose metabolism in prefrontal regions. Single night of poor sleep measurably degrades attention and working memory. Most immediate intervention for acute brain fog."
     },
     {
       "from": "sleep",
       "to": "executive_function",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "PFC is the brain region most sensitive to sleep loss. Decision-making, inhibition, and cognitive flexibility degrade linearly with sleep debt. 7-9 hours is the optimal range \u2014 both under and oversleeping impair function."
     },
     {
       "from": "sleep",
       "to": "attention",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Sustained attention is the cognitive domain most vulnerable to sleep loss. Psychomotor vigilance task (PVT) is the gold-standard measure \u2014 lapses increase exponentially after 16+ hours awake. Sleep restores baseline."
     },
     {
       "from": "sleep",
       "to": "memory",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Memory consolidation occurs during slow-wave and REM sleep. Hippocampal replay during SWS transfers memories to cortex. Sleep deprivation after learning impairs retention \u2014 sleep is when learning 'sticks.'"
     },
     {
       "from": "mindfulness",
       "to": "attention",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "8-week MBSR \u2192 preserved attention on sustained tasks. DMN-dlPFC anticorrelation strengthened \u2014 reduced mind-wandering. Multiple RCTs, moderate-large effect sizes."
     },
     {
       "from": "mindfulness",
       "to": "executive_function",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Mindfulness training increases PFC gray matter density and improves cognitive control. Mechanism: strengthened top-down regulation of amygdala by PFC. Effect accumulates over 8+ weeks of practice."
     },
     {
       "from": "mindfulness",
       "to": "stress",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Mindfulness-Based Stress Reduction (MBSR) is the gold-standard intervention. Reduces cortisol, sympathetic arousal, and subjective stress. Creates gap between stressor and response \u2014 the same window the stress protocol targets."
     },
     {
       "from": "mindfulness",
       "to": "cravings",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Urge surfing technique: observe craving without acting. Reduces craving intensity and duration. Moderate evidence from addiction-specific MBSR trials. Combines with NAC for dual-pathway craving reduction."
     },
     {
       "from": "mindfulness",
       "to": "self_control",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Creates awareness of impulses BEFORE they become actions. This meta-cognitive gap is the mechanism \u2014 you can't redirect what you don't notice. Moderate evidence, complements habit formation."
     },
     {
       "from": "creatine",
       "to": "memory",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Meta-analysis of 16 RCTs (Xu 2024): SMD +0.31 for memory. More effective in stressed/sleep-deprived/fatigued populations \u2014 suggests mechanism is ATP buffering during cognitive load, not baseline enhancement."
     },
     {
       "from": "creatine",
       "to": "attention",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Attention time and processing speed improved in creatine trials. GRADE: low certainty but consistent direction. Effect most pronounced under cognitive stress conditions \u2014 creatine's mechanism is energy buffer, not stimulant."
     },
     {
       "from": "creatine",
       "to": "processing_speed",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Information processing speed improved across multiple RCTs. Mechanism: creatine \u2192 phosphocreatine \u2192 ATP regeneration during high-demand cognitive tasks. Particularly relevant for mental fatigue states."
     },
     {
       "from": "creatine",
       "to": "mental_fatigue",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Anti-mental-fatigue effect is creatine's strongest cognitive claim. Reduces subjective mental exhaustion during prolonged cognitive tasks. Most relevant for brain fog recovery \u2014 directly targets the 'mental fatigue' symptom."
     },
     {
       "from": "creatine",
       "to": "brain_fog",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Indirect evidence: creatine reduces mental fatigue, and mental fatigue is the primary academic proxy for brain fog. No direct 'brain fog' trials exist. Moderate confidence based on extrapolation from mental fatigue data."
     },
     {
       "from": "nac",
       "to": "cravings",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "2 meta-analyses (Winterlind 2024, Cuocina 2024) + 4 RCTs. Restores cystine-glutamate antiporter \u2192 normalizes glutamate in nucleus accumbens \u2192 reduces craving intensity. Effect size: moderate. Onset: days to weeks."
     },
     {
       "from": "nac",
       "to": "addiction_recovery",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "NAC reduces the core driver of relapse (cravings) across multiple substance classes. Combined with exercise (dopamine alternative) and habit formation (behavioral replacement) forms the evidence-backed recovery stack."
     },
     {
       "from": "nac",
       "to": "relapse",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "NAC's craving reduction translates to relapse prevention. ACCENT trial (Alias-Ferri 2026): craving trajectories are heterogeneous \u2014 NAC response varies by individual. Does not eliminate relapse risk; reduces probability."
     },
     {
       "from": "omega3",
       "to": "attention",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "58-RCT meta-analysis: per 2000mg EPA+DHA, attention improvement SMD=0.98. GRADE: low certainty (high heterogeneity between studies). Mechanism: neuronal membrane fluidity \u2192 improved signal transduction."
     },
     {
       "from": "omega3",
       "to": "memory",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "58-RCT meta-analysis: memory improvement SMD=0.87. More consistent than attention findings. Omega-3 is structural \u2014 incorporated into neuronal membranes over weeks-months, not acute effect."
     },
     {
       "from": "omega3",
       "to": "brain_fog",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Weak evidence for brain fog specifically. Omega-3 supports general brain health but no trials use 'brain fog' as outcome. Recommendation: reasonable for long-term brain health, not for acute brain fog relief."
     },
     {
       "from": "resistance",
       "to": "neuroplasticity",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Resistance training \u2192 myokine cascade \u2192 BDNF elevation. Myokines (irisin, cathepsin B) cross blood-brain barrier. Strong evidence from both animal models and human trials. 12+ weeks for measurable structural changes."
     },
     {
       "from": "resistance",
       "to": "executive_function",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Moderate evidence: resistance training improves executive function, especially in older adults. Mechanism: increased cerebral blood flow + BDNF \u2192 PFC structural maintenance. Less studied than aerobic exercise for cognition."
     },
     {
       "from": "iron",
       "to": "mental_fatigue",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Iron improves fatigue ONLY in iron-deficient individuals (d=0.34). Effect disappears in iron-normal populations. Test ferritin before supplementing \u2014 unnecessary iron is pro-oxidative and potentially harmful."
     },
     {
       "from": "iron",
       "to": "memory",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Memory improvement (d=0.46) only in iron-deficient populations. Iron is a cofactor for dopamine synthesis and myelination. Deficiency impairs cognition; supplementation above normal does not enhance it."
     },
     {
       "from": "rhodiola",
       "to": "physical_fatigue",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Strongest evidence for Rhodiola: Phase III RCT (2009) showed significant reduction in physical fatigue under stress. Mechanism: adaptogenic \u2014 modulates HPA axis and sympathetic response. SHR-5 extract is the studied form."
     },
     {
       "from": "rhodiola",
       "to": "stress",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Anti-stress effect confirmed in multiple trials. Reduces cortisol response to acute stressors. The adaptogenic mechanism supports the stress protocol's goal of preventing stress \u2192 avoidance cascade."
     },
     {
       "from": "rhodiola",
       "to": "mental_fatigue",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Mixed evidence. 2025 RCT: Rhodiola effect on mental fog described as 'trivial.' Earlier trials showed moderate benefit. Current recommendation: useful for physical fatigue/stress, insufficient evidence for cognitive fatigue specifically."
     },
     {
       "from": "curcumin",
       "to": "memory",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Meta-analysis of 9 RCTs (2025): improves global cognition but slow onset (\u226524 weeks). Effects primarily in older/Asian populations. Anti-inflammatory mechanism \u2014 reduces neuroinflammation that impairs cognition. Weak recommendation for acute use."
     },
     {
       "from": "curcumin",
       "to": "brain_fog",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Weak evidence, primarily mechanistic. Curcumin reduces neuroinflammation which can cause brain fog. But no direct 'brain fog' trials. Slow onset (weeks-months) makes it unsuitable for acute intervention."
     },
     {
       "from": "cold_exposure",
       "to": "dopamine_recovery",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Weak evidence, primarily mechanistic. Cold exposure \u2192 norepinephrine surge \u2192 downstream dopamine modulation. Cold shock proteins may support neural repair. No clinical trials for addiction recovery. Used anecdotally for acute mood/motivation boost."
     },
     {
       "from": "omega3_addiction",
       "to": "addiction_recovery",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Zero addiction-specific trials. Plausible mechanism (neuronal membrane support, dopamine receptor function) but untested. Recommendation: take for general health, do not rely on for addiction recovery."
     },
     {
       "from": "omega3_addiction",
       "to": "brain_fog",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "No direct evidence connecting omega-3 to brain fog reduction in addiction recovery. Extrapolated from general cognition data. Weak recommendation."
     },
     {
       "from": "tyrosine_mg_zn",
       "to": "brain_fog",
       "strength": "none",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "ZERO clinical trials. L-Tyrosine is a dopamine precursor in theory but oral tyrosine supplementation does not reliably increase brain dopamine in non-deficient humans. Magnesium and zinc are essential minerals but supplementation above normal levels shows no cognitive benefit."
     },
     {
       "from": "tyrosine_mg_zn",
       "to": "dopamine_recovery",
       "strength": "none",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "No evidence. Dopamine precursor theory is mechanistically appealing but clinically unsupported. Dopamine synthesis is rate-limited by tyrosine hydroxylase, not tyrosine availability, in non-deficient states."
     },
     {
       "from": "taurine",
       "to": "brain_fog",
       "strength": "none",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Meta-analysis of 7 RCTs (2025): no significant effect. Previously hypothesized to reduce mental fatigue \u2014 evidence now shows this claim is false. Do not use for brain fog."
     },
     {
       "from": "beetroot",
       "to": "brain_fog",
       "strength": "none",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Systematic review (2025): inconclusive. Nitric oxide mechanism (increased cerebral blood flow) is plausible but cognitive outcome data is insufficient. More research needed \u2014 current evidence does not support recommendation."
     },
     {
       "from": "habit_formation",
       "to": "self_control",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "100-study meta-analysis (33K participants): the highest self-control individuals have the strongest HABITS, not the strongest willpower. They automate behavior \u2192 never need to resist. Implementation intentions (if-then plans) double success rates. This is the evidence-based alternative to willpower training."
     },
     {
       "from": "habit_formation",
       "to": "addiction_recovery",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Habit replacement is a core mechanism of addiction recovery. Replace the cue-routine-reward loop with a new routine that serves the same cue. Combined with NAC (cravings) and exercise (dopamine), this forms the complete evidence-backed recovery framework."
     },
     {
       "from": "habit_formation",
       "to": "relapse",
       "strength": "strong",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Strongest evidence for relapse prevention among behavioral interventions. Automatic alternative behaviors don't require executive function during craving states \u2014 when PFC is compromised, habits still run. Implementation intentions specifically reduce relapse rates."
     },
     {
       "from": "willpower_training",
       "to": "self_control",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Weak evidence. Ego-depletion theory (willpower as depletable resource) has faced replication crisis. Some studies show small training effects, but habit formation consistently and substantially outperforms. Not recommended as primary intervention."
     },
     {
       "from": "self_compassion",
       "to": "relapse",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Moderate evidence: self-compassion after lapse reduces probability of full relapse. Mechanism: shame is the amplifier that converts single miss \u2192 behavioral collapse. Self-compassion interrupts the shame spiral. Review only during scheduled sessions, never in the moment."
     },
     {
       "from": "self_compassion",
       "to": "addiction_recovery",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Self-compassion supports sustained recovery by reducing the all-or-nothing crash that follows lapses. Complements habit formation (automatic behaviors don't need self-compassion) and NAC (cravings don't trigger shame). Part of the reset protocol."
     },
     {
       "from": "stress_protocol",
       "to": "stress",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Biometric-triggered protocol interrupts stress response before cognitive shutdown. Mechanism: pre-loaded if-then plan (implementation intention) linked to physiological signal. Gollwitzer (1999): if-then plans automate action initiation under cognitive load. Moderate evidence \u2014 protocol designed per implementation intentions research."
     },
     {
       "from": "stress_protocol",
       "to": "self_control",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Pre-loaded decisions bypass the deliberation that fails under stress. When PFC is compromised, having a pre-decided action ready prevents the avoidance default from loading. Complements habit formation \u2014 protocol is a specific implementation of if-then planning."
     },
     {
       "from": "stress_protocol",
       "to": "relapse",
       "strength": "moderate",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "The protocol targets the critical Phase 1\u21922 transition in the stress-avoidance-relapse cycle. By interrupting at the physiological signal (before cognitive shutdown and escape behavior), it prevents the cascade that leads to relapse. Moderate confidence \u2014 protocol design is sound, not yet independently tested."
     },
     {
       "from": "stress_protocol",
       "to": "cravings",
       "strength": "weak",
-      "type": "evidence"
+      "type": "evidence",
+      "evidence": "Weak direct evidence for craving reduction. The protocol does not target cravings directly \u2014 it prevents the stress\u2192avoidance\u2192relapse chain. However, if cravings are stress-triggered, the protocol indirectly reduces craving frequency by reducing stress triggers."
     },
     {
       "from": "brain_fog",
