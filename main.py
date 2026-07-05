@@ -18,7 +18,7 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 # ── STATE ──────────────────────────────────
 def default_state():
     return {
-        "mission_start": "2026-05-18T04:00:00",
+        "mission_start": "2026-07-04T00:00:00",
         "metrics": {"wip": 0, "completed": 0, "ooda_last": None, "avg_latency": None},
         "decisions": [],
         "activity_log": [
