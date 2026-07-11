@@ -184,18 +184,12 @@
 
     // Edges
     const link = g.append('g')
-      .attr('stroke', '#1e2a3a')
-      .attr('stroke-opacity', 0.4)
-      .attr('stroke-width', d => d.type === 'synthesis_input' || d.type === 'solves' ? 2 : 0.8)
       .selectAll('line')
       .data(data.edges)
-      .join('line');
-
-    // Solution edges in accent color
-    g.selectAll('line')
-      .filter(d => d.type === 'synthesis_input' || d.type === 'solves')
-      .attr('stroke', '#b378d1')
-      .attr('stroke-opacity', 0.6);
+      .join('line')
+      .attr('stroke', d => d.type === 'synthesis_input' || d.type === 'solves' ? '#b378d1' : '#1e2a3a')
+      .attr('stroke-opacity', d => d.type === 'synthesis_input' || d.type === 'solves' ? 0.6 : 0.4)
+      .attr('stroke-width', d => d.type === 'synthesis_input' || d.type === 'solves' ? 2 : 0.8);
 
     // Nodes
     const node = g.append('g')
@@ -281,18 +275,31 @@
   }
 
   async function init() {
+    const container = document.getElementById('graph-container');
     try {
       const res = await fetch('/api/masterplan-graph');
-      if (!res.ok) throw new Error('API Error');
+      if (!res.ok) throw new Error('API Error: ' + res.status);
       const data = await res.json();
-      renderGraph(data);
+      if (!data.nodes || !data.edges) throw new Error('Invalid data structure');
+
+      // Render syntheses first (no D3 dependency for failure)
       renderSyntheses(data.syntheses || []);
+
+      // Render graph separately with its own error handling
+      try {
+        renderGraph(data);
+      } catch(graphErr) {
+        console.error('D3 render error:', graphErr);
+        container.innerHTML = '<div style="padding:40px;text-align:center;color:var(--orange);">Graph rendering failed: ' + graphErr.message + '<br><small>Syntheses loaded below.</small></div>';
+      }
+
       document.getElementById('data-status').innerText =
         `Graph: ${data.nodes.length} nodes · ${data.edges.length} connections · ${(data.syntheses||[]).length} emergent solutions`;
     } catch(e) {
-      document.getElementById('graph-container').innerHTML =
-        '<div style="padding:40px;text-align:center;color:var(--red);">Error loading masterplan graph. Run generate-masterplan-graph.py to refresh.</div>';
-      document.getElementById('data-status').innerText = 'Offline';
+      container.innerHTML =
+        '<div style="padding:40px;text-align:center;color:var(--red);">Error: ' + e.message + '<br><small>Check console for details.</small></div>';
+      document.getElementById('data-status').innerText = 'Error: ' + e.message;
+      console.error('Masterplan init error:', e);
     }
   }
 
