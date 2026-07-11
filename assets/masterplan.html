@@ -154,18 +154,23 @@
     const width = container.clientWidth;
     const height = container.clientHeight;
 
-    container.innerHTML = '';
+    // Clear container
+    while (container.firstChild) container.removeChild(container.firstChild);
+
+    // Create tooltip
     const tooltipDiv = document.createElement('div');
     tooltipDiv.id = 'masterplan-tooltip';
     tooltipDiv.className = 'tooltip';
     container.appendChild(tooltipDiv);
     const tooltip = tooltipDiv;
 
-    const svg = d3.select('#graph-container')
-      .append('svg')
-      .attr('width', '100%')
-      .attr('height', '100%');
+    // Create SVG
+    const svgEl = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svgEl.setAttribute('width', '100%');
+    svgEl.setAttribute('height', '100%');
+    container.appendChild(svgEl);
 
+    const svg = d3.select(svgEl);
     const g = svg.append('g');
 
     const zoom = d3.zoom()
@@ -303,7 +308,12 @@
     }
   }
 
-  init();
+  if (typeof d3 === 'undefined') {
+    document.getElementById('graph-container').innerHTML = '<div style="padding:40px;text-align:center;color:var(--red);">D3.js not loaded from CDN.</div>';
+    document.getElementById('data-status').innerText = 'D3 not available';
+  } else {
+    init();
+  }
 </script>
 </body>
 </html>
