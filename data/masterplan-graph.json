@@ -1,0 +1,1958 @@
+{
+  "nodes": [
+    {
+      "id": "housing",
+      "label": "Housing",
+      "group": "project",
+      "status": "active",
+      "desc": "Home buying \u2014 Bentonville/Centerton, <$450K"
+    },
+    {
+      "id": "taxes",
+      "label": "Taxes",
+      "group": "project",
+      "status": "active",
+      "desc": "Tax filing with YesMyTaxes"
+    },
+    {
+      "id": "maintenance",
+      "label": "Maintenance",
+      "group": "project",
+      "status": "active",
+      "desc": "Life admin: bills, DMV, cleaning"
+    },
+    {
+      "id": "parents-trip",
+      "label": "Parents Trip",
+      "group": "project",
+      "status": "active",
+      "desc": "Parents visiting \u2014 flights, insurance"
+    },
+    {
+      "id": "nyc-and-niagara-trip",
+      "label": "NYC & Niagara Trip",
+      "group": "project",
+      "status": "active",
+      "desc": "Trip planning \u2014 flights, hotels, itinerary"
+    },
+    {
+      "id": "brain",
+      "label": "Brain",
+      "group": "project",
+      "status": "aspirational",
+      "desc": "ADHD treatment, cognition upgrade \u2014 THE LEAD DOMINO"
+    },
+    {
+      "id": "penis",
+      "label": "Penis",
+      "group": "project",
+      "status": "aspirational",
+      "desc": "Phimosis cure, abstinence, addiction recovery"
+    },
+    {
+      "id": "lifestyle",
+      "label": "Lifestyle",
+      "group": "project",
+      "status": "aspirational",
+      "desc": "Exercise, meditation, sleep, anti-aging diet"
+    },
+    {
+      "id": "high-value-male",
+      "label": "High Value Male",
+      "group": "project",
+      "status": "aspirational",
+      "desc": "Identity upgrade \u2014 main character energy"
+    },
+    {
+      "id": "hairloss",
+      "label": "Hairloss",
+      "group": "project",
+      "status": "aspirational",
+      "desc": "Hair regrowth research"
+    },
+    {
+      "id": "lung-health",
+      "label": "Lung Health Scan",
+      "group": "project",
+      "status": "aspirational",
+      "desc": "Lung checkup \u2014 strange feeling"
+    },
+    {
+      "id": "roommate",
+      "label": "Roommate",
+      "group": "project",
+      "status": "aspirational",
+      "desc": "Living situation"
+    },
+    {
+      "id": "lead-domino",
+      "label": "Lead Domino",
+      "group": "framework",
+      "desc": "Root strategy \u2014 simplify clutter to finite paths. One thing that makes everything else easier."
+    },
+    {
+      "id": "apex-track-monster",
+      "label": "Apex Track Monster",
+      "group": "framework",
+      "desc": "Execution engine: drive, models, rewire, rules. Gaming the future."
+    },
+    {
+      "id": "katana",
+      "label": "The Katana",
+      "group": "framework",
+      "desc": "Chunk day into 2 halves: low-stakes morning, finisher afternoon."
+    },
+    {
+      "id": "building-speed",
+      "label": "Building Speed",
+      "group": "framework",
+      "desc": "Progressive difficulty: easy mode \u2192 level up \u2192 hard mode."
+    },
+    {
+      "id": "model-1",
+      "label": "Model #1: Daily Units",
+      "group": "framework",
+      "desc": "Each day = unit of momentum. Score: Cost vs Heuristic. 1-hour blocks."
+    },
+    {
+      "id": "model-2",
+      "label": "Model #2: Hardware Change",
+      "group": "framework",
+      "desc": "Change DNA of hardware \u2014 become the person, don't just schedule."
+    },
+    {
+      "id": "rewire-protocol",
+      "label": "Rewire Protocol",
+      "group": "framework",
+      "desc": "Fog-break: stand \u2192 squats \u2192 breathe \u2192 return to ONE task."
+    },
+    {
+      "id": "power-up",
+      "label": "Power-Up Protocol",
+      "group": "framework",
+      "desc": "Easy mode \u26f4\ufe0f \u2192 Level up \ud83c\udfce\ufe0f \u2192 Hard mode \ud83d\ude80"
+    },
+    {
+      "id": "360-buckets",
+      "label": "360 Buckets",
+      "group": "framework",
+      "desc": "Blindly invest in all life areas for compound growth."
+    },
+    {
+      "id": "back-from-future",
+      "label": "Back from the Future",
+      "group": "framework",
+      "desc": "Simulate future self looking back \u2014 what mattered?"
+    },
+    {
+      "id": "one-hour-blocks",
+      "label": "1-Hour Execution Blocks",
+      "group": "framework",
+      "desc": "Primary tool \u2014 focus for 60 min on highest Heuristic/Cost task."
+    },
+    {
+      "id": "time-blindness",
+      "label": "Time Blindness",
+      "group": "pattern",
+      "desc": "Can't perceive/feel future as continuous \u2014 root ADHD symptom. 'The key blocker.'"
+    },
+    {
+      "id": "fear-avoidance",
+      "label": "Fear & Pain Avoidance",
+      "group": "pattern",
+      "desc": "Running from fear inflicts 10x more pain. Not making hard decisions."
+    },
+    {
+      "id": "all-or-nothing",
+      "label": "All-or-Nothing Dopamine",
+      "group": "pattern",
+      "desc": "Need colossal targets for any motivation. No middle gear."
+    },
+    {
+      "id": "energy-vampires",
+      "label": "Energy Vampires",
+      "group": "pattern",
+      "desc": "Unidentified sources sucking energy, focus, and life."
+    },
+    {
+      "id": "self-disconnect",
+      "label": "Self Disconnect",
+      "group": "pattern",
+      "desc": "Even 0.1\u21920.2 version gap feels like different person. Loses context."
+    },
+    {
+      "id": "emotional-flooding",
+      "label": "Emotional Flooding",
+      "group": "pattern",
+      "desc": "Emotionally charged with everything \u2014 burns fuel tank, depletes executive function."
+    },
+    {
+      "id": "learned-helplessness",
+      "label": "Learned Helplessness",
+      "group": "pattern",
+      "desc": "'You can't flip the script. You are too weak.' Self-limiting belief."
+    },
+    {
+      "id": "juvenile-identity",
+      "label": "Juvenile Identity",
+      "group": "pattern",
+      "desc": "Lived like a juvenile boy \u2014 self-image gap vs aspirational."
+    },
+    {
+      "id": "let-go-fomo",
+      "label": "Let Go of FOMO",
+      "group": "upgrade",
+      "desc": "Can't have it all. Time constraints. Choose your sacrifices."
+    },
+    {
+      "id": "jet-stream-daily",
+      "label": "Daily Jet Stream",
+      "group": "upgrade",
+      "desc": "Don't break the chain. Be in the jet stream every day."
+    },
+    {
+      "id": "do-it-despite-fear",
+      "label": "Act Despite Fear",
+      "group": "upgrade",
+      "desc": "Fear or not, gotta do it. Time constraints \u2014 can't be a pussy anymore."
+    },
+    {
+      "id": "self-awareness-checks",
+      "label": "Self-Awareness Checks",
+      "group": "upgrade",
+      "desc": "Get out of the loop when detected. Build into Katana."
+    },
+    {
+      "id": "week-by-week-jumps",
+      "label": "Weekly Jumps",
+      "group": "upgrade",
+      "desc": "Make jumps week by week. Warp speed, hyper-momentum."
+    },
+    {
+      "id": "balanced-targets",
+      "label": "Balanced Big Targets",
+      "group": "upgrade",
+      "desc": "Targets big enough for activation energy but balanced with practicality."
+    },
+    {
+      "id": "small-timeframes",
+      "label": "Think in Smaller Timeframes",
+      "group": "upgrade",
+      "desc": "'Next hour,' 'this morning,' 'this evening.' ADHD-compatible planning."
+    },
+    {
+      "id": "hard-programmed-rules",
+      "label": "Hard Programmed Rules",
+      "group": "upgrade",
+      "desc": "Remove decisions. Pre-made choices = no deliberation."
+    },
+    {
+      "id": "neuro-typicality",
+      "label": "Neuro-Typicality",
+      "group": "goal",
+      "desc": "ADHD treated \u2192 brain works like it should."
+    },
+    {
+      "id": "superior-cognition",
+      "label": "Superior Cognition",
+      "group": "goal",
+      "desc": "Peak mental performance. Fast, clear, focused."
+    },
+    {
+      "id": "colossal-momentum",
+      "label": "Colossal Momentum",
+      "group": "goal",
+      "desc": "Jet stream every day. Chain unbroken. Speed compounds."
+    },
+    {
+      "id": "home-ownership",
+      "label": "Home Ownership",
+      "group": "goal",
+      "desc": "Settled in Bentonville/Centerton home. Major life milestone."
+    },
+    {
+      "id": "high-value-identity",
+      "label": "High Value Identity",
+      "group": "goal",
+      "desc": "Main character energy. Charisma, presence, power."
+    },
+    {
+      "id": "fire-back",
+      "label": "Bring the Fire Back",
+      "group": "goal",
+      "desc": "Anti-aging body. Energy, vitality, strength."
+    },
+    {
+      "id": "counter-entropy",
+      "label": "Counter-Attack Entropy",
+      "group": "goal",
+      "desc": "Order from chaos. Systems running. Life organized."
+    },
+    {
+      "id": "bucket-body",
+      "label": "Body (Exercise + Diet)",
+      "group": "bucket",
+      "desc": "Anti-aging diet, 9round workout"
+    },
+    {
+      "id": "bucket-brain-bucket",
+      "label": "Brain (Cognition)",
+      "group": "bucket",
+      "desc": "ADHD treatment, tDCS, TMS, neurofeedback"
+    },
+    {
+      "id": "bucket-identity",
+      "label": "Identity",
+      "group": "bucket",
+      "desc": "Mental models, decision framework, fearless, super momentum"
+    },
+    {
+      "id": "bucket-social",
+      "label": "Social",
+      "group": "bucket",
+      "desc": "High value male charisma \u2014 eye contact, tone, presence"
+    },
+    {
+      "id": "bucket-finances",
+      "label": "Finances",
+      "group": "bucket",
+      "desc": "Rent, food, housing"
+    },
+    {
+      "id": "bucket-skill",
+      "label": "Skill",
+      "group": "bucket",
+      "desc": "Learning path \u2014 professional growth"
+    },
+    {
+      "id": "bucket-work",
+      "label": "Work",
+      "group": "bucket",
+      "desc": "Career \u2014 define scope and targets"
+    },
+    {
+      "id": "solution-time-blindness-katana-blocks",
+      "label": "Slice the Day, Not the Year",
+      "group": "solution",
+      "desc": "Use The Katana to chunk every day into 2 halves. Morning = 1 external task (Track B). Afternoon = 1 internal task (Track A). Use 1-hour blocks. Never plan beyond 'this morning' or 'this afternoon.' Th..."
+    },
+    {
+      "id": "solution-apex-vs-helplessness",
+      "label": "Action Is the Only Refutation",
+      "group": "solution",
+      "desc": "Model #1 from Apex: Each day is a unit of momentum. Start at Level 1 \u2014 1 small task per day. Every completed day is EVIDENCE that disproves 'you are too weak.' After 7 days, the belief has 7 counter-e..."
+    },
+    {
+      "id": "solution-lead-domino-parallel",
+      "label": "Parallelize the Impossible",
+      "group": "solution",
+      "desc": "The Lead Domino + Euclidean 5th Postulate shatter: Run TWO parallel tracks. Track A (hardware): brain diagnosis, exercise, sleep. Track B (backlog): housing calls, tax calls, trip bookings. Each compl..."
+    },
+    {
+      "id": "solution-dopamine-flywheel",
+      "label": "The Dopamine Flywheel",
+      "group": "solution",
+      "desc": "Building Speed protocol + Model #1: Put the game on EASY MODE first. 1 small task = day won. The dopamine comes from COMPLETION, not magnitude. After 7 days of easy mode \u2192 level up. After 21 days \u2192 ha..."
+    },
+    {
+      "id": "solution-rewire-emotional-flooding",
+      "label": "The Fog Circuit Breaker",
+      "group": "solution",
+      "desc": "The Rewire Protocol IS the circuit breaker. When fog hits: (1) stand up immediately \u2014 breaks the loop physically, (2) 2-3 min squats/marching \u2014 blood flow resets neurotransmitters, (3) 1-2 min slow br..."
+    },
+    {
+      "id": "solution-fear-avoidance-minimax",
+      "label": "Minimax the Fear: Catalogue & Conquer",
+      "group": "solution",
+      "desc": "Use Minimax from Warp-Speed: Categorize every avoided task. REVERSIBLE decisions (doctor appointment, phone call) \u2192 MAXIMUM SPEED \u2014 do it NOW. IRREVERSIBLE with known downside (tax filing, housing off..."
+    },
+    {
+      "id": "solution-jetstream-identity-bridge",
+      "label": "The Jet Stream Identity Bridge",
+      "group": "solution",
+      "desc": "The Jet Stream (don't break the chain) + Model #1 (each day = unit) create EXTERNAL continuity. The chain is a physical record. Day 18's Sai didn't break the chain because Day 17's Sai won. The wiki I..."
+    },
+    {
+      "id": "solution-energy-vampire-audit",
+      "label": "Monthly Vampire Exorcism",
+      "group": "solution",
+      "desc": "Shannon's Information Theory from Warp-Speed: Brain has finite channel capacity. Audit your S/N ratio monthly. Track every energy dip for one week. Identify the top 3 vampires. Kill one per month. The..."
+    },
+    {
+      "id": "solution-weekly-compound-jumps",
+      "label": "The Weekly Phase Transition Protocol",
+      "group": "solution",
+      "desc": "Weekly review (Saturday cadence) + 'Make jumps week by week' upgrade. Every Saturday: (1) score the week on Cost vs Heuristic, (2) count completed tasks \u2014 make the number VISIBLE, (3) set NEXT week's ..."
+    }
+  ],
+  "edges": [
+    {
+      "source": "time-blindness",
+      "target": "housing",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "brain",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "housing",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "taxes",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "maintenance",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "parents-trip",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "nyc-and-niagara-trip",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "brain",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "penis",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "lifestyle",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "high-value-male",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "hairloss",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "lung-health",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "time-blindness",
+      "target": "roommate",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "fear-avoidance",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "fear-avoidance",
+      "target": "housing",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "fear-avoidance",
+      "target": "brain",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "fear-avoidance",
+      "target": "penis",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "fear-avoidance",
+      "target": "nyc-and-niagara-trip",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "all-or-nothing",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "all-or-nothing",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "all-or-nothing",
+      "target": "brain",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "housing",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "taxes",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "maintenance",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "parents-trip",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "nyc-and-niagara-trip",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "brain",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "penis",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "lifestyle",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "high-value-male",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "hairloss",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "lung-health",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "roommate",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "housing",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "brain",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "penis",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "emotional-flooding",
+      "target": "housing",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "emotional-flooding",
+      "target": "taxes",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "learned-helplessness",
+      "target": "brain",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "learned-helplessness",
+      "target": "penis",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "learned-helplessness",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "juvenile-identity",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "blocks"
+    },
+    {
+      "source": "juvenile-identity",
+      "target": "roommate",
+      "strength": "moderate",
+      "type": "blocks"
+    },
+    {
+      "source": "lead-domino",
+      "target": "all-or-nothing",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "lead-domino",
+      "target": "time-blindness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "apex-track-monster",
+      "target": "all-or-nothing",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "apex-track-monster",
+      "target": "self-disconnect",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "apex-track-monster",
+      "target": "learned-helplessness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "katana",
+      "target": "emotional-flooding",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "katana",
+      "target": "time-blindness",
+      "strength": "moderate",
+      "type": "addresses"
+    },
+    {
+      "source": "building-speed",
+      "target": "all-or-nothing",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "building-speed",
+      "target": "learned-helplessness",
+      "strength": "moderate",
+      "type": "addresses"
+    },
+    {
+      "source": "model-1",
+      "target": "self-disconnect",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "model-1",
+      "target": "time-blindness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "model-2",
+      "target": "juvenile-identity",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "model-2",
+      "target": "learned-helplessness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "rewire-protocol",
+      "target": "emotional-flooding",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "power-up",
+      "target": "all-or-nothing",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "one-hour-blocks",
+      "target": "time-blindness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "one-hour-blocks",
+      "target": "fear-avoidance",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "back-from-future",
+      "target": "time-blindness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "back-from-future",
+      "target": "fear-avoidance",
+      "strength": "moderate",
+      "type": "addresses"
+    },
+    {
+      "source": "let-go-fomo",
+      "target": "all-or-nothing",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "jet-stream-daily",
+      "target": "self-disconnect",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "jet-stream-daily",
+      "target": "time-blindness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "do-it-despite-fear",
+      "target": "fear-avoidance",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "do-it-despite-fear",
+      "target": "learned-helplessness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "self-awareness-checks",
+      "target": "emotional-flooding",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "self-awareness-checks",
+      "target": "self-disconnect",
+      "strength": "moderate",
+      "type": "addresses"
+    },
+    {
+      "source": "week-by-week-jumps",
+      "target": "all-or-nothing",
+      "strength": "moderate",
+      "type": "addresses"
+    },
+    {
+      "source": "balanced-targets",
+      "target": "all-or-nothing",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "small-timeframes",
+      "target": "time-blindness",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "hard-programmed-rules",
+      "target": "fear-avoidance",
+      "strength": "strong",
+      "type": "addresses"
+    },
+    {
+      "source": "brain",
+      "target": "bucket-brain-bucket",
+      "strength": "strong",
+      "type": "contains"
+    },
+    {
+      "source": "lifestyle",
+      "target": "bucket-body",
+      "strength": "strong",
+      "type": "contains"
+    },
+    {
+      "source": "penis",
+      "target": "bucket-body",
+      "strength": "moderate",
+      "type": "contains"
+    },
+    {
+      "source": "hairloss",
+      "target": "bucket-body",
+      "strength": "weak",
+      "type": "contains"
+    },
+    {
+      "source": "lung-health",
+      "target": "bucket-body",
+      "strength": "moderate",
+      "type": "contains"
+    },
+    {
+      "source": "high-value-male",
+      "target": "bucket-identity",
+      "strength": "strong",
+      "type": "contains"
+    },
+    {
+      "source": "high-value-male",
+      "target": "bucket-social",
+      "strength": "strong",
+      "type": "contains"
+    },
+    {
+      "source": "housing",
+      "target": "bucket-finances",
+      "strength": "strong",
+      "type": "contains"
+    },
+    {
+      "source": "taxes",
+      "target": "bucket-finances",
+      "strength": "strong",
+      "type": "contains"
+    },
+    {
+      "source": "maintenance",
+      "target": "bucket-finances",
+      "strength": "moderate",
+      "type": "contains"
+    },
+    {
+      "source": "brain",
+      "target": "neuro-typicality",
+      "strength": "strong",
+      "type": "leads_to"
+    },
+    {
+      "source": "brain",
+      "target": "superior-cognition",
+      "strength": "strong",
+      "type": "leads_to"
+    },
+    {
+      "source": "lifestyle",
+      "target": "fire-back",
+      "strength": "strong",
+      "type": "leads_to"
+    },
+    {
+      "source": "apex-track-monster",
+      "target": "colossal-momentum",
+      "strength": "strong",
+      "type": "leads_to"
+    },
+    {
+      "source": "lead-domino",
+      "target": "counter-entropy",
+      "strength": "strong",
+      "type": "leads_to"
+    },
+    {
+      "source": "housing",
+      "target": "home-ownership",
+      "strength": "strong",
+      "type": "leads_to"
+    },
+    {
+      "source": "high-value-male",
+      "target": "high-value-identity",
+      "strength": "strong",
+      "type": "leads_to"
+    },
+    {
+      "source": "jet-stream-daily",
+      "target": "colossal-momentum",
+      "strength": "strong",
+      "type": "leads_to"
+    },
+    {
+      "source": "katana",
+      "target": "solution-time-blindness-katana-blocks",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "one-hour-blocks",
+      "target": "solution-time-blindness-katana-blocks",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "small-timeframes",
+      "target": "solution-time-blindness-katana-blocks",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "time-blindness",
+      "target": "solution-time-blindness-katana-blocks",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-time-blindness-katana-blocks",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "apex-track-monster",
+      "target": "solution-apex-vs-helplessness",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "model-1",
+      "target": "solution-apex-vs-helplessness",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "building-speed",
+      "target": "solution-apex-vs-helplessness",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "learned-helplessness",
+      "target": "solution-apex-vs-helplessness",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-apex-vs-helplessness",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "lead-domino",
+      "target": "solution-lead-domino-parallel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "model-2",
+      "target": "solution-lead-domino-parallel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "do-it-despite-fear",
+      "target": "solution-lead-domino-parallel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "fear-avoidance",
+      "target": "solution-lead-domino-parallel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "all-or-nothing",
+      "target": "solution-lead-domino-parallel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-lead-domino-parallel",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-lead-domino-parallel",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-lead-domino-parallel",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-lead-domino-parallel",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-lead-domino-parallel",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "building-speed",
+      "target": "solution-dopamine-flywheel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "model-1",
+      "target": "solution-dopamine-flywheel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "power-up",
+      "target": "solution-dopamine-flywheel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "balanced-targets",
+      "target": "solution-dopamine-flywheel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "all-or-nothing",
+      "target": "solution-dopamine-flywheel",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-dopamine-flywheel",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "rewire-protocol",
+      "target": "solution-rewire-emotional-flooding",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "self-awareness-checks",
+      "target": "solution-rewire-emotional-flooding",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "hard-programmed-rules",
+      "target": "solution-rewire-emotional-flooding",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "emotional-flooding",
+      "target": "solution-rewire-emotional-flooding",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-rewire-emotional-flooding",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "do-it-despite-fear",
+      "target": "solution-fear-avoidance-minimax",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "hard-programmed-rules",
+      "target": "solution-fear-avoidance-minimax",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "lead-domino",
+      "target": "solution-fear-avoidance-minimax",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "fear-avoidance",
+      "target": "solution-fear-avoidance-minimax",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-fear-avoidance-minimax",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "jet-stream-daily",
+      "target": "solution-jetstream-identity-bridge",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "model-1",
+      "target": "solution-jetstream-identity-bridge",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "back-from-future",
+      "target": "solution-jetstream-identity-bridge",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "self-disconnect",
+      "target": "solution-jetstream-identity-bridge",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-jetstream-identity-bridge",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "self-awareness-checks",
+      "target": "solution-energy-vampire-audit",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "energy-vampires",
+      "target": "solution-energy-vampire-audit",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-energy-vampire-audit",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "week-by-week-jumps",
+      "target": "solution-weekly-compound-jumps",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "model-1",
+      "target": "solution-weekly-compound-jumps",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "jet-stream-daily",
+      "target": "solution-weekly-compound-jumps",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "all-or-nothing",
+      "target": "solution-weekly-compound-jumps",
+      "strength": "strong",
+      "type": "synthesis_input"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "housing",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "taxes",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "maintenance",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "parents-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "nyc-and-niagara-trip",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "brain",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "penis",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "lifestyle",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "high-value-male",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "hairloss",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "lung-health",
+      "strength": "strong",
+      "type": "solves"
+    },
+    {
+      "source": "solution-weekly-compound-jumps",
+      "target": "roommate",
+      "strength": "strong",
+      "type": "solves"
+    }
+  ],
+  "syntheses": [
+    {
+      "title": "Slice the Day, Not the Year",
+      "model": "The Katana \u00d7 Time Blindness",
+      "problem": "Time blindness makes long-term planning impossible. The future doesn't feel real.",
+      "solution": "Use The Katana to chunk every day into 2 halves. Morning = 1 external task (Track B). Afternoon = 1 internal task (Track A). Use 1-hour blocks. Never plan beyond 'this morning' or 'this afternoon.' The Katana + 1-hour blocks are ADHD-native planning \u2014 they don't require feeling the future."
+    },
+    {
+      "title": "Action Is the Only Refutation",
+      "model": "Apex Track Monster \u00d7 Learned Helplessness",
+      "problem": "Learned helplessness: 'You can't flip the script. You are too weak.' This belief blocks the brain project, penis project, and identity upgrade.",
+      "solution": "Model #1 from Apex: Each day is a unit of momentum. Start at Level 1 \u2014 1 small task per day. Every completed day is EVIDENCE that disproves 'you are too weak.' After 7 days, the belief has 7 counter-examples. After 30 days, it's dead. The Apex Track Monster's drive: 'gaming the future is the game' \u2014 lay the bridge and go back and forth like flash."
+    },
+    {
+      "title": "Parallelize the Impossible",
+      "model": "Lead Domino \u00d7 Euclidean Thinking",
+      "problem": "The false axiom: 'I must fix my ADHD before I can take any action.' This creates infinite deadlock \u2014 brain doesn't get fixed because no action is taken, and no action is taken because brain isn't fixed.",
+      "solution": "The Lead Domino + Euclidean 5th Postulate shatter: Run TWO parallel tracks. Track A (hardware): brain diagnosis, exercise, sleep. Track B (backlog): housing calls, tax calls, trip bookings. Each completed Track B task provides dopamine that fuels Track A. Each Track A win makes Track B easier. They FEED each other. The Lead Domino isn't sequential \u2014 it's parallel. ADHD treatment starts with a 10-minute phone call. You can make phone calls with a broken brain."
+    },
+    {
+      "title": "The Dopamine Flywheel",
+      "model": "Building Speed \u00d7 All-or-Nothing Dopamine",
+      "problem": "All-or-nothing dopamine system requires colossal targets for any motivation. Small tasks feel pointless. But colossal targets are paralyzing. Result: zero throughput.",
+      "solution": "Building Speed protocol + Model #1: Put the game on EASY MODE first. 1 small task = day won. The dopamine comes from COMPLETION, not magnitude. After 7 days of easy mode \u2192 level up. After 21 days \u2192 hard mode. This creates a dopamine flywheel: complete \u2192 dopamine \u2192 complete more \u2192 more dopamine. The 'glimpse of might' milestone starts with ONE 10-minute walk. Not a gym membership. Not a 6-month plan. ONE walk."
+    },
+    {
+      "title": "The Fog Circuit Breaker",
+      "model": "Rewire Protocol \u00d7 Emotional Flooding",
+      "problem": "Emotional flooding burns the fuel tank. Every setback feels catastrophic. The brain loops, executive function crashes, and hours are lost.",
+      "solution": "The Rewire Protocol IS the circuit breaker. When fog hits: (1) stand up immediately \u2014 breaks the loop physically, (2) 2-3 min squats/marching \u2014 blood flow resets neurotransmitters, (3) 1-2 min slow breathing \u2014 vagal tone activation, (4) return to ONE task \u2014 single tab, single app. Paired with self-awareness checks from Meta Upgrades: 'get out of the loop whenever detected.' This protocol takes 5 minutes and pays back hours."
+    },
+    {
+      "title": "Minimax the Fear: Catalogue & Conquer",
+      "model": "Minimax \u00d7 Fear Avoidance",
+      "problem": "Fear avoidance blocks housing (calling bankers), taxes (talking to accountants), brain (doctors), and trips (booking). Every avoided task compounds into bigger fear + real consequences.",
+      "solution": "Use Minimax from Warp-Speed: Categorize every avoided task. REVERSIBLE decisions (doctor appointment, phone call) \u2192 MAXIMUM SPEED \u2014 do it NOW. IRREVERSIBLE with known downside (tax filing, housing offer) \u2192 aggressive with pre-set stop-loss. IRREVERSIBLE with fat-tail risk \u2192 go slow. Then apply 'Act Despite Fear' upgrade: 'Fear or not, gotta do it. Time constraints.' The 10-10-10 lens: will this fear matter in 10 months? If no \u2192 it's noise. If yes \u2192 it's a Lead Domino item \u2014 prioritize above everything."
+    },
+    {
+      "title": "The Jet Stream Identity Bridge",
+      "model": "Daily Jet Stream \u00d7 Self Disconnect",
+      "problem": "Self-disconnect: even 0.1\u21920.2 version gaps feel like different people. Past Sai's failures feel like a different person's failures. But so do past Sai's wins. No continuity = no momentum.",
+      "solution": "The Jet Stream (don't break the chain) + Model #1 (each day = unit) create EXTERNAL continuity. The chain is a physical record. Day 18's Sai didn't break the chain because Day 17's Sai won. The wiki IS the bridge \u2014 it remembers who you were yesterday so you don't have to. Paired with 'Back from the Future': simulate 45-year-old Sai looking back. Did he see a continuous trajectory of growth, or fragmented bursts? The answer guides today's action."
+    },
+    {
+      "title": "Monthly Vampire Exorcism",
+      "model": "Shannon's Law \u00d7 Energy Vampires",
+      "problem": "Energy vampires \u2014 unidentified sources sucking focus and life. Could be social media, people, clutter, indecision, open loops, unprocessed inputs. They're invisible by definition.",
+      "solution": "Shannon's Information Theory from Warp-Speed: Brain has finite channel capacity. Audit your S/N ratio monthly. Track every energy dip for one week. Identify the top 3 vampires. Kill one per month. The first candidates: open browser tabs, unread messages, decisions waiting to be made, people who drain you. Each vampire removed = bandwidth reclaimed. At 75% noise \u2192 32% potential. Remove vampires \u2192 increase signal."
+    },
+    {
+      "title": "The Weekly Phase Transition Protocol",
+      "model": "Phase Transitions \u00d7 Weekly Jumps",
+      "problem": "Progress feels invisible day-to-day. Without visible progress, the all-or-nothing dopamine system loses activation energy. Motivation crashes.",
+      "solution": "Weekly review (Saturday cadence) + 'Make jumps week by week' upgrade. Every Saturday: (1) score the week on Cost vs Heuristic, (2) count completed tasks \u2014 make the number VISIBLE, (3) set NEXT week's ONE big jump, (4) update the wiki. The Phase Transitions framework: identify the nearest threshold (habit at ~66 days, first milestone at 7 days, 'glimpse of might' at first workout). Front-load energy to cross the nearest threshold. Once crossed, the next threshold is closer. Each weekly jump is a visible compound gain."
+    }
+  ]
+}

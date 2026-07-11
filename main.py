@@ -72,6 +72,13 @@ def api_housing_graph():
     except FileNotFoundError:
         return JSONResponse({"error": "housing-graph.json not found"}, status_code=404)
 
+@app.get("/api/masterplan-graph")
+def api_masterplan_graph():
+    try:
+        return json.loads((DATA_DIR / "masterplan-graph.json").read_text())
+    except FileNotFoundError:
+        return JSONResponse({"error": "masterplan-graph.json not found"}, status_code=404)
+
 @app.get("/api/growth")
 def api_growth():
     try:
@@ -227,3 +234,7 @@ def dashboard():
 @app.get("/momentum.html")
 def momentum():
     return FileResponse(ROOT / "assets" / "momentum.html")
+
+@app.get("/masterplan.html")
+def masterplan():
+    return FileResponse(ROOT / "assets" / "masterplan.html")

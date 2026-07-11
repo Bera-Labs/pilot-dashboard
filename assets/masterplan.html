@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MASTERPLAN // SAI BERA</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  :root {
+    --bg: #0a0e14; --surface: #131820; --border: #1e2a3a; --text: #b3c7d6;
+    --text-dim: #556678; --accent: #39bae6; --accent-glow: rgba(57,186,230,0.15);
+    --green: #c2d94c; --orange: #ffb454; --red: #ff8f40; --purple: #b378d1;
+    --font-mono: 'Space Mono', 'SF Mono', Consolas, monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: var(--bg); color: var(--text);
+    font-family: var(--font-sans); -webkit-font-smoothing: antialiased;
+    padding: 40px 20px; max-width: 1200px; margin: 0 auto;
+  }
+  .header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 30px;
+  }
+  .header-left h1 { font-family: var(--font-mono); font-size: 20px; font-weight: bold; color: var(--accent); letter-spacing: 2px; }
+  .header-left .subtitle { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
+  .header-right { text-align: right; }
+  .btn-back { color: var(--text-dim); text-decoration: none; font-size: 13px; border: 1px solid var(--border); padding: 6px 12px; border-radius: 4px; transition: all 0.2s; }
+  .btn-back:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-dim); font-family: var(--font-mono); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  /* GRAPH CONTAINER */
+  #graph-container {
+    width: 100%; height: 550px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 40px;
+    overflow: hidden; position: relative;
+  }
+
+  /* SYNTHESES CARDS */
+  .section-title {
+    font-family: var(--font-mono); font-size: 15px; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+  }
+  .syntheses-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(520px, 1fr)); gap: 20px;
+  }
+  .synth-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 24px; display: flex; flex-direction: column; gap: 14px;
+    border-left: 4px solid var(--accent);
+    transition: border-color 0.2s;
+  }
+  .synth-card:hover { border-left-color: var(--green); }
+  .synth-header { border-bottom: 1px dashed var(--border); padding-bottom: 12px; }
+  .synth-title { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .synth-model { font-family: var(--font-mono); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+  .synth-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+  .synth-text { font-size: 13px; line-height: 1.6; color: var(--text); }
+  .synth-solution { color: var(--green); }
+
+  /* TOOLTIP */
+  .tooltip {
+    position: absolute; padding: 8px 12px; font-size: 11px;
+    background: #000; color: #fff; border: 1px solid var(--border); border-radius: 4px;
+    pointer-events: none; opacity: 0; transition: opacity 0.15s;
+    font-family: var(--font-mono); max-width: 280px; z-index: 10;
+  }
+  .tooltip .tt-label { font-weight: bold; font-size: 13px; margin-bottom: 2px; }
+  .tooltip .tt-group { color: var(--text-dim); font-size: 10px; text-transform: uppercase; }
+  .tooltip .tt-desc { margin-top: 4px; line-height: 1.4; color: var(--text); }
+
+  @media (max-width: 768px) {
+    .syntheses-grid { grid-template-columns: 1fr; }
+    #graph-container { height: 400px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>◆ MASTERPLAN GRAPH</h1>
+    <div class="subtitle" id="data-status">Emergent connections & synthesized solutions</div>
+  </div>
+  <div class="header-right">
+    <a href="/" class="btn-back">Return to Dashboard</a>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#39bae6"></div> Project</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#c2d94c"></div> Framework</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ff8f40"></div> Pattern</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#ffb454"></div> Upgrade</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#b378d1"></div> Solution</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#556678"></div> Goal / Bucket</div>
+</div>
+
+<div id="graph-container"></div>
+<div class="tooltip" id="tooltip"></div>
+
+<div class="section-title">◆ Emergent Solutions — Automatic Cross-Referencing</div>
+<div class="syntheses-grid" id="syntheses-container">
+  <!-- Filled by JS -->
+</div>
+
+<script>
+  const COLORS = {
+    project:   '#39bae6',
+    framework: '#c2d94c',
+    pattern:   '#ff8f40',
+    upgrade:   '#ffb454',
+    solution:  '#b378d1',
+    goal:      '#556678',
+    bucket:    '#3a4a5a'
+  };
+
+  const RADII = {
+    project: 9, framework: 8, pattern: 7, upgrade: 6, solution: 11, goal: 6, bucket: 7
+  };
+
+  function renderSyntheses(syntheses) {
+    const container = document.getElementById('syntheses-container');
+    container.innerHTML = '';
+
+    syntheses.forEach(s => {
+      const card = document.createElement('div');
+      card.className = 'synth-card';
+      card.innerHTML = `
+        <div class="synth-header">
+          <div class="synth-title">${s.title}</div>
+          <div class="synth-model">${s.model}</div>
+        </div>
+        <div>
+          <div class="synth-label">The Bottleneck / Axiom</div>
+          <div class="synth-text">${s.problem}</div>
+        </div>
+        <div>
+          <div class="synth-label">The Emergent Strategy</div>
+          <div class="synth-text synth-solution">${s.solution.replace(/\n/g, '<br>')}</div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function renderGraph(data) {
+    const container = document.getElementById('graph-container');
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    container.innerHTML = '';
+    const tooltipDiv = document.createElement('div');
+    tooltipDiv.id = 'masterplan-tooltip';
+    tooltipDiv.className = 'tooltip';
+    container.appendChild(tooltipDiv);
+    const tooltip = tooltipDiv;
+
+    const svg = d3.select('#graph-container')
+      .append('svg')
+      .attr('width', '100%')
+      .attr('height', '100%');
+
+    const g = svg.append('g');
+
+    const zoom = d3.zoom()
+      .scaleExtent([0.3, 4])
+      .on('zoom', (event) => { g.attr('transform', event.transform); });
+    svg.call(zoom);
+
+    // Different force distances by edge type
+    const simulation = d3.forceSimulation(data.nodes)
+      .force('link', d3.forceLink(data.edges).id(d => d.id)
+        .distance(d => d.type === 'synthesis_input' ? 60 : (d.type === 'solves' ? 80 : 120))
+        .strength(d => d.type === 'synthesis_input' ? 0.4 : (d.type === 'solves' ? 0.3 : 0.15)))
+      .force('charge', d3.forceManyBody().strength(d => d.group === 'solution' ? -500 : -250))
+      .force('center', d3.forceCenter(width / 2, height / 2))
+      .force('collide', d3.forceCollide().radius(d => (RADII[d.group] || 7) + 5));
+
+    // Edges
+    const link = g.append('g')
+      .attr('stroke', '#1e2a3a')
+      .attr('stroke-opacity', 0.4)
+      .attr('stroke-width', d => d.type === 'synthesis_input' || d.type === 'solves' ? 2 : 0.8)
+      .selectAll('line')
+      .data(data.edges)
+      .join('line');
+
+    // Solution edges in accent color
+    g.selectAll('line')
+      .filter(d => d.type === 'synthesis_input' || d.type === 'solves')
+      .attr('stroke', '#b378d1')
+      .attr('stroke-opacity', 0.6);
+
+    // Nodes
+    const node = g.append('g')
+      .selectAll('circle')
+      .data(data.nodes)
+      .join('circle')
+      .attr('r', d => RADII[d.group] || 7)
+      .attr('fill', d => COLORS[d.group] || '#556678')
+      .attr('fill-opacity', 0.85)
+      .attr('stroke', '#0a0e14')
+      .attr('stroke-width', 1.5)
+      .call(drag(simulation));
+
+    // Labels
+    const label = g.append('g')
+      .selectAll('text')
+      .data(data.nodes)
+      .join('text')
+      .text(d => d.label || d.id)
+      .attr('font-size', d => d.group === 'solution' ? '11px' : '10px')
+      .attr('fill', '#8899aa')
+      .attr('dx', d => (RADII[d.group] || 7) + 3)
+      .attr('dy', 3)
+      .style('pointer-events', 'none')
+      .style('font-family', 'var(--font-mono), monospace');
+
+    // Hover
+    node.on('mouseover', (event, d) => {
+      const rect = container.getBoundingClientRect();
+      const desc = d.desc || '';
+      tooltip.style.opacity = 1;
+      tooltip.innerHTML = `
+        <div class="tt-label" style="color:${COLORS[d.group] || '#fff'}">${d.label || d.id}</div>
+        <div class="tt-group">${d.group.toUpperCase()}${d.status ? ' · ' + d.status.toUpperCase() : ''}</div>
+        ${desc ? '<div class="tt-desc">' + desc + '</div>' : ''}
+      `;
+      tooltip.style.left = (event.clientX - rect.left + 14) + 'px';
+      tooltip.style.top = (event.clientY - rect.top - 10) + 'px';
+      d3.select(event.currentTarget)
+        .attr('fill-opacity', 1)
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 2.5);
+    })
+    .on('mouseout', (event, d) => {
+      tooltip.style.opacity = 0;
+      d3.select(event.currentTarget)
+        .attr('fill-opacity', 0.85)
+        .attr('stroke', '#0a0e14')
+        .attr('stroke-width', 1.5);
+    });
+
+    simulation.on('tick', () => {
+      link
+        .attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y);
+      node
+        .attr('cx', d => d.x = Math.max(RADII[d.group]||7, Math.min(width - (RADII[d.group]||7), d.x)))
+        .attr('cy', d => d.y = Math.max(RADII[d.group]||7, Math.min(height - (RADII[d.group]||7), d.y)));
+      label
+        .attr('x', d => d.x)
+        .attr('y', d => d.y);
+    });
+
+    function drag(sim) {
+      function started(event) {
+        if (!event.active) sim.alphaTarget(0.3).restart();
+        event.subject.fx = event.subject.x;
+        event.subject.fy = event.subject.y;
+      }
+      function dragged(event) {
+        event.subject.fx = event.x;
+        event.subject.fy = event.y;
+      }
+      function ended(event) {
+        if (!event.active) sim.alphaTarget(0);
+        event.subject.fx = null;
+        event.subject.fy = null;
+      }
+      return d3.drag().on('start', started).on('drag', dragged).on('end', ended);
+    }
+  }
+
+  async function init() {
+    try {
+      const res = await fetch('/api/masterplan-graph');
+      if (!res.ok) throw new Error('API Error');
+      const data = await res.json();
+      renderGraph(data);
+      renderSyntheses(data.syntheses || []);
+      document.getElementById('data-status').innerText =
+        `Graph: ${data.nodes.length} nodes · ${data.edges.length} connections · ${(data.syntheses||[]).length} emergent solutions`;
+    } catch(e) {
+      document.getElementById('graph-container').innerHTML =
+        '<div style="padding:40px;text-align:center;color:var(--red);">Error loading masterplan graph. Run generate-masterplan-graph.py to refresh.</div>';
+      document.getElementById('data-status').innerText = 'Offline';
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
