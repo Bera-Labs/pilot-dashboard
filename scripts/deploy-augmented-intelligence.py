@@ -25,6 +25,29 @@ def run(args: list[str], root: Path, check: bool = True) -> str:
     return result.stdout.strip()
 
 
+def dirty_paths(root: Path) -> set[str]:
+    """Return exact paths from NUL-delimited Git porcelain output."""
+    result = subprocess.run(
+        ["git", "status", "--porcelain=v1", "-z"],
+        cwd=root,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    entries = result.stdout.split("\0")
+    paths: set[str] = set()
+    index = 0
+    while index < len(entries):
+        entry = entries[index]
+        if not entry:
+            index += 1
+            continue
+        status = entry[:2]
+        paths.add(entry[3:])
+        index += 2 if "R" in status or "C" in status else 1
+    return paths
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("/root/pilot-dashboard"))
@@ -54,19 +77,7 @@ def main() -> None:
     if graph.get("meta", {}).get("schema_version") != "2.0.0":
         raise RuntimeError("augmented graph schema validation failed")
 
-    status_result = subprocess.run(
-        ["git", "status", "--porcelain=v1"],
-        cwd=root,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    dirty = set()
-    for line in status_result.stdout.splitlines():
-        if not line:
-            continue
-        path = line[3:].split(" -> ")[-1]
-        dirty.add(path)
+    dirty = dirty_paths(root)
     unexpected = sorted(dirty - ALLOWED)
     if unexpected:
         raise RuntimeError(f"unexpected dirty files; refusing deploy: {unexpected}")
