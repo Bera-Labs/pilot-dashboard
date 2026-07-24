@@ -1,13 +1,6 @@
 {
   "nodes": [
     {
-      "id": "housing",
-      "label": "Housing",
-      "group": "project",
-      "status": "active",
-      "desc": "Home buying \u2014 Bentonville/Centerton, <$450K"
-    },
-    {
       "id": "taxes",
       "label": "Taxes",
       "group": "project",
@@ -265,12 +258,6 @@
       "desc": "Jet stream every day. Chain unbroken. Speed compounds."
     },
     {
-      "id": "home-ownership",
-      "label": "Home Ownership",
-      "group": "goal",
-      "desc": "Settled in Bentonville/Centerton home. Major life milestone."
-    },
-    {
       "id": "high-value-identity",
       "label": "High Value Identity",
       "group": "goal",
@@ -316,7 +303,7 @@
       "id": "bucket-finances",
       "label": "Finances",
       "group": "bucket",
-      "desc": "Rent, food, housing"
+      "desc": "Rent, food, taxes, and bills"
     },
     {
       "id": "bucket-skill",
@@ -346,7 +333,7 @@
       "id": "solution-lead-domino-parallel",
       "label": "Parallelize the Impossible",
       "group": "solution",
-      "desc": "The Lead Domino + Euclidean 5th Postulate shatter: Run TWO parallel tracks. Track A (hardware): brain diagnosis, exercise, sleep. Track B (backlog): housing calls, tax calls, trip bookings. Each compl..."
+      "desc": "The Lead Domino + Euclidean 5th Postulate shatter: Run TWO parallel tracks. Track A (hardware): brain diagnosis, exercise, sleep. Track B (backlog): tax calls and trip bookings. Each completed Track B..."
     },
     {
       "id": "solution-dopamine-flywheel",
@@ -364,7 +351,7 @@
       "id": "solution-fear-avoidance-minimax",
       "label": "Minimax the Fear: Catalogue & Conquer",
       "group": "solution",
-      "desc": "Use Minimax from Warp-Speed: Categorize every avoided task. REVERSIBLE decisions (doctor appointment, phone call) \u2192 MAXIMUM SPEED \u2014 do it NOW. IRREVERSIBLE with known downside (tax filing, housing off..."
+      "desc": "Use Minimax from Warp-Speed: Categorize every avoided task. REVERSIBLE decisions (doctor appointment, phone call) \u2192 MAXIMUM SPEED \u2014 do it NOW. IRREVERSIBLE with known downside (tax filing) \u2192 aggressiv..."
     },
     {
       "id": "solution-jetstream-identity-bridge",
@@ -388,12 +375,6 @@
   "edges": [
     {
       "source": "time-blindness",
-      "target": "housing",
-      "strength": "strong",
-      "type": "blocks"
-    },
-    {
-      "source": "time-blindness",
       "target": "taxes",
       "strength": "strong",
       "type": "blocks"
@@ -402,12 +383,6 @@
       "source": "time-blindness",
       "target": "brain",
       "strength": "strong",
-      "type": "blocks"
-    },
-    {
-      "source": "time-blindness",
-      "target": "housing",
-      "strength": "moderate",
       "type": "blocks"
     },
     {
@@ -484,12 +459,6 @@
     },
     {
       "source": "fear-avoidance",
-      "target": "housing",
-      "strength": "strong",
-      "type": "blocks"
-    },
-    {
-      "source": "fear-avoidance",
       "target": "brain",
       "strength": "strong",
       "type": "blocks"
@@ -522,12 +491,6 @@
       "source": "all-or-nothing",
       "target": "brain",
       "strength": "strong",
-      "type": "blocks"
-    },
-    {
-      "source": "energy-vampires",
-      "target": "housing",
-      "strength": "moderate",
       "type": "blocks"
     },
     {
@@ -598,12 +561,6 @@
     },
     {
       "source": "self-disconnect",
-      "target": "housing",
-      "strength": "strong",
-      "type": "blocks"
-    },
-    {
-      "source": "self-disconnect",
       "target": "taxes",
       "strength": "strong",
       "type": "blocks"
@@ -666,12 +623,6 @@
       "source": "self-disconnect",
       "target": "roommate",
       "strength": "strong",
-      "type": "blocks"
-    },
-    {
-      "source": "emotional-flooding",
-      "target": "housing",
-      "strength": "moderate",
       "type": "blocks"
     },
     {
@@ -933,12 +884,6 @@
       "type": "contains"
     },
     {
-      "source": "housing",
-      "target": "bucket-finances",
-      "strength": "strong",
-      "type": "contains"
-    },
-    {
       "source": "taxes",
       "target": "bucket-finances",
       "strength": "strong",
@@ -981,12 +926,6 @@
       "type": "leads_to"
     },
     {
-      "source": "housing",
-      "target": "home-ownership",
-      "strength": "strong",
-      "type": "leads_to"
-    },
-    {
       "source": "high-value-male",
       "target": "high-value-identity",
       "strength": "strong",
@@ -1024,12 +963,6 @@
     },
     {
       "source": "solution-time-blindness-katana-blocks",
-      "target": "housing",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-time-blindness-katana-blocks",
       "target": "taxes",
       "strength": "strong",
       "type": "solves"
@@ -1037,12 +970,6 @@
     {
       "source": "solution-time-blindness-katana-blocks",
       "target": "maintenance",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-time-blindness-katana-blocks",
-      "target": "housing",
       "strength": "strong",
       "type": "solves"
     },
@@ -1156,12 +1083,6 @@
     },
     {
       "source": "solution-apex-vs-helplessness",
-      "target": "housing",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-apex-vs-helplessness",
       "target": "taxes",
       "strength": "strong",
       "type": "solves"
@@ -1264,12 +1185,6 @@
     },
     {
       "source": "solution-lead-domino-parallel",
-      "target": "housing",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-lead-domino-parallel",
       "target": "taxes",
       "strength": "strong",
       "type": "solves"
@@ -1331,12 +1246,6 @@
     {
       "source": "solution-dopamine-flywheel",
       "target": "high-value-male",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-dopamine-flywheel",
-      "target": "housing",
       "strength": "strong",
       "type": "solves"
     },
@@ -1432,12 +1341,6 @@
     },
     {
       "source": "solution-rewire-emotional-flooding",
-      "target": "housing",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-rewire-emotional-flooding",
       "target": "taxes",
       "strength": "strong",
       "type": "solves"
@@ -1528,12 +1431,6 @@
     },
     {
       "source": "solution-fear-avoidance-minimax",
-      "target": "housing",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-fear-avoidance-minimax",
       "target": "taxes",
       "strength": "strong",
       "type": "solves"
@@ -1547,12 +1444,6 @@
     {
       "source": "solution-fear-avoidance-minimax",
       "target": "penis",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-fear-avoidance-minimax",
-      "target": "housing",
       "strength": "strong",
       "type": "solves"
     },
@@ -1648,12 +1539,6 @@
     },
     {
       "source": "solution-jetstream-identity-bridge",
-      "target": "housing",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-jetstream-identity-bridge",
       "target": "taxes",
       "strength": "strong",
       "type": "solves"
@@ -1729,12 +1614,6 @@
       "target": "solution-energy-vampire-audit",
       "strength": "strong",
       "type": "synthesis_input"
-    },
-    {
-      "source": "solution-energy-vampire-audit",
-      "target": "housing",
-      "strength": "strong",
-      "type": "solves"
     },
     {
       "source": "solution-energy-vampire-audit",
@@ -1828,12 +1707,6 @@
     },
     {
       "source": "solution-weekly-compound-jumps",
-      "target": "housing",
-      "strength": "strong",
-      "type": "solves"
-    },
-    {
-      "source": "solution-weekly-compound-jumps",
       "target": "taxes",
       "strength": "strong",
       "type": "solves"
@@ -1916,7 +1789,7 @@
       "title": "Parallelize the Impossible",
       "model": "Lead Domino \u00d7 Euclidean Thinking",
       "problem": "The false axiom: 'I must fix my ADHD before I can take any action.' This creates infinite deadlock \u2014 brain doesn't get fixed because no action is taken, and no action is taken because brain isn't fixed.",
-      "solution": "The Lead Domino + Euclidean 5th Postulate shatter: Run TWO parallel tracks. Track A (hardware): brain diagnosis, exercise, sleep. Track B (backlog): housing calls, tax calls, trip bookings. Each completed Track B task provides dopamine that fuels Track A. Each Track A win makes Track B easier. They FEED each other. The Lead Domino isn't sequential \u2014 it's parallel. ADHD treatment starts with a 10-minute phone call. You can make phone calls with a broken brain."
+      "solution": "The Lead Domino + Euclidean 5th Postulate shatter: Run TWO parallel tracks. Track A (hardware): brain diagnosis, exercise, sleep. Track B (backlog): tax calls and trip bookings. Each completed Track B task provides dopamine that fuels Track A. Each Track A win makes Track B easier. They FEED each other. The Lead Domino isn't sequential \u2014 it's parallel. ADHD treatment starts with a 10-minute phone call. You can make phone calls with a broken brain."
     },
     {
       "title": "The Dopamine Flywheel",
@@ -1933,8 +1806,8 @@
     {
       "title": "Minimax the Fear: Catalogue & Conquer",
       "model": "Minimax \u00d7 Fear Avoidance",
-      "problem": "Fear avoidance blocks housing (calling bankers), taxes (talking to accountants), brain (doctors), and trips (booking). Every avoided task compounds into bigger fear + real consequences.",
-      "solution": "Use Minimax from Warp-Speed: Categorize every avoided task. REVERSIBLE decisions (doctor appointment, phone call) \u2192 MAXIMUM SPEED \u2014 do it NOW. IRREVERSIBLE with known downside (tax filing, housing offer) \u2192 aggressive with pre-set stop-loss. IRREVERSIBLE with fat-tail risk \u2192 go slow. Then apply 'Act Despite Fear' upgrade: 'Fear or not, gotta do it. Time constraints.' The 10-10-10 lens: will this fear matter in 10 months? If no \u2192 it's noise. If yes \u2192 it's a Lead Domino item \u2014 prioritize above everything."
+      "problem": "Fear avoidance blocks taxes (talking to accountants), brain (doctors), and trips (booking). Every avoided task compounds into bigger fear and real consequences.",
+      "solution": "Use Minimax from Warp-Speed: Categorize every avoided task. REVERSIBLE decisions (doctor appointment, phone call) \u2192 MAXIMUM SPEED \u2014 do it NOW. IRREVERSIBLE with known downside (tax filing) \u2192 aggressive with pre-set stop-loss. IRREVERSIBLE with fat-tail risk \u2192 go slow. Then apply 'Act Despite Fear': fear or not, act within the time constraint. The 10-10-10 lens asks whether the fear will matter in 10 months; if not, it is noise, and if yes, it is a Lead Domino item."
     },
     {
       "title": "The Jet Stream Identity Bridge",

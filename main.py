@@ -26,7 +26,7 @@ def default_state():
             {"time": time.strftime("%H:%M:%S"), "type": "LOAD", "message": "STEM Stack v2.0 active"},
             {"time": time.strftime("%H:%M:%S"), "type": "STATUS", "message": "Read-Only mode active"}
         ],
-        "properties": {"tracked": 0, "viewings": 0, "offers": 0},
+
         "skills": [
             {"name": "probabilistic-thinking", "tags": "randomness, bias, causality"},
             {"name": "warp-speed-execution", "tags": "velocity, bottlenecks, compound"},
@@ -65,12 +65,6 @@ def api_augmented_graph():
     except FileNotFoundError:
         return JSONResponse({"error": "augmented-graph.json not found"}, status_code=404)
 
-@app.get("/api/housing-graph")
-def api_housing_graph():
-    try:
-        return json.loads((DATA_DIR / "housing-graph.json").read_text())
-    except FileNotFoundError:
-        return JSONResponse({"error": "housing-graph.json not found"}, status_code=404)
 
 @app.get("/api/masterplan-graph")
 def api_masterplan_graph():
@@ -202,17 +196,6 @@ async def add_log(req: Request):
     save_state(state)
     return {"status": "ok"}
 
-@app.post("/api/update-properties")
-async def update_properties(req: Request):
-    body = await req.json()
-    state = load_state()
-    for key in ["tracked", "viewings", "offers"]:
-        if key in body:
-            state["properties"][key] = body[key]
-    if "top" in body:
-        state["properties"]["top"] = body["top"]
-    save_state(state)
-    return {"status": "ok"}
 
 @app.post("/api/set-skills")
 async def set_skills(req: Request):

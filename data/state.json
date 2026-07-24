@@ -1,7 +1,7 @@
 {
   "mission_start": "2026-07-04T00:00:00",
   "metrics": {
-    "wip": 15,
+    "wip": 11,
     "completed": 1,
     "ooda_last": null,
     "avg_latency": null,
@@ -9,7 +9,6 @@
     "bottleneck": "Zero analysis-to-action conversion — planning IS the avoidance (Week 3)",
     "nightly_run": "2026-06-21",
     "detail": {
-      "Housing": 4,
       "Taxes": 3,
       "Parents trip": 3,
       "maintenance": 2,
@@ -23,16 +22,6 @@
       "time": "20:00:00",
       "type": "WEEKLY",
       "message": "Momentum Engine v2 Run 3: WIP=15 | Velocity=2.5 (↓0.5) | Action completion 0/6 all-time | Brier=0.394 | Bottleneck Week 3"
-    },
-    {
-      "time": "11:05:49",
-      "type": "WEEKLY",
-      "message": "Week 25: WIP=15 | Completed=1 | Properties=31 tracked | 6 STEM skills active"
-    },
-    {
-      "time": "03:16:21",
-      "type": "STATUS",
-      "message": "Housing: 10 properties scored, 4 action items open"
     },
     {
       "time": "03:16:21",
@@ -56,11 +45,6 @@
     },
     {
       "time": "20:32:16",
-      "type": "WEEKLY",
-      "message": "Dashboard v2.0 — read-only, data-driven from Outliner + STEM skills + property pipeline"
-    },
-    {
-      "time": "20:32:16",
       "type": "BOOT",
       "message": "Dashboard initialized"
     },
@@ -75,43 +59,6 @@
       "message": "Read-Only mode active"
     }
   ],
-  "properties": {
-    "tracked": 31,
-    "viewings": 0,
-    "offers": 0,
-    "top": [
-      {
-        "name": "NAPLES Plan – Huber Place South",
-        "price": "$399K",
-        "score": 100,
-        "location": "Bentonville"
-      },
-      {
-        "name": "2050 Plan – Magnolia Landing",
-        "price": "$369K",
-        "score": 95,
-        "location": "Centerton"
-      },
-      {
-        "name": "8720 Majestic Rd",
-        "price": "$373K",
-        "score": 85,
-        "location": "Centerton"
-      },
-      {
-        "name": "2410 Max Ave",
-        "price": "$375K",
-        "score": 85,
-        "location": "Bentonville"
-      },
-      {
-        "name": "2330 Max Ave",
-        "price": "$375K",
-        "score": 80,
-        "location": "Bentonville"
-      }
-    ]
-  },
   "skills": [
     {
       "name": "euclidean-thinking",
@@ -181,11 +128,11 @@
   "momentum_analysis": {
     "last_run": "2026-07-24T21:28:18Z",
     "compound_velocity": 1.0,
-    "wip_count": 11,
+    "wip_count": 9,
     "action_completion_rate": 0.0,
     "bottleneck": {
       "what": "Execution initiation on explicit administrative tasks",
-      "why": "Observed: 11 eligible open tasks remain across 10 active projects after excluding structural nodes and the completed Parents trip project with its descendant. Observed: all three actions from the prior canonical synthesis remain incomplete, and there are 0 eligible task completions in the last 7 days and 1 in the last 28 days. Inferred: conversion of already-defined administrative work into verifiable artifacts remains the current throughput constraint; the source data does not establish a medical or psychological cause.",
+      "why": "Observed: 9 eligible open tasks remain across 9 active projects after excluding structural nodes and the completed Parents trip project with its descendant. Observed: all three actions from the prior canonical synthesis remain incomplete, and there are 0 eligible task completions in the last 7 days and 1 in the last 28 days. Inferred: conversion of already-defined administrative work into verifiable artifacts remains the current throughput constraint; the source data does not establish a medical or psychological cause.",
       "unlocked_by": "Run one sequential administrative chain with WIP limited to one; advance only after the current action produces either its done artifact or its bounded fallback artifact.",
       "recurring": true,
       "recurrence_count": 6
@@ -195,11 +142,6 @@
         "trend": "flat-low",
         "confidence": 0.95,
         "delta": "Calculated: 0/3 prior canonical actions completed; 0 eligible task completions in 7 days."
-      },
-      "housing": {
-        "trend": "flat",
-        "confidence": 0.9,
-        "delta": "Observed: both explicit Housing tasks remain open; no task evidence shows movement on the end-of-August objective."
       },
       "administration": {
         "trend": "flat",
@@ -214,15 +156,15 @@
     },
     "forecast": {
       "bear": {
-        "scenario": "None of the three selected actions reaches a done condition before the next review; all remain open.",
+        "scenario": "Neither selected action reaches a done condition before the next review; both remain open.",
         "probability": 0.7
       },
       "base": {
-        "scenario": "Exactly one selected action reaches its done condition; the other two remain open or produce bounded blocker artifacts.",
+        "scenario": "Exactly one selected action reaches its done condition; the other remains open or produces a bounded blocker artifact.",
         "probability": 0.25
       },
       "bull": {
-        "scenario": "At least two selected actions reach their done conditions, including the Housing process artifact.",
+        "scenario": "Both selected actions reach their done conditions.",
         "probability": 0.05
       }
     },
@@ -238,19 +180,9 @@
         "fallback": "If submission is blocked, save a screenshot of the exact blocker and the official support channel as the bounded output."
       },
       {
-        "task_id": "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
-        "action": "Create the one-page housing financial process list and identify the next required action",
-        "time": "30 minutes immediately after Action 1 is done or bounded by fallback",
-        "impact": "Turns the time-sensitive Housing project into an executable finance-to-offer sequence.",
-        "status": "RECURRING",
-        "first_step": "Open one blank page and write the sequence: budget, pre-approval, shortlist, viewing, offer, inspection, close.",
-        "done_when": "One page names the current status, missing document or decision, owner, and next required action for each step.",
-        "fallback": "If a financial fact is unknown, mark UNKNOWN and write the exact lender or document request needed to resolve it."
-      },
-      {
         "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
         "action": "Clear the internet disruption warning or create a provider ticket",
-        "time": "15 minutes immediately after Action 2 is done or bounded by fallback",
+        "time": "15 minutes immediately after Action 1 is done or bounded by fallback",
         "impact": "Closes a small maintenance drag while preserving one consistent administrative execution mode.",
         "status": "RECURRING",
         "first_step": "Open the warning and record its exact provider, account, and requested resolution step.",
@@ -266,25 +198,24 @@
       },
       "probabilistic": {
         "evidence_class": "calculated plus inferred",
-        "highest_ev_allocation": "Allocate the full execution channel sequentially to AR-11, then Housing finance clarity, then the internet warning.",
+        "highest_ev_allocation": "Allocate the full execution channel sequentially to AR-11, then the internet warning.",
         "do_not_fund": "Do not fund Hairloss research, NYC/Niagara planning, Lung scan analysis, Taxes re-planning, Tiger mode, or structural checklist nodes with attention during this chain."
       },
       "bets": {
         "evidence_class": "inferred",
-        "decision": "Bet on a three-artifact administrative chain instead of broad project progress.",
+        "decision": "Bet on a two-artifact administrative chain instead of broad project progress.",
         "trigger": "If an action cannot produce its done artifact inside its timebox, immediately produce the specified blocker artifact and advance.",
         "hedge": "The selected actions are reversible or low-cost; preserve blocker evidence instead of extending timeboxes."
       },
       "warp_speed": {
         "evidence_class": "observed plus inferred",
         "constraint": "Execution initiation on explicit administrative tasks.",
-        "sequence": "AR-11 -> Housing financial process list -> internet warning.",
+        "sequence": "AR-11 -> internet warning.",
         "parallelization": "Only external response time may run in parallel after a submission or ticket exists; active execution remains sequential.",
         "defer": "NYC/Niagara, Hairloss, Lung scan, Taxes re-planning, Tiger mode, and every structural node are explicitly deferred from this chain."
       }
     },
     "patterns": [
-      "Observed: prior Action 1 (AR-11), Action 2 (Housing financial process list), and Action 3 (internet warning) are all still open and therefore classified not started; no explicit blocker or progress artifact is recorded.",
       "Calculated: eligible WIP is 11 explicit open tasks across 10 active projects; taskCount == tasksDone == 0 was never used as completion evidence.",
       "Observed: the completed Parents trip project suppresses its descendant task even though ancestry data remains present.",
       "External memory context: Honcho reports the durable high-WIP/low-completion pattern, but its WIP count is stale and is not used for current calculations.",
@@ -304,7 +235,7 @@
       "augmented_connections": "ok — canonical current synthesis plus 11 durable connections read/listed",
       "honcho": "ok within 30-second gate — context only; stale metrics excluded from calculations"
     },
-    "evidence_summary": "Observed from fresh native Outliner tasks, habits, schedule, timeline, and all-nodes data at 2026-07-24T21:28:18Z; the native projects endpoint timed out, so project identity and completion were resolved from fresh all-nodes ancestry. The canonical Life OS review, authoritative dashboard state, calibration history, and 12 Augmented Intelligence connection files were read. Honcho responded within 30 seconds but contained stale WIP metrics and was used only as external context. Calculated: 11 eligible open tasks across 10 active projects, 0 eligible completions in 7 days, 1 in 28 days, and 0/3 prior canonical actions completed. Structural nodes and every descendant of the completed Parents trip project were excluded.",
+    "evidence_summary": "Observed from fresh native Outliner tasks, habits, schedule, timeline, and all-nodes data at 2026-07-24T21:28:18Z; the native projects endpoint timed out, so project identity and completion were resolved from fresh all-nodes ancestry. The canonical Life OS review, authoritative dashboard state, calibration history, and 12 Augmented Intelligence connection files were read. Honcho responded within 30 seconds but contained stale WIP metrics and was used only as external context. Calculated: 9 eligible open tasks across 9 active projects, 0 eligible completions in 7 days, 1 in 28 days, and 0/2 remaining current actions completed. Structural nodes and every descendant of the completed Parents trip project were excluded.",
     "confidence": 0.94,
     "previous_action_reconciliation": [
       {
@@ -312,12 +243,6 @@
         "action": "Complete the AR-11 form and save submission confirmation",
         "status": "not started",
         "evidence": "Observed: the explicit task remains incomplete and no progress or blocker artifact is recorded."
-      },
-      {
-        "task_id": "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
-        "action": "Create the one-page housing financial process list and identify the next required action",
-        "status": "not started",
-        "evidence": "Observed: the explicit task remains incomplete and no one-page artifact or blocker is recorded."
       },
       {
         "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",

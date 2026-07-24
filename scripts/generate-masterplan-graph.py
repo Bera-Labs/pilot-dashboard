@@ -32,7 +32,7 @@ OUTPUT = Path(os.path.expanduser("~/pilot-dashboard/data/masterplan-graph.json")
 
 # Projects: from entity pages
 PROJECTS = {
-    "housing": {"label": "Housing", "group": "project", "status": "active", "desc": "Home buying — Bentonville/Centerton, <$450K"},
+
     "taxes": {"label": "Taxes", "group": "project", "status": "active", "desc": "Tax filing with YesMyTaxes"},
     "maintenance": {"label": "Maintenance", "group": "project", "status": "active", "desc": "Life admin: bills, DMV, cleaning"},
     "parents-trip": {"label": "Parents Trip", "group": "project", "status": "active", "desc": "Parents visiting — flights, insurance"},
@@ -90,7 +90,7 @@ GOALS = {
     "neuro-typicality": {"label": "Neuro-Typicality", "group": "goal", "desc": "ADHD treated → brain works like it should."},
     "superior-cognition": {"label": "Superior Cognition", "group": "goal", "desc": "Peak mental performance. Fast, clear, focused."},
     "colossal-momentum": {"label": "Colossal Momentum", "group": "goal", "desc": "Jet stream every day. Chain unbroken. Speed compounds."},
-    "home-ownership": {"label": "Home Ownership", "group": "goal", "desc": "Settled in Bentonville/Centerton home. Major life milestone."},
+
     "high-value-identity": {"label": "High Value Identity", "group": "goal", "desc": "Main character energy. Charisma, presence, power."},
     "fire-back": {"label": "Bring the Fire Back", "group": "goal", "desc": "Anti-aging body. Energy, vitality, strength."},
     "counter-entropy": {"label": "Counter-Attack Entropy", "group": "goal", "desc": "Order from chaos. Systems running. Life organized."},
@@ -102,7 +102,7 @@ BUCKETS = {
     "bucket-brain-bucket": {"label": "Brain (Cognition)", "group": "bucket", "desc": "ADHD treatment, tDCS, TMS, neurofeedback"},
     "bucket-identity": {"label": "Identity", "group": "bucket", "desc": "Mental models, decision framework, fearless, super momentum"},
     "bucket-social": {"label": "Social", "group": "bucket", "desc": "High value male charisma — eye contact, tone, presence"},
-    "bucket-finances": {"label": "Finances", "group": "bucket", "desc": "Rent, food, housing"},
+    "bucket-finances": {"label": "Finances", "group": "bucket", "desc": "Rent, food, taxes, and bills"},
     "bucket-skill": {"label": "Skill", "group": "bucket", "desc": "Learning path — professional growth"},
     "bucket-work": {"label": "Work", "group": "bucket", "desc": "Career — define scope and targets"},
 }
@@ -111,12 +111,12 @@ BUCKETS = {
 
 # Which patterns block which projects?
 PATTERN_BLOCKS_PROJECT = [
-    ("time-blindness", "housing", "strong"),
+
     ("time-blindness", "taxes", "strong"),
     ("time-blindness", "brain", "strong"),
     ("time-blindness", "all", "moderate"),  # blocks everything
     ("fear-avoidance", "taxes", "strong"),
-    ("fear-avoidance", "housing", "strong"),
+
     ("fear-avoidance", "brain", "strong"),
     ("fear-avoidance", "penis", "strong"),
     ("fear-avoidance", "nyc-and-niagara-trip", "moderate"),
@@ -125,7 +125,7 @@ PATTERN_BLOCKS_PROJECT = [
     ("all-or-nothing", "brain", "strong"),
     ("energy-vampires", "all", "moderate"),
     ("self-disconnect", "all", "strong"),
-    ("emotional-flooding", "housing", "moderate"),
+
     ("emotional-flooding", "taxes", "moderate"),
     ("learned-helplessness", "brain", "strong"),
     ("learned-helplessness", "penis", "strong"),
@@ -177,7 +177,7 @@ PROJECT_TO_BUCKET = [
     ("lung-health", "bucket-body", "moderate"),
     ("high-value-male", "bucket-identity", "strong"),
     ("high-value-male", "bucket-social", "strong"),
-    ("housing", "bucket-finances", "strong"),
+
     ("taxes", "bucket-finances", "strong"),
     ("maintenance", "bucket-finances", "moderate"),
 ]
@@ -189,7 +189,7 @@ LEADS_TO = [
     ("lifestyle", "fire-back", "strong"),
     ("apex-track-monster", "colossal-momentum", "strong"),
     ("lead-domino", "counter-entropy", "strong"),
-    ("housing", "home-ownership", "strong"),
+
     ("high-value-male", "high-value-identity", "strong"),
     ("jet-stream-daily", "colossal-momentum", "strong"),
 ]
@@ -206,7 +206,7 @@ EMERGENT_SOLUTIONS = [
         "solution": "Use The Katana to chunk every day into 2 halves. Morning = 1 external task (Track B). Afternoon = 1 internal task (Track A). Use 1-hour blocks. Never plan beyond 'this morning' or 'this afternoon.' The Katana + 1-hour blocks are ADHD-native planning — they don't require feeling the future.",
         "model": "The Katana × Time Blindness",
         "inputs": ["katana", "one-hour-blocks", "small-timeframes", "time-blindness"],
-        "outputs": ["housing", "taxes", "maintenance", "all"],
+        "outputs": ["taxes", "maintenance", "all"],
     },
     {
         "id": "solution-apex-vs-helplessness",
@@ -221,10 +221,10 @@ EMERGENT_SOLUTIONS = [
         "id": "solution-lead-domino-parallel",
         "title": "Parallelize the Impossible",
         "problem": "The false axiom: 'I must fix my ADHD before I can take any action.' This creates infinite deadlock — brain doesn't get fixed because no action is taken, and no action is taken because brain isn't fixed.",
-        "solution": "The Lead Domino + Euclidean 5th Postulate shatter: Run TWO parallel tracks. Track A (hardware): brain diagnosis, exercise, sleep. Track B (backlog): housing calls, tax calls, trip bookings. Each completed Track B task provides dopamine that fuels Track A. Each Track A win makes Track B easier. They FEED each other. The Lead Domino isn't sequential — it's parallel. ADHD treatment starts with a 10-minute phone call. You can make phone calls with a broken brain.",
+        "solution": "The Lead Domino + Euclidean 5th Postulate shatter: Run TWO parallel tracks. Track A (hardware): brain diagnosis, exercise, sleep. Track B (backlog): tax calls and trip bookings. Each completed Track B task provides dopamine that fuels Track A. Each Track A win makes Track B easier. They FEED each other. The Lead Domino isn't sequential — it's parallel. ADHD treatment starts with a 10-minute phone call. You can make phone calls with a broken brain.",
         "model": "Lead Domino × Euclidean Thinking",
         "inputs": ["lead-domino", "model-2", "do-it-despite-fear", "fear-avoidance", "all-or-nothing"],
-        "outputs": ["brain", "housing", "taxes", "parents-trip", "nyc-and-niagara-trip"],
+        "outputs": ["brain", "taxes", "parents-trip", "nyc-and-niagara-trip"],
     },
     {
         "id": "solution-dopamine-flywheel",
@@ -247,11 +247,11 @@ EMERGENT_SOLUTIONS = [
     {
         "id": "solution-fear-avoidance-minimax",
         "title": "Minimax the Fear: Catalogue & Conquer",
-        "problem": "Fear avoidance blocks housing (calling bankers), taxes (talking to accountants), brain (doctors), and trips (booking). Every avoided task compounds into bigger fear + real consequences.",
-        "solution": "Use Minimax from Warp-Speed: Categorize every avoided task. REVERSIBLE decisions (doctor appointment, phone call) → MAXIMUM SPEED — do it NOW. IRREVERSIBLE with known downside (tax filing, housing offer) → aggressive with pre-set stop-loss. IRREVERSIBLE with fat-tail risk → go slow. Then apply 'Act Despite Fear' upgrade: 'Fear or not, gotta do it. Time constraints.' The 10-10-10 lens: will this fear matter in 10 months? If no → it's noise. If yes → it's a Lead Domino item — prioritize above everything.",
+        "problem": "Fear avoidance blocks taxes (talking to accountants), brain (doctors), and trips (booking). Every avoided task compounds into bigger fear and real consequences.",
+        "solution": "Use Minimax from Warp-Speed: Categorize every avoided task. REVERSIBLE decisions (doctor appointment, phone call) → MAXIMUM SPEED — do it NOW. IRREVERSIBLE with known downside (tax filing) → aggressive with pre-set stop-loss. IRREVERSIBLE with fat-tail risk → go slow. Then apply 'Act Despite Fear': fear or not, act within the time constraint. The 10-10-10 lens asks whether the fear will matter in 10 months; if not, it is noise, and if yes, it is a Lead Domino item.",
         "model": "Minimax × Fear Avoidance",
         "inputs": ["do-it-despite-fear", "hard-programmed-rules", "lead-domino", "fear-avoidance"],
-        "outputs": ["housing", "taxes", "brain", "penis", "all"],
+        "outputs": ["taxes", "brain", "penis", "all"],
     },
     {
         "id": "solution-jetstream-identity-bridge",

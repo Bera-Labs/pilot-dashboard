@@ -20,7 +20,7 @@ def default_state():
             {"time": time.strftime("%H:%M:%S"), "type": "LOAD", "message": "STEM Stack v2.0 active"},
             {"time": time.strftime("%H:%M:%S"), "type": "STATUS", "message": "Read-Only mode active"}
         ],
-        "properties": {"tracked": 0, "viewings": 0, "offers": 0},
+
         "skills": [
             {"name": "probabilistic-thinking", "tags": "randomness, bias, causality"},
             {"name": "warp-speed-execution", "tags": "velocity, bottlenecks, compound"},
@@ -139,12 +139,6 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
         elif path == '/api/add-log':
             state['activity_log'].insert(0, {"time": now, "type": body.get('type', 'INFO'), "message": body.get('message', '')})
 
-        elif path == '/api/update-properties':
-            for key in ['tracked', 'viewings', 'offers']:
-                if key in body:
-                    state['properties'][key] = body[key]
-            if 'top' in body:
-                state['properties']['top'] = body['top']
 
         elif path == '/api/set-skills':
             state['skills'] = body.get('skills', state.get('skills', []))
