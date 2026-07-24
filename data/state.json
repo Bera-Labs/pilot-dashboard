@@ -6,7 +6,7 @@
     "ooda_last": null,
     "avg_latency": null,
     "compound_velocity": 2.5,
-    "bottleneck": "Zero analysis-to-action conversion \u2014 planning IS the avoidance (Week 3)",
+    "bottleneck": "Zero analysis-to-action conversion — planning IS the avoidance (Week 3)",
     "nightly_run": "2026-06-21",
     "detail": {
       "Housing": 4,
@@ -22,7 +22,7 @@
     {
       "time": "20:00:00",
       "type": "WEEKLY",
-      "message": "Momentum Engine v2 Run 3: WIP=15 | Velocity=2.5 (\u21930.5) | Action completion 0/6 all-time | Brier=0.394 | Bottleneck Week 3"
+      "message": "Momentum Engine v2 Run 3: WIP=15 | Velocity=2.5 (↓0.5) | Action completion 0/6 all-time | Brier=0.394 | Bottleneck Week 3"
     },
     {
       "time": "11:05:49",
@@ -47,7 +47,7 @@
     {
       "time": "03:16:21",
       "type": "MILESTONE",
-      "message": "glimpse of might 1.0-alpha1 start \u2014 exercise habit active (4 sessions logged)"
+      "message": "glimpse of might 1.0-alpha1 start — exercise habit active (4 sessions logged)"
     },
     {
       "time": "03:16:21",
@@ -57,7 +57,7 @@
     {
       "time": "20:32:16",
       "type": "WEEKLY",
-      "message": "Dashboard v2.0 \u2014 read-only, data-driven from Outliner + STEM skills + property pipeline"
+      "message": "Dashboard v2.0 — read-only, data-driven from Outliner + STEM skills + property pipeline"
     },
     {
       "time": "20:32:16",
@@ -81,13 +81,13 @@
     "offers": 0,
     "top": [
       {
-        "name": "NAPLES Plan \u2013 Huber Place South",
+        "name": "NAPLES Plan – Huber Place South",
         "price": "$399K",
         "score": 100,
         "location": "Bentonville"
       },
       {
-        "name": "2050 Plan \u2013 Magnolia Landing",
+        "name": "2050 Plan – Magnolia Landing",
         "price": "$369K",
         "score": 95,
         "location": "Centerton"
@@ -179,103 +179,152 @@
     }
   ],
   "momentum_analysis": {
-    "last_run": "2026-06-23T01:21:30.722300+00:00",
-    "compound_velocity": 1.5,
-    "velocity_delta": -0.5,
-    "velocity_trend": "down",
-    "wip_count": 15,
-    "wip_delta": 0,
+    "last_run": "2026-07-24T21:08:53Z",
+    "compound_velocity": 1.0,
+    "wip_count": 11,
     "action_completion_rate": 0.0,
+    "bottleneck": {
+      "what": "Execution initiation on explicit administrative tasks",
+      "why": "Observed: 11 eligible open tasks remain across 10 active projects, with 0 eligible task completions in the last 7 days and 1 in the last 28 days. Observed: the three actions in today's canonical Life OS review remain open. Inferred: initiation, rather than missing task definition, is the current throughput constraint.",
+      "unlocked_by": "Run one sequential administrative chain with a WIP limit of 1; move to the next action only after a verifiable done condition or fallback artifact exists.",
+      "recurring": true,
+      "recurrence_count": 6
+    },
     "trajectories": {
-      "Housing": {
+      "execution": {
         "trend": "down",
-        "confidence": 20,
-        "delta": -10
+        "confidence": 90,
+        "delta": "Calculated: 0/3 prior Life OS actions completed; 0 eligible completions in 7 days."
       },
-      "Taxes": {
-        "trend": "down",
-        "confidence": 10,
-        "delta": -10
+      "housing": {
+        "trend": "flat",
+        "confidence": 80,
+        "delta": "Observed: both explicit Housing tasks remain open; the stated end-of-August target is structural context, not a task."
       },
-      "Brain/ADHD": {
-        "trend": "down",
-        "confidence": 20,
-        "delta": -5
+      "administration": {
+        "trend": "flat",
+        "confidence": 90,
+        "delta": "Observed: AR-11, internet warning, and all three tax tasks remain open."
       },
-      "Body/Health": {
-        "trend": "down",
-        "confidence": 10,
-        "delta": -10
-      },
-      "Trips": {
-        "trend": "down",
-        "confidence": 20,
-        "delta": -20
+      "habits": {
+        "trend": "mixed",
+        "confidence": 85,
+        "delta": "Observed: abstinence has 17 dated checks through July 21; exercise has no log after July 8; Taking action and sleep have no checks."
       }
     },
-    "bottleneck": {
-      "what": "Action conversion barrier (Planning as avoidance)",
-      "why": "5 runs, 0 completions. WIP remains 15. Execution drought continuing.",
-      "unlocked_by": "WIP limit of 1. Force a micro-action.",
-      "recurring": true,
-      "recurrence_count": 5
-    },
     "forecast": {
-      "bear": "0 actions completed. Total stagnation.",
-      "base": "1 micro-action completed.",
-      "bull": "Taxes unblocked and WIP reduced."
+      "bear": {
+        "scenario": "No selected action reaches its done condition; all three remain open at the next run.",
+        "probability": 0.7
+      },
+      "base": {
+        "scenario": "One selected action reaches its done condition and the remaining two stay open or use fallbacks.",
+        "probability": 0.25
+      },
+      "bull": {
+        "scenario": "At least two selected actions reach their done conditions, including the Housing process artifact.",
+        "probability": 0.05
+      }
     },
     "top_actions": [
       {
+        "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+        "action": "Complete the AR-11 form and save submission confirmation",
+        "time": "25 minutes in the next available execution block",
+        "impact": "Removes a concrete administrative liability and creates the first closed loop in the current chain.",
+        "status": "RECURRING",
+        "first_step": "Open the official AR-11 form and place the current address and identification details beside it.",
+        "done_when": "The form is submitted and a confirmation page, email, or receipt is saved.",
+        "fallback": "If submission is blocked, save a screenshot of the exact blocker and the official support channel as the bounded output."
+      },
+      {
+        "task_id": "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
+        "action": "Create the one-page housing financial process list and identify the next required action",
+        "time": "30 minutes immediately after Action 1 is done or bounded by fallback",
+        "impact": "Converts the time-sensitive Housing project from broad context into a finance-to-offer sequence.",
+        "status": "RECURRING",
+        "first_step": "Open one blank page and write the sequence: budget, pre-approval, shortlist, viewing, offer, inspection, close.",
+        "done_when": "One page names the current status, missing document or decision, owner, and next required action for each step.",
+        "fallback": "If a financial fact is unknown, mark UNKNOWN and write the exact lender or document request needed to resolve it."
+      },
+      {
+        "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+        "action": "Clear the internet disruption warning or create a provider ticket",
+        "time": "15 minutes immediately after Action 2 is done or bounded by fallback",
+        "impact": "Closes a small maintenance drag while preserving the same administrative execution mode.",
+        "status": "RECURRING",
+        "first_step": "Open the warning and record its exact provider, account, and requested resolution step.",
+        "done_when": "The warning is cleared or a provider ticket number and expected response time are saved.",
+        "fallback": "If the provider channel is unavailable, save the warning screenshot and schedule the first available support contact window."
+      }
+    ],
+    "stem_strategy": {
+      "euclidean": {
+        "evidence_class": "observed plus inferred",
+        "blocking_assumption": "Assumption: more planning or a better system must precede action.",
+        "reframe": "The tasks and done conditions already exist; the proof obligation is one submitted artifact, not another plan."
+      },
+      "probabilistic": {
+        "evidence_class": "calculated and inferred",
+        "highest_ev_allocation": "Allocate the full execution channel sequentially to AR-11, then Housing finance clarity, then the internet warning.",
+        "do_not_fund": "Do not fund Hairloss research, NYC/Niagara planning, Lung scan analysis, Taxes re-planning, or structural checklist nodes with attention during this chain."
+      },
+      "bets": {
+        "evidence_class": "inferred",
+        "decision": "Bet on a three-artifact administrative chain rather than broad project progress.",
+        "trigger": "If an action cannot produce its done artifact inside its timebox, immediately produce the specified blocker artifact and advance.",
+        "hedge": "All three moves are reversible or low-cost; preserve evidence of blockers instead of extending the timebox."
+      },
+      "warp_speed": {
+        "evidence_class": "observed plus inferred",
+        "constraint": "Execution initiation on explicit administrative tasks.",
+        "sequence": "AR-11 -> Housing financial process list -> internet warning.",
+        "parallelization": "None during execution; only external provider response time may run in parallel after a ticket or submission exists.",
+        "defer": "NYC/Niagara, Hairloss, Lung scan, Taxes, and Tiger mode remain deferred from this control chain."
+      }
+    },
+    "patterns": [
+      "Observed: all three actions in the 2026-07-24 Life OS review are still open at this run.",
+      "Calculated: eligible WIP is 11 explicit open tasks after suppressing the completed Parents trip project and excluding structural nodes.",
+      "Observed: previous dashboard actions were partly untrackable because two lacked eligible task IDs; this run restores task-ID-backed accountability.",
+      "Unknown: no current source establishes why execution has not started; no medical or psychological mechanism is asserted."
+    ],
+    "mantra": "Plans don't break chains. Steps do.",
+    "data_sources": {
+      "outliner_projects": "ok — native, current",
+      "outliner_tasks": "ok — native, current",
+      "outliner_habits": "ok — native, current",
+      "outliner_schedule": "ok — native, current",
+      "outliner_timeline": "ok — native, current but stale for current execution evidence",
+      "outliner_all_nodes": "ok — native ancestry/type resolution",
+      "life_os_review": "ok — canonical node read 2026-07-24",
+      "dashboard_state": "ok — local authoritative repo state read",
+      "calibration": "ok — 5 historical runs read",
+      "augmented_connections": "ok — 11 existing durable connections; canonical current file absent before update",
+      "honcho": "degraded — rate limited within 30-second gate"
+    },
+    "evidence_summary": "Observed from fresh native Outliner data at 2026-07-24T21:08:53Z, the canonical Life OS review, dashboard state, calibration history, and 11 existing Augmented Intelligence connections. Honcho was degraded by rate limiting. Calculations include 11 eligible open tasks, 10 active projects, 0 eligible completions in 7 days, 1 in 28 days, and 0/3 current-review actions completed. Structural nodes and descendants of the completed Parents trip project were excluded.",
+    "confidence": 0.9,
+    "previous_action_reconciliation": [
+      {
         "action": "Find Yesmytaxes number and write on sticky note",
-        "time": "2m",
-        "impact": "Drops activation energy by 80%",
-        "status": "RECURRING"
+        "status": "unverifiable",
+        "evidence": "The eligible task talk to yesmytaxes remains open, but no Outliner field verifies whether the untracked sticky-note micro-step occurred."
       },
       {
         "action": "Send ONE text to Savannah at Schuber Mitchell",
-        "time": "3m",
-        "impact": "Unlocks housing pipeline",
-        "status": "RECURRING"
+        "status": "unverifiable",
+        "evidence": "No eligible task ID or current Outliner evidence tracks this message."
       },
       {
         "action": "Archive 10 open tasks from Outliner",
-        "time": "5m",
-        "impact": "Reduces WIP from 15 to 5",
-        "status": "RECURRING"
+        "status": "unverifiable",
+        "evidence": "This was not an eligible task-ID-backed action; current eligible WIP is 11, but that does not establish whether archiving occurred."
       }
     ],
-    "calibration": {
-      "brier_score": 0.38,
-      "brier_trend": "flat (0.380)",
-      "calibration_error": "Base rate is 0% completion. Bear probabilities must dominate."
-    },
-    "patterns": [
-      "0% action completion across 5 runs.",
-      "Taxes stalled for months; planning continues without execution.",
-      "Habit logs are dead (Exercise last logged May 28)."
-    ],
-    "mantra": "Plans don't break chains. Steps do.",
-    "stem_strategy": {
-      "euclidean": "Assumption: 'Planning and building systems precedes execution.' Reframe: 'The planning system is the exact mechanism of avoidance.' Strategy: Stop planning. Do the dumbest, smallest physical action.",
-      "probabilistic": "Highest EV domain: Unblocking Taxes. Avoid: Housing research. Strategy: Allocate 100% of execution energy to a 2-minute micro-action on Taxes.",
-      "bets": "Decision: Calling the tax accountant for 2 minutes. Reasoning: 90% chance of immediate unblocking. Downside hedge: Timebox to 2 minutes.",
-      "warp_speed": "Bottleneck: Action conversion barrier. Sequence: 1. Yesmytaxes. Kill/Defer: All trip logistics. Strategy: WIP limit of 1."
-    },
-    "execution_script": [
-      {
-        "step": "Find the Yesmytaxes phone number.",
-        "rule": "DO NOT open any other tab or app."
-      },
-      {
-        "step": "Write it on a physical sticky note.",
-        "rule": "Must be physical pen and paper."
-      },
-      {
-        "step": "Place sticky note on keyboard.",
-        "rule": "DO NOT advance until note is placed."
-      }
-    ]
+    "velocity_delta": -0.5,
+    "velocity_trend": "down",
+    "wip_delta": -4
   },
   "wiki_stats": {
     "superhuman_pages": 22,
@@ -284,5 +333,5 @@
     "stem_concepts": 7,
     "updated": "2026-07-04"
   },
-  "updated": "2026-07-04T18:30:00Z"
+  "updated": "2026-07-24T21:08:53Z"
 }

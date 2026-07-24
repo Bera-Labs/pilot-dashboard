@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-19",
+  "last_updated": "2026-07-24",
   "history": [
     {
       "date": "2026-05-18",
@@ -69,6 +69,13 @@
       "cumulative_completions": 4,
       "wip": 15,
       "velocity": 1.5,
+      "completion_rate": 0.0
+    },
+    {
+      "date": "2026-07-24",
+      "cumulative_completions": 4,
+      "wip": 11,
+      "velocity": 1.0,
       "completion_rate": 0.0
     }
   ]
