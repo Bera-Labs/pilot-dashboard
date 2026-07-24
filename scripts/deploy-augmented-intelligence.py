@@ -54,9 +54,15 @@ def main() -> None:
     if graph.get("meta", {}).get("schema_version") != "2.0.0":
         raise RuntimeError("augmented graph schema validation failed")
 
-    status = run(["git", "status", "--porcelain"], root)
+    status_result = subprocess.run(
+        ["git", "status", "--porcelain=v1"],
+        cwd=root,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
     dirty = set()
-    for line in status.splitlines():
+    for line in status_result.stdout.splitlines():
         if not line:
             continue
         path = line[3:].split(" -> ")[-1]
