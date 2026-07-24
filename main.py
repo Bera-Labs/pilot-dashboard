@@ -235,6 +235,11 @@ def dashboard():
 def momentum():
     return FileResponse(ROOT / "assets" / "momentum.html")
 
+@app.get("/momentum-analysis.html")
+def momentum_analysis():
+    """Hidden preview of the full Momentum Engine analysis page."""
+    return FileResponse(ROOT / "momentum.html")
+
 @app.get("/masterplan.html")
 def masterplan():
     return FileResponse(ROOT / "assets" / "masterplan.html")

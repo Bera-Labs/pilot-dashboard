@@ -91,6 +91,51 @@
   .housing-card .hc-text { font-size: 13px; line-height: 1.6; color: var(--text); margin-bottom: 12px; }
   .housing-card .hc-solution { color: var(--green); }
   @media (max-width: 768px) { .housing-grid { grid-template-columns: 1fr; } }
+
+  /* === HIDDEN PREVIEW LABS ===
+     Disabled by default. Enable with /momentum.html?labs=1. */
+  .labs-only { display: none; }
+  body.labs-mode .labs-only { display: block; }
+  .labs-banner {
+    margin: -10px 0 24px; padding: 9px 12px; border: 1px dashed var(--accent);
+    border-radius: 6px; color: var(--accent); font: 11px var(--font-mono);
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .labs-health {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px; margin-bottom: 24px;
+  }
+  .labs-health-cell, .labs-panel {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  }
+  .labs-health-cell { padding: 12px 14px; }
+  .labs-kicker { color: var(--text-dim); font: 9px var(--font-mono); text-transform: uppercase; letter-spacing: 1px; }
+  .labs-value { color: var(--text); font: 12px var(--font-mono); margin-top: 5px; overflow-wrap: anywhere; }
+  .labs-warn { color: var(--yellow); }
+  .labs-bad { color: var(--red); }
+  .labs-good { color: var(--green); }
+  .labs-panel { padding: 20px; margin-bottom: 24px; }
+  .labs-current-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; }
+  .labs-current-title { color: #fff; font-size: 17px; margin-bottom: 8px; }
+  .labs-current-copy { color: var(--text); font-size: 13px; line-height: 1.65; }
+  .labs-action { padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 12px; line-height: 1.5; }
+  .labs-action:last-child { border-bottom: 0; }
+  .labs-link { color: var(--accent); font: 11px var(--font-mono); }
+  .node-detail {
+    position: fixed; top: 20px; right: 20px; width: min(420px, calc(100vw - 40px));
+    max-height: calc(100vh - 40px); overflow: auto; z-index: 20;
+    background: #0d1219; border: 1px solid var(--accent); border-radius: 8px;
+    padding: 20px; box-shadow: 0 16px 60px rgba(0,0,0,.55);
+  }
+  .node-detail-close { float: right; color: var(--text-dim); cursor: pointer; font: 16px var(--font-mono); }
+  .node-detail-title { color: #fff; font-size: 18px; margin: 8px 0 4px; }
+  .node-detail-meta { color: var(--accent); font: 10px var(--font-mono); text-transform: uppercase; margin-bottom: 14px; }
+  .node-detail-copy { white-space: pre-wrap; font-size: 12px; line-height: 1.6; margin-top: 10px; }
+  body.labs-mode .graph-label { opacity: .22; }
+  body.labs-mode .graph-label.is-neighbor { opacity: 1; }
+  @media (max-width: 768px) {
+    .labs-current-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -105,8 +150,15 @@
   </div>
 </div>
 
+<div class="labs-only" id="labs-shell">
+  <div class="labs-banner">Preview layer · hidden by default · no existing components removed</div>
+  <div class="labs-health" id="labs-health"></div>
+  <div class="labs-panel" id="labs-current"></div>
+</div>
+
 <div id="graph-container"></div>
 <div class="tooltip" id="tooltip"></div>
+<div class="labs-only node-detail" id="node-detail" style="display:none"></div>
 
 <div class="section-title">Novel Syntheses & Emergent Solutions</div>
 <div class="syntheses-grid" id="syntheses-container">
@@ -122,33 +174,55 @@
 </div>
 
 <script>
+  const labsMode = new URLSearchParams(window.location.search).get('labs') === '1';
+  if (labsMode) document.body.classList.add('labs-mode');
+
+  function escapeHtml(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  }
+
+  function safeText(value) {
+    return escapeHtml(value).replace(/\n/g, '<br>');
+  }
+
+  function formatDate(value) {
+    if (!value) return 'unknown';
+    const d = new Date(value);
+    return Number.isNaN(d.getTime()) ? escapeHtml(value) : d.toLocaleString();
+  }
+
   function renderSyntheses(syntheses) {
     const container = document.getElementById('syntheses-container');
     container.innerHTML = '';
-    
+
     syntheses.forEach(s => {
       const card = document.createElement('div');
       card.className = 'synthesis-card';
-      
+
       let html = `<div class="synth-header">
-        <div class="synth-title">${s.title}</div>
-        <div class="synth-model">STEM Model: ${s.model}</div>
+        <div class="synth-title">${escapeHtml(s.title)}</div>
+        <div class="synth-model">STEM Model: ${escapeHtml(s.model)}</div>
       </div>`;
-      
+
       if (s.problem) {
         html += `<div class="synth-section">
           <div class="synth-label">The Axiom / Bottleneck</div>
-          <div class="synth-text">${s.problem.replace(/\n/g, '<br>')}</div>
+          <div class="synth-text">${safeText(s.problem)}</div>
         </div>`;
       }
-      
+
       if (s.solution) {
         html += `<div class="synth-section">
           <div class="synth-label">Novel Solution / Strategy</div>
-          <div class="synth-text synth-solution">${s.solution.replace(/\n/g, '<br>')}</div>
+          <div class="synth-text synth-solution">${safeText(s.solution)}</div>
         </div>`;
       }
-      
+
+      if (labsMode) {
+        html += `<div class="labs-kicker">${s.is_current ? 'Canonical current synthesis' : 'Durable insight'} · Updated ${formatDate(s.updated_at)}</div>`;
+      }
       card.innerHTML = html;
       container.appendChild(card);
     });
@@ -165,23 +239,23 @@
 
     syntheses.forEach(s => {
       const card = document.createElement('div');
-      // kebab-case the model for CSS class matching
-      const modelClass = s.model.toLowerCase().replace(/\s+/g, '-');
+      const model = String(s.model || 'Unknown');
+      const modelClass = model.toLowerCase().replace(/\s+/g, '-');
       card.className = 'housing-card model-' + modelClass;
 
       let html = '<div class="hc-header">';
-      html += '<span class="hc-stem-tag">' + s.model + '</span>';
-      html += '<span class="hc-title">' + s.title + '</span>';
+      html += '<span class="hc-stem-tag">' + escapeHtml(model) + '</span>';
+      html += '<span class="hc-title">' + escapeHtml(s.title) + '</span>';
       html += '</div>';
 
       if (s.problem) {
         html += '<div class="hc-label">Problem / Axiom</div>';
-        html += '<div class="hc-text">' + s.problem.replace(/\n/g, '<br>') + '</div>';
+        html += '<div class="hc-text">' + safeText(s.problem) + '</div>';
       }
 
       if (s.solution) {
         html += '<div class="hc-label">Solution / Strategy</div>';
-        html += '<div class="hc-text hc-solution">' + s.solution.replace(/\n/g, '<br>') + '</div>';
+        html += '<div class="hc-text hc-solution">' + safeText(s.solution) + '</div>';
       }
 
       card.innerHTML = html;
@@ -199,6 +273,60 @@
     } catch(e) {
       container.innerHTML = '<div style="padding:20px;color:var(--red);">Housing insights unavailable. Run generate-housing-graph.py to refresh.</div>';
     }
+  }
+
+  async function loadLabs(graphData) {
+    if (!labsMode) return;
+    const health = document.getElementById('labs-health');
+    const current = document.getElementById('labs-current');
+    try {
+      const stateRes = await fetch('/api/state');
+      if (!stateRes.ok) throw new Error('state API ' + stateRes.status);
+      const state = await stateRes.json();
+      const ma = state.momentum_analysis || {};
+      const graphMeta = graphData.meta || {};
+      const warnings = graphMeta.warnings || [];
+      const graphAge = graphMeta.generated_at ? Math.floor((Date.now() - new Date(graphMeta.generated_at).getTime()) / 86400000) : null;
+      const momentumAge = ma.last_run ? Math.floor((Date.now() - new Date(ma.last_run).getTime()) / 86400000) : null;
+
+      const cells = [
+        ['Graph snapshot', formatDate(graphMeta.generated_at), graphAge != null && graphAge > 14 ? 'labs-warn' : 'labs-good'],
+        ['Momentum analysis', formatDate(ma.last_run), momentumAge != null && momentumAge > 14 ? 'labs-bad' : 'labs-good'],
+        ['Graph integrity', `${graphMeta.node_count || graphData.nodes.length} nodes · ${warnings.length} warning(s)`, warnings.length ? 'labs-warn' : 'labs-good'],
+        ['Source fingerprint', graphMeta.source_fingerprint ? graphMeta.source_fingerprint.slice(0, 12) : 'legacy schema', ''],
+      ];
+      health.innerHTML = cells.map(c => `<div class="labs-health-cell"><div class="labs-kicker">${escapeHtml(c[0])}</div><div class="labs-value ${c[2]}">${escapeHtml(c[1])}</div></div>`).join('');
+
+      const bottleneck = typeof ma.bottleneck === 'object' ? ma.bottleneck.what : ma.bottleneck;
+      const actions = Array.isArray(ma.top_actions) ? ma.top_actions : [];
+      current.innerHTML = `<div class="section-title">Hidden Preview · Current Operating Synthesis</div>
+        <div class="labs-current-grid">
+          <div>
+            <div class="labs-kicker">Current constraint</div>
+            <div class="labs-current-title">${escapeHtml(bottleneck || 'No validated current constraint')}</div>
+            <div class="labs-current-copy">${escapeHtml((ma.bottleneck && ma.bottleneck.why) || 'The preview intentionally exposes freshness gaps instead of presenting stale analysis as live.')}</div>
+            <div style="margin-top:14px"><a class="labs-link" href="/momentum-analysis.html">Open hidden full Momentum analysis →</a></div>
+          </div>
+          <div><div class="labs-kicker">Current action queue</div>${actions.length ? actions.map((a, i) => `<div class="labs-action"><strong>${i + 1}.</strong> ${escapeHtml(a.action || a.step || '')}<br><span class="labs-kicker">${escapeHtml(a.time || '')} ${a.status ? '· ' + escapeHtml(a.status) : ''}</span></div>`).join('') : '<div class="labs-current-copy">No validated actions available.</div>'}</div>
+        </div>`;
+    } catch (e) {
+      health.innerHTML = `<div class="labs-health-cell"><div class="labs-kicker">Preview health</div><div class="labs-value labs-bad">${escapeHtml(e.message)}</div></div>`;
+      current.innerHTML = '<div class="labs-current-copy">Current synthesis unavailable.</div>';
+    }
+  }
+
+  function showNodeDetail(node, graphData) {
+    if (!labsMode) return;
+    const panel = document.getElementById('node-detail');
+    const synthesis = (graphData.syntheses || []).find(s => s.id === node.id);
+    panel.innerHTML = `<span class="node-detail-close" id="node-detail-close">×</span>
+      <div class="labs-kicker">${escapeHtml(node.group || 'node')}</div>
+      <div class="node-detail-title">${escapeHtml(node.label || node.id)}</div>
+      <div class="node-detail-meta">${synthesis ? escapeHtml(synthesis.model || '') + ' · ' + formatDate(synthesis.updated_at) : 'Graph relationship node'}</div>
+      ${synthesis && synthesis.problem ? `<div class="labs-kicker">Problem / axiom</div><div class="node-detail-copy">${escapeHtml(synthesis.problem)}</div>` : ''}
+      ${synthesis && synthesis.solution ? `<div class="labs-kicker" style="margin-top:16px">Strategy</div><div class="node-detail-copy labs-good">${escapeHtml(synthesis.solution)}</div>` : ''}`;
+    panel.style.display = 'block';
+    document.getElementById('node-detail-close').onclick = () => panel.style.display = 'none';
   }
 
   function renderGraph(data) {
@@ -248,7 +376,8 @@
       .selectAll("text")
       .data(data.nodes)
       .join("text")
-      .text(d => d.id)
+      .attr("class", "graph-label")
+      .text(d => d.label || d.id)
       .attr("font-size", "12px")
       .attr("fill", "var(--text)")
       .attr("dx", 15)
@@ -258,15 +387,27 @@
     // Hover Tooltips
     node.on("mouseover", (event, d) => {
       tooltip.style("opacity", 1)
-             .html(`<b>${d.id}</b><br>Type: ${d.group}`)
+             .html(`<b>${escapeHtml(d.label || d.id)}</b><br>Type: ${escapeHtml(d.group)}`)
              .style("left", (event.pageX + 10) + "px")
              .style("top", (event.pageY - 28) + "px");
       d3.select(event.currentTarget).attr("stroke", "var(--yellow)").attr("stroke-width", 3);
+      if (labsMode) {
+        const neighbors = new Set([d.id]);
+        data.links.forEach(l => {
+          const source = typeof l.source === 'object' ? l.source.id : l.source;
+          const target = typeof l.target === 'object' ? l.target.id : l.target;
+          if (source === d.id) neighbors.add(target);
+          if (target === d.id) neighbors.add(source);
+        });
+        label.classed('is-neighbor', n => neighbors.has(n.id));
+      }
     })
-    .on("mouseout", (event, d) => {
+    .on("mouseout", (event) => {
       tooltip.style("opacity", 0);
       d3.select(event.currentTarget).attr("stroke", "#fff").attr("stroke-width", 1.5);
-    });
+      if (labsMode) label.classed('is-neighbor', false);
+    })
+    .on("click", (event, d) => showNodeDetail(d, data));
 
     simulation.on("tick", () => {
       link
@@ -312,7 +453,10 @@
       renderGraph(data);
       renderSyntheses(data.syntheses || []);
       loadHousingInsights();
-      document.getElementById('data-status').innerText = `Graph loaded: ${data.nodes.length} nodes, ${data.links.length} connections`;
+      loadLabs(data);
+      const meta = data.meta || {};
+      const suffix = labsMode && meta.generated_at ? ` · Snapshot ${formatDate(meta.generated_at)}` : '';
+      document.getElementById('data-status').innerText = `Graph loaded: ${data.nodes.length} nodes, ${data.links.length} connections${suffix}`;
     } catch(e) {
       document.getElementById('graph-container').innerHTML = `<div style="padding:40px;text-align:center;color:var(--red);">Error loading graph data.</div>`;
       document.getElementById('data-status').innerText = 'Offline';

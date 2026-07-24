@@ -828,9 +828,10 @@ function renderStemStrategy(s) {
 
   // Euclidean
   if (s.euclidean) {
-    const e = s.euclidean;
+    const e = typeof s.euclidean === 'string' ? { summary: s.euclidean } : s.euclidean;
     html += `<div class="stem-block stem-block-euclidean">
       <div class="stem-model stem-model-euclidean">⬡ Euclidean — Shatter the 5th Postulate</div>`;
+    if (e.summary) html += `<div class="stem-field"><span class="stem-value">${escapeHtml(e.summary)}</span></div>`;
     if (e.assumption) html += `<div class="stem-field"><span class="stem-label">Assumption</span><span class="stem-value">${escapeHtml(e.assumption)}</span></div>`;
     if (e.reframe) html += `<div class="stem-field"><span class="stem-label">Reframe</span><span class="stem-value">${escapeHtml(e.reframe)}</span></div>`;
     if (e.unlocked_action) html += `<div class="stem-action">${escapeHtml(e.unlocked_action)}</div>`;
@@ -839,9 +840,10 @@ function renderStemStrategy(s) {
 
   // Probabilistic
   if (s.probabilistic) {
-    const p = s.probabilistic;
+    const p = typeof s.probabilistic === 'string' ? { summary: s.probabilistic } : s.probabilistic;
     html += `<div class="stem-block stem-block-probabilistic">
       <div class="stem-model stem-model-probabilistic">📊 Probabilistic — Optimal Bet Allocation</div>`;
+    if (p.summary) html += `<div class="stem-field"><span class="stem-value">${escapeHtml(p.summary)}</span></div>`;
     if (p.highest_ev_domain) html += `<div class="stem-field"><span class="stem-label">Highest EV Domain</span><span class="stem-value">${escapeHtml(p.highest_ev_domain)}</span></div>`;
     if (p.avoid_domain) html += `<div class="stem-field"><span class="stem-label">Avoid Domain</span><span class="stem-value">${escapeHtml(p.avoid_domain)}</span></div>`;
     if (p.allocation) html += `<div class="stem-action">${escapeHtml(p.allocation)}</div>`;
@@ -850,9 +852,10 @@ function renderStemStrategy(s) {
 
   // Thinking in Bets
   if (s.bets) {
-    const b = s.bets;
+    const b = typeof s.bets === 'string' ? { summary: s.bets } : s.bets;
     html += `<div class="stem-block stem-block-bets">
       <div class="stem-model stem-model-bets">🎰 Thinking in Bets — Highest-EV Decision</div>`;
+    if (b.summary) html += `<div class="stem-field"><span class="stem-value">${escapeHtml(b.summary)}</span></div>`;
     if (b.best_decision) html += `<div class="stem-field"><span class="stem-label">Best Decision</span><span class="stem-value">${escapeHtml(b.best_decision)}</span></div>`;
     if (b.reasoning) html += `<div class="stem-field"><span class="stem-label">Reasoning</span><span class="stem-value">${escapeHtml(b.reasoning)}</span></div>`;
     if (b.info_trigger) html += `<div class="stem-field"><span class="stem-label">Info Trigger / Bet-Changer</span><span class="stem-value">${escapeHtml(b.info_trigger)}</span></div>`;
@@ -862,9 +865,10 @@ function renderStemStrategy(s) {
 
   // Warp-Speed
   if (s.warp_speed) {
-    const w = s.warp_speed;
+    const w = typeof s.warp_speed === 'string' ? { summary: s.warp_speed } : s.warp_speed;
     html += `<div class="stem-block stem-block-warp">
       <div class="stem-model stem-model-warp">🚀 Warp-Speed — Throughput Plan</div>`;
+    if (w.summary) html += `<div class="stem-field"><span class="stem-value">${escapeHtml(w.summary)}</span></div>`;
     if (w.bottleneck) html += `<div class="stem-field"><span class="stem-label">Bottleneck</span><span class="stem-value">${escapeHtml(w.bottleneck)}</span></div>`;
     if (w.parallelize) html += `<div class="stem-field"><span class="stem-label">Parallelize</span><span class="stem-value">${escapeHtml(w.parallelize)}</span></div>`;
     if (w.sequence) html += `<div class="stem-field"><span class="stem-label">Sequence</span><span class="stem-value">${escapeHtml(w.sequence)}</span></div>`;
@@ -921,18 +925,10 @@ function renderForecast(forecast, calibration) {
   html += '<div class="forecast-grid">';
 
   const scenarios = [
-    { key: 'bear', name: '🐻 Bear', cls: 'forecast-bear', defaultProb: 60 },
-    { key: 'base', name: '📊 Base', cls: 'forecast-base', defaultProb: 25 },
-    { key: 'bull', name: '🐂 Bull', cls: 'forecast-bull', defaultProb: 15 },
+    { key: 'bear', name: '🐻 Bear', cls: 'forecast-bear' },
+    { key: 'base', name: '📊 Base', cls: 'forecast-base' },
+    { key: 'bull', name: '🐂 Bull', cls: 'forecast-bull' },
   ];
-
-  // If calibration suggests different probabilities, use those
-  // The calibration_error field might mention bear probability
-  let bearProb = null;
-  if (calibration && calibration.calibration_error) {
-    const match = calibration.calibration_error.match(/bear.*?(\d+(?:\.\d+)?)/i);
-    if (match) bearProb = parseFloat(match[1]);
-  }
 
   scenarios.forEach(sc => {
     const data = forecast[sc.key];
@@ -947,22 +943,18 @@ function renderForecast(forecast, calibration) {
       scenarioText = data;
     } else if (typeof data === 'object') {
       scenarioText = data.scenario || data.text || data.description || '';
-      premortemText = data.premortem || data.pre_mortem || data.pre-mortem || '';
+      premortemText = data.premortem || data.pre_mortem || data['pre-mortem'] || '';
       prob = data.probability != null ? data.probability : null;
     }
 
-    // Use derived probability if available
-    if (prob == null) {
-      if (sc.key === 'bear' && bearProb != null) prob = bearProb;
-      else prob = sc.defaultProb;
-    }
-    const probPct = Math.round(prob * (prob <= 1 ? 100 : 1));
+    const probPct = prob == null ? null : Math.round(prob * (prob <= 1 ? 100 : 1));
+    const probLabel = probPct == null ? '—' : `${probPct}%`;
     const probColor = sc.key === 'bear' ? 'var(--red)' : sc.key === 'base' ? 'var(--yellow)' : 'var(--green)';
 
     html += `<div class="forecast-card ${sc.cls}">
       <div class="forecast-header">
         <span class="forecast-name">${sc.name}</span>
-        <span class="forecast-prob" style="color:${probColor}">${probPct}%</span>
+        <span class="forecast-prob" style="color:${probColor}">${probLabel}</span>
       </div>
       <div class="forecast-scenario">${escapeHtml(scenarioText)}</div>`;
     if (premortemText) {
