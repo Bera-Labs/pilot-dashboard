@@ -126,117 +126,135 @@
     }
   ],
   "momentum_analysis": {
-    "last_run": "2026-07-24T21:28:18Z",
+    "last_run": "2026-07-25T01:56:31Z",
     "compound_velocity": 1.0,
     "wip_count": 9,
     "action_completion_rate": 0.0,
     "bottleneck": {
-      "what": "Execution initiation on explicit administrative tasks",
-      "why": "Observed: 9 eligible open tasks remain across 9 active projects after excluding structural nodes and the completed Parents trip project with its descendant. Observed: all three actions from the prior canonical synthesis remain incomplete, and there are 0 eligible task completions in the last 7 days and 1 in the last 28 days. Inferred: conversion of already-defined administrative work into verifiable artifacts remains the current throughput constraint; the source data does not establish a medical or psychological cause.",
-      "unlocked_by": "Run one sequential administrative chain with WIP limited to one; advance only after the current action produces either its done artifact or its bounded fallback artifact.",
+      "what": "Conversion of explicit administrative tasks into verifiable real-world artifacts",
+      "why": "Observed: nine eligible explicit tasks remain open across nine active projects after mandatory exclusions. Observed: both prior controller actions remain incomplete, zero eligible task completions occurred in the last seven days, and the calibration history records a 0.0 average action-completion rate. Inferred: the common throughput constraint is artifact-producing initiation, not raw displayed WIP alone; current sources do not establish a medical or psychological cause.",
+      "unlocked_by": "Run one sequential artifact-or-blocker chain: each selected task must produce either its done artifact or a saved blocker artifact before the next action starts.",
       "recurring": true,
-      "recurrence_count": 6
+      "recurrence_count": 7
     },
     "trajectories": {
-      "execution": {
+      "execution outcomes": {
         "trend": "flat-low",
-        "confidence": 0.95,
-        "delta": "Calculated: 0/3 prior canonical actions completed; 0 eligible task completions in 7 days."
+        "confidence": 0.97,
+        "delta": "Calculated: 0 eligible completions in 7 days and 1 in 28 days; both previous controller actions remain open."
       },
-      "administration": {
-        "trend": "flat",
+      "work inventory measurement": {
+        "trend": "measurement-adjusted",
         "confidence": 0.95,
-        "delta": "Observed: AR-11, the internet warning, and all three Taxes tasks remain open."
+        "delta": "Observed: displayed WIP fell from 15 to 11 without a cumulative-completion increase; current eligible WIP is 9 after mandatory retired-ID exclusions."
       },
-      "habits": {
-        "trend": "mixed",
-        "confidence": 0.85,
-        "delta": "Observed: abstinence has dated checks through 2026-07-21; exercise has no check after 2026-07-08; early adequate sleep and Taking action have no checks."
+      "habit evidence": {
+        "trend": "mixed-low-signal",
+        "confidence": 0.8,
+        "delta": "Observed: abstinence logs run through 2026-07-21 but are auto-checked; exercise has no entry after 2026-07-08; Taking action and early adequate sleep have no entries."
+      },
+      "forecast calibration": {
+        "trend": "poor but slightly improving",
+        "confidence": 0.95,
+        "delta": "Observed: Brier score is 0.38 and the calibration file says prior forecasts over-predicted base and bull outcomes."
       }
     },
     "forecast": {
       "bear": {
-        "scenario": "Neither selected action reaches a done condition before the next review; both remain open.",
-        "probability": 0.7
+        "scenario": "None of the three selected tasks produces a done artifact before the next weekly review; all remain open or unbounded.",
+        "probability": 0.8
       },
       "base": {
-        "scenario": "Exactly one selected action reaches its done condition; the other remains open or produces a bounded blocker artifact.",
-        "probability": 0.25
+        "scenario": "Exactly one selected task produces a done artifact, while the other two remain open or produce bounded blocker artifacts.",
+        "probability": 0.18
       },
       "bull": {
-        "scenario": "Both selected actions reach their done conditions.",
-        "probability": 0.05
+        "scenario": "At least two selected tasks produce done artifacts, including either AR-11 submission confirmation or a lung-scan appointment confirmation.",
+        "probability": 0.02
       }
     },
     "top_actions": [
       {
         "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
         "action": "Complete the AR-11 form and save submission confirmation",
-        "time": "25 minutes in the next available execution block",
-        "impact": "Closes a concrete administrative obligation and supplies the first verifiable artifact in the chain.",
+        "time": "25 minutes in the next available execution block before 2026-07-27 noon UTC",
+        "impact": "Closes a concrete immigration-administration obligation and creates the first verifiable artifact in the chain.",
         "status": "RECURRING",
         "first_step": "Open the official AR-11 form and place the current address and identification details beside it.",
         "done_when": "The form is submitted and a confirmation page, email, or receipt is saved.",
-        "fallback": "If submission is blocked, save a screenshot of the exact blocker and the official support channel as the bounded output."
+        "fallback": "If submission is blocked, save a screenshot of the exact blocker and the official support channel before the timebox ends."
+      },
+      {
+        "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+        "action": "Schedule the lung-health scan and save the appointment confirmation",
+        "time": "20 minutes immediately after Action 1 is done or bounded by fallback, before 2026-07-27 noon UTC",
+        "impact": "Converts an explicit health-scheduling concern into a dated appointment without inferring any diagnosis.",
+        "status": "NEW",
+        "first_step": "Open the provider portal or call the listed clinic and request the earliest available scan appointment.",
+        "done_when": "An appointment date, time, location, and confirmation number or message are saved.",
+        "fallback": "If scheduling is blocked, save the exact referral, insurance, or contact requirement and the next reachable channel before the timebox ends."
       },
       {
         "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
         "action": "Clear the internet disruption warning or create a provider ticket",
-        "time": "15 minutes immediately after Action 1 is done or bounded by fallback",
-        "impact": "Closes a small maintenance drag while preserving one consistent administrative execution mode.",
+        "time": "15 minutes immediately after Action 2 is done or bounded by fallback, before 2026-07-27 noon UTC",
+        "impact": "Closes a small recurring maintenance drag while preserving one consistent artifact-producing execution mode.",
         "status": "RECURRING",
-        "first_step": "Open the warning and record its exact provider, account, and requested resolution step.",
+        "first_step": "Open the warning and record its provider, account, and requested resolution step.",
         "done_when": "The warning is cleared or a provider ticket number and expected response time are saved.",
-        "fallback": "If the provider channel is unavailable, save the warning screenshot and record the first available support contact window."
+        "fallback": "If the provider channel is unavailable, save the warning screenshot and the first available support contact window before the timebox ends."
       }
     ],
     "stem_strategy": {
       "euclidean": {
         "evidence_class": "observed plus inferred",
-        "blocking_assumption": "Assumption: another layer of planning must precede action.",
-        "reframe": "Observed task definitions and done conditions are already sufficient; the proof obligation is one submitted artifact, not another plan."
+        "blocking_assumption": "Assumption: reducing the displayed WIP count or producing another plan is equivalent to reducing the real execution constraint.",
+        "reframe": "Observed WIP fell without completion growth; the proof obligation is a submitted artifact or bounded blocker artifact."
       },
       "probabilistic": {
         "evidence_class": "calculated plus inferred",
-        "highest_ev_allocation": "Allocate the full execution channel sequentially to AR-11, then the internet warning.",
-        "do_not_fund": "Do not fund Hairloss research, NYC/Niagara planning, Lung scan analysis, Taxes re-planning, Tiger mode, or structural checklist nodes with attention during this chain."
+        "highest_ev_allocation": "Allocate the execution channel sequentially to AR-11, lung-scan scheduling, then the internet warning.",
+        "do_not_fund": "Do not fund Taxes re-planning, Hairloss research, NYC/Niagara planning, Tiger mode, or structural nodes during this chain."
       },
       "bets": {
         "evidence_class": "inferred",
-        "decision": "Bet on a two-artifact administrative chain instead of broad project progress.",
-        "trigger": "If an action cannot produce its done artifact inside its timebox, immediately produce the specified blocker artifact and advance.",
-        "hedge": "The selected actions are reversible or low-cost; preserve blocker evidence instead of extending timeboxes."
+        "decision": "Bet on three bounded, reversible artifact-producing actions rather than broad project progress.",
+        "trigger": "At each timebox end, accept either the done artifact or an exact blocker artifact and immediately advance.",
+        "hedge": "No action is allowed to consume the rest of the execution window merely because an external channel is unavailable."
       },
       "warp_speed": {
         "evidence_class": "observed plus inferred",
-        "constraint": "Execution initiation on explicit administrative tasks.",
-        "sequence": "AR-11 -> internet warning.",
-        "parallelization": "Only external response time may run in parallel after a submission or ticket exists; active execution remains sequential.",
-        "defer": "NYC/Niagara, Hairloss, Lung scan, Taxes re-planning, Tiger mode, and every structural node are explicitly deferred from this chain."
+        "constraint": "Conversion of explicit administrative tasks into verifiable real-world artifacts.",
+        "sequence": "AR-11 confirmation -> lung-scan appointment confirmation -> internet resolution or ticket.",
+        "parallelization": "Only external waiting time may run in parallel after a submission, appointment request, or ticket exists; active execution stays WIP=1.",
+        "defer": "Taxes re-planning, Hairloss research, NYC/Niagara planning, Tiger mode, and every structural node are outside this chain."
       }
     },
     "patterns": [
-      "Calculated: eligible WIP is 11 explicit open tasks across 10 active projects; taskCount == tasksDone == 0 was never used as completion evidence.",
-      "Observed: the completed Parents trip project suppresses its descendant task even though ancestry data remains present.",
-      "External memory context: Honcho reports the durable high-WIP/low-completion pattern, but its WIP count is stale and is not used for current calculations.",
-      "Unknown: current sources do not establish why initiation has not occurred; no unsupported medical, neurological, or psychological cause is asserted."
+      "Observed: both prior controller actions remain open with no completion or blocker artifact recorded.",
+      "Calculated: nine explicit incomplete tasks across nine active projects are eligible after completed-parent and retired-ID exclusions.",
+      "Observed: displayed WIP fell while cumulative completions stayed flat; bookkeeping reduction did not establish a throughput gain.",
+      "Observed: the abstinence habit is auto-checked, so it cannot independently support a causal action-transfer claim.",
+      "Unknown: current evidence does not establish why artifact-producing initiation has not occurred."
     ],
     "mantra": "Plans don't break chains. Steps do.",
     "data_sources": {
-      "outliner_projects": "degraded — project endpoint timed out; current project identities and completion properties resolved from fresh native all-nodes data",
-      "outliner_tasks": "ok — native, current",
-      "outliner_habits": "ok — native, current",
-      "outliner_schedule": "ok — native, current",
-      "outliner_timeline": "ok — native, current response; entries are stale for current execution evidence",
-      "outliner_all_nodes": "ok — native, current ancestry/type resolution",
-      "life_os_review": "ok — canonical node read and independently verified",
+      "outliner_projects": "ok — native and current",
+      "outliner_tasks": "ok — native and current",
+      "outliner_habits": "ok — native and current; abstinence autoCheck disclosed",
+      "outliner_schedule": "ok — native and current; structural context only",
+      "outliner_timeline": "ok — native response; no recent user outcome evidence",
+      "outliner_all_nodes": "ok — native and current ancestry/type resolution",
+      "life_os_review": "ok — canonical read-only Outliner node read; one retired Housing action excluded",
       "dashboard_state": "ok — authoritative local repo state read",
-      "calibration": "ok — 6 historical runs read",
-      "augmented_connections": "ok — canonical current synthesis plus 11 durable connections read/listed",
-      "honcho": "ok within 30-second gate — context only; stale metrics excluded from calculations"
+      "growth_history": "ok — authoritative local repo history read",
+      "calibration": "ok — current metrics read; formal predictions array was empty",
+      "augmented_connections": "ok — canonical synthesis plus all 11 durable connections evaluated",
+      "recent_sessions": "ok — relevant upgrade decision and prior run retrieved",
+      "honcho": "degraded — responded within 30 seconds but returned stale and contradictory task metrics; context only"
     },
-    "evidence_summary": "Observed from fresh native Outliner tasks, habits, schedule, timeline, and all-nodes data at 2026-07-24T21:28:18Z; the native projects endpoint timed out, so project identity and completion were resolved from fresh all-nodes ancestry. The canonical Life OS review, authoritative dashboard state, calibration history, and 12 Augmented Intelligence connection files were read. Honcho responded within 30 seconds but contained stale WIP metrics and was used only as external context. Calculated: 9 eligible open tasks across 9 active projects, 0 eligible completions in 7 days, 1 in 28 days, and 0/2 remaining current actions completed. Structural nodes and every descendant of the completed Parents trip project were excluded.",
-    "confidence": 0.94,
+    "evidence_summary": "Observed from fresh native Outliner projects, tasks, habits, schedule, timeline, and all-nodes data at 2026-07-25T01:55Z. Calculated after suppressing completed Parents trip descendants and excluding retired IDs bc5dc69e-ab85-4b8c-a718-9c474cd04388 and 52c538b0-f1ea-4d99-b702-2d5a4e1f63d6 plus descendants: 9 eligible open tasks across 9 active projects, 0 eligible completions in 7 days, 1 in 28 days, and 0/2 prior controller actions completed. Dashboard state, growth history, calibration, the canonical Life OS node, all Augmented Intelligence files, recent sessions, and Honcho were read. Honcho responded within 30 seconds but its stale metrics were excluded from calculations.",
+    "confidence": 0.9,
     "previous_action_reconciliation": [
       {
         "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
@@ -248,7 +266,7 @@
         "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
         "action": "Clear the internet disruption warning or create a provider ticket",
         "status": "not started",
-        "evidence": "Observed: the explicit task remains incomplete and no ticket, resolution, or blocker artifact is recorded."
+        "evidence": "Observed: the explicit task remains incomplete and no resolution, ticket, or blocker artifact is recorded."
       }
     ],
     "velocity_delta": 0.0,
@@ -262,5 +280,5 @@
     "stem_concepts": 7,
     "updated": "2026-07-04"
   },
-  "updated": "2026-07-24T21:28:18Z"
+  "updated": "2026-07-25T01:56:31Z"
 }
