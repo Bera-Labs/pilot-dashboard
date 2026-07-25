@@ -1,510 +1,1406 @@
 {
   "meta": {
-    "schema_version": "2.0.0",
-    "generated_at": "2026-07-25T17:13:03.625758Z",
-    "source_fingerprint": "69495dc129056f2f9ee9226dd5002653127317564cf20fa1769f3a03be1a5587",
-    "source_root": "/root/wiki-augmented-intelligence",
-    "node_count": 16,
-    "link_count": 56,
-    "synthesis_count": 12,
+    "schema_version": "3.0.0",
+    "generated_at": "2026-07-25T17:06:11Z",
+    "source_fingerprint": "4e4a6371a068b11307fe51afbdcaf3803d73ecc0a32fce09e6bcb3f78366dd02",
+    "source": "/root/pilot-dashboard/data/augmented-intelligence.json",
+    "method": "Mixture of Experts",
+    "node_count": 40,
+    "link_count": 86,
+    "synthesis_count": 5,
     "warnings": []
+  },
+  "method": {
+    "name": "Mixture of Experts",
+    "principle": "Independent expert lenses interpret the same Outliner evidence; only compatible, evidence-supported contributions are integrated into decisions and execution.",
+    "experts": [
+      {
+        "id": "expert-orientation-control",
+        "label": "Orientation & Control Expert",
+        "mission": "Resolve primitives, signal identity, and controller validity before acceleration.",
+        "model_ids": [
+          "euclidean-thinking",
+          "information-theory",
+          "control-theory-spc"
+        ],
+        "assumptions": [
+          "A schedule cue is intended to select an executable task.",
+          "Native eligible task IDs are the valid actuators in the current control surface.",
+          "Recorded completion or documented state transition is attributable feedback; missing completion does not prove no attempt."
+        ],
+        "derivation": [
+          "Euclidean construction fails when a cue cannot be traced to an eligible task identity.",
+          "Unkeyed free text loses routing and attribution information.",
+          "A reference-to-actuator gap leaves the portfolio open-loop.",
+          "Sparse completion history cannot support SPC limits or causal process claims."
+        ],
+        "proposal": "Reject unidentified cues as control inputs, bind the three designated actions to exact task IDs, run them as a closed-loop WIP-gated pilot, and keep the inferred tax sequence conditional until its dependency is validated.",
+        "risks": [
+          "Completion records omit attempts, elapsed effort, and external blockers.",
+          "Taskless projects may be deliberate containers rather than defects.",
+          "Task titles do not establish urgency, effort, or deadlines."
+        ],
+        "falsified_by": "Two genuine task-ID-linked review cycles produce no attributable transition and documented blockers, task ambiguity, or missing state recording explain the result better than cue integrity."
+      },
+      {
+        "id": "expert-decision-risk",
+        "label": "Decision & Risk Expert",
+        "mission": "Choose reversible, information-rich bets while protecting downside and uncertainty.",
+        "model_ids": [
+          "probabilistic-thinking",
+          "thinking-in-bets",
+          "bayesian-updating",
+          "minimax-margin-safety"
+        ],
+        "assumptions": [
+          "The evidence is descriptive rather than causal.",
+          "Task names do not establish urgency, difficulty, duration, or consequence.",
+          "Probabilities remain unknown until prospective observations exist."
+        ],
+        "derivation": [
+          "Zero cue coverage plus low output raises but does not prove the cue-ambiguity hypothesis.",
+          "A task-ID scheduling pilot is a reversible process bet with high information value.",
+          "Deadline, delay consequence, reversibility, and lead-time facts should dominate semantic urgency guesses.",
+          "Every active project needs one explicit next action or an explicit pause, without expanding active WIP."
+        ],
+        "proposal": "Run one risk-and-optionality triage gate, then test task-ID scheduling for seven days while narrowly repairing portfolio executability and keeping outcomes separate from decision quality.",
+        "risks": [
+          "A single completion is not a stable personal base rate.",
+          "Zero habit logs may reflect non-use of the record rather than no action.",
+          "Tasks may be scheduled elsewhere or blocked by unobserved dependencies."
+        ],
+        "falsified_by": "Explicitly scheduled tasks receive genuine work opportunities but remain unchanged for documented reasons unrelated to cue ambiguity, or fact-finding shows no meaningful deadline, penalty, capacity constraint, or lead time."
+      },
+      {
+        "id": "expert-execution-systems",
+        "label": "Execution Systems Expert",
+        "mission": "Convert validated priorities into a low-WIP critical path with observable artifacts.",
+        "model_ids": [
+          "theory-of-constraints",
+          "littles-law",
+          "ooda-loop",
+          "amdahls-law",
+          "pareto-frontier"
+        ],
+        "assumptions": [
+          "The current constraint is dispatch from eligible task to task-linked execution cue, not task supply.",
+          "Only completion or an explicit external wait releases the next hands-on item.",
+          "The tax dependency is inferred from task text and must remain conditional."
+        ],
+        "derivation": [
+          "Theory of Constraints locates the bottleneck at release into execution.",
+          "Little's Law supports one hands-on item rather than nine competing tasks.",
+          "OODA favors shortening decision-to-action latency and learning from each artifact or blocker.",
+          "Amdahl's Law justifies early launch only when a real external lead time is confirmed.",
+          "Pareto favors one bounded first block over a complete productivity redesign."
+        ],
+        "proposal": "Adopt the three-action sequential recovery queue, maintain one task-ID-linked cue per day, move genuine external waits to a separate lane, and switch to an external-lead-time critical path only when deadline or lead-time evidence is confirmed.",
+        "risks": [
+          "The illustrative 36-week queue-drain calculation is not a forecast because the sample is sparse.",
+          "External lead times and deadlines are not currently recorded.",
+          "The vague typed task Tiger mode ON lacks an operational definition of done and should not drive the critical path."
+        ],
+        "falsified_by": "An exact task ID, protected block, explicit done condition, and WIP=1 produce no transition within the recovery window, while documented dependency, access, ambiguity, or state-recording problems better explain the result."
+      }
+    ],
+    "integration_gate": [
+      "Must trace to current Outliner evidence",
+      "Must survive an alternative-explanation check",
+      "Must change a decision, sequence, or measurement rule",
+      "Must have an observable review gate",
+      "Must not require invented tasks or probabilities"
+    ]
   },
   "nodes": [
     {
+      "id": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
+      "label": "Book NYC and Niagara flights",
+      "group": "action",
+      "summary": "Conditional queue item; depends on explicit travel deadline and administrative queue status.",
+      "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
+      "status": "conditional",
+      "queue_state": "future-gated",
+      "queue_position": 1,
+      "decision_ids": [
+        "decision-select-growth-queue"
+      ],
+      "graph_label": "Book NYC and N…"
+    },
+    {
+      "id": "action-ar11",
+      "label": "Complete AR-11 form",
+      "group": "action",
+      "summary": "Submission confirmation, receipt, or an exact blocker artifact is saved.",
+      "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+      "timebox": "25 minutes",
+      "status": "active-1",
+      "order": 1,
+      "queue_state": "active-controller",
+      "decision_ids": [
+        "decision-reject-unidentified-cues",
+        "decision-protect-three-action-controller"
+      ],
+      "graph_label": "Complete AR-11…"
+    },
+    {
+      "id": "queue-8329b464-dab9-4362-811c-dadf15a1cbdd",
+      "label": "Get filed confirmation",
+      "group": "action",
+      "summary": "Conditional queue item; depends on paperwork submission.",
+      "task_id": "8329b464-dab9-4362-811c-dadf15a1cbdd",
+      "status": "conditional",
+      "queue_state": "future-gated",
+      "queue_position": 3,
+      "decision_ids": [
+        "decision-release-tax-critical-path"
+      ],
+      "graph_label": "Get filed conf…"
+    },
+    {
+      "id": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
+      "label": "Research latest hair-loss evidence",
+      "group": "action",
+      "summary": "Conditional queue item; depends on explicit priority and a bounded research question.",
+      "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
+      "status": "conditional",
+      "queue_state": "future-gated",
+      "queue_position": 2,
+      "decision_ids": [
+        "decision-select-growth-queue"
+      ],
+      "graph_label": "Research lates…"
+    },
+    {
+      "id": "action-internet-warning",
+      "label": "Resolve internet warning",
+      "group": "action",
+      "summary": "The warning is cleared or a ticket number, response window, or exact blocker is saved.",
+      "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+      "timebox": "15 minutes",
+      "status": "queued-3",
+      "order": 3,
+      "queue_state": "active-controller",
+      "decision_ids": [
+        "decision-reject-unidentified-cues",
+        "decision-protect-three-action-controller"
+      ],
+      "graph_label": "Resolve intern…"
+    },
+    {
+      "id": "action-lung-scan",
+      "label": "Schedule lung-health scan",
+      "group": "action",
+      "summary": "Appointment confirmation or the exact referral, insurance, or contact blocker is saved.",
+      "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+      "timebox": "20 minutes",
+      "status": "queued-2",
+      "order": 2,
+      "queue_state": "active-controller",
+      "decision_ids": [
+        "decision-reject-unidentified-cues",
+        "decision-protect-three-action-controller"
+      ],
+      "graph_label": "Schedule lung-…"
+    },
+    {
+      "id": "queue-79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+      "label": "Submit paperwork",
+      "group": "action",
+      "summary": "Conditional queue item; depends on response or requirements from yesmytaxes.",
+      "task_id": "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+      "status": "conditional",
+      "queue_state": "future-gated",
+      "queue_position": 2,
+      "decision_ids": [
+        "decision-release-tax-critical-path"
+      ],
+      "graph_label": "Submit paperwo…"
+    },
+    {
+      "id": "queue-0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+      "label": "Talk to yesmytaxes",
+      "group": "action",
+      "summary": "Conditional queue item; depends on phase 1 review.",
+      "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+      "status": "conditional",
+      "queue_state": "future-gated",
+      "queue_position": 1,
+      "decision_ids": [
+        "decision-release-tax-critical-path"
+      ],
+      "graph_label": "Talk to yesmyt…"
+    },
+    {
+      "id": "decision-protect-three-action-controller",
+      "label": "Protect the three-action controller",
+      "group": "decision",
+      "summary": "A bounded WIP=1 test creates attributable evidence with limited downside.",
+      "choice": "sequence",
+      "tradeoff": "Other eligible work remains queued during the immediate horizon.",
+      "review": "Review by 2026-07-27T12:00:00Z or earlier for safety, an official deadline, or explicit priority change.",
+      "graph_label": "Protect the th…"
+    },
+    {
+      "id": "decision-reject-unidentified-cues",
+      "label": "Reject unidentified cues as control inputs",
+      "group": "decision",
+      "summary": "The sole cue has no native task ID and no eligible-task coverage.",
+      "choice": "ignore-for-control",
+      "tradeoff": "Potentially useful context remains outside the active controller until identified.",
+      "review": "Reconsider when a cue resolves to an eligible task ID or Sai explicitly changes priority.",
+      "graph_label": "Reject unident…"
+    },
+    {
+      "id": "decision-release-tax-critical-path",
+      "label": "Release the tax critical path conditionally",
+      "group": "decision",
+      "summary": "The three native tax-task titles suggest a possible chain, but dependency fields are empty; validate the order before sequencing and do not let the hypothesis compete with the protected immediate controller.",
+      "choice": "defer-then-sequence",
+      "tradeoff": "Tax progress waits until the first checkpoint unless an official deadline changes priority.",
+      "review": "At the 48-hour checkpoint, compare saved artifacts, explicit deadlines, and unresolved safety constraints.",
+      "graph_label": "Release the ta…"
+    },
+    {
+      "id": "decision-select-growth-queue",
+      "label": "Select one growth queue after administrative review",
+      "group": "decision",
+      "summary": "Travel and hair-research tasks are eligible but current evidence does not establish their relative deadline or expected value.",
+      "choice": "monitor-then-select",
+      "tradeoff": "Both remain queued until more decision-relevant evidence is available.",
+      "review": "At the day-7 checkpoint, choose at most one using explicit deadline, reversibility, and opportunity cost.",
+      "graph_label": "Select one gro…"
+    },
+    {
+      "id": "evidence-closure-drought",
+      "label": "0 closures in 7 days",
+      "group": "evidence",
+      "summary": "There are zero eligible completions in seven days and one in twenty-eight days; no new causal explanation is established.",
+      "evidence_class": "calculated",
+      "source_refs": [
+        "outliner-tasks-20260725",
+        "completion-aggregate-20260725"
+      ]
+    },
+    {
+      "id": "evidence-cue-identity-gap",
+      "label": "0/9 eligible cue coverage",
+      "group": "evidence",
+      "summary": "The sole schedule cue is house document paperwork; it has no task ID, textually maps to retired Housing, and represents none of nine eligible tasks.",
+      "evidence_class": "calculated",
+      "source_refs": [
+        "schedule.__actionflow_daily_actions_v1__[0]",
+        "bc5dc69e-ab85-4b8c-a718-9c474cd04388",
+        "eligible-task-aggregate-20260725"
+      ]
+    },
+    {
+      "id": "evidence-inventory-concentration",
+      "label": "9 tasks in 6 projects",
+      "group": "evidence",
+      "summary": "Nine eligible open tasks are concentrated in six task-bearing active projects while three active projects have no eligible task.",
+      "evidence_class": "calculated",
+      "source_refs": [
+        "outliner-projects-20260725",
+        "outliner-tasks-20260725"
+      ]
+    },
+    {
+      "id": "evidence-action-signal-empty",
+      "label": "Taking action has no logs",
+      "group": "evidence",
+      "summary": "The user-authored Taking action habit currently has no logged events, so it cannot validate execution frequency or causal transfer.",
+      "evidence_class": "observed",
+      "source_refs": [
+        "habit-4a82c418-87eb-460b-a853-6b34f82f87d2"
+      ]
+    },
+    {
+      "id": "evidence-tax-critical-path",
+      "label": "Three-step tax chain",
+      "group": "evidence",
+      "summary": "The Taxes project contains three open native tasks whose titles suggest—but do not establish—a conditional sequence: talk to yesmytaxes, submit paperwork, then obtain filing confirmation. Dependency fields are empty, so the sequence remains gated pending validation.",
+      "evidence_class": "hypothesized",
+      "source_refs": [
+        "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+        "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+        "8329b464-dab9-4362-811c-dadf15a1cbdd"
+      ]
+    },
+    {
+      "id": "expert-decision-risk",
+      "label": "Decision & Risk Expert",
+      "group": "expert",
+      "summary": "Choose reversible, information-rich bets while protecting downside and uncertainty.",
+      "model_ids": [
+        "probabilistic-thinking",
+        "thinking-in-bets",
+        "bayesian-updating",
+        "minimax-margin-safety"
+      ],
+      "evidence_ids": [
+        "evidence-action-signal-empty",
+        "evidence-closure-drought",
+        "evidence-cue-identity-gap",
+        "evidence-inventory-concentration",
+        "evidence-tax-critical-path"
+      ],
+      "assumptions": [
+        "The evidence is descriptive rather than causal.",
+        "Task names do not establish urgency, difficulty, duration, or consequence.",
+        "Probabilities remain unknown until prospective observations exist."
+      ],
+      "derivation": [
+        "Zero cue coverage plus low output raises but does not prove the cue-ambiguity hypothesis.",
+        "A task-ID scheduling pilot is a reversible process bet with high information value.",
+        "Deadline, delay consequence, reversibility, and lead-time facts should dominate semantic urgency guesses.",
+        "Every active project needs one explicit next action or an explicit pause, without expanding active WIP."
+      ],
+      "proposal": "Run one risk-and-optionality triage gate, then test task-ID scheduling for seven days while narrowly repairing portfolio executability and keeping outcomes separate from decision quality.",
+      "risks": [
+        "A single completion is not a stable personal base rate.",
+        "Zero habit logs may reflect non-use of the record rather than no action.",
+        "Tasks may be scheduled elsewhere or blocked by unobserved dependencies."
+      ],
+      "falsified_by": "Explicitly scheduled tasks receive genuine work opportunities but remain unchanged for documented reasons unrelated to cue ambiguity, or fact-finding shows no meaningful deadline, penalty, capacity constraint, or lead time."
+    },
+    {
+      "id": "expert-execution-systems",
+      "label": "Execution Systems Expert",
+      "group": "expert",
+      "summary": "Convert validated priorities into a low-WIP critical path with observable artifacts.",
+      "model_ids": [
+        "theory-of-constraints",
+        "littles-law",
+        "ooda-loop",
+        "amdahls-law",
+        "pareto-frontier"
+      ],
+      "evidence_ids": [
+        "evidence-action-signal-empty",
+        "evidence-closure-drought",
+        "evidence-cue-identity-gap",
+        "evidence-inventory-concentration",
+        "evidence-tax-critical-path"
+      ],
+      "assumptions": [
+        "The current constraint is dispatch from eligible task to task-linked execution cue, not task supply.",
+        "Only completion or an explicit external wait releases the next hands-on item.",
+        "The tax dependency is inferred from task text and must remain conditional."
+      ],
+      "derivation": [
+        "Theory of Constraints locates the bottleneck at release into execution.",
+        "Little's Law supports one hands-on item rather than nine competing tasks.",
+        "OODA favors shortening decision-to-action latency and learning from each artifact or blocker.",
+        "Amdahl's Law justifies early launch only when a real external lead time is confirmed.",
+        "Pareto favors one bounded first block over a complete productivity redesign."
+      ],
+      "proposal": "Adopt the three-action sequential recovery queue, maintain one task-ID-linked cue per day, move genuine external waits to a separate lane, and switch to an external-lead-time critical path only when deadline or lead-time evidence is confirmed.",
+      "risks": [
+        "The illustrative 36-week queue-drain calculation is not a forecast because the sample is sparse.",
+        "External lead times and deadlines are not currently recorded.",
+        "The vague typed task Tiger mode ON lacks an operational definition of done and should not drive the critical path."
+      ],
+      "falsified_by": "An exact task ID, protected block, explicit done condition, and WIP=1 produce no transition within the recovery window, while documented dependency, access, ambiguity, or state-recording problems better explain the result."
+    },
+    {
+      "id": "expert-orientation-control",
+      "label": "Orientation & Control Expert",
+      "group": "expert",
+      "summary": "Resolve primitives, signal identity, and controller validity before acceleration.",
+      "model_ids": [
+        "euclidean-thinking",
+        "information-theory",
+        "control-theory-spc"
+      ],
+      "evidence_ids": [
+        "evidence-action-signal-empty",
+        "evidence-closure-drought",
+        "evidence-cue-identity-gap",
+        "evidence-inventory-concentration",
+        "evidence-tax-critical-path"
+      ],
+      "assumptions": [
+        "A schedule cue is intended to select an executable task.",
+        "Native eligible task IDs are the valid actuators in the current control surface.",
+        "Recorded completion or documented state transition is attributable feedback; missing completion does not prove no attempt."
+      ],
+      "derivation": [
+        "Euclidean construction fails when a cue cannot be traced to an eligible task identity.",
+        "Unkeyed free text loses routing and attribution information.",
+        "A reference-to-actuator gap leaves the portfolio open-loop.",
+        "Sparse completion history cannot support SPC limits or causal process claims."
+      ],
+      "proposal": "Reject unidentified cues as control inputs, bind the three designated actions to exact task IDs, run them as a closed-loop WIP-gated pilot, and keep the inferred tax sequence conditional until its dependency is validated.",
+      "risks": [
+        "Completion records omit attempts, elapsed effort, and external blockers.",
+        "Taskless projects may be deliberate containers rather than defects.",
+        "Task titles do not establish urgency, effort, or deadlines."
+      ],
+      "falsified_by": "Two genuine task-ID-linked review cycles produce no attributable transition and documented blockers, task ambiguity, or missing state recording explain the result better than cue integrity."
+    },
+    {
+      "id": "amdahls-law",
+      "label": "Amdahl's Law",
+      "group": "model",
+      "summary": "Sequence dependent work with zero gaps while allowing only external waiting to overlap.",
+      "family": "dependencies",
+      "source": "stored: warp-speed-execution / parallel computing",
+      "evidence_ids": [
+        "evidence-tax-critical-path"
+      ]
+    },
+    {
+      "id": "bayesian-updating",
+      "label": "Bayesian Updating",
+      "group": "model",
+      "summary": "Use review outcomes to update which action structures work; leave unsupported probabilities unknown.",
+      "family": "learning",
+      "source": "stored: probabilistic-thinking and warp-speed-execution",
+      "evidence_ids": [
+        "evidence-closure-drought",
+        "evidence-action-signal-empty",
+        "evidence-tax-critical-path"
+      ]
+    },
+    {
+      "id": "control-theory-spc",
+      "label": "Control Theory & SPC",
+      "group": "model",
+      "summary": "Protect a bounded controller from premature replanning and update only at review gates.",
+      "family": "feedback",
+      "source": "stored: warp-speed-execution / PID and Deming",
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-closure-drought",
+        "evidence-action-signal-empty",
+        "evidence-tax-critical-path"
+      ]
+    },
+    {
       "id": "euclidean-thinking",
       "label": "Euclidean Thinking",
-      "group": "concept",
-      "source": "/root/wiki-augmented-intelligence/concepts/Euclidean_Thinking.md",
-      "updated_at": "2026-06-24T04:07:51.081185Z"
+      "group": "model",
+      "summary": "Define actionable work by identity, eligibility, and evidence rather than by populated fields.",
+      "family": "first-principles",
+      "source": "stored: stem-stack/euclidean-thinking",
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-inventory-concentration",
+        "evidence-tax-critical-path"
+      ]
+    },
+    {
+      "id": "information-theory",
+      "label": "Information Theory",
+      "group": "model",
+      "summary": "Treat unidentified schedule text as low-validity signal until it maps to an eligible task.",
+      "family": "signal",
+      "source": "stored: warp-speed-execution / Shannon",
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-inventory-concentration"
+      ]
+    },
+    {
+      "id": "littles-law",
+      "label": "Little's Law",
+      "group": "model",
+      "summary": "Keep active execution WIP at one to reduce cycle time and switching.",
+      "family": "queueing",
+      "source": "stored: warp-speed-execution / queueing theory",
+      "evidence_ids": [
+        "evidence-closure-drought",
+        "evidence-inventory-concentration"
+      ]
+    },
+    {
+      "id": "minimax-margin-safety",
+      "label": "Minimax & Margin of Safety",
+      "group": "model",
+      "summary": "Cap action downside with timeboxes, preserve safety exceptions, and retain slack.",
+      "family": "risk",
+      "source": "stored: warp-speed-execution / game theory and engineering",
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-tax-critical-path"
+      ]
+    },
+    {
+      "id": "ooda-loop",
+      "label": "OODA Loop",
+      "group": "model",
+      "summary": "Close each observe-orient-decide-act loop with a done artifact or exact blocker.",
+      "family": "execution",
+      "source": "stored: warp-speed-execution / Boyd",
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-closure-drought",
+        "evidence-action-signal-empty",
+        "evidence-tax-critical-path"
+      ]
+    },
+    {
+      "id": "pareto-frontier",
+      "label": "Pareto Frontier",
+      "group": "model",
+      "summary": "Define minimum sufficient evidence and stop polishing once the decision-enabling artifact exists.",
+      "family": "shipping",
+      "source": "stored: warp-speed-execution / quality-speed frontier",
+      "evidence_ids": [
+        "evidence-closure-drought",
+        "evidence-action-signal-empty"
+      ]
     },
     {
       "id": "probabilistic-thinking",
       "label": "Probabilistic Thinking",
-      "group": "concept",
-      "source": "/root/wiki-augmented-intelligence/concepts/Probabilistic_Thinking.md",
-      "updated_at": "2026-06-24T04:07:51.085185Z"
+      "group": "model",
+      "summary": "Separate observed state from causal stories and avoid updating from a non-due result.",
+      "family": "uncertainty",
+      "source": "stored: stem-stack/probabilistic-thinking",
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-closure-drought",
+        "evidence-action-signal-empty",
+        "evidence-tax-critical-path"
+      ]
+    },
+    {
+      "id": "theory-of-constraints",
+      "label": "Theory of Constraints",
+      "group": "model",
+      "summary": "Focus the system on artifact-producing initiation as the current throughput constraint.",
+      "family": "throughput",
+      "source": "stored: warp-speed-execution / Goldratt",
+      "evidence_ids": [
+        "evidence-closure-drought",
+        "evidence-inventory-concentration",
+        "evidence-action-signal-empty",
+        "evidence-tax-critical-path"
+      ]
     },
     {
       "id": "thinking-in-bets",
       "label": "Thinking in Bets",
-      "group": "concept",
-      "source": "/root/wiki-augmented-intelligence/concepts/Thinking_in_Bets.md",
-      "updated_at": "2026-06-24T04:07:51.088185Z"
+      "group": "model",
+      "summary": "Prefer bounded, reversible actions with explicit stop and review conditions.",
+      "family": "decision",
+      "source": "stored: stem-stack/thinking-in-bets",
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-closure-drought",
+        "evidence-tax-critical-path"
+      ]
     },
     {
-      "id": "warp-speed-execution",
-      "label": "Warp-Speed Execution",
-      "group": "concept",
-      "source": "/root/wiki-augmented-intelligence/concepts/Warp-Speed_Execution.md",
-      "updated_at": "2026-07-01T03:18:28.523237Z"
+      "id": "phase-growth-allocation",
+      "label": "Allocate the next growth slot",
+      "group": "phase",
+      "summary": "Choose at most one queued growth task using explicit deadline, reversibility, and opportunity cost; do not activate both by default.",
+      "order": 3,
+      "horizon": "Days 8–14",
+      "window": "2026-08-01 to 2026-08-08",
+      "status": "conditional",
+      "gate": "Select one only when its deadline or expected information value is explicitly higher; otherwise keep both queued and collect the missing decision evidence.",
+      "graph_label": "Allocate the n…"
     },
     {
-      "id": "asymmetric-micro-bets",
-      "label": "Asymmetric Micro-Bets",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/Asymmetric Micro-Bets.md",
-      "updated_at": "2026-07-25T02:03:59.509804Z"
+      "id": "phase-tax-critical-path",
+      "label": "Release one administrative critical path",
+      "group": "phase",
+      "summary": "If the immediate phase reaches its gate, the tax-task order is validated, and no higher-priority exception exists, sequence only the confirmed Taxes dependencies with zero avoidable gaps.",
+      "order": 2,
+      "horizon": "Days 3–7",
+      "window": "2026-07-28 to 2026-07-31",
+      "status": "conditional",
+      "gate": "Advance only when the predecessor produces the information or artifact required by the successor; pause for an exact external blocker rather than opening another active task.",
+      "graph_label": "Release one ad…"
     },
     {
-      "id": "current-augmented-intelligence",
-      "label": "Current Augmented Intelligence",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/Current Augmented Intelligence.md",
-      "updated_at": "2026-07-25T17:13:03.625758Z"
+      "id": "phase-immediate-controller",
+      "label": "Stabilize the control loop",
+      "group": "phase",
+      "summary": "Run a 10-minute exception gate across documented deadline, consequence of delay, reversibility, and external lead time. If no safety, medical, or official-deadline exception is found, protect the current controller and execute its three native tasks sequentially.",
+      "order": 1,
+      "horizon": "Now → 48 hours",
+      "window": "2026-07-25 to 2026-07-27 12:00 UTC",
+      "status": "active",
+      "gate": "By the checkpoint, save at least one done artifact and exact blocker artifacts for every bounded but incomplete step; otherwise preserve unknown causality and redesign the action structure.",
+      "graph_label": "Stabilize the…"
     },
     {
-      "id": "system-decay-entropy",
-      "label": "System Decay & Entropy",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/System Decay & Entropy.md",
-      "updated_at": "2026-07-25T02:03:59.508804Z"
+      "id": "artifact-first-single-queue",
+      "label": "Artifact-First Single Queue",
+      "group": "solution",
+      "summary": "Model contributions",
+      "status": "proposed-solution",
+      "confidence": "medium",
+      "is_current": false
     },
     {
-      "id": "the-1-hour-execution-block-architecture",
-      "label": "The 1-Hour Execution Block Architecture",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/The 1-Hour Execution Block Architecture.md",
-      "updated_at": "2026-07-25T02:03:59.507804Z"
+      "id": "identity-gated-control-plane",
+      "label": "Identity-Gated Control Plane",
+      "group": "solution",
+      "summary": "Model contributions",
+      "status": "proposed-solution",
+      "confidence": "high",
+      "is_current": false
     },
     {
-      "id": "the-5th-postulate-of-avoidance",
-      "label": "The 5th Postulate of Avoidance",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/The 5th Postulate of Avoidance.md",
-      "updated_at": "2026-07-25T02:03:59.508804Z"
+      "id": "moe-integrated-control-system",
+      "label": "Integrated Control System",
+      "group": "solution",
+      "summary": "Expert convergence",
+      "status": "current",
+      "confidence": "medium",
+      "is_current": true
     },
     {
-      "id": "the-abstinence-action-convergence",
-      "label": "The Abstinence-Action Convergence",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/The Abstinence-Action Convergence.md",
-      "updated_at": "2026-07-25T02:05:21.228411Z"
+      "id": "reversible-decision-ladder",
+      "label": "Reversible Decision Ladder",
+      "group": "solution",
+      "summary": "Model contributions",
+      "status": "proposed-solution",
+      "confidence": "medium",
+      "is_current": false
     },
     {
-      "id": "the-calibration-gap",
-      "label": "The Calibration Gap",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/The Calibration Gap.md",
-      "updated_at": "2026-07-25T02:03:59.507804Z"
-    },
-    {
-      "id": "the-measurement-ghost",
-      "label": "The Measurement Ghost",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/The Measurement Ghost.md",
-      "updated_at": "2026-07-25T02:03:59.506804Z"
-    },
-    {
-      "id": "the-pain-asymmetry-paradox",
-      "label": "The Pain Asymmetry Paradox",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/The Pain Asymmetry Paradox.md",
-      "updated_at": "2026-07-25T02:03:59.506804Z"
-    },
-    {
-      "id": "the-signal-collapse",
-      "label": "The Signal Collapse",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/The Signal Collapse.md",
-      "updated_at": "2026-07-25T17:11:50.586643Z"
-    },
-    {
-      "id": "the-utilization-trap",
-      "label": "The Utilization Trap",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/The Utilization Trap.md",
-      "updated_at": "2026-07-25T02:03:59.508804Z"
-    },
-    {
-      "id": "wip-induced-paralysis",
-      "label": "WIP Induced Paralysis",
-      "group": "connection",
-      "source": "/root/wiki-augmented-intelligence/connections/WIP Induced Paralysis.md",
-      "updated_at": "2026-07-25T02:05:21.232411Z"
+      "id": "zero-gap-critical-path",
+      "label": "Zero-Gap Administrative Critical Path",
+      "group": "solution",
+      "summary": "Model contributions",
+      "status": "conditional-solution",
+      "confidence": "medium",
+      "is_current": false
     }
   ],
   "links": [
     {
-      "source": "asymmetric-micro-bets",
-      "target": "thinking-in-bets"
+      "source": "action-ar11",
+      "target": "phase-immediate-controller",
+      "relation": "scheduled_in"
     },
     {
-      "source": "asymmetric-micro-bets",
-      "target": "wip-induced-paralysis"
+      "source": "action-internet-warning",
+      "target": "phase-immediate-controller",
+      "relation": "scheduled_in"
     },
     {
-      "source": "current-augmented-intelligence",
-      "target": "euclidean-thinking"
+      "source": "action-lung-scan",
+      "target": "phase-immediate-controller",
+      "relation": "scheduled_in"
     },
     {
-      "source": "current-augmented-intelligence",
-      "target": "probabilistic-thinking"
+      "source": "amdahls-law",
+      "target": "expert-execution-systems",
+      "relation": "equips"
     },
     {
-      "source": "current-augmented-intelligence",
-      "target": "the-measurement-ghost"
+      "source": "artifact-first-single-queue",
+      "target": "decision-protect-three-action-controller",
+      "relation": "selects"
     },
     {
-      "source": "current-augmented-intelligence",
-      "target": "the-signal-collapse"
+      "source": "artifact-first-single-queue",
+      "target": "decision-select-growth-queue",
+      "relation": "selects"
     },
     {
-      "source": "current-augmented-intelligence",
-      "target": "thinking-in-bets"
+      "source": "bayesian-updating",
+      "target": "expert-decision-risk",
+      "relation": "equips"
     },
     {
-      "source": "current-augmented-intelligence",
-      "target": "warp-speed-execution"
+      "source": "control-theory-spc",
+      "target": "expert-orientation-control",
+      "relation": "equips"
+    },
+    {
+      "source": "decision-protect-three-action-controller",
+      "target": "action-ar11",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-protect-three-action-controller",
+      "target": "action-internet-warning",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-protect-three-action-controller",
+      "target": "action-lung-scan",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-protect-three-action-controller",
+      "target": "phase-immediate-controller",
+      "relation": "governs"
+    },
+    {
+      "source": "decision-reject-unidentified-cues",
+      "target": "action-ar11",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-reject-unidentified-cues",
+      "target": "action-internet-warning",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-reject-unidentified-cues",
+      "target": "action-lung-scan",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-reject-unidentified-cues",
+      "target": "phase-immediate-controller",
+      "relation": "governs"
+    },
+    {
+      "source": "decision-release-tax-critical-path",
+      "target": "phase-tax-critical-path",
+      "relation": "governs"
+    },
+    {
+      "source": "decision-release-tax-critical-path",
+      "target": "queue-0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-release-tax-critical-path",
+      "target": "queue-79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-release-tax-critical-path",
+      "target": "queue-8329b464-dab9-4362-811c-dadf15a1cbdd",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-select-growth-queue",
+      "target": "phase-growth-allocation",
+      "relation": "governs"
+    },
+    {
+      "source": "decision-select-growth-queue",
+      "target": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-select-growth-queue",
+      "target": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
+      "relation": "executes"
     },
     {
       "source": "euclidean-thinking",
-      "target": "the-5th-postulate-of-avoidance"
+      "target": "expert-orientation-control",
+      "relation": "equips"
+    },
+    {
+      "source": "evidence-action-signal-empty",
+      "target": "bayesian-updating",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-action-signal-empty",
+      "target": "control-theory-spc",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-action-signal-empty",
+      "target": "ooda-loop",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-action-signal-empty",
+      "target": "pareto-frontier",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-action-signal-empty",
+      "target": "probabilistic-thinking",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-action-signal-empty",
+      "target": "theory-of-constraints",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-closure-drought",
+      "target": "bayesian-updating",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-closure-drought",
+      "target": "control-theory-spc",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-closure-drought",
+      "target": "littles-law",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-closure-drought",
+      "target": "ooda-loop",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-closure-drought",
+      "target": "pareto-frontier",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-closure-drought",
+      "target": "probabilistic-thinking",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-closure-drought",
+      "target": "theory-of-constraints",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-closure-drought",
+      "target": "thinking-in-bets",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-cue-identity-gap",
+      "target": "control-theory-spc",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-cue-identity-gap",
+      "target": "euclidean-thinking",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-cue-identity-gap",
+      "target": "information-theory",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-cue-identity-gap",
+      "target": "minimax-margin-safety",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-cue-identity-gap",
+      "target": "ooda-loop",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-cue-identity-gap",
+      "target": "probabilistic-thinking",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-cue-identity-gap",
+      "target": "thinking-in-bets",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-inventory-concentration",
+      "target": "euclidean-thinking",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-inventory-concentration",
+      "target": "information-theory",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-inventory-concentration",
+      "target": "littles-law",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-inventory-concentration",
+      "target": "theory-of-constraints",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "amdahls-law",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "bayesian-updating",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "control-theory-spc",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "euclidean-thinking",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "minimax-margin-safety",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "ooda-loop",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "probabilistic-thinking",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "theory-of-constraints",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-critical-path",
+      "target": "thinking-in-bets",
+      "relation": "frames"
+    },
+    {
+      "source": "expert-decision-risk",
+      "target": "moe-integrated-control-system",
+      "relation": "derives"
+    },
+    {
+      "source": "expert-decision-risk",
+      "target": "reversible-decision-ladder",
+      "relation": "derives"
+    },
+    {
+      "source": "expert-decision-risk",
+      "target": "zero-gap-critical-path",
+      "relation": "derives"
+    },
+    {
+      "source": "expert-execution-systems",
+      "target": "artifact-first-single-queue",
+      "relation": "derives"
+    },
+    {
+      "source": "expert-execution-systems",
+      "target": "moe-integrated-control-system",
+      "relation": "derives"
+    },
+    {
+      "source": "expert-execution-systems",
+      "target": "zero-gap-critical-path",
+      "relation": "derives"
+    },
+    {
+      "source": "expert-orientation-control",
+      "target": "identity-gated-control-plane",
+      "relation": "derives"
+    },
+    {
+      "source": "expert-orientation-control",
+      "target": "moe-integrated-control-system",
+      "relation": "derives"
+    },
+    {
+      "source": "identity-gated-control-plane",
+      "target": "decision-reject-unidentified-cues",
+      "relation": "selects"
+    },
+    {
+      "source": "information-theory",
+      "target": "expert-orientation-control",
+      "relation": "equips"
+    },
+    {
+      "source": "littles-law",
+      "target": "expert-execution-systems",
+      "relation": "equips"
+    },
+    {
+      "source": "minimax-margin-safety",
+      "target": "expert-decision-risk",
+      "relation": "equips"
+    },
+    {
+      "source": "moe-integrated-control-system",
+      "target": "decision-protect-three-action-controller",
+      "relation": "selects"
+    },
+    {
+      "source": "moe-integrated-control-system",
+      "target": "decision-reject-unidentified-cues",
+      "relation": "selects"
+    },
+    {
+      "source": "ooda-loop",
+      "target": "expert-execution-systems",
+      "relation": "equips"
+    },
+    {
+      "source": "pareto-frontier",
+      "target": "expert-execution-systems",
+      "relation": "equips"
     },
     {
       "source": "probabilistic-thinking",
-      "target": "the-abstinence-action-convergence"
+      "target": "expert-decision-risk",
+      "relation": "equips"
     },
     {
-      "source": "system-decay-entropy",
-      "target": "the-utilization-trap"
+      "source": "queue-0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+      "target": "phase-tax-critical-path",
+      "relation": "scheduled_in"
     },
     {
-      "source": "system-decay-entropy",
-      "target": "warp-speed-execution"
+      "source": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
+      "target": "phase-growth-allocation",
+      "relation": "scheduled_in"
     },
     {
-      "source": "system-decay-entropy",
-      "target": "wip-induced-paralysis"
+      "source": "queue-79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+      "target": "phase-tax-critical-path",
+      "relation": "scheduled_in"
     },
     {
-      "source": "the-1-hour-execution-block-architecture",
-      "target": "the-5th-postulate-of-avoidance"
+      "source": "queue-8329b464-dab9-4362-811c-dadf15a1cbdd",
+      "target": "phase-tax-critical-path",
+      "relation": "scheduled_in"
     },
     {
-      "source": "the-1-hour-execution-block-architecture",
-      "target": "the-pain-asymmetry-paradox"
+      "source": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
+      "target": "phase-growth-allocation",
+      "relation": "scheduled_in"
     },
     {
-      "source": "the-1-hour-execution-block-architecture",
-      "target": "the-utilization-trap"
+      "source": "reversible-decision-ladder",
+      "target": "decision-protect-three-action-controller",
+      "relation": "selects"
     },
     {
-      "source": "the-1-hour-execution-block-architecture",
-      "target": "warp-speed-execution"
+      "source": "reversible-decision-ladder",
+      "target": "decision-release-tax-critical-path",
+      "relation": "selects"
     },
     {
-      "source": "the-1-hour-execution-block-architecture",
-      "target": "wip-induced-paralysis"
+      "source": "reversible-decision-ladder",
+      "target": "decision-select-growth-queue",
+      "relation": "selects"
     },
     {
-      "source": "the-5th-postulate-of-avoidance",
-      "target": "euclidean-thinking"
-    },
-    {
-      "source": "the-5th-postulate-of-avoidance",
-      "target": "the-abstinence-action-convergence"
-    },
-    {
-      "source": "the-5th-postulate-of-avoidance",
-      "target": "wip-induced-paralysis"
-    },
-    {
-      "source": "the-abstinence-action-convergence",
-      "target": "probabilistic-thinking"
-    },
-    {
-      "source": "the-abstinence-action-convergence",
-      "target": "the-5th-postulate-of-avoidance"
-    },
-    {
-      "source": "the-abstinence-action-convergence",
-      "target": "the-measurement-ghost"
-    },
-    {
-      "source": "the-abstinence-action-convergence",
-      "target": "warp-speed-execution"
-    },
-    {
-      "source": "the-calibration-gap",
-      "target": "the-utilization-trap"
-    },
-    {
-      "source": "the-calibration-gap",
-      "target": "warp-speed-execution"
-    },
-    {
-      "source": "the-calibration-gap",
-      "target": "wip-induced-paralysis"
-    },
-    {
-      "source": "the-measurement-ghost",
-      "target": "asymmetric-micro-bets"
-    },
-    {
-      "source": "the-measurement-ghost",
-      "target": "probabilistic-thinking"
-    },
-    {
-      "source": "the-measurement-ghost",
-      "target": "the-5th-postulate-of-avoidance"
-    },
-    {
-      "source": "the-measurement-ghost",
-      "target": "the-calibration-gap"
-    },
-    {
-      "source": "the-measurement-ghost",
-      "target": "warp-speed-execution"
-    },
-    {
-      "source": "the-measurement-ghost",
-      "target": "wip-induced-paralysis"
-    },
-    {
-      "source": "the-pain-asymmetry-paradox",
-      "target": "asymmetric-micro-bets"
-    },
-    {
-      "source": "the-pain-asymmetry-paradox",
-      "target": "the-5th-postulate-of-avoidance"
-    },
-    {
-      "source": "the-pain-asymmetry-paradox",
-      "target": "thinking-in-bets"
-    },
-    {
-      "source": "the-pain-asymmetry-paradox",
-      "target": "wip-induced-paralysis"
-    },
-    {
-      "source": "the-signal-collapse",
-      "target": "system-decay-entropy"
-    },
-    {
-      "source": "the-signal-collapse",
-      "target": "warp-speed-execution"
-    },
-    {
-      "source": "the-signal-collapse",
-      "target": "wip-induced-paralysis"
-    },
-    {
-      "source": "the-utilization-trap",
-      "target": "system-decay-entropy"
-    },
-    {
-      "source": "the-utilization-trap",
-      "target": "the-signal-collapse"
-    },
-    {
-      "source": "the-utilization-trap",
-      "target": "warp-speed-execution"
-    },
-    {
-      "source": "the-utilization-trap",
-      "target": "wip-induced-paralysis"
+      "source": "theory-of-constraints",
+      "target": "expert-execution-systems",
+      "relation": "equips"
     },
     {
       "source": "thinking-in-bets",
-      "target": "asymmetric-micro-bets"
+      "target": "expert-decision-risk",
+      "relation": "equips"
     },
     {
-      "source": "warp-speed-execution",
-      "target": "system-decay-entropy"
-    },
-    {
-      "source": "warp-speed-execution",
-      "target": "the-calibration-gap"
-    },
-    {
-      "source": "warp-speed-execution",
-      "target": "the-signal-collapse"
-    },
-    {
-      "source": "warp-speed-execution",
-      "target": "the-utilization-trap"
-    },
-    {
-      "source": "warp-speed-execution",
-      "target": "wip-induced-paralysis"
-    },
-    {
-      "source": "wip-induced-paralysis",
-      "target": "asymmetric-micro-bets"
-    },
-    {
-      "source": "wip-induced-paralysis",
-      "target": "euclidean-thinking"
-    },
-    {
-      "source": "wip-induced-paralysis",
-      "target": "the-calibration-gap"
-    },
-    {
-      "source": "wip-induced-paralysis",
-      "target": "the-measurement-ghost"
-    },
-    {
-      "source": "wip-induced-paralysis",
-      "target": "warp-speed-execution"
+      "source": "zero-gap-critical-path",
+      "target": "decision-release-tax-critical-path",
+      "relation": "selects"
     }
   ],
   "syntheses": [
     {
-      "id": "current-augmented-intelligence",
-      "title": "Current Augmented Intelligence",
-      "model": "Euclidean Thinking · Probabilistic Thinking · Thinking in Bets · Warp-Speed Execution",
-      "problem": "Eligible execution cues are misaligned with the validated action queue, while artifact-producing initiation remains the recurring throughput constraint.",
-      "solution": "- **Euclidean:** reject the assumption that any populated daily cue is actionable; resolve identity and eligibility first.\n- **Probabilistic:** no due outcome exists, so the highest-information choice is to preserve the current test rather than update from a 15-hour null interval.\n- **Thinking in Bets:** cap each action’s downside with a timebox and accept either a done artifact or an exact blocker artifact.\n- **Warp-Speed:** active execution remains WIP=1; parallelize only external waiting after a submission, request, or ticket exists.",
-      "source": "/root/wiki-augmented-intelligence/connections/Current Augmented Intelligence.md",
-      "updated_at": "2026-07-25T17:13:03.625758Z",
+      "id": "moe-integrated-control-system",
+      "title": "Integrated Control System",
+      "model": "Euclidean Thinking · Information Theory · Control Theory & SPC · Probabilistic Thinking · Thinking in Bets · Theory of Constraints · Little's Law · OODA Loop · Minimax & Margin of Safety",
+      "problem": "The visible cue channel is not connected to the eligible task queue, while recent evidence shows low artifact-producing throughput. Project inventory, executable inventory, and controller state are being represented by different primitives.",
+      "solution": "### Expert convergence\n- **Orientation & Control:** gate every execution cue by native task identity and eligibility.\n- **Decision & Risk:** run a brief deadline/consequence/reversibility/lead-time exception gate, then protect the current reversible test until its review gate; do not invent certainty from a non-due outcome.\n- **Execution Systems:** run one active task at a time and require each timebox to end in a done artifact or an exact blocker artifact.\n\n### Integrated operating rule\n**Identity → eligibility → decision → one-task execution → artifact → review.** Future phases unlock only when the prior gate produces observable evidence.",
+      "disagreement": "The control expert favors the existing 48-hour review gate, the execution expert proposed a 72-hour falsification test, and the decision-risk expert proposed a seven-day task-ID scheduling pilot. The blueprint preserves the 48-hour checkpoint as the earliest decision gate and continues prospective evidence collection through day 7 before making a stronger causal or model-weight update.",
       "status": "current",
       "confidence": "medium",
-      "evidence": null,
-      "is_current": true
+      "is_current": true,
+      "expert_ids": [
+        "expert-orientation-control",
+        "expert-decision-risk",
+        "expert-execution-systems"
+      ],
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-closure-drought",
+        "evidence-inventory-concentration"
+      ]
     },
     {
-      "id": "asymmetric-micro-bets",
-      "title": "Asymmetric Micro-Bets",
-      "model": "Thinking in Bets",
-      "problem": "Right now, attempting a task feels like an asymmetric bet *against* yourself: \"If I try to do my taxes and fail or get overwhelmed, I lose all my energy and feel worse.\" The downside feels massive.",
-      "solution": "**The 2-Minute Timebox Hedge.**\n1. **The Bet:** I wager 2 minutes of my time and comfort to dial the DMV or Yesmytaxes. \n2. **The Hedge:** I set a timer for exactly 120 seconds. If I am overwhelmed when it rings, I am legally allowed to hang up and walk away. Downside is strictly capped.\n3. **The Upside:** 90% of the friction is the activation energy. Once the phone is ringing, the task will likely be completed.\n\n**Execution:**\nApply this today to task `id: 0f5276b2` (\"talk to yesmytaxes\"). \n\n**Links:**\n- [[WIP Induced Paralysis]]",
-      "source": "/root/wiki-augmented-intelligence/connections/Asymmetric Micro-Bets.md",
-      "updated_at": "2026-07-25T02:03:59.509804Z",
-      "status": "active-hypothesis",
-      "confidence": "low",
-      "evidence": null,
-      "is_current": false
-    },
-    {
-      "id": "system-decay-entropy",
-      "title": "System Decay & Entropy",
-      "model": "Warp-Speed Execution",
-      "problem": "\"Once I set up this system (habit tracker, weekly review, inbox zero), it will sustain itself.\" This violates the Second Law of Thermodynamics: in any isolated system, entropy always increases. Order requires continuous energy input. Without active maintenance, every system decays to disorder.",
-      "solution": "**Weekly Anti-Entropy Maintenance Protocol.**\n\nThe insight is not \"try harder to maintain systems.\" It's that maintenance IS the system. A system that requires daily energy input has a half-life of 2 weeks. A system requiring weekly energy can last months. Monthly = years.\n\nThree concrete rules:\n\n1. **Energy Budget Per System:** Before adopting any new habit or system, ask: \"What's the minimum maintenance energy?\" If it requires daily energy (e.g., journaling, detailed time tracking), the failure probability is >80% within 30 days. Design for weekly energy or lower.\n\n2. **The Weekly Reset as Non-Negotiable:** One hour every Sunday. Clear inboxes, review priorities, purge accumulated noise. This single hour is the energy input that resets entropy across ALL systems. Skip it once → minor decay. Skip it twice → systems begin failing. Skip it three times → you're back at Setup phase.\n\n3. **Entropy Tolerance Threshold:** Not every instance of decay requires intervention. Define the critical threshold. A car doesn't need detailing weekly — it needs oil changes. For each system: what's the \"oil change\" (minimum maintenance) and what's \"detailing\" (nice but optional)? Only fight entropy at the oil-change level. Let the detailing go.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Utilization Trap]]",
-      "source": "/root/wiki-augmented-intelligence/connections/System Decay & Entropy.md",
-      "updated_at": "2026-07-25T02:03:59.508804Z",
-      "status": "active-hypothesis",
-      "confidence": "low",
-      "evidence": null,
-      "is_current": false
-    },
-    {
-      "id": "the-1-hour-execution-block-architecture",
-      "title": "The 1-Hour Execution Block Architecture",
-      "model": "Warp-Speed Execution",
-      "problem": "The current execution architecture assumes a \"normal\" workday — open-ended time, task switching, reactive mode. This architecture fails for an ADHD brain because:\n\n1. **Open-ended time = infinite avoidance runway.** Without hard boundaries, a 2-minute task expands to fill 8 hours of procrastination.\n2. **Task switching kills momentum.** The UC Irvine study on context switching (23-minute refocus penalty) applies double to ADHD — every switch resets the OODA loop back to Orientation.\n3. **Planning bleeds into execution.** The \"I'll just research this first\" trap converts execution time into planning time.\n\nThe 1-hour execution block solves all three: bounded time eliminates the avoidance runway, single-task focus eliminates switching costs, and the time pressure of \"one hour only\" forces action over planning.",
-      "solution": "**The Execution Block Protocol.**\n\n### Block Structure (60 minutes)\n```\n[0:00-0:02]  DECIDE: Pick ONE task. Write it on paper. No research allowed.\n[0:02-0:50]  EXECUTE: Single-task. No tabs. No phone. No context switches.\n[0:50-0:55]  SHIP: Whatever state it's in, wrap it up. 80% = done.\n[0:55-0:60]  SCORE: Rate the block. What worked? Log the output.\n```\n\n### Rules (non-negotiable)\n1. **One task per block.** The task is chosen BEFORE the timer starts. No \"I'll figure it out during the block.\"\n2. **Research ban.** The execution block is for DOING, not researching. If you don't know how to do the task, pick a different task. Research happens outside the block.\n3. **Ship at 80%.** The Pareto Frontier applies: 80% completion in 1 hour > 0% completion from infinite polishing. Gold-plating is banned during the block.\n4. **No task switching.** If blocked, sit with the discomfort. Switching is how the avoidance circuit wins.\n5. **Physical timer.** Phone timer or kitchen timer. Not a browser tab that can be ignored.\n\n### Progression (The Katana Model from Outliner)\n- **Week 1-2 (Easy Mode):** 1 block/day. Maintenance tasks only (100% success base rate). Build the muscle.\n- **Week 3-4 (Level Up):** 2 blocks/day. Introduce one project task per day.\n- **Week 5+ (Hard Mode):** 3 blocks/day. Full project execution.\n\n### Margin of Safety Integration\nThe 1-hour block is 80% utilization applied to daily structure. One block leaves 7+ hours for everything else. The slack absorbs disruptions. If a block fails (zero output), the loss is capped at 1 hour — not the entire day. This is the psychological Margin of Safety: a single failed block doesn't cascade into guilt and shutdown.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Utilization Trap]]\n- [[The 5th Postulate of Avoidance]]\n- [[The Pain Asymmetry Paradox]]",
-      "source": "/root/wiki-augmented-intelligence/connections/The 1-Hour Execution Block Architecture.md",
-      "updated_at": "2026-07-25T02:03:59.507804Z",
-      "status": "active-hypothesis",
-      "confidence": "low",
-      "evidence": null,
-      "is_current": false
-    },
-    {
-      "id": "the-5th-postulate-of-avoidance",
-      "title": "The 5th Postulate of Avoidance",
-      "model": "Euclidean Thinking",
-      "problem": "The current operating system is built on a hidden, unquestioned assumption (the 5th Postulate): **\"I must fix my brain, perfect my systems, and map the optimal path BEFORE I can take physical action.\"**\n\nThis manifests in the Outliner as endless \"architecture\" phases and zero task completions over 30+ days. The system treats *planning* as a substitute for *doing*.",
-      "solution": "**The Execution-Only Sandbox.**\n1. **Ban all system modifications.** No new Outliner tags, no new Notion databases, no new dashboard widgets.\n2. **The 2-Minute Physical Rule.** If an action takes less than 2 minutes (e.g., dialing \"yesmytaxes\", or putting on shoes), it must be done before any planning is allowed.\n3. Shatter the postulate: Prove the brain works *by using it on the world*, not by analyzing it.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[The Abstinence-Action Convergence]]",
-      "source": "/root/wiki-augmented-intelligence/connections/The 5th Postulate of Avoidance.md",
-      "updated_at": "2026-07-25T02:03:59.508804Z",
-      "status": "active-hypothesis",
+      "id": "artifact-first-single-queue",
+      "title": "Artifact-First Single Queue",
+      "model": "Theory of Constraints · Little's Law · OODA Loop · Pareto Frontier",
+      "problem": "Task state alone does not reveal whether execution started, stalled, or produced useful intermediate evidence; recent eligible closure throughput is low.",
+      "solution": "### Model contributions\n- **Theory of Constraints:** treat artifact-producing initiation—not project count—as the current constraint.\n- **Little's Law:** active WIP stays at one; queued work does not become active work.\n- **OODA:** every timebox closes the loop with either a done artifact or a precise blocker.\n- **Pareto:** stop when the minimum decision-enabling artifact exists; do not gold-plate.\n\n### Draft solution\nRun the three current actions sequentially. A screenshot, ticket, confirmation, or exact requirement counts as loop-closing evidence even when the parent task remains open.\n\n**Decision:** advance only after evidence is saved; external waiting may overlap, active effort may not.",
+      "disagreement": null,
+      "status": "proposed-solution",
       "confidence": "medium",
-      "evidence": null,
-      "is_current": false
+      "is_current": false,
+      "expert_ids": [
+        "expert-execution-systems"
+      ],
+      "evidence_ids": [
+        "evidence-closure-drought",
+        "evidence-action-signal-empty"
+      ]
     },
     {
-      "id": "the-abstinence-action-convergence",
-      "title": "The Abstinence-Action Convergence",
-      "model": "Probabilistic Thinking · Warp-Speed Execution",
-      "problem": "The original hypothesis predicted that an abstinence interval would create a high-probability window for real-world task completion. In the current interval, the abstinence habit contains true entries from 2026-07-05 through 2026-07-21, while eligible task completions remain zero in the last 7 days and one in the last 28 days.",
-      "solution": "Replace automatic transfer assumptions with a low-cost paired-observation test: use user-confirmed abstinence dates and timestamped administrative outputs for seven days, then evaluate co-movement without asserting causality.",
-      "source": "/root/wiki-augmented-intelligence/connections/The Abstinence-Action Convergence.md",
-      "updated_at": "2026-07-25T02:05:21.228411Z",
-      "status": "weakened",
-      "confidence": "low",
-      "evidence": null,
-      "is_current": false
+      "id": "identity-gated-control-plane",
+      "title": "Identity-Gated Control Plane",
+      "model": "Euclidean Thinking · Information Theory · Control Theory & SPC",
+      "problem": "A populated schedule field currently appears actionable even though its only cue has no task identity and zero eligible-task coverage.",
+      "solution": "### Model contributions\n- **Euclidean:** redefine a valid cue as `native task ID + eligible state + current decision`. Text alone is context.\n- **Information Theory:** reject messages that cannot route to a validated queue item; they add occupancy without verified control signal.\n- **Control Theory/SPC:** keep the active controller stable until a scheduled review or a genuine exception signal.\n\n### Draft solution\nUse an **identity gate** before any cue enters execution. The current Housing-like text remains visible context but cannot override the selected eligible sequence.\n\n**Decision:** ignore unidentified cues for control purposes; review the controller at the explicit gate.",
+      "disagreement": null,
+      "status": "proposed-solution",
+      "confidence": "high",
+      "is_current": false,
+      "expert_ids": [
+        "expert-orientation-control"
+      ],
+      "evidence_ids": [
+        "evidence-cue-identity-gap",
+        "evidence-inventory-concentration"
+      ]
     },
     {
-      "id": "the-calibration-gap",
-      "title": "The Calibration Gap",
-      "model": "Warp-Speed Execution",
-      "problem": "\"I'm a good estimator. I know how long my tasks take.\" No. The Planning Fallacy is universal and persistent. Without explicit Bayesian updating, your time estimates are systematically biased — typically 50-70% of actual required time. This isn't a character flaw; it's a cognitive bias baked into human brains.",
-      "solution": "**The Calibrated Day:**\n1. Morning: list today's tasks with raw estimates\n2. Multiply each by your calibration ratio\n3. Sum the calibrated estimates\n4. If total > 6 hours (80% of an 8-hour day): CUT tasks, don't squeeze them\n5. End of day: log actuals. Update your running ratio.\n\nAfter 2 weeks, you'll know exactly how much you can actually do in a day — and it's probably 40-60% of what you currently plan. That's not failure. That's accuracy.\n\n**Links:**\n- [[The Utilization Trap]]\n- [[WIP Induced Paralysis]]",
-      "source": "/root/wiki-augmented-intelligence/connections/The Calibration Gap.md",
-      "updated_at": "2026-07-25T02:03:59.507804Z",
-      "status": "active-hypothesis",
-      "confidence": "low",
-      "evidence": null,
-      "is_current": false
-    },
-    {
-      "id": "the-measurement-ghost",
-      "title": "The Measurement Ghost",
-      "model": "Probabilistic Thinking · Warp-Speed Execution",
-      "problem": "The current LifeOS dashboard reports **\"0 completions\"** for multiple consecutive weeks. Sai internalizes this as **\"I have done literally nothing.\"** This is measurement error masquerading as truth.\n\nThe axiomatic assumption: **\"What the dashboard reports = what is actually happening.\"**",
-      "solution": "**Split the Metric: Binary Milestones vs. Action-Step Completions.**\n\n1. **Binary Milestones** (existing metric): Track parent-task completions. These ARE rare (4 in 130 days). Accept this. It's the nature of complex multi-step projects.\n\n2. **Action-Step Completions** (new metric): Each [x] in a task body counts as a completed action. Track daily. This number will be non-zero most weeks, providing the dopamine feedback the system needs.\n\n3. **The Multiplication Effect:** When Sai sees \"This week: 3 action steps completed\" instead of \"This week: 0 tasks completed,\" the entire decision frame shifts. The prior updates from \"I do nothing\" to \"I do things, they're just granular.\"\n\n4. **Immediate Application:** Mark \"book flight tickets\" as COMPLETE in Outliner (all subtasks verified done). This single action creates a completion, drops WIP from 15 to 14, and proves the system can register progress.",
-      "source": "/root/wiki-augmented-intelligence/connections/The Measurement Ghost.md",
-      "updated_at": "2026-07-25T02:03:59.506804Z",
-      "status": "active-hypothesis",
+      "id": "reversible-decision-ladder",
+      "title": "Reversible Decision Ladder",
+      "model": "Probabilistic Thinking · Thinking in Bets · Bayesian Updating · Minimax & Margin of Safety",
+      "problem": "The evidence does not support precise success probabilities or a psychological cause, but decisions still need bounded next steps and explicit review conditions.",
+      "solution": "### Model contributions\n- **Probabilistic:** keep causal explanations and ungrounded odds unknown.\n- **Thinking in Bets:** choose small reversible moves that buy information and preserve future options.\n- **Bayesian:** update task architecture from observed artifacts at checkpoints, not from narrative confidence.\n- **Minimax / Margin of Safety:** use short timeboxes, safety exceptions, and capacity slack to cap downside.\n\n### Draft solution\nUse a decision ladder: **execute the protected controller → inspect evidence → release one conditional queue → reassess.**\n\n**Decision:** do not activate the tax or growth queue until the immediate controller reaches its review gate.",
+      "disagreement": null,
+      "status": "proposed-solution",
       "confidence": "medium",
-      "evidence": null,
-      "is_current": false
+      "is_current": false,
+      "expert_ids": [
+        "expert-decision-risk"
+      ],
+      "evidence_ids": [
+        "evidence-closure-drought",
+        "evidence-tax-critical-path"
+      ]
     },
     {
-      "id": "the-pain-asymmetry-paradox",
-      "title": "The Pain Asymmetry Paradox",
-      "model": "Thinking in Bets",
-      "problem": "The hidden decision frame operating on every stalled task is an **asymmetric bet in the wrong direction.** When facing a 2-minute uncomfortable call (yesmytaxes or DMV), Sai is placing a bet that goes:\n\n- **Perceived upside of avoiding:** Relief from 2 minutes of discomfort. Immediate. Certain.\n- **Perceived downside of avoiding:** \"I'll deal with it later.\" Vague. Discounted to near-zero by ADHD time-blindness.\n\nThe actual bet:\n\n- **Actual upside of avoiding:** 2 minutes saved. \n- **Actual downside of avoiding:** 37+ days of psychological drag. Unfiled taxes accruing penalties. The open loop consuming working memory (Little's Law). The guilt compound. The self-narrative decay (\"I can't execute\").\n\nThe ratio is not 1:1. It's not even 1:10. It's **2 minutes of discomfort vs. months of systemic pain.** This is the maximum possible negative asymmetry — the worst bet anyone can make, repeated daily.",
-      "solution": "**The Pain Asymmetry Calculator (Pre-Commitment Device).**\n\nWhen facing any avoided task, run this explicit calculation BEFORE the avoidance decision:\n\n```\nTask: call yesmytaxes\nCost of doing it NOW: 2 minutes of discomfort (Concrete)\nCost of avoiding: \n  - Daily mental drag × 37 days = ~6 hours of background anxiety\n  - Tax penalties (concrete $)\n  - Self-narrative damage (incalculable)\n  - WIP carrying cost (blocks other tasks)\n\nASYMMETRY RATIO: 2 minutes vs. ~6+ hours + $ + identity damage\n```\n\nThe calculation must be WRITTEN, not mental. Mental calculation runs on the same broken perception system. Writing externalizes it.\n\n**The 10-10-10 Pain Lens (applied to inaction):**\n- 10 days: Will I feel the 2-minute discomfort? No. Will I feel the accumulated drag of another 10 days of this task hanging over me? Yes.\n- 10 weeks: The 2 minutes are forgotten. The unfiled taxes are now a crisis.\n- 10 months: The phone call is a distant memory. The consequences (penalties and eroded momentum) are compounding.\n\n**Execution:** Before each avoidance decision this week, write the Pain Asymmetry calculation on a sticky note. The act of writing is the circuit-breaker.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[Asymmetric Micro-Bets]]\n- [[The 5th Postulate of Avoidance]]",
-      "source": "/root/wiki-augmented-intelligence/connections/The Pain Asymmetry Paradox.md",
-      "updated_at": "2026-07-25T02:03:59.506804Z",
-      "status": "active-hypothesis",
-      "confidence": "low",
-      "evidence": null,
-      "is_current": false
-    },
-    {
-      "id": "the-signal-collapse",
-      "title": "The Signal Collapse",
-      "model": "Warp-Speed Execution",
-      "problem": "**Observed/current:** the Outliner schedule exposes one non-empty daily action, `house document paperwork`. **Calculated/current:** that text maps to retired Housing scope, while none of nine eligible open tasks is represented in the daily cue channel. The mapping is text-based because the schedule item has no task ID.\n\n**Inferred mechanism:** the single visible execution cue can consume the control channel while carrying zero eligible-task signal. This is a specific information-routing mismatch, not evidence that all digital input is noise and not proof that cueing caused the current completion drought.\n\nShannon's Channel Capacity theorem: $C = B \\times \\log_2(1 + S/N)$. Your brain has a finite information processing capacity (C). Every input consumes bandwidth (B). If 75% of what you process is noise, your effective capacity drops to ~32% of theoretical maximum.\n\nThe math is brutal: you can be \"working\" 10 hours a day at 32% effective capacity. The alternative is 4 hours a day at 90% effective capacity. The 4-hour version produces MORE output. Hours worked is a vanity metric. Signal throughput is the only metric that matters.",
-      "solution": "**Current leverage point:** treat schedule text without an eligible task ID as context, not as a controller action. Protect the already-bounded AR-11 → lung-scan → internet chain through 2026-07-27 noon UTC. Future user-authored schedule cues should link to eligible task IDs so cue coverage can be validated deterministically.\n\n**The Information Diet: Three-Tier Filtering System.**\n\n**Tier 1: Noise Attenuation (immediate, 5 minutes)**\n- Unsubscribe from all newsletters you haven't read in 2 weeks\n- Mute all non-essential group chats and notification channels\n- Remove news and social apps from phone home screen (or delete entirely)\n- Email: check at 11am and 4pm only. Never before deep work.\n\n**Tier 2: Signal Amplification (weekly, 15 minutes)**\n- Identify the 3 highest-signal inputs in your life (specific people, data sources, communities)\n- Schedule protected time to consume ONLY these inputs\n- The test: \"Does this input change what I will DO today?\" If no → it's noise, regardless of how interesting it is.\n\n**Tier 3: Channel Protection (daily)**\n- Deep work blocks: 90-120 minutes with zero inputs. No phone, no email, no interruptions.\n- The first 90 minutes of the day are highest-bandwidth. Protect them ruthlessly.\n- Batch all reactive work (email, messages, admin) into a single afternoon block.\n\n**Signal Ratio Audit (weekly):**\nTrack for one day: every input consumed. Label each as Signal (changes what you do) or Noise (entertainment, distraction, redundant). Calculate S/(S+N). If below 0.5, you're running on less than half your cognitive engine.",
-      "source": "/root/wiki-augmented-intelligence/connections/The Signal Collapse.md",
-      "updated_at": "2026-07-25T17:11:50.586643Z",
-      "status": "strengthened",
+      "id": "zero-gap-critical-path",
+      "title": "Zero-Gap Administrative Critical Path",
+      "model": "Amdahl's Law · Theory of Constraints · OODA Loop · Control Theory & SPC",
+      "problem": "The tax project contains three task titles that suggest a sequence, but their dependency fields are empty. Treating all three as simultaneously active would hide which dependency, if any, is real.",
+      "solution": "### Model contributions\n- **Amdahl:** if validation confirms a sequential dependency, compress that sequential fraction without assuming it in advance.\n- **Theory of Constraints:** expose the next blocking step instead of optimizing unvalidated downstream work.\n- **OODA:** use each verified response or requirement to orient the next step.\n- **Control Theory:** release this phase only after the prior gate and dependency validation, preserving attributable outcomes.\n\n### Draft solution\nValidate whether `talk to yesmytaxes` produces requirements for `submit paperwork`, then whether submission enables `get filed confirmation`. Sequence only the dependencies that are actually confirmed.\n\n**Decision:** keep the tax queue conditional; release it after the 48-hour checkpoint only if its order is validated and no higher-priority safety or official deadline intervenes.",
+      "disagreement": null,
+      "status": "conditional-solution",
       "confidence": "medium",
-      "evidence": null,
-      "is_current": false
-    },
-    {
-      "id": "the-utilization-trap",
-      "title": "The Utilization Trap",
-      "model": "Warp-Speed Execution",
-      "problem": "\"The more hours I work and the fuller my calendar, the more I get done.\" This is mathematically false. Little's Law shows that as utilization approaches 100%, wait times approach infinity. Margin of Safety shows that systems at 100% utilization are brittle — a single disruption cascades into total stoppage.",
-      "solution": "**The 80% Capacity Rule + Slack Budget.**\n\n1. **Calendar Slack:** Block exactly 80% of available work hours. Leave 20% unallocated — visible as empty blocks on the calendar. This is NOT wasted time. It's shock absorption capacity. When disruptions hit, they consume slack, not your productive hours.\n\n2. **The Slack Budget Mindset:** Treat the 20% slack as a finite resource. When someone asks \"can you fit this in,\" check: does it fit in the slack budget? If yes, accept. If no: \"I'm at capacity. I can do it next week, or you can talk to [delegate].\" The slack budget makes saying no mathematical, not emotional.\n\n3. **WIP Cap:** Maximum 3 active projects/tasks at any time. Adding a 4th requires completing or freezing one of the first 3. This is non-negotiable. The WIP cap IS the utilization governor.\n\n4. **The 80% Throughput Paradox:**\n   - 80% utilization × 100% uptime = 80 units of output\n   - 100% utilization × 60% uptime (constant disruptions, burnout pauses) = 60 units of output\n   - The 80% system wins by 33%, with less stress.\n\n**Links:**\n- [[WIP Induced Paralysis]]\n- [[System Decay & Entropy]]\n- [[The Signal Collapse]]",
-      "source": "/root/wiki-augmented-intelligence/connections/The Utilization Trap.md",
-      "updated_at": "2026-07-25T02:03:59.508804Z",
-      "status": "active-hypothesis",
-      "confidence": "low",
-      "evidence": null,
-      "is_current": false
-    },
-    {
-      "id": "wip-induced-paralysis",
-      "title": "WIP Induced Paralysis",
-      "model": "Warp-Speed Execution · Euclidean Thinking",
-      "problem": "The original hypothesis was that many concurrent open loops increase cycle time and suppress completion. Current evidence refines that model: dashboard WIP fell from 15 to 11 while cumulative completions remained 4, and the fresh eligible set is 9 after mandatory exclusions. The count change came from scope and eligibility cleanup rather than four verified closures.",
-      "solution": "Track and control **real closures**, not display-count reductions. Maintain separate fields for verified task closures, completed-parent suppression, and retired-scope exclusions; only verified closures count as evidence that WIP was actually reduced through execution.",
-      "source": "/root/wiki-augmented-intelligence/connections/WIP Induced Paralysis.md",
-      "updated_at": "2026-07-25T02:05:21.232411Z",
-      "status": "weakened",
-      "confidence": "low",
-      "evidence": null,
-      "is_current": false
+      "is_current": false,
+      "expert_ids": [
+        "expert-execution-systems",
+        "expert-decision-risk"
+      ],
+      "evidence_ids": [
+        "evidence-tax-critical-path",
+        "evidence-inventory-concentration"
+      ]
     }
-  ]
+  ],
+  "decisions": [
+    {
+      "id": "decision-reject-unidentified-cues",
+      "label": "Reject unidentified cues as control inputs",
+      "choice": "ignore-for-control",
+      "rationale": "The sole cue has no native task ID and no eligible-task coverage.",
+      "tradeoff": "Potentially useful context remains outside the active controller until identified.",
+      "review": "Reconsider when a cue resolves to an eligible task ID or Sai explicitly changes priority.",
+      "solution_ids": [
+        "identity-gated-control-plane",
+        "moe-integrated-control-system"
+      ]
+    },
+    {
+      "id": "decision-protect-three-action-controller",
+      "label": "Protect the three-action controller",
+      "choice": "sequence",
+      "rationale": "A bounded WIP=1 test creates attributable evidence with limited downside.",
+      "tradeoff": "Other eligible work remains queued during the immediate horizon.",
+      "review": "Review by 2026-07-27T12:00:00Z or earlier for safety, an official deadline, or explicit priority change.",
+      "solution_ids": [
+        "artifact-first-single-queue",
+        "reversible-decision-ladder",
+        "moe-integrated-control-system"
+      ]
+    },
+    {
+      "id": "decision-release-tax-critical-path",
+      "label": "Release the tax critical path conditionally",
+      "choice": "defer-then-sequence",
+      "rationale": "The three native tax-task titles suggest a possible chain, but dependency fields are empty; validate the order before sequencing and do not let the hypothesis compete with the protected immediate controller.",
+      "tradeoff": "Tax progress waits until the first checkpoint unless an official deadline changes priority.",
+      "review": "At the 48-hour checkpoint, compare saved artifacts, explicit deadlines, and unresolved safety constraints.",
+      "solution_ids": [
+        "zero-gap-critical-path",
+        "reversible-decision-ladder"
+      ]
+    },
+    {
+      "id": "decision-select-growth-queue",
+      "label": "Select one growth queue after administrative review",
+      "choice": "monitor-then-select",
+      "rationale": "Travel and hair-research tasks are eligible but current evidence does not establish their relative deadline or expected value.",
+      "tradeoff": "Both remain queued until more decision-relevant evidence is available.",
+      "review": "At the day-7 checkpoint, choose at most one using explicit deadline, reversibility, and opportunity cost.",
+      "solution_ids": [
+        "reversible-decision-ladder",
+        "artifact-first-single-queue"
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "action-ar11",
+      "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+      "label": "Complete AR-11 form",
+      "timebox": "25 minutes",
+      "first_step": "Open the official form with current address and identification details beside it.",
+      "done_when": "Submission confirmation, receipt, or an exact blocker artifact is saved.",
+      "decision_ids": [
+        "decision-reject-unidentified-cues",
+        "decision-protect-three-action-controller"
+      ],
+      "status": "active-1"
+    },
+    {
+      "id": "action-lung-scan",
+      "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+      "label": "Schedule lung-health scan",
+      "timebox": "20 minutes",
+      "first_step": "Open the provider portal or call the clinic for the earliest available appointment.",
+      "done_when": "Appointment confirmation or the exact referral, insurance, or contact blocker is saved.",
+      "decision_ids": [
+        "decision-reject-unidentified-cues",
+        "decision-protect-three-action-controller"
+      ],
+      "status": "queued-2"
+    },
+    {
+      "id": "action-internet-warning",
+      "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+      "label": "Resolve internet warning",
+      "timebox": "15 minutes",
+      "first_step": "Open the warning and record its provider, account, and requested resolution step.",
+      "done_when": "The warning is cleared or a ticket number, response window, or exact blocker is saved.",
+      "decision_ids": [
+        "decision-reject-unidentified-cues",
+        "decision-protect-three-action-controller"
+      ],
+      "status": "queued-3"
+    }
+  ],
+  "blueprint": {
+    "title": "Decision-to-Execution Blueprint",
+    "timeframe": "2026-07-25 to 2026-08-08",
+    "objective": "Convert validated Outliner priorities into observable artifacts while preserving decision quality, safety, and WIP=1.",
+    "current_constraint": "Artifact-producing initiation under a cue channel that is not identity-linked to eligible tasks.",
+    "operating_rules": [
+      "One active task at a time",
+      "Every timebox ends with a done artifact or exact blocker",
+      "Unidentified cues are context, not control",
+      "Only external waiting may overlap",
+      "Safety, official deadlines, and explicit user priority changes can override sequence"
+    ],
+    "phases": [
+      {
+        "id": "phase-immediate-controller",
+        "order": 1,
+        "status": "active",
+        "horizon": "Now → 48 hours",
+        "window": "2026-07-25 to 2026-07-27 12:00 UTC",
+        "title": "Stabilize the control loop",
+        "decision": "Run a 10-minute exception gate across documented deadline, consequence of delay, reversibility, and external lead time. If no safety, medical, or official-deadline exception is found, protect the current controller and execute its three native tasks sequentially.",
+        "decision_ids": [
+          "decision-reject-unidentified-cues",
+          "decision-protect-three-action-controller"
+        ],
+        "action_ids": [
+          "action-ar11",
+          "action-lung-scan",
+          "action-internet-warning"
+        ],
+        "queue": [],
+        "gate": "By the checkpoint, save at least one done artifact and exact blocker artifacts for every bounded but incomplete step; otherwise preserve unknown causality and redesign the action structure."
+      },
+      {
+        "id": "phase-tax-critical-path",
+        "order": 2,
+        "status": "conditional",
+        "horizon": "Days 3–7",
+        "window": "2026-07-28 to 2026-07-31",
+        "title": "Release one administrative critical path",
+        "decision": "If the immediate phase reaches its gate, the tax-task order is validated, and no higher-priority exception exists, sequence only the confirmed Taxes dependencies with zero avoidable gaps.",
+        "decision_ids": [
+          "decision-release-tax-critical-path"
+        ],
+        "action_ids": [],
+        "queue": [
+          {
+            "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "label": "Talk to yesmytaxes",
+            "depends_on": "phase 1 review"
+          },
+          {
+            "task_id": "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+            "label": "Submit paperwork",
+            "depends_on": "response or requirements from yesmytaxes"
+          },
+          {
+            "task_id": "8329b464-dab9-4362-811c-dadf15a1cbdd",
+            "label": "Get filed confirmation",
+            "depends_on": "paperwork submission"
+          }
+        ],
+        "gate": "Advance only when the predecessor produces the information or artifact required by the successor; pause for an exact external blocker rather than opening another active task."
+      },
+      {
+        "id": "phase-growth-allocation",
+        "order": 3,
+        "status": "conditional",
+        "horizon": "Days 8–14",
+        "window": "2026-08-01 to 2026-08-08",
+        "title": "Allocate the next growth slot",
+        "decision": "Choose at most one queued growth task using explicit deadline, reversibility, and opportunity cost; do not activate both by default.",
+        "decision_ids": [
+          "decision-select-growth-queue"
+        ],
+        "action_ids": [],
+        "queue": [
+          {
+            "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
+            "label": "Book NYC and Niagara flights",
+            "depends_on": "explicit travel deadline and administrative queue status"
+          },
+          {
+            "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
+            "label": "Research latest hair-loss evidence",
+            "depends_on": "explicit priority and a bounded research question"
+          }
+        ],
+        "gate": "Select one only when its deadline or expected information value is explicitly higher; otherwise keep both queued and collect the missing decision evidence."
+      }
+    ],
+    "checkpoints": [
+      {
+        "at": "2026-07-27T12:00:00Z",
+        "question": "Which done or blocker artifacts exist, and did WIP=1 produce a complete OODA loop?",
+        "decision": "Continue, redesign the action structure, or invoke a documented exception."
+      },
+      {
+        "at": "2026-08-01T12:00:00Z",
+        "question": "Did the tax critical path expose and clear its actual dependency constraint?",
+        "decision": "Continue the chain or hold it on the exact external blocker."
+      },
+      {
+        "at": "2026-08-08T12:00:00Z",
+        "question": "Which model contributions predicted useful outcomes, and which should be strengthened, weakened, or retired?",
+        "decision": "Update the expert weights and select the next single execution horizon."
+      }
+    ]
+  }
 }

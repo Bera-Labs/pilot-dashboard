@@ -1,0 +1,456 @@
+{
+  "schema_version": "3.0.0",
+  "generated_at": "2026-07-25T17:06:11Z",
+  "method": {
+    "name": "Mixture of Experts",
+    "principle": "Independent expert lenses interpret the same Outliner evidence; only compatible, evidence-supported contributions are integrated into decisions and execution.",
+    "experts": [
+      {
+        "id": "expert-orientation-control",
+        "label": "Orientation & Control Expert",
+        "mission": "Resolve primitives, signal identity, and controller validity before acceleration.",
+        "model_ids": ["euclidean-thinking", "information-theory", "control-theory-spc"],
+        "assumptions": [
+          "A schedule cue is intended to select an executable task.",
+          "Native eligible task IDs are the valid actuators in the current control surface.",
+          "Recorded completion or documented state transition is attributable feedback; missing completion does not prove no attempt."
+        ],
+        "derivation": [
+          "Euclidean construction fails when a cue cannot be traced to an eligible task identity.",
+          "Unkeyed free text loses routing and attribution information.",
+          "A reference-to-actuator gap leaves the portfolio open-loop.",
+          "Sparse completion history cannot support SPC limits or causal process claims."
+        ],
+        "proposal": "Reject unidentified cues as control inputs, bind the three designated actions to exact task IDs, run them as a closed-loop WIP-gated pilot, and keep the inferred tax sequence conditional until its dependency is validated.",
+        "risks": [
+          "Completion records omit attempts, elapsed effort, and external blockers.",
+          "Taskless projects may be deliberate containers rather than defects.",
+          "Task titles do not establish urgency, effort, or deadlines."
+        ],
+        "falsified_by": "Two genuine task-ID-linked review cycles produce no attributable transition and documented blockers, task ambiguity, or missing state recording explain the result better than cue integrity."
+      },
+      {
+        "id": "expert-decision-risk",
+        "label": "Decision & Risk Expert",
+        "mission": "Choose reversible, information-rich bets while protecting downside and uncertainty.",
+        "model_ids": ["probabilistic-thinking", "thinking-in-bets", "bayesian-updating", "minimax-margin-safety"],
+        "assumptions": [
+          "The evidence is descriptive rather than causal.",
+          "Task names do not establish urgency, difficulty, duration, or consequence.",
+          "Probabilities remain unknown until prospective observations exist."
+        ],
+        "derivation": [
+          "Zero cue coverage plus low output raises but does not prove the cue-ambiguity hypothesis.",
+          "A task-ID scheduling pilot is a reversible process bet with high information value.",
+          "Deadline, delay consequence, reversibility, and lead-time facts should dominate semantic urgency guesses.",
+          "Every active project needs one explicit next action or an explicit pause, without expanding active WIP."
+        ],
+        "proposal": "Run one risk-and-optionality triage gate, then test task-ID scheduling for seven days while narrowly repairing portfolio executability and keeping outcomes separate from decision quality.",
+        "risks": [
+          "A single completion is not a stable personal base rate.",
+          "Zero habit logs may reflect non-use of the record rather than no action.",
+          "Tasks may be scheduled elsewhere or blocked by unobserved dependencies."
+        ],
+        "falsified_by": "Explicitly scheduled tasks receive genuine work opportunities but remain unchanged for documented reasons unrelated to cue ambiguity, or fact-finding shows no meaningful deadline, penalty, capacity constraint, or lead time."
+      },
+      {
+        "id": "expert-execution-systems",
+        "label": "Execution Systems Expert",
+        "mission": "Convert validated priorities into a low-WIP critical path with observable artifacts.",
+        "model_ids": ["theory-of-constraints", "littles-law", "ooda-loop", "amdahls-law", "pareto-frontier"],
+        "assumptions": [
+          "The current constraint is dispatch from eligible task to task-linked execution cue, not task supply.",
+          "Only completion or an explicit external wait releases the next hands-on item.",
+          "The tax dependency is inferred from task text and must remain conditional."
+        ],
+        "derivation": [
+          "Theory of Constraints locates the bottleneck at release into execution.",
+          "Little's Law supports one hands-on item rather than nine competing tasks.",
+          "OODA favors shortening decision-to-action latency and learning from each artifact or blocker.",
+          "Amdahl's Law justifies early launch only when a real external lead time is confirmed.",
+          "Pareto favors one bounded first block over a complete productivity redesign."
+        ],
+        "proposal": "Adopt the three-action sequential recovery queue, maintain one task-ID-linked cue per day, move genuine external waits to a separate lane, and switch to an external-lead-time critical path only when deadline or lead-time evidence is confirmed.",
+        "risks": [
+          "The illustrative 36-week queue-drain calculation is not a forecast because the sample is sparse.",
+          "External lead times and deadlines are not currently recorded.",
+          "The vague typed task Tiger mode ON lacks an operational definition of done and should not drive the critical path."
+        ],
+        "falsified_by": "An exact task ID, protected block, explicit done condition, and WIP=1 produce no transition within the recovery window, while documented dependency, access, ambiguity, or state-recording problems better explain the result."
+      }
+    ],
+    "integration_gate": [
+      "Must trace to current Outliner evidence",
+      "Must survive an alternative-explanation check",
+      "Must change a decision, sequence, or measurement rule",
+      "Must have an observable review gate",
+      "Must not require invented tasks or probabilities"
+    ]
+  },
+  "evidence": [
+    {
+      "id": "evidence-cue-identity-gap",
+      "label": "0/9 eligible cue coverage",
+      "kind": "calculated",
+      "summary": "The sole schedule cue is house document paperwork; it has no task ID, textually maps to retired Housing, and represents none of nine eligible tasks.",
+      "source_refs": ["schedule.__actionflow_daily_actions_v1__[0]", "bc5dc69e-ab85-4b8c-a718-9c474cd04388", "eligible-task-aggregate-20260725"]
+    },
+    {
+      "id": "evidence-closure-drought",
+      "label": "0 closures in 7 days",
+      "kind": "calculated",
+      "summary": "There are zero eligible completions in seven days and one in twenty-eight days; no new causal explanation is established.",
+      "source_refs": ["outliner-tasks-20260725", "completion-aggregate-20260725"]
+    },
+    {
+      "id": "evidence-inventory-concentration",
+      "label": "9 tasks in 6 projects",
+      "kind": "calculated",
+      "summary": "Nine eligible open tasks are concentrated in six task-bearing active projects while three active projects have no eligible task.",
+      "source_refs": ["outliner-projects-20260725", "outliner-tasks-20260725"]
+    },
+    {
+      "id": "evidence-action-signal-empty",
+      "label": "Taking action has no logs",
+      "kind": "observed",
+      "summary": "The user-authored Taking action habit currently has no logged events, so it cannot validate execution frequency or causal transfer.",
+      "source_refs": ["habit-4a82c418-87eb-460b-a853-6b34f82f87d2"]
+    },
+    {
+      "id": "evidence-tax-critical-path",
+      "label": "Three-step tax chain",
+      "kind": "hypothesized",
+      "summary": "The Taxes project contains three open native tasks whose titles suggest—but do not establish—a conditional sequence: talk to yesmytaxes, submit paperwork, then obtain filing confirmation. Dependency fields are empty, so the sequence remains gated pending validation.",
+      "source_refs": ["0f5276b2-6ba2-4fef-8dcc-39551555e2c4", "79f13db5-e1f2-40f4-95ca-7c2073a2f772", "8329b464-dab9-4362-811c-dadf15a1cbdd"]
+    }
+  ],
+  "models": [
+    {
+      "id": "euclidean-thinking",
+      "label": "Euclidean Thinking",
+      "family": "first-principles",
+      "source": "stored: stem-stack/euclidean-thinking",
+      "role": "Define actionable work by identity, eligibility, and evidence rather than by populated fields.",
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-inventory-concentration", "evidence-tax-critical-path"]
+    },
+    {
+      "id": "probabilistic-thinking",
+      "label": "Probabilistic Thinking",
+      "family": "uncertainty",
+      "source": "stored: stem-stack/probabilistic-thinking",
+      "role": "Separate observed state from causal stories and avoid updating from a non-due result.",
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-closure-drought", "evidence-action-signal-empty", "evidence-tax-critical-path"]
+    },
+    {
+      "id": "thinking-in-bets",
+      "label": "Thinking in Bets",
+      "family": "decision",
+      "source": "stored: stem-stack/thinking-in-bets",
+      "role": "Prefer bounded, reversible actions with explicit stop and review conditions.",
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-closure-drought", "evidence-tax-critical-path"]
+    },
+    {
+      "id": "information-theory",
+      "label": "Information Theory",
+      "family": "signal",
+      "source": "stored: warp-speed-execution / Shannon",
+      "role": "Treat unidentified schedule text as low-validity signal until it maps to an eligible task.",
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-inventory-concentration"]
+    },
+    {
+      "id": "control-theory-spc",
+      "label": "Control Theory & SPC",
+      "family": "feedback",
+      "source": "stored: warp-speed-execution / PID and Deming",
+      "role": "Protect a bounded controller from premature replanning and update only at review gates.",
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-closure-drought", "evidence-action-signal-empty", "evidence-tax-critical-path"]
+    },
+    {
+      "id": "theory-of-constraints",
+      "label": "Theory of Constraints",
+      "family": "throughput",
+      "source": "stored: warp-speed-execution / Goldratt",
+      "role": "Focus the system on artifact-producing initiation as the current throughput constraint.",
+      "evidence_ids": ["evidence-closure-drought", "evidence-inventory-concentration", "evidence-action-signal-empty", "evidence-tax-critical-path"]
+    },
+    {
+      "id": "littles-law",
+      "label": "Little's Law",
+      "family": "queueing",
+      "source": "stored: warp-speed-execution / queueing theory",
+      "role": "Keep active execution WIP at one to reduce cycle time and switching.",
+      "evidence_ids": ["evidence-closure-drought", "evidence-inventory-concentration"]
+    },
+    {
+      "id": "ooda-loop",
+      "label": "OODA Loop",
+      "family": "execution",
+      "source": "stored: warp-speed-execution / Boyd",
+      "role": "Close each observe-orient-decide-act loop with a done artifact or exact blocker.",
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-closure-drought", "evidence-action-signal-empty", "evidence-tax-critical-path"]
+    },
+    {
+      "id": "bayesian-updating",
+      "label": "Bayesian Updating",
+      "family": "learning",
+      "source": "stored: probabilistic-thinking and warp-speed-execution",
+      "role": "Use review outcomes to update which action structures work; leave unsupported probabilities unknown.",
+      "evidence_ids": ["evidence-closure-drought", "evidence-action-signal-empty", "evidence-tax-critical-path"]
+    },
+    {
+      "id": "minimax-margin-safety",
+      "label": "Minimax & Margin of Safety",
+      "family": "risk",
+      "source": "stored: warp-speed-execution / game theory and engineering",
+      "role": "Cap action downside with timeboxes, preserve safety exceptions, and retain slack.",
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-tax-critical-path"]
+    },
+    {
+      "id": "amdahls-law",
+      "label": "Amdahl's Law",
+      "family": "dependencies",
+      "source": "stored: warp-speed-execution / parallel computing",
+      "role": "Sequence dependent work with zero gaps while allowing only external waiting to overlap.",
+      "evidence_ids": ["evidence-tax-critical-path"]
+    },
+    {
+      "id": "pareto-frontier",
+      "label": "Pareto Frontier",
+      "family": "shipping",
+      "source": "stored: warp-speed-execution / quality-speed frontier",
+      "role": "Define minimum sufficient evidence and stop polishing once the decision-enabling artifact exists.",
+      "evidence_ids": ["evidence-closure-drought", "evidence-action-signal-empty"]
+    }
+  ],
+  "syntheses": [
+    {
+      "id": "moe-integrated-control-system",
+      "title": "Integrated Control System",
+      "status": "current",
+      "confidence": "medium",
+      "is_current": true,
+      "expert_ids": ["expert-orientation-control", "expert-decision-risk", "expert-execution-systems"],
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-closure-drought", "evidence-inventory-concentration"],
+      "model_ids": ["euclidean-thinking", "information-theory", "control-theory-spc", "probabilistic-thinking", "thinking-in-bets", "theory-of-constraints", "littles-law", "ooda-loop", "minimax-margin-safety"],
+      "problem": "The visible cue channel is not connected to the eligible task queue, while recent evidence shows low artifact-producing throughput. Project inventory, executable inventory, and controller state are being represented by different primitives.",
+      "solution": "### Expert convergence\n- **Orientation & Control:** gate every execution cue by native task identity and eligibility.\n- **Decision & Risk:** run a brief deadline/consequence/reversibility/lead-time exception gate, then protect the current reversible test until its review gate; do not invent certainty from a non-due outcome.\n- **Execution Systems:** run one active task at a time and require each timebox to end in a done artifact or an exact blocker artifact.\n\n### Integrated operating rule\n**Identity → eligibility → decision → one-task execution → artifact → review.** Future phases unlock only when the prior gate produces observable evidence.",
+      "disagreement": "The control expert favors the existing 48-hour review gate, the execution expert proposed a 72-hour falsification test, and the decision-risk expert proposed a seven-day task-ID scheduling pilot. The blueprint preserves the 48-hour checkpoint as the earliest decision gate and continues prospective evidence collection through day 7 before making a stronger causal or model-weight update."
+    },
+    {
+      "id": "identity-gated-control-plane",
+      "title": "Identity-Gated Control Plane",
+      "status": "proposed-solution",
+      "confidence": "high",
+      "is_current": false,
+      "expert_ids": ["expert-orientation-control"],
+      "evidence_ids": ["evidence-cue-identity-gap", "evidence-inventory-concentration"],
+      "model_ids": ["euclidean-thinking", "information-theory", "control-theory-spc"],
+      "problem": "A populated schedule field currently appears actionable even though its only cue has no task identity and zero eligible-task coverage.",
+      "solution": "### Model contributions\n- **Euclidean:** redefine a valid cue as `native task ID + eligible state + current decision`. Text alone is context.\n- **Information Theory:** reject messages that cannot route to a validated queue item; they add occupancy without verified control signal.\n- **Control Theory/SPC:** keep the active controller stable until a scheduled review or a genuine exception signal.\n\n### Draft solution\nUse an **identity gate** before any cue enters execution. The current Housing-like text remains visible context but cannot override the selected eligible sequence.\n\n**Decision:** ignore unidentified cues for control purposes; review the controller at the explicit gate."
+    },
+    {
+      "id": "artifact-first-single-queue",
+      "title": "Artifact-First Single Queue",
+      "status": "proposed-solution",
+      "confidence": "medium",
+      "is_current": false,
+      "expert_ids": ["expert-execution-systems"],
+      "evidence_ids": ["evidence-closure-drought", "evidence-action-signal-empty"],
+      "model_ids": ["theory-of-constraints", "littles-law", "ooda-loop", "pareto-frontier"],
+      "problem": "Task state alone does not reveal whether execution started, stalled, or produced useful intermediate evidence; recent eligible closure throughput is low.",
+      "solution": "### Model contributions\n- **Theory of Constraints:** treat artifact-producing initiation—not project count—as the current constraint.\n- **Little's Law:** active WIP stays at one; queued work does not become active work.\n- **OODA:** every timebox closes the loop with either a done artifact or a precise blocker.\n- **Pareto:** stop when the minimum decision-enabling artifact exists; do not gold-plate.\n\n### Draft solution\nRun the three current actions sequentially. A screenshot, ticket, confirmation, or exact requirement counts as loop-closing evidence even when the parent task remains open.\n\n**Decision:** advance only after evidence is saved; external waiting may overlap, active effort may not."
+    },
+    {
+      "id": "reversible-decision-ladder",
+      "title": "Reversible Decision Ladder",
+      "status": "proposed-solution",
+      "confidence": "medium",
+      "is_current": false,
+      "expert_ids": ["expert-decision-risk"],
+      "evidence_ids": ["evidence-closure-drought", "evidence-tax-critical-path"],
+      "model_ids": ["probabilistic-thinking", "thinking-in-bets", "bayesian-updating", "minimax-margin-safety"],
+      "problem": "The evidence does not support precise success probabilities or a psychological cause, but decisions still need bounded next steps and explicit review conditions.",
+      "solution": "### Model contributions\n- **Probabilistic:** keep causal explanations and ungrounded odds unknown.\n- **Thinking in Bets:** choose small reversible moves that buy information and preserve future options.\n- **Bayesian:** update task architecture from observed artifacts at checkpoints, not from narrative confidence.\n- **Minimax / Margin of Safety:** use short timeboxes, safety exceptions, and capacity slack to cap downside.\n\n### Draft solution\nUse a decision ladder: **execute the protected controller → inspect evidence → release one conditional queue → reassess.**\n\n**Decision:** do not activate the tax or growth queue until the immediate controller reaches its review gate."
+    },
+    {
+      "id": "zero-gap-critical-path",
+      "title": "Zero-Gap Administrative Critical Path",
+      "status": "conditional-solution",
+      "confidence": "medium",
+      "is_current": false,
+      "expert_ids": ["expert-execution-systems", "expert-decision-risk"],
+      "evidence_ids": ["evidence-tax-critical-path", "evidence-inventory-concentration"],
+      "model_ids": ["amdahls-law", "theory-of-constraints", "ooda-loop", "control-theory-spc"],
+      "problem": "The tax project contains three task titles that suggest a sequence, but their dependency fields are empty. Treating all three as simultaneously active would hide which dependency, if any, is real.",
+      "solution": "### Model contributions\n- **Amdahl:** if validation confirms a sequential dependency, compress that sequential fraction without assuming it in advance.\n- **Theory of Constraints:** expose the next blocking step instead of optimizing unvalidated downstream work.\n- **OODA:** use each verified response or requirement to orient the next step.\n- **Control Theory:** release this phase only after the prior gate and dependency validation, preserving attributable outcomes.\n\n### Draft solution\nValidate whether `talk to yesmytaxes` produces requirements for `submit paperwork`, then whether submission enables `get filed confirmation`. Sequence only the dependencies that are actually confirmed.\n\n**Decision:** keep the tax queue conditional; release it after the 48-hour checkpoint only if its order is validated and no higher-priority safety or official deadline intervenes."
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decision-reject-unidentified-cues",
+      "label": "Reject unidentified cues as control inputs",
+      "choice": "ignore-for-control",
+      "rationale": "The sole cue has no native task ID and no eligible-task coverage.",
+      "tradeoff": "Potentially useful context remains outside the active controller until identified.",
+      "review": "Reconsider when a cue resolves to an eligible task ID or Sai explicitly changes priority.",
+      "solution_ids": ["identity-gated-control-plane", "moe-integrated-control-system"]
+    },
+    {
+      "id": "decision-protect-three-action-controller",
+      "label": "Protect the three-action controller",
+      "choice": "sequence",
+      "rationale": "A bounded WIP=1 test creates attributable evidence with limited downside.",
+      "tradeoff": "Other eligible work remains queued during the immediate horizon.",
+      "review": "Review by 2026-07-27T12:00:00Z or earlier for safety, an official deadline, or explicit priority change.",
+      "solution_ids": ["artifact-first-single-queue", "reversible-decision-ladder", "moe-integrated-control-system"]
+    },
+    {
+      "id": "decision-release-tax-critical-path",
+      "label": "Release the tax critical path conditionally",
+      "choice": "defer-then-sequence",
+      "rationale": "The three native tax-task titles suggest a possible chain, but dependency fields are empty; validate the order before sequencing and do not let the hypothesis compete with the protected immediate controller.",
+      "tradeoff": "Tax progress waits until the first checkpoint unless an official deadline changes priority.",
+      "review": "At the 48-hour checkpoint, compare saved artifacts, explicit deadlines, and unresolved safety constraints.",
+      "solution_ids": ["zero-gap-critical-path", "reversible-decision-ladder"]
+    },
+    {
+      "id": "decision-select-growth-queue",
+      "label": "Select one growth queue after administrative review",
+      "choice": "monitor-then-select",
+      "rationale": "Travel and hair-research tasks are eligible but current evidence does not establish their relative deadline or expected value.",
+      "tradeoff": "Both remain queued until more decision-relevant evidence is available.",
+      "review": "At the day-7 checkpoint, choose at most one using explicit deadline, reversibility, and opportunity cost.",
+      "solution_ids": ["reversible-decision-ladder", "artifact-first-single-queue"]
+    }
+  ],
+  "actions": [
+    {
+      "id": "action-ar11",
+      "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+      "label": "Complete AR-11 form",
+      "timebox": "25 minutes",
+      "first_step": "Open the official form with current address and identification details beside it.",
+      "done_when": "Submission confirmation, receipt, or an exact blocker artifact is saved.",
+      "decision_ids": ["decision-reject-unidentified-cues", "decision-protect-three-action-controller"],
+      "status": "active-1"
+    },
+    {
+      "id": "action-lung-scan",
+      "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+      "label": "Schedule lung-health scan",
+      "timebox": "20 minutes",
+      "first_step": "Open the provider portal or call the clinic for the earliest available appointment.",
+      "done_when": "Appointment confirmation or the exact referral, insurance, or contact blocker is saved.",
+      "decision_ids": ["decision-reject-unidentified-cues", "decision-protect-three-action-controller"],
+      "status": "queued-2"
+    },
+    {
+      "id": "action-internet-warning",
+      "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+      "label": "Resolve internet warning",
+      "timebox": "15 minutes",
+      "first_step": "Open the warning and record its provider, account, and requested resolution step.",
+      "done_when": "The warning is cleared or a ticket number, response window, or exact blocker is saved.",
+      "decision_ids": ["decision-reject-unidentified-cues", "decision-protect-three-action-controller"],
+      "status": "queued-3"
+    }
+  ],
+  "blueprint": {
+    "title": "Decision-to-Execution Blueprint",
+    "timeframe": "2026-07-25 to 2026-08-08",
+    "objective": "Convert validated Outliner priorities into observable artifacts while preserving decision quality, safety, and WIP=1.",
+    "current_constraint": "Artifact-producing initiation under a cue channel that is not identity-linked to eligible tasks.",
+    "operating_rules": [
+      "One active task at a time",
+      "Every timebox ends with a done artifact or exact blocker",
+      "Unidentified cues are context, not control",
+      "Only external waiting may overlap",
+      "Safety, official deadlines, and explicit user priority changes can override sequence"
+    ],
+    "phases": [
+      {
+        "id": "phase-immediate-controller",
+        "order": 1,
+        "status": "active",
+        "horizon": "Now → 48 hours",
+        "window": "2026-07-25 to 2026-07-27 12:00 UTC",
+        "title": "Stabilize the control loop",
+        "decision": "Run a 10-minute exception gate across documented deadline, consequence of delay, reversibility, and external lead time. If no safety, medical, or official-deadline exception is found, protect the current controller and execute its three native tasks sequentially.",
+        "decision_ids": ["decision-reject-unidentified-cues", "decision-protect-three-action-controller"],
+        "action_ids": ["action-ar11", "action-lung-scan", "action-internet-warning"],
+        "queue": [],
+        "gate": "By the checkpoint, save at least one done artifact and exact blocker artifacts for every bounded but incomplete step; otherwise preserve unknown causality and redesign the action structure."
+      },
+      {
+        "id": "phase-tax-critical-path",
+        "order": 2,
+        "status": "conditional",
+        "horizon": "Days 3–7",
+        "window": "2026-07-28 to 2026-07-31",
+        "title": "Release one administrative critical path",
+        "decision": "If the immediate phase reaches its gate, the tax-task order is validated, and no higher-priority exception exists, sequence only the confirmed Taxes dependencies with zero avoidable gaps.",
+        "decision_ids": ["decision-release-tax-critical-path"],
+        "action_ids": [],
+        "queue": [
+          {
+            "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "label": "Talk to yesmytaxes",
+            "depends_on": "phase 1 review"
+          },
+          {
+            "task_id": "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+            "label": "Submit paperwork",
+            "depends_on": "response or requirements from yesmytaxes"
+          },
+          {
+            "task_id": "8329b464-dab9-4362-811c-dadf15a1cbdd",
+            "label": "Get filed confirmation",
+            "depends_on": "paperwork submission"
+          }
+        ],
+        "gate": "Advance only when the predecessor produces the information or artifact required by the successor; pause for an exact external blocker rather than opening another active task."
+      },
+      {
+        "id": "phase-growth-allocation",
+        "order": 3,
+        "status": "conditional",
+        "horizon": "Days 8–14",
+        "window": "2026-08-01 to 2026-08-08",
+        "title": "Allocate the next growth slot",
+        "decision": "Choose at most one queued growth task using explicit deadline, reversibility, and opportunity cost; do not activate both by default.",
+        "decision_ids": ["decision-select-growth-queue"],
+        "action_ids": [],
+        "queue": [
+          {
+            "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
+            "label": "Book NYC and Niagara flights",
+            "depends_on": "explicit travel deadline and administrative queue status"
+          },
+          {
+            "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
+            "label": "Research latest hair-loss evidence",
+            "depends_on": "explicit priority and a bounded research question"
+          }
+        ],
+        "gate": "Select one only when its deadline or expected information value is explicitly higher; otherwise keep both queued and collect the missing decision evidence."
+      }
+    ],
+    "checkpoints": [
+      {
+        "at": "2026-07-27T12:00:00Z",
+        "question": "Which done or blocker artifacts exist, and did WIP=1 produce a complete OODA loop?",
+        "decision": "Continue, redesign the action structure, or invoke a documented exception."
+      },
+      {
+        "at": "2026-08-01T12:00:00Z",
+        "question": "Did the tax critical path expose and clear its actual dependency constraint?",
+        "decision": "Continue the chain or hold it on the exact external blocker."
+      },
+      {
+        "at": "2026-08-08T12:00:00Z",
+        "question": "Which model contributions predicted useful outcomes, and which should be strengthened, weakened, or retired?",
+        "decision": "Update the expert weights and select the next single execution horizon."
+      }
+    ]
+  }
+}

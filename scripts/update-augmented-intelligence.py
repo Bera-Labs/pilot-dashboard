@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Validate and atomically apply one Augmented Intelligence analysis payload.
 
-The model produces one JSON payload. This script validates it, then updates the
-four coupled artifacts together: dashboard state, growth history, calibration,
-and the canonical current synthesis Markdown file.
+The model produces one analysis JSON payload and one structured intelligence
+specification. This script validates both, then updates the coupled dashboard
+state, growth history, calibration, canonical synthesis, and MoE graph source.
 """
 
 from __future__ import annotations
@@ -14,9 +14,10 @@ import os
 import tempfile
 from datetime import datetime
 from pathlib import Path
+from typing import NoReturn
 
 
-def fail(message: str) -> None:
+def fail(message: str) -> NoReturn:
     raise ValueError(message)
 
 
@@ -27,6 +28,30 @@ def require(mapping: dict, key: str, expected_type):
     if not isinstance(value, expected_type):
         fail(f"{key} must be {expected_type}, got {type(value).__name__}")
     return value
+
+
+def require_object_rows(rows: list, name: str) -> list[dict]:
+    objects: list[dict] = []
+    seen: set[str] = set()
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            fail(f"{name}[{index}] must be an object")
+        row_id = require(row, "id", str)
+        if not row_id:
+            fail(f"{name}[{index}].id cannot be empty")
+        if row_id in seen:
+            fail(f"duplicate {name} id: {row_id}")
+        seen.add(row_id)
+        objects.append(row)
+    return objects
+
+
+def require_references(owner: str, values: list, known: set[str], kind: str) -> None:
+    if not all(isinstance(value, str) and value for value in values):
+        fail(f"{owner} {kind} references must be non-empty strings")
+    missing = sorted(set(values) - known)
+    if missing:
+        fail(f"{owner} references unknown {kind}: {missing}")
 
 
 def validate(payload: dict) -> None:
@@ -84,6 +109,96 @@ def validate(payload: dict) -> None:
         fail("confidence must be between 0 and 1")
 
 
+def validate_intelligence_spec(spec: dict, payload: dict) -> None:
+    if require(spec, "schema_version", str) != "3.0.0":
+        fail("intelligence spec schema_version must be 3.0.0")
+    generated_at = require(spec, "generated_at", str)
+    try:
+        generated_dt = datetime.fromisoformat(generated_at.replace("Z", "+00:00"))
+        run_dt = datetime.fromisoformat(payload["last_run"].replace("Z", "+00:00"))
+    except ValueError as exc:
+        fail(f"intelligence spec generated_at must be ISO-8601: {exc}")
+    if generated_dt != run_dt:
+        fail("intelligence spec generated_at must match analysis last_run")
+
+    method = require(spec, "method", dict)
+    if require(method, "name", str) != "Mixture of Experts":
+        fail("intelligence spec method must be Mixture of Experts")
+    experts = require_object_rows(require(method, "experts", list), "experts")
+    models = require_object_rows(require(spec, "models", list), "models")
+    evidence = require_object_rows(require(spec, "evidence", list), "evidence")
+    syntheses = require_object_rows(require(spec, "syntheses", list), "syntheses")
+    decisions = require_object_rows(require(spec, "decisions", list), "decisions")
+    actions = require_object_rows(require(spec, "actions", list), "actions")
+    blueprint = require(spec, "blueprint", dict)
+    phases = require_object_rows(require(blueprint, "phases", list), "phases")
+    if not experts or not models or not evidence or not syntheses or not decisions:
+        fail("intelligence spec evidence, models, experts, syntheses, and decisions cannot be empty")
+    if len(actions) != 3:
+        fail("intelligence spec must contain exactly three current actions")
+    if not phases:
+        fail("intelligence blueprint must contain at least one phase")
+
+    model_ids = {row["id"] for row in models}
+    evidence_ids = {row["id"] for row in evidence}
+    expert_ids = {row["id"] for row in experts}
+    synthesis_ids = {row["id"] for row in syntheses}
+    decision_ids = {row["id"] for row in decisions}
+    action_ids = {row["id"] for row in actions}
+
+    for row in models:
+        for key in ("label", "role", "source"):
+            require(row, key, str)
+        require_references(row["id"], require(row, "evidence_ids", list), evidence_ids, "evidence")
+    for row in evidence:
+        for key in ("label", "summary"):
+            require(row, key, str)
+    for row in experts:
+        for key in ("label", "mission", "proposal", "falsified_by"):
+            require(row, key, str)
+        for key in ("assumptions", "derivation", "risks"):
+            values = require(row, key, list)
+            if not all(isinstance(value, str) and value for value in values):
+                fail(f"{row['id']}.{key} must contain non-empty strings")
+        refs = require(row, "model_ids", list)
+        require_references(row["id"], refs, model_ids, "models")
+    for row in syntheses:
+        for key in ("title", "problem", "solution"):
+            require(row, key, str)
+        model_refs = require(row, "model_ids", list)
+        if len(model_refs) < 2:
+            fail(f"{row['id']} must use at least two models")
+        require_references(row["id"], model_refs, model_ids, "models")
+        require_references(row["id"], require(row, "expert_ids", list), expert_ids, "experts")
+        require_references(row["id"], require(row, "evidence_ids", list), evidence_ids, "evidence")
+    for row in decisions:
+        for key in ("label", "rationale"):
+            require(row, key, str)
+        require_references(row["id"], require(row, "solution_ids", list), synthesis_ids, "solutions")
+    for row in actions:
+        for key in ("label", "task_id", "timebox", "first_step", "done_when"):
+            require(row, key, str)
+        require_references(row["id"], require(row, "decision_ids", list), decision_ids, "decisions")
+    for row in phases:
+        require(row, "order", int)
+        for key in ("horizon", "title", "status", "decision", "gate"):
+            require(row, key, str)
+        require_references(row["id"], require(row, "decision_ids", list), decision_ids, "decisions")
+        require_references(row["id"], require(row, "action_ids", list), action_ids, "actions")
+        queue = require(row, "queue", list)
+        for index, queued in enumerate(queue):
+            if not isinstance(queued, dict):
+                fail(f"{row['id']}.queue[{index}] must be an object")
+            for key in ("task_id", "label", "depends_on"):
+                require(queued, key, str)
+
+    spec_task_ids = {item["task_id"] for item in actions}
+    payload_task_ids = {item["task_id"] for item in payload["top_actions"]}
+    if len(spec_task_ids) != 3 or spec_task_ids != payload_task_ids:
+        fail("intelligence spec actions must match three unique analysis top_actions task IDs")
+
+
+
 def atomic_write(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, temp_name = tempfile.mkstemp(prefix=path.name + ".", dir=path.parent)
@@ -110,13 +225,21 @@ def strategy_text(value: dict) -> str:
     return " ".join(str(v) for v in value.values() if v not in (None, ""))
 
 
-def canonical_markdown(payload: dict) -> str:
+def canonical_markdown(payload: dict, spec: dict) -> str:
     actions = "\n".join(
         f"{i}. **{a['action']}** (`{a['task_id']}`) — {a['time']}. "
         f"First: {a['first_step']} Done when: {a['done_when']} Fallback: {a['fallback']}"
         for i, a in enumerate(payload["top_actions"], 1)
     )
     forecast = payload["forecast"]
+    model_names = ", ".join(model["label"] for model in spec["models"])
+    expert_names = ", ".join(expert["label"] for expert in spec["method"]["experts"])
+    blueprint = spec["blueprint"]
+    phases = "\n".join(
+        f"{phase['order']}. **{phase['horizon']} — {phase['title']}** ({phase['status']}): "
+        f"{phase['decision']} Gate: {phase['gate']}"
+        for phase in blueprint["phases"]
+    )
     return f'''---
 canonical: true
 status: current
@@ -126,7 +249,9 @@ updated_at: {payload["last_run"]}
 ---
 # Current Augmented Intelligence
 
-**STEM Model:** [[Euclidean Thinking]] and [[Probabilistic Thinking]] and [[Thinking in Bets]] and [[Warp-Speed Execution]]
+**Method:** Mixture of Experts
+**Experts:** {expert_names}
+**Models:** {model_names}
 **Data Source:** {payload["evidence_summary"]}
 
 ## Current Constraint
@@ -142,6 +267,11 @@ updated_at: {payload["last_run"]}
 
 ## Current Actions
 {actions}
+
+## Decision-to-Execution Blueprint
+**Timeframe:** {blueprint["timeframe"]}
+
+{phases}
 
 ## Forecast
 - Bear ({forecast["bear"]["probability"]:.0%}): {forecast["bear"]["scenario"]}
@@ -160,9 +290,10 @@ Confidence: {payload["confidence"]:.0%}
 '''
 
 
-def apply(payload: dict, dashboard_root: Path, calibration_file: Path, wiki_root: Path) -> dict:
+def apply(payload: dict, spec: dict, dashboard_root: Path, calibration_file: Path, wiki_root: Path) -> dict:
     state_file = dashboard_root / "data" / "state.json"
     growth_file = dashboard_root / "data" / "growth.json"
+    intelligence_file = dashboard_root / "data" / "augmented-intelligence.json"
     canonical_file = wiki_root / "connections" / "Current Augmented Intelligence.md"
 
     state = load_json(state_file, {})
@@ -196,6 +327,12 @@ def apply(payload: dict, dashboard_root: Path, calibration_file: Path, wiki_root
 
     calibration = load_json(calibration_file, {"version": "3.0.0", "predictions": [], "metrics": {}})
     predictions = calibration.setdefault("predictions", [])
+    metrics = calibration.setdefault("metrics", {})
+    # Formal prediction rows may be incomplete; preserve the attributable historical run counter.
+    prior_total_runs = metrics.get("total_runs", len(predictions))
+    if isinstance(prior_total_runs, bool) or not isinstance(prior_total_runs, int) or prior_total_runs < 0:
+        fail("calibration metrics.total_runs must be a non-negative integer")
+    is_new_calibration_run = not any(entry.get("date") == payload["last_run"] for entry in predictions)
     calibration_entry = {
         "date": payload["last_run"],
         "forecast": payload["forecast"],
@@ -208,18 +345,23 @@ def apply(payload: dict, dashboard_root: Path, calibration_file: Path, wiki_root
         "confidence": payload["confidence"],
     }
     calibration["predictions"] = [entry for entry in predictions if entry.get("date") != payload["last_run"]] + [calibration_entry]
-    calibration.setdefault("metrics", {})["last_review"] = payload["last_run"]
-    calibration["metrics"]["total_runs"] = len(calibration["predictions"])
+    metrics["last_review"] = payload["last_run"]
+    metrics["total_runs"] = max(
+        prior_total_runs + (1 if is_new_calibration_run else 0),
+        len(calibration["predictions"]),
+    )
 
     atomic_write(state_file, json.dumps(state, indent=2, ensure_ascii=False) + "\n")
     atomic_write(growth_file, json.dumps(growth, indent=2, ensure_ascii=False) + "\n")
     atomic_write(calibration_file, json.dumps(calibration, indent=2, ensure_ascii=False) + "\n")
-    atomic_write(canonical_file, canonical_markdown(payload))
+    atomic_write(intelligence_file, json.dumps(spec, indent=2, ensure_ascii=False) + "\n")
+    atomic_write(canonical_file, canonical_markdown(payload, spec))
 
     return {
         "state": str(state_file),
         "growth": str(growth_file),
         "calibration": str(calibration_file),
+        "intelligence_spec": str(intelligence_file),
         "canonical": str(canonical_file),
         "run_date": run_date,
     }
@@ -228,6 +370,7 @@ def apply(payload: dict, dashboard_root: Path, calibration_file: Path, wiki_root
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("payload", type=Path)
+    parser.add_argument("--intelligence-spec", type=Path, required=True)
     parser.add_argument("--dashboard-root", type=Path, default=Path("/root/pilot-dashboard"))
     parser.add_argument("--calibration", type=Path, default=Path("/root/.hermes/skills/stem-stack/nightly-momentum-engine/calibration.json"))
     parser.add_argument("--wiki-root", type=Path, default=Path("/root/wiki-augmented-intelligence"))
@@ -235,13 +378,17 @@ def main() -> None:
     args = parser.parse_args()
 
     payload = json.loads(args.payload.read_text(encoding="utf-8"))
+    spec = json.loads(args.intelligence_spec.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         fail("payload root must be an object")
+    if not isinstance(spec, dict):
+        fail("intelligence spec root must be an object")
     validate(payload)
+    validate_intelligence_spec(spec, payload)
     if args.check:
-        print(json.dumps({"status": "valid", "payload": str(args.payload)}, sort_keys=True))
+        print(json.dumps({"status": "valid", "payload": str(args.payload), "intelligence_spec": str(args.intelligence_spec)}, sort_keys=True))
         return
-    result = apply(payload, args.dashboard_root, args.calibration, args.wiki_root)
+    result = apply(payload, spec, args.dashboard_root, args.calibration, args.wiki_root)
     print(json.dumps({"status": "updated", **result}, sort_keys=True))
 
 

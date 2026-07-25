@@ -8,7 +8,7 @@
 <style>
   :root {
     --bg: #0a0e14; --surface: #131820; --border: #1e2a3a; --text: #b3c7d6;
-    --text-dim: #556678; --accent: #39bae6; --accent-glow: rgba(57,186,230,0.15);
+    --text-dim: #7190a2; --accent: #39bae6; --accent-glow: rgba(57,186,230,0.15);
     --green: #c2d94c; --red: #ff8f40; --yellow: #ffb454;
     --font-mono: 'Space Mono', 'SF Mono', Consolas, monospace;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -31,10 +31,28 @@
 
   /* GRAPH CONTAINER */
   #graph-container {
-    width: 100%; height: 500px; background: var(--surface);
-    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 40px;
+    width: 100%; height: 640px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px;
     overflow: hidden; position: relative;
   }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .graph-node:focus { outline: none; stroke: var(--yellow); stroke-width: 3px; }
+  .graph-text-alternative { margin: 0 0 40px; border: 1px solid var(--border); border-radius: 7px; background: rgba(19, 24, 32, 0.65); color: var(--text-dim); }
+  .graph-text-alternative summary { cursor: pointer; padding: 10px 13px; color: #91a8b8; font: 10px/1.3 var(--font-mono); text-transform: uppercase; letter-spacing: 0.7px; }
+  .graph-outline { padding: 2px 16px 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 24px; }
+  .graph-outline-group h3 { margin: 8px 0 6px; color: var(--accent); font: 11px/1.4 var(--font-mono); text-transform: uppercase; }
+  .graph-outline-group ul { padding-left: 18px; }
+  .graph-outline-group li { margin: 4px 0; color: #a9bac5; font-size: 12px; line-height: 1.5; }
+  .graph-outline-relations { grid-column: 1 / -1; color: #91a8b8; font-size: 12px; line-height: 1.5; }
+  .graph-legend {
+    position: absolute; z-index: 2; left: 14px; top: 14px;
+    display: flex; flex-wrap: wrap; gap: 6px 10px; max-width: calc(100% - 28px);
+    padding: 8px 10px; border: 1px solid rgba(85, 102, 120, 0.25); border-radius: 7px;
+    background: rgba(10, 14, 20, 0.82); backdrop-filter: blur(8px);
+  }
+  .graph-legend-item { display: inline-flex; align-items: center; gap: 5px; color: #8195a5; font: 9px/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.5px; }
+  .graph-legend-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .graph-label { paint-order: stroke; stroke: rgba(10, 14, 20, 0.95); stroke-width: 3px; stroke-linejoin: round; }
 
   /* SYNTHESES CARDS */
   .section-title {
@@ -97,6 +115,9 @@
   .synth-text li::marker { color: var(--accent); font-family: var(--font-mono); }
   .synth-section.solution .synth-text li::marker { color: var(--green); }
   .synth-section.solution .synth-text strong { color: #d9ea72; }
+  .synth-disagreement { padding: 15px 24px 18px; border-top: 1px solid rgba(255, 180, 84, 0.2); background: rgba(255, 180, 84, 0.035); }
+  .synth-disagreement .synth-label { margin-bottom: 8px; color: var(--yellow); }
+  .synth-disagreement .synth-text { color: #c8d1d6; font-size: 12.5px; line-height: 1.6; }
   .rich-heading {
     margin: 18px 0 8px; color: #e9f1f5; font-size: 13px; line-height: 1.4;
     font-weight: 650; letter-spacing: 0.01em;
@@ -119,6 +140,59 @@
   }
   .math-inline { font-family: var(--font-mono); color: #d7e3e9; }
 
+  /* EXECUTION BLUEPRINT */
+  .blueprint-shell { margin-top: 48px; }
+  .blueprint {
+    overflow: hidden; border: 1px solid rgba(57, 186, 230, 0.34); border-radius: 14px;
+    background: linear-gradient(155deg, rgba(16, 23, 32, 0.99), rgba(9, 14, 21, 0.99));
+    box-shadow: 0 20px 52px rgba(0, 0, 0, 0.24), 0 0 32px rgba(57, 186, 230, 0.04);
+  }
+  .blueprint-header { padding: 26px 28px 24px; border-bottom: 1px solid rgba(85, 102, 120, 0.24); }
+  .blueprint-heading-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+  .blueprint-kicker { margin-bottom: 7px; color: var(--accent); font: 10px/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 1.1px; }
+  .blueprint-title { color: #f4f8fa; font-size: 24px; line-height: 1.25; letter-spacing: -0.02em; }
+  .blueprint-timeframe { flex: 0 0 auto; padding: 6px 9px; border: 1px solid rgba(57, 186, 230, 0.25); border-radius: 999px; background: rgba(57, 186, 230, 0.07); color: #8bd8f2; font: 10px/1.2 var(--font-mono); }
+  .blueprint-objective { max-width: 850px; margin-top: 13px; color: #bfd0dc; font-size: 14.5px; line-height: 1.65; }
+  .blueprint-constraint { margin-top: 16px; padding: 11px 13px; border-left: 2px solid var(--yellow); background: rgba(255, 180, 84, 0.05); color: #c9d5dc; font-size: 13px; line-height: 1.55; }
+  .blueprint-constraint strong { color: var(--yellow); }
+  .blueprint-rules { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+  .blueprint-rule { padding: 5px 8px; border-radius: 5px; background: rgba(194, 217, 76, 0.07); color: #c6d86e; font: 10px/1.3 var(--font-mono); }
+  .blueprint-timeline { position: relative; padding: 28px; }
+  .blueprint-timeline::before { content: ''; position: absolute; left: 48px; top: 44px; bottom: 44px; width: 1px; background: linear-gradient(var(--accent), rgba(194, 217, 76, 0.5), rgba(85, 102, 120, 0.15)); }
+  .blueprint-phase { position: relative; display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 16px; padding-bottom: 24px; }
+  .blueprint-phase:last-child { padding-bottom: 0; }
+  .phase-index {
+    position: relative; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px;
+    border: 1px solid rgba(57, 186, 230, 0.4); border-radius: 50%; background: #0c131c;
+    color: var(--accent); font: 12px/1 var(--font-mono);
+  }
+  .blueprint-phase.conditional .phase-index { border-color: rgba(194, 217, 76, 0.32); color: var(--green); }
+  .phase-card { overflow: hidden; border: 1px solid rgba(85, 102, 120, 0.25); border-radius: 10px; background: rgba(19, 24, 32, 0.72); }
+  .phase-head { padding: 17px 18px 15px; border-bottom: 1px solid rgba(85, 102, 120, 0.18); }
+  .phase-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 7px; }
+  .phase-horizon { color: var(--accent); font: 10px/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.7px; }
+  .phase-status { padding: 3px 6px; border-radius: 999px; background: rgba(57, 186, 230, 0.07); color: #7acfeb; font: 8px/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.6px; }
+  .blueprint-phase.conditional .phase-status { background: rgba(194, 217, 76, 0.07); color: #c2d94c; }
+  .phase-title { color: #eef4f7; font-size: 17px; line-height: 1.3; }
+  .phase-window { margin-top: 4px; color: var(--text-dim); font: 10px/1.3 var(--font-mono); }
+  .phase-decision { padding: 14px 18px 0; color: #c3d2da; font-size: 13.5px; line-height: 1.6; }
+  .phase-steps { display: grid; gap: 9px; padding: 14px 18px 16px; }
+  .phase-step { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; padding: 11px 12px; border: 1px solid rgba(85, 102, 120, 0.18); border-radius: 7px; background: rgba(10, 15, 22, 0.62); }
+  .step-order { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 5px; background: rgba(57, 186, 230, 0.09); color: var(--accent); font: 10px/1 var(--font-mono); }
+  .step-title { color: #e7eef2; font-size: 13px; font-weight: 650; line-height: 1.4; }
+  .step-id { margin-left: 6px; color: #7190a2; font: 9px/1.3 var(--font-mono); }
+  .step-detail { margin-top: 4px; color: #8ea2af; font-size: 12px; line-height: 1.5; }
+  .step-done { margin-top: 5px; color: #b6c785; font-size: 11.5px; line-height: 1.5; }
+  .phase-gate { padding: 12px 18px 14px; border-top: 1px solid rgba(85, 102, 120, 0.16); background: rgba(194, 217, 76, 0.035); color: #aebd8b; font-size: 12px; line-height: 1.55; }
+  .phase-gate strong { color: var(--green); font: 9px/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.6px; }
+  .blueprint-checkpoints { padding: 0 28px 28px; }
+  .checkpoint-title { margin-bottom: 12px; color: #859aa8; font: 10px/1.2 var(--font-mono); text-transform: uppercase; letter-spacing: 0.9px; }
+  .checkpoint-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .checkpoint { padding: 13px; border: 1px solid rgba(85, 102, 120, 0.2); border-radius: 8px; background: rgba(10, 15, 22, 0.54); }
+  .checkpoint-at { color: var(--accent); font: 9px/1.3 var(--font-mono); }
+  .checkpoint-question { margin-top: 7px; color: #c3d1d9; font-size: 12px; line-height: 1.5; }
+  .checkpoint-decision { margin-top: 7px; color: #7f939f; font-size: 11.5px; line-height: 1.5; }
+
   /* D3 TOOLTIP */
   .tooltip {
     position: absolute; text-align: center; padding: 6px 10px; font-size: 12px;
@@ -131,15 +205,26 @@
     .synthesis-columns { columns: 1; }
     .is-current .synth-body { grid-template-columns: 1fr; }
     .is-current .synth-section + .synth-section { border-left: 0; border-top: 1px solid rgba(85, 102, 120, 0.16); }
+    .checkpoint-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
     .header { align-items: flex-start; gap: 18px; }
     .header-left h1 { font-size: 16px; }
-    #graph-container { height: 420px; }
+    #graph-container { height: 520px; }
+    .graph-legend { right: 10px; left: 10px; top: 10px; }
+    .graph-outline { grid-template-columns: 1fr; }
     .synth-header, .synth-section { padding-left: 18px; padding-right: 18px; }
-    .synth-heading-row { flex-direction: column; }
+    .synth-heading-row, .blueprint-heading-row { flex-direction: column; }
     .synth-badges { justify-content: flex-start; }
     .synth-text { font-size: 14px; }
+    .blueprint-header { padding: 22px 18px; }
+    .blueprint-title { font-size: 21px; }
+    .blueprint-timeline { padding: 22px 14px; }
+    .blueprint-timeline::before { left: 34px; }
+    .blueprint-phase { grid-template-columns: 40px minmax(0, 1fr); gap: 9px; }
+    .phase-head, .phase-decision, .phase-steps, .phase-gate { padding-left: 14px; padding-right: 14px; }
+    .phase-meta { align-items: flex-start; flex-direction: column; gap: 5px; }
+    .blueprint-checkpoints { padding: 0 14px 22px; }
   }
 </style>
 </head>
@@ -155,13 +240,25 @@
   </div>
 </div>
 
-<div id="graph-container"></div>
-<div class="tooltip" id="tooltip"></div>
+<section aria-labelledby="graph-section-title">
+  <h2 class="sr-only" id="graph-section-title">Mixture-of-Experts reasoning graph</h2>
+  <div id="graph-container" role="region" aria-label="Interactive reasoning graph" aria-describedby="graph-outline-description"></div>
+  <details class="graph-text-alternative">
+    <summary>Accessible graph outline</summary>
+    <div class="graph-outline" id="graph-outline-description"></div>
+  </details>
+</section>
+<div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
 
 <div class="section-title">Novel Syntheses & Emergent Solutions</div>
 <div class="syntheses-grid" id="syntheses-container">
   <!-- Filled by JS -->
 </div>
+
+<section class="blueprint-shell" aria-labelledby="blueprint-section-title">
+  <div class="section-title" id="blueprint-section-title">Final Blueprint // Decisions & Execution</div>
+  <div id="blueprint-container"></div>
+</section>
 
 
 <script>
@@ -324,7 +421,7 @@
 
       let html = `<div class="synth-header">
         <div class="synth-heading-row">
-          <div class="synth-title">${escapeHtml(s.title)}</div>
+          <h2 class="synth-title">${escapeHtml(s.title)}</h2>
           ${badgeHtml}
         </div>
         <div class="synth-models">${renderModelChips(s.model)}</div>
@@ -345,6 +442,12 @@
       }
 
       html += '</div>';
+      if (s.disagreement) {
+        html += `<section class="synth-disagreement">
+          <div class="synth-label">Expert disagreement / resolution</div>
+          <div class="synth-text">${formatRichText(s.disagreement)}</div>
+        </section>`;
+      }
       card.innerHTML = html;
       (s.is_current ? container : columns).appendChild(card);
     });
@@ -352,72 +455,273 @@
     if (columns.childElementCount) container.appendChild(columns);
   }
 
+  let augmentedActions = [];
+
+  function taskIdLabel(taskId) {
+    const value = String(taskId || '');
+    return value.length > 12 ? `${value.slice(0, 8)}…` : value;
+  }
+
+  function renderBlueprint(blueprint) {
+    const container = document.getElementById('blueprint-container');
+    if (!blueprint || !Array.isArray(blueprint.phases)) {
+      container.innerHTML = '<div class="blueprint"><div class="blueprint-header">Blueprint unavailable.</div></div>';
+      return;
+    }
+
+    const actionMap = new Map(augmentedActions.map(action => [action.id, action]));
+    const rules = (blueprint.operating_rules || [])
+      .map(rule => `<span class="blueprint-rule">${escapeHtml(rule)}</span>`)
+      .join('');
+
+    const phases = blueprint.phases.map((phase, phaseIndex) => {
+      const activeSteps = (phase.action_ids || [])
+        .map(actionId => actionMap.get(actionId))
+        .filter(Boolean)
+        .map(action => ({
+          label: action.label,
+          task_id: action.task_id,
+          detail: `${action.timebox} · First: ${action.first_step}`,
+          done: action.done_when
+        }));
+      const queuedSteps = (phase.queue || []).map(item => ({
+        label: item.label,
+        task_id: item.task_id,
+        detail: `Depends on: ${item.depends_on}`,
+        done: 'Conditional queue item — it does not become active until this phase gate opens.'
+      }));
+      const steps = [...activeSteps, ...queuedSteps]
+        .map((step, stepIndex) => `<div class="phase-step">
+          <div class="step-order">${stepIndex + 1}</div>
+          <div>
+            <div class="step-title">${escapeHtml(step.label)} <span class="step-id" title="${escapeHtml(step.task_id)}">${escapeHtml(taskIdLabel(step.task_id))}</span></div>
+            <div class="step-detail">${escapeHtml(step.detail)}</div>
+            <div class="step-done">${escapeHtml(step.done)}</div>
+          </div>
+        </div>`).join('');
+
+      return `<article class="blueprint-phase ${escapeHtml(phase.status || '')}">
+        <div class="phase-index">0${phaseIndex + 1}</div>
+        <div class="phase-card">
+          <div class="phase-head">
+            <div class="phase-meta">
+              <span class="phase-horizon">${escapeHtml(phase.horizon)}</span>
+              <span class="phase-status">${escapeHtml(phase.status)}</span>
+            </div>
+            <h3 class="phase-title">${escapeHtml(phase.title)}</h3>
+            <div class="phase-window">${escapeHtml(phase.window)}</div>
+          </div>
+          <div class="phase-decision">${escapeHtml(phase.decision)}</div>
+          <div class="phase-steps">${steps}</div>
+          <div class="phase-gate"><strong>Gate</strong><br>${escapeHtml(phase.gate)}</div>
+        </div>
+      </article>`;
+    }).join('');
+
+    const checkpoints = (blueprint.checkpoints || []).map(checkpoint => `<article class="checkpoint">
+      <div class="checkpoint-at">${escapeHtml(checkpoint.at)}</div>
+      <div class="checkpoint-question">${escapeHtml(checkpoint.question)}</div>
+      <div class="checkpoint-decision">Decision: ${escapeHtml(checkpoint.decision)}</div>
+    </article>`).join('');
+
+    container.innerHTML = `<div class="blueprint">
+      <div class="blueprint-header">
+        <div class="blueprint-heading-row">
+          <div>
+            <div class="blueprint-kicker">Mixture-of-Experts Game Plan</div>
+            <h2 class="blueprint-title">${escapeHtml(blueprint.title)}</h2>
+          </div>
+          <div class="blueprint-timeframe">${escapeHtml(blueprint.timeframe)}</div>
+        </div>
+        <div class="blueprint-objective">${escapeHtml(blueprint.objective)}</div>
+        <div class="blueprint-constraint"><strong>Current constraint:</strong> ${escapeHtml(blueprint.current_constraint)}</div>
+        <div class="blueprint-rules">${rules}</div>
+      </div>
+      <div class="blueprint-timeline">${phases}</div>
+      <div class="blueprint-checkpoints">
+        <div class="checkpoint-title">Decision checkpoints</div>
+        <div class="checkpoint-grid">${checkpoints}</div>
+      </div>
+    </div>`;
+  }
+
+  function renderGraphOutline(data) {
+    const container = document.getElementById('graph-outline-description');
+    container.replaceChildren();
+    const order = ['evidence', 'model', 'expert', 'solution', 'decision', 'action', 'phase'];
+    const relationCounts = new Map();
+    (data.links || []).forEach(link => relationCounts.set(link.relation, (relationCounts.get(link.relation) || 0) + 1));
+    const relations = document.createElement('p');
+    relations.className = 'graph-outline-relations';
+    relations.textContent = `Reasoning path: evidence → model → expert → solution → decision → action → phase. Relations: ${[...relationCounts.entries()].sort().map(([name, count]) => `${name} (${count})`).join(', ')}.`;
+    container.appendChild(relations);
+
+    order.forEach(group => {
+      const rows = (data.nodes || []).filter(node => node.group === group);
+      if (!rows.length) return;
+      const section = document.createElement('section');
+      section.className = 'graph-outline-group';
+      const heading = document.createElement('h3');
+      heading.textContent = `${group} (${rows.length})`;
+      const list = document.createElement('ul');
+      rows.forEach(node => {
+        const item = document.createElement('li');
+        item.textContent = node.summary ? `${node.label}: ${node.summary}` : node.label;
+        list.appendChild(item);
+      });
+      section.append(heading, list);
+      container.appendChild(section);
+    });
+  }
+
   function renderGraph(data) {
     const container = document.getElementById('graph-container');
     const width = container.clientWidth;
     const height = container.clientHeight;
+    const groupStyles = {
+      evidence: { color: '#ffb454', radius: 7, lane: 0.08 },
+      model: { color: '#39bae6', radius: 10, lane: 0.25 },
+      expert: { color: '#a78bfa', radius: 12, lane: 0.41 },
+      solution: { color: '#c2d94c', radius: 11, lane: 0.58 },
+      decision: { color: '#ff8f40', radius: 9, lane: 0.73 },
+      action: { color: '#70d7a3', radius: 8, lane: 0.80 },
+      phase: { color: '#f0f3f5', radius: 10, lane: 0.90 }
+    };
+    const styleFor = group => groupStyles[group] || { color: '#71808f', radius: 7, lane: 0.5 };
+
+    d3.select("#graph-container").selectAll("svg").remove();
+    container.querySelector('.graph-legend')?.remove();
+    const legend = document.createElement('div');
+    legend.className = 'graph-legend';
+    legend.innerHTML = Object.entries(groupStyles)
+      .map(([group, style]) => `<span class="graph-legend-item"><span class="graph-legend-dot" style="background:${style.color}"></span>${escapeHtml(group)}</span>`)
+      .join('');
+    container.appendChild(legend);
 
     const svg = d3.select("#graph-container")
       .append("svg")
       .attr("width", "100%")
       .attr("height", "100%")
-      .call(d3.zoom().on("zoom", function (event) {
+      .attr("role", "group")
+      .attr("aria-label", "Interactive left-to-right reasoning graph. Tab through nodes for details; use the accessible graph outline below for the complete textual alternative.")
+      .call(d3.zoom().scaleExtent([0.45, 3]).on("zoom", function (event) {
          g.attr("transform", event.transform);
       }));
 
     const g = svg.append("g");
     const tooltip = d3.select("#tooltip");
 
-    const simulation = d3.forceSimulation(data.nodes)
-      .force("link", d3.forceLink(data.links).id(d => d.id).distance(150))
-      .force("charge", d3.forceManyBody().strength(-400))
-      .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collide", d3.forceCollide().radius(50));
+    const byGroup = new Map();
+    data.nodes.forEach(node => {
+      if (!byGroup.has(node.group)) byGroup.set(node.group, []);
+      byGroup.get(node.group).push(node);
+    });
+    byGroup.forEach(rows => {
+      rows.sort((a, b) => String(a.label).localeCompare(String(b.label)));
+      rows.forEach((node, index) => {
+        node.laneY = 90 + ((index + 1) / (rows.length + 1)) * (height - 150);
+      });
+    });
 
-    // Lines
+    const simulation = d3.forceSimulation(data.nodes)
+      .force("link", d3.forceLink(data.links).id(function (d) { return d.id; }).distance(88).strength(0.05))
+      .force("charge", d3.forceManyBody().strength(-35))
+      .force("x", d3.forceX(function (d) { return width * styleFor(d.group).lane; }).strength(0.92))
+      .force("y", d3.forceY(function (d) { return d.laneY; }).strength(0.9))
+      .force("collide", d3.forceCollide().radius(function (d) { return styleFor(d.group).radius + 12; }))
+      .alphaDecay(0.045);
+
+    const relationColors = {
+      frames: '#6c7f92',
+      equips: '#586c8a',
+      derives: '#7d8f43',
+      selects: '#875f44',
+      governs: '#8a6f58',
+      executes: '#49795f',
+      scheduled_in: '#6e7881'
+    };
+
     const link = g.append("g")
-      .attr("stroke", "var(--border)")
-      .attr("stroke-opacity", 0.6)
-      .attr("stroke-width", 2)
+      .attr("stroke-opacity", 0.46)
+      .attr("stroke-width", 1.2)
       .selectAll("line")
       .data(data.links)
-      .join("line");
+      .join("line")
+      .attr("stroke", function (d) { return relationColors[d.relation] || '#263546'; });
 
-    // Nodes
     const node = g.append("g")
-      .attr("stroke", "#fff")
-      .attr("stroke-width", 1.5)
+      .attr("stroke", "#e8f0f4")
+      .attr("stroke-width", 1.1)
       .selectAll("circle")
       .data(data.nodes)
       .join("circle")
-      .attr("r", d => d.group === "concept" ? 12 : 8)
-      .attr("fill", d => d.group === "concept" ? "var(--accent)" : "var(--green)")
+      .attr("class", "graph-node")
+      .attr("tabindex", 0)
+      .attr("role", "img")
+      .attr("aria-label", function (d) {
+        return `${d.label || d.id}. Type: ${d.group}.${d.summary ? ` ${d.summary}` : ''}`;
+      })
+      .attr("r", function (d) { return styleFor(d.group).radius; })
+      .attr("fill", function (d) { return styleFor(d.group).color; })
       .call(drag(simulation));
 
-    // Labels
+    const labeledNodes = data.nodes.filter(function (d) {
+      return d.group !== 'action' || d.queue_state === 'active-controller';
+    });
     const label = g.append("g")
       .selectAll("text")
-      .data(data.nodes)
+      .data(labeledNodes)
       .join("text")
       .attr("class", "graph-label")
-      .text(d => d.label || d.id)
-      .attr("font-size", "12px")
-      .attr("fill", "var(--text)")
-      .attr("dx", 15)
-      .attr("dy", 4)
+      .text(function (d) { return d.graph_label || d.label || d.id; })
+      .attr("font-size", function (d) { return d.group === 'expert' || d.group === 'solution' ? '10px' : '9px'; })
+      .attr("fill", "#aebfca")
+      .attr("text-anchor", "start")
+      .attr("dx", function (d) { return styleFor(d.group).radius + 5; })
+      .attr("dy", function (d) {
+        if (d.group === 'action') return 5 + (Number(d.order) || 1) * 7;
+        return { evidence: -7, model: 4, expert: -8, solution: 10, decision: -8, phase: 3 }[d.group] || 3;
+      })
       .style("pointer-events", "none");
 
-    // Hover Tooltips
-    node.on("mouseover", (event, d) => {
+    function showNodeTooltip(target, d, pageX, pageY) {
+      const summary = d.summary ? `<br><span style="color:#9aabb6">${escapeHtml(d.summary)}</span>` : '';
       tooltip.style("opacity", 1)
-             .html(`<b>${escapeHtml(d.label || d.id)}</b><br>Type: ${escapeHtml(d.group)}`)
-             .style("left", (event.pageX + 10) + "px")
-             .style("top", (event.pageY - 28) + "px");
-      d3.select(event.currentTarget).attr("stroke", "var(--yellow)").attr("stroke-width", 3);
-    })
-    .on("mouseout", (event) => {
+             .html(`<b>${escapeHtml(d.label || d.id)}</b><br>Type: ${escapeHtml(d.group)}${summary}`)
+             .style("max-width", "340px")
+             .style("text-align", "left")
+             .style("left", (pageX + 10) + "px")
+             .style("top", (pageY - 28) + "px");
+      d3.select(target).attr("stroke", "var(--yellow)").attr("stroke-width", 3);
+    }
+
+    function hideNodeTooltip(target) {
       tooltip.style("opacity", 0);
-      d3.select(event.currentTarget).attr("stroke", "#fff").attr("stroke-width", 1.5);
+      d3.select(target).attr("stroke", "#e8f0f4").attr("stroke-width", 1.1);
+    }
+
+    node.on("mouseover", function (event, d) {
+      showNodeTooltip(event.currentTarget, d, event.pageX, event.pageY);
+    })
+    .on("mouseout", function (event) {
+      if (document.activeElement !== event.currentTarget) hideNodeTooltip(event.currentTarget);
+    })
+    .on("focus", function (event, d) {
+      const bounds = event.currentTarget.getBoundingClientRect();
+      showNodeTooltip(event.currentTarget, d, bounds.right + window.scrollX, bounds.top + window.scrollY);
+    })
+    .on("blur", function (event) {
+      hideNodeTooltip(event.currentTarget);
+    })
+    .on("keydown", function (event, d) {
+      if (event.key === 'Escape') {
+        hideNodeTooltip(event.currentTarget);
+        event.currentTarget.blur();
+      } else if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        const bounds = event.currentTarget.getBoundingClientRect();
+        showNodeTooltip(event.currentTarget, d, bounds.right + window.scrollX, bounds.top + window.scrollY);
+      }
     });
 
     simulation.on("tick", () => {
@@ -461,9 +765,13 @@
       const res = await fetch('/api/augmented-graph');
       if (!res.ok) throw new Error('API Error');
       const data = await res.json();
+      augmentedActions = data.actions || [];
+      renderGraphOutline(data);
       renderGraph(data);
       renderSyntheses(data.syntheses || []);
-      document.getElementById('data-status').innerText = `Graph loaded: ${data.nodes.length} nodes, ${data.links.length} connections`;
+      renderBlueprint(data.blueprint);
+      const method = data.meta?.method ? ` · ${data.meta.method}` : '';
+      document.getElementById('data-status').innerText = `Graph loaded: ${data.nodes.length} nodes, ${data.links.length} reasoning links${method}`;
     } catch(e) {
       document.getElementById('graph-container').innerHTML = `<div style="padding:40px;text-align:center;color:var(--red);">Error loading graph data.</div>`;
       document.getElementById('data-status').innerText = 'Offline';

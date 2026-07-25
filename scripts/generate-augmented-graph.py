@@ -1,209 +1,331 @@
 #!/usr/bin/env python3
-"""Build the Augmented Intelligence graph deterministically.
+"""Build the Augmented Intelligence mixture-of-experts graph deterministically.
 
-Canonicalizes wiki IDs, preserves display labels, records provenance/freshness,
-and emits warnings instead of silently creating duplicate concept nodes.
+The source contract is structured data rather than inferred wiki links. The
+resulting graph makes the reasoning chain explicit:
+Outliner evidence -> model framing -> expert derivation -> integrated solution ->
+decision -> action -> time-bound execution phase.
 """
 
 from __future__ import annotations
 
-import glob
 import hashlib
 import json
-import re
-import unicodedata
-from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any, NoReturn, cast
 
-WIKI_DIR = Path("/root/wiki-augmented-intelligence")
-OUT_FILE = Path("/root/pilot-dashboard/data/augmented-graph.json")
-SCHEMA_VERSION = "2.0.0"
-
-
-def canonical_label(value: str) -> str:
-    value = value.replace("_", " ")
-    return re.sub(r"\s+", " ", value).strip()
+ROOT = Path("/root/pilot-dashboard")
+SOURCE_FILE = ROOT / "data" / "augmented-intelligence.json"
+OUT_FILE = ROOT / "data" / "augmented-graph.json"
+SCHEMA_VERSION = "3.0.0"
 
 
-def slugify(value: str) -> str:
-    value = unicodedata.normalize("NFKD", canonical_label(value)).encode("ascii", "ignore").decode()
-    value = re.sub(r"[^a-zA-Z0-9]+", "-", value).strip("-").lower()
-    return value or "untitled"
+def fail(message: str) -> NoReturn:
+    raise ValueError(message)
 
 
-def extract_section(content: str, names: list[str]) -> str:
-    for name in names:
-        match = re.search(
-            rf"^##\s+{name}\s*$\n(.*?)(?=^##\s+|\Z)",
-            content,
-            re.MULTILINE | re.DOTALL | re.IGNORECASE,
-        )
-        if match:
-            return match.group(1).strip()
-    return ""
+def require_list(mapping: dict[str, Any], key: str) -> list[dict[str, Any]]:
+    value = mapping.get(key)
+    if not isinstance(value, list):
+        fail(f"{key} must be a list")
+    if not all(isinstance(item, dict) for item in value):
+        fail(f"{key} must contain objects")
+    return cast(list[dict[str, Any]], value)
 
 
-def extract_frontmatter(content: str) -> dict[str, str]:
-    if not content.startswith("---\n"):
-        return {}
-    end = content.find("\n---\n", 4)
-    if end < 0:
-        return {}
-    result: dict[str, str] = {}
-    for line in content[4:end].splitlines():
-        if ":" in line:
-            key, value = line.split(":", 1)
-            result[key.strip()] = value.strip().strip('"\'')
+def index_unique(rows: list[dict[str, Any]], kind: str) -> dict[str, dict[str, Any]]:
+    result: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        node_id = row.get("id")
+        if not isinstance(node_id, str) or not node_id:
+            fail(f"{kind} row missing id")
+        if node_id in result:
+            fail(f"duplicate {kind} id: {node_id}")
+        result[node_id] = row
     return result
 
 
-def iso_mtime(path: Path) -> str:
-    return datetime.fromtimestamp(path.stat().st_mtime, timezone.utc).isoformat().replace("+00:00", "Z")
+def require_refs(owner: str, refs: list[str], known: set[str], kind: str) -> None:
+    missing = sorted(set(refs) - known)
+    if missing:
+        fail(f"{owner} references unknown {kind}: {missing}")
 
 
-paths = sorted(
-    [Path(p) for p in glob.glob(str(WIKI_DIR / "concepts" / "*.md"))]
-    + [Path(p) for p in glob.glob(str(WIKI_DIR / "connections" / "*.md"))],
-    key=lambda p: str(p).casefold(),
-)
-
-if not paths:
-    raise SystemExit(f"No wiki files found under {WIKI_DIR}")
-
-nodes_by_id: dict[str, dict] = {}
-links: set[tuple[str, str]] = set()
-syntheses: list[dict] = []
-warnings: list[str] = []
-known_labels: dict[str, str] = {}
-
-# Register authored files first so all wikilinks resolve to canonical authored nodes.
-for path in paths:
-    label = canonical_label(path.stem)
-    node_id = slugify(label)
-    group = "concept" if path.parent.name == "concepts" else "connection"
-    if node_id in nodes_by_id:
-        warnings.append(f"duplicate canonical id '{node_id}' from {path}")
-        continue
-    nodes_by_id[node_id] = {
+def graph_node(node_id: str, label: str, group: str, summary: str, **extra: Any) -> dict[str, Any]:
+    node = {
         "id": node_id,
         "label": label,
         "group": group,
-        "source": str(path),
-        "updated_at": iso_mtime(path),
+        "summary": summary,
+        **extra,
     }
-    known_labels[canonical_label(label).casefold()] = node_id
+    if group in {"decision", "action", "phase"} and len(label) > 15:
+        node["graph_label"] = label[:14].rstrip() + "…"
+    return node
 
-for path in paths:
-    label = canonical_label(path.stem)
-    source_id = slugify(label)
-    if source_id not in nodes_by_id:
-        continue
-    content = path.read_text(encoding="utf-8")
-    frontmatter = extract_frontmatter(content)
 
-    for raw_target in re.findall(r"\[\[(.*?)\]\]", content):
-        target_label = canonical_label(raw_target.split("|", 1)[0])
-        target_id = known_labels.get(target_label.casefold(), slugify(target_label))
-        if target_id not in nodes_by_id:
-            nodes_by_id[target_id] = {
-                "id": target_id,
-                "label": target_label,
-                "group": "unknown",
-                "source": None,
-                "updated_at": None,
+def main() -> None:
+    source_text = SOURCE_FILE.read_text(encoding="utf-8")
+    spec = json.loads(source_text)
+    if spec.get("schema_version") != SCHEMA_VERSION:
+        fail(f"expected source schema {SCHEMA_VERSION}")
+
+    method = spec.get("method")
+    blueprint = spec.get("blueprint")
+    if not isinstance(method, dict) or method.get("name") != "Mixture of Experts":
+        fail("method must be Mixture of Experts")
+    if not isinstance(blueprint, dict):
+        fail("blueprint must be an object")
+
+    evidence = require_list(spec, "evidence")
+    models = require_list(spec, "models")
+    syntheses = require_list(spec, "syntheses")
+    decisions = require_list(spec, "decisions")
+    actions = require_list(spec, "actions")
+    experts = require_list(method, "experts")
+    phases = require_list(blueprint, "phases")
+
+    evidence_by_id = index_unique(evidence, "evidence")
+    model_by_id = index_unique(models, "model")
+    expert_by_id = index_unique(experts, "expert")
+    synthesis_by_id = index_unique(syntheses, "synthesis")
+    decision_by_id = index_unique(decisions, "decision")
+    action_by_id = index_unique(actions, "action")
+    index_unique(phases, "phase")
+
+    if len(actions) != 3 or len({row.get("task_id") for row in actions}) != 3:
+        fail("exactly three unique current task-backed actions are required")
+
+    nodes: list[dict[str, Any]] = []
+    links: set[tuple[str, str, str]] = set()
+
+    for row in evidence:
+        nodes.append(
+            graph_node(
+                row["id"],
+                row["label"],
+                "evidence",
+                row["summary"],
+                evidence_class=row.get("kind", "unknown"),
+                source_refs=row.get("source_refs", []),
+            )
+        )
+
+    for row in models:
+        evidence_ids = row.get("evidence_ids", [])
+        require_refs(row["id"], evidence_ids, set(evidence_by_id), "evidence")
+        nodes.append(
+            graph_node(
+                row["id"],
+                row["label"],
+                "model",
+                row["role"],
+                family=row.get("family"),
+                source=row.get("source"),
+                evidence_ids=evidence_ids,
+            )
+        )
+        for evidence_id in evidence_ids:
+            links.add((evidence_id, row["id"], "frames"))
+
+    for row in experts:
+        model_ids = row.get("model_ids", [])
+        require_refs(row["id"], model_ids, set(model_by_id), "models")
+        nodes.append(
+            graph_node(
+                row["id"],
+                row["label"],
+                "expert",
+                row["mission"],
+                model_ids=model_ids,
+                evidence_ids=sorted(evidence_by_id),
+                assumptions=row.get("assumptions", []),
+                derivation=row.get("derivation", []),
+                proposal=row.get("proposal"),
+                risks=row.get("risks", []),
+                falsified_by=row.get("falsified_by"),
+            )
+        )
+        for model_id in model_ids:
+            links.add((model_id, row["id"], "equips"))
+
+    for row in syntheses:
+        model_ids = row.get("model_ids", [])
+        expert_ids = row.get("expert_ids", [])
+        evidence_ids = row.get("evidence_ids", [])
+        require_refs(row["id"], model_ids, set(model_by_id), "models")
+        require_refs(row["id"], expert_ids, set(expert_by_id), "experts")
+        require_refs(row["id"], evidence_ids, set(evidence_by_id), "evidence")
+        if len(model_ids) < 2:
+            fail(f"{row['id']} must use at least two models")
+        nodes.append(
+            graph_node(
+                row["id"],
+                row["title"],
+                "solution",
+                row["solution"].split("\n", 1)[0].lstrip("# "),
+                status=row.get("status"),
+                confidence=row.get("confidence"),
+                is_current=bool(row.get("is_current")),
+            )
+        )
+        for expert_id in expert_ids:
+            links.add((expert_id, row["id"], "derives"))
+
+    for row in decisions:
+        solution_ids = row.get("solution_ids", [])
+        require_refs(row["id"], solution_ids, set(synthesis_by_id), "solutions")
+        nodes.append(
+            graph_node(
+                row["id"],
+                row["label"],
+                "decision",
+                row["rationale"],
+                choice=row.get("choice"),
+                tradeoff=row.get("tradeoff"),
+                review=row.get("review"),
+            )
+        )
+        for solution_id in solution_ids:
+            links.add((solution_id, row["id"], "selects"))
+
+    for position, row in enumerate(actions, 1):
+        decision_ids = row.get("decision_ids", [])
+        require_refs(row["id"], decision_ids, set(decision_by_id), "decisions")
+        nodes.append(
+            graph_node(
+                row["id"],
+                row["label"],
+                "action",
+                row["done_when"],
+                task_id=row.get("task_id"),
+                timebox=row.get("timebox"),
+                status=row.get("status"),
+                order=position,
+                queue_state="active-controller",
+                decision_ids=decision_ids,
+            )
+        )
+        for decision_id in decision_ids:
+            links.add((decision_id, row["id"], "executes"))
+
+    queue_node_ids: set[str] = set()
+    for row in phases:
+        decision_ids = row.get("decision_ids", [])
+        action_ids = row.get("action_ids", [])
+        require_refs(row["id"], decision_ids, set(decision_by_id), "decisions")
+        require_refs(row["id"], action_ids, set(action_by_id), "actions")
+        nodes.append(
+            graph_node(
+                row["id"],
+                row["title"],
+                "phase",
+                row["decision"],
+                order=row.get("order"),
+                horizon=row.get("horizon"),
+                window=row.get("window"),
+                status=row.get("status"),
+                gate=row.get("gate"),
+            )
+        )
+        for decision_id in decision_ids:
+            links.add((decision_id, row["id"], "governs"))
+        for action_id in action_ids:
+            links.add((action_id, row["id"], "scheduled_in"))
+        for position, queued in enumerate(row.get("queue", []), 1):
+            task_id = queued.get("task_id")
+            if not isinstance(task_id, str) or not task_id:
+                fail(f"{row['id']} queue item missing task_id")
+            queue_id = f"queue-{task_id}"
+            if queue_id not in queue_node_ids:
+                nodes.append(
+                    graph_node(
+                        queue_id,
+                        queued["label"],
+                        "action",
+                        f"Conditional queue item; depends on {queued['depends_on']}.",
+                        task_id=task_id,
+                        status="conditional",
+                        queue_state="future-gated",
+                        queue_position=position,
+                        decision_ids=decision_ids,
+                    )
+                )
+                queue_node_ids.add(queue_id)
+            for decision_id in decision_ids:
+                links.add((decision_id, queue_id, "executes"))
+            links.add((queue_id, row["id"], "scheduled_in"))
+
+    labels = {model_id: row["label"] for model_id, row in model_by_id.items()}
+    synthesis_cards = []
+    for row in syntheses:
+        synthesis_cards.append(
+            {
+                "id": row["id"],
+                "title": row["title"],
+                "model": " · ".join(labels[model_id] for model_id in row["model_ids"]),
+                "problem": row["problem"],
+                "solution": row["solution"],
+                "disagreement": row.get("disagreement"),
+                "status": row.get("status"),
+                "confidence": row.get("confidence"),
+                "is_current": bool(row.get("is_current")),
+                "expert_ids": row.get("expert_ids", []),
+                "evidence_ids": row.get("evidence_ids", []),
             }
-            warnings.append(f"unresolved wikilink '{target_label}' referenced by {path.name}")
-        if source_id != target_id:
-            links.add((source_id, target_id))
+        )
+    synthesis_cards.sort(key=lambda row: (not row["is_current"], row["title"].casefold()))
 
-    if path.parent.name != "connections":
-        continue
+    node_ids = [node["id"] for node in nodes]
+    if len(node_ids) != len(set(node_ids)):
+        duplicates = sorted({node_id for node_id in node_ids if node_ids.count(node_id) > 1})
+        fail(f"duplicate graph node ids: {duplicates}")
 
-    model_match = re.search(r"\*\*STEM Model:\*\*\s*(.+)", content)
-    model_line = model_match.group(1).strip() if model_match else "Unknown"
-    model_names = re.findall(r"\[\[(.*?)\]\]", model_line)
-    model = " · ".join(canonical_label(m) for m in model_names) if model_names else canonical_label(model_line)
-
-    problem = extract_section(
-        content,
-        [
-            r"The False Axiom",
-            r"The Bottleneck",
-            r"The Danger",
-            r"The Current Bet Frame",
-            r"The Axiom / Bottleneck",
-            r"Current Constraint",
-        ],
-    )
-    solution = extract_section(
-        content,
-        [r"Novel Solution", r"Novel Solution / Strategy", r"The Reframe(?:\s*\([^)]*\))?", r"Current Strategy"],
-    )
-
-    if not problem:
-        warnings.append(f"missing problem section: {path.name}")
-    if not solution:
-        warnings.append(f"missing solution section: {path.name}")
-    if model == "Unknown":
-        warnings.append(f"missing STEM model: {path.name}")
-
-    syntheses.append(
-        {
-            "id": source_id,
-            "title": label,
-            "model": model,
-            "problem": problem,
-            "solution": solution,
-            "source": str(path),
-            "updated_at": iso_mtime(path),
-            "status": frontmatter.get("status", "current"),
-            "confidence": frontmatter.get("confidence"),
-            "evidence": frontmatter.get("evidence"),
-            "is_current": frontmatter.get("canonical", "false").lower() == "true" or source_id == "current-augmented-intelligence",
-        }
-    )
-
-nodes = sorted(nodes_by_id.values(), key=lambda n: (n["group"], n["label"].casefold(), n["id"]))
-link_rows = [{"source": s, "target": t} for s, t in sorted(links)]
-syntheses.sort(key=lambda s: (not s["is_current"], s["title"].casefold(), s["id"]))
-
-snapshot_at = max(iso_mtime(path) for path in paths)
-source_fingerprint = hashlib.sha256(
-    "".join(f"{path}:{path.read_text(encoding='utf-8')}" for path in paths).encode()
-).hexdigest()
-
-payload = {
-    "meta": {
-        "schema_version": SCHEMA_VERSION,
-        "generated_at": snapshot_at,
-        "source_fingerprint": source_fingerprint,
-        "source_root": str(WIKI_DIR),
-        "node_count": len(nodes),
-        "link_count": len(link_rows),
-        "synthesis_count": len(syntheses),
-        "warnings": sorted(set(warnings)),
-    },
-    "nodes": nodes,
-    "links": link_rows,
-    "syntheses": syntheses,
-}
-
-OUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-new_text = json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
-old_text = OUT_FILE.read_text(encoding="utf-8") if OUT_FILE.exists() else ""
-OUT_FILE.write_text(new_text, encoding="utf-8")
-
-print(
-    json.dumps(
-        {
-            "status": "changed" if old_text != new_text else "unchanged",
-            "output": str(OUT_FILE),
-            "nodes": len(nodes),
-            "links": len(link_rows),
-            "syntheses": len(syntheses),
-            "warnings": len(set(warnings)),
-            "fingerprint": source_fingerprint[:12],
+    links_rows = [
+        {"source": source, "target": target, "relation": relation}
+        for source, target, relation in sorted(links)
+    ]
+    fingerprint = hashlib.sha256(source_text.encode("utf-8")).hexdigest()
+    payload = {
+        "meta": {
+            "schema_version": SCHEMA_VERSION,
+            "generated_at": spec["generated_at"],
+            "source_fingerprint": fingerprint,
+            "source": str(SOURCE_FILE),
+            "method": method["name"],
+            "node_count": len(nodes),
+            "link_count": len(links_rows),
+            "synthesis_count": len(synthesis_cards),
+            "warnings": [],
         },
-        sort_keys=True,
+        "method": method,
+        "nodes": sorted(nodes, key=lambda row: (row["group"], row["label"].casefold(), row["id"])),
+        "links": links_rows,
+        "syntheses": synthesis_cards,
+        "decisions": decisions,
+        "actions": actions,
+        "blueprint": blueprint,
+    }
+
+    new_text = json.dumps(payload, indent=2, ensure_ascii=False) + "\n"
+    old_text = OUT_FILE.read_text(encoding="utf-8") if OUT_FILE.exists() else ""
+    OUT_FILE.write_text(new_text, encoding="utf-8")
+    print(
+        json.dumps(
+            {
+                "status": "changed" if old_text != new_text else "unchanged",
+                "output": str(OUT_FILE),
+                "nodes": len(nodes),
+                "links": len(links_rows),
+                "syntheses": len(synthesis_cards),
+                "phases": len(phases),
+                "warnings": 0,
+                "fingerprint": fingerprint[:12],
+            },
+            sort_keys=True,
+        )
     )
-)
+
+
+if __name__ == "__main__":
+    main()

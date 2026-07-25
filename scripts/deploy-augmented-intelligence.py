@@ -14,6 +14,7 @@ from urllib.parse import urlsplit
 ALLOWED = {
     "data/state.json",
     "data/growth.json",
+    "data/augmented-intelligence.json",
     "data/augmented-graph.json",
 }
 
@@ -74,7 +75,7 @@ def main() -> None:
 
     run(["python3", "scripts/generate-augmented-graph.py"], root)
     graph = json.loads((root / "data" / "augmented-graph.json").read_text())
-    if graph.get("meta", {}).get("schema_version") != "2.0.0":
+    if graph.get("meta", {}).get("schema_version") != "3.0.0":
         raise RuntimeError("augmented graph schema validation failed")
 
     dirty = dirty_paths(root)
