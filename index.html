@@ -290,11 +290,9 @@ function updateConnStatus() {
   }
 }
 
-let cachedState = null;
-
 async function syncState() {
   const state = await apiGet('/api/state');
-  if (state) { cachedState = state; renderAll(state); updateConnStatus(); }
+  if (state) { renderAll(state); updateConnStatus(); }
   else { updateConnStatus(); renderAll({}); }
   loadGrowthChart();
 }
