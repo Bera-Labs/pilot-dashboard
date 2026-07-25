@@ -41,20 +41,83 @@
     font-family: var(--font-mono); font-size: 15px; color: var(--accent);
     text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
   }
-  .syntheses-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 24px;
-  }
+  .syntheses-grid { display: block; }
+  .synthesis-columns { columns: 2; column-gap: 22px; }
   .synthesis-card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
-    padding: 24px; display: flex; flex-direction: column; gap: 16px;
+    position: relative; overflow: hidden; break-inside: avoid;
+    width: 100%; margin: 0 0 22px; display: inline-flex;
+    background: linear-gradient(145deg, rgba(19, 24, 32, 0.98), rgba(14, 19, 27, 0.98));
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 0; flex-direction: column;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
   }
-  .synth-header { border-bottom: 1px dashed var(--border); padding-bottom: 12px; }
-  .synth-title { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 4px; }
-  .synth-model { font-family: var(--font-mono); font-size: 11px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
-  .synth-section { display: flex; flex-direction: column; gap: 6px; }
-  .synth-label { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); text-transform: uppercase; }
-  .synth-text { font-size: 14px; line-height: 1.6; color: var(--text); }
-  .synth-solution { color: var(--green); }
+  .synthesis-card::before {
+    content: ''; position: absolute; inset: 0 0 auto; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent 72%); opacity: 0.48;
+  }
+  .synthesis-card.is-current {
+    display: flex; border-color: rgba(57, 186, 230, 0.38);
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22), 0 0 28px rgba(57, 186, 230, 0.05);
+  }
+  .synth-header { padding: 22px 24px 18px; border-bottom: 1px solid rgba(85, 102, 120, 0.22); }
+  .synth-heading-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .synth-title { font-size: 19px; line-height: 1.28; font-weight: 650; color: #f3f7fa; letter-spacing: -0.01em; }
+  .synth-badges { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; flex: 0 0 auto; }
+  .synth-badge {
+    padding: 4px 7px; border: 1px solid rgba(57, 186, 230, 0.22); border-radius: 999px;
+    color: var(--accent); background: rgba(57, 186, 230, 0.07);
+    font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.7px; text-transform: uppercase;
+  }
+  .synth-models { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+  .model-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 7px; border-radius: 5px; background: rgba(57, 186, 230, 0.07);
+    color: #8bd8f2; font-family: var(--font-mono); font-size: 10px; line-height: 1.2;
+    letter-spacing: 0.55px; text-transform: uppercase;
+  }
+  .model-chip::before { content: '◆'; font-size: 6px; color: var(--accent); }
+  .synth-body { display: grid; gap: 0; }
+  .is-current .synth-body { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .synth-section { padding: 22px 24px 25px; min-width: 0; }
+  .synth-section + .synth-section { border-top: 1px solid rgba(85, 102, 120, 0.16); }
+  .is-current .synth-section + .synth-section { border-top: 0; border-left: 1px solid rgba(85, 102, 120, 0.22); }
+  .synth-label {
+    display: flex; align-items: center; gap: 9px; margin-bottom: 12px;
+    font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.9px;
+  }
+  .synth-label::before { content: ''; width: 16px; height: 1px; background: currentColor; }
+  .synth-section.solution .synth-label { color: #91a936; }
+  .synth-text { font-size: 14.5px; line-height: 1.72; color: #bfd0dc; overflow-wrap: anywhere; }
+  .synth-text p + p { margin-top: 13px; }
+  .synth-text strong { color: #eef5f8; font-weight: 650; }
+  .synth-text em { color: #dbe7ed; }
+  .synth-text ul, .synth-text ol { margin: 10px 0 12px; padding-left: 1.35rem; }
+  .synth-text li { padding-left: 4px; margin: 6px 0; }
+  .synth-text li::marker { color: var(--accent); font-family: var(--font-mono); }
+  .synth-section.solution .synth-text li::marker { color: var(--green); }
+  .synth-section.solution .synth-text strong { color: #d9ea72; }
+  .rich-heading {
+    margin: 18px 0 8px; color: #e9f1f5; font-size: 13px; line-height: 1.4;
+    font-weight: 650; letter-spacing: 0.01em;
+  }
+  .rich-heading:first-child { margin-top: 0; }
+  .synth-text code {
+    padding: 2px 5px; border: 1px solid rgba(57, 186, 230, 0.15); border-radius: 4px;
+    background: rgba(57, 186, 230, 0.07); color: #a9e2f5; font: 0.88em/1.4 var(--font-mono);
+  }
+  .synth-text pre {
+    margin: 11px 0; padding: 13px 15px; overflow-x: auto;
+    border: 1px solid rgba(85, 102, 120, 0.3); border-radius: 7px;
+    background: #0a0f16; color: #c8d6df; font: 12px/1.62 var(--font-mono); white-space: pre-wrap;
+  }
+  .synth-text pre code { padding: 0; border: 0; background: none; color: inherit; }
+  .wiki-ref {
+    display: inline-block; margin: 1px 2px; padding: 1px 6px; border-radius: 999px;
+    background: rgba(194, 217, 76, 0.08); border: 1px solid rgba(194, 217, 76, 0.18);
+    color: #d1e66d; font-size: 0.9em;
+  }
+  .math-inline { font-family: var(--font-mono); color: #d7e3e9; }
 
   /* D3 TOOLTIP */
   .tooltip {
@@ -63,8 +126,20 @@
     pointer-events: none; opacity: 0; transition: opacity 0.2s; font-family: var(--font-mono);
   }
 
-  @media (max-width: 768px) {
-    .syntheses-grid { grid-template-columns: 1fr; }
+  @media (max-width: 900px) {
+    body { padding: 28px 16px; }
+    .synthesis-columns { columns: 1; }
+    .is-current .synth-body { grid-template-columns: 1fr; }
+    .is-current .synth-section + .synth-section { border-left: 0; border-top: 1px solid rgba(85, 102, 120, 0.16); }
+  }
+  @media (max-width: 560px) {
+    .header { align-items: flex-start; gap: 18px; }
+    .header-left h1 { font-size: 16px; }
+    #graph-container { height: 420px; }
+    .synth-header, .synth-section { padding-left: 18px; padding-right: 18px; }
+    .synth-heading-row { flex-direction: column; }
+    .synth-badges { justify-content: flex-start; }
+    .synth-text { font-size: 14px; }
   }
 </style>
 </head>
@@ -96,41 +171,185 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
   }
 
-  function safeText(value) {
-    return escapeHtml(value).replace(/\n/g, '<br>');
+  function formatMathNotation(value) {
+    const subscripts = { '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄', '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉' };
+    return String(value)
+      .replace(/\\times/g, '×')
+      .replace(/\\cdot/g, '·')
+      .replace(/\\approx/g, '≈')
+      .replace(/\\log/g, 'log')
+      .replace(/\\(?:rightarrow|to)/g, '→')
+      .replace(/\\leq?/g, '≤')
+      .replace(/\\geq?/g, '≥')
+      .replace(/_([0-9]+)/g, (_, digits) => [...digits].map(digit => subscripts[digit]).join(''));
   }
 
+  function inlineMarkup(value) {
+    let text = escapeHtml(value);
+    const tokens = [];
+    const hold = html => {
+      const key = `\u0000RICH${tokens.length}\u0000`;
+      tokens.push(html);
+      return key;
+    };
+
+    text = text.replace(/`([^`\n]+)`/g, (_, code) => hold(`<code>${code}</code>`));
+    text = text.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, target, label) =>
+      hold(`<span class="wiki-ref">${label || target}</span>`));
+    text = text.replace(/\$([^$\n]+)\$/g, (_, formula) =>
+      hold(`<span class="math-inline">${formatMathNotation(formula)}</span>`));
+    text = text.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/__([^_\n]+)__/g, '<strong>$1</strong>');
+    text = text.replace(/(^|[\s(>])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+    text = text.replace(/~~([^~\n]+)~~/g, '<s>$1</s>');
+
+    tokens.forEach((html, index) => {
+      text = text.replace(`\u0000RICH${index}\u0000`, html);
+    });
+    return text;
+  }
+
+  function formatRichText(value) {
+    const source = String(value == null ? '' : value).replace(/\r\n?/g, '\n').trim();
+    if (!source) return '';
+
+    const output = [];
+    const paragraph = [];
+    let listType = '';
+    let listStart = 1;
+    let listItems = [];
+    let inFence = false;
+    let fenceLines = [];
+
+    function flushParagraph() {
+      if (!paragraph.length) return;
+      output.push(`<p>${inlineMarkup(paragraph.join(' '))}</p>`);
+      paragraph.length = 0;
+    }
+
+    function flushList() {
+      if (!listType || !listItems.length) return;
+      const start = listType === 'ol' && listStart !== 1 ? ` start="${listStart}"` : '';
+      output.push(`<${listType}${start}>${listItems.map(item => `<li>${inlineMarkup(item)}</li>`).join('')}</${listType}>`);
+      listType = '';
+      listStart = 1;
+      listItems = [];
+    }
+
+    function flushFence() {
+      output.push(`<pre><code>${escapeHtml(fenceLines.join('\n'))}</code></pre>`);
+      fenceLines = [];
+    }
+
+    source.split('\n').forEach(line => {
+      if (/^\s*```/.test(line)) {
+        if (inFence) flushFence();
+        else {
+          flushParagraph();
+          flushList();
+        }
+        inFence = !inFence;
+        return;
+      }
+      if (inFence) {
+        fenceLines.push(line);
+        return;
+      }
+      if (!line.trim()) {
+        flushParagraph();
+        flushList();
+        return;
+      }
+
+      const heading = line.match(/^\s*#{2,6}\s+(.+)$/);
+      if (heading) {
+        flushParagraph();
+        flushList();
+        output.push(`<h4 class="rich-heading">${inlineMarkup(heading[1])}</h4>`);
+        return;
+      }
+
+      const list = line.match(/^\s*(?:([-+*])|(\d+)\.)\s+(.+)$/);
+      if (list) {
+        flushParagraph();
+        const nextType = list[2] ? 'ol' : 'ul';
+        if (listType && listType !== nextType) flushList();
+        if (!listType) {
+          listType = nextType;
+          listStart = list[2] ? Number(list[2]) : 1;
+        }
+        listItems.push(list[3]);
+        return;
+      }
+
+      if (listType && /^\s{2,}\S/.test(line) && listItems.length) {
+        listItems[listItems.length - 1] += ` ${line.trim()}`;
+        return;
+      }
+      flushList();
+      paragraph.push(line.trim());
+    });
+
+    if (inFence) flushFence();
+    flushParagraph();
+    flushList();
+    return output.join('');
+  }
+
+  function renderModelChips(model) {
+    return String(model || 'Unknown')
+      .split(/\s*·\s*/)
+      .filter(Boolean)
+      .map(name => `<span class="model-chip">${escapeHtml(name)}</span>`)
+      .join('');
+  }
 
   function renderSyntheses(syntheses) {
     const container = document.getElementById('syntheses-container');
     container.innerHTML = '';
+    const columns = document.createElement('div');
+    columns.className = 'synthesis-columns';
 
     syntheses.forEach(s => {
-      const card = document.createElement('div');
-      card.className = 'synthesis-card';
+      const card = document.createElement('article');
+      card.className = `synthesis-card${s.is_current ? ' is-current' : ''}`;
+
+      const badges = [];
+      if (s.is_current) badges.push('Current');
+      else if (s.status && s.status !== 'current') badges.push(s.status);
+      if (s.confidence) badges.push(`${s.confidence} confidence`);
+      const badgeHtml = badges.length
+        ? `<div class="synth-badges">${badges.map(badge => `<span class="synth-badge">${escapeHtml(badge)}</span>`).join('')}</div>`
+        : '';
 
       let html = `<div class="synth-header">
-        <div class="synth-title">${escapeHtml(s.title)}</div>
-        <div class="synth-model">STEM Model: ${escapeHtml(s.model)}</div>
-      </div>`;
+        <div class="synth-heading-row">
+          <div class="synth-title">${escapeHtml(s.title)}</div>
+          ${badgeHtml}
+        </div>
+        <div class="synth-models">${renderModelChips(s.model)}</div>
+      </div><div class="synth-body">`;
 
       if (s.problem) {
-        html += `<div class="synth-section">
-          <div class="synth-label">The Axiom / Bottleneck</div>
-          <div class="synth-text">${safeText(s.problem)}</div>
-        </div>`;
+        html += `<section class="synth-section problem">
+          <div class="synth-label">Observation / Constraint</div>
+          <div class="synth-text">${formatRichText(s.problem)}</div>
+        </section>`;
       }
 
       if (s.solution) {
-        html += `<div class="synth-section">
-          <div class="synth-label">Novel Solution / Strategy</div>
-          <div class="synth-text synth-solution">${safeText(s.solution)}</div>
-        </div>`;
+        html += `<section class="synth-section solution">
+          <div class="synth-label">Solution / Strategy</div>
+          <div class="synth-text">${formatRichText(s.solution)}</div>
+        </section>`;
       }
 
+      html += '</div>';
       card.innerHTML = html;
-      container.appendChild(card);
+      (s.is_current ? container : columns).appendChild(card);
     });
+
+    if (columns.childElementCount) container.appendChild(columns);
   }
 
   function renderGraph(data) {
