@@ -10,7 +10,6 @@ from __future__ import annotations
 import glob
 import hashlib
 import json
-import os
 import re
 import unicodedata
 from datetime import datetime, timezone
@@ -155,7 +154,6 @@ for path in paths:
             "model": model,
             "problem": problem,
             "solution": solution,
-            "raw": content,
             "source": str(path),
             "updated_at": iso_mtime(path),
             "status": frontmatter.get("status", "current"),

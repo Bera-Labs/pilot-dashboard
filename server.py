@@ -2,7 +2,10 @@
 """Pilot Dashboard Backend — Bidirectional API server with JSON file state storage.
 Hermes reads/writes the same state files directly. Dashboard calls REST endpoints.
 """
-import json, os, time, http.server, urllib.parse
+import http.server
+import json
+import time
+import urllib.parse
 from pathlib import Path
 
 DATA_DIR = Path(__file__).parent / "data"
@@ -155,11 +158,11 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
         self._send_json({"status": "ok"})
 
 if __name__ == '__main__':
-    print(f"◆ Pilot Dashboard Backend")
+    print("◆ Pilot Dashboard Backend")
     print(f"  API:    http://localhost:{PORT}/api/state")
     print(f"  UI:     http://localhost:{PORT}/dashboard.html")
     print(f"  Data:   {STATE_FILE}")
-    print(f"  GitHub: https://bera-labs.github.io/pilot-dashboard/")
+    print("  GitHub: https://bera-labs.github.io/pilot-dashboard/")
 
     server = http.server.HTTPServer(('0.0.0.0', PORT), DashboardHandler)
     try:

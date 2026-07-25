@@ -3,9 +3,12 @@
 Reads frontmatter confidence and wikilinks to build the intervention→outcome graph.
 v2: Enriched — node descriptions, edge evidence details, wiki page links.
 """
-import json, os, re, yaml
+import json
+import os
+import re
 from pathlib import Path
-from collections import defaultdict
+
+import yaml
 
 WIKI = Path(os.path.expanduser("~/wiki-superhuman"))
 CONCEPTS = WIKI / "concepts"

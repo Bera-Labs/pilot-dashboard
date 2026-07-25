@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Pilot Dashboard — FastAPI wrapper for Railway deployment.
+"""Pilot Dashboard — FastAPI wrapper for Vercel deployment.
 Read-only browser. All POSTs from Hermes/cron only.
 """
-import json, os, time
+import json
+import time
 from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
