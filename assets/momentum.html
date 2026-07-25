@@ -97,6 +97,37 @@
   .labs-action { padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 12px; line-height: 1.5; }
   .labs-action:last-child { border-bottom: 0; }
   .labs-link { color: var(--accent); font: 11px var(--font-mono); }
+  .labs-insight-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px;
+    margin-bottom: 24px;
+  }
+  .labs-insight-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 18px; min-width: 0;
+  }
+  .labs-insight-card.wide { grid-column: 1 / -1; }
+  .labs-insight-title { color: #fff; font-size: 15px; margin: 7px 0 10px; }
+  .labs-insight-body {
+    color: var(--text); font-size: 12px; line-height: 1.65; overflow-wrap: anywhere;
+  }
+  .labs-lifecycle-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 9px;
+    margin-top: 12px;
+  }
+  .labs-lifecycle-item {
+    border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px;
+    font-size: 11px; line-height: 1.45;
+  }
+  .labs-lifecycle-name { color: #fff; margin-bottom: 5px; }
+  .labs-badge {
+    display: inline-block; border: 1px solid var(--border); border-radius: 999px;
+    padding: 2px 7px; margin-right: 5px; font: 9px var(--font-mono);
+    text-transform: uppercase; letter-spacing: .6px;
+  }
+  .labs-status-weakened, .labs-status-contradicted { color: var(--red); border-color: var(--red); }
+  .labs-status-strengthened, .labs-status-supported, .labs-status-durable-principle { color: var(--green); border-color: var(--green); }
+  .labs-status-retired { color: var(--text-dim); }
+  .labs-status-active-hypothesis, .labs-status-current { color: var(--accent); border-color: var(--accent); }
   .node-detail {
     position: fixed; top: 20px; right: 20px; width: min(420px, calc(100vw - 40px));
     max-height: calc(100vh - 40px); overflow: auto; z-index: 20;
@@ -111,6 +142,8 @@
   body.labs-mode .graph-label.is-neighbor { opacity: 1; }
   @media (max-width: 768px) {
     .labs-current-grid { grid-template-columns: 1fr; }
+    .labs-insight-grid { grid-template-columns: 1fr; }
+    .labs-insight-card.wide { grid-column: auto; }
   }
 </style>
 </head>
@@ -130,6 +163,8 @@
   <div class="labs-banner">Preview layer · hidden by default · no existing components removed</div>
   <div class="labs-health" id="labs-health"></div>
   <div class="labs-panel" id="labs-current"></div>
+  <div class="labs-insight-grid" id="labs-intelligence"></div>
+  <div class="labs-panel" id="labs-lifecycle"></div>
 </div>
 
 <div id="graph-container"></div>
@@ -162,6 +197,22 @@
     return Number.isNaN(d.getTime()) ? escapeHtml(value) : d.toLocaleString();
   }
 
+  function markdownSection(raw, heading) {
+    const text = String(raw || '');
+    const marker = '## ' + heading;
+    const start = text.indexOf(marker);
+    if (start < 0) return '';
+    const bodyStart = text.indexOf('\n', start + marker.length);
+    if (bodyStart < 0) return '';
+    const next = text.indexOf('\n## ', bodyStart + 1);
+    return text.slice(bodyStart + 1, next < 0 ? text.length : next).trim();
+  }
+
+  function lifecycleClass(status) {
+    const allowed = new Set(['current', 'active-hypothesis', 'strengthened', 'weakened', 'supported', 'contradicted', 'retired', 'durable-principle']);
+    return allowed.has(status) ? 'labs-status-' + status : '';
+  }
+
   function renderSyntheses(syntheses) {
     const container = document.getElementById('syntheses-container');
     container.innerHTML = '';
@@ -190,7 +241,7 @@
       }
 
       if (labsMode) {
-        html += `<div class="labs-kicker">${s.is_current ? 'Canonical current synthesis' : 'Durable insight'} · Updated ${formatDate(s.updated_at)}</div>`;
+        html += `<div class="labs-kicker">${s.is_current ? 'Canonical current synthesis' : 'Durable insight'} · ${escapeHtml(s.status || 'unknown')} · Confidence ${escapeHtml(s.confidence || 'unknown')} · Updated ${formatDate(s.updated_at)}</div>`;
       }
       card.innerHTML = html;
       container.appendChild(card);
@@ -202,6 +253,8 @@
     if (!labsMode) return;
     const health = document.getElementById('labs-health');
     const current = document.getElementById('labs-current');
+    const intelligence = document.getElementById('labs-intelligence');
+    const lifecycle = document.getElementById('labs-lifecycle');
     try {
       const stateRes = await fetch('/api/state');
       if (!stateRes.ok) throw new Error('state API ' + stateRes.status);
@@ -209,6 +262,10 @@
       const ma = state.momentum_analysis || {};
       const graphMeta = graphData.meta || {};
       const warnings = graphMeta.warnings || [];
+      const syntheses = Array.isArray(graphData.syntheses) ? graphData.syntheses : [];
+      const canonical = syntheses.find(s => s.is_current) || syntheses.find(s => s.id === 'current-augmented-intelligence') || {};
+      const canonicalRaw = canonical.raw || '';
+      const changedInsights = syntheses.filter(s => ['strengthened', 'weakened', 'supported', 'contradicted', 'retired'].includes(s.status));
       const graphAge = graphMeta.generated_at ? Math.floor((Date.now() - new Date(graphMeta.generated_at).getTime()) / 86400000) : null;
       const momentumAge = ma.last_run ? Math.floor((Date.now() - new Date(ma.last_run).getTime()) / 86400000) : null;
 
@@ -216,6 +273,7 @@
         ['Graph snapshot', formatDate(graphMeta.generated_at), graphAge != null && graphAge > 14 ? 'labs-warn' : 'labs-good'],
         ['Momentum analysis', formatDate(ma.last_run), momentumAge != null && momentumAge > 14 ? 'labs-bad' : 'labs-good'],
         ['Graph integrity', `${graphMeta.node_count || graphData.nodes.length} nodes · ${warnings.length} warning(s)`, warnings.length ? 'labs-warn' : 'labs-good'],
+        ['Lifecycle changes', `${changedInsights.length} changed insight(s)`, changedInsights.length ? 'labs-warn' : ''],
         ['Source fingerprint', graphMeta.source_fingerprint ? graphMeta.source_fingerprint.slice(0, 12) : 'legacy schema', ''],
       ];
       health.innerHTML = cells.map(c => `<div class="labs-health-cell"><div class="labs-kicker">${escapeHtml(c[0])}</div><div class="labs-value ${c[2]}">${escapeHtml(c[1])}</div></div>`).join('');
@@ -232,9 +290,42 @@
           </div>
           <div><div class="labs-kicker">Current action queue</div>${actions.length ? actions.map((a, i) => `<div class="labs-action"><strong>${i + 1}.</strong> ${escapeHtml(a.action || a.step || '')}<br><span class="labs-kicker">${escapeHtml(a.time || '')} ${a.status ? '· ' + escapeHtml(a.status) : ''}</span></div>`).join('') : '<div class="labs-current-copy">No validated actions available.</div>'}</div>
         </div>`;
+
+      const delta = markdownSection(canonicalRaw, 'Emergent Insight Delta');
+      const strongest = markdownSection(canonicalRaw, 'Strongest Current Connection');
+      const candidates = markdownSection(canonicalRaw, 'Candidate Ledger');
+      const reconciliation = markdownSection(canonicalRaw, 'Prediction Reconciliation');
+      const predictions = markdownSection(canonicalRaw, 'New Predictions / Experiments');
+      const unknowns = markdownSection(canonicalRaw, 'Unknowns and Needed Evidence');
+      const insightCards = [
+        ['Emergent Insight Delta', delta, 'wide'],
+        ['Strongest Current Connection', strongest, ''],
+        ['Candidate Persistence Gate', candidates, ''],
+        ['Prediction Loop', [reconciliation, predictions].filter(Boolean).join('\n\nNEW TESTS\n' ), ''],
+        ['Unknowns & Disconfirming Evidence', unknowns, ''],
+      ];
+      intelligence.innerHTML = insightCards.map(card => `<div class="labs-insight-card ${card[2]}">
+        <div class="labs-kicker">Augmented Intelligence v5</div>
+        <div class="labs-insight-title">${escapeHtml(card[0])}</div>
+        <div class="labs-insight-body">${card[1] ? safeText(card[1]) : '<span class="labs-warn">Not present in canonical synthesis.</span>'}</div>
+      </div>`).join('');
+
+      const durable = syntheses.filter(s => !s.is_current);
+      lifecycle.innerHTML = `<div class="section-title">Insight Lifecycle Registry</div>
+        <div class="labs-current-copy">Every durable insight is reevaluated over time. Changed states appear first; inactive states cannot drive current recommendations.</div>
+        <div class="labs-lifecycle-grid">${durable.sort((a, b) => {
+          const changed = new Set(['strengthened', 'weakened', 'supported', 'contradicted', 'retired']);
+          return Number(changed.has(b.status)) - Number(changed.has(a.status)) || String(a.title).localeCompare(String(b.title));
+        }).map(s => `<div class="labs-lifecycle-item">
+          <div class="labs-lifecycle-name">${escapeHtml(s.title)}</div>
+          <span class="labs-badge ${lifecycleClass(s.status)}">${escapeHtml(s.status || 'unknown')}</span>
+          <span class="labs-badge">confidence ${escapeHtml(s.confidence || 'unknown')}</span>
+        </div>`).join('')}</div>`;
     } catch (e) {
       health.innerHTML = `<div class="labs-health-cell"><div class="labs-kicker">Preview health</div><div class="labs-value labs-bad">${escapeHtml(e.message)}</div></div>`;
       current.innerHTML = '<div class="labs-current-copy">Current synthesis unavailable.</div>';
+      intelligence.innerHTML = '';
+      lifecycle.innerHTML = '';
     }
   }
 
