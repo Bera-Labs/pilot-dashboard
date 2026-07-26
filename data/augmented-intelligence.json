@@ -348,69 +348,76 @@
           "source_type": "expert",
           "source_id": "expert-orientation-control",
           "label": "Orientation & Control",
-          "application": "The schedule cue ‘house document paperwork’ has no native task ID, while AR-11, the lung scan, and the internet warning do. Treat that cue as context only; the three identified tasks remain the attributable controller unless a documented exception appears.",
+          "application": "Your latest Life OS chooses AR-11, financial-process clarity, and the internet warning, while explicitly placing the lung scan outside this cycle. The current Augmented Intelligence controller instead includes the lung scan, and the financial task sits under retired Housing. This is a real priority conflict: either the health concern intentionally overrides the earlier plan, or the Housing/financial responsibility still needs clarification. The vague “house document paperwork” cue should not silently decide that choice.",
           "source_refs": [
-            "schedule:__actionflow_daily_actions_v1__[0]",
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
+            "bc5dc69e-ab85-4b8c-a718-9c474cd04388",
             "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+            "schedule:__actionflow_daily_actions_v1__[0]"
           ],
-          "decision_implication": "Do not let unidentified schedule text reorder the controller; require a task ID or an explicit priority change."
+          "decision_implication": "Start the shared AR-11 priority; before the second slot, explicitly choose whether health overrides the Life OS deferral or whether the Housing/financial responsibility still exists."
         },
         {
           "source_type": "expert",
           "source_id": "expert-decision-risk",
           "label": "Decision & Risk",
-          "application": "Current Outliner fields do not establish an AR-11 deadline, medical urgency for the scan, or the consequence of the internet warning. A short exception check should expose those facts before ordering the three tasks; unknowns stay unknown rather than becoming invented priorities.",
+          "application": "The lung task says you have a “strange feeling,” but the Outliner contains no medical instruction, urgency, or lead time—and Life OS deliberately deferred it. A brief provider contact can test whether there is a concrete reason to override that decision without treating the task wording as medical evidence. AR-11 and the internet warning remain shared priorities across both views.",
           "source_refs": [
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
             "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
             "e7e77f16-2155-45a3-a975-f37eafd6efe2"
           ],
-          "decision_implication": "Keep the bounded controller unless the check reveals a safety, medical, legal, or official-deadline exception."
+          "decision_implication": "Use professional scheduling or referral information—not unevaluated concern—to decide whether the lung scan should displace the deferred financial responsibility."
         },
         {
           "source_type": "expert",
           "source_id": "expert-execution-systems",
           "label": "Execution Systems",
-          "application": "The current Life OS review records 0/3 prior actions completed, and the Taking action habit has no logs. Evidence here means an AR-11 receipt or blocker, a scan appointment or referral blocker, and an internet resolution or ticket—not another plan or a generic ‘worked on it’ state.",
+          "application": "Your own operating notes say your current level is one small task a day, that you want to live in the “next hour,” and that the jet stream is about becoming the person whose momentum begins to carry itself. The Life OS review shows 0/3 previous actions completed, so one real closure is not trivial—it is evidence for that identity. A verified task update, appointment, or provider ticket makes “I act” more true without requiring you to manage every project at once.",
           "source_refs": [
+            "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
+            "aa3cd17e-ad8e-4e4e-a78f-d94798b50405",
+            "d8f30f5d-295d-48c0-895d-bba1e6f57a04",
             "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
             "4a82c418-87eb-460b-a853-6b34f82f87d2",
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
             "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
             "e7e77f16-2155-45a3-a975-f37eafd6efe2"
           ],
-          "decision_implication": "Advance only when the current timebox ends with a done artifact or an exact blocker artifact."
+          "decision_implication": "Judge today by one concrete closure in the next hour; let that proof—not the size of the remaining backlog—define progress."
         }
       ],
       "context_decision": {
-        "choice": "Protect the three-task controller after a brief exception check.",
-        "why": "It converts three eligible Outliner tasks into attributable evidence while the schedule cue and task priorities remain partly unknown.",
-        "alternative": "Reorder only if an official deadline, medical or safety consequence, or explicit user priority is established.",
-        "review": "At the first artifact or the 48-hour gate, whichever comes first."
+        "choice": "Start AR-11 now; before the second slot, personally resolve the lung-versus-Housing priority conflict instead of letting two systems choose differently.",
+        "why": "AR-11 is shared by both plans. The next disagreement is whether to spend the following slot on health scheduling or an unresolved financial/Housing responsibility, so it requires an explicit choice.",
+        "alternative": "Keep the lung scan deferred and clarify whether the retired-Housing financial task still matters unless provider information gives a concrete reason to override.",
+        "review": "After the AR-11 block has a verified next state and after one bounded provider or responsibility check—then retain only the priority you intentionally choose."
       },
       "context_actions": [
         {
           "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
           "label": "AR-11 form",
           "state": "current",
-          "move": "Open the official form and expose the exact submission requirement; submit if the bounded path is clear.",
-          "done_when": "Receipt, confirmation, or exact requirement or blocker saved."
+          "move": "Give the next focused block to the AR-11 task. The personal win is replacing an open label with verified progress or one known next requirement.",
+          "done_when": "You have verified progress, one exact next requirement, or a precise blocker."
         },
         {
           "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
           "label": "Schedule lung-health scan",
           "state": "current",
-          "move": "Contact the provider to expose appointment, referral, and insurance requirements without making unsupported medical claims.",
-          "done_when": "Appointment confirmation or exact referral or contact blocker saved."
+          "move": "Before silently overriding Life OS, contact the provider for scheduling, referral, or lead-time information. Use the answer to decide whether this health concern belongs in the current cycle.",
+          "done_when": "You have an appointment or exact requirement, or enough professional information to keep the task explicitly deferred."
         },
         {
           "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
           "label": "Internet disruption warning",
           "state": "current",
-          "move": "Inspect the warning and take only the provider-directed resolution step.",
-          "done_when": "Warning cleared or provider ticket and response window saved."
+          "move": "Follow the provider’s requested step so the warning has an owner, a response path, and a defined next state.",
+          "done_when": "The warning is cleared or a provider ticket and response window exist."
         }
       ],
       "disagreement": "The control expert favors the existing 48-hour review gate, the execution expert proposed a 72-hour falsification test, and the decision-risk expert proposed a seven-day task-ID scheduling pilot. The blueprint preserves the 48-hour checkpoint as the earliest decision gate and continues prospective evidence collection through day 7 before making a stronger causal or model-weight update."
@@ -440,51 +447,57 @@
           "source_type": "model",
           "source_id": "euclidean-thinking",
           "label": "Euclidean Thinking",
-          "application": "In your Outliner, ‘house document paperwork’ is text without a native task ID; AR-11, lung scan, and internet warning are typed tasks with IDs. The valid execution primitive is an eligible task plus a current decision—not any populated cue.",
+          "application": "“House document paperwork” is not just vague: it points toward Housing, while the related financial-clarity task sits under a retired Housing project even though Life OS names it in the current chain. The personal question is whether that responsibility still exists. Until you answer it, the cue should not count as a current obligation or displace the clearly named AR-11 and internet tasks.",
           "source_refs": [
             "schedule:__actionflow_daily_actions_v1__[0]",
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
+            "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
+            "bc5dc69e-ab85-4b8c-a718-9c474cd04388",
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
             "e7e77f16-2155-45a3-a975-f37eafd6efe2"
           ],
-          "decision_implication": "Keep unidentified text visible as context, but do not execute or score it as work."
+          "decision_implication": "Treat Housing as an explicit ownership decision—restore the responsibility, redefine it elsewhere, or release it—rather than leaving its status undefined."
         },
         {
           "source_type": "model",
           "source_id": "information-theory",
           "label": "Information Theory",
-          "application": "The schedule cue has 0/9 eligible-task coverage, so it consumes attention without identifying which task should change state. Native IDs for the three controller tasks carry enough information to route action and attribute an outcome.",
+          "application": "The highest-value missing information is not another paperwork detail; it is whether the retired Housing responsibility is still yours now. Resolving that one question would tell you whether “financial process list, clarity” deserves a future slot or whether the vague cue can be released.",
           "source_refs": [
             "schedule:__actionflow_daily_actions_v1__[0]",
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f"
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
+            "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
+            "bc5dc69e-ab85-4b8c-a718-9c474cd04388"
           ],
-          "decision_implication": "Require cue-to-task-ID resolution before a schedule item can compete with the active controller."
+          "decision_implication": "After AR-11, resolve the existence of the Housing/financial obligation before spending time organizing it."
         },
         {
           "source_type": "model",
           "source_id": "control-theory-spc",
           "label": "Control Theory / SPC",
-          "application": "Your own note says fixed deadlines and schedules have not worked so far, while the current Life OS review already selected a bounded chain. Do not oscillate between that chain and an unidentified cue; change course only for documented exception or review evidence.",
+          "application": "You have written that fixed scheduling has not worked and that smaller horizons such as “the next hour” fit you better. Use that operating style for the part that is already clear: AR-11 gets the next bounded block. The Housing-versus-lung conflict waits for one explicit review instead of interrupting the block repeatedly.",
           "source_refs": [
             "d4d01beb-5aa4-4b0c-b228-8f5c32df7dd8",
+            "aa3cd17e-ad8e-4e4e-a78f-d94798b50405",
+            "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
             "2941ef7a-627f-4a79-a538-a9d9e7eba90f"
           ],
-          "decision_implication": "Protect the selected controller through its gate; ordinary discomfort or a new text cue is insufficient evidence to replan."
+          "decision_implication": "Use the next hour as your commitment horizon and refuse to renegotiate with unrelated cues until the chosen block ends."
         }
       ],
       "context_decision": {
-        "choice": "Reject ‘house document paperwork’ as a control input until it resolves to an eligible task ID.",
-        "why": "It currently cannot identify or attribute an executable state change.",
-        "alternative": "If Sai explicitly maps it to a valid task or changes priority, rerun eligibility and exception checks.",
-        "review": "Whenever the cue gains a native task ID or explicit priority."
+        "choice": "Give AR-11 the next hour, then decide whether the retired-Housing financial responsibility still exists and whether the lung concern overrides its Life OS deferral.",
+        "why": "This separates one clear named task from two unresolved priority questions without pretending either question is already solved.",
+        "alternative": "If documented health information creates a real exception, move the lung scan forward; otherwise preserve the Life OS deferral and clarify Housing ownership.",
+        "review": "When the AR-11 block ends and after the bounded Housing-responsibility or provider check."
       },
       "context_actions": [
         {
           "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
           "label": "AR-11 form",
           "state": "current",
-          "move": "Use this identified task—not the ambiguous schedule text—as the first controller input.",
-          "done_when": "The task produces a receipt or exact blocker tied to its native ID."
+          "move": "Make AR-11 the one clear task for the next focused block; the Housing and lung priority questions wait for the explicit review.",
+          "done_when": "The task has verified progress, one exact next requirement, or a precise blocker."
         }
       ]
     },
@@ -514,18 +527,20 @@
           "source_type": "model",
           "source_id": "theory-of-constraints",
           "label": "Theory of Constraints",
-          "application": "The current Life OS review shows 0/3 prior actions completed and identifies execution initiation as the constraint. The first leverage point is not choosing another project; it is moving AR-11 from open state to a receipt or exact blocker.",
+          "application": "Your Outliner already contains plans, frameworks, and meaningful projects. The present constraint is converting intention into a verified external result. Building another system would add planning material without changing an external outcome; advancing the AR-11 task to a verified next state or obtaining a scan decision would.",
           "source_refs": [
             "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711"
+            "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd"
           ],
-          "decision_implication": "Exploit artifact-producing initiation first; do not expand the queue to solve low throughput."
+          "decision_implication": "Put your best energy into the point where intention becomes a real-world result, not into expanding the planning layer."
         },
         {
           "source_type": "model",
           "source_id": "littles-law",
           "label": "Little's Law",
-          "application": "Nine eligible tasks span six projects, but expose only one active item: AR-11, then the scan, then the internet warning. Taxes, travel, hair research, and 🐅 mode remain inventory—not concurrent WIP.",
+          "application": "Taxes, travel, hair-loss research, health, maintenance, and identity growth represent different parts of your life. Treating all of them as simultaneous current commitments makes no priority choice. Deferring most of them is an explicit allocation decision that gives one selected obligation an uninterrupted block.",
           "source_refs": [
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
             "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
@@ -535,60 +550,60 @@
             "c18cb05c-d523-4268-9d9a-eff602c29149",
             "d6135502-df76-48ff-824e-c8af2975b890"
           ],
-          "decision_implication": "Keep one task active; queued items may wait without becoming failures."
+          "decision_implication": "Select only one current task; deferred projects remain valid without becoming today’s commitments."
         },
         {
           "source_type": "model",
           "source_id": "ooda-loop",
           "label": "OODA Loop",
-          "application": "AR-11 returns a receipt or requirement; the scan contact returns an appointment or referral blocker; the internet inspection returns resolution or a ticket. Each artifact determines the next move better than the unchanged open-task flag.",
+          "application": "A verified task update, appointment, or ticket changes the external situation: a task has a known next state, a health uncertainty has a professional next step, or an infrastructure problem has an owner. Each outcome changes what you can decide next; an unchanged open task plus more analysis does not.",
           "source_refs": [
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
             "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
             "e7e77f16-2155-45a3-a975-f37eafd6efe2"
           ],
-          "decision_implication": "Do not advance on elapsed time alone; advance on the artifact or redesign after an exact blocker."
+          "decision_implication": "Choose the move most likely to leave you with new external evidence before the block ends."
         },
         {
           "source_type": "model",
           "source_id": "pareto-frontier",
           "label": "Pareto Frontier",
-          "application": "For AR-11, a submission receipt is enough; for the scan, an appointment or explicit referral requirement is enough; for internet, a cleared warning or ticket number is enough. Extra research or perfect documentation does not improve the immediate decision.",
+          "application": "You do not need to complete the entire surrounding project to satisfy today’s decision. For now, verified AR-11 progress or one known requirement, a scan appointment or explicit deferral, or an internet ticket is enough. Stop when further work no longer changes the next decision, preserving time for the rest of your life.",
           "source_refs": [
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
             "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
             "e7e77f16-2155-45a3-a975-f37eafd6efe2"
           ],
-          "decision_implication": "Stop the timebox once the decision-enabling artifact exists; avoid gold-plating."
+          "decision_implication": "Define “enough for today” before starting and stop when that evidence exists."
         }
       ],
       "context_decision": {
-        "choice": "Use artifact production—not planning volume or project coverage—as the advancement rule.",
-        "why": "It directly tests the current initiation constraint and makes progress attributable.",
-        "alternative": "If a bounded attempt yields no artifact, redesign that task’s first step instead of opening another project.",
-        "review": "After every timebox and again at 48 hours."
+        "choice": "Measure today by one documented external outcome.",
+        "why": "One documented outcome proves follow-through; partial progress across several life areas leaves no comparable evidence.",
+        "alternative": "If the first task cannot produce evidence in its block, capture the exact blocker and redesign only its next move.",
+        "review": "At the end of each bounded block; continue only when the next step remains clear and worthwhile."
       },
       "context_actions": [
         {
           "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
           "label": "AR-11 form",
           "state": "current",
-          "move": "Produce the smallest official submission or blocker artifact.",
-          "done_when": "Receipt or confirmation, or exact blocker saved."
+          "move": "Aim for verified progress or the one missing requirement—not an assumed completion path.",
+          "done_when": "The task has a verified next state, one exact requirement, or a precise blocker."
         },
         {
           "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
           "label": "Schedule lung-health scan",
           "state": "current",
-          "move": "Produce appointment or requirement evidence.",
-          "done_when": "Appointment or exact referral, insurance, or contact blocker saved."
+          "move": "Aim for a calendar date or a professional requirement that tells you what happens next.",
+          "done_when": "The health uncertainty has an appointment or a defined escalation path."
         },
         {
           "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
           "label": "Internet disruption warning",
           "state": "current",
-          "move": "Produce resolution or escalation evidence.",
-          "done_when": "Warning cleared or ticket and response window saved."
+          "move": "Aim for the warning to have an explicit owner, response path, and next state.",
+          "done_when": "The warning is resolved or tied to a provider ticket and response window."
         }
       ]
     },
@@ -619,19 +634,22 @@
           "source_type": "model",
           "source_id": "probabilistic-thinking",
           "label": "Probabilistic Thinking",
-          "application": "Outliner shows abstinence autoCheck through 2026-07-25, but Taking action still has zero logs and all nine eligible tasks remain open. AutoCheck is not independent adherence evidence and completions are coarse, so preserve the paired-observation test and current controller.",
+          "application": "Your open tasks represent different uncertainties, not one generic backlog. AR-11 is a named task whose requirements and timing are not recorded in the node, the lung scan carries unresolved health uncertainty, internet affects everyday reliability, taxes affect financial administration, the NYC and Niagara trip is a travel opportunity, and hair-loss research is an open research choice. Missing deadlines, lead times, and requirements matter more than invented odds.",
           "source_refs": [
-            "ca5f246b-4dda-4776-b0a6-93b449ff1ddd",
-            "4a82c418-87eb-460b-a853-6b34f82f87d2",
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711"
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "6ed76b92-aa75-4883-a573-33c6531fbca6",
+            "c18cb05c-d523-4268-9d9a-eff602c29149"
           ],
-          "decision_implication": "Do not use the extended autoCheck streak to promote, cancel, or reorder work; update only from user-confirmed habit evidence plus dated action artifacts."
+          "decision_implication": "Compare the consequence of waiting and the value of new information across life areas; state uncertainty explicitly where facts are missing."
         },
         {
           "source_type": "model",
           "source_id": "thinking-in-bets",
           "label": "Thinking in Bets",
-          "application": "Open AR-11 to reveal requirements; contact the scan provider to reveal appointment or referral constraints; inspect the internet warning to reveal its remedy. After the gate, a yesmytaxes contact can test the tax sequence without activating all three tax tasks. Fare and cancellation research can preserve the travel option without booking, while one bounded hair-loss question can test whether research deserves the growth slot.",
+          "application": "You can preserve options without committing to every open responsibility at once: inspect the AR-11 task to identify its next requirement; ask the scan provider about availability or referrals; inspect the internet warning; later ask yesmytaxes what is actually required; inspect trip timing and cancellation terms before buying; define one hair-loss decision question before entering broad research. Each move buys clarity while leaving you free to change direction.",
           "source_refs": [
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
             "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
@@ -640,70 +658,73 @@
             "6ed76b92-aa75-4883-a573-33c6531fbca6",
             "c18cb05c-d523-4268-9d9a-eff602c29149"
           ],
-          "decision_implication": "Take the cheapest information-buying move now; defer irreversible booking or queue expansion until evidence supports it."
+          "decision_implication": "Take the smallest move that materially changes what you know, and delay irreversible spending or broad commitments until it does."
         },
         {
           "source_type": "model",
           "source_id": "bayesian-updating",
           "label": "Bayesian Updating",
-          "application": "If AR-11 produces a receipt inside its timebox, that supports the bounded artifact-first structure; if it exposes a specific blocker, update the next step around that blocker. If yesmytaxes later provides requirements, strengthen the tax-chain hypothesis; otherwise weaken or reorder it.",
+          "application": "Let reality—not loyalty to the plan—change your priorities. A long scan lead time may elevate health scheduling; a clear AR-11 next step may make immediate progress sensible; a yesmytaxes response may validate or dissolve the assumed tax sequence; favorable cancellation terms may make travel easier to preserve.",
           "source_refs": [
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
             "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
             "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-            "8329b464-dab9-4362-811c-dadf15a1cbdd"
+            "8329b464-dab9-4362-811c-dadf15a1cbdd",
+            "6ed76b92-aa75-4883-a573-33c6531fbca6"
           ],
-          "decision_implication": "Update from receipts, requirements, and blockers—not from feeling more or less confident."
+          "decision_implication": "After every external response, ask what became more important, less important, or no longer necessary."
         },
         {
           "source_type": "model",
           "source_id": "minimax-margin-safety",
           "label": "Minimax / Margin of Safety",
-          "application": "The 25, 20, and 15-minute current actions cap attention cost while travel and hair research remain conditional. Keep slack for any documented medical or safety issue, legal or official deadline, or explicit priority change; do not fill freed capacity automatically.",
+          "application": "Your timeboxes prevent one administrative task from consuming the day, while the exception check protects against underreacting to a documented health instruction, deadline, or consequence of delay. Preserving empty capacity is also important: your life should not automatically refill every finished slot with another obligation.",
           "source_refs": [
             "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
             "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
             "e7e77f16-2155-45a3-a975-f37eafd6efe2",
             "6ed76b92-aa75-4883-a573-33c6531fbca6",
-            "c18cb05c-d523-4268-9d9a-eff602c29149"
+            "c18cb05c-d523-4268-9d9a-eff602c29149",
+            "aa3cd17e-ad8e-4e4e-a78f-d94798b50405"
           ],
-          "decision_implication": "Keep timeboxes and capacity reserve; override only for documented high-consequence evidence."
+          "decision_implication": "Cap the cost of each experiment, preserve recovery space, and override the sequence only for documented high-consequence information."
         }
       ],
       "context_decision": {
-        "choice": "Buy information with the current three bounded tasks before committing tax, travel, or research capacity.",
-        "why": "The current moves are reversible and expose requirements; alternatives contain unvalidated dependencies or missing priority evidence.",
-        "alternative": "Release one conditional queue early only if a documented deadline, safety issue, or explicit priority changes expected value.",
-        "review": "At each artifact, the 48-hour gate, and the day-7 allocation gate."
+        "choice": "First expose the few facts that could change priority, then make one low-regret move instead of carrying every possibility.",
+        "why": "This protects health and named responsibilities while preserving room for travel, research, and growth rather than allowing administration to consume everything.",
+        "alternative": "Commit earlier only when a deadline, lead time, cancellation rule, or professional instruction makes delay meaningfully worse.",
+        "review": "Whenever a provider, form response, tax contact, or booking condition returns new evidence."
       },
       "context_actions": [
         {
           "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "label": "AR-11 requirement test",
+          "label": "Clarify and advance AR-11",
           "state": "current",
-          "move": "Open and attempt the bounded official path; preserve the option to stop on an exact requirement.",
-          "done_when": "Requirement, receipt, or blocker is known."
+          "move": "Use one bounded attempt to learn whether this can be closed now or which exact requirement remains.",
+          "done_when": "You have verified progress, one exact requirement, or a blocker that changes the decision."
         },
         {
           "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-          "label": "Test the tax-chain hypothesis",
+          "label": "Clarify the tax obligation",
           "state": "conditional",
-          "move": "After the gate, contact yesmytaxes to learn whether paperwork is actually the next dependency.",
-          "done_when": "Response, requirements, or exact no-response blocker saved."
+          "move": "If you explicitly reactivate Taxes after reviewing the current commitments, ask yesmytaxes what is actually required before treating all three tax tasks as current.",
+          "done_when": "You know whether paperwork is needed and what the next obligation really is."
         },
         {
           "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
-          "label": "Preserve the travel option",
+          "label": "Preserve the trip option",
           "state": "conditional",
-          "move": "At the growth gate, inspect deadline, fare, and cancellation conditions before booking.",
-          "done_when": "Decision evidence exists without an irreversible purchase."
+          "move": "When the growth slot opens, inspect timing, fare, and cancellation conditions before making a purchase.",
+          "done_when": "You can compare the value of the trip with its real cost and reversibility."
         },
         {
           "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
-          "label": "Bound the hair-loss research option",
+          "label": "Turn hair-loss research into a decision",
           "state": "conditional",
-          "move": "Define one decision-relevant research question before opening a broad search.",
-          "done_when": "A bounded question and stop condition exist."
+          "move": "Define the personal decision the research should support—such as whether to compare options, seek professional input, or defer—before searching broadly.",
+          "done_when": "The research has one question, one stopping point, and one intended decision."
         }
       ]
     },
@@ -734,76 +755,78 @@
           "source_type": "model",
           "source_id": "amdahls-law",
           "label": "Amdahl's Law",
-          "application": "The titles suggest talk → paperwork → confirmation, but all three tax dependency fields are empty. First test whether yesmytaxes supplies requirements; only then treat paperwork and confirmation as sequential. Provider waiting may overlap with inactive preparation, but not with another active queue.",
+          "application": "The Taxes project lists three tasks—call, paperwork, confirmation—but your Outliner does not establish that all three are current obligations. One conversation may reveal that the later work is smaller, different, delegated, or not yet required. Do not commit to the entire assumed chain in advance.",
           "source_refs": [
             "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
             "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-            "8329b464-dab9-4362-811c-dadf15a1cbdd"
+            "8329b464-dab9-4362-811c-dadf15a1cbdd",
+            "e7acc431-e4c2-4cb8-8f96-5469f689a3f2"
           ],
-          "decision_implication": "Compress confirmed handoffs, not the imagined three-step chain."
+          "decision_implication": "If Taxes is explicitly reactivated, treat the call as the only listed tax task to activate initially, until its response establishes whether another step is required."
         },
         {
           "source_type": "model",
           "source_id": "theory-of-constraints",
           "label": "Theory of Constraints",
-          "application": "For Taxes, the first unknown is whether yesmytaxes provides requirements. Drafting or polishing downstream paperwork before that response may optimize a non-constraint. The response or a no-response blocker identifies the actual next constraint.",
+          "application": "Tax ownership is currently a decision problem before it is a paperwork problem: the Life OS review says to reactivate, delegate, or remove the yesmytaxes commitment. Until you choose, preparing downstream paperwork risks spending time on an obligation you have not accepted.",
           "source_refs": [
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
             "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
             "79f13db5-e1f2-40f4-95ca-7c2073a2f772"
           ],
-          "decision_implication": "Start with the contact only after the phase gate; let its artifact choose the next tax action."
+          "decision_implication": "Make the ownership decision first: personally reactivate the call, delegate it, or consciously remove it from active commitments."
         },
         {
           "source_type": "model",
           "source_id": "ooda-loop",
           "label": "OODA Loop",
-          "application": "Observe the empty dependency fields; orient with the yesmytaxes response; decide whether paperwork is required; act on only that confirmed requirement. Then use the submission artifact to decide whether filed confirmation is enabled.",
+          "application": "If you reactivate Taxes, the yesmytaxes response should determine your next personal obligation. If paperwork is requested, submit only what is required; if confirmation becomes available after submission, obtain it then. This turns one vague financial cloud into a series of finite decisions.",
           "source_refs": [
             "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
             "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
             "8329b464-dab9-4362-811c-dadf15a1cbdd"
           ],
-          "decision_implication": "Do not auto-advance by title order; advance when the predecessor artifact enables the successor."
+          "decision_implication": "Let each external response decide the next step; do not rehearse or perform later obligations early."
         },
         {
           "source_type": "model",
           "source_id": "control-theory-spc",
           "label": "Control Theory / SPC",
-          "application": "The Life OS review currently calls yesmytaxes a non-commitment pending explicit reactivation or delegation. Keep Taxes conditional until the immediate controller is reviewed and Sai reactivates it, or a documented official deadline changes priority.",
+          "application": "Taxes are currently a non-commitment in your Life OS review. That means all three tasks do not count as today’s obligations. But ownership remains undefined until you choose reactivate, delegate, or remove, so that choice belongs in the planned review.",
           "source_refs": [
             "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
             "0f5276b2-6ba2-4fef-8dcc-39551555e2c4"
           ],
-          "decision_implication": "Do not let the tax queue silently become active; require phase-gate evidence plus explicit reactivation."
+          "decision_implication": "At the review, choose reactivate, delegate, or remove—do not let Taxes remain an undefined background obligation."
         }
       ],
       "context_decision": {
-        "choice": "Keep Taxes conditional; if reactivated after the current gate, test the chain with yesmytaxes first.",
-        "why": "The titles suggest a sequence, but dependency fields are empty and the Life OS review classifies the first task as a non-commitment.",
-        "alternative": "If an official tax deadline is documented, run the exception gate and reprioritize explicitly.",
-        "review": "At the 48-hour controller review and after every tax handoff artifact."
+        "choice": "Do not treat Taxes as one of today’s obligations, but make an explicit ownership decision at the 48-hour review.",
+        "why": "You should not treat three unvalidated tasks as current obligations, but the responsible owner and next step still need to be specified.",
+        "alternative": "Move Taxes earlier only if an official deadline is documented; otherwise delegate or remove the commitment if you do not intend to own it.",
+        "review": "At the 48-hour review, then after each real response or submission artifact."
       },
       "context_actions": [
         {
           "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-          "label": "Talk to yesmytaxes",
+          "label": "Decide and contact yesmytaxes",
           "state": "conditional",
-          "move": "Request the exact required next step after explicit reactivation.",
-          "done_when": "Response, requirements, or exact contact blocker saved."
+          "move": "If you choose to own the tax process, make the contact as the only active tax step; otherwise delegate or remove it from active commitments outside this read-only system.",
+          "done_when": "You have a response or a clear ownership and contact outcome."
         },
         {
           "task_id": "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-          "label": "Submit paperwork",
+          "label": "Submit only required paperwork",
           "state": "conditional",
-          "move": "Activate only if the response establishes paperwork as the next dependency.",
-          "done_when": "Submission artifact or exact requirement blocker saved."
+          "move": "Accept this obligation only when the response establishes exactly what you must provide.",
+          "done_when": "The requested material is submitted or reduced to one external blocker."
         },
         {
           "task_id": "8329b464-dab9-4362-811c-dadf15a1cbdd",
-          "label": "Get filed confirmation",
+          "label": "Close the tax loop",
           "state": "conditional",
-          "move": "Activate only when submission evidence establishes that confirmation is available or due.",
-          "done_when": "Filed confirmation or exact external blocker saved."
+          "move": "Seek confirmation only after submission makes it available; use it to establish that the tax process is complete or externally waiting.",
+          "done_when": "Filed confirmation exists or the responsible party and waiting condition are known."
         }
       ]
     }
