@@ -1,23 +1,30 @@
 {
   "mission_start": "2026-07-04T00:00:00",
   "metrics": {
-    "wip": 11,
-    "completed": 1,
+    "wip": 9,
+    "completed": 0,
     "ooda_last": null,
     "avg_latency": null,
     "compound_velocity": 2.5,
     "bottleneck": "Zero analysis-to-action conversion — planning IS the avoidance (Week 3)",
     "nightly_run": "2026-06-21",
     "detail": {
+      "Hairloss": 1,
+      "Lung health scan": 1,
+      "NYC & Niagara Trip": 1,
       "Taxes": 3,
-      "Parents trip": 3,
-      "maintenance": 2,
-      "NYC & Niagara Trip": 3
+      "The high value male or main character energy project": 1,
+      "maintenance": 2
     },
     "completed_detail": "Last: bathrooms cleaning (Jun 17)"
   },
   "decisions": [],
   "activity_log": [
+    {
+      "time": "11:00:46",
+      "type": "WEEKLY",
+      "message": "Fresh Outliner refresh: 9 eligible open tasks across 6 task-bearing active projects; 0 eligible completions in the preceding 7 days."
+    },
     {
       "time": "20:00:00",
       "type": "WEEKLY",
@@ -61,28 +68,28 @@
   ],
   "skills": [
     {
-      "name": "euclidean-thinking",
+      "name": "augmented-intelligence-engine",
       "tags": [
         "STEM",
-        "first-principles"
+        "synthesis"
       ],
-      "desc": "Axioms, primitives, constructive proofs"
+      "desc": "Connects fresh Outliner evidence to tested insights, focused decisions, and task-backed actions for Sai’s weekly momentum review."
     },
     {
-      "name": "probabilistic-thinking",
+      "name": "pilot-dashboard",
       "tags": [
-        "STEM",
-        "uncertainty"
+        "dashboard",
+        "read-only"
       ],
-      "desc": "Base rates, regression, Bayesian updating"
+      "desc": "Displays Sai’s current eligible work, evidence-derived momentum analysis, and longitudinal intelligence without browser-side mutation."
     },
     {
-      "name": "thinking-in-bets",
+      "name": "stem-gist",
       "tags": [
         "STEM",
-        "decisions"
+        "heuristics"
       ],
-      "desc": "Decision-making under uncertainty"
+      "desc": "Supplies compact evidence-first heuristics used to challenge assumptions, calibrate forecasts, and isolate execution constraints."
     },
     {
       "name": "warp-speed-execution",
@@ -90,39 +97,31 @@
         "STEM",
         "velocity"
       ],
-      "desc": "15-framework STEM synthesis for life velocity"
+      "desc": "Applies WIP limits, constraint isolation, sequencing, and artifact-based throughput to Sai’s active execution chain."
     },
     {
-      "name": "personal-algorithm-architecture",
+      "name": "thinking-in-bets",
       "tags": [
         "STEM",
-        "systems"
+        "decisions"
       ],
-      "desc": "Quarterly-versioned life OS, protocol design patterns"
+      "desc": "Frames Sai’s focused choices as reversible bets with explicit alternatives, opportunity costs, review gates, and outcome signals."
     },
     {
-      "name": "fear-avoidance-loop",
+      "name": "probabilistic-thinking",
       "tags": [
         "STEM",
-        "systems"
+        "uncertainty"
       ],
-      "desc": "7-phase positive feedback loop, 3 intervention windows"
+      "desc": "Anchors Sai’s momentum forecasts in observed completion history, separates signal from noise, and updates confidence from outcomes."
     },
     {
-      "name": "rules-engineering-gap-analysis",
+      "name": "euclidean-thinking",
       "tags": [
         "STEM",
-        "measurement"
+        "first-principles"
       ],
-      "desc": "88 rules to 4 measured to 1 holding"
-    },
-    {
-      "name": "stress-protocol-katana",
-      "tags": [
-        "performance",
-        "protocol"
-      ],
-      "desc": "Biometric-triggered behavioral interrupt"
+      "desc": "Separates explicit Outliner facts from assumptions and validates ancestry, eligibility, and causal reasoning before recommendations."
     }
   ],
   "momentum_analysis": {
@@ -308,5 +307,5 @@
     "stem_concepts": 7,
     "updated": "2026-07-04"
   },
-  "updated": "2026-07-26T09:30:53Z"
+  "updated": "2026-07-26T11:00:46Z"
 }
