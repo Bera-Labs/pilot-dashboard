@@ -118,6 +118,29 @@
   .synth-disagreement { padding: 15px 24px 18px; border-top: 1px solid rgba(255, 180, 84, 0.2); background: rgba(255, 180, 84, 0.035); }
   .synth-disagreement .synth-label { margin-bottom: 8px; color: var(--yellow); }
   .synth-disagreement .synth-text { color: #c8d1d6; font-size: 12.5px; line-height: 1.6; }
+  .synth-context { padding: 22px 24px 24px; border-top: 1px solid rgba(57, 186, 230, 0.2); background: rgba(57, 186, 230, 0.025); }
+  .context-grid { display: grid; gap: 11px; }
+  .context-application { padding: 14px 15px; border: 1px solid rgba(85, 102, 120, 0.22); border-radius: 8px; background: rgba(10, 15, 22, 0.55); }
+  .context-source { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 8px; }
+  .context-source-name { color: #e8f0f4; font-size: 13px; font-weight: 650; }
+  .context-source-type, .context-state { padding: 3px 6px; border-radius: 999px; font: 8px/1.2 var(--font-mono); letter-spacing: 0.55px; text-transform: uppercase; }
+  .context-source-type { background: rgba(57, 186, 230, 0.08); color: #8bd8f2; }
+  .context-application-text { color: #bfd0dc; font-size: 13px; line-height: 1.62; }
+  .context-implication { margin-top: 9px; padding-left: 10px; border-left: 2px solid var(--green); color: #c7d88a; font-size: 12px; line-height: 1.55; }
+  .context-refs { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .context-ref { padding: 2px 5px; border-radius: 4px; background: rgba(113, 144, 162, 0.08); color: #8fa5b3; font: 8px/1.35 var(--font-mono); }
+  .context-decision { margin-top: 14px; padding: 14px 15px; border: 1px solid rgba(255, 180, 84, 0.22); border-radius: 8px; background: rgba(255, 180, 84, 0.035); }
+  .context-decision-choice { color: #f0c37f; font-size: 13.5px; font-weight: 650; line-height: 1.5; }
+  .context-decision-row { margin-top: 6px; color: #b7c6cf; font-size: 12px; line-height: 1.55; }
+  .context-decision-row strong { color: #dce6eb; }
+  .context-actions { display: grid; gap: 8px; margin-top: 14px; }
+  .context-action { padding: 12px 13px; border: 1px solid rgba(194, 217, 76, 0.18); border-radius: 7px; background: rgba(194, 217, 76, 0.025); }
+  .context-action-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 9px; }
+  .context-action-title { color: #e7eef2; font-size: 12.5px; font-weight: 650; line-height: 1.4; }
+  .context-state.current { background: rgba(57, 186, 230, 0.09); color: #8bd8f2; }
+  .context-state.conditional { background: rgba(194, 217, 76, 0.08); color: #cddd76; }
+  .context-action-move { margin-top: 6px; color: #b8c8d1; font-size: 12px; line-height: 1.55; }
+  .context-action-done { margin-top: 5px; color: #aebe82; font-size: 11px; line-height: 1.5; }
   .rich-heading {
     margin: 18px 0 8px; color: #e9f1f5; font-size: 13px; line-height: 1.4;
     font-weight: 650; letter-spacing: 0.01em;
@@ -401,6 +424,49 @@
       .join('');
   }
 
+  function renderContextGuidance(synthesis) {
+    const applications = Array.isArray(synthesis.context_applications) ? synthesis.context_applications : [];
+    const decision = synthesis.context_decision || {};
+    const actions = Array.isArray(synthesis.context_actions) ? synthesis.context_actions : [];
+    if (!applications.length) return '';
+
+    const applicationHtml = applications.map(item => {
+      const refs = (item.source_refs || []).map(ref => `<span class="context-ref" title="${escapeHtml(ref)}">${escapeHtml(taskIdLabel(ref))}</span>`).join('');
+      return `<article class="context-application">
+        <div class="context-source">
+          <h3 class="context-source-name">${escapeHtml(item.label)}</h3>
+          <span class="context-source-type">${escapeHtml(item.source_type)}</span>
+        </div>
+        <div class="context-application-text">${escapeHtml(item.application)}</div>
+        <div class="context-implication"><strong>Decision implication:</strong> ${escapeHtml(item.decision_implication)}</div>
+        <div class="context-refs" aria-label="Outliner source references">${refs}</div>
+      </article>`;
+    }).join('');
+
+    const decisionHtml = `<section class="context-decision" aria-label="Context-specific decision">
+      <div class="context-decision-choice">${escapeHtml(decision.choice)}</div>
+      <div class="context-decision-row"><strong>Why now:</strong> ${escapeHtml(decision.why)}</div>
+      <div class="context-decision-row"><strong>Nearest alternative:</strong> ${escapeHtml(decision.alternative)}</div>
+      <div class="context-decision-row"><strong>Review / reversal:</strong> ${escapeHtml(decision.review)}</div>
+    </section>`;
+
+    const actionHtml = actions.map(action => `<article class="context-action">
+      <div class="context-action-head">
+        <h4 class="context-action-title">${escapeHtml(action.label)} <span class="step-id" title="${escapeHtml(action.task_id)}">${escapeHtml(taskIdLabel(action.task_id))}</span></h4>
+        <span class="context-state ${escapeHtml(action.state)}">${escapeHtml(action.state)}</span>
+      </div>
+      <div class="context-action-move">${escapeHtml(action.move)}</div>
+      <div class="context-action-done"><strong>Evidence:</strong> ${escapeHtml(action.done_when)}</div>
+    </article>`).join('');
+
+    return `<section class="synth-context" aria-label="Applied to your Outliner">
+      <div class="synth-label">Applied to your Outliner</div>
+      <div class="context-grid">${applicationHtml}</div>
+      ${decisionHtml}
+      <div class="context-actions">${actionHtml}</div>
+    </section>`;
+  }
+
   function renderSyntheses(syntheses) {
     const container = document.getElementById('syntheses-container');
     container.innerHTML = '';
@@ -441,7 +507,7 @@
         </section>`;
       }
 
-      html += '</div>';
+      html += `</div>${renderContextGuidance(s)}`;
       if (s.disagreement) {
         html += `<section class="synth-disagreement">
           <div class="synth-label">Expert disagreement / resolution</div>

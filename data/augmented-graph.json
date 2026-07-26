@@ -2,7 +2,7 @@
   "meta": {
     "schema_version": "3.0.0",
     "generated_at": "2026-07-25T17:06:11Z",
-    "source_fingerprint": "4e4a6371a068b11307fe51afbdcaf3803d73ecc0a32fce09e6bcb3f78366dd02",
+    "source_fingerprint": "1f7e09fe67d8a99f9ca27e0a0efb05ff5b06bac316d43f63e6b0fdfba96f834b",
     "source": "/root/pilot-dashboard/data/augmented-intelligence.json",
     "method": "Mixture of Experts",
     "node_count": 40,
@@ -1113,6 +1113,76 @@
       "model": "Euclidean Thinking · Information Theory · Control Theory & SPC · Probabilistic Thinking · Thinking in Bets · Theory of Constraints · Little's Law · OODA Loop · Minimax & Margin of Safety",
       "problem": "The visible cue channel is not connected to the eligible task queue, while recent evidence shows low artifact-producing throughput. Project inventory, executable inventory, and controller state are being represented by different primitives.",
       "solution": "### Expert convergence\n- **Orientation & Control:** gate every execution cue by native task identity and eligibility.\n- **Decision & Risk:** run a brief deadline/consequence/reversibility/lead-time exception gate, then protect the current reversible test until its review gate; do not invent certainty from a non-due outcome.\n- **Execution Systems:** run one active task at a time and require each timebox to end in a done artifact or an exact blocker artifact.\n\n### Integrated operating rule\n**Identity → eligibility → decision → one-task execution → artifact → review.** Future phases unlock only when the prior gate produces observable evidence.",
+      "context_applications": [
+        {
+          "source_type": "expert",
+          "source_id": "expert-orientation-control",
+          "label": "Orientation & Control",
+          "application": "The schedule cue ‘house document paperwork’ has no native task ID, while AR-11, the lung scan, and the internet warning do. Treat that cue as context only; the three identified tasks remain the attributable controller unless a documented exception appears.",
+          "source_refs": [
+            "schedule:__actionflow_daily_actions_v1__[0]",
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+          ],
+          "decision_implication": "Do not let unidentified schedule text reorder the controller; require a task ID or an explicit priority change."
+        },
+        {
+          "source_type": "expert",
+          "source_id": "expert-decision-risk",
+          "label": "Decision & Risk",
+          "application": "Current Outliner fields do not establish an AR-11 deadline, medical urgency for the scan, or the consequence of the internet warning. A short exception check should expose those facts before ordering the three tasks; unknowns stay unknown rather than becoming invented priorities.",
+          "source_refs": [
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+          ],
+          "decision_implication": "Keep the bounded controller unless the check reveals a safety, medical, legal, or official-deadline exception."
+        },
+        {
+          "source_type": "expert",
+          "source_id": "expert-execution-systems",
+          "label": "Execution Systems",
+          "application": "The current Life OS review records 0/3 prior actions completed, and the Taking action habit has no logs. Evidence here means an AR-11 receipt or blocker, a scan appointment or referral blocker, and an internet resolution or ticket—not another plan or a generic ‘worked on it’ state.",
+          "source_refs": [
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
+            "4a82c418-87eb-460b-a853-6b34f82f87d2",
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+          ],
+          "decision_implication": "Advance only when the current timebox ends with a done artifact or an exact blocker artifact."
+        }
+      ],
+      "context_decision": {
+        "choice": "Protect the three-task controller after a brief exception check.",
+        "why": "It converts three eligible Outliner tasks into attributable evidence while the schedule cue and task priorities remain partly unknown.",
+        "alternative": "Reorder only if an official deadline, medical or safety consequence, or explicit user priority is established.",
+        "review": "At the first artifact or the 48-hour gate, whichever comes first."
+      },
+      "context_actions": [
+        {
+          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "label": "AR-11 form",
+          "state": "current",
+          "move": "Open the official form and expose the exact submission requirement; submit if the bounded path is clear.",
+          "done_when": "Receipt, confirmation, or exact requirement or blocker saved."
+        },
+        {
+          "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+          "label": "Schedule lung-health scan",
+          "state": "current",
+          "move": "Contact the provider to expose appointment, referral, and insurance requirements without making unsupported medical claims.",
+          "done_when": "Appointment confirmation or exact referral or contact blocker saved."
+        },
+        {
+          "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+          "label": "Internet disruption warning",
+          "state": "current",
+          "move": "Inspect the warning and take only the provider-directed resolution step.",
+          "done_when": "Warning cleared or provider ticket and response window saved."
+        }
+      ],
       "disagreement": "The control expert favors the existing 48-hour review gate, the execution expert proposed a 72-hour falsification test, and the decision-risk expert proposed a seven-day task-ID scheduling pilot. The blueprint preserves the 48-hour checkpoint as the earliest decision gate and continues prospective evidence collection through day 7 before making a stronger causal or model-weight update.",
       "status": "current",
       "confidence": "medium",
@@ -1134,6 +1204,88 @@
       "model": "Theory of Constraints · Little's Law · OODA Loop · Pareto Frontier",
       "problem": "Task state alone does not reveal whether execution started, stalled, or produced useful intermediate evidence; recent eligible closure throughput is low.",
       "solution": "### Model contributions\n- **Theory of Constraints:** treat artifact-producing initiation—not project count—as the current constraint.\n- **Little's Law:** active WIP stays at one; queued work does not become active work.\n- **OODA:** every timebox closes the loop with either a done artifact or a precise blocker.\n- **Pareto:** stop when the minimum decision-enabling artifact exists; do not gold-plate.\n\n### Draft solution\nRun the three current actions sequentially. A screenshot, ticket, confirmation, or exact requirement counts as loop-closing evidence even when the parent task remains open.\n\n**Decision:** advance only after evidence is saved; external waiting may overlap, active effort may not.",
+      "context_applications": [
+        {
+          "source_type": "model",
+          "source_id": "theory-of-constraints",
+          "label": "Theory of Constraints",
+          "application": "The current Life OS review shows 0/3 prior actions completed and identifies execution initiation as the constraint. The first leverage point is not choosing another project; it is moving AR-11 from open state to a receipt or exact blocker.",
+          "source_refs": [
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711"
+          ],
+          "decision_implication": "Exploit artifact-producing initiation first; do not expand the queue to solve low throughput."
+        },
+        {
+          "source_type": "model",
+          "source_id": "littles-law",
+          "label": "Little's Law",
+          "application": "Nine eligible tasks span six projects, but expose only one active item: AR-11, then the scan, then the internet warning. Taxes, travel, hair research, and 🐅 mode remain inventory—not concurrent WIP.",
+          "source_refs": [
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "6ed76b92-aa75-4883-a573-33c6531fbca6",
+            "c18cb05c-d523-4268-9d9a-eff602c29149",
+            "d6135502-df76-48ff-824e-c8af2975b890"
+          ],
+          "decision_implication": "Keep one task active; queued items may wait without becoming failures."
+        },
+        {
+          "source_type": "model",
+          "source_id": "ooda-loop",
+          "label": "OODA Loop",
+          "application": "AR-11 returns a receipt or requirement; the scan contact returns an appointment or referral blocker; the internet inspection returns resolution or a ticket. Each artifact determines the next move better than the unchanged open-task flag.",
+          "source_refs": [
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+          ],
+          "decision_implication": "Do not advance on elapsed time alone; advance on the artifact or redesign after an exact blocker."
+        },
+        {
+          "source_type": "model",
+          "source_id": "pareto-frontier",
+          "label": "Pareto Frontier",
+          "application": "For AR-11, a submission receipt is enough; for the scan, an appointment or explicit referral requirement is enough; for internet, a cleared warning or ticket number is enough. Extra research or perfect documentation does not improve the immediate decision.",
+          "source_refs": [
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+          ],
+          "decision_implication": "Stop the timebox once the decision-enabling artifact exists; avoid gold-plating."
+        }
+      ],
+      "context_decision": {
+        "choice": "Use artifact production—not planning volume or project coverage—as the advancement rule.",
+        "why": "It directly tests the current initiation constraint and makes progress attributable.",
+        "alternative": "If a bounded attempt yields no artifact, redesign that task’s first step instead of opening another project.",
+        "review": "After every timebox and again at 48 hours."
+      },
+      "context_actions": [
+        {
+          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "label": "AR-11 form",
+          "state": "current",
+          "move": "Produce the smallest official submission or blocker artifact.",
+          "done_when": "Receipt or confirmation, or exact blocker saved."
+        },
+        {
+          "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+          "label": "Schedule lung-health scan",
+          "state": "current",
+          "move": "Produce appointment or requirement evidence.",
+          "done_when": "Appointment or exact referral, insurance, or contact blocker saved."
+        },
+        {
+          "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+          "label": "Internet disruption warning",
+          "state": "current",
+          "move": "Produce resolution or escalation evidence.",
+          "done_when": "Warning cleared or ticket and response window saved."
+        }
+      ],
       "disagreement": null,
       "status": "proposed-solution",
       "confidence": "medium",
@@ -1152,6 +1304,58 @@
       "model": "Euclidean Thinking · Information Theory · Control Theory & SPC",
       "problem": "A populated schedule field currently appears actionable even though its only cue has no task identity and zero eligible-task coverage.",
       "solution": "### Model contributions\n- **Euclidean:** redefine a valid cue as `native task ID + eligible state + current decision`. Text alone is context.\n- **Information Theory:** reject messages that cannot route to a validated queue item; they add occupancy without verified control signal.\n- **Control Theory/SPC:** keep the active controller stable until a scheduled review or a genuine exception signal.\n\n### Draft solution\nUse an **identity gate** before any cue enters execution. The current Housing-like text remains visible context but cannot override the selected eligible sequence.\n\n**Decision:** ignore unidentified cues for control purposes; review the controller at the explicit gate.",
+      "context_applications": [
+        {
+          "source_type": "model",
+          "source_id": "euclidean-thinking",
+          "label": "Euclidean Thinking",
+          "application": "In your Outliner, ‘house document paperwork’ is text without a native task ID; AR-11, lung scan, and internet warning are typed tasks with IDs. The valid execution primitive is an eligible task plus a current decision—not any populated cue.",
+          "source_refs": [
+            "schedule:__actionflow_daily_actions_v1__[0]",
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+          ],
+          "decision_implication": "Keep unidentified text visible as context, but do not execute or score it as work."
+        },
+        {
+          "source_type": "model",
+          "source_id": "information-theory",
+          "label": "Information Theory",
+          "application": "The schedule cue has 0/9 eligible-task coverage, so it consumes attention without identifying which task should change state. Native IDs for the three controller tasks carry enough information to route action and attribute an outcome.",
+          "source_refs": [
+            "schedule:__actionflow_daily_actions_v1__[0]",
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f"
+          ],
+          "decision_implication": "Require cue-to-task-ID resolution before a schedule item can compete with the active controller."
+        },
+        {
+          "source_type": "model",
+          "source_id": "control-theory-spc",
+          "label": "Control Theory / SPC",
+          "application": "Your own note says fixed deadlines and schedules have not worked so far, while the current Life OS review already selected a bounded chain. Do not oscillate between that chain and an unidentified cue; change course only for documented exception or review evidence.",
+          "source_refs": [
+            "d4d01beb-5aa4-4b0c-b228-8f5c32df7dd8",
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f"
+          ],
+          "decision_implication": "Protect the selected controller through its gate; ordinary discomfort or a new text cue is insufficient evidence to replan."
+        }
+      ],
+      "context_decision": {
+        "choice": "Reject ‘house document paperwork’ as a control input until it resolves to an eligible task ID.",
+        "why": "It currently cannot identify or attribute an executable state change.",
+        "alternative": "If Sai explicitly maps it to a valid task or changes priority, rerun eligibility and exception checks.",
+        "review": "Whenever the cue gains a native task ID or explicit priority."
+      },
+      "context_actions": [
+        {
+          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "label": "AR-11 form",
+          "state": "current",
+          "move": "Use this identified task—not the ambiguous schedule text—as the first controller input.",
+          "done_when": "The task produces a receipt or exact blocker tied to its native ID."
+        }
+      ],
       "disagreement": null,
       "status": "proposed-solution",
       "confidence": "high",
@@ -1170,6 +1374,99 @@
       "model": "Probabilistic Thinking · Thinking in Bets · Bayesian Updating · Minimax & Margin of Safety",
       "problem": "The evidence does not support precise success probabilities or a psychological cause, but decisions still need bounded next steps and explicit review conditions.",
       "solution": "### Model contributions\n- **Probabilistic:** keep causal explanations and ungrounded odds unknown.\n- **Thinking in Bets:** choose small reversible moves that buy information and preserve future options.\n- **Bayesian:** update task architecture from observed artifacts at checkpoints, not from narrative confidence.\n- **Minimax / Margin of Safety:** use short timeboxes, safety exceptions, and capacity slack to cap downside.\n\n### Draft solution\nUse a decision ladder: **execute the protected controller → inspect evidence → release one conditional queue → reassess.**\n\n**Decision:** do not activate the tax or growth queue until the immediate controller reaches its review gate.",
+      "context_applications": [
+        {
+          "source_type": "model",
+          "source_id": "probabilistic-thinking",
+          "label": "Probabilistic Thinking",
+          "application": "Outliner establishes open tasks and empty tax dependency fields, but not why execution is low, the probability each task will finish, or which conditional queue has higher expected value. Treat those as unknown and collect discriminating evidence.",
+          "source_refs": [
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+            "8329b464-dab9-4362-811c-dadf15a1cbdd"
+          ],
+          "decision_implication": "Choose evidence-producing steps without claiming a psychological cause or numerical success probability."
+        },
+        {
+          "source_type": "model",
+          "source_id": "thinking-in-bets",
+          "label": "Thinking in Bets",
+          "application": "Open AR-11 to reveal requirements; contact the scan provider to reveal appointment or referral constraints; inspect the internet warning to reveal its remedy. After the gate, a yesmytaxes contact can test the tax sequence without activating all three tax tasks. Fare and cancellation research can preserve the travel option without booking, while one bounded hair-loss question can test whether research deserves the growth slot.",
+          "source_refs": [
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "6ed76b92-aa75-4883-a573-33c6531fbca6",
+            "c18cb05c-d523-4268-9d9a-eff602c29149"
+          ],
+          "decision_implication": "Take the cheapest information-buying move now; defer irreversible booking or queue expansion until evidence supports it."
+        },
+        {
+          "source_type": "model",
+          "source_id": "bayesian-updating",
+          "label": "Bayesian Updating",
+          "application": "If AR-11 produces a receipt inside its timebox, that supports the bounded artifact-first structure; if it exposes a specific blocker, update the next step around that blocker. If yesmytaxes later provides requirements, strengthen the tax-chain hypothesis; otherwise weaken or reorder it.",
+          "source_refs": [
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+            "8329b464-dab9-4362-811c-dadf15a1cbdd"
+          ],
+          "decision_implication": "Update from receipts, requirements, and blockers—not from feeling more or less confident."
+        },
+        {
+          "source_type": "model",
+          "source_id": "minimax-margin-safety",
+          "label": "Minimax / Margin of Safety",
+          "application": "The 25, 20, and 15-minute current actions cap attention cost while travel and hair research remain conditional. Keep slack for any documented medical or safety issue, legal or official deadline, or explicit priority change; do not fill freed capacity automatically.",
+          "source_refs": [
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
+            "6ed76b92-aa75-4883-a573-33c6531fbca6",
+            "c18cb05c-d523-4268-9d9a-eff602c29149"
+          ],
+          "decision_implication": "Keep timeboxes and capacity reserve; override only for documented high-consequence evidence."
+        }
+      ],
+      "context_decision": {
+        "choice": "Buy information with the current three bounded tasks before committing tax, travel, or research capacity.",
+        "why": "The current moves are reversible and expose requirements; alternatives contain unvalidated dependencies or missing priority evidence.",
+        "alternative": "Release one conditional queue early only if a documented deadline, safety issue, or explicit priority changes expected value.",
+        "review": "At each artifact, the 48-hour gate, and the day-7 allocation gate."
+      },
+      "context_actions": [
+        {
+          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "label": "AR-11 requirement test",
+          "state": "current",
+          "move": "Open and attempt the bounded official path; preserve the option to stop on an exact requirement.",
+          "done_when": "Requirement, receipt, or blocker is known."
+        },
+        {
+          "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+          "label": "Test the tax-chain hypothesis",
+          "state": "conditional",
+          "move": "After the gate, contact yesmytaxes to learn whether paperwork is actually the next dependency.",
+          "done_when": "Response, requirements, or exact no-response blocker saved."
+        },
+        {
+          "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
+          "label": "Preserve the travel option",
+          "state": "conditional",
+          "move": "At the growth gate, inspect deadline, fare, and cancellation conditions before booking.",
+          "done_when": "Decision evidence exists without an irreversible purchase."
+        },
+        {
+          "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
+          "label": "Bound the hair-loss research option",
+          "state": "conditional",
+          "move": "Define one decision-relevant research question before opening a broad search.",
+          "done_when": "A bounded question and stop condition exist."
+        }
+      ],
       "disagreement": null,
       "status": "proposed-solution",
       "confidence": "medium",
@@ -1188,6 +1485,83 @@
       "model": "Amdahl's Law · Theory of Constraints · OODA Loop · Control Theory & SPC",
       "problem": "The tax project contains three task titles that suggest a sequence, but their dependency fields are empty. Treating all three as simultaneously active would hide which dependency, if any, is real.",
       "solution": "### Model contributions\n- **Amdahl:** if validation confirms a sequential dependency, compress that sequential fraction without assuming it in advance.\n- **Theory of Constraints:** expose the next blocking step instead of optimizing unvalidated downstream work.\n- **OODA:** use each verified response or requirement to orient the next step.\n- **Control Theory:** release this phase only after the prior gate and dependency validation, preserving attributable outcomes.\n\n### Draft solution\nValidate whether `talk to yesmytaxes` produces requirements for `submit paperwork`, then whether submission enables `get filed confirmation`. Sequence only the dependencies that are actually confirmed.\n\n**Decision:** keep the tax queue conditional; release it after the 48-hour checkpoint only if its order is validated and no higher-priority safety or official deadline intervenes.",
+      "context_applications": [
+        {
+          "source_type": "model",
+          "source_id": "amdahls-law",
+          "label": "Amdahl's Law",
+          "application": "The titles suggest talk → paperwork → confirmation, but all three tax dependency fields are empty. First test whether yesmytaxes supplies requirements; only then treat paperwork and confirmation as sequential. Provider waiting may overlap with inactive preparation, but not with another active queue.",
+          "source_refs": [
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+            "8329b464-dab9-4362-811c-dadf15a1cbdd"
+          ],
+          "decision_implication": "Compress confirmed handoffs, not the imagined three-step chain."
+        },
+        {
+          "source_type": "model",
+          "source_id": "theory-of-constraints",
+          "label": "Theory of Constraints",
+          "application": "For Taxes, the first unknown is whether yesmytaxes provides requirements. Drafting or polishing downstream paperwork before that response may optimize a non-constraint. The response or a no-response blocker identifies the actual next constraint.",
+          "source_refs": [
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "79f13db5-e1f2-40f4-95ca-7c2073a2f772"
+          ],
+          "decision_implication": "Start with the contact only after the phase gate; let its artifact choose the next tax action."
+        },
+        {
+          "source_type": "model",
+          "source_id": "ooda-loop",
+          "label": "OODA Loop",
+          "application": "Observe the empty dependency fields; orient with the yesmytaxes response; decide whether paperwork is required; act on only that confirmed requirement. Then use the submission artifact to decide whether filed confirmation is enabled.",
+          "source_refs": [
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+            "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+            "8329b464-dab9-4362-811c-dadf15a1cbdd"
+          ],
+          "decision_implication": "Do not auto-advance by title order; advance when the predecessor artifact enables the successor."
+        },
+        {
+          "source_type": "model",
+          "source_id": "control-theory-spc",
+          "label": "Control Theory / SPC",
+          "application": "The Life OS review currently calls yesmytaxes a non-commitment pending explicit reactivation or delegation. Keep Taxes conditional until the immediate controller is reviewed and Sai reactivates it, or a documented official deadline changes priority.",
+          "source_refs": [
+            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
+            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4"
+          ],
+          "decision_implication": "Do not let the tax queue silently become active; require phase-gate evidence plus explicit reactivation."
+        }
+      ],
+      "context_decision": {
+        "choice": "Keep Taxes conditional; if reactivated after the current gate, test the chain with yesmytaxes first.",
+        "why": "The titles suggest a sequence, but dependency fields are empty and the Life OS review classifies the first task as a non-commitment.",
+        "alternative": "If an official tax deadline is documented, run the exception gate and reprioritize explicitly.",
+        "review": "At the 48-hour controller review and after every tax handoff artifact."
+      },
+      "context_actions": [
+        {
+          "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+          "label": "Talk to yesmytaxes",
+          "state": "conditional",
+          "move": "Request the exact required next step after explicit reactivation.",
+          "done_when": "Response, requirements, or exact contact blocker saved."
+        },
+        {
+          "task_id": "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+          "label": "Submit paperwork",
+          "state": "conditional",
+          "move": "Activate only if the response establishes paperwork as the next dependency.",
+          "done_when": "Submission artifact or exact requirement blocker saved."
+        },
+        {
+          "task_id": "8329b464-dab9-4362-811c-dadf15a1cbdd",
+          "label": "Get filed confirmation",
+          "state": "conditional",
+          "move": "Activate only when submission evidence establishes that confirmation is available or due.",
+          "done_when": "Filed confirmation or exact external blocker saved."
+        }
+      ],
       "disagreement": null,
       "status": "conditional-solution",
       "confidence": "medium",

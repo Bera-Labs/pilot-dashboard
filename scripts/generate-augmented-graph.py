@@ -51,6 +51,13 @@ def require_refs(owner: str, refs: list[str], known: set[str], kind: str) -> Non
         fail(f"{owner} references unknown {kind}: {missing}")
 
 
+def require_text(mapping: dict[str, Any], key: str, owner: str) -> str:
+    value = mapping.get(key)
+    if not isinstance(value, str) or not value:
+        fail(f"{owner}.{key} must be a non-empty string")
+    return value
+
+
 def graph_node(node_id: str, label: str, group: str, summary: str, **extra: Any) -> dict[str, Any]:
     node = {
         "id": node_id,
@@ -95,6 +102,15 @@ def main() -> None:
 
     if len(actions) != 3 or len({row.get("task_id") for row in actions}) != 3:
         fail("exactly three unique current task-backed actions are required")
+
+    current_task_ids = {require_text(row, "task_id", row["id"]) for row in actions}
+    conditional_task_ids: set[str] = set()
+    for phase in phases:
+        for queued in phase.get("queue", []):
+            if not isinstance(queued, dict):
+                fail(f"{phase['id']}.queue must contain objects")
+            conditional_task_ids.add(require_text(queued, "task_id", phase["id"]))
+    contextual_task_ids = current_task_ids | conditional_task_ids
 
     nodes: list[dict[str, Any]] = []
     links: set[tuple[str, str, str]] = set()
@@ -158,6 +174,54 @@ def main() -> None:
         require_refs(row["id"], evidence_ids, set(evidence_by_id), "evidence")
         if len(model_ids) < 2:
             fail(f"{row['id']} must use at least two models")
+        applications = row.get("context_applications")
+        if not isinstance(applications, list) or not applications:
+            fail(f"{row['id']}.context_applications must be a non-empty list")
+        seen_sources: set[tuple[str, str]] = set()
+        for application in applications:
+            if not isinstance(application, dict):
+                fail(f"{row['id']}.context_applications must contain objects")
+            source_type = require_text(application, "source_type", row["id"])
+            source_id = require_text(application, "source_id", row["id"])
+            require_text(application, "label", row["id"])
+            require_text(application, "application", row["id"])
+            require_text(application, "decision_implication", row["id"])
+            source_refs = application.get("source_refs")
+            if not isinstance(source_refs, list) or not source_refs or not all(isinstance(ref, str) and ref for ref in source_refs):
+                fail(f"{row['id']}.context_applications source_refs must contain non-empty strings")
+            if source_type == "model" and source_id not in model_ids:
+                fail(f"{row['id']} context model is not used by the synthesis: {source_id}")
+            if source_type == "expert" and source_id not in expert_ids:
+                fail(f"{row['id']} context expert is not used by the synthesis: {source_id}")
+            if source_type not in {"model", "expert"}:
+                fail(f"{row['id']} context source_type must be model or expert")
+            source_key = (source_type, source_id)
+            if source_key in seen_sources:
+                fail(f"{row['id']} duplicates context source {source_type}:{source_id}")
+            seen_sources.add(source_key)
+        context_decision = row.get("context_decision")
+        if not isinstance(context_decision, dict):
+            fail(f"{row['id']}.context_decision must be an object")
+        for key in ("choice", "why", "alternative", "review"):
+            require_text(context_decision, key, row["id"])
+        context_actions = row.get("context_actions")
+        if not isinstance(context_actions, list) or not context_actions:
+            fail(f"{row['id']}.context_actions must be a non-empty list")
+        for action in context_actions:
+            if not isinstance(action, dict):
+                fail(f"{row['id']}.context_actions must contain objects")
+            task_id = require_text(action, "task_id", row["id"])
+            state = require_text(action, "state", row["id"])
+            for key in ("label", "move", "done_when"):
+                require_text(action, key, row["id"])
+            if task_id not in contextual_task_ids:
+                fail(f"{row['id']} context action references task outside the blueprint: {task_id}")
+            if state == "current" and task_id not in current_task_ids:
+                fail(f"{row['id']} current context action is not in the controller: {task_id}")
+            if state == "conditional" and task_id not in conditional_task_ids:
+                fail(f"{row['id']} conditional context action is not gated: {task_id}")
+            if state not in {"current", "conditional"}:
+                fail(f"{row['id']} context action state must be current or conditional")
         nodes.append(
             graph_node(
                 row["id"],
@@ -266,6 +330,9 @@ def main() -> None:
                 "model": " · ".join(labels[model_id] for model_id in row["model_ids"]),
                 "problem": row["problem"],
                 "solution": row["solution"],
+                "context_applications": row["context_applications"],
+                "context_decision": row["context_decision"],
+                "context_actions": row["context_actions"],
                 "disagreement": row.get("disagreement"),
                 "status": row.get("status"),
                 "confidence": row.get("confidence"),

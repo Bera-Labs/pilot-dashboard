@@ -145,6 +145,19 @@ def validate_intelligence_spec(spec: dict, payload: dict) -> None:
     synthesis_ids = {row["id"] for row in syntheses}
     decision_ids = {row["id"] for row in decisions}
     action_ids = {row["id"] for row in actions}
+    current_task_ids = {row.get("task_id") for row in actions}
+    conditional_task_ids: set[str] = set()
+    for phase in phases:
+        queue = phase.get("queue")
+        if not isinstance(queue, list):
+            fail(f"{phase['id']}.queue must be a list")
+        for index, queued in enumerate(queue):
+            if not isinstance(queued, dict):
+                fail(f"{phase['id']}.queue[{index}] must be an object")
+            task_id = queued.get("task_id")
+            if isinstance(task_id, str) and task_id:
+                conditional_task_ids.add(task_id)
+    contextual_task_ids = current_task_ids | conditional_task_ids
 
     for row in models:
         for key in ("label", "role", "source"):
@@ -169,8 +182,56 @@ def validate_intelligence_spec(spec: dict, payload: dict) -> None:
         if len(model_refs) < 2:
             fail(f"{row['id']} must use at least two models")
         require_references(row["id"], model_refs, model_ids, "models")
-        require_references(row["id"], require(row, "expert_ids", list), expert_ids, "experts")
+        expert_refs = require(row, "expert_ids", list)
+        require_references(row["id"], expert_refs, expert_ids, "experts")
         require_references(row["id"], require(row, "evidence_ids", list), evidence_ids, "evidence")
+
+        applications = require(row, "context_applications", list)
+        if not applications:
+            fail(f"{row['id']}.context_applications cannot be empty")
+        seen_sources: set[tuple[str, str]] = set()
+        for index, application in enumerate(applications):
+            if not isinstance(application, dict):
+                fail(f"{row['id']}.context_applications[{index}] must be an object")
+            for key in ("source_type", "source_id", "label", "application", "decision_implication"):
+                require(application, key, str)
+            source_type = application["source_type"]
+            source_id = application["source_id"]
+            if source_type == "model":
+                if source_id not in model_refs:
+                    fail(f"{row['id']} context model {source_id!r} is not used by the synthesis")
+            elif source_type == "expert":
+                if source_id not in expert_refs:
+                    fail(f"{row['id']} context expert {source_id!r} is not used by the synthesis")
+            else:
+                fail(f"{row['id']} context source_type must be model or expert")
+            source_key = (source_type, source_id)
+            if source_key in seen_sources:
+                fail(f"{row['id']} duplicates context source {source_type}:{source_id}")
+            seen_sources.add(source_key)
+            source_refs = require(application, "source_refs", list)
+            if not source_refs or not all(isinstance(ref, str) and ref for ref in source_refs):
+                fail(f"{row['id']} context source_refs must contain non-empty strings")
+
+        context_decision = require(row, "context_decision", dict)
+        for key in ("choice", "why", "alternative", "review"):
+            require(context_decision, key, str)
+        context_actions = require(row, "context_actions", list)
+        if not context_actions:
+            fail(f"{row['id']}.context_actions cannot be empty")
+        for index, action in enumerate(context_actions):
+            if not isinstance(action, dict):
+                fail(f"{row['id']}.context_actions[{index}] must be an object")
+            for key in ("task_id", "label", "state", "move", "done_when"):
+                require(action, key, str)
+            if action["task_id"] not in contextual_task_ids:
+                fail(f"{row['id']} context action references task outside current/conditional blueprint: {action['task_id']}")
+            if action["state"] not in {"current", "conditional"}:
+                fail(f"{row['id']} context action state must be current or conditional")
+            if action["state"] == "current" and action["task_id"] not in current_task_ids:
+                fail(f"{row['id']} current context action must reference a current controller task")
+            if action["state"] == "conditional" and action["task_id"] not in conditional_task_ids:
+                fail(f"{row['id']} conditional context action must reference a gated queue task")
     for row in decisions:
         for key in ("label", "rationale"):
             require(row, key, str)
