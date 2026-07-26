@@ -1,12 +1,12 @@
 {
   "meta": {
     "schema_version": "3.0.0",
-    "generated_at": "2026-07-25T17:06:11Z",
-    "source_fingerprint": "1f7e09fe67d8a99f9ca27e0a0efb05ff5b06bac316d43f63e6b0fdfba96f834b",
+    "generated_at": "2026-07-26T09:30:53Z",
+    "source_fingerprint": "c299208e2fc0ef6b91f6124abdc64e1bda2339509f4ae4edd00482c1d2d822ea",
     "source": "/root/pilot-dashboard/data/augmented-intelligence.json",
     "method": "Mixture of Experts",
-    "node_count": 40,
-    "link_count": 86,
+    "node_count": 41,
+    "link_count": 89,
     "synthesis_count": 5,
     "warnings": []
   },
@@ -305,6 +305,18 @@
       ]
     },
     {
+      "id": "evidence-habit-action-divergence",
+      "label": "AutoCheck extended; action signal empty",
+      "group": "evidence",
+      "summary": "Abstinence autoCheck entries extend through 2026-07-25, while Taking action has zero logs and all nine eligible tasks remain open. AutoCheck does not independently establish adherence or causal transfer.",
+      "evidence_class": "observed",
+      "source_refs": [
+        "ca5f246b-4dda-4776-b0a6-93b449ff1ddd",
+        "4a82c418-87eb-460b-a853-6b34f82f87d2",
+        "outliner-tasks-20260726"
+      ]
+    },
+    {
       "id": "evidence-action-signal-empty",
       "label": "Taking action has no logs",
       "group": "evidence",
@@ -341,6 +353,7 @@
         "evidence-action-signal-empty",
         "evidence-closure-drought",
         "evidence-cue-identity-gap",
+        "evidence-habit-action-divergence",
         "evidence-inventory-concentration",
         "evidence-tax-critical-path"
       ],
@@ -379,6 +392,7 @@
         "evidence-action-signal-empty",
         "evidence-closure-drought",
         "evidence-cue-identity-gap",
+        "evidence-habit-action-divergence",
         "evidence-inventory-concentration",
         "evidence-tax-critical-path"
       ],
@@ -416,6 +430,7 @@
         "evidence-action-signal-empty",
         "evidence-closure-drought",
         "evidence-cue-identity-gap",
+        "evidence-habit-action-divergence",
         "evidence-inventory-concentration",
         "evidence-tax-critical-path"
       ],
@@ -459,7 +474,8 @@
       "evidence_ids": [
         "evidence-closure-drought",
         "evidence-action-signal-empty",
-        "evidence-tax-critical-path"
+        "evidence-tax-critical-path",
+        "evidence-habit-action-divergence"
       ]
     },
     {
@@ -498,7 +514,8 @@
       "source": "stored: warp-speed-execution / Shannon",
       "evidence_ids": [
         "evidence-cue-identity-gap",
-        "evidence-inventory-concentration"
+        "evidence-inventory-concentration",
+        "evidence-habit-action-divergence"
       ]
     },
     {
@@ -562,7 +579,8 @@
         "evidence-cue-identity-gap",
         "evidence-closure-drought",
         "evidence-action-signal-empty",
-        "evidence-tax-critical-path"
+        "evidence-tax-critical-path",
+        "evidence-habit-action-divergence"
       ]
     },
     {
@@ -898,6 +916,21 @@
     {
       "source": "evidence-cue-identity-gap",
       "target": "thinking-in-bets",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-habit-action-divergence",
+      "target": "bayesian-updating",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-habit-action-divergence",
+      "target": "information-theory",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-habit-action-divergence",
+      "target": "probabilistic-thinking",
       "relation": "frames"
     },
     {
@@ -1379,14 +1412,13 @@
           "source_type": "model",
           "source_id": "probabilistic-thinking",
           "label": "Probabilistic Thinking",
-          "application": "Outliner establishes open tasks and empty tax dependency fields, but not why execution is low, the probability each task will finish, or which conditional queue has higher expected value. Treat those as unknown and collect discriminating evidence.",
+          "application": "Outliner shows abstinence autoCheck through 2026-07-25, but Taking action still has zero logs and all nine eligible tasks remain open. AutoCheck is not independent adherence evidence and completions are coarse, so preserve the paired-observation test and current controller.",
           "source_refs": [
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-            "8329b464-dab9-4362-811c-dadf15a1cbdd"
+            "ca5f246b-4dda-4776-b0a6-93b449ff1ddd",
+            "4a82c418-87eb-460b-a853-6b34f82f87d2",
+            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711"
           ],
-          "decision_implication": "Choose evidence-producing steps without claiming a psychological cause or numerical success probability."
+          "decision_implication": "Do not use the extended autoCheck streak to promote, cancel, or reorder work; update only from user-confirmed habit evidence plus dated action artifacts."
         },
         {
           "source_type": "model",
@@ -1476,7 +1508,8 @@
       ],
       "evidence_ids": [
         "evidence-closure-drought",
-        "evidence-tax-critical-path"
+        "evidence-tax-critical-path",
+        "evidence-habit-action-divergence"
       ]
     },
     {

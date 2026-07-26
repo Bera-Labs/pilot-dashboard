@@ -126,7 +126,7 @@
     }
   ],
   "momentum_analysis": {
-    "last_run": "2026-07-25T17:06:11Z",
+    "last_run": "2026-07-26T09:30:53Z",
     "compound_velocity": 1.0,
     "wip_count": 9,
     "action_completion_rate": 0.0,
@@ -135,13 +135,13 @@
       "why": "Observed: the sole non-empty daily action is 'house document paperwork', which maps by text to retired Housing scope, while none of nine eligible open tasks is represented in that cue channel. Calculated: those nine tasks are concentrated in six of nine active projects, and no eligible completion or task-state change is recorded since the prior run. Inferred: stale cueing can misdirect the control channel, but it does not establish why execution has not occurred.",
       "unlocked_by": "Protect the bounded eligible AR-11 to lung-scan to internet artifact-or-blocker chain through its 2026-07-27 review window; treat unmatched Housing schedule text as non-actionable context.",
       "recurring": true,
-      "recurrence_count": 8
+      "recurrence_count": 9
     },
     "trajectories": {
       "execution outcomes": {
         "trend": "flat-low",
         "confidence": 0.97,
-        "delta": "Calculated: 0 eligible completions in 7 days, 1 in 28 days, and no recorded state change since 2026-07-25T01:56:31Z."
+        "delta": "Calculated: 0 eligible completions in 7 days, 1 in 28 days, and no eligible task-state change since 2026-07-25T17:06:11Z; the controller is not due until 2026-07-27 noon UTC."
       },
       "execution cue alignment": {
         "trend": "misaligned",
@@ -157,6 +157,11 @@
         "trend": "unchanged-poor",
         "confidence": 0.95,
         "delta": "Observed: historical Brier score remains 0.38; the forecast from 01:56Z is not due."
+      },
+      "habit measurement": {
+        "trend": "divergent-low-signal",
+        "confidence": 0.95,
+        "delta": "Observed: abstinence autoCheck entries now extend through 2026-07-25, while Taking action still has zero logs and no eligible task changed state; autoCheck is not independent adherence evidence."
       }
     },
     "top_actions": [
@@ -231,9 +236,9 @@
       }
     },
     "patterns": [
-      "The sole current daily execution cue points to retired Housing scope while none of the nine eligible open tasks is represented in that cue channel.",
-      "Nine active projects contain nine eligible tasks, but those tasks are concentrated in six projects and three active projects contain no eligible task.",
-      "No eligible completion or recorded task-state change occurred in roughly 15 hours since the prior run, and the active experiment is not yet due."
+      "Abstinence autoCheck extended through 2026-07-25 while Taking action remained unlogged and all nine eligible tasks remained open.",
+      "The sole daily cue still has 0/9 eligible-task coverage and textually points to retired Housing scope.",
+      "No controller task changed state, but its 2026-07-27 review gate is not due."
     ],
     "mantra": "Plans don't break chains. Steps do.",
     "data_sources": {
@@ -246,12 +251,12 @@
       "life_os_review": "ok — canonical node current as of 2026-07-24",
       "dashboard_state": "ok — authoritative repo state read",
       "growth_history": "ok — authoritative repo history read",
-      "calibration": "ok — metrics 8 total runs, recurrence 7, one formal prediction before apply",
+      "calibration": "ok — before apply: total_runs 9, recurrence 8, two formal predictions",
       "augmented_connections": "ok — canonical synthesis and 11 durable files evaluated",
-      "recent_sessions": "degraded — relevant v6 setup history retrieved; no fresh outcome session found",
+      "recent_sessions": "ok — prior v7 deployment/context correction retrieved; no fresh outcome",
       "honcho": "degraded — no Honcho query tool exposed in this cron runtime; omitted"
     },
-    "evidence_summary": "Fresh native Outliner projects, tasks, habits, schedule, timeline, canonical Life OS node, and all-nodes ancestry were read at 2026-07-25T17:06Z. After completed-parent suppression and retired-ID exclusions, 9 open tasks are eligible across 6 task-bearing active projects. Dashboard state, growth history, calibration, all 11 durable connections, and relevant session history were read; Honcho was unavailable in this runtime.",
+    "evidence_summary": "Fresh native Outliner projects, tasks, habits, schedule, timeline, Life OS, and ancestry read at 2026-07-26T09:30:53Z. Nine open tasks remain eligible across six task-bearing projects. New delta: abstinence autoCheck extends through 2026-07-25 while Taking action remains empty; no eligible task changed state. Honcho unavailable.",
     "confidence": 0.9,
     "previous_action_reconciliation": [
       {
@@ -303,5 +308,5 @@
     "stem_concepts": 7,
     "updated": "2026-07-04"
   },
-  "updated": "2026-07-25T17:06:11Z"
+  "updated": "2026-07-26T09:30:53Z"
 }
