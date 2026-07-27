@@ -208,6 +208,7 @@ async def set_skills(req: Request):
 
 # ── STATIC ──────────────────────────────────
 @app.get("/")
+@app.get("/index.html")
 def index():
     return FileResponse(ROOT / "index.html")
 

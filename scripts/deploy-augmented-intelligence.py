@@ -19,6 +19,7 @@ ALLOWED = {
 }
 CODE_CHANGE_ALLOWED = {
     "assets/momentum.html",
+    "main.py",
     "scripts/deploy-augmented-intelligence.py",
     "scripts/generate-augmented-graph.py",
     "scripts/update-augmented-intelligence.py",
