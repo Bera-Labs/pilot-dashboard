@@ -62,7 +62,27 @@ def validate(payload: dict) -> None:
         fail(f"last_run must be ISO-8601: {exc}")
 
     require(payload, "compound_velocity", (int, float))
-    require(payload, "wip_count", int)
+    wip_count = require(payload, "wip_count", int)
+    if isinstance(wip_count, bool) or wip_count < 0:
+        fail("wip_count must be a non-negative integer")
+    cumulative_completions = require(payload, "cumulative_completions", int)
+    if isinstance(cumulative_completions, bool) or cumulative_completions < 0:
+        fail("cumulative_completions must be a non-negative integer")
+    completion_summary = require(payload, "completion_summary", str)
+    if not completion_summary.strip():
+        fail("completion_summary must be nonblank")
+    wip_by_project = require(payload, "wip_by_project", dict)
+    if not all(
+        isinstance(name, str)
+        and name.strip()
+        and isinstance(count, int)
+        and not isinstance(count, bool)
+        and count >= 0
+        for name, count in wip_by_project.items()
+    ):
+        fail("wip_by_project must map nonblank project names to non-negative integers")
+    if sum(wip_by_project.values()) != wip_count:
+        fail("wip_by_project counts must sum to wip_count")
     require(payload, "action_completion_rate", (int, float))
     if not 0 <= payload["action_completion_rate"] <= 1:
         fail("action_completion_rate must be between 0 and 1")
@@ -471,10 +491,33 @@ def apply(payload: dict, spec: dict, dashboard_root: Path, calibration_file: Pat
     state["updated"] = payload["last_run"]
 
     run_date = payload["last_run"][:10]
+    current_metrics = state.setdefault("metrics", {})
+    current_metrics["wip"] = payload["wip_count"]
+    current_metrics["completed"] = payload["cumulative_completions"]
+    current_metrics["compound_velocity"] = payload["compound_velocity"]
+    current_metrics["bottleneck"] = payload["bottleneck"]["what"]
+    current_metrics["nightly_run"] = run_date
+    current_metrics["detail"] = payload["wip_by_project"]
+    current_metrics["completed_detail"] = payload["completion_summary"]
+
+    activity = state.setdefault("activity_log", [])
+    if not any(item.get("run_id") == payload["last_run"] for item in activity if isinstance(item, dict)):
+        activity.insert(0, {
+            "time": payload["last_run"][11:19],
+            "type": "AUGMENTED",
+            "run_id": payload["last_run"],
+            "message": (
+                f"Fresh verified Outliner state: WIP={payload['wip_count']} | "
+                f"Tracked completions={payload['cumulative_completions']} | "
+                f"Velocity={payload['compound_velocity']:.1f}"
+            ),
+        })
+        state["activity_log"] = activity[:100]
+
     growth = load_json(growth_file, {"last_updated": "", "history": []})
     history = growth.setdefault("history", [])
     previous_cumulative = max((item.get("cumulative_completions", 0) for item in history), default=0)
-    current_completed = state.get("metrics", {}).get("completed", 0)
+    current_completed = payload["cumulative_completions"]
     growth_entry = {
         "date": run_date,
         "cumulative_completions": max(previous_cumulative, current_completed),
