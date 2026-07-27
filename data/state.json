@@ -125,180 +125,191 @@
     }
   ],
   "momentum_analysis": {
-    "last_run": "2026-07-26T09:30:53Z",
-    "compound_velocity": 1.0,
-    "wip_count": 9,
+    "last_run": "2026-07-27T05:20:30Z",
+    "compound_velocity": 2.0,
+    "wip_count": 7,
     "action_completion_rate": 0.0,
     "bottleneck": {
-      "what": "Eligible execution cues are misaligned with the validated action queue, while artifact-producing initiation remains the recurring throughput constraint.",
-      "why": "Observed: the sole non-empty daily action is 'house document paperwork', which maps by text to retired Housing scope, while none of nine eligible open tasks is represented in that cue channel. Calculated: those nine tasks are concentrated in six of nine active projects, and no eligible completion or task-state change is recorded since the prior run. Inferred: stale cueing can misdirect the control channel, but it does not establish why execution has not occurred.",
-      "unlocked_by": "Protect the bounded eligible AR-11 to lung-scan to internet artifact-or-blocker chain through its 2026-07-27 review window; treat unmatched Housing schedule text as non-actionable context.",
-      "recurring": true,
-      "recurrence_count": 9
+      "what": "The controller is slower to adapt than real execution: tax work closed and created a monitoring gate while the protected queue remained unchanged.",
+      "why": "Observed: three tax tasks completed and one new IRS-status task appeared, but AR-11, lung scheduling, and internet remain open. Calculated: eligible WIP fell from 9 to 7 through real closures. Inferred: the immediate constraint is now clean handoff from outcome to next information gate, not absence of all action.",
+      "unlocked_by": "Use the new IRS status check as a bounded feedback action, then return to the shared AR-11 and internet obligations; do not reopen completed tax steps.",
+      "recurring": false,
+      "recurrence_count": 0
     },
     "trajectories": {
       "execution outcomes": {
-        "trend": "flat-low",
-        "confidence": 0.97,
-        "delta": "Calculated: 0 eligible completions in 7 days, 1 in 28 days, and no eligible task-state change since 2026-07-25T17:06:11Z; the controller is not due until 2026-07-27 noon UTC."
-      },
-      "execution cue alignment": {
-        "trend": "misaligned",
-        "confidence": 0.9,
-        "delta": "Calculated: 0/9 eligible tasks represented by the sole non-empty daily cue; its Housing text maps to retired scope, with identity uncertainty because no task ID is attached."
+        "trend": "up-special-cause",
+        "confidence": 0.98,
+        "delta": "Observed: three explicit tax completions on 2026-07-26 versus zero eligible completions in the prior seven-day window."
       },
       "work inventory": {
-        "trend": "stable",
+        "trend": "down-through-real-closure",
         "confidence": 0.98,
-        "delta": "Calculated: 9 eligible tasks across 6 task-bearing active projects; 3 active projects have no eligible task."
+        "delta": "Calculated: eligible open tasks fell 9→7 despite one new IRS-status task."
       },
-      "forecast calibration": {
-        "trend": "unchanged-poor",
+      "controller fit": {
+        "trend": "misaligned-with-output",
         "confidence": 0.95,
-        "delta": "Observed: historical Brier score remains 0.38; the forecast from 01:56Z is not due."
+        "delta": "Calculated: 0/3 controller tasks closed while 3/3 conditional tax tasks closed."
+      },
+      "execution cue alignment": {
+        "trend": "still-misaligned-but-not-necessary",
+        "confidence": 0.9,
+        "delta": "Calculated: cue coverage remains 0/7, yet tax output occurred."
       },
       "habit measurement": {
-        "trend": "divergent-low-signal",
+        "trend": "low-signal",
         "confidence": 0.95,
-        "delta": "Observed: abstinence autoCheck entries now extend through 2026-07-25, while Taking action still has zero logs and no eligible task changed state; autoCheck is not independent adherence evidence."
+        "delta": "Observed: autoCheck extended one day; Taking action remains empty despite task completions."
       }
     },
     "top_actions": [
       {
-        "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-        "action": "Complete the AR-11 form and save submission confirmation",
-        "time": "25 minutes in the next available execution block before 2026-07-27 noon UTC",
-        "impact": "Creates the first verifiable artifact in the protected eligible chain.",
-        "status": "RECURRING",
-        "first_step": "Open the official AR-11 form and place current address and identification details beside it.",
-        "done_when": "The form is submitted and a confirmation page, email, or receipt is saved.",
-        "fallback": "Save a screenshot of the exact blocker and the official support channel before the timebox ends."
+        "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+        "action": "Check the IRS portal and capture the updated filing status",
+        "time": "15 minutes in the next available 24-hour execution block",
+        "impact": "Converts the tax completion burst into one verified feedback state without reopening finished work.",
+        "status": "NEW",
+        "first_step": "Open the official IRS portal and navigate to the filing-status view.",
+        "done_when": "The current status, timestamp, and any stated next requirement are saved.",
+        "fallback": "Save the exact access or identity-verification blocker and the official recovery channel."
       },
       {
-        "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-        "action": "Schedule the lung-health scan and save the appointment confirmation",
-        "time": "20 minutes immediately after Action 1 is done or bounded, before 2026-07-27 noon UTC",
-        "impact": "Preserves the prior controller test and converts a health-scheduling concern into a dated artifact without inferring diagnosis.",
+        "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+        "action": "Advance the AR-11 form to a verified next state",
+        "time": "25 minutes after the IRS check is done or bounded, within 24–72 hours",
+        "impact": "Returns attention to the shared administrative priority that both prior systems selected.",
         "status": "RECURRING",
-        "first_step": "Open the provider portal or call the clinic and request the earliest available scan appointment.",
-        "done_when": "An appointment date, time, location, and confirmation number or message are saved.",
-        "fallback": "Save the exact referral, insurance, or contact requirement and next reachable channel before the timebox ends."
+        "first_step": "Open the official AR-11 page with current address and identity details beside it.",
+        "done_when": "Submission confirmation, verified progress, or one exact missing requirement is saved.",
+        "fallback": "Save the exact form blocker and official support channel."
       },
       {
         "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-        "action": "Clear the internet disruption warning or create a provider ticket",
-        "time": "15 minutes immediately after Action 2 is done or bounded, before 2026-07-27 noon UTC",
-        "impact": "Removes a small maintenance drag while preserving artifact-producing execution WIP=1.",
+        "action": "Resolve the internet warning or create a provider ticket",
+        "time": "15 minutes after AR-11 is done or bounded, within 24–72 hours",
+        "impact": "Removes a recurring reliability drag with a small externally verifiable outcome.",
         "status": "RECURRING",
-        "first_step": "Open the warning and record its provider, account, and requested resolution step.",
-        "done_when": "The warning is cleared or a provider ticket number and expected response time are saved.",
-        "fallback": "Save the warning screenshot and first available support contact window before the timebox ends."
+        "first_step": "Open the warning and record the provider, account, and requested remedy.",
+        "done_when": "The warning is cleared or a ticket number and response window are saved.",
+        "fallback": "Save the warning and first available official support window."
       }
     ],
     "forecast": {
       "bear": {
-        "scenario": "None of the three selected tasks produces a done artifact by the 2026-07-27 review; all remain open or yield only unrecorded work.",
-        "probability": 0.8
+        "scenario": "None of the three selected actions reaches a verified next state by the next two-week review.",
+        "probability": 0.55
       },
       "base": {
-        "scenario": "Exactly one selected task produces a done artifact; the other two remain open or yield bounded blocker artifacts.",
-        "probability": 0.18
+        "scenario": "Exactly one selected action reaches a verified next state; the others remain open or yield bounded blockers.",
+        "probability": 0.35
       },
       "bull": {
-        "scenario": "At least two selected tasks produce done artifacts, including either AR-11 submission confirmation or a lung-scan appointment confirmation.",
-        "probability": 0.02
+        "scenario": "At least two selected actions reach verified next states, including the IRS status check.",
+        "probability": 0.1
       }
     },
     "stem_strategy": {
       "euclidean": {
         "evidence_class": "observed plus calculated",
-        "blocking_assumption": "A populated daily-action field is automatically valid execution guidance.",
-        "reframe": "Resolve eligibility and identity first; the current Housing cue has zero validated task coverage."
+        "blocking_assumption": "The protected controller is the only valid measure of action.",
+        "reframe": "Separate decision quality from outcome location: tax completion is real even though it occurred outside the selected queue."
       },
       "probabilistic": {
         "evidence_class": "calculated plus inferred",
-        "highest_ev_allocation": "Keep the existing bounded sequence unchanged because no due outcome has arrived.",
-        "do_not_fund": "Do not infer failure from a 15-hour no-change interval or substitute excluded Housing scope."
+        "highest_ev_allocation": "Take one information-rich tax status sample, then return to shared obligations.",
+        "do_not_fund": "Do not infer that fixed cues caused the completion burst or that all administrative work will now flow."
       },
       "bets": {
         "evidence_class": "inferred",
-        "decision": "Preserve the reversible three-action experiment through its explicit review window.",
-        "trigger": "Accept a done artifact or exact blocker artifact at each timebox end.",
-        "hedge": "Resequence early only for safety, an official deadline, or explicit user-authored priority change."
+        "decision": "Treat the IRS check as a low-cost option-preserving bet.",
+        "trigger": "Continue tax work only if the portal shows a specific obligation.",
+        "hedge": "Cap the check at 15 minutes and preserve safety or official-deadline overrides."
       },
       "warp_speed": {
         "evidence_class": "observed plus inferred",
-        "constraint": "Artifact-producing initiation under a misaligned cue channel.",
-        "sequence": "AR-11 confirmation to lung-scan appointment confirmation to internet resolution or ticket.",
-        "parallelization": "Only external waiting may overlap after a request or ticket exists; active execution remains WIP=1.",
-        "defer": "Ignore unmatched Housing schedule text and all non-controller tasks until the review window closes."
+        "constraint": "Outcome-to-feedback handoff.",
+        "sequence": "IRS status → AR-11 verified state → internet resolution/ticket.",
+        "parallelization": "Only external waiting may overlap; hands-on WIP remains one.",
+        "defer": "Keep lung scheduling, travel, hair research, and identity work outside the active queue absent a documented exception."
       }
     },
     "patterns": [
-      "Abstinence autoCheck extended through 2026-07-25 while Taking action remained unlogged and all nine eligible tasks remained open.",
-      "The sole daily cue still has 0/9 eligible-task coverage and textually points to retired Housing scope.",
-      "No controller task changed state, but its 2026-07-27 review gate is not due."
+      "The tax portfolio crossed from a three-item completion burst into a single explicit monitoring gate within hours.",
+      "Three real closures occurred outside the protected three-action controller, while all controller tasks remained open.",
+      "Real tax closures reduced eligible inventory from nine to seven even after one new tax-monitoring task was added.",
+      "Useful execution occurred despite zero eligible-task coverage in the daily cue channel."
     ],
-    "mantra": "Plans don't break chains. Steps do.",
+    "mantra": "Close the loop, read the new state, then choose again.",
     "data_sources": {
-      "outliner_projects": "ok — native/current",
-      "outliner_tasks": "ok — native/current",
-      "outliner_habits": "ok — native/current; abstinence autoCheck disclosed",
-      "outliner_schedule": "ok — native/current; one unmatched Housing cue",
-      "outliner_timeline": "ok — native/current; no recent user outcome",
-      "outliner_all_nodes": "ok — native/current ancestry/type resolution",
-      "life_os_review": "ok — canonical node current as of 2026-07-24",
-      "dashboard_state": "ok — authoritative repo state read",
-      "growth_history": "ok — authoritative repo history read",
-      "calibration": "ok — before apply: total_runs 9, recurrence 8, two formal predictions",
-      "augmented_connections": "ok — canonical synthesis and 11 durable files evaluated",
-      "recent_sessions": "ok — prior v7 deployment/context correction retrieved; no fresh outcome",
-      "honcho": "degraded — no Honcho query tool exposed in this cron runtime; omitted"
+      "outliner_wiki": "verified — 180/180 nodes, fingerprint 05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2, mutations 0",
+      "outliner_notes": "verified — 10 known-context notes; latest weekly review 2026-07-24",
+      "dashboard_state": "current local deployed repository state read",
+      "growth_history": "current through 2026-07-26 before apply",
+      "calibration": "before apply: total_runs 10, recurrence metric 8, three formal prediction rows",
+      "augmented_connections": "all 11 durable files plus canonical synthesis evaluated",
+      "sessions": "not needed for the primary evidence delta",
+      "honcho": "degraded — no query tool exposed; omitted"
     },
-    "evidence_summary": "Fresh native Outliner projects, tasks, habits, schedule, timeline, Life OS, and ancestry read at 2026-07-26T09:30:53Z. Nine open tasks remain eligible across six task-bearing projects. New delta: abstinence autoCheck extends through 2026-07-25 while Taking action remains empty; no eligible task changed state. Honcho unavailable.",
+    "evidence_summary": "Verified Outliner wiki fingerprint 05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2: 180 nodes, 16 tasks, 7 eligible open tasks, three tax completions on 2026-07-26, one new IRS-status task, and zero Outliner mutations. Known note contexts are complete; unknown contexts and binary attachments remain API limitations.",
     "confidence": 0.9,
     "previous_action_reconciliation": [
       {
         "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
         "status": "pending—not due",
-        "evidence": "Task remains incomplete; no artifact is recorded; deadline is 2026-07-27 noon UTC."
+        "evidence": "Open before the 2026-07-27 noon gate."
       },
       {
         "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-        "status": "pending—not due",
-        "evidence": "Task remains incomplete; no appointment artifact is recorded; deadline is 2026-07-27 noon UTC."
+        "status": "pending—not due; removed from current queue",
+        "evidence": "Open; latest Life OS explicitly placed it outside the cycle absent new professional urgency evidence."
       },
       {
         "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
         "status": "pending—not due",
-        "evidence": "Task remains incomplete; no ticket or resolution is recorded; deadline is 2026-07-27 noon UTC."
+        "evidence": "Open before the gate."
+      },
+      {
+        "task_id": "tax-conditional-chain",
+        "status": "3/3 completed",
+        "evidence": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4, 79f13db5-e1f2-40f4-95ca-7c2073a2f772, and 8329b464-dab9-4362-811c-dadf15a1cbdd completed 2026-07-26."
       }
     ],
     "focused_decisions": [
       {
         "rank": 1,
-        "choice": "protect",
-        "support": "Schedule-eligibility signal divergence and no-due-outcome observation.",
-        "nearest_alternative": "Replace the chain with the current Housing daily cue or replan immediately.",
-        "why_higher_ev": "Protection preserves causal interpretability and keeps every action eligible; the alternative is excluded or premature.",
-        "opportunity_cost": "Housing paperwork is not advanced and the Life OS/controller lung-scan disagreement persists.",
-        "review_stop": "Review 2026-07-27 noon UTC; stop earlier only for safety, official deadline, or explicit user priority change.",
-        "outcome_signal": "At least one saved done or blocker artifact from the three-action chain."
+        "choice": "sequence",
+        "support": "Tax sequence-to-monitor observation.",
+        "nearest_alternative": "Reopen completed tax steps or ignore the new status gate.",
+        "why_higher_ev": "One portal read buys maximum filing-state information at low cost.",
+        "opportunity_cost": "Uses the first 15-minute block.",
+        "review_stop": "Stop after the status and exact next requirement are captured.",
+        "outcome_signal": "Timestamped IRS status artifact."
       },
       {
         "rank": 2,
+        "choice": "protect",
+        "support": "AR-11 is the remaining shared administrative priority.",
+        "nearest_alternative": "Keep the prior lung override without new urgency evidence.",
+        "why_higher_ev": "It resolves the prior policy conflict while preserving a health pivot signal.",
+        "opportunity_cost": "Lung scheduling stays deferred unless professional evidence changes priority.",
+        "review_stop": "Review after one bounded AR-11 block or a documented health exception.",
+        "outcome_signal": "AR-11 confirmation, verified progress, or exact blocker."
+      },
+      {
+        "rank": 3,
         "choice": "sequence",
-        "support": "Recurring artifact-initiation constraint and active controller state.",
-        "nearest_alternative": "Run several open tasks in parallel.",
-        "why_higher_ev": "WIP=1 minimizes switching and makes each outcome attributable.",
-        "opportunity_cost": "Other eligible tasks wait up to the review window.",
-        "review_stop": "Advance only after done/fallback evidence; abort a step at its timebox.",
-        "outcome_signal": "Three bounded artifacts or blockers, with binary completions updated when achieved."
+        "support": "Internet remains a small recurring maintenance obligation.",
+        "nearest_alternative": "Open travel or research work immediately.",
+        "why_higher_ev": "A ticket or resolution creates an external owner and reduces reliability uncertainty.",
+        "opportunity_cost": "Growth options wait through the immediate horizon.",
+        "review_stop": "Stop at resolution, ticket, or exact blocker.",
+        "outcome_signal": "Cleared warning or provider ticket."
       }
     ],
-    "velocity_delta": 0.0,
-    "velocity_trend": "flat",
-    "wip_delta": 0
+    "velocity_delta": 1.0,
+    "velocity_trend": "up",
+    "wip_delta": -2
   },
   "wiki_stats": {
     "superhuman_pages": 22,
@@ -307,5 +318,5 @@
     "stem_concepts": 7,
     "updated": "2026-07-04"
   },
-  "updated": "2026-07-26T11:00:46Z"
+  "updated": "2026-07-27T05:20:30Z"
 }

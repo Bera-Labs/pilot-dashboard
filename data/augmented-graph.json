@@ -1,693 +1,533 @@
 {
   "meta": {
     "schema_version": "3.0.0",
-    "generated_at": "2026-07-26T09:30:53Z",
-    "source_fingerprint": "0fb77706f2f67b5b8c9043a0727cb97c8d1d6ad59b112f09570adf924316ec75",
+    "generated_at": "2026-07-27T05:20:30Z",
+    "source_fingerprint": "22b82b420d3bfd9ec286b27e7902cde52deec7e6f924fba8a18573a8ff5aefdb",
     "source": "/root/pilot-dashboard/data/augmented-intelligence.json",
     "method": "Mixture of Experts",
-    "node_count": 41,
-    "link_count": 89,
-    "synthesis_count": 5,
+    "node_count": 31,
+    "link_count": 61,
+    "synthesis_count": 3,
     "warnings": []
   },
   "method": {
     "name": "Mixture of Experts",
-    "principle": "Independent expert lenses interpret the same Outliner evidence; only compatible, evidence-supported contributions are integrated into decisions and execution.",
+    "principle": "Independent expert families transform the same attributable Outliner observations; integration preserves convergence, disagreement, and falsifiers.",
     "experts": [
       {
         "id": "expert-orientation-control",
         "label": "Orientation & Control Expert",
-        "mission": "Resolve primitives, signal identity, and controller validity before acceleration.",
+        "mission": "Identify the new state and valid feedback signal after real closures.",
         "model_ids": [
-          "euclidean-thinking",
           "information-theory",
-          "control-theory-spc"
+          "control-theory"
         ],
         "assumptions": [
-          "A schedule cue is intended to select an executable task.",
-          "Native eligible task IDs are the valid actuators in the current control surface.",
-          "Recorded completion or documented state transition is attributable feedback; missing completion does not prove no attempt."
+          "Task completion dates represent genuine user-recorded outcomes.",
+          "The IRS status task is the next tax feedback request."
         ],
         "derivation": [
-          "Euclidean construction fails when a cue cannot be traced to an eligible task identity.",
-          "Unkeyed free text loses routing and attribution information.",
-          "A reference-to-actuator gap leaves the portfolio open-loop.",
-          "Sparse completion history cannot support SPC limits or causal process claims."
+          "Three completed commands should leave the active controller.",
+          "The new portal check is one feedback sample, not a reopened chain."
         ],
-        "proposal": "Reject unidentified cues as control inputs, bind the three designated actions to exact task IDs, run them as a closed-loop WIP-gated pilot, and keep the inferred tax sequence conditional until its dependency is validated.",
+        "proposal": "Read the IRS state once, save it, and issue no new tax command unless the state requires one.",
         "risks": [
-          "Completion records omit attempts, elapsed effort, and external blockers.",
-          "Taskless projects may be deliberate containers rather than defects.",
-          "Task titles do not establish urgency, effort, or deadlines."
+          "Completed labels may lack external artifacts.",
+          "Portal access may be blocked."
         ],
-        "falsified_by": "Two genuine task-ID-linked review cycles produce no attributable transition and documented blockers, task ambiguity, or missing state recording explain the result better than cue integrity."
+        "falsified_by": "The portal state has no relation to the completed filing work or the old tasks reopen."
       },
       {
         "id": "expert-decision-risk",
         "label": "Decision & Risk Expert",
-        "mission": "Choose reversible, information-rich bets while protecting downside and uncertainty.",
+        "mission": "Preserve optionality and prevent a completion burst from becoming overconfidence.",
         "model_ids": [
-          "probabilistic-thinking",
-          "thinking-in-bets",
           "bayesian-updating",
-          "minimax-margin-safety"
+          "thinking-in-bets"
         ],
         "assumptions": [
-          "The evidence is descriptive rather than causal.",
-          "Task names do not establish urgency, difficulty, duration, or consequence.",
-          "Probabilities remain unknown until prospective observations exist."
+          "One burst changes the prior but is not a stable rate.",
+          "AR-11 and internet remain valid open obligations."
         ],
         "derivation": [
-          "Zero cue coverage plus low output raises but does not prove the cue-ambiguity hypothesis.",
-          "A task-ID scheduling pilot is a reversible process bet with high information value.",
-          "Deadline, delay consequence, reversibility, and lead-time facts should dominate semantic urgency guesses.",
-          "Every active project needs one explicit next action or an explicit pause, without expanding active WIP."
+          "Three closures falsify the strongest zero-action narrative.",
+          "Outcome location does not prove the prior controller was wrong when its gate is not due."
         ],
-        "proposal": "Run one risk-and-optionality triage gate, then test task-ID scheduling for seven days while narrowly repairing portfolio executability and keeping outcomes separate from decision quality.",
+        "proposal": "Take the low-cost IRS information bet, then return to shared obligations; keep health as an exception signal.",
         "risks": [
-          "A single completion is not a stable personal base rate.",
-          "Zero habit logs may reflect non-use of the record rather than no action.",
-          "Tasks may be scheduled elsewhere or blocked by unobserved dependencies."
+          "Burst completion may be batch bookkeeping.",
+          "A hidden official deadline could change sequence."
         ],
-        "falsified_by": "Explicitly scheduled tasks receive genuine work opportunities but remain unchanged for documented reasons unrelated to cue ambiguity, or fact-finding shows no meaningful deadline, penalty, capacity constraint, or lead time."
+        "falsified_by": "Repeated follow-up shows no attributable external progress or a documented higher-consequence exception appears."
       },
       {
         "id": "expert-execution-systems",
         "label": "Execution Systems Expert",
-        "mission": "Convert validated priorities into a low-WIP critical path with observable artifacts.",
+        "mission": "Turn the changed portfolio into a short WIP=1 action path.",
         "model_ids": [
           "theory-of-constraints",
-          "littles-law",
           "ooda-loop",
-          "amdahls-law",
-          "pareto-frontier"
+          "littles-law"
         ],
         "assumptions": [
-          "The current constraint is dispatch from eligible task to task-linked execution cue, not task supply.",
-          "Only completion or an explicit external wait releases the next hands-on item.",
-          "The tax dependency is inferred from task text and must remain conditional."
+          "Only one hands-on action is active at a time.",
+          "External waiting may overlap after a request exists."
         ],
         "derivation": [
-          "Theory of Constraints locates the bottleneck at release into execution.",
-          "Little's Law supports one hands-on item rather than nine competing tasks.",
-          "OODA favors shortening decision-to-action latency and learning from each artifact or blocker.",
-          "Amdahl's Law justifies early launch only when a real external lead time is confirmed.",
-          "Pareto favors one bounded first block over a complete productivity redesign."
+          "The bottleneck advanced from starting tax work to reading its new state.",
+          "Real closure—not reclassification—reduced WIP."
         ],
-        "proposal": "Adopt the three-action sequential recovery queue, maintain one task-ID-linked cue per day, move genuine external waits to a separate lane, and switch to an external-lead-time critical path only when deadline or lead-time evidence is confirmed.",
+        "proposal": "Run IRS status, AR-11, then internet; stop each block at a verified state or exact blocker.",
         "risks": [
-          "The illustrative 36-week queue-drain calculation is not a forecast because the sample is sparse.",
-          "External lead times and deadlines are not currently recorded.",
-          "The vague typed task Tiger mode ON lacks an operational definition of done and should not drive the critical path."
+          "Task titles omit deadlines and effort.",
+          "Intermediate work may not be recorded."
         ],
-        "falsified_by": "An exact task ID, protected block, explicit done condition, and WIP=1 produce no transition within the recovery window, while documented dependency, access, ambiguity, or state-recording problems better explain the result."
+        "falsified_by": "The sequence repeatedly yields no new state while another documented bottleneck explains delay."
       }
     ],
     "integration_gate": [
-      "Must trace to current Outliner evidence",
-      "Must survive an alternative-explanation check",
-      "Must change a decision, sequence, or measurement rule",
-      "Must have an observable review gate",
-      "Must not require invented tasks or probabilities"
+      "Current Outliner trace required",
+      "Alternative explanation required",
+      "Decision implication required",
+      "Observable review gate required",
+      "No invented tasks or deadlines"
     ]
   },
   "nodes": [
     {
+      "id": "action-ar11",
+      "label": "Advance AR-11",
+      "group": "action",
+      "summary": "Confirmation, verified progress, exact requirement, or blocker is saved.",
+      "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+      "timebox": "25 minutes",
+      "status": "queued-2",
+      "order": 2,
+      "queue_state": "active-controller",
+      "decision_ids": [
+        "decision-return-shared-obligations",
+        "decision-count-real-outcomes"
+      ]
+    },
+    {
       "id": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
       "label": "Book NYC and Niagara flights",
       "group": "action",
-      "summary": "Conditional queue item; depends on explicit travel deadline and administrative queue status.",
+      "summary": "Conditional queue item; depends on real travel timing, cost, and cancellation evidence.",
       "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
       "status": "conditional",
       "queue_state": "future-gated",
-      "queue_position": 1,
+      "queue_position": 2,
       "decision_ids": [
-        "decision-select-growth-queue"
+        "decision-return-shared-obligations"
       ],
       "graph_label": "Book NYC and N…"
     },
     {
-      "id": "action-ar11",
-      "label": "Complete AR-11 form",
+      "id": "action-irs-status",
+      "label": "Check IRS filing status",
       "group": "action",
-      "summary": "Submission confirmation, receipt, or an exact blocker artifact is saved.",
-      "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-      "timebox": "25 minutes",
+      "summary": "Timestamped status, exact next requirement, or access blocker is saved.",
+      "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+      "timebox": "15 minutes",
       "status": "active-1",
       "order": 1,
       "queue_state": "active-controller",
       "decision_ids": [
-        "decision-reject-unidentified-cues",
-        "decision-protect-three-action-controller"
+        "decision-read-irs-state",
+        "decision-count-real-outcomes"
       ],
-      "graph_label": "Complete AR-11…"
+      "graph_label": "Check IRS fili…"
     },
     {
-      "id": "queue-8329b464-dab9-4362-811c-dadf15a1cbdd",
-      "label": "Get filed confirmation",
+      "id": "queue-d6135502-df76-48ff-824e-c8af2975b890",
+      "label": "Operationalize Tiger mode ON",
       "group": "action",
-      "summary": "Conditional queue item; depends on paperwork submission.",
-      "task_id": "8329b464-dab9-4362-811c-dadf15a1cbdd",
+      "summary": "Conditional queue item; depends on rewrite its broad checklist into one user-chosen observable next state outside this read-only run.",
+      "task_id": "d6135502-df76-48ff-824e-c8af2975b890",
       "status": "conditional",
       "queue_state": "future-gated",
-      "queue_position": 3,
+      "queue_position": 1,
       "decision_ids": [
-        "decision-release-tax-critical-path"
+        "decision-count-real-outcomes"
       ],
-      "graph_label": "Get filed conf…"
+      "graph_label": "Operationalize…"
     },
     {
       "id": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
       "label": "Research latest hair-loss evidence",
       "group": "action",
-      "summary": "Conditional queue item; depends on explicit priority and a bounded research question.",
+      "summary": "Conditional queue item; depends on one bounded decision question.",
       "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
       "status": "conditional",
       "queue_state": "future-gated",
-      "queue_position": 2,
+      "queue_position": 3,
       "decision_ids": [
-        "decision-select-growth-queue"
+        "decision-return-shared-obligations"
       ],
       "graph_label": "Research lates…"
     },
     {
-      "id": "action-internet-warning",
+      "id": "action-internet",
       "label": "Resolve internet warning",
       "group": "action",
-      "summary": "The warning is cleared or a ticket number, response window, or exact blocker is saved.",
+      "summary": "Warning is cleared or a provider ticket/response window is saved.",
       "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
       "timebox": "15 minutes",
       "status": "queued-3",
       "order": 3,
       "queue_state": "active-controller",
       "decision_ids": [
-        "decision-reject-unidentified-cues",
-        "decision-protect-three-action-controller"
+        "decision-return-shared-obligations",
+        "decision-count-real-outcomes"
       ],
       "graph_label": "Resolve intern…"
     },
     {
-      "id": "action-lung-scan",
+      "id": "queue-6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
       "label": "Schedule lung-health scan",
       "group": "action",
-      "summary": "Appointment confirmation or the exact referral, insurance, or contact blocker is saved.",
+      "summary": "Conditional queue item; depends on documented professional urgency, lead time, or explicit priority override.",
       "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-      "timebox": "20 minutes",
-      "status": "queued-2",
-      "order": 2,
-      "queue_state": "active-controller",
-      "decision_ids": [
-        "decision-reject-unidentified-cues",
-        "decision-protect-three-action-controller"
-      ],
-      "graph_label": "Schedule lung-…"
-    },
-    {
-      "id": "queue-79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-      "label": "Submit paperwork",
-      "group": "action",
-      "summary": "Conditional queue item; depends on response or requirements from yesmytaxes.",
-      "task_id": "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-      "status": "conditional",
-      "queue_state": "future-gated",
-      "queue_position": 2,
-      "decision_ids": [
-        "decision-release-tax-critical-path"
-      ],
-      "graph_label": "Submit paperwo…"
-    },
-    {
-      "id": "queue-0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-      "label": "Talk to yesmytaxes",
-      "group": "action",
-      "summary": "Conditional queue item; depends on phase 1 review.",
-      "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
       "status": "conditional",
       "queue_state": "future-gated",
       "queue_position": 1,
       "decision_ids": [
-        "decision-release-tax-critical-path"
+        "decision-return-shared-obligations"
       ],
-      "graph_label": "Talk to yesmyt…"
+      "graph_label": "Schedule lung-…"
     },
     {
-      "id": "decision-protect-three-action-controller",
-      "label": "Protect the three-action controller",
+      "id": "decision-count-real-outcomes",
+      "label": "Count real outcomes wherever they occur",
       "group": "decision",
-      "summary": "A bounded WIP=1 test creates attributable evidence with limited downside.",
+      "summary": "The tax burst is valid evidence even though it missed the forecasted controller.",
+      "choice": "monitor",
+      "tradeoff": "Controller adherence and total output must be reported separately.",
+      "review": "At the next two-week review, compare selected-action outcomes with all eligible closures.",
+      "graph_label": "Count real out…"
+    },
+    {
+      "id": "decision-read-irs-state",
+      "label": "Read the new filing state once",
+      "group": "decision",
+      "summary": "One portal read completes the feedback loop after three tax closures.",
       "choice": "sequence",
-      "tradeoff": "Other eligible work remains queued during the immediate horizon.",
-      "review": "Review by 2026-07-27T12:00:00Z or earlier for safety, an official deadline, or explicit priority change.",
-      "graph_label": "Protect the th…"
+      "tradeoff": "Consumes the first short block.",
+      "review": "Stop after the status and exact next requirement are saved.",
+      "graph_label": "Read the new f…"
     },
     {
-      "id": "decision-reject-unidentified-cues",
-      "label": "Reject unidentified cues as control inputs",
+      "id": "decision-return-shared-obligations",
+      "label": "Return to AR-11 and internet",
       "group": "decision",
-      "summary": "The sole cue has no native task ID and no eligible-task coverage.",
-      "choice": "ignore-for-control",
-      "tradeoff": "Potentially useful context remains outside the active controller until identified.",
-      "review": "Reconsider when a cue resolves to an eligible task ID or Sai explicitly changes priority.",
-      "graph_label": "Reject unident…"
+      "summary": "They remain shared, eligible obligations after the prior lung-versus-Life-OS conflict is removed from the current queue.",
+      "choice": "protect",
+      "tradeoff": "Health scheduling and growth work remain deferred absent an exception.",
+      "review": "Reverse for documented medical, safety, legal, financial, or explicit-user priority evidence.",
+      "graph_label": "Return to AR-1…"
     },
     {
-      "id": "decision-release-tax-critical-path",
-      "label": "Release the tax critical path conditionally",
-      "group": "decision",
-      "summary": "The three native tax-task titles suggest a possible chain, but dependency fields are empty; validate the order before sequencing and do not let the hypothesis compete with the protected immediate controller.",
-      "choice": "defer-then-sequence",
-      "tradeoff": "Tax progress waits until the first checkpoint unless an official deadline changes priority.",
-      "review": "At the 48-hour checkpoint, compare saved artifacts, explicit deadlines, and unresolved safety constraints.",
-      "graph_label": "Release the ta…"
-    },
-    {
-      "id": "decision-select-growth-queue",
-      "label": "Select one growth queue after administrative review",
-      "group": "decision",
-      "summary": "Travel and hair-research tasks are eligible but current evidence does not establish their relative deadline or expected value.",
-      "choice": "monitor-then-select",
-      "tradeoff": "Both remain queued until more decision-relevant evidence is available.",
-      "review": "At the day-7 checkpoint, choose at most one using explicit deadline, reversibility, and opportunity cost.",
-      "graph_label": "Select one gro…"
-    },
-    {
-      "id": "evidence-closure-drought",
-      "label": "0 closures in 7 days",
+      "id": "evidence-wip-real-drop",
+      "label": "Eligible WIP 9→7",
       "group": "evidence",
-      "summary": "There are zero eligible completions in seven days and one in twenty-eight days; no new causal explanation is established.",
+      "summary": "Eligible open tasks fell from nine to seven despite one new task, so the decrease is attributable to real closures.",
       "evidence_class": "calculated",
       "source_refs": [
-        "outliner-tasks-20260725",
-        "completion-aggregate-20260725"
+        "aggregate:eligible-open-tasks-20260726=9",
+        "aggregate:eligible-open-tasks-20260727=7@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
       ]
     },
     {
-      "id": "evidence-cue-identity-gap",
-      "label": "0/9 eligible cue coverage",
+      "id": "evidence-irs-gate",
+      "label": "New IRS monitoring gate",
       "group": "evidence",
-      "summary": "The sole schedule cue is house document paperwork; it has no task ID, textually maps to retired Housing, and represents none of nine eligible tasks.",
-      "evidence_class": "calculated",
-      "source_refs": [
-        "schedule.__actionflow_daily_actions_v1__[0]",
-        "bc5dc69e-ab85-4b8c-a718-9c474cd04388",
-        "eligible-task-aggregate-20260725"
-      ]
-    },
-    {
-      "id": "evidence-inventory-concentration",
-      "label": "9 tasks in 6 projects",
-      "group": "evidence",
-      "summary": "Nine eligible open tasks are concentrated in six task-bearing active projects while three active projects have no eligible task.",
-      "evidence_class": "calculated",
-      "source_refs": [
-        "outliner-projects-20260725",
-        "outliner-tasks-20260725"
-      ]
-    },
-    {
-      "id": "evidence-habit-action-divergence",
-      "label": "AutoCheck extended; action signal empty",
-      "group": "evidence",
-      "summary": "Abstinence autoCheck entries extend through 2026-07-25, while Taking action has zero logs and all nine eligible tasks remain open. AutoCheck does not independently establish adherence or causal transfer.",
+      "summary": "A new explicit IRS filing-status task appeared within hours of the tax completions.",
       "evidence_class": "observed",
       "source_refs": [
-        "ca5f246b-4dda-4776-b0a6-93b449ff1ddd",
-        "4a82c418-87eb-460b-a853-6b34f82f87d2",
-        "outliner-tasks-20260726"
+        "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
       ]
     },
     {
-      "id": "evidence-action-signal-empty",
-      "label": "Taking action has no logs",
+      "id": "evidence-output-shift",
+      "label": "Output outside controller",
       "group": "evidence",
-      "summary": "The user-authored Taking action habit currently has no logged events, so it cannot validate execution frequency or causal transfer.",
+      "summary": "The three protected controller tasks remain open while the conditional tax chain completed.",
+      "evidence_class": "calculated",
+      "source_refs": [
+        "outliner:2db41016-0ca9-42b4-8acb-b7e4c6dd5711@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:e7e77f16-2155-45a3-a975-f37eafd6efe2@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+      ]
+    },
+    {
+      "id": "evidence-cue-decoupling",
+      "label": "Output with zero cue coverage",
+      "group": "evidence",
+      "summary": "The sole daily cue covers 0/7 eligible tasks, yet tax execution occurred.",
+      "evidence_class": "calculated",
+      "source_refs": [
+        "outliner:schedule.__actionflow_daily_actions_v1__[0]@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+      ]
+    },
+    {
+      "id": "evidence-tax-closures",
+      "label": "Three tax closures",
+      "group": "evidence",
+      "summary": "Three explicit Taxes tasks completed on 2026-07-26.",
       "evidence_class": "observed",
       "source_refs": [
-        "habit-4a82c418-87eb-460b-a853-6b34f82f87d2"
-      ]
-    },
-    {
-      "id": "evidence-tax-critical-path",
-      "label": "Three-step tax chain",
-      "group": "evidence",
-      "summary": "The Taxes project contains three open native tasks whose titles suggest—but do not establish—a conditional sequence: talk to yesmytaxes, submit paperwork, then obtain filing confirmation. Dependency fields are empty, so the sequence remains gated pending validation.",
-      "evidence_class": "hypothesized",
-      "source_refs": [
-        "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-        "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-        "8329b464-dab9-4362-811c-dadf15a1cbdd"
+        "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
       ]
     },
     {
       "id": "expert-decision-risk",
       "label": "Decision & Risk Expert",
       "group": "expert",
-      "summary": "Choose reversible, information-rich bets while protecting downside and uncertainty.",
+      "summary": "Preserve optionality and prevent a completion burst from becoming overconfidence.",
       "model_ids": [
-        "probabilistic-thinking",
-        "thinking-in-bets",
         "bayesian-updating",
-        "minimax-margin-safety"
+        "thinking-in-bets"
       ],
       "evidence_ids": [
-        "evidence-action-signal-empty",
-        "evidence-closure-drought",
-        "evidence-cue-identity-gap",
-        "evidence-habit-action-divergence",
-        "evidence-inventory-concentration",
-        "evidence-tax-critical-path"
+        "evidence-cue-decoupling",
+        "evidence-irs-gate",
+        "evidence-output-shift",
+        "evidence-tax-closures",
+        "evidence-wip-real-drop"
       ],
       "assumptions": [
-        "The evidence is descriptive rather than causal.",
-        "Task names do not establish urgency, difficulty, duration, or consequence.",
-        "Probabilities remain unknown until prospective observations exist."
+        "One burst changes the prior but is not a stable rate.",
+        "AR-11 and internet remain valid open obligations."
       ],
       "derivation": [
-        "Zero cue coverage plus low output raises but does not prove the cue-ambiguity hypothesis.",
-        "A task-ID scheduling pilot is a reversible process bet with high information value.",
-        "Deadline, delay consequence, reversibility, and lead-time facts should dominate semantic urgency guesses.",
-        "Every active project needs one explicit next action or an explicit pause, without expanding active WIP."
+        "Three closures falsify the strongest zero-action narrative.",
+        "Outcome location does not prove the prior controller was wrong when its gate is not due."
       ],
-      "proposal": "Run one risk-and-optionality triage gate, then test task-ID scheduling for seven days while narrowly repairing portfolio executability and keeping outcomes separate from decision quality.",
+      "proposal": "Take the low-cost IRS information bet, then return to shared obligations; keep health as an exception signal.",
       "risks": [
-        "A single completion is not a stable personal base rate.",
-        "Zero habit logs may reflect non-use of the record rather than no action.",
-        "Tasks may be scheduled elsewhere or blocked by unobserved dependencies."
+        "Burst completion may be batch bookkeeping.",
+        "A hidden official deadline could change sequence."
       ],
-      "falsified_by": "Explicitly scheduled tasks receive genuine work opportunities but remain unchanged for documented reasons unrelated to cue ambiguity, or fact-finding shows no meaningful deadline, penalty, capacity constraint, or lead time."
+      "falsified_by": "Repeated follow-up shows no attributable external progress or a documented higher-consequence exception appears."
     },
     {
       "id": "expert-execution-systems",
       "label": "Execution Systems Expert",
       "group": "expert",
-      "summary": "Convert validated priorities into a low-WIP critical path with observable artifacts.",
+      "summary": "Turn the changed portfolio into a short WIP=1 action path.",
       "model_ids": [
         "theory-of-constraints",
-        "littles-law",
         "ooda-loop",
-        "amdahls-law",
-        "pareto-frontier"
+        "littles-law"
       ],
       "evidence_ids": [
-        "evidence-action-signal-empty",
-        "evidence-closure-drought",
-        "evidence-cue-identity-gap",
-        "evidence-habit-action-divergence",
-        "evidence-inventory-concentration",
-        "evidence-tax-critical-path"
+        "evidence-cue-decoupling",
+        "evidence-irs-gate",
+        "evidence-output-shift",
+        "evidence-tax-closures",
+        "evidence-wip-real-drop"
       ],
       "assumptions": [
-        "The current constraint is dispatch from eligible task to task-linked execution cue, not task supply.",
-        "Only completion or an explicit external wait releases the next hands-on item.",
-        "The tax dependency is inferred from task text and must remain conditional."
+        "Only one hands-on action is active at a time.",
+        "External waiting may overlap after a request exists."
       ],
       "derivation": [
-        "Theory of Constraints locates the bottleneck at release into execution.",
-        "Little's Law supports one hands-on item rather than nine competing tasks.",
-        "OODA favors shortening decision-to-action latency and learning from each artifact or blocker.",
-        "Amdahl's Law justifies early launch only when a real external lead time is confirmed.",
-        "Pareto favors one bounded first block over a complete productivity redesign."
+        "The bottleneck advanced from starting tax work to reading its new state.",
+        "Real closure—not reclassification—reduced WIP."
       ],
-      "proposal": "Adopt the three-action sequential recovery queue, maintain one task-ID-linked cue per day, move genuine external waits to a separate lane, and switch to an external-lead-time critical path only when deadline or lead-time evidence is confirmed.",
+      "proposal": "Run IRS status, AR-11, then internet; stop each block at a verified state or exact blocker.",
       "risks": [
-        "The illustrative 36-week queue-drain calculation is not a forecast because the sample is sparse.",
-        "External lead times and deadlines are not currently recorded.",
-        "The vague typed task Tiger mode ON lacks an operational definition of done and should not drive the critical path."
+        "Task titles omit deadlines and effort.",
+        "Intermediate work may not be recorded."
       ],
-      "falsified_by": "An exact task ID, protected block, explicit done condition, and WIP=1 produce no transition within the recovery window, while documented dependency, access, ambiguity, or state-recording problems better explain the result."
+      "falsified_by": "The sequence repeatedly yields no new state while another documented bottleneck explains delay."
     },
     {
       "id": "expert-orientation-control",
       "label": "Orientation & Control Expert",
       "group": "expert",
-      "summary": "Resolve primitives, signal identity, and controller validity before acceleration.",
+      "summary": "Identify the new state and valid feedback signal after real closures.",
       "model_ids": [
-        "euclidean-thinking",
         "information-theory",
-        "control-theory-spc"
+        "control-theory"
       ],
       "evidence_ids": [
-        "evidence-action-signal-empty",
-        "evidence-closure-drought",
-        "evidence-cue-identity-gap",
-        "evidence-habit-action-divergence",
-        "evidence-inventory-concentration",
-        "evidence-tax-critical-path"
+        "evidence-cue-decoupling",
+        "evidence-irs-gate",
+        "evidence-output-shift",
+        "evidence-tax-closures",
+        "evidence-wip-real-drop"
       ],
       "assumptions": [
-        "A schedule cue is intended to select an executable task.",
-        "Native eligible task IDs are the valid actuators in the current control surface.",
-        "Recorded completion or documented state transition is attributable feedback; missing completion does not prove no attempt."
+        "Task completion dates represent genuine user-recorded outcomes.",
+        "The IRS status task is the next tax feedback request."
       ],
       "derivation": [
-        "Euclidean construction fails when a cue cannot be traced to an eligible task identity.",
-        "Unkeyed free text loses routing and attribution information.",
-        "A reference-to-actuator gap leaves the portfolio open-loop.",
-        "Sparse completion history cannot support SPC limits or causal process claims."
+        "Three completed commands should leave the active controller.",
+        "The new portal check is one feedback sample, not a reopened chain."
       ],
-      "proposal": "Reject unidentified cues as control inputs, bind the three designated actions to exact task IDs, run them as a closed-loop WIP-gated pilot, and keep the inferred tax sequence conditional until its dependency is validated.",
+      "proposal": "Read the IRS state once, save it, and issue no new tax command unless the state requires one.",
       "risks": [
-        "Completion records omit attempts, elapsed effort, and external blockers.",
-        "Taskless projects may be deliberate containers rather than defects.",
-        "Task titles do not establish urgency, effort, or deadlines."
+        "Completed labels may lack external artifacts.",
+        "Portal access may be blocked."
       ],
-      "falsified_by": "Two genuine task-ID-linked review cycles produce no attributable transition and documented blockers, task ambiguity, or missing state recording explain the result better than cue integrity."
-    },
-    {
-      "id": "amdahls-law",
-      "label": "Amdahl's Law",
-      "group": "model",
-      "summary": "Sequence dependent work with zero gaps while allowing only external waiting to overlap.",
-      "family": "dependencies",
-      "source": "stored: warp-speed-execution / parallel computing",
-      "evidence_ids": [
-        "evidence-tax-critical-path"
-      ]
+      "falsified_by": "The portal state has no relation to the completed filing work or the old tasks reopen."
     },
     {
       "id": "bayesian-updating",
       "label": "Bayesian Updating",
       "group": "model",
-      "summary": "Use review outcomes to update which action structures work; leave unsupported probabilities unknown.",
-      "family": "learning",
-      "source": "stored: probabilistic-thinking and warp-speed-execution",
+      "summary": "Update the zero-output belief while withholding causal attribution for the burst.",
+      "family": "decision-risk",
+      "source": "stored: probabilistic-thinking",
       "evidence_ids": [
-        "evidence-closure-drought",
-        "evidence-action-signal-empty",
-        "evidence-tax-critical-path",
-        "evidence-habit-action-divergence"
+        "evidence-tax-closures",
+        "evidence-output-shift",
+        "evidence-cue-decoupling"
       ]
     },
     {
-      "id": "control-theory-spc",
-      "label": "Control Theory & SPC",
+      "id": "control-theory",
+      "label": "Control Theory",
       "group": "model",
-      "summary": "Protect a bounded controller from premature replanning and update only at review gates.",
-      "family": "feedback",
-      "source": "stored: warp-speed-execution / PID and Deming",
+      "summary": "Treat completions as output and the IRS status check as the next feedback sample.",
+      "family": "orientation-control",
+      "source": "stored: warp-speed-execution / feedback control",
       "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-closure-drought",
-        "evidence-action-signal-empty",
-        "evidence-tax-critical-path"
-      ]
-    },
-    {
-      "id": "euclidean-thinking",
-      "label": "Euclidean Thinking",
-      "group": "model",
-      "summary": "Define actionable work by identity, eligibility, and evidence rather than by populated fields.",
-      "family": "first-principles",
-      "source": "stored: stem-stack/euclidean-thinking",
-      "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-inventory-concentration",
-        "evidence-tax-critical-path"
+        "evidence-tax-closures",
+        "evidence-irs-gate",
+        "evidence-output-shift"
       ]
     },
     {
       "id": "information-theory",
       "label": "Information Theory",
       "group": "model",
-      "summary": "Treat unidentified schedule text as low-validity signal until it maps to an eligible task.",
-      "family": "signal",
+      "summary": "Select the smallest observation that collapses the new filing-state uncertainty.",
+      "family": "orientation-control",
       "source": "stored: warp-speed-execution / Shannon",
       "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-inventory-concentration",
-        "evidence-habit-action-divergence"
+        "evidence-tax-closures",
+        "evidence-irs-gate",
+        "evidence-cue-decoupling"
       ]
     },
     {
       "id": "littles-law",
       "label": "Little's Law",
       "group": "model",
-      "summary": "Keep active execution WIP at one to reduce cycle time and switching.",
-      "family": "queueing",
-      "source": "stored: warp-speed-execution / queueing theory",
+      "summary": "Keep hands-on WIP at one while completed work exits the active system.",
+      "family": "execution-systems",
+      "source": "stored: warp-speed-execution / queueing",
       "evidence_ids": [
-        "evidence-closure-drought",
-        "evidence-inventory-concentration"
-      ]
-    },
-    {
-      "id": "minimax-margin-safety",
-      "label": "Minimax & Margin of Safety",
-      "group": "model",
-      "summary": "Cap action downside with timeboxes, preserve safety exceptions, and retain slack.",
-      "family": "risk",
-      "source": "stored: warp-speed-execution / game theory and engineering",
-      "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-tax-critical-path"
+        "evidence-wip-real-drop",
+        "evidence-output-shift"
       ]
     },
     {
       "id": "ooda-loop",
       "label": "OODA Loop",
       "group": "model",
-      "summary": "Close each observe-orient-decide-act loop with a done artifact or exact blocker.",
-      "family": "execution",
+      "summary": "Reorient after the completion burst before issuing another tax action.",
+      "family": "execution-systems",
       "source": "stored: warp-speed-execution / Boyd",
       "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-closure-drought",
-        "evidence-action-signal-empty",
-        "evidence-tax-critical-path"
-      ]
-    },
-    {
-      "id": "pareto-frontier",
-      "label": "Pareto Frontier",
-      "group": "model",
-      "summary": "Define minimum sufficient evidence and stop polishing once the decision-enabling artifact exists.",
-      "family": "shipping",
-      "source": "stored: warp-speed-execution / quality-speed frontier",
-      "evidence_ids": [
-        "evidence-closure-drought",
-        "evidence-action-signal-empty"
-      ]
-    },
-    {
-      "id": "probabilistic-thinking",
-      "label": "Probabilistic Thinking",
-      "group": "model",
-      "summary": "Separate observed state from causal stories and avoid updating from a non-due result.",
-      "family": "uncertainty",
-      "source": "stored: stem-stack/probabilistic-thinking",
-      "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-closure-drought",
-        "evidence-action-signal-empty",
-        "evidence-tax-critical-path",
-        "evidence-habit-action-divergence"
+        "evidence-tax-closures",
+        "evidence-irs-gate",
+        "evidence-output-shift"
       ]
     },
     {
       "id": "theory-of-constraints",
       "label": "Theory of Constraints",
       "group": "model",
-      "summary": "Focus the system on artifact-producing initiation as the current throughput constraint.",
-      "family": "throughput",
+      "summary": "Move the constraint from initiation to clean outcome-to-feedback handoff.",
+      "family": "execution-systems",
       "source": "stored: warp-speed-execution / Goldratt",
       "evidence_ids": [
-        "evidence-closure-drought",
-        "evidence-inventory-concentration",
-        "evidence-action-signal-empty",
-        "evidence-tax-critical-path"
+        "evidence-tax-closures",
+        "evidence-irs-gate",
+        "evidence-wip-real-drop"
       ]
     },
     {
       "id": "thinking-in-bets",
       "label": "Thinking in Bets",
       "group": "model",
-      "summary": "Prefer bounded, reversible actions with explicit stop and review conditions.",
-      "family": "decision",
-      "source": "stored: stem-stack/thinking-in-bets",
+      "summary": "Choose one reversible, information-rich status check and explicit stop rule.",
+      "family": "decision-risk",
+      "source": "stored: thinking-in-bets",
       "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-closure-drought",
-        "evidence-tax-critical-path"
+        "evidence-irs-gate",
+        "evidence-output-shift"
       ]
     },
     {
-      "id": "phase-growth-allocation",
-      "label": "Allocate the next growth slot",
+      "id": "phase-horizon",
+      "label": "Build from verified wins",
       "group": "phase",
-      "summary": "Choose at most one queued growth task using explicit deadline, reversibility, and opportunity cost; do not activate both by default.",
+      "summary": "Use repeated closure evidence—not a single burst—to decide whether to expand daily execution capacity.",
       "order": 3,
-      "horizon": "Days 8–14",
-      "window": "2026-08-01 to 2026-08-08",
+      "horizon": "Horizon — 30–90 days",
+      "window": "2026-08-11 to 2026-10-25",
       "status": "conditional",
-      "gate": "Select one only when its deadline or expected information value is explicitly higher; otherwise keep both queued and collect the missing decision evidence.",
-      "graph_label": "Allocate the n…"
+      "gate": "At least two cycles show attributable current-action outcomes before increasing active WIP.",
+      "graph_label": "Build from ver…"
     },
     {
-      "id": "phase-tax-critical-path",
-      "label": "Release one administrative critical path",
+      "id": "phase-now",
+      "label": "Close the feedback loop",
       "group": "phase",
-      "summary": "If the immediate phase reaches its gate, the tax-task order is validated, and no higher-priority exception exists, sequence only the confirmed Taxes dependencies with zero avoidable gaps.",
-      "order": 2,
-      "horizon": "Days 3–7",
-      "window": "2026-07-28 to 2026-07-31",
-      "status": "conditional",
-      "gate": "Advance only when the predecessor produces the information or artifact required by the successor; pause for an exact external blocker rather than opening another active task.",
-      "graph_label": "Release one ad…"
-    },
-    {
-      "id": "phase-immediate-controller",
-      "label": "Stabilize the control loop",
-      "group": "phase",
-      "summary": "Run a 10-minute exception gate across documented deadline, consequence of delay, reversibility, and external lead time. If no safety, medical, or official-deadline exception is found, protect the current controller and execute its three native tasks sequentially.",
+      "summary": "Run IRS status, AR-11, then internet with WIP=1.",
       "order": 1,
-      "horizon": "Now → 48 hours",
-      "window": "2026-07-25 to 2026-07-27 12:00 UTC",
+      "horizon": "Now — 24–72 hours",
+      "window": "2026-07-27 to 2026-07-30",
       "status": "active",
-      "gate": "By the checkpoint, save at least one done artifact and exact blocker artifacts for every bounded but incomplete step; otherwise preserve unknown causality and redesign the action structure.",
-      "graph_label": "Stabilize the…"
+      "gate": "Each task has a timestamped next state or exact blocker; tax continues only if the IRS state requires it.",
+      "graph_label": "Close the feed…"
     },
     {
-      "id": "artifact-first-single-queue",
-      "label": "Artifact-First Single Queue",
-      "group": "solution",
-      "summary": "Model contributions",
-      "status": "proposed-solution",
-      "confidence": "medium",
-      "is_current": false
+      "id": "phase-cycle",
+      "label": "Protect one growth or health option",
+      "group": "phase",
+      "summary": "After the immediate gate, choose at most one queued option using documented timing, consequence of delay, reversibility, and information value.",
+      "order": 2,
+      "horizon": "This cycle — two weeks",
+      "window": "2026-07-27 to 2026-08-10",
+      "status": "conditional",
+      "gate": "Activate one only when its decision evidence dominates the alternatives; otherwise preserve slack.",
+      "graph_label": "Protect one gr…"
     },
     {
-      "id": "identity-gated-control-plane",
-      "label": "Identity-Gated Control Plane",
+      "id": "solution-feedback-handoff",
+      "label": "Close → Observe → Recommit",
       "group": "solution",
-      "summary": "Model contributions",
-      "status": "proposed-solution",
-      "confidence": "high",
-      "is_current": false
-    },
-    {
-      "id": "moe-integrated-control-system",
-      "label": "Integrated Control System",
-      "group": "solution",
-      "summary": "Expert convergence",
+      "summary": "All experts converge on a clean handoff: remove completed tax work from active attention, take one bounded IRS status sample, then recommit to AR-11 and internet. Decision-risk preserves the minority safeguard that one burst is not a stable base rate and health or official-deadline evidence can override.",
       "status": "current",
-      "confidence": "medium",
+      "confidence": "medium-high",
       "is_current": true
     },
     {
-      "id": "reversible-decision-ladder",
-      "label": "Reversible Decision Ladder",
+      "id": "solution-cue-as-attribution",
+      "label": "Cue Identity Is an Attribution Aid, Not a Prerequisite",
       "group": "solution",
-      "summary": "Model contributions",
-      "status": "proposed-solution",
+      "summary": "Keep task identity for attribution and review, but do not confuse a missing cue with inability to act. Useful output occurred with zero cue coverage.",
+      "status": "refined-solution",
       "confidence": "medium",
       "is_current": false
     },
     {
-      "id": "zero-gap-critical-path",
-      "label": "Zero-Gap Administrative Critical Path",
+      "id": "solution-measure-real-closure",
+      "label": "Real Closure, Not Display Cleanup",
       "group": "solution",
-      "summary": "Model contributions",
-      "status": "conditional-solution",
+      "summary": "Count the three dated tax completions as real throughput and the new IRS task as new inflow. Preserve separate accounting for completion, exclusion, and new work.",
+      "status": "strengthened-solution",
       "confidence": "medium",
       "is_current": false
     }
@@ -695,33 +535,18 @@
   "links": [
     {
       "source": "action-ar11",
-      "target": "phase-immediate-controller",
+      "target": "phase-now",
       "relation": "scheduled_in"
     },
     {
-      "source": "action-internet-warning",
-      "target": "phase-immediate-controller",
+      "source": "action-internet",
+      "target": "phase-now",
       "relation": "scheduled_in"
     },
     {
-      "source": "action-lung-scan",
-      "target": "phase-immediate-controller",
+      "source": "action-irs-status",
+      "target": "phase-now",
       "relation": "scheduled_in"
-    },
-    {
-      "source": "amdahls-law",
-      "target": "expert-execution-systems",
-      "relation": "equips"
-    },
-    {
-      "source": "artifact-first-single-queue",
-      "target": "decision-protect-three-action-controller",
-      "relation": "selects"
-    },
-    {
-      "source": "artifact-first-single-queue",
-      "target": "decision-select-growth-queue",
-      "relation": "selects"
     },
     {
       "source": "bayesian-updating",
@@ -729,319 +554,214 @@
       "relation": "equips"
     },
     {
-      "source": "control-theory-spc",
+      "source": "control-theory",
       "target": "expert-orientation-control",
       "relation": "equips"
     },
     {
-      "source": "decision-protect-three-action-controller",
+      "source": "decision-count-real-outcomes",
       "target": "action-ar11",
       "relation": "executes"
     },
     {
-      "source": "decision-protect-three-action-controller",
-      "target": "action-internet-warning",
+      "source": "decision-count-real-outcomes",
+      "target": "action-internet",
       "relation": "executes"
     },
     {
-      "source": "decision-protect-three-action-controller",
-      "target": "action-lung-scan",
+      "source": "decision-count-real-outcomes",
+      "target": "action-irs-status",
       "relation": "executes"
     },
     {
-      "source": "decision-protect-three-action-controller",
-      "target": "phase-immediate-controller",
+      "source": "decision-count-real-outcomes",
+      "target": "phase-horizon",
       "relation": "governs"
     },
     {
-      "source": "decision-reject-unidentified-cues",
+      "source": "decision-count-real-outcomes",
+      "target": "phase-now",
+      "relation": "governs"
+    },
+    {
+      "source": "decision-count-real-outcomes",
+      "target": "queue-d6135502-df76-48ff-824e-c8af2975b890",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-read-irs-state",
+      "target": "action-irs-status",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-read-irs-state",
+      "target": "phase-now",
+      "relation": "governs"
+    },
+    {
+      "source": "decision-return-shared-obligations",
       "target": "action-ar11",
       "relation": "executes"
     },
     {
-      "source": "decision-reject-unidentified-cues",
-      "target": "action-internet-warning",
+      "source": "decision-return-shared-obligations",
+      "target": "action-internet",
       "relation": "executes"
     },
     {
-      "source": "decision-reject-unidentified-cues",
-      "target": "action-lung-scan",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-reject-unidentified-cues",
-      "target": "phase-immediate-controller",
+      "source": "decision-return-shared-obligations",
+      "target": "phase-cycle",
       "relation": "governs"
     },
     {
-      "source": "decision-release-tax-critical-path",
-      "target": "phase-tax-critical-path",
+      "source": "decision-return-shared-obligations",
+      "target": "phase-now",
       "relation": "governs"
     },
     {
-      "source": "decision-release-tax-critical-path",
-      "target": "queue-0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-release-tax-critical-path",
-      "target": "queue-79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-release-tax-critical-path",
-      "target": "queue-8329b464-dab9-4362-811c-dadf15a1cbdd",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-select-growth-queue",
-      "target": "phase-growth-allocation",
-      "relation": "governs"
-    },
-    {
-      "source": "decision-select-growth-queue",
+      "source": "decision-return-shared-obligations",
       "target": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
       "relation": "executes"
     },
     {
-      "source": "decision-select-growth-queue",
+      "source": "decision-return-shared-obligations",
+      "target": "queue-6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+      "relation": "executes"
+    },
+    {
+      "source": "decision-return-shared-obligations",
       "target": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
       "relation": "executes"
     },
     {
-      "source": "euclidean-thinking",
-      "target": "expert-orientation-control",
-      "relation": "equips"
-    },
-    {
-      "source": "evidence-action-signal-empty",
+      "source": "evidence-cue-decoupling",
       "target": "bayesian-updating",
       "relation": "frames"
     },
     {
-      "source": "evidence-action-signal-empty",
-      "target": "control-theory-spc",
+      "source": "evidence-cue-decoupling",
+      "target": "information-theory",
       "relation": "frames"
     },
     {
-      "source": "evidence-action-signal-empty",
+      "source": "evidence-irs-gate",
+      "target": "control-theory",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-irs-gate",
+      "target": "information-theory",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-irs-gate",
       "target": "ooda-loop",
       "relation": "frames"
     },
     {
-      "source": "evidence-action-signal-empty",
-      "target": "pareto-frontier",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-action-signal-empty",
-      "target": "probabilistic-thinking",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-action-signal-empty",
+      "source": "evidence-irs-gate",
       "target": "theory-of-constraints",
       "relation": "frames"
     },
     {
-      "source": "evidence-closure-drought",
+      "source": "evidence-irs-gate",
+      "target": "thinking-in-bets",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-output-shift",
       "target": "bayesian-updating",
       "relation": "frames"
     },
     {
-      "source": "evidence-closure-drought",
-      "target": "control-theory-spc",
+      "source": "evidence-output-shift",
+      "target": "control-theory",
       "relation": "frames"
     },
     {
-      "source": "evidence-closure-drought",
+      "source": "evidence-output-shift",
       "target": "littles-law",
       "relation": "frames"
     },
     {
-      "source": "evidence-closure-drought",
+      "source": "evidence-output-shift",
       "target": "ooda-loop",
       "relation": "frames"
     },
     {
-      "source": "evidence-closure-drought",
-      "target": "pareto-frontier",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-closure-drought",
-      "target": "probabilistic-thinking",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-closure-drought",
-      "target": "theory-of-constraints",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-closure-drought",
+      "source": "evidence-output-shift",
       "target": "thinking-in-bets",
       "relation": "frames"
     },
     {
-      "source": "evidence-cue-identity-gap",
-      "target": "control-theory-spc",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-cue-identity-gap",
-      "target": "euclidean-thinking",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-cue-identity-gap",
-      "target": "information-theory",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-cue-identity-gap",
-      "target": "minimax-margin-safety",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-cue-identity-gap",
-      "target": "ooda-loop",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-cue-identity-gap",
-      "target": "probabilistic-thinking",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-cue-identity-gap",
-      "target": "thinking-in-bets",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-habit-action-divergence",
+      "source": "evidence-tax-closures",
       "target": "bayesian-updating",
       "relation": "frames"
     },
     {
-      "source": "evidence-habit-action-divergence",
+      "source": "evidence-tax-closures",
+      "target": "control-theory",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-tax-closures",
       "target": "information-theory",
       "relation": "frames"
     },
     {
-      "source": "evidence-habit-action-divergence",
-      "target": "probabilistic-thinking",
+      "source": "evidence-tax-closures",
+      "target": "ooda-loop",
       "relation": "frames"
     },
     {
-      "source": "evidence-inventory-concentration",
-      "target": "euclidean-thinking",
+      "source": "evidence-tax-closures",
+      "target": "theory-of-constraints",
       "relation": "frames"
     },
     {
-      "source": "evidence-inventory-concentration",
-      "target": "information-theory",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-inventory-concentration",
+      "source": "evidence-wip-real-drop",
       "target": "littles-law",
       "relation": "frames"
     },
     {
-      "source": "evidence-inventory-concentration",
+      "source": "evidence-wip-real-drop",
       "target": "theory-of-constraints",
       "relation": "frames"
     },
     {
-      "source": "evidence-tax-critical-path",
-      "target": "amdahls-law",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-tax-critical-path",
-      "target": "bayesian-updating",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-tax-critical-path",
-      "target": "control-theory-spc",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-tax-critical-path",
-      "target": "euclidean-thinking",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-tax-critical-path",
-      "target": "minimax-margin-safety",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-tax-critical-path",
-      "target": "ooda-loop",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-tax-critical-path",
-      "target": "probabilistic-thinking",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-tax-critical-path",
-      "target": "theory-of-constraints",
-      "relation": "frames"
-    },
-    {
-      "source": "evidence-tax-critical-path",
-      "target": "thinking-in-bets",
-      "relation": "frames"
-    },
-    {
       "source": "expert-decision-risk",
-      "target": "moe-integrated-control-system",
+      "target": "solution-cue-as-attribution",
       "relation": "derives"
     },
     {
       "source": "expert-decision-risk",
-      "target": "reversible-decision-ladder",
-      "relation": "derives"
-    },
-    {
-      "source": "expert-decision-risk",
-      "target": "zero-gap-critical-path",
+      "target": "solution-feedback-handoff",
       "relation": "derives"
     },
     {
       "source": "expert-execution-systems",
-      "target": "artifact-first-single-queue",
+      "target": "solution-feedback-handoff",
       "relation": "derives"
     },
     {
       "source": "expert-execution-systems",
-      "target": "moe-integrated-control-system",
-      "relation": "derives"
-    },
-    {
-      "source": "expert-execution-systems",
-      "target": "zero-gap-critical-path",
+      "target": "solution-measure-real-closure",
       "relation": "derives"
     },
     {
       "source": "expert-orientation-control",
-      "target": "identity-gated-control-plane",
+      "target": "solution-cue-as-attribution",
       "relation": "derives"
     },
     {
       "source": "expert-orientation-control",
-      "target": "moe-integrated-control-system",
+      "target": "solution-feedback-handoff",
       "relation": "derives"
     },
     {
-      "source": "identity-gated-control-plane",
-      "target": "decision-reject-unidentified-cues",
-      "relation": "selects"
+      "source": "expert-orientation-control",
+      "target": "solution-measure-real-closure",
+      "relation": "derives"
     },
     {
       "source": "information-theory",
@@ -1054,73 +774,58 @@
       "relation": "equips"
     },
     {
-      "source": "minimax-margin-safety",
-      "target": "expert-decision-risk",
-      "relation": "equips"
-    },
-    {
-      "source": "moe-integrated-control-system",
-      "target": "decision-protect-three-action-controller",
-      "relation": "selects"
-    },
-    {
-      "source": "moe-integrated-control-system",
-      "target": "decision-reject-unidentified-cues",
-      "relation": "selects"
-    },
-    {
       "source": "ooda-loop",
       "target": "expert-execution-systems",
       "relation": "equips"
     },
     {
-      "source": "pareto-frontier",
-      "target": "expert-execution-systems",
-      "relation": "equips"
-    },
-    {
-      "source": "probabilistic-thinking",
-      "target": "expert-decision-risk",
-      "relation": "equips"
-    },
-    {
-      "source": "queue-0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-      "target": "phase-tax-critical-path",
-      "relation": "scheduled_in"
-    },
-    {
       "source": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
-      "target": "phase-growth-allocation",
+      "target": "phase-cycle",
       "relation": "scheduled_in"
     },
     {
-      "source": "queue-79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-      "target": "phase-tax-critical-path",
-      "relation": "scheduled_in"
-    },
-    {
-      "source": "queue-8329b464-dab9-4362-811c-dadf15a1cbdd",
-      "target": "phase-tax-critical-path",
+      "source": "queue-6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+      "target": "phase-cycle",
       "relation": "scheduled_in"
     },
     {
       "source": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
-      "target": "phase-growth-allocation",
+      "target": "phase-cycle",
       "relation": "scheduled_in"
     },
     {
-      "source": "reversible-decision-ladder",
-      "target": "decision-protect-three-action-controller",
+      "source": "queue-d6135502-df76-48ff-824e-c8af2975b890",
+      "target": "phase-horizon",
+      "relation": "scheduled_in"
+    },
+    {
+      "source": "solution-cue-as-attribution",
+      "target": "decision-count-real-outcomes",
       "relation": "selects"
     },
     {
-      "source": "reversible-decision-ladder",
-      "target": "decision-release-tax-critical-path",
+      "source": "solution-cue-as-attribution",
+      "target": "decision-return-shared-obligations",
       "relation": "selects"
     },
     {
-      "source": "reversible-decision-ladder",
-      "target": "decision-select-growth-queue",
+      "source": "solution-feedback-handoff",
+      "target": "decision-read-irs-state",
+      "relation": "selects"
+    },
+    {
+      "source": "solution-feedback-handoff",
+      "target": "decision-return-shared-obligations",
+      "relation": "selects"
+    },
+    {
+      "source": "solution-measure-real-closure",
+      "target": "decision-count-real-outcomes",
+      "relation": "selects"
+    },
+    {
+      "source": "solution-measure-real-closure",
+      "target": "decision-read-irs-state",
       "relation": "selects"
     },
     {
@@ -1132,100 +837,88 @@
       "source": "thinking-in-bets",
       "target": "expert-decision-risk",
       "relation": "equips"
-    },
-    {
-      "source": "zero-gap-critical-path",
-      "target": "decision-release-tax-critical-path",
-      "relation": "selects"
     }
   ],
   "syntheses": [
     {
-      "id": "moe-integrated-control-system",
-      "title": "Integrated Control System",
-      "model": "Euclidean Thinking · Information Theory · Control Theory & SPC · Probabilistic Thinking · Thinking in Bets · Theory of Constraints · Little's Law · OODA Loop · Minimax & Margin of Safety",
-      "problem": "The visible cue channel is not connected to the eligible task queue, while recent evidence shows low artifact-producing throughput. Project inventory, executable inventory, and controller state are being represented by different primitives.",
-      "solution": "### Expert convergence\n- **Orientation & Control:** gate every execution cue by native task identity and eligibility.\n- **Decision & Risk:** run a brief deadline/consequence/reversibility/lead-time exception gate, then protect the current reversible test until its review gate; do not invent certainty from a non-due outcome.\n- **Execution Systems:** run one active task at a time and require each timebox to end in a done artifact or an exact blocker artifact.\n\n### Integrated operating rule\n**Identity → eligibility → decision → one-task execution → artifact → review.** Future phases unlock only when the prior gate produces observable evidence.",
+      "id": "solution-feedback-handoff",
+      "title": "Close → Observe → Recommit",
+      "model": "Information Theory · Control Theory · Bayesian Updating · Thinking in Bets · Theory of Constraints · OODA Loop · Little's Law",
+      "problem": "Real tax output changed the portfolio, but the old controller still describes a zero-output world and the new filing state is unknown.",
+      "solution": "All experts converge on a clean handoff: remove completed tax work from active attention, take one bounded IRS status sample, then recommit to AR-11 and internet. Decision-risk preserves the minority safeguard that one burst is not a stable base rate and health or official-deadline evidence can override.",
       "context_applications": [
         {
           "source_type": "expert",
           "source_id": "expert-orientation-control",
           "label": "Orientation & Control",
-          "application": "Your latest Life OS chooses AR-11, financial-process clarity, and the internet warning, while explicitly placing the lung scan outside this cycle. The current Augmented Intelligence controller instead includes the lung scan, and the financial task sits under retired Housing. This is a real priority conflict: either the health concern intentionally overrides the earlier plan, or the Housing/financial responsibility still needs clarification. The vague “house document paperwork” cue should not silently decide that choice.",
+          "application": "The tax chain is finished in Outliner; the only current tax question is what the IRS now reports.",
           "source_refs": [
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
-            "bc5dc69e-ab85-4b8c-a718-9c474cd04388",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-            "schedule:__actionflow_daily_actions_v1__[0]"
+            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
           ],
-          "decision_implication": "Start the shared AR-11 priority; before the second slot, explicitly choose whether health overrides the Life OS deferral or whether the Housing/financial responsibility still exists."
+          "decision_implication": "Do not reopen completed steps; inspect the new state once."
         },
         {
           "source_type": "expert",
           "source_id": "expert-decision-risk",
           "label": "Decision & Risk",
-          "application": "The lung task says you have a “strange feeling,” but the Outliner contains no medical instruction, urgency, or lead time—and Life OS deliberately deferred it. A brief provider contact can test whether there is a concrete reason to override that decision without treating the task wording as medical evidence. AR-11 and the internet warning remain shared priorities across both views.",
+          "application": "Three closures are meaningful evidence of action, but not proof that every backlog will now flow or that fixed cueing caused it.",
           "source_refs": [
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:2db41016-0ca9-42b4-8acb-b7e4c6dd5711@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:e7e77f16-2155-45a3-a975-f37eafd6efe2@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
           ],
-          "decision_implication": "Use professional scheduling or referral information—not unevaluated concern—to decide whether the lung scan should displace the deferred financial responsibility."
+          "decision_implication": "Buy information cheaply, then preserve the shared obligations and exception rules."
         },
         {
           "source_type": "expert",
           "source_id": "expert-execution-systems",
           "label": "Execution Systems",
-          "application": "Your own operating notes say your current level is one small task a day, that you want to live in the “next hour,” and that the jet stream is about becoming the person whose momentum begins to carry itself. The Life OS review shows 0/3 previous actions completed, so one real closure is not trivial—it is evidence for that identity. A verified task update, appointment, or provider ticket makes “I act” more true without requiring you to manage every project at once.",
+          "application": "The immediate personal win is a handoff from finished tax work into one status artifact, followed by one named obligation at a time.",
           "source_refs": [
-            "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
-            "aa3cd17e-ad8e-4e4e-a78f-d94798b50405",
-            "d8f30f5d-295d-48c0-895d-bba1e6f57a04",
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "4a82c418-87eb-460b-a853-6b34f82f87d2",
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+            "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:2db41016-0ca9-42b4-8acb-b7e4c6dd5711@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:e7e77f16-2155-45a3-a975-f37eafd6efe2@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
           ],
-          "decision_implication": "Judge today by one concrete closure in the next hour; let that proof—not the size of the remaining backlog—define progress."
+          "decision_implication": "Run IRS → AR-11 → internet with a verified state at each boundary."
         }
       ],
       "context_decision": {
-        "choice": "Start AR-11 now; before the second slot, personally resolve the lung-versus-Housing priority conflict instead of letting two systems choose differently.",
-        "why": "AR-11 is shared by both plans. The next disagreement is whether to spend the following slot on health scheduling or an unresolved financial/Housing responsibility, so it requires an explicit choice.",
-        "alternative": "Keep the lung scan deferred and clarify whether the retired-Housing financial task still matters unless provider information gives a concrete reason to override.",
-        "review": "After the AR-11 block has a verified next state and after one bounded provider or responsibility check—then retain only the priority you intentionally choose."
+        "choice": "Sequence one IRS status check before AR-11 and internet.",
+        "why": "It closes the feedback loop created by the tax burst at low cost.",
+        "alternative": "Ignore the status check and proceed directly to AR-11; this preserves time but leaves filing state unknown.",
+        "review": "Stop tax work after the portal state is saved unless it names a specific next obligation."
       },
       "context_actions": [
         {
-          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "label": "AR-11 form",
+          "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+          "label": "Check IRS filing status",
           "state": "current",
-          "move": "Give the next focused block to the AR-11 task. The personal win is replacing an open label with verified progress or one known next requirement.",
-          "done_when": "You have verified progress, one exact next requirement, or a precise blocker."
+          "move": "Capture the current state and any exact next requirement.",
+          "done_when": "Timestamped status or exact access blocker exists."
         },
         {
-          "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-          "label": "Schedule lung-health scan",
+          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "label": "Advance AR-11",
           "state": "current",
-          "move": "Before silently overriding Life OS, contact the provider for scheduling, referral, or lead-time information. Use the answer to decide whether this health concern belongs in the current cycle.",
-          "done_when": "You have an appointment or exact requirement, or enough professional information to keep the task explicitly deferred."
+          "move": "Move the form to a verified next state.",
+          "done_when": "Confirmation, verified progress, requirement, or exact blocker exists."
         },
         {
           "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-          "label": "Internet disruption warning",
+          "label": "Resolve internet warning",
           "state": "current",
-          "move": "Follow the provider’s requested step so the warning has an owner, a response path, and a defined next state.",
-          "done_when": "The warning is cleared or a provider ticket and response window exist."
+          "move": "Give the warning an owner and next state.",
+          "done_when": "Resolved warning or provider ticket exists."
         }
       ],
-      "disagreement": "The control expert favors the existing 48-hour review gate, the execution expert proposed a 72-hour falsification test, and the decision-risk expert proposed a seven-day task-ID scheduling pilot. The blueprint preserves the 48-hour checkpoint as the earliest decision gate and continues prospective evidence collection through day 7 before making a stronger causal or model-weight update.",
+      "disagreement": "Control favors immediate feedback; decision-risk warns against treating one completion burst as a durable throughput shift. The sequence takes the feedback sample but preserves cautious forecasts.",
       "status": "current",
-      "confidence": "medium",
+      "confidence": "medium-high",
       "is_current": true,
       "expert_ids": [
         "expert-orientation-control",
@@ -1233,603 +926,307 @@
         "expert-execution-systems"
       ],
       "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-closure-drought",
-        "evidence-inventory-concentration"
+        "evidence-tax-closures",
+        "evidence-irs-gate",
+        "evidence-wip-real-drop",
+        "evidence-output-shift"
       ]
     },
     {
-      "id": "artifact-first-single-queue",
-      "title": "Artifact-First Single Queue",
-      "model": "Theory of Constraints · Little's Law · OODA Loop · Pareto Frontier",
-      "problem": "Task state alone does not reveal whether execution started, stalled, or produced useful intermediate evidence; recent eligible closure throughput is low.",
-      "solution": "### Model contributions\n- **Theory of Constraints:** treat artifact-producing initiation—not project count—as the current constraint.\n- **Little's Law:** active WIP stays at one; queued work does not become active work.\n- **OODA:** every timebox closes the loop with either a done artifact or a precise blocker.\n- **Pareto:** stop when the minimum decision-enabling artifact exists; do not gold-plate.\n\n### Draft solution\nRun the three current actions sequentially. A screenshot, ticket, confirmation, or exact requirement counts as loop-closing evidence even when the parent task remains open.\n\n**Decision:** advance only after evidence is saved; external waiting may overlap, active effort may not.",
+      "id": "solution-cue-as-attribution",
+      "title": "Cue Identity Is an Attribution Aid, Not a Prerequisite",
+      "model": "Information Theory · Bayesian Updating",
+      "problem": "Prior guidance risked treating task-ID cue coverage as necessary for execution.",
+      "solution": "Keep task identity for attribution and review, but do not confuse a missing cue with inability to act. Useful output occurred with zero cue coverage.",
       "context_applications": [
         {
-          "source_type": "model",
-          "source_id": "theory-of-constraints",
-          "label": "Theory of Constraints",
-          "application": "Your Outliner already contains plans, frameworks, and meaningful projects. The present constraint is converting intention into a verified external result. Building another system would add planning material without changing an external outcome; advancing the AR-11 task to a verified next state or obtaining a scan decision would.",
+          "source_type": "expert",
+          "source_id": "expert-orientation-control",
+          "label": "Information",
+          "application": "A task ID improves routing and auditability, but the completion burst proves action can originate elsewhere.",
           "source_refs": [
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd"
+            "evidence-cue-decoupling"
           ],
-          "decision_implication": "Put your best energy into the point where intention becomes a real-world result, not into expanding the planning layer."
+          "decision_implication": "Use exact IDs in the new queue without making cue coverage a causal requirement."
         },
         {
-          "source_type": "model",
-          "source_id": "littles-law",
-          "label": "Little's Law",
-          "application": "Taxes, travel, hair-loss research, health, maintenance, and identity growth represent different parts of your life. Treating all of them as simultaneous current commitments makes no priority choice. Deferring most of them is an explicit allocation decision that gives one selected obligation an uninterrupted block.",
+          "source_type": "expert",
+          "source_id": "expert-decision-risk",
+          "label": "Bayesian",
+          "application": "Observed output lowers belief in cue alignment as a necessary condition while leaving its helpfulness unresolved.",
           "source_refs": [
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "6ed76b92-aa75-4883-a573-33c6531fbca6",
-            "c18cb05c-d523-4268-9d9a-eff602c29149",
-            "d6135502-df76-48ff-824e-c8af2975b890"
+            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
           ],
-          "decision_implication": "Select only one current task; deferred projects remain valid without becoming today’s commitments."
-        },
-        {
-          "source_type": "model",
-          "source_id": "ooda-loop",
-          "label": "OODA Loop",
-          "application": "A verified task update, appointment, or ticket changes the external situation: a task has a known next state, a health uncertainty has a professional next step, or an infrastructure problem has an owner. Each outcome changes what you can decide next; an unchanged open task plus more analysis does not.",
-          "source_refs": [
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
-          ],
-          "decision_implication": "Choose the move most likely to leave you with new external evidence before the block ends."
-        },
-        {
-          "source_type": "model",
-          "source_id": "pareto-frontier",
-          "label": "Pareto Frontier",
-          "application": "You do not need to complete the entire surrounding project to satisfy today’s decision. For now, verified AR-11 progress or one known requirement, a scan appointment or explicit deferral, or an internet ticket is enough. Stop when further work no longer changes the next decision, preserving time for the rest of your life.",
-          "source_refs": [
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
-          ],
-          "decision_implication": "Define “enough for today” before starting and stop when that evidence exists."
+          "decision_implication": "Keep the schedule-alignment test pending through 2026-08-02."
         }
       ],
       "context_decision": {
-        "choice": "Measure today by one documented external outcome.",
-        "why": "One documented outcome proves follow-through; partial progress across several life areas leaves no comparable evidence.",
-        "alternative": "If the first task cannot produce evidence in its block, capture the exact blocker and redesign only its next move.",
-        "review": "At the end of each bounded block; continue only when the next step remains clear and worthwhile."
+        "choice": "Use task IDs for attribution, not as a gate on valid outcomes.",
+        "why": "This preserves auditability without discarding real action outside the cue channel.",
+        "alternative": "Require schedule alignment before counting action; that would misclassify three completions.",
+        "review": "Weaken further if eligible artifacts repeatedly occur without aligned cues through 2026-08-02."
       },
       "context_actions": [
         {
           "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "label": "AR-11 form",
+          "label": "Use one exact task identity",
           "state": "current",
-          "move": "Aim for verified progress or the one missing requirement—not an assumed completion path.",
-          "done_when": "The task has a verified next state, one exact requirement, or a precise blocker."
-        },
-        {
-          "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-          "label": "Schedule lung-health scan",
-          "state": "current",
-          "move": "Aim for a calendar date or a professional requirement that tells you what happens next.",
-          "done_when": "The health uncertainty has an appointment or a defined escalation path."
-        },
-        {
-          "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-          "label": "Internet disruption warning",
-          "state": "current",
-          "move": "Aim for the warning to have an explicit owner, response path, and next state.",
-          "done_when": "The warning is resolved or tied to a provider ticket and response window."
+          "move": "Treat AR-11 as the selected obligation, independent of generic schedule text.",
+          "done_when": "Its next state is attributable to this task ID."
         }
       ],
       "disagreement": null,
-      "status": "proposed-solution",
+      "status": "refined-solution",
       "confidence": "medium",
       "is_current": false,
       "expert_ids": [
+        "expert-orientation-control",
+        "expert-decision-risk"
+      ],
+      "evidence_ids": [
+        "evidence-cue-decoupling",
+        "evidence-tax-closures"
+      ]
+    },
+    {
+      "id": "solution-measure-real-closure",
+      "title": "Real Closure, Not Display Cleanup",
+      "model": "Control Theory · Theory of Constraints · Little's Law",
+      "problem": "Previous WIP declines were dominated by scope cleanup, so lower counts did not prove execution.",
+      "solution": "Count the three dated tax completions as real throughput and the new IRS task as new inflow. Preserve separate accounting for completion, exclusion, and new work.",
+      "context_applications": [
+        {
+          "source_type": "expert",
+          "source_id": "expert-orientation-control",
+          "label": "Control",
+          "application": "The 9→7 change has attributable inputs: three exits and one arrival.",
+          "source_refs": [
+            "aggregate:eligible-open-tasks-20260726=9",
+            "aggregate:eligible-open-tasks-20260727=7@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+          ],
+          "decision_implication": "Strengthen the real-closure measurement model without claiming sustained flow."
+        },
+        {
+          "source_type": "expert",
+          "source_id": "expert-execution-systems",
+          "label": "Execution",
+          "application": "Completed tax steps leave active WIP; only the new status task enters. ",
+          "source_refs": [
+            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+            "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+          ],
+          "decision_implication": "Protect the net reduction by not reopening completed steps."
+        }
+      ],
+      "context_decision": {
+        "choice": "Treat the net WIP decline as real closure evidence.",
+        "why": "It is attributable to dated task completions, unlike earlier reclassification drops.",
+        "alternative": "Wait for more weeks before updating any insight; that would ignore a clear special-cause event.",
+        "review": "Strengthen further only if at least one current action also reaches a verified state this cycle."
+      },
+      "context_actions": [
+        {
+          "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+          "label": "Preserve the closure handoff",
+          "state": "current",
+          "move": "Use only the new monitoring task for tax follow-up.",
+          "done_when": "The status is captured without reopening completed tasks."
+        }
+      ],
+      "disagreement": null,
+      "status": "strengthened-solution",
+      "confidence": "medium",
+      "is_current": false,
+      "expert_ids": [
+        "expert-orientation-control",
         "expert-execution-systems"
       ],
       "evidence_ids": [
-        "evidence-closure-drought",
-        "evidence-action-signal-empty"
-      ]
-    },
-    {
-      "id": "identity-gated-control-plane",
-      "title": "Identity-Gated Control Plane",
-      "model": "Euclidean Thinking · Information Theory · Control Theory & SPC",
-      "problem": "A populated schedule field currently appears actionable even though its only cue has no task identity and zero eligible-task coverage.",
-      "solution": "### Model contributions\n- **Euclidean:** redefine a valid cue as `native task ID + eligible state + current decision`. Text alone is context.\n- **Information Theory:** reject messages that cannot route to a validated queue item; they add occupancy without verified control signal.\n- **Control Theory/SPC:** keep the active controller stable until a scheduled review or a genuine exception signal.\n\n### Draft solution\nUse an **identity gate** before any cue enters execution. The current Housing-like text remains visible context but cannot override the selected eligible sequence.\n\n**Decision:** ignore unidentified cues for control purposes; review the controller at the explicit gate.",
-      "context_applications": [
-        {
-          "source_type": "model",
-          "source_id": "euclidean-thinking",
-          "label": "Euclidean Thinking",
-          "application": "“House document paperwork” is not just vague: it points toward Housing, while the related financial-clarity task sits under a retired Housing project even though Life OS names it in the current chain. The personal question is whether that responsibility still exists. Until you answer it, the cue should not count as a current obligation or displace the clearly named AR-11 and internet tasks.",
-          "source_refs": [
-            "schedule:__actionflow_daily_actions_v1__[0]",
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
-            "bc5dc69e-ab85-4b8c-a718-9c474cd04388",
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2"
-          ],
-          "decision_implication": "Treat Housing as an explicit ownership decision—restore the responsibility, redefine it elsewhere, or release it—rather than leaving its status undefined."
-        },
-        {
-          "source_type": "model",
-          "source_id": "information-theory",
-          "label": "Information Theory",
-          "application": "The highest-value missing information is not another paperwork detail; it is whether the retired Housing responsibility is still yours now. Resolving that one question would tell you whether “financial process list, clarity” deserves a future slot or whether the vague cue can be released.",
-          "source_refs": [
-            "schedule:__actionflow_daily_actions_v1__[0]",
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "d7ac0d9e-c4cd-440a-b2df-5042d7a1df72",
-            "bc5dc69e-ab85-4b8c-a718-9c474cd04388"
-          ],
-          "decision_implication": "After AR-11, resolve the existence of the Housing/financial obligation before spending time organizing it."
-        },
-        {
-          "source_type": "model",
-          "source_id": "control-theory-spc",
-          "label": "Control Theory / SPC",
-          "application": "You have written that fixed scheduling has not worked and that smaller horizons such as “the next hour” fit you better. Use that operating style for the part that is already clear: AR-11 gets the next bounded block. The Housing-versus-lung conflict waits for one explicit review instead of interrupting the block repeatedly.",
-          "source_refs": [
-            "d4d01beb-5aa4-4b0c-b228-8f5c32df7dd8",
-            "aa3cd17e-ad8e-4e4e-a78f-d94798b50405",
-            "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f"
-          ],
-          "decision_implication": "Use the next hour as your commitment horizon and refuse to renegotiate with unrelated cues until the chosen block ends."
-        }
-      ],
-      "context_decision": {
-        "choice": "Give AR-11 the next hour, then decide whether the retired-Housing financial responsibility still exists and whether the lung concern overrides its Life OS deferral.",
-        "why": "This separates one clear named task from two unresolved priority questions without pretending either question is already solved.",
-        "alternative": "If documented health information creates a real exception, move the lung scan forward; otherwise preserve the Life OS deferral and clarify Housing ownership.",
-        "review": "When the AR-11 block ends and after the bounded Housing-responsibility or provider check."
-      },
-      "context_actions": [
-        {
-          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "label": "AR-11 form",
-          "state": "current",
-          "move": "Make AR-11 the one clear task for the next focused block; the Housing and lung priority questions wait for the explicit review.",
-          "done_when": "The task has verified progress, one exact next requirement, or a precise blocker."
-        }
-      ],
-      "disagreement": null,
-      "status": "proposed-solution",
-      "confidence": "high",
-      "is_current": false,
-      "expert_ids": [
-        "expert-orientation-control"
-      ],
-      "evidence_ids": [
-        "evidence-cue-identity-gap",
-        "evidence-inventory-concentration"
-      ]
-    },
-    {
-      "id": "reversible-decision-ladder",
-      "title": "Reversible Decision Ladder",
-      "model": "Probabilistic Thinking · Thinking in Bets · Bayesian Updating · Minimax & Margin of Safety",
-      "problem": "The evidence does not support precise success probabilities or a psychological cause, but decisions still need bounded next steps and explicit review conditions.",
-      "solution": "### Model contributions\n- **Probabilistic:** keep causal explanations and ungrounded odds unknown.\n- **Thinking in Bets:** choose small reversible moves that buy information and preserve future options.\n- **Bayesian:** update task architecture from observed artifacts at checkpoints, not from narrative confidence.\n- **Minimax / Margin of Safety:** use short timeboxes, safety exceptions, and capacity slack to cap downside.\n\n### Draft solution\nUse a decision ladder: **execute the protected controller → inspect evidence → release one conditional queue → reassess.**\n\n**Decision:** do not activate the tax or growth queue until the immediate controller reaches its review gate.",
-      "context_applications": [
-        {
-          "source_type": "model",
-          "source_id": "probabilistic-thinking",
-          "label": "Probabilistic Thinking",
-          "application": "Your open tasks represent different uncertainties, not one generic backlog. AR-11 is a named task whose requirements and timing are not recorded in the node, the lung scan carries unresolved health uncertainty, internet affects everyday reliability, taxes affect financial administration, the NYC and Niagara trip is a travel opportunity, and hair-loss research is an open research choice. Missing deadlines, lead times, and requirements matter more than invented odds.",
-          "source_refs": [
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "6ed76b92-aa75-4883-a573-33c6531fbca6",
-            "c18cb05c-d523-4268-9d9a-eff602c29149"
-          ],
-          "decision_implication": "Compare the consequence of waiting and the value of new information across life areas; state uncertainty explicitly where facts are missing."
-        },
-        {
-          "source_type": "model",
-          "source_id": "thinking-in-bets",
-          "label": "Thinking in Bets",
-          "application": "You can preserve options without committing to every open responsibility at once: inspect the AR-11 task to identify its next requirement; ask the scan provider about availability or referrals; inspect the internet warning; later ask yesmytaxes what is actually required; inspect trip timing and cancellation terms before buying; define one hair-loss decision question before entering broad research. Each move buys clarity while leaving you free to change direction.",
-          "source_refs": [
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "6ed76b92-aa75-4883-a573-33c6531fbca6",
-            "c18cb05c-d523-4268-9d9a-eff602c29149"
-          ],
-          "decision_implication": "Take the smallest move that materially changes what you know, and delay irreversible spending or broad commitments until it does."
-        },
-        {
-          "source_type": "model",
-          "source_id": "bayesian-updating",
-          "label": "Bayesian Updating",
-          "application": "Let reality—not loyalty to the plan—change your priorities. A long scan lead time may elevate health scheduling; a clear AR-11 next step may make immediate progress sensible; a yesmytaxes response may validate or dissolve the assumed tax sequence; favorable cancellation terms may make travel easier to preserve.",
-          "source_refs": [
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-            "8329b464-dab9-4362-811c-dadf15a1cbdd",
-            "6ed76b92-aa75-4883-a573-33c6531fbca6"
-          ],
-          "decision_implication": "After every external response, ask what became more important, less important, or no longer necessary."
-        },
-        {
-          "source_type": "model",
-          "source_id": "minimax-margin-safety",
-          "label": "Minimax / Margin of Safety",
-          "application": "Your timeboxes prevent one administrative task from consuming the day, while the exception check protects against underreacting to a documented health instruction, deadline, or consequence of delay. Preserving empty capacity is also important: your life should not automatically refill every finished slot with another obligation.",
-          "source_refs": [
-            "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-            "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-            "6ed76b92-aa75-4883-a573-33c6531fbca6",
-            "c18cb05c-d523-4268-9d9a-eff602c29149",
-            "aa3cd17e-ad8e-4e4e-a78f-d94798b50405"
-          ],
-          "decision_implication": "Cap the cost of each experiment, preserve recovery space, and override the sequence only for documented high-consequence information."
-        }
-      ],
-      "context_decision": {
-        "choice": "First expose the few facts that could change priority, then make one low-regret move instead of carrying every possibility.",
-        "why": "This protects health and named responsibilities while preserving room for travel, research, and growth rather than allowing administration to consume everything.",
-        "alternative": "Commit earlier only when a deadline, lead time, cancellation rule, or professional instruction makes delay meaningfully worse.",
-        "review": "Whenever a provider, form response, tax contact, or booking condition returns new evidence."
-      },
-      "context_actions": [
-        {
-          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "label": "Clarify and advance AR-11",
-          "state": "current",
-          "move": "Use one bounded attempt to learn whether this can be closed now or which exact requirement remains.",
-          "done_when": "You have verified progress, one exact requirement, or a blocker that changes the decision."
-        },
-        {
-          "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-          "label": "Clarify the tax obligation",
-          "state": "conditional",
-          "move": "If you explicitly reactivate Taxes after reviewing the current commitments, ask yesmytaxes what is actually required before treating all three tax tasks as current.",
-          "done_when": "You know whether paperwork is needed and what the next obligation really is."
-        },
-        {
-          "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
-          "label": "Preserve the trip option",
-          "state": "conditional",
-          "move": "When the growth slot opens, inspect timing, fare, and cancellation conditions before making a purchase.",
-          "done_when": "You can compare the value of the trip with its real cost and reversibility."
-        },
-        {
-          "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
-          "label": "Turn hair-loss research into a decision",
-          "state": "conditional",
-          "move": "Define the personal decision the research should support—such as whether to compare options, seek professional input, or defer—before searching broadly.",
-          "done_when": "The research has one question, one stopping point, and one intended decision."
-        }
-      ],
-      "disagreement": null,
-      "status": "proposed-solution",
-      "confidence": "medium",
-      "is_current": false,
-      "expert_ids": [
-        "expert-decision-risk"
-      ],
-      "evidence_ids": [
-        "evidence-closure-drought",
-        "evidence-tax-critical-path",
-        "evidence-habit-action-divergence"
-      ]
-    },
-    {
-      "id": "zero-gap-critical-path",
-      "title": "Zero-Gap Administrative Critical Path",
-      "model": "Amdahl's Law · Theory of Constraints · OODA Loop · Control Theory & SPC",
-      "problem": "The tax project contains three task titles that suggest a sequence, but their dependency fields are empty. Treating all three as simultaneously active would hide which dependency, if any, is real.",
-      "solution": "### Model contributions\n- **Amdahl:** if validation confirms a sequential dependency, compress that sequential fraction without assuming it in advance.\n- **Theory of Constraints:** expose the next blocking step instead of optimizing unvalidated downstream work.\n- **OODA:** use each verified response or requirement to orient the next step.\n- **Control Theory:** release this phase only after the prior gate and dependency validation, preserving attributable outcomes.\n\n### Draft solution\nValidate whether `talk to yesmytaxes` produces requirements for `submit paperwork`, then whether submission enables `get filed confirmation`. Sequence only the dependencies that are actually confirmed.\n\n**Decision:** keep the tax queue conditional; release it after the 48-hour checkpoint only if its order is validated and no higher-priority safety or official deadline intervenes.",
-      "context_applications": [
-        {
-          "source_type": "model",
-          "source_id": "amdahls-law",
-          "label": "Amdahl's Law",
-          "application": "The Taxes project lists three tasks—call, paperwork, confirmation—but your Outliner does not establish that all three are current obligations. One conversation may reveal that the later work is smaller, different, delegated, or not yet required. Do not commit to the entire assumed chain in advance.",
-          "source_refs": [
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-            "8329b464-dab9-4362-811c-dadf15a1cbdd",
-            "e7acc431-e4c2-4cb8-8f96-5469f689a3f2"
-          ],
-          "decision_implication": "If Taxes is explicitly reactivated, treat the call as the only listed tax task to activate initially, until its response establishes whether another step is required."
-        },
-        {
-          "source_type": "model",
-          "source_id": "theory-of-constraints",
-          "label": "Theory of Constraints",
-          "application": "Tax ownership is currently a decision problem before it is a paperwork problem: the Life OS review says to reactivate, delegate, or remove the yesmytaxes commitment. Until you choose, preparing downstream paperwork risks spending time on an obligation you have not accepted.",
-          "source_refs": [
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "79f13db5-e1f2-40f4-95ca-7c2073a2f772"
-          ],
-          "decision_implication": "Make the ownership decision first: personally reactivate the call, delegate it, or consciously remove it from active commitments."
-        },
-        {
-          "source_type": "model",
-          "source_id": "ooda-loop",
-          "label": "OODA Loop",
-          "application": "If you reactivate Taxes, the yesmytaxes response should determine your next personal obligation. If paperwork is requested, submit only what is required; if confirmation becomes available after submission, obtain it then. This turns one vague financial cloud into a series of finite decisions.",
-          "source_refs": [
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-            "8329b464-dab9-4362-811c-dadf15a1cbdd"
-          ],
-          "decision_implication": "Let each external response decide the next step; do not rehearse or perform later obligations early."
-        },
-        {
-          "source_type": "model",
-          "source_id": "control-theory-spc",
-          "label": "Control Theory / SPC",
-          "application": "Taxes are currently a non-commitment in your Life OS review. That means all three tasks do not count as today’s obligations. But ownership remains undefined until you choose reactivate, delegate, or remove, so that choice belongs in the planned review.",
-          "source_refs": [
-            "2941ef7a-627f-4a79-a538-a9d9e7eba90f",
-            "0f5276b2-6ba2-4fef-8dcc-39551555e2c4"
-          ],
-          "decision_implication": "At the review, choose reactivate, delegate, or remove—do not let Taxes remain an undefined background obligation."
-        }
-      ],
-      "context_decision": {
-        "choice": "Do not treat Taxes as one of today’s obligations, but make an explicit ownership decision at the 48-hour review.",
-        "why": "You should not treat three unvalidated tasks as current obligations, but the responsible owner and next step still need to be specified.",
-        "alternative": "Move Taxes earlier only if an official deadline is documented; otherwise delegate or remove the commitment if you do not intend to own it.",
-        "review": "At the 48-hour review, then after each real response or submission artifact."
-      },
-      "context_actions": [
-        {
-          "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-          "label": "Decide and contact yesmytaxes",
-          "state": "conditional",
-          "move": "If you choose to own the tax process, make the contact as the only active tax step; otherwise delegate or remove it from active commitments outside this read-only system.",
-          "done_when": "You have a response or a clear ownership and contact outcome."
-        },
-        {
-          "task_id": "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-          "label": "Submit only required paperwork",
-          "state": "conditional",
-          "move": "Accept this obligation only when the response establishes exactly what you must provide.",
-          "done_when": "The requested material is submitted or reduced to one external blocker."
-        },
-        {
-          "task_id": "8329b464-dab9-4362-811c-dadf15a1cbdd",
-          "label": "Close the tax loop",
-          "state": "conditional",
-          "move": "Seek confirmation only after submission makes it available; use it to establish that the tax process is complete or externally waiting.",
-          "done_when": "Filed confirmation exists or the responsible party and waiting condition are known."
-        }
-      ],
-      "disagreement": null,
-      "status": "conditional-solution",
-      "confidence": "medium",
-      "is_current": false,
-      "expert_ids": [
-        "expert-execution-systems",
-        "expert-decision-risk"
-      ],
-      "evidence_ids": [
-        "evidence-tax-critical-path",
-        "evidence-inventory-concentration"
+        "evidence-tax-closures",
+        "evidence-wip-real-drop"
       ]
     }
   ],
   "decisions": [
     {
-      "id": "decision-reject-unidentified-cues",
-      "label": "Reject unidentified cues as control inputs",
-      "choice": "ignore-for-control",
-      "rationale": "The sole cue has no native task ID and no eligible-task coverage.",
-      "tradeoff": "Potentially useful context remains outside the active controller until identified.",
-      "review": "Reconsider when a cue resolves to an eligible task ID or Sai explicitly changes priority.",
-      "solution_ids": [
-        "identity-gated-control-plane",
-        "moe-integrated-control-system"
-      ]
-    },
-    {
-      "id": "decision-protect-three-action-controller",
-      "label": "Protect the three-action controller",
+      "id": "decision-read-irs-state",
+      "label": "Read the new filing state once",
       "choice": "sequence",
-      "rationale": "A bounded WIP=1 test creates attributable evidence with limited downside.",
-      "tradeoff": "Other eligible work remains queued during the immediate horizon.",
-      "review": "Review by 2026-07-27T12:00:00Z or earlier for safety, an official deadline, or explicit priority change.",
+      "rationale": "One portal read completes the feedback loop after three tax closures.",
+      "tradeoff": "Consumes the first short block.",
+      "review": "Stop after the status and exact next requirement are saved.",
       "solution_ids": [
-        "artifact-first-single-queue",
-        "reversible-decision-ladder",
-        "moe-integrated-control-system"
+        "solution-feedback-handoff",
+        "solution-measure-real-closure"
       ]
     },
     {
-      "id": "decision-release-tax-critical-path",
-      "label": "Release the tax critical path conditionally",
-      "choice": "defer-then-sequence",
-      "rationale": "The three native tax-task titles suggest a possible chain, but dependency fields are empty; validate the order before sequencing and do not let the hypothesis compete with the protected immediate controller.",
-      "tradeoff": "Tax progress waits until the first checkpoint unless an official deadline changes priority.",
-      "review": "At the 48-hour checkpoint, compare saved artifacts, explicit deadlines, and unresolved safety constraints.",
+      "id": "decision-return-shared-obligations",
+      "label": "Return to AR-11 and internet",
+      "choice": "protect",
+      "rationale": "They remain shared, eligible obligations after the prior lung-versus-Life-OS conflict is removed from the current queue.",
+      "tradeoff": "Health scheduling and growth work remain deferred absent an exception.",
+      "review": "Reverse for documented medical, safety, legal, financial, or explicit-user priority evidence.",
       "solution_ids": [
-        "zero-gap-critical-path",
-        "reversible-decision-ladder"
+        "solution-feedback-handoff",
+        "solution-cue-as-attribution"
       ]
     },
     {
-      "id": "decision-select-growth-queue",
-      "label": "Select one growth queue after administrative review",
-      "choice": "monitor-then-select",
-      "rationale": "Travel and hair-research tasks are eligible but current evidence does not establish their relative deadline or expected value.",
-      "tradeoff": "Both remain queued until more decision-relevant evidence is available.",
-      "review": "At the day-7 checkpoint, choose at most one using explicit deadline, reversibility, and opportunity cost.",
+      "id": "decision-count-real-outcomes",
+      "label": "Count real outcomes wherever they occur",
+      "choice": "monitor",
+      "rationale": "The tax burst is valid evidence even though it missed the forecasted controller.",
+      "tradeoff": "Controller adherence and total output must be reported separately.",
+      "review": "At the next two-week review, compare selected-action outcomes with all eligible closures.",
       "solution_ids": [
-        "reversible-decision-ladder",
-        "artifact-first-single-queue"
+        "solution-measure-real-closure",
+        "solution-cue-as-attribution"
       ]
     }
   ],
   "actions": [
     {
-      "id": "action-ar11",
-      "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-      "label": "Complete AR-11 form",
-      "timebox": "25 minutes",
-      "first_step": "Open the official form with current address and identification details beside it.",
-      "done_when": "Submission confirmation, receipt, or an exact blocker artifact is saved.",
+      "id": "action-irs-status",
+      "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+      "label": "Check IRS filing status",
+      "timebox": "15 minutes",
+      "first_step": "Open the official IRS portal and navigate to filing status.",
+      "done_when": "Timestamped status, exact next requirement, or access blocker is saved.",
       "decision_ids": [
-        "decision-reject-unidentified-cues",
-        "decision-protect-three-action-controller"
+        "decision-read-irs-state",
+        "decision-count-real-outcomes"
       ],
       "status": "active-1"
     },
     {
-      "id": "action-lung-scan",
-      "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-      "label": "Schedule lung-health scan",
-      "timebox": "20 minutes",
-      "first_step": "Open the provider portal or call the clinic for the earliest available appointment.",
-      "done_when": "Appointment confirmation or the exact referral, insurance, or contact blocker is saved.",
+      "id": "action-ar11",
+      "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+      "label": "Advance AR-11",
+      "timebox": "25 minutes",
+      "first_step": "Open the official AR-11 page with current details beside it.",
+      "done_when": "Confirmation, verified progress, exact requirement, or blocker is saved.",
       "decision_ids": [
-        "decision-reject-unidentified-cues",
-        "decision-protect-three-action-controller"
+        "decision-return-shared-obligations",
+        "decision-count-real-outcomes"
       ],
       "status": "queued-2"
     },
     {
-      "id": "action-internet-warning",
+      "id": "action-internet",
       "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
       "label": "Resolve internet warning",
       "timebox": "15 minutes",
-      "first_step": "Open the warning and record its provider, account, and requested resolution step.",
-      "done_when": "The warning is cleared or a ticket number, response window, or exact blocker is saved.",
+      "first_step": "Open the warning and record provider, account, and requested remedy.",
+      "done_when": "Warning is cleared or a provider ticket/response window is saved.",
       "decision_ids": [
-        "decision-reject-unidentified-cues",
-        "decision-protect-three-action-controller"
+        "decision-return-shared-obligations",
+        "decision-count-real-outcomes"
       ],
       "status": "queued-3"
     }
   ],
   "blueprint": {
-    "title": "Decision-to-Execution Blueprint",
-    "timeframe": "2026-07-25 to 2026-08-08",
-    "objective": "Convert validated Outliner priorities into observable artifacts while preserving decision quality, safety, and WIP=1.",
-    "current_constraint": "Artifact-producing initiation under a cue channel that is not identity-linked to eligible tasks.",
+    "title": "Outcome-to-Feedback Blueprint",
+    "timeframe": "2026-07-27 to 2026-08-10",
+    "objective": "Preserve the tax closure gain, read the new state, and turn two shared obligations into verified outcomes.",
+    "current_constraint": "Clean handoff from completed work to the next information gate.",
     "operating_rules": [
-      "One active task at a time",
-      "Every timebox ends with a done artifact or exact blocker",
-      "Unidentified cues are context, not control",
-      "Only external waiting may overlap",
-      "Safety, official deadlines, and explicit user priority changes can override sequence"
+      "One hands-on task at a time",
+      "Completed tasks do not reenter without contrary evidence",
+      "Every block ends with a verified state or exact blocker",
+      "Only external waiting overlaps",
+      "Documented safety, medical, legal, financial, or explicit-user priority overrides sequence"
     ],
     "phases": [
       {
-        "id": "phase-immediate-controller",
+        "id": "phase-now",
         "order": 1,
         "status": "active",
-        "horizon": "Now → 48 hours",
-        "window": "2026-07-25 to 2026-07-27 12:00 UTC",
-        "title": "Stabilize the control loop",
-        "decision": "Run a 10-minute exception gate across documented deadline, consequence of delay, reversibility, and external lead time. If no safety, medical, or official-deadline exception is found, protect the current controller and execute its three native tasks sequentially.",
+        "horizon": "Now — 24–72 hours",
+        "window": "2026-07-27 to 2026-07-30",
+        "title": "Close the feedback loop",
+        "decision": "Run IRS status, AR-11, then internet with WIP=1.",
         "decision_ids": [
-          "decision-reject-unidentified-cues",
-          "decision-protect-three-action-controller"
+          "decision-read-irs-state",
+          "decision-return-shared-obligations",
+          "decision-count-real-outcomes"
         ],
         "action_ids": [
+          "action-irs-status",
           "action-ar11",
-          "action-lung-scan",
-          "action-internet-warning"
+          "action-internet"
         ],
         "queue": [],
-        "gate": "By the checkpoint, save at least one done artifact and exact blocker artifacts for every bounded but incomplete step; otherwise preserve unknown causality and redesign the action structure."
+        "gate": "Each task has a timestamped next state or exact blocker; tax continues only if the IRS state requires it."
       },
       {
-        "id": "phase-tax-critical-path",
+        "id": "phase-cycle",
         "order": 2,
         "status": "conditional",
-        "horizon": "Days 3–7",
-        "window": "2026-07-28 to 2026-07-31",
-        "title": "Release one administrative critical path",
-        "decision": "If the immediate phase reaches its gate, the tax-task order is validated, and no higher-priority exception exists, sequence only the confirmed Taxes dependencies with zero avoidable gaps.",
+        "horizon": "This cycle — two weeks",
+        "window": "2026-07-27 to 2026-08-10",
+        "title": "Protect one growth or health option",
+        "decision": "After the immediate gate, choose at most one queued option using documented timing, consequence of delay, reversibility, and information value.",
         "decision_ids": [
-          "decision-release-tax-critical-path"
+          "decision-return-shared-obligations"
         ],
         "action_ids": [],
         "queue": [
           {
-            "task_id": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-            "label": "Talk to yesmytaxes",
-            "depends_on": "phase 1 review"
+            "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "label": "Schedule lung-health scan",
+            "depends_on": "documented professional urgency, lead time, or explicit priority override"
           },
-          {
-            "task_id": "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-            "label": "Submit paperwork",
-            "depends_on": "response or requirements from yesmytaxes"
-          },
-          {
-            "task_id": "8329b464-dab9-4362-811c-dadf15a1cbdd",
-            "label": "Get filed confirmation",
-            "depends_on": "paperwork submission"
-          }
-        ],
-        "gate": "Advance only when the predecessor produces the information or artifact required by the successor; pause for an exact external blocker rather than opening another active task."
-      },
-      {
-        "id": "phase-growth-allocation",
-        "order": 3,
-        "status": "conditional",
-        "horizon": "Days 8–14",
-        "window": "2026-08-01 to 2026-08-08",
-        "title": "Allocate the next growth slot",
-        "decision": "Choose at most one queued growth task using explicit deadline, reversibility, and opportunity cost; do not activate both by default.",
-        "decision_ids": [
-          "decision-select-growth-queue"
-        ],
-        "action_ids": [],
-        "queue": [
           {
             "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
             "label": "Book NYC and Niagara flights",
-            "depends_on": "explicit travel deadline and administrative queue status"
+            "depends_on": "real travel timing, cost, and cancellation evidence"
           },
           {
             "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
             "label": "Research latest hair-loss evidence",
-            "depends_on": "explicit priority and a bounded research question"
+            "depends_on": "one bounded decision question"
           }
         ],
-        "gate": "Select one only when its deadline or expected information value is explicitly higher; otherwise keep both queued and collect the missing decision evidence."
+        "gate": "Activate one only when its decision evidence dominates the alternatives; otherwise preserve slack."
+      },
+      {
+        "id": "phase-horizon",
+        "order": 3,
+        "status": "conditional",
+        "horizon": "Horizon — 30–90 days",
+        "window": "2026-08-11 to 2026-10-25",
+        "title": "Build from verified wins",
+        "decision": "Use repeated closure evidence—not a single burst—to decide whether to expand daily execution capacity.",
+        "decision_ids": [
+          "decision-count-real-outcomes"
+        ],
+        "action_ids": [],
+        "queue": [
+          {
+            "task_id": "d6135502-df76-48ff-824e-c8af2975b890",
+            "label": "Operationalize Tiger mode ON",
+            "depends_on": "rewrite its broad checklist into one user-chosen observable next state outside this read-only run"
+          }
+        ],
+        "gate": "At least two cycles show attributable current-action outcomes before increasing active WIP."
       }
     ],
     "checkpoints": [
       {
-        "at": "2026-07-27T12:00:00Z",
-        "question": "What verified next state did AR-11 reach? Did provider information justify overriding Life OS’s lung-scan deferral? Does the financial-process task under retired Housing still represent a current responsibility?",
-        "decision": "Choose the next focused block from those facts: continue AR-11, intentionally move the lung scan forward, or clarify the Housing responsibility; keep the internet warning current until it has an explicit owner, response path, and next state."
+        "at": "2026-07-30",
+        "question": "What did the IRS report, and what verified state did AR-11 and internet reach?",
+        "decision": "Continue only obligations established by those facts."
       },
       {
-        "at": "2026-08-01T12:00:00Z",
-        "question": "Was Taxes explicitly reactivated, delegated, or removed? If reactivated, did yesmytaxes establish whether either remaining tax task actually applies?",
-        "decision": "Continue only the tax step established by a real response; otherwise keep Taxes outside current commitments and preserve capacity for whichever of AR-11, the internet warning, or the lung-versus-Housing question remains unresolved."
-      },
-      {
-        "at": "2026-08-08T12:00:00Z",
-        "question": "Which completed move best advanced your “next hour / one small task / jet stream” direction? Are AR-11, the internet warning, the lung-versus-Housing choice, and Taxes clear enough to protect either the NYC and Niagara trip or one bounded hair-loss research decision?",
-        "decision": "Continue the personal pattern that produced verified progress. Choose at most one of those growth opportunities only if the named responsibilities are bounded and real timing or information value justifies it; otherwise defer both and give the next slot to the unresolved named responsibility with the strongest evidence of consequence from delay."
+        "at": "2026-08-10",
+        "question": "Did selected actions and total eligible closures both improve?",
+        "decision": "Strengthen the handoff model only if closure persists beyond the tax burst."
       }
     ]
   },
@@ -1837,164 +1234,147 @@
     "title": "Life Strategy Board",
     "timeframe": "Now through the next 90 days",
     "position": {
-      "headline": "Clear the few uncertainties that restrict your choices, then place one deliberate bet on expansion.",
-      "summary": "Your Outliner shows ambition across identity, health, administration, finances, travel, research, and daily discipline. The immediate challenge is not a shortage of goals; unresolved responsibilities are competing with growth opportunities. The strongest position is to clarify or close the few obligations that can constrain future choices, then direct the attention you recover toward one compounding opportunity.",
-      "momentum": "Your “next hour,” “one small task,” and “jet stream” notes already define a workable rhythm: momentum should begin with one visible result, not a complete life overhaul.",
-      "tension": "Administrative and health uncertainties are sharing attention with travel and self-development opportunities, but the Outliner does not yet contain enough timing or consequence data to rank every item confidently.",
-      "leverage": "A small number of external answers can collapse several branches of uncertainty at once, making later choices faster and more intentional.",
-      "confidence": "Medium — the pattern is clear, while deadlines, lead times, and several ownership decisions remain unknown.",
+      "headline": "Protect the breakthrough: turn a burst of closure into a repeatable finish–observe–choose rhythm.",
+      "summary": "Your Outliner no longer supports a zero-action story: three tax tasks closed in one day and a clean monitoring task appeared next. The strategic tension is that this output happened outside the protected queue, so the best move is neither celebration-as-certainty nor rigid loyalty to the old plan. Read the new tax state once, close two shared obligations, then invest recovered attention in one health or growth option.",
+      "momentum": "Special-cause positive: real closures reduced eligible WIP 9→7.",
+      "tension": "A completion burst changed reality, but one day is not yet a stable execution rate.",
+      "leverage": "A clean feedback handoff prevents completed work from remaining mentally active and turns every result into a better next choice.",
+      "confidence": "Medium-high on the state change; medium on whether it will repeat.",
       "source_refs": [
-        "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
-        "aa3cd17e-ad8e-4e4e-a78f-d94798b50405",
-        "d8f30f5d-295d-48c0-895d-bba1e6f57a04",
-        "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-        "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-        "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+        "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+        "aggregate:eligible-open-tasks-7@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
       ]
     },
     "winning_moves": [
       {
         "rank": 1,
-        "title": "Create breathing room with three reality-changing closures",
-        "move": "Give the next focused blocks to AR-11, the internet warning, and one bounded provider inquiry about the lung-scan path. End each block with a real next state: progress, confirmation, ownership, or a precise blocker.",
-        "why_now": "These moves replace vague open loops with facts. They protect administrative continuity, everyday reliability, and a health-related choice without pretending that task wording establishes urgency.",
+        "title": "Seal the tax win with one status read",
+        "move": "Check the IRS portal once, record the state, and continue tax work only if it names a real obligation.",
+        "why_now": "Three closures created a new information gate within hours.",
         "unlocks": [
-          "Less background uncertainty competing for attention",
-          "A clearer decision about whether health scheduling belongs in the current cycle",
-          "Evidence that your “one small task” rhythm can produce external change"
+          "Confidence that the chain reached the outside world",
+          "A finite tax state instead of background uncertainty",
+          "Protection against reopening finished steps"
         ],
-        "tradeoff": "Travel, broad research, and unvalidated tax work remain intentionally deferred during these first blocks.",
-        "timeframe": "Next 24–72 hours",
-        "win_condition": "Each task has a verified next state, confirmation, ticket, or exact blocker—and at least one is materially advanced or closed.",
+        "tradeoff": "Uses one short block before other obligations.",
+        "timeframe": "Next 24 hours",
+        "win_condition": "Timestamped filing status or exact access blocker exists.",
         "task_ids": [
-          "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-          "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+          "259d5a2c-2a92-4734-8027-49eb663c8486"
         ],
         "source_refs": [
-          "evidence-closure-drought",
-          "evidence-action-signal-empty",
-          "2941ef7a-627f-4a79-a538-a9d9e7eba90f"
+          "evidence-tax-closures",
+          "evidence-irs-gate"
         ],
         "model_ids": [
-          "theory-of-constraints",
           "information-theory",
-          "ooda-loop",
-          "minimax-margin-safety"
+          "control-theory",
+          "ooda-loop"
         ]
       },
       {
         "rank": 2,
-        "title": "Turn financial ambiguity into one ownership decision",
-        "move": "Decide whether the tax responsibility is active, delegated, or outside the current plan. If it is active, contact yesmytaxes first and let the response—not the apparent task order—determine whether paperwork or confirmation work actually follows.",
-        "why_now": "The current tax tasks look sequential, but native dependencies are empty. One conversation can reveal whether the rest of the chain is real, smaller than assumed, delegated, or unnecessary.",
+        "title": "Convert the burst into two independent closures",
+        "move": "Advance AR-11, then resolve or ticket the internet warning; end each block at a verifiable state.",
+        "why_now": "A second life domain must move before the tax burst can count as repeatable throughput.",
         "unlocks": [
-          "A finite financial obligation instead of an undefined background concern",
-          "Protection from doing downstream work prematurely",
-          "A clean boundary between current responsibilities and archived Housing context"
+          "Evidence the rhythm transfers beyond Taxes",
+          "Administrative continuity",
+          "More reliable daily infrastructure"
         ],
-        "tradeoff": "You accept a short clarification cost now to avoid carrying or executing an unverified chain later.",
-        "timeframe": "This two-week cycle",
-        "win_condition": "Ownership is explicit and only the next obligation established by a real response remains active.",
+        "tradeoff": "Lung scheduling and expansion options stay deferred absent an exception.",
+        "timeframe": "Next 24–72 hours",
+        "win_condition": "Both tasks have confirmations, tickets, exact requirements, or precise blockers; at least one materially advances.",
         "task_ids": [
-          "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-          "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-          "8329b464-dab9-4362-811c-dadf15a1cbdd"
+          "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "e7e77f16-2155-45a3-a975-f37eafd6efe2"
         ],
         "source_refs": [
-          "evidence-tax-critical-path",
-          "bc5dc69e-ab85-4b8c-a718-9c474cd04388"
+          "evidence-output-shift",
+          "evidence-wip-real-drop"
         ],
         "model_ids": [
-          "amdahls-law",
           "theory-of-constraints",
-          "bayesian-updating",
-          "control-theory-spc"
+          "littles-law",
+          "thinking-in-bets"
         ]
       },
       {
         "rank": 3,
-        "title": "Spend the next free slot on one expansion bet",
-        "move": "After the constraining responsibilities are bounded, choose either the NYC–Niagara opportunity or one decision-focused hair-loss research question. Select by real timing, reversibility, information value, and alignment with the person you are trying to become—not by which open item is loudest.",
-        "why_now": "A life strategy cannot remain pure obligation management. Once uncertainty is reduced, one protected expansion move converts recovered capacity into experience, knowledge, or identity growth.",
+        "title": "Exercise one option, not every ambition",
+        "move": "After the immediate gate, deliberately select at most one of lung scheduling, travel, or bounded hair research using real timing and consequence evidence.",
+        "why_now": "Your strategy needs expansion after maintenance, but activating every option would erase the new WIP gain.",
         "unlocks": [
-          "A visible shift from maintenance toward growth",
-          "Preserved optionality because only one bet is activated",
-          "A repeatable rule for choosing among future opportunities"
+          "Growth without portfolio sprawl",
+          "A clear sacrifice decision",
+          "Protected slack"
         ],
-        "tradeoff": "Choosing one means consciously leaving the other available but inactive; this is allocation, not failure.",
-        "timeframe": "Next 30–90 days",
-        "win_condition": "One opportunity has a clear decision, bounded commitment, and observable outcome while the other remains intentionally preserved.",
+        "tradeoff": "Two valid options remain inactive by choice.",
+        "timeframe": "This cycle to 90 days",
+        "win_condition": "One option is explicitly active with a bounded outcome; the others remain intentionally preserved.",
         "task_ids": [
+          "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
           "6ed76b92-aa75-4883-a573-33c6531fbca6",
           "c18cb05c-d523-4268-9d9a-eff602c29149"
         ],
         "source_refs": [
-          "evidence-inventory-concentration",
-          "evidence-habit-action-divergence"
+          "evidence-wip-real-drop"
         ],
         "model_ids": [
           "thinking-in-bets",
-          "probabilistic-thinking",
-          "pareto-frontier",
-          "minimax-margin-safety"
+          "bayesian-updating",
+          "littles-law"
         ]
       }
     ],
     "hidden_leverage": [
       {
-        "title": "Clarity is currently worth more than additional capacity",
-        "insight": "Several life areas are waiting on one missing fact—requirements, lead time, ownership, or consequence of delay—rather than on a large block of effort.",
-        "why_it_matters": "The highest-return move is often not “work harder” but “ask the question that removes multiple possible futures.” A short answer can eliminate unnecessary work and reorder the board.",
-        "mechanism": "Information gain reduces branching uncertainty; constraint-focused action then concentrates effort only where a real obligation or opportunity survives.",
-        "falsifier": "If the relevant answers arrive but priorities and next actions remain equally ambiguous, missing information was not the dominant leverage point.",
+        "title": "Completion changes the right question",
+        "insight": "After three tax closures, the useful question changed from “how do I start?” to “what does the system report now?”",
+        "why_it_matters": "Staying in initiation mode after an outcome wastes the information the outcome created.",
+        "mechanism": "Feedback control retires completed commands and samples the new state before issuing another.",
+        "falsifier": "The status check provides no decision-relevant state or the tasks reopen because completion was only bookkeeping.",
         "source_refs": [
-          "evidence-cue-identity-gap",
-          "evidence-tax-critical-path",
-          "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd"
+          "evidence-tax-closures",
+          "evidence-irs-gate"
         ],
         "model_ids": [
+          "control-theory",
           "information-theory",
+          "ooda-loop"
+        ]
+      },
+      {
+        "title": "The old controller can miss progress without being useless",
+        "insight": "Zero of three selected actions closed, yet three other eligible tasks did; selected-action adherence and whole-life output are different metrics.",
+        "why_it_matters": "You can learn from a plan miss without erasing real progress or pretending the plan predicted it.",
+        "mechanism": "Bayesian updating separates outcome evidence from intervention attribution.",
+        "falsifier": "The tax completion labels lack real artifacts or later revert.",
+        "source_refs": [
+          "evidence-output-shift",
+          "evidence-tax-closures"
+        ],
+        "model_ids": [
           "bayesian-updating",
-          "theory-of-constraints"
+          "thinking-in-bets"
         ]
       },
       {
-        "title": "External proof is the bridge from “next hour” to “jet stream”",
-        "insight": "Your chosen identity language already favors small horizons, but momentum becomes self-reinforcing only when those horizons repeatedly end in something that changed outside your head.",
-        "why_it_matters": "A confirmation, ticket, decision, appointment path, or exact blocker is small enough for the next hour and meaningful enough to update what you believe you can reliably move.",
-        "mechanism": "Short feedback loops reduce delay between intention and evidence; repeated attributable wins strengthen the policy of acting before expanding the plan.",
-        "falsifier": "If several protected next-hour blocks produce no external transition and documented blockers explain the pattern, the action structure—not identity or effort—needs redesign.",
+        "title": "Real WIP reduction creates option value",
+        "insight": "The 9→7 decline is attributable to three exits and one arrival, so recovered attention can be allocated rather than merely relabeled.",
+        "why_it_matters": "The gain should buy either closure in another domain or one chosen expansion option—not automatic backlog refill.",
+        "mechanism": "Little’s Law lowers carrying inventory; Thinking in Bets preserves optionality by activating one choice.",
+        "falsifier": "Completed tax work reopens or the lower eligible count produces no usable attention across two cycles.",
         "source_refs": [
-          "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
-          "aa3cd17e-ad8e-4e4e-a78f-d94798b50405",
-          "d8f30f5d-295d-48c0-895d-bba1e6f57a04",
-          "evidence-closure-drought"
+          "evidence-wip-real-drop"
         ],
         "model_ids": [
-          "control-theory-spc",
-          "ooda-loop",
-          "littles-law"
-        ]
-      },
-      {
-        "title": "Your open life is an option portfolio, not one queue",
-        "insight": "Health, administration, finance, travel, research, and identity growth carry different stakes and different kinds of uncertainty. Treating them as interchangeable tasks hides the reason each deserves attention.",
-        "why_it_matters": "The winning sequence protects downside first, buys information second, and then exercises only the growth option with the strongest current timing and value.",
-        "mechanism": "Reversible decisions preserve future choices while downside-sensitive sequencing prevents one uncertain obligation from consuming the whole portfolio.",
-        "falsifier": "If explicit deadlines or consequences establish one dominant critical path across domains, portfolio-style allocation should yield to that path.",
-        "source_refs": [
-          "evidence-inventory-concentration",
-          "evidence-tax-critical-path",
-          "6ed76b92-aa75-4883-a573-33c6531fbca6",
-          "c18cb05c-d523-4268-9d9a-eff602c29149"
-        ],
-        "model_ids": [
+          "littles-law",
           "thinking-in-bets",
-          "probabilistic-thinking",
-          "minimax-margin-safety",
-          "pareto-frontier"
+          "theory-of-constraints"
         ]
       }
     ],
@@ -2002,98 +1382,93 @@
       {
         "id": "now",
         "label": "Now",
-        "window": "Next 24–72 hours",
-        "objective": "Create breathing room.",
+        "window": "24–72 hours",
+        "objective": "Capture IRS state, advance AR-11, and resolve or ticket internet.",
         "moves": [
-          "Advance or clarify AR-11",
-          "Give the internet warning an owner and next state",
-          "Obtain the one provider fact needed to place the lung-scan choice"
+          "Winning Move 1",
+          "Winning Move 2"
         ],
-        "win_condition": "At least one real closure and no current item remains vague about its next state.",
-        "pivot_if": "A documented safety issue, professional instruction, official deadline, or consequence of delay establishes a higher-priority move."
+        "win_condition": "Three verified states or blockers; at least one non-tax task materially advances.",
+        "pivot_if": "Documented health, safety, legal, financial, or explicit-user priority evidence appears."
       },
       {
         "id": "cycle",
         "label": "This Cycle",
-        "window": "Next two weeks",
-        "objective": "Bound the responsibilities that can keep pulling attention backward.",
+        "window": "Two weeks",
+        "objective": "Test whether closure transfers beyond the tax burst while keeping active WIP at one.",
         "moves": [
-          "Make the tax ownership decision",
-          "Execute only the next tax step established by a real response",
-          "Preserve unused capacity instead of automatically filling it"
+          "Winning Move 2",
+          "Winning Move 3"
         ],
-        "win_condition": "Financial administration is active with one known next step, delegated, or consciously removed from the current plan.",
-        "pivot_if": "A real response dissolves the assumed chain or reveals a deadline, dependency, or delegated owner."
+        "win_condition": "At least two attributable current-action outcomes and one explicit option decision.",
+        "pivot_if": "The IRS creates a concrete obligation or repeated blockers identify a different constraint."
       },
       {
         "id": "horizon",
         "label": "Horizon",
-        "window": "Next 30–90 days",
-        "objective": "Convert recovered capacity into expansion.",
+        "window": "30–90 days",
+        "objective": "Scale only the execution pattern that repeatedly produces verified external states.",
         "moves": [
-          "Choose one growth option by timing, reversibility, and expected information value",
-          "Protect enough slack for health, recovery, and unforeseen obligations",
-          "Use the outcome to refine the next portfolio choice"
+          "Winning Move 3"
         ],
-        "win_condition": "One chosen opportunity produces experience, knowledge, or identity growth without reopening every deferred commitment.",
-        "pivot_if": "The chosen option loses timing advantage, becomes irreversible at an unattractive cost, or a higher-value opportunity becomes evidenced."
+        "win_condition": "One chosen health or growth option reaches a bounded outcome without rebuilding portfolio sprawl.",
+        "pivot_if": "Two cycles fail to reproduce closure or a dominant official deadline creates a critical path."
       }
     ],
     "pivot_signals": [
       {
-        "signal": "A documented deadline, professional instruction, or consequence of delay appears.",
-        "meaning": "The board now contains a real urgency signal rather than semantic urgency.",
-        "response": "Re-rank immediately by consequence and lead time while preserving the smallest sufficient response.",
+        "signal": "IRS portal names a specific action or unresolved filing issue.",
+        "meaning": "Tax remains active despite the three closures.",
+        "response": "Follow only the stated next obligation before expansion.",
         "source_refs": [
-          "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd"
+          "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
         ]
       },
       {
-        "signal": "Yesmytaxes establishes which obligations actually apply.",
-        "meaning": "The financial branch has collapsed from an assumed chain into a known next step.",
-        "response": "Activate only the required step; delete nothing from Outliner, but keep unsupported downstream work inactive.",
+        "signal": "A clinician or provider supplies urgency, referral, or long lead-time evidence for the lung scan.",
+        "meaning": "Health may legitimately override the current sequence.",
+        "response": "Move the lung task forward and defer a lower-consequence option.",
         "source_refs": [
-          "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
-          "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
-          "8329b464-dab9-4362-811c-dadf15a1cbdd"
+          "outliner:6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
         ]
       },
       {
-        "signal": "The first protected blocks produce confirmation, closure, or a precise blocker.",
-        "meaning": "There is new evidence about which action structure produces momentum.",
-        "response": "Repeat the structure that created external change; redesign only the move that remained blocked.",
+        "signal": "AR-11 or internet reaches a verified external state.",
+        "meaning": "The closure rhythm transferred beyond Taxes.",
+        "response": "Strengthen the handoff model and open one option slot.",
         "source_refs": [
-          "evidence-closure-drought",
-          "evidence-action-signal-empty"
+          "outliner:2db41016-0ca9-42b4-8acb-b7e4c6dd5711@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+          "outliner:e7e77f16-2155-45a3-a975-f37eafd6efe2@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
         ]
       },
       {
-        "signal": "Travel timing or a bounded research decision gains clear value.",
-        "meaning": "One expansion option now has a stronger reason to be exercised.",
-        "response": "Choose one, define its commitment boundary, and leave the other intentionally open.",
+        "signal": "The three tax tasks reopen or lack corresponding external progress.",
+        "meaning": "The apparent burst may be bookkeeping rather than closure.",
+        "response": "Downgrade the insight and re-establish the actual tax state.",
         "source_refs": [
-          "6ed76b92-aa75-4883-a573-33c6531fbca6",
-          "c18cb05c-d523-4268-9d9a-eff602c29149"
+          "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+          "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+          "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
         ]
       }
     ],
     "reasoning_provenance": {
-      "summary": "The visible strategy compresses the full evidence → model → expert → solution → decision → action chain into personal choices. Models were selected for fit to the situation rather than because they were pre-saved.",
+      "summary": "Observed state changes were routed independently through orientation/control, decision/risk, and execution-systems experts; causal claims remain bounded.",
       "wiki_fingerprint": "05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-      "evidence_scope": "180 Outliner nodes, 8 attached Markdown bodies, 10 known-context notes, project/task/habit/schedule surfaces, and the current Augmented Intelligence lifecycle.",
+      "evidence_scope": "Verified 180-node Outliner mirror, complete known-context notes, targeted full node pages, dashboard history, calibration, and 11 durable connections.",
       "model_ids": [
         "information-theory",
+        "control-theory",
+        "bayesian-updating",
+        "thinking-in-bets",
         "theory-of-constraints",
         "ooda-loop",
-        "control-theory-spc",
-        "littles-law",
-        "probabilistic-thinking",
-        "thinking-in-bets",
-        "bayesian-updating",
-        "minimax-margin-safety",
-        "pareto-frontier",
-        "amdahls-law"
+        "littles-law"
+      ],
+      "uncertainty": [
+        "No prior immutable wiki snapshot was available; delta baseline uses the prior deployed run plus native timestamps.",
+        "Task completion dates do not prove external artifacts exist.",
+        "Unknown note contexts and binary attachments cannot be enumerated by the API."
       ]
     }
   }
