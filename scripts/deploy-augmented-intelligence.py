@@ -17,6 +17,12 @@ ALLOWED = {
     "data/augmented-intelligence.json",
     "data/augmented-graph.json",
 }
+CODE_CHANGE_ALLOWED = {
+    "assets/momentum.html",
+    "scripts/deploy-augmented-intelligence.py",
+    "scripts/generate-augmented-graph.py",
+    "scripts/update-augmented-intelligence.py",
+}
 
 
 def run(args: list[str], root: Path, check: bool = True) -> str:
@@ -55,8 +61,14 @@ def main() -> None:
     parser.add_argument("--message", default="update augmented intelligence state")
     parser.add_argument("--live-api", default="https://pilot-dashboard-seven.vercel.app/api/augmented-graph")
     parser.add_argument("--skip-live-verify", action="store_true")
+    parser.add_argument(
+        "--allow-code-changes",
+        action="store_true",
+        help="Explicitly permit reviewed renderer and validation-pipeline changes for this deployment.",
+    )
     args = parser.parse_args()
     root = args.root
+    allowed = ALLOWED | CODE_CHANGE_ALLOWED if args.allow_code_changes else ALLOWED
 
     remote = run(["git", "remote", "get-url", "origin"], root)
     parsed = urlsplit(remote)
@@ -79,18 +91,18 @@ def main() -> None:
         raise RuntimeError("augmented graph schema validation failed")
 
     dirty = dirty_paths(root)
-    unexpected = sorted(dirty - ALLOWED)
+    unexpected = sorted(dirty - allowed)
     if unexpected:
         raise RuntimeError(f"unexpected dirty files; refusing deploy: {unexpected}")
 
-    changed = sorted(dirty & ALLOWED)
+    changed = sorted(dirty & allowed)
     if not changed:
         print(json.dumps({"status": "unchanged", "head": head}, sort_keys=True))
         return
 
     run(["git", "add", "--", *changed], root)
     staged = run(["git", "diff", "--cached", "--name-only"], root).splitlines()
-    if set(staged) - ALLOWED:
+    if set(staged) - allowed:
         raise RuntimeError(f"staged files outside allowlist: {staged}")
     run(["git", "commit", "-m", args.message], root)
     run(["git", "push", "origin", "main"], root)

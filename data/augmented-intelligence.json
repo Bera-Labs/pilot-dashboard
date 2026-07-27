@@ -1031,5 +1031,269 @@
         "decision": "Continue the personal pattern that produced verified progress. Choose at most one of those growth opportunities only if the named responsibilities are bounded and real timing or information value justifies it; otherwise defer both and give the next slot to the unresolved named responsibility with the strongest evidence of consequence from delay."
       }
     ]
+  },
+  "life_strategy": {
+    "title": "Life Strategy Board",
+    "timeframe": "Now through the next 90 days",
+    "position": {
+      "headline": "Clear the few uncertainties that restrict your choices, then place one deliberate bet on expansion.",
+      "summary": "Your Outliner shows ambition across identity, health, administration, finances, travel, research, and daily discipline. The immediate challenge is not a shortage of goals; unresolved responsibilities are competing with growth opportunities. The strongest position is to clarify or close the few obligations that can constrain future choices, then direct the attention you recover toward one compounding opportunity.",
+      "momentum": "Your “next hour,” “one small task,” and “jet stream” notes already define a workable rhythm: momentum should begin with one visible result, not a complete life overhaul.",
+      "tension": "Administrative and health uncertainties are sharing attention with travel and self-development opportunities, but the Outliner does not yet contain enough timing or consequence data to rank every item confidently.",
+      "leverage": "A small number of external answers can collapse several branches of uncertainty at once, making later choices faster and more intentional.",
+      "confidence": "Medium — the pattern is clear, while deadlines, lead times, and several ownership decisions remain unknown.",
+      "source_refs": [
+        "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
+        "aa3cd17e-ad8e-4e4e-a78f-d94798b50405",
+        "d8f30f5d-295d-48c0-895d-bba1e6f57a04",
+        "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+        "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+        "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+      ]
+    },
+    "winning_moves": [
+      {
+        "rank": 1,
+        "title": "Create breathing room with three reality-changing closures",
+        "move": "Give the next focused blocks to AR-11, the internet warning, and one bounded provider inquiry about the lung-scan path. End each block with a real next state: progress, confirmation, ownership, or a precise blocker.",
+        "why_now": "These moves replace vague open loops with facts. They protect administrative continuity, everyday reliability, and a health-related choice without pretending that task wording establishes urgency.",
+        "unlocks": [
+          "Less background uncertainty competing for attention",
+          "A clearer decision about whether health scheduling belongs in the current cycle",
+          "Evidence that your “one small task” rhythm can produce external change"
+        ],
+        "tradeoff": "Travel, broad research, and unvalidated tax work remain intentionally deferred during these first blocks.",
+        "timeframe": "Next 24–72 hours",
+        "win_condition": "Each task has a verified next state, confirmation, ticket, or exact blocker—and at least one is materially advanced or closed.",
+        "task_ids": [
+          "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+          "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+        ],
+        "source_refs": [
+          "evidence-closure-drought",
+          "evidence-action-signal-empty",
+          "2941ef7a-627f-4a79-a538-a9d9e7eba90f"
+        ],
+        "model_ids": [
+          "theory-of-constraints",
+          "information-theory",
+          "ooda-loop",
+          "minimax-margin-safety"
+        ]
+      },
+      {
+        "rank": 2,
+        "title": "Turn financial ambiguity into one ownership decision",
+        "move": "Decide whether the tax responsibility is active, delegated, or outside the current plan. If it is active, contact yesmytaxes first and let the response—not the apparent task order—determine whether paperwork or confirmation work actually follows.",
+        "why_now": "The current tax tasks look sequential, but native dependencies are empty. One conversation can reveal whether the rest of the chain is real, smaller than assumed, delegated, or unnecessary.",
+        "unlocks": [
+          "A finite financial obligation instead of an undefined background concern",
+          "Protection from doing downstream work prematurely",
+          "A clean boundary between current responsibilities and archived Housing context"
+        ],
+        "tradeoff": "You accept a short clarification cost now to avoid carrying or executing an unverified chain later.",
+        "timeframe": "This two-week cycle",
+        "win_condition": "Ownership is explicit and only the next obligation established by a real response remains active.",
+        "task_ids": [
+          "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+          "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+          "8329b464-dab9-4362-811c-dadf15a1cbdd"
+        ],
+        "source_refs": [
+          "evidence-tax-critical-path",
+          "bc5dc69e-ab85-4b8c-a718-9c474cd04388"
+        ],
+        "model_ids": [
+          "amdahls-law",
+          "theory-of-constraints",
+          "bayesian-updating",
+          "control-theory-spc"
+        ]
+      },
+      {
+        "rank": 3,
+        "title": "Spend the next free slot on one expansion bet",
+        "move": "After the constraining responsibilities are bounded, choose either the NYC–Niagara opportunity or one decision-focused hair-loss research question. Select by real timing, reversibility, information value, and alignment with the person you are trying to become—not by which open item is loudest.",
+        "why_now": "A life strategy cannot remain pure obligation management. Once uncertainty is reduced, one protected expansion move converts recovered capacity into experience, knowledge, or identity growth.",
+        "unlocks": [
+          "A visible shift from maintenance toward growth",
+          "Preserved optionality because only one bet is activated",
+          "A repeatable rule for choosing among future opportunities"
+        ],
+        "tradeoff": "Choosing one means consciously leaving the other available but inactive; this is allocation, not failure.",
+        "timeframe": "Next 30–90 days",
+        "win_condition": "One opportunity has a clear decision, bounded commitment, and observable outcome while the other remains intentionally preserved.",
+        "task_ids": [
+          "6ed76b92-aa75-4883-a573-33c6531fbca6",
+          "c18cb05c-d523-4268-9d9a-eff602c29149"
+        ],
+        "source_refs": [
+          "evidence-inventory-concentration",
+          "evidence-habit-action-divergence"
+        ],
+        "model_ids": [
+          "thinking-in-bets",
+          "probabilistic-thinking",
+          "pareto-frontier",
+          "minimax-margin-safety"
+        ]
+      }
+    ],
+    "hidden_leverage": [
+      {
+        "title": "Clarity is currently worth more than additional capacity",
+        "insight": "Several life areas are waiting on one missing fact—requirements, lead time, ownership, or consequence of delay—rather than on a large block of effort.",
+        "why_it_matters": "The highest-return move is often not “work harder” but “ask the question that removes multiple possible futures.” A short answer can eliminate unnecessary work and reorder the board.",
+        "mechanism": "Information gain reduces branching uncertainty; constraint-focused action then concentrates effort only where a real obligation or opportunity survives.",
+        "falsifier": "If the relevant answers arrive but priorities and next actions remain equally ambiguous, missing information was not the dominant leverage point.",
+        "source_refs": [
+          "evidence-cue-identity-gap",
+          "evidence-tax-critical-path",
+          "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd"
+        ],
+        "model_ids": [
+          "information-theory",
+          "bayesian-updating",
+          "theory-of-constraints"
+        ]
+      },
+      {
+        "title": "External proof is the bridge from “next hour” to “jet stream”",
+        "insight": "Your chosen identity language already favors small horizons, but momentum becomes self-reinforcing only when those horizons repeatedly end in something that changed outside your head.",
+        "why_it_matters": "A confirmation, ticket, decision, appointment path, or exact blocker is small enough for the next hour and meaningful enough to update what you believe you can reliably move.",
+        "mechanism": "Short feedback loops reduce delay between intention and evidence; repeated attributable wins strengthen the policy of acting before expanding the plan.",
+        "falsifier": "If several protected next-hour blocks produce no external transition and documented blockers explain the pattern, the action structure—not identity or effort—needs redesign.",
+        "source_refs": [
+          "ea6baeaa-e72b-46a1-a11a-cb08e2771c15",
+          "aa3cd17e-ad8e-4e4e-a78f-d94798b50405",
+          "d8f30f5d-295d-48c0-895d-bba1e6f57a04",
+          "evidence-closure-drought"
+        ],
+        "model_ids": [
+          "control-theory-spc",
+          "ooda-loop",
+          "littles-law"
+        ]
+      },
+      {
+        "title": "Your open life is an option portfolio, not one queue",
+        "insight": "Health, administration, finance, travel, research, and identity growth carry different stakes and different kinds of uncertainty. Treating them as interchangeable tasks hides the reason each deserves attention.",
+        "why_it_matters": "The winning sequence protects downside first, buys information second, and then exercises only the growth option with the strongest current timing and value.",
+        "mechanism": "Reversible decisions preserve future choices while downside-sensitive sequencing prevents one uncertain obligation from consuming the whole portfolio.",
+        "falsifier": "If explicit deadlines or consequences establish one dominant critical path across domains, portfolio-style allocation should yield to that path.",
+        "source_refs": [
+          "evidence-inventory-concentration",
+          "evidence-tax-critical-path",
+          "6ed76b92-aa75-4883-a573-33c6531fbca6",
+          "c18cb05c-d523-4268-9d9a-eff602c29149"
+        ],
+        "model_ids": [
+          "thinking-in-bets",
+          "probabilistic-thinking",
+          "minimax-margin-safety",
+          "pareto-frontier"
+        ]
+      }
+    ],
+    "timeline": [
+      {
+        "id": "now",
+        "label": "Now",
+        "window": "Next 24–72 hours",
+        "objective": "Create breathing room.",
+        "moves": [
+          "Advance or clarify AR-11",
+          "Give the internet warning an owner and next state",
+          "Obtain the one provider fact needed to place the lung-scan choice"
+        ],
+        "win_condition": "At least one real closure and no current item remains vague about its next state.",
+        "pivot_if": "A documented safety issue, professional instruction, official deadline, or consequence of delay establishes a higher-priority move."
+      },
+      {
+        "id": "cycle",
+        "label": "This Cycle",
+        "window": "Next two weeks",
+        "objective": "Bound the responsibilities that can keep pulling attention backward.",
+        "moves": [
+          "Make the tax ownership decision",
+          "Execute only the next tax step established by a real response",
+          "Preserve unused capacity instead of automatically filling it"
+        ],
+        "win_condition": "Financial administration is active with one known next step, delegated, or consciously removed from the current plan.",
+        "pivot_if": "A real response dissolves the assumed chain or reveals a deadline, dependency, or delegated owner."
+      },
+      {
+        "id": "horizon",
+        "label": "Horizon",
+        "window": "Next 30–90 days",
+        "objective": "Convert recovered capacity into expansion.",
+        "moves": [
+          "Choose one growth option by timing, reversibility, and expected information value",
+          "Protect enough slack for health, recovery, and unforeseen obligations",
+          "Use the outcome to refine the next portfolio choice"
+        ],
+        "win_condition": "One chosen opportunity produces experience, knowledge, or identity growth without reopening every deferred commitment.",
+        "pivot_if": "The chosen option loses timing advantage, becomes irreversible at an unattractive cost, or a higher-value opportunity becomes evidenced."
+      }
+    ],
+    "pivot_signals": [
+      {
+        "signal": "A documented deadline, professional instruction, or consequence of delay appears.",
+        "meaning": "The board now contains a real urgency signal rather than semantic urgency.",
+        "response": "Re-rank immediately by consequence and lead time while preserving the smallest sufficient response.",
+        "source_refs": [
+          "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd"
+        ]
+      },
+      {
+        "signal": "Yesmytaxes establishes which obligations actually apply.",
+        "meaning": "The financial branch has collapsed from an assumed chain into a known next step.",
+        "response": "Activate only the required step; delete nothing from Outliner, but keep unsupported downstream work inactive.",
+        "source_refs": [
+          "0f5276b2-6ba2-4fef-8dcc-39551555e2c4",
+          "79f13db5-e1f2-40f4-95ca-7c2073a2f772",
+          "8329b464-dab9-4362-811c-dadf15a1cbdd"
+        ]
+      },
+      {
+        "signal": "The first protected blocks produce confirmation, closure, or a precise blocker.",
+        "meaning": "There is new evidence about which action structure produces momentum.",
+        "response": "Repeat the structure that created external change; redesign only the move that remained blocked.",
+        "source_refs": [
+          "evidence-closure-drought",
+          "evidence-action-signal-empty"
+        ]
+      },
+      {
+        "signal": "Travel timing or a bounded research decision gains clear value.",
+        "meaning": "One expansion option now has a stronger reason to be exercised.",
+        "response": "Choose one, define its commitment boundary, and leave the other intentionally open.",
+        "source_refs": [
+          "6ed76b92-aa75-4883-a573-33c6531fbca6",
+          "c18cb05c-d523-4268-9d9a-eff602c29149"
+        ]
+      }
+    ],
+    "reasoning_provenance": {
+      "summary": "The visible strategy compresses the full evidence → model → expert → solution → decision → action chain into personal choices. Models were selected for fit to the situation rather than because they were pre-saved.",
+      "wiki_fingerprint": "05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+      "evidence_scope": "180 Outliner nodes, 8 attached Markdown bodies, 10 known-context notes, project/task/habit/schedule surfaces, and the current Augmented Intelligence lifecycle.",
+      "model_ids": [
+        "information-theory",
+        "theory-of-constraints",
+        "ooda-loop",
+        "control-theory-spc",
+        "littles-law",
+        "probabilistic-thinking",
+        "thinking-in-bets",
+        "bayesian-updating",
+        "minimax-margin-safety",
+        "pareto-frontier",
+        "amdahls-law"
+      ]
+    }
   }
 }

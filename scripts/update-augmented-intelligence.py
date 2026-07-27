@@ -109,6 +109,100 @@ def validate(payload: dict) -> None:
         fail("confidence must be between 0 and 1")
 
 
+def require_string_list(mapping: dict, key: str, owner: str) -> list[str]:
+    value = require(mapping, key, list)
+    if not value or not all(isinstance(item, str) and item.strip() for item in value):
+        fail(f"{owner}.{key} must contain non-empty strings")
+    return value
+
+
+def require_strategy_text(mapping: dict, key: str, owner: str) -> str:
+    value = require(mapping, key, str)
+    if not value.strip():
+        fail(f"{owner}.{key} must be a non-empty string")
+    return value
+
+
+def validate_life_strategy(
+    strategy: dict,
+    model_ids: set[str],
+    task_ids: set[str],
+) -> None:
+    require_strategy_text(strategy, "title", "life_strategy")
+    require_strategy_text(strategy, "timeframe", "life_strategy")
+    position = require(strategy, "position", dict)
+    for key in ("headline", "summary", "momentum", "tension", "leverage", "confidence"):
+        require_strategy_text(position, key, "life_strategy.position")
+    require_string_list(position, "source_refs", "life_strategy.position")
+
+    moves = require(strategy, "winning_moves", list)
+    if not 1 <= len(moves) <= 3:
+        fail("life_strategy.winning_moves must contain one to three moves")
+    ranks: list[int] = []
+    for index, move in enumerate(moves, 1):
+        if not isinstance(move, dict):
+            fail(f"life_strategy.winning_moves[{index}] must be an object")
+        rank = require(move, "rank", int)
+        ranks.append(rank)
+        owner = f"life_strategy.winning_moves[{rank}]"
+        for key in ("title", "move", "why_now", "tradeoff", "timeframe", "win_condition"):
+            require_strategy_text(move, key, owner)
+        require_string_list(move, "unlocks", owner)
+        move_tasks = require_string_list(move, "task_ids", owner)
+        require_references(owner, move_tasks, task_ids, "tasks")
+        require_string_list(move, "source_refs", owner)
+        move_models = require_string_list(move, "model_ids", owner)
+        require_references(owner, move_models, model_ids, "models")
+    if sorted(ranks) != list(range(1, len(moves) + 1)):
+        fail("life_strategy.winning_moves ranks must be contiguous from 1")
+
+    insights = require(strategy, "hidden_leverage", list)
+    if not 2 <= len(insights) <= 4:
+        fail("life_strategy.hidden_leverage must contain two to four insights")
+    for index, insight in enumerate(insights, 1):
+        if not isinstance(insight, dict):
+            fail(f"life_strategy.hidden_leverage[{index}] must be an object")
+        owner = f"life_strategy.hidden_leverage[{index}]"
+        for key in ("title", "insight", "why_it_matters", "mechanism", "falsifier"):
+            require_strategy_text(insight, key, owner)
+        require_string_list(insight, "source_refs", owner)
+        insight_models = require_string_list(insight, "model_ids", owner)
+        require_references(owner, insight_models, model_ids, "models")
+
+    timeline = require(strategy, "timeline", list)
+    if len(timeline) != 3:
+        fail("life_strategy.timeline must contain exactly three horizons")
+    timeline_ids: set[str] = set()
+    for index, row in enumerate(timeline, 1):
+        if not isinstance(row, dict):
+            fail(f"life_strategy.timeline[{index}] must be an object")
+        row_id = require_strategy_text(row, "id", "life_strategy.timeline")
+        if row_id in timeline_ids:
+            fail(f"duplicate life_strategy.timeline id: {row_id}")
+        timeline_ids.add(row_id)
+        owner = f"life_strategy.timeline[{row_id}]"
+        for key in ("label", "window", "objective", "win_condition", "pivot_if"):
+            require_strategy_text(row, key, owner)
+        require_string_list(row, "moves", owner)
+
+    signals = require(strategy, "pivot_signals", list)
+    if not 1 <= len(signals) <= 5:
+        fail("life_strategy.pivot_signals must contain one to five signals")
+    for index, signal in enumerate(signals, 1):
+        if not isinstance(signal, dict):
+            fail(f"life_strategy.pivot_signals[{index}] must be an object")
+        owner = f"life_strategy.pivot_signals[{index}]"
+        for key in ("signal", "meaning", "response"):
+            require_strategy_text(signal, key, owner)
+        require_string_list(signal, "source_refs", owner)
+
+    provenance = require(strategy, "reasoning_provenance", dict)
+    for key in ("summary", "wiki_fingerprint", "evidence_scope"):
+        require_strategy_text(provenance, key, "life_strategy.reasoning_provenance")
+    provenance_models = require_string_list(provenance, "model_ids", "life_strategy.reasoning_provenance")
+    require_references("life_strategy.reasoning_provenance", provenance_models, model_ids, "models")
+
+
 def validate_intelligence_spec(spec: dict, payload: dict) -> None:
     if require(spec, "schema_version", str) != "3.0.0":
         fail("intelligence spec schema_version must be 3.0.0")
@@ -145,7 +239,11 @@ def validate_intelligence_spec(spec: dict, payload: dict) -> None:
     synthesis_ids = {row["id"] for row in syntheses}
     decision_ids = {row["id"] for row in decisions}
     action_ids = {row["id"] for row in actions}
-    current_task_ids = {row.get("task_id") for row in actions}
+    current_task_ids = {
+        row["task_id"]
+        for row in actions
+        if isinstance(row.get("task_id"), str) and row["task_id"]
+    }
     conditional_task_ids: set[str] = set()
     for phase in phases:
         queue = phase.get("queue")
@@ -158,6 +256,7 @@ def validate_intelligence_spec(spec: dict, payload: dict) -> None:
             if isinstance(task_id, str) and task_id:
                 conditional_task_ids.add(task_id)
     contextual_task_ids = current_task_ids | conditional_task_ids
+    validate_life_strategy(require(spec, "life_strategy", dict), model_ids, contextual_task_ids)
 
     for row in models:
         for key in ("label", "role", "source"):
