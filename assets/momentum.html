@@ -723,6 +723,12 @@
     </article>`).join('');
 
     const provenance = strategy.reasoning_provenance || {};
+    const balance = strategy.evidence_balance || {};
+    const balanceSummary = [
+      `${(balance.evidence_classes || []).length} evidence classes`,
+      `${(balance.domains || []).length} life domains`,
+      `task share ${Math.round(Number(balance.task_evidence_share || 0) * 100)}%`
+    ].join(' · ');
     const fingerprint = String(provenance.wiki_fingerprint || 'unknown');
     container.innerHTML = `<div class="strategy-stack">
       <article class="strategy-position">
@@ -775,7 +781,7 @@
 
       <footer class="strategy-provenance">
         <strong>Reasoning, kept secondary:</strong> ${escapeHtml(provenance.summary)}
-        Evidence: ${escapeHtml(provenance.evidence_scope)} · Wiki ${escapeHtml(fingerprint.slice(0, 12))}… · Confidence ${escapeHtml(position.confidence)}
+        Evidence: ${escapeHtml(provenance.evidence_scope)} · Balance: ${escapeHtml(balanceSummary)} · Wiki ${escapeHtml(fingerprint.slice(0, 12))}… · Confidence ${escapeHtml(position.confidence)}
         <div class="reasoning-tags" aria-label="All reasoning models used">${modelTags(provenance.model_ids)}</div>
       </footer>
     </div>`;

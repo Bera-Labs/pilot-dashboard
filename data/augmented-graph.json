@@ -1,796 +1,901 @@
 {
   "meta": {
     "schema_version": "3.0.0",
-    "generated_at": "2026-07-27T05:20:30Z",
-    "source_fingerprint": "22b82b420d3bfd9ec286b27e7902cde52deec7e6f924fba8a18573a8ff5aefdb",
+    "generated_at": "2026-07-29T04:09:35Z",
+    "source_fingerprint": "f61ff7038a67a819b0ac1553eebef9a67780674f675cd1ea9467104911262602",
     "source": "/root/pilot-dashboard/data/augmented-intelligence.json",
     "method": "Mixture of Experts",
-    "node_count": 31,
-    "link_count": 61,
+    "node_count": 35,
+    "link_count": 58,
     "synthesis_count": 3,
     "warnings": []
   },
   "method": {
     "name": "Mixture of Experts",
-    "principle": "Independent expert families transform the same attributable Outliner observations; integration preserves convergence, disagreement, and falsifiers.",
+    "principle": "Independent experts transform a whole-life evidence map before any task filtering; integration preserves cross-domain leverage, disagreement, falsifiers, and a separate downstream execution adapter.",
     "experts": [
       {
-        "id": "expert-orientation-control",
-        "label": "Orientation & Control Expert",
-        "mission": "Identify the new state and valid feedback signal after real closures.",
+        "id": "expert-whole-life-systems",
+        "label": "Whole-Life Systems Expert",
+        "mission": "Map the full portfolio of identity, body, cognition, relationships, work, finance, opportunity, and execution across multiple timescales.",
         "model_ids": [
-          "information-theory",
-          "control-theory"
+          "multi-timescale-control",
+          "pareto-portfolio"
         ],
         "assumptions": [
-          "Task completion dates represent genuine user-recorded outcomes.",
-          "The IRS status task is the next tax feedback request."
+          "User-authored nodes express desired directions but not necessarily current outcomes.",
+          "A balanced portfolio needs explicit sacrifice because capacity is finite."
         ],
         "derivation": [
-          "Three completed commands should leave the active controller.",
-          "The new portal check is one feedback sample, not a reopened chain."
+          "The hierarchy contains a 360-degree domain architecture, not merely a task queue.",
+          "Housing is the highest-consequence current convergence point across home, finance, administration, calendar, and likely family/work capacity.",
+          "A seasonal portfolio can preserve whole-life scope while temporarily concentrating capacity."
         ],
-        "proposal": "Read the IRS state once, save it, and issue no new tax command unless the state requires one.",
+        "proposal": "Use the August 14 Home Base Transition as the temporary organizing center, maintain minimum viable continuity elsewhere, then select one post-close capability lane.",
         "risks": [
-          "Completed labels may lack external artifacts.",
-          "Portal access may be blocked."
+          "The portfolio can become another planning artifact.",
+          "Sparse outcome evidence makes domain weights uncertain."
         ],
-        "falsified_by": "The portal state has no relation to the completed filing work or the old tasks reopen."
+        "falsified_by": "A two-scale cadence adds planning but produces no observable evidence in body, agency, or role domains across two cycles."
       },
       {
-        "id": "expert-decision-risk",
-        "label": "Decision & Risk Expert",
-        "mission": "Preserve optionality and prevent a completion burst from becoming overconfidence.",
+        "id": "expert-behavior-measurement",
+        "label": "Behavior & Measurement Expert",
+        "mission": "Separate repeated behavior, unmeasured states, completed external outcomes, and aspirational narratives without inferring causes.",
         "model_ids": [
-          "bayesian-updating",
-          "thinking-in-bets"
+          "bayesian-measurement",
+          "exploration-exploitation",
+          "feedback-control"
         ],
         "assumptions": [
-          "One burst changes the prior but is not a stable rate.",
-          "AR-11 and internet remain valid open obligations."
+          "Habit logs are evidence of recorded behavior, not a complete measure of lived behavior.",
+          "Task completion dates indicate recorded closure but not every external artifact."
         ],
         "derivation": [
-          "Three closures falsify the strongest zero-action narrative.",
-          "Outcome location does not prove the prior controller was wrong when its gate is not due."
+          "Eleven dated closures across Housing, Maintenance, Taxes, and Parents trip show real but concentrated external follow-through.",
+          "Tax steps closed as a burst after a prior review predicted continued carryover, so simple stalled-item forecasts are unreliable.",
+          "The abstinence sequence is auto-checked and therefore cannot be treated as verified adherence."
         ],
-        "proposal": "Take the low-cost IRS information bet, then return to shared obligations; keep health as an exception signal.",
+        "proposal": "Use finite external workflows—trigger, checklist, confirmation, brief reflection—and measure return speed rather than requiring an unbroken daily chain.",
         "risks": [
-          "Burst completion may be batch bookkeeping.",
-          "A hidden official deadline could change sequence."
+          "Logging gaps can be mistaken for absence.",
+          "A streak may not transfer across domains."
         ],
-        "falsified_by": "Repeated follow-up shows no attributable external progress or a documented higher-consequence exception appears."
+        "falsified_by": "The daily proof is logged but produces no meaningful state change, or logs diverge from independently observable outcomes."
       },
       {
-        "id": "expert-execution-systems",
-        "label": "Execution Systems Expert",
-        "mission": "Turn the changed portfolio into a short WIP=1 action path.",
+        "id": "expert-identity-options",
+        "label": "Identity & Options Expert",
+        "mission": "Translate self-authored identity, social, family, skill, and opportunity language into enacted roles and deliberate options.",
         "model_ids": [
-          "theory-of-constraints",
-          "ooda-loop",
-          "littles-law"
+          "signaling-theory",
+          "option-value",
+          "pareto-portfolio"
         ],
         "assumptions": [
-          "Only one hands-on action is active at a time.",
-          "External waiting may overlap after a request exists."
+          "Identity language is a stated aspiration, not a diagnosis or fixed trait.",
+          "Completed family logistics provide one observable example of role enactment."
         ],
         "derivation": [
-          "The bottleneck advanced from starting tax work to reading its new state.",
-          "Real closure—not reclassification—reduced WIP."
+          "Parents-trip care, tax closure, maintenance, and Housing document progress are enacted stewardship signals.",
+          "The explicit FOMO/sacrifice node recognizes that not every valid arena can be active simultaneously."
         ],
-        "proposal": "Run IRS status, AR-11, then internet; stop each block at a verified state or exact blocker.",
+        "proposal": "Anchor identity in reliable stewardship now, then choose one 30–90 day capability lane after the closing transition.",
         "risks": [
-          "Task titles omit deadlines and effort.",
-          "Intermediate work may not be recorded."
+          "A role choice may be selected for image rather than personal value.",
+          "Current relationship and work evidence is sparse."
         ],
-        "falsified_by": "The sequence repeatedly yields no new state while another documented bottleneck explains delay."
+        "falsified_by": "The selected arena does not produce an observable artifact or no longer matches the user’s stated priorities."
       }
     ],
     "integration_gate": [
-      "Current Outliner trace required",
-      "Alternative explanation required",
-      "Decision implication required",
-      "Observable review gate required",
-      "No invented tasks or deadlines"
+      "Complete whole-life evidence coverage map required before task filtering",
+      "At least four evidence classes and four materially analyzed domains required",
+      "At least two non-task evidence classes required",
+      "Tasks may implement but may not define the visible strategy",
+      "Alternative explanation and falsifier required",
+      "No unsupported psychological, medical, legal, or causal claims"
     ]
   },
   "nodes": [
     {
       "id": "action-ar11",
-      "label": "Advance AR-11",
+      "label": "Advance AR-11 after closing state is visible",
       "group": "action",
-      "summary": "Confirmation, verified progress, exact requirement, or blocker is saved.",
+      "summary": "Confirmation, verified progress, one exact requirement, or one exact blocker is saved.",
       "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+      "source_refs": [],
       "timebox": "25 minutes",
       "status": "queued-2",
       "order": 2,
       "queue_state": "active-controller",
       "decision_ids": [
-        "decision-return-shared-obligations",
-        "decision-count-real-outcomes"
-      ]
-    },
-    {
-      "id": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
-      "label": "Book NYC and Niagara flights",
-      "group": "action",
-      "summary": "Conditional queue item; depends on real travel timing, cost, and cancellation evidence.",
-      "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
-      "status": "conditional",
-      "queue_state": "future-gated",
-      "queue_position": 2,
-      "decision_ids": [
-        "decision-return-shared-obligations"
+        "decision-rapid-return"
       ],
-      "graph_label": "Book NYC and N…"
+      "graph_label": "Advance AR-11…"
     },
     {
-      "id": "action-irs-status",
-      "label": "Check IRS filing status",
+      "id": "action-housing-readiness",
+      "label": "Establish authoritative closing readiness",
       "group": "action",
-      "summary": "Timestamped status, exact next requirement, or access blocker is saved.",
-      "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
-      "timebox": "15 minutes",
+      "summary": "A single checklist states every remaining item, owner, due date, funds/document requirement, and closing/calendar constraint.",
+      "task_id": null,
+      "source_refs": [
+        "outliner:bc5dc69e-ab85-4b8c-a718-9c474cd04388@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:c0eb5252-9b48-4390-a2ac-e7cb842faa48@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ],
+      "timebox": "45–60 minutes",
       "status": "active-1",
       "order": 1,
       "queue_state": "active-controller",
       "decision_ids": [
-        "decision-read-irs-state",
-        "decision-count-real-outcomes"
+        "decision-home-base-critical-path"
       ],
-      "graph_label": "Check IRS fili…"
+      "graph_label": "Establish auth…"
     },
     {
       "id": "queue-d6135502-df76-48ff-824e-c8af2975b890",
-      "label": "Operationalize Tiger mode ON",
+      "label": "Operationalize one identity behavior",
       "group": "action",
-      "summary": "Conditional queue item; depends on rewrite its broad checklist into one user-chosen observable next state outside this read-only run.",
+      "summary": "Conditional queue item; depends on identity becomes the explicitly chosen post-close capability lane.",
       "task_id": "d6135502-df76-48ff-824e-c8af2975b890",
       "status": "conditional",
       "queue_state": "future-gated",
-      "queue_position": 1,
+      "queue_position": 2,
       "decision_ids": [
-        "decision-count-real-outcomes"
+        "decision-seasonal-lane"
       ],
       "graph_label": "Operationalize…"
     },
     {
-      "id": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
-      "label": "Research latest hair-loss evidence",
+      "id": "action-irs-followup",
+      "label": "Recheck IRS after one week",
       "group": "action",
-      "summary": "Conditional queue item; depends on one bounded decision question.",
-      "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
-      "status": "conditional",
-      "queue_state": "future-gated",
-      "queue_position": 3,
-      "decision_ids": [
-        "decision-return-shared-obligations"
-      ],
-      "graph_label": "Research lates…"
-    },
-    {
-      "id": "action-internet",
-      "label": "Resolve internet warning",
-      "group": "action",
-      "summary": "Warning is cleared or a provider ticket/response window is saved.",
-      "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-      "timebox": "15 minutes",
-      "status": "queued-3",
+      "summary": "A dated status or exact next requirement is recorded without reopening completed tax steps.",
+      "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+      "source_refs": [],
+      "timebox": "15 minutes on or after 2026-08-04",
+      "status": "scheduled-3",
       "order": 3,
       "queue_state": "active-controller",
       "decision_ids": [
-        "decision-return-shared-obligations",
-        "decision-count-real-outcomes"
+        "decision-rapid-return"
       ],
-      "graph_label": "Resolve intern…"
+      "graph_label": "Recheck IRS af…"
     },
     {
       "id": "queue-6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-      "label": "Schedule lung-health scan",
+      "label": "Resolve one professionally grounded health question",
       "group": "action",
-      "summary": "Conditional queue item; depends on documented professional urgency, lead time, or explicit priority override.",
+      "summary": "Conditional queue item; depends on closing stability plus professional urgency, lead time, or explicit user priority.",
       "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
       "status": "conditional",
       "queue_state": "future-gated",
       "queue_position": 1,
       "decision_ids": [
-        "decision-return-shared-obligations"
+        "decision-seasonal-lane"
       ],
-      "graph_label": "Schedule lung-…"
+      "graph_label": "Resolve one pr…"
     },
     {
-      "id": "decision-count-real-outcomes",
-      "label": "Count real outcomes wherever they occur",
+      "id": "decision-seasonal-lane",
+      "label": "Concentrate seasonally",
       "group": "decision",
-      "summary": "The tax burst is valid evidence even though it missed the forecasted controller.",
-      "choice": "monitor",
-      "tradeoff": "Controller adherence and total output must be reported separately.",
-      "review": "At the next two-week review, compare selected-action outcomes with all eligible closures.",
-      "graph_label": "Count real out…"
-    },
-    {
-      "id": "decision-read-irs-state",
-      "label": "Read the new filing state once",
-      "group": "decision",
-      "summary": "One portal read completes the feedback loop after three tax closures.",
+      "summary": "Whole-life ambition needs one temporary emphasis plus minimum viable continuity elsewhere.",
       "choice": "sequence",
-      "tradeoff": "Consumes the first short block.",
-      "review": "Stop after the status and exact next requirement are saved.",
-      "graph_label": "Read the new f…"
+      "tradeoff": "Most valid domains remain inactive options during closing.",
+      "review": "Choose the next capability lane after closing stabilization.",
+      "graph_label": "Concentrate se…"
     },
     {
-      "id": "decision-return-shared-obligations",
-      "label": "Return to AR-11 and internet",
+      "id": "decision-home-base-critical-path",
+      "label": "Protect the August 14 transition",
       "group": "decision",
-      "summary": "They remain shared, eligible obligations after the prior lung-versus-Life-OS conflict is removed from the current queue.",
-      "choice": "protect",
-      "tradeoff": "Health scheduling and growth work remain deferred absent an exception.",
-      "review": "Reverse for documented medical, safety, legal, financial, or explicit-user priority evidence.",
-      "graph_label": "Return to AR-1…"
+      "summary": "Housing is the highest-consequence documented commitment and was hidden by stale scope metadata.",
+      "choice": "prioritize",
+      "tradeoff": "Lower-consequence tasks and exploration become subordinate.",
+      "review": "Reverse if the closing is cancelled, complete, or materially rescheduled.",
+      "graph_label": "Protect the Au…"
     },
     {
-      "id": "evidence-wip-real-drop",
-      "label": "Eligible WIP 9→7",
-      "group": "evidence",
-      "summary": "Eligible open tasks fell from nine to seven despite one new task, so the decrease is attributable to real closures.",
-      "evidence_class": "calculated",
-      "source_refs": [
-        "aggregate:eligible-open-tasks-20260726=9",
-        "aggregate:eligible-open-tasks-20260727=7@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
-      ]
+      "id": "decision-rapid-return",
+      "label": "Use finite closure chains",
+      "group": "decision",
+      "summary": "Observed completion is bursty and sequential; rigid scheduling is explicitly recorded as ineffective.",
+      "choice": "adopt",
+      "tradeoff": "The unbroken-chain identity is replaced by rapid return and attributable closure.",
+      "review": "Keep only if closure sessions recur and context survives between them.",
+      "graph_label": "Use finite clo…"
     },
     {
-      "id": "evidence-irs-gate",
-      "label": "New IRS monitoring gate",
+      "id": "evidence-life-architecture",
+      "label": "360-degree life architecture",
       "group": "evidence",
-      "summary": "A new explicit IRS filing-status task appeared within hours of the tax completions.",
+      "summary": "The hierarchy explicitly spans exercise, diet, skill, identity, social, finances, work, quarter-scoped work, and strategy, with lead-domino and augmented-intelligence structures connecting them.",
       "evidence_class": "observed",
       "source_refs": [
-        "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+        "outliner:265639d6-5349-48c9-a1ad-f0b6c3eb3006@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:f4a42391-d9de-4bec-ae38-e4ec94343a5a@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:14024c34-8997-4a33-b5a4-adb96e939764@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
       ]
     },
     {
-      "id": "evidence-output-shift",
-      "label": "Output outside controller",
+      "id": "evidence-home-base-transition",
+      "label": "August 14 Home Base Transition",
       "group": "evidence",
-      "summary": "The three protected controller tasks remain open while the conditional tax chain completed.",
-      "evidence_class": "calculated",
-      "source_refs": [
-        "outliner:2db41016-0ca9-42b4-8acb-b7e4c6dd5711@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:e7e77f16-2155-45a3-a975-f37eafd6efe2@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
-      ]
-    },
-    {
-      "id": "evidence-cue-decoupling",
-      "label": "Output with zero cue coverage",
-      "group": "evidence",
-      "summary": "The sole daily cue covers 0/7 eligible tasks, yet tax execution occurred.",
-      "evidence_class": "calculated",
-      "source_refs": [
-        "outliner:schedule.__actionflow_daily_actions_v1__[0]@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
-      ]
-    },
-    {
-      "id": "evidence-tax-closures",
-      "label": "Three tax closures",
-      "group": "evidence",
-      "summary": "Three explicit Taxes tasks completed on 2026-07-26.",
+      "summary": "The Housing project body records an August 14 closing and document review; the schedule says “house document paperwork”; two Housing descendants were completed July 28. The user explicitly reactivated this scope as the immediate priority.",
       "evidence_class": "observed",
       "source_refs": [
-        "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+        "outliner:bc5dc69e-ab85-4b8c-a718-9c474cd04388@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:c0eb5252-9b48-4390-a2ac-e7cb842faa48@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:schedule.__actionflow_daily_actions_v1__@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
       ]
     },
     {
-      "id": "expert-decision-risk",
-      "label": "Decision & Risk Expert",
-      "group": "expert",
-      "summary": "Preserve optionality and prevent a completion burst from becoming overconfidence.",
-      "model_ids": [
-        "bayesian-updating",
-        "thinking-in-bets"
-      ],
-      "evidence_ids": [
-        "evidence-cue-decoupling",
-        "evidence-irs-gate",
-        "evidence-output-shift",
-        "evidence-tax-closures",
-        "evidence-wip-real-drop"
-      ],
-      "assumptions": [
-        "One burst changes the prior but is not a stable rate.",
-        "AR-11 and internet remain valid open obligations."
-      ],
-      "derivation": [
-        "Three closures falsify the strongest zero-action narrative.",
-        "Outcome location does not prove the prior controller was wrong when its gate is not due."
-      ],
-      "proposal": "Take the low-cost IRS information bet, then return to shared obligations; keep health as an exception signal.",
-      "risks": [
-        "Burst completion may be batch bookkeeping.",
-        "A hidden official deadline could change sequence."
-      ],
-      "falsified_by": "Repeated follow-up shows no attributable external progress or a documented higher-consequence exception appears."
-    },
-    {
-      "id": "expert-execution-systems",
-      "label": "Execution Systems Expert",
-      "group": "expert",
-      "summary": "Turn the changed portfolio into a short WIP=1 action path.",
-      "model_ids": [
-        "theory-of-constraints",
-        "ooda-loop",
-        "littles-law"
-      ],
-      "evidence_ids": [
-        "evidence-cue-decoupling",
-        "evidence-irs-gate",
-        "evidence-output-shift",
-        "evidence-tax-closures",
-        "evidence-wip-real-drop"
-      ],
-      "assumptions": [
-        "Only one hands-on action is active at a time.",
-        "External waiting may overlap after a request exists."
-      ],
-      "derivation": [
-        "The bottleneck advanced from starting tax work to reading its new state.",
-        "Real closure—not reclassification—reduced WIP."
-      ],
-      "proposal": "Run IRS status, AR-11, then internet; stop each block at a verified state or exact blocker.",
-      "risks": [
-        "Task titles omit deadlines and effort.",
-        "Intermediate work may not be recorded."
-      ],
-      "falsified_by": "The sequence repeatedly yields no new state while another documented bottleneck explains delay."
-    },
-    {
-      "id": "expert-orientation-control",
-      "label": "Orientation & Control Expert",
-      "group": "expert",
-      "summary": "Identify the new state and valid feedback signal after real closures.",
-      "model_ids": [
-        "information-theory",
-        "control-theory"
-      ],
-      "evidence_ids": [
-        "evidence-cue-decoupling",
-        "evidence-irs-gate",
-        "evidence-output-shift",
-        "evidence-tax-closures",
-        "evidence-wip-real-drop"
-      ],
-      "assumptions": [
-        "Task completion dates represent genuine user-recorded outcomes.",
-        "The IRS status task is the next tax feedback request."
-      ],
-      "derivation": [
-        "Three completed commands should leave the active controller.",
-        "The new portal check is one feedback sample, not a reopened chain."
-      ],
-      "proposal": "Read the IRS state once, save it, and issue no new tax command unless the state requires one.",
-      "risks": [
-        "Completed labels may lack external artifacts.",
-        "Portal access may be blocked."
-      ],
-      "falsified_by": "The portal state has no relation to the completed filing work or the old tasks reopen."
-    },
-    {
-      "id": "bayesian-updating",
-      "label": "Bayesian Updating",
-      "group": "model",
-      "summary": "Update the zero-output belief while withholding causal attribution for the burst.",
-      "family": "decision-risk",
-      "source": "stored: probabilistic-thinking",
-      "evidence_ids": [
-        "evidence-tax-closures",
-        "evidence-output-shift",
-        "evidence-cue-decoupling"
+      "id": "evidence-external-closure",
+      "label": "Eleven external closures across four domains",
+      "group": "evidence",
+      "summary": "Eleven now-in-scope native tasks carry completion dates: five Maintenance, three Taxes, two Housing, and one Parents trip; seven eligible tasks remain open elsewhere.",
+      "evidence_class": "calculated",
+      "source_refs": [
+        "outliner:5ac15ed2-8cc8-4b0c-b673-6bd2f880c79c@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:d3851b4e-44f8-4527-8844-416c979be62a@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:f29b6243-a8e4-4fa0-b724-d20a2a703dfd@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:3721153a-4d6f-49a6-ae04-a35513e27696@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:c0eb5252-9b48-4390-a2ac-e7cb842faa48@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
       ]
     },
     {
-      "id": "control-theory",
-      "label": "Control Theory",
+      "id": "evidence-identity-horizon",
+      "label": "Expansive identity horizon",
+      "group": "evidence",
+      "summary": "User-authored records repeatedly target hope, power, superior cognition, social presence, main-character energy, and a broad life reset.",
+      "evidence_class": "observed",
+      "source_refs": [
+        "outliner:c670d939-f76f-4a03-a05f-a6dac4bc7f52@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:cd2f40d0-1450-4872-b0dc-e7d4d967646d@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:90293561-3b11-4b04-9e35-53ed21e86255@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:f90cc3f7-5372-4c73-9372-8ab98ea38043@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ]
+    },
+    {
+      "id": "evidence-enacted-family-role",
+      "label": "Family care has an external completion trace",
+      "group": "evidence",
+      "summary": "The completed Parents trip body records seats, wheelchair follow-up, check-in, connectivity, address/job information, and practice with the user’s father.",
+      "evidence_class": "observed",
+      "source_refs": [
+        "outliner:3721153a-4d6f-49a6-ae04-a35513e27696@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:ecfe4daa-173d-4528-94b7-b08d91d54cc7@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ]
+    },
+    {
+      "id": "evidence-two-scale-rules",
+      "label": "Large ambition and small-horizon rules coexist",
+      "group": "evidence",
+      "summary": "The system contains both colossal-target language and explicit rules for the next hour, one small task per day, one-hour blocks, and easy-mode-first progression; fixed deadline planning is recorded as not working so far.",
+      "evidence_class": "observed",
+      "source_refs": [
+        "outliner:a1b52001-f102-41cd-a237-a49272a44989@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:aa3cd17e-ad8e-4e4e-a78f-d94798b50405@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:ea6baeaa-e72b-46a1-a11a-cb08e2771c15@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:a0327f4b-50ca-4299-9dec-c435c9816630@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:d4d01beb-5aa4-4b0c-b228-8f5c32df7dd8@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ]
+    },
+    {
+      "id": "evidence-research-pipeline",
+      "label": "Opportunity scanning lacks a consistent conversion path",
+      "group": "evidence",
+      "summary": "Braindump records include AI/startup research links and explicit systems for research→insight→action and practical mental-model digestion, but outcomes are not consistently linked back.",
+      "evidence_class": "observed",
+      "source_refs": [
+        "outliner:7f88d711-75b3-4d53-aab2-993b12f4ac1c@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:dde9dcb4-fd80-480e-9d98-18d0808c923e@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:26cdcfa5-7d1b-41d1-aa4a-b34a5b3ce8bd@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:9e7fc521-f9b9-4303-8f59-6c9f0f5c83b6@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ]
+    },
+    {
+      "id": "evidence-social-skill-options",
+      "label": "Social, skill, and work are designed but under-observed",
+      "group": "evidence",
+      "summary": "Social presence, communication, skill learning, work, fearlessness, and decision frameworks are explicit nodes, but the current mirror contains little outcome evidence for them.",
+      "evidence_class": "observed",
+      "source_refs": [
+        "outliner:cb38a704-491e-42bb-9325-989ca649ceab@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:3bcae972-9e38-4bbd-ab00-4d6217a3f90b@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:cacc01ab-701c-411b-9ec8-cb59f2ccba3a@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:d6135502-df76-48ff-824e-c8af2975b890@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:c0ba3ff8-87d9-4daf-8566-34df476e4a61@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ]
+    },
+    {
+      "id": "evidence-schedule-gap",
+      "label": "Strategy is richer than time allocation",
+      "group": "evidence",
+      "summary": "The schedule surface has one populated text cue and six blank entries, while the hierarchy contains 181 records and explicit next-hour and weekly-system ideas.",
+      "evidence_class": "calculated",
+      "source_refs": [
+        "outliner:schedule.__actionflow_daily_actions_v1__@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:42f9c65b-7c1d-4028-9a77-bbb5e402bb88@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:aa3cd17e-ad8e-4e4e-a78f-d94798b50405@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ]
+    },
+    {
+      "id": "evidence-habit-asymmetry",
+      "label": "Uneven and differently verified habit evidence",
+      "group": "evidence",
+      "summary": "The abstinence stream contains 24 consecutive auto-checked dates through July 28, exercise has nine manual entries ending July 8, and sleep/Taking action have zero entries. The auto-checked sequence does not independently verify adherence.",
+      "evidence_class": "calculated",
+      "source_refs": [
+        "outliner:habit:ca5f246b-4dda-4776-b0a6-93b449ff1ddd@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:habit:093f4471-0751-4b9a-8aa8-80f9b0dca62d@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:habit:57a51800-e46e-43ee-a2ff-e4c154c0bccb@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:habit:4a82c418-87eb-460b-a853-6b34f82f87d2@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ]
+    },
+    {
+      "id": "evidence-vitality-portfolio",
+      "label": "Vitality is distributed across many projects",
+      "group": "evidence",
+      "summary": "Brain, lifestyle, sexual health, lung, hair, exercise, sleep, diet, meditation, and rewire records form a broad vitality portfolio with more hypotheses than measured outcomes.",
+      "evidence_class": "observed",
+      "source_refs": [
+        "outliner:1c906712-1ea8-47d9-ae5c-6bb30591c460@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:0e7f9102-031a-44a3-9c11-34e3e9128a74@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:50c4625c-5b8f-4779-b370-6584196c0c68@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:4cf433ac-25e5-40c1-8306-054f8c4e9b6e@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:f2a858f1-c41a-4526-ab4f-fea25726a003@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:f6e7b5ce-e5f6-49d1-b561-a8d54993d6b2@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ]
+    },
+    {
+      "id": "expert-behavior-measurement",
+      "label": "Behavior & Measurement Expert",
+      "group": "expert",
+      "summary": "Separate repeated behavior, unmeasured states, completed external outcomes, and aspirational narratives without inferring causes.",
+      "model_ids": [
+        "bayesian-measurement",
+        "exploration-exploitation",
+        "feedback-control"
+      ],
+      "evidence_ids": [
+        "evidence-enacted-family-role",
+        "evidence-external-closure",
+        "evidence-habit-asymmetry",
+        "evidence-home-base-transition",
+        "evidence-identity-horizon",
+        "evidence-life-architecture",
+        "evidence-research-pipeline",
+        "evidence-schedule-gap",
+        "evidence-social-skill-options",
+        "evidence-two-scale-rules",
+        "evidence-vitality-portfolio"
+      ],
+      "assumptions": [
+        "Habit logs are evidence of recorded behavior, not a complete measure of lived behavior.",
+        "Task completion dates indicate recorded closure but not every external artifact."
+      ],
+      "derivation": [
+        "Eleven dated closures across Housing, Maintenance, Taxes, and Parents trip show real but concentrated external follow-through.",
+        "Tax steps closed as a burst after a prior review predicted continued carryover, so simple stalled-item forecasts are unreliable.",
+        "The abstinence sequence is auto-checked and therefore cannot be treated as verified adherence."
+      ],
+      "proposal": "Use finite external workflows—trigger, checklist, confirmation, brief reflection—and measure return speed rather than requiring an unbroken daily chain.",
+      "risks": [
+        "Logging gaps can be mistaken for absence.",
+        "A streak may not transfer across domains."
+      ],
+      "falsified_by": "The daily proof is logged but produces no meaningful state change, or logs diverge from independently observable outcomes."
+    },
+    {
+      "id": "expert-identity-options",
+      "label": "Identity & Options Expert",
+      "group": "expert",
+      "summary": "Translate self-authored identity, social, family, skill, and opportunity language into enacted roles and deliberate options.",
+      "model_ids": [
+        "signaling-theory",
+        "option-value",
+        "pareto-portfolio"
+      ],
+      "evidence_ids": [
+        "evidence-enacted-family-role",
+        "evidence-external-closure",
+        "evidence-habit-asymmetry",
+        "evidence-home-base-transition",
+        "evidence-identity-horizon",
+        "evidence-life-architecture",
+        "evidence-research-pipeline",
+        "evidence-schedule-gap",
+        "evidence-social-skill-options",
+        "evidence-two-scale-rules",
+        "evidence-vitality-portfolio"
+      ],
+      "assumptions": [
+        "Identity language is a stated aspiration, not a diagnosis or fixed trait.",
+        "Completed family logistics provide one observable example of role enactment."
+      ],
+      "derivation": [
+        "Parents-trip care, tax closure, maintenance, and Housing document progress are enacted stewardship signals.",
+        "The explicit FOMO/sacrifice node recognizes that not every valid arena can be active simultaneously."
+      ],
+      "proposal": "Anchor identity in reliable stewardship now, then choose one 30–90 day capability lane after the closing transition.",
+      "risks": [
+        "A role choice may be selected for image rather than personal value.",
+        "Current relationship and work evidence is sparse."
+      ],
+      "falsified_by": "The selected arena does not produce an observable artifact or no longer matches the user’s stated priorities."
+    },
+    {
+      "id": "expert-whole-life-systems",
+      "label": "Whole-Life Systems Expert",
+      "group": "expert",
+      "summary": "Map the full portfolio of identity, body, cognition, relationships, work, finance, opportunity, and execution across multiple timescales.",
+      "model_ids": [
+        "multi-timescale-control",
+        "pareto-portfolio"
+      ],
+      "evidence_ids": [
+        "evidence-enacted-family-role",
+        "evidence-external-closure",
+        "evidence-habit-asymmetry",
+        "evidence-home-base-transition",
+        "evidence-identity-horizon",
+        "evidence-life-architecture",
+        "evidence-research-pipeline",
+        "evidence-schedule-gap",
+        "evidence-social-skill-options",
+        "evidence-two-scale-rules",
+        "evidence-vitality-portfolio"
+      ],
+      "assumptions": [
+        "User-authored nodes express desired directions but not necessarily current outcomes.",
+        "A balanced portfolio needs explicit sacrifice because capacity is finite."
+      ],
+      "derivation": [
+        "The hierarchy contains a 360-degree domain architecture, not merely a task queue.",
+        "Housing is the highest-consequence current convergence point across home, finance, administration, calendar, and likely family/work capacity.",
+        "A seasonal portfolio can preserve whole-life scope while temporarily concentrating capacity."
+      ],
+      "proposal": "Use the August 14 Home Base Transition as the temporary organizing center, maintain minimum viable continuity elsewhere, then select one post-close capability lane.",
+      "risks": [
+        "The portfolio can become another planning artifact.",
+        "Sparse outcome evidence makes domain weights uncertain."
+      ],
+      "falsified_by": "A two-scale cadence adds planning but produces no observable evidence in body, agency, or role domains across two cycles."
+    },
+    {
+      "id": "bayesian-measurement",
+      "label": "Bayesian Measurement",
       "group": "model",
-      "summary": "Treat completions as output and the IRS status check as the next feedback sample.",
+      "summary": "Distinguish observed logs and outcomes from unknown, unlogged, or aspirational states.",
       "family": "orientation-control",
-      "source": "stored: warp-speed-execution / feedback control",
+      "source": "stored: probabilistic thinking / Bayesian updating",
       "evidence_ids": [
-        "evidence-tax-closures",
-        "evidence-irs-gate",
-        "evidence-output-shift"
+        "evidence-home-base-transition",
+        "evidence-habit-asymmetry",
+        "evidence-external-closure",
+        "evidence-social-skill-options"
       ]
     },
     {
-      "id": "information-theory",
-      "label": "Information Theory",
+      "id": "exploration-exploitation",
+      "label": "Exploration–Exploitation",
       "group": "model",
-      "summary": "Select the smallest observation that collapses the new filing-state uncertainty.",
-      "family": "orientation-control",
-      "source": "stored: warp-speed-execution / Shannon",
-      "evidence_ids": [
-        "evidence-tax-closures",
-        "evidence-irs-gate",
-        "evidence-cue-decoupling"
-      ]
-    },
-    {
-      "id": "littles-law",
-      "label": "Little's Law",
-      "group": "model",
-      "summary": "Keep hands-on WIP at one while completed work exits the active system.",
-      "family": "execution-systems",
-      "source": "stored: warp-speed-execution / queueing",
-      "evidence_ids": [
-        "evidence-wip-real-drop",
-        "evidence-output-shift"
-      ]
-    },
-    {
-      "id": "ooda-loop",
-      "label": "OODA Loop",
-      "group": "model",
-      "summary": "Reorient after the completion burst before issuing another tax action.",
-      "family": "execution-systems",
-      "source": "stored: warp-speed-execution / Boyd",
-      "evidence_ids": [
-        "evidence-tax-closures",
-        "evidence-irs-gate",
-        "evidence-output-shift"
-      ]
-    },
-    {
-      "id": "theory-of-constraints",
-      "label": "Theory of Constraints",
-      "group": "model",
-      "summary": "Move the constraint from initiation to clean outcome-to-feedback handoff.",
-      "family": "execution-systems",
-      "source": "stored: warp-speed-execution / Goldratt",
-      "evidence_ids": [
-        "evidence-tax-closures",
-        "evidence-irs-gate",
-        "evidence-wip-real-drop"
-      ]
-    },
-    {
-      "id": "thinking-in-bets",
-      "label": "Thinking in Bets",
-      "group": "model",
-      "summary": "Choose one reversible, information-rich status check and explicit stop rule.",
+      "summary": "Bound research and optimization while allocating enough effort to test one real-life intervention or role arena.",
       "family": "decision-risk",
-      "source": "stored: thinking-in-bets",
+      "source": "extended: multi-armed bandit decision theory",
       "evidence_ids": [
-        "evidence-irs-gate",
-        "evidence-output-shift"
+        "evidence-research-pipeline",
+        "evidence-vitality-portfolio",
+        "evidence-social-skill-options"
       ]
     },
     {
-      "id": "phase-horizon",
-      "label": "Build from verified wins",
-      "group": "phase",
-      "summary": "Use repeated closure evidence—not a single burst—to decide whether to expand daily execution capacity.",
-      "order": 3,
-      "horizon": "Horizon — 30–90 days",
-      "window": "2026-08-11 to 2026-10-25",
-      "status": "conditional",
-      "gate": "At least two cycles show attributable current-action outcomes before increasing active WIP.",
-      "graph_label": "Build from ver…"
+      "id": "feedback-control",
+      "label": "Feedback Control",
+      "group": "model",
+      "summary": "End each small action with a measurable state and update the next choice without making task throughput the life strategy.",
+      "family": "execution-systems",
+      "source": "stored: control theory / OODA",
+      "evidence_ids": [
+        "evidence-home-base-transition",
+        "evidence-two-scale-rules",
+        "evidence-external-closure",
+        "evidence-schedule-gap"
+      ]
+    },
+    {
+      "id": "multi-timescale-control",
+      "label": "Multi-Timescale Control",
+      "group": "model",
+      "summary": "Connect a large strategic reference state to next-hour actions and weekly feedback without collapsing one into the other.",
+      "family": "orientation-control",
+      "source": "extended: hierarchical control and temporal abstraction",
+      "evidence_ids": [
+        "evidence-home-base-transition",
+        "evidence-identity-horizon",
+        "evidence-two-scale-rules",
+        "evidence-schedule-gap"
+      ]
+    },
+    {
+      "id": "option-value",
+      "label": "Option Value",
+      "group": "model",
+      "summary": "Activate one reversible arena while preserving other aspirations without turning them into simultaneous WIP.",
+      "family": "decision-risk",
+      "source": "stored: thinking in bets / real options",
+      "evidence_ids": [
+        "evidence-home-base-transition",
+        "evidence-life-architecture",
+        "evidence-social-skill-options",
+        "evidence-enacted-family-role"
+      ]
+    },
+    {
+      "id": "pareto-portfolio",
+      "label": "Pareto Portfolio Design",
+      "group": "model",
+      "summary": "Allocate finite capacity across life domains and make sacrifices explicit instead of pretending every valid goal can be active.",
+      "family": "decision-risk",
+      "source": "extended: multi-objective optimization / Pareto frontier",
+      "evidence_ids": [
+        "evidence-home-base-transition",
+        "evidence-life-architecture",
+        "evidence-vitality-portfolio",
+        "evidence-social-skill-options"
+      ]
+    },
+    {
+      "id": "signaling-theory",
+      "label": "Signaling Theory",
+      "group": "model",
+      "summary": "Treat externally visible repeated behavior as stronger identity evidence than labels alone.",
+      "family": "identity-options",
+      "source": "extended: observable costly signals",
+      "evidence_ids": [
+        "evidence-identity-horizon",
+        "evidence-enacted-family-role",
+        "evidence-external-closure",
+        "evidence-home-base-transition"
+      ]
     },
     {
       "id": "phase-now",
-      "label": "Close the feedback loop",
+      "label": "Make closing reality visible",
       "group": "phase",
-      "summary": "Run IRS status, AR-11, then internet with WIP=1.",
+      "summary": "Establish the authoritative August 14 closing state and protect its critical path.",
       "order": 1,
       "horizon": "Now — 24–72 hours",
-      "window": "2026-07-27 to 2026-07-30",
+      "window": "2026-07-29 to 2026-08-01",
       "status": "active",
-      "gate": "Each task has a timestamped next state or exact blocker; tax continues only if the IRS state requires it.",
-      "graph_label": "Close the feed…"
+      "gate": "One source of truth names remaining items, owners, dates, funds/documents, and constraints.",
+      "graph_label": "Make closing r…"
     },
     {
       "id": "phase-cycle",
-      "label": "Protect one growth or health option",
+      "label": "Reach closing-ready while preserving continuity",
       "group": "phase",
-      "summary": "After the immediate gate, choose at most one queued option using documented timing, consequence of delay, reversibility, and information value.",
+      "summary": "Close the documented Housing chain; advance only essential external obligations and minimum viable foundations around it.",
       "order": 2,
       "horizon": "This cycle — two weeks",
-      "window": "2026-07-27 to 2026-08-10",
-      "status": "conditional",
-      "gate": "Activate one only when its decision evidence dominates the alternatives; otherwise preserve slack.",
-      "graph_label": "Protect one gr…"
+      "window": "2026-07-29 to 2026-08-12",
+      "status": "active",
+      "gate": "Closing readiness is externally verified before August 14; at least one separate continuity session occurs without expanding WIP.",
+      "graph_label": "Reach closing-…"
     },
     {
-      "id": "solution-feedback-handoff",
-      "label": "Close → Observe → Recommit",
+      "id": "phase-horizon",
+      "label": "Stabilize home base, then choose one capability lane",
+      "group": "phase",
+      "summary": "Complete post-close stabilization and select one growth lane while preserving other domains as options.",
+      "order": 3,
+      "horizon": "Horizon — 30–90 days",
+      "window": "2026-08-13 to 2026-10-27",
+      "status": "conditional",
+      "gate": "Home-base stabilization is visible; one capability lane, observable outcome, and explicit sacrifices are selected.",
+      "graph_label": "Stabilize home…"
+    },
+    {
+      "id": "solution-home-base-transition",
+      "label": "Protect the Home Base Transition",
       "group": "solution",
-      "summary": "All experts converge on a clean handoff: remove completed tax work from active attention, take one bounded IRS status sample, then recommit to AR-11 and internet. Decision-risk preserves the minority safeguard that one burst is not a stable base rate and health or official-deadline evidence can override.",
+      "summary": "Make the Home Base Transition the temporary organizing center through closing: establish the authoritative outstanding checklist, dates, owners, financial/document readiness, and post-close stabilization needs. Preserve minimum viable continuity elsewhere.",
+      "status": "current",
+      "confidence": "high",
+      "is_current": true
+    },
+    {
+      "id": "solution-continuity-engine",
+      "label": "Return Quickly and Finish Finite Chains",
+      "group": "solution",
+      "summary": "Use trigger → checklist → confirmation → brief reflection as the operating unit. Preserve the large direction, but judge continuity by rapid return and attributable states rather than an unbroken chain or rigid hourly plan.",
       "status": "current",
       "confidence": "medium-high",
       "is_current": true
     },
     {
-      "id": "solution-cue-as-attribution",
-      "label": "Cue Identity Is an Attribution Aid, Not a Prerequisite",
+      "id": "solution-seasonal-portfolio",
+      "label": "Seasonal Concentration, Whole-Life Preservation",
       "group": "solution",
-      "summary": "Keep task identity for attribution and review, but do not confuse a missing cue with inability to act. Useful output occurred with zero cue coverage.",
-      "status": "refined-solution",
+      "summary": "Use one seasonal emphasis—Housing now—while maintaining simple foundations and preserving other domains as inactive options. After stabilization, select one 30–90 day capability lane from health, work, skill, social, identity, or problem solving.",
+      "status": "current",
       "confidence": "medium",
-      "is_current": false
-    },
-    {
-      "id": "solution-measure-real-closure",
-      "label": "Real Closure, Not Display Cleanup",
-      "group": "solution",
-      "summary": "Count the three dated tax completions as real throughput and the new IRS task as new inflow. Preserve separate accounting for completion, exclusion, and new work.",
-      "status": "strengthened-solution",
-      "confidence": "medium",
-      "is_current": false
+      "is_current": true
     }
   ],
   "links": [
     {
       "source": "action-ar11",
+      "target": "phase-cycle",
+      "relation": "scheduled_in"
+    },
+    {
+      "source": "action-housing-readiness",
       "target": "phase-now",
       "relation": "scheduled_in"
     },
     {
-      "source": "action-internet",
-      "target": "phase-now",
+      "source": "action-irs-followup",
+      "target": "phase-cycle",
       "relation": "scheduled_in"
     },
     {
-      "source": "action-irs-status",
-      "target": "phase-now",
-      "relation": "scheduled_in"
-    },
-    {
-      "source": "bayesian-updating",
-      "target": "expert-decision-risk",
+      "source": "bayesian-measurement",
+      "target": "expert-behavior-measurement",
       "relation": "equips"
     },
     {
-      "source": "control-theory",
-      "target": "expert-orientation-control",
-      "relation": "equips"
+      "source": "decision-home-base-critical-path",
+      "target": "action-housing-readiness",
+      "relation": "executes"
     },
     {
-      "source": "decision-count-real-outcomes",
+      "source": "decision-home-base-critical-path",
+      "target": "phase-cycle",
+      "relation": "governs"
+    },
+    {
+      "source": "decision-home-base-critical-path",
+      "target": "phase-now",
+      "relation": "governs"
+    },
+    {
+      "source": "decision-rapid-return",
       "target": "action-ar11",
       "relation": "executes"
     },
     {
-      "source": "decision-count-real-outcomes",
-      "target": "action-internet",
+      "source": "decision-rapid-return",
+      "target": "action-irs-followup",
       "relation": "executes"
     },
     {
-      "source": "decision-count-real-outcomes",
-      "target": "action-irs-status",
-      "relation": "executes"
+      "source": "decision-rapid-return",
+      "target": "phase-cycle",
+      "relation": "governs"
     },
     {
-      "source": "decision-count-real-outcomes",
+      "source": "decision-seasonal-lane",
       "target": "phase-horizon",
       "relation": "governs"
     },
     {
-      "source": "decision-count-real-outcomes",
-      "target": "phase-now",
-      "relation": "governs"
-    },
-    {
-      "source": "decision-count-real-outcomes",
-      "target": "queue-d6135502-df76-48ff-824e-c8af2975b890",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-read-irs-state",
-      "target": "action-irs-status",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-read-irs-state",
-      "target": "phase-now",
-      "relation": "governs"
-    },
-    {
-      "source": "decision-return-shared-obligations",
-      "target": "action-ar11",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-return-shared-obligations",
-      "target": "action-internet",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-return-shared-obligations",
-      "target": "phase-cycle",
-      "relation": "governs"
-    },
-    {
-      "source": "decision-return-shared-obligations",
-      "target": "phase-now",
-      "relation": "governs"
-    },
-    {
-      "source": "decision-return-shared-obligations",
-      "target": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
-      "relation": "executes"
-    },
-    {
-      "source": "decision-return-shared-obligations",
+      "source": "decision-seasonal-lane",
       "target": "queue-6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
       "relation": "executes"
     },
     {
-      "source": "decision-return-shared-obligations",
-      "target": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
+      "source": "decision-seasonal-lane",
+      "target": "queue-d6135502-df76-48ff-824e-c8af2975b890",
       "relation": "executes"
     },
     {
-      "source": "evidence-cue-decoupling",
-      "target": "bayesian-updating",
+      "source": "evidence-enacted-family-role",
+      "target": "option-value",
       "relation": "frames"
     },
     {
-      "source": "evidence-cue-decoupling",
-      "target": "information-theory",
+      "source": "evidence-enacted-family-role",
+      "target": "signaling-theory",
       "relation": "frames"
     },
     {
-      "source": "evidence-irs-gate",
-      "target": "control-theory",
+      "source": "evidence-external-closure",
+      "target": "bayesian-measurement",
       "relation": "frames"
     },
     {
-      "source": "evidence-irs-gate",
-      "target": "information-theory",
+      "source": "evidence-external-closure",
+      "target": "feedback-control",
       "relation": "frames"
     },
     {
-      "source": "evidence-irs-gate",
-      "target": "ooda-loop",
+      "source": "evidence-external-closure",
+      "target": "signaling-theory",
       "relation": "frames"
     },
     {
-      "source": "evidence-irs-gate",
-      "target": "theory-of-constraints",
+      "source": "evidence-habit-asymmetry",
+      "target": "bayesian-measurement",
       "relation": "frames"
     },
     {
-      "source": "evidence-irs-gate",
-      "target": "thinking-in-bets",
+      "source": "evidence-home-base-transition",
+      "target": "bayesian-measurement",
       "relation": "frames"
     },
     {
-      "source": "evidence-output-shift",
-      "target": "bayesian-updating",
+      "source": "evidence-home-base-transition",
+      "target": "feedback-control",
       "relation": "frames"
     },
     {
-      "source": "evidence-output-shift",
-      "target": "control-theory",
+      "source": "evidence-home-base-transition",
+      "target": "multi-timescale-control",
       "relation": "frames"
     },
     {
-      "source": "evidence-output-shift",
-      "target": "littles-law",
+      "source": "evidence-home-base-transition",
+      "target": "option-value",
       "relation": "frames"
     },
     {
-      "source": "evidence-output-shift",
-      "target": "ooda-loop",
+      "source": "evidence-home-base-transition",
+      "target": "pareto-portfolio",
       "relation": "frames"
     },
     {
-      "source": "evidence-output-shift",
-      "target": "thinking-in-bets",
+      "source": "evidence-home-base-transition",
+      "target": "signaling-theory",
       "relation": "frames"
     },
     {
-      "source": "evidence-tax-closures",
-      "target": "bayesian-updating",
+      "source": "evidence-identity-horizon",
+      "target": "multi-timescale-control",
       "relation": "frames"
     },
     {
-      "source": "evidence-tax-closures",
-      "target": "control-theory",
+      "source": "evidence-identity-horizon",
+      "target": "signaling-theory",
       "relation": "frames"
     },
     {
-      "source": "evidence-tax-closures",
-      "target": "information-theory",
+      "source": "evidence-life-architecture",
+      "target": "option-value",
       "relation": "frames"
     },
     {
-      "source": "evidence-tax-closures",
-      "target": "ooda-loop",
+      "source": "evidence-life-architecture",
+      "target": "pareto-portfolio",
       "relation": "frames"
     },
     {
-      "source": "evidence-tax-closures",
-      "target": "theory-of-constraints",
+      "source": "evidence-research-pipeline",
+      "target": "exploration-exploitation",
       "relation": "frames"
     },
     {
-      "source": "evidence-wip-real-drop",
-      "target": "littles-law",
+      "source": "evidence-schedule-gap",
+      "target": "feedback-control",
       "relation": "frames"
     },
     {
-      "source": "evidence-wip-real-drop",
-      "target": "theory-of-constraints",
+      "source": "evidence-schedule-gap",
+      "target": "multi-timescale-control",
       "relation": "frames"
     },
     {
-      "source": "expert-decision-risk",
-      "target": "solution-cue-as-attribution",
+      "source": "evidence-social-skill-options",
+      "target": "bayesian-measurement",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-social-skill-options",
+      "target": "exploration-exploitation",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-social-skill-options",
+      "target": "option-value",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-social-skill-options",
+      "target": "pareto-portfolio",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-two-scale-rules",
+      "target": "feedback-control",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-two-scale-rules",
+      "target": "multi-timescale-control",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-vitality-portfolio",
+      "target": "exploration-exploitation",
+      "relation": "frames"
+    },
+    {
+      "source": "evidence-vitality-portfolio",
+      "target": "pareto-portfolio",
+      "relation": "frames"
+    },
+    {
+      "source": "expert-behavior-measurement",
+      "target": "solution-continuity-engine",
       "relation": "derives"
     },
     {
-      "source": "expert-decision-risk",
-      "target": "solution-feedback-handoff",
+      "source": "expert-behavior-measurement",
+      "target": "solution-home-base-transition",
       "relation": "derives"
     },
     {
-      "source": "expert-execution-systems",
-      "target": "solution-feedback-handoff",
+      "source": "expert-identity-options",
+      "target": "solution-seasonal-portfolio",
       "relation": "derives"
     },
     {
-      "source": "expert-execution-systems",
-      "target": "solution-measure-real-closure",
+      "source": "expert-whole-life-systems",
+      "target": "solution-continuity-engine",
       "relation": "derives"
     },
     {
-      "source": "expert-orientation-control",
-      "target": "solution-cue-as-attribution",
+      "source": "expert-whole-life-systems",
+      "target": "solution-home-base-transition",
       "relation": "derives"
     },
     {
-      "source": "expert-orientation-control",
-      "target": "solution-feedback-handoff",
+      "source": "expert-whole-life-systems",
+      "target": "solution-seasonal-portfolio",
       "relation": "derives"
     },
     {
-      "source": "expert-orientation-control",
-      "target": "solution-measure-real-closure",
-      "relation": "derives"
-    },
-    {
-      "source": "information-theory",
-      "target": "expert-orientation-control",
+      "source": "exploration-exploitation",
+      "target": "expert-behavior-measurement",
       "relation": "equips"
     },
     {
-      "source": "littles-law",
-      "target": "expert-execution-systems",
+      "source": "feedback-control",
+      "target": "expert-behavior-measurement",
       "relation": "equips"
     },
     {
-      "source": "ooda-loop",
-      "target": "expert-execution-systems",
+      "source": "multi-timescale-control",
+      "target": "expert-whole-life-systems",
       "relation": "equips"
     },
     {
-      "source": "queue-6ed76b92-aa75-4883-a573-33c6531fbca6",
-      "target": "phase-cycle",
-      "relation": "scheduled_in"
+      "source": "option-value",
+      "target": "expert-identity-options",
+      "relation": "equips"
+    },
+    {
+      "source": "pareto-portfolio",
+      "target": "expert-identity-options",
+      "relation": "equips"
+    },
+    {
+      "source": "pareto-portfolio",
+      "target": "expert-whole-life-systems",
+      "relation": "equips"
     },
     {
       "source": "queue-6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-      "target": "phase-cycle",
-      "relation": "scheduled_in"
-    },
-    {
-      "source": "queue-c18cb05c-d523-4268-9d9a-eff602c29149",
-      "target": "phase-cycle",
+      "target": "phase-horizon",
       "relation": "scheduled_in"
     },
     {
@@ -799,348 +904,319 @@
       "relation": "scheduled_in"
     },
     {
-      "source": "solution-cue-as-attribution",
-      "target": "decision-count-real-outcomes",
-      "relation": "selects"
-    },
-    {
-      "source": "solution-cue-as-attribution",
-      "target": "decision-return-shared-obligations",
-      "relation": "selects"
-    },
-    {
-      "source": "solution-feedback-handoff",
-      "target": "decision-read-irs-state",
-      "relation": "selects"
-    },
-    {
-      "source": "solution-feedback-handoff",
-      "target": "decision-return-shared-obligations",
-      "relation": "selects"
-    },
-    {
-      "source": "solution-measure-real-closure",
-      "target": "decision-count-real-outcomes",
-      "relation": "selects"
-    },
-    {
-      "source": "solution-measure-real-closure",
-      "target": "decision-read-irs-state",
-      "relation": "selects"
-    },
-    {
-      "source": "theory-of-constraints",
-      "target": "expert-execution-systems",
+      "source": "signaling-theory",
+      "target": "expert-identity-options",
       "relation": "equips"
     },
     {
-      "source": "thinking-in-bets",
-      "target": "expert-decision-risk",
-      "relation": "equips"
+      "source": "solution-continuity-engine",
+      "target": "decision-rapid-return",
+      "relation": "selects"
+    },
+    {
+      "source": "solution-home-base-transition",
+      "target": "decision-home-base-critical-path",
+      "relation": "selects"
+    },
+    {
+      "source": "solution-seasonal-portfolio",
+      "target": "decision-seasonal-lane",
+      "relation": "selects"
     }
   ],
   "syntheses": [
     {
-      "id": "solution-feedback-handoff",
-      "title": "Close → Observe → Recommit",
-      "model": "Information Theory · Control Theory · Bayesian Updating · Thinking in Bets · Theory of Constraints · OODA Loop · Little's Law",
-      "problem": "Real tax output changed the portfolio, but the old controller still describes a zero-output world and the new filing state is unknown.",
-      "solution": "All experts converge on a clean handoff: remove completed tax work from active attention, take one bounded IRS status sample, then recommit to AR-11 and internet. Decision-risk preserves the minority safeguard that one burst is not a stable base rate and health or official-deadline evidence can override.",
+      "id": "solution-home-base-transition",
+      "title": "Protect the Home Base Transition",
+      "model": "Pareto Portfolio Design · Multi-Timescale Control · Feedback Control",
+      "problem": "The most consequential current commitment was hidden by retired metadata and has no eligible open native task, despite an August 14 closing, a schedule cue, and two July 28 document completions.",
+      "solution": "Make the Home Base Transition the temporary organizing center through closing: establish the authoritative outstanding checklist, dates, owners, financial/document readiness, and post-close stabilization needs. Preserve minimum viable continuity elsewhere.",
       "context_applications": [
         {
           "source_type": "expert",
-          "source_id": "expert-orientation-control",
-          "label": "Orientation & Control",
-          "application": "The tax chain is finished in Outliner; the only current tax question is what the IRS now reports.",
+          "source_id": "expert-whole-life-systems",
+          "label": "Whole-Life Systems",
+          "application": "Housing connects home base, finance, administration, calendar capacity, and likely family/work logistics; it is a convergence point rather than one paperwork item.",
           "source_refs": [
-            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+            "outliner:bc5dc69e-ab85-4b8c-a718-9c474cd04388@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:c0eb5252-9b48-4390-a2ac-e7cb842faa48@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
           ],
-          "decision_implication": "Do not reopen completed steps; inspect the new state once."
+          "decision_implication": "Temporarily subordinate lower-consequence expansion work until closing readiness is externally verified."
         },
         {
           "source_type": "expert",
-          "source_id": "expert-decision-risk",
-          "label": "Decision & Risk",
-          "application": "Three closures are meaningful evidence of action, but not proof that every backlog will now flow or that fixed cueing caused it.",
+          "source_id": "expert-behavior-measurement",
+          "label": "Behavior & Measurement",
+          "application": "Two Housing document steps are complete, but completion labels do not establish the remaining closing state.",
           "source_refs": [
-            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:2db41016-0ca9-42b4-8acb-b7e4c6dd5711@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:e7e77f16-2155-45a3-a975-f37eafd6efe2@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+            "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:c0eb5252-9b48-4390-a2ac-e7cb842faa48@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
           ],
-          "decision_implication": "Buy information cheaply, then preserve the shared obligations and exception rules."
-        },
-        {
-          "source_type": "expert",
-          "source_id": "expert-execution-systems",
-          "label": "Execution Systems",
-          "application": "The immediate personal win is a handoff from finished tax work into one status artifact, followed by one named obligation at a time.",
-          "source_refs": [
-            "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:2db41016-0ca9-42b4-8acb-b7e4c6dd5711@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:e7e77f16-2155-45a3-a975-f37eafd6efe2@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
-          ],
-          "decision_implication": "Run IRS → AR-11 → internet with a verified state at each boundary."
+          "decision_implication": "Obtain one authoritative checklist/status rather than infer readiness from completed descendants."
         }
       ],
       "context_decision": {
-        "choice": "Sequence one IRS status check before AR-11 and internet.",
-        "why": "It closes the feedback loop created by the tax burst at low cost.",
-        "alternative": "Ignore the status check and proceed directly to AR-11; this preserves time but leaves filing state unknown.",
-        "review": "Stop tax work after the portal state is saved unless it names a specific next obligation."
+        "choice": "Make the August 14 Home Base Transition the immediate critical path.",
+        "why": "It has the highest documented consequence of delay and crosses several life domains.",
+        "alternative": "Continue the generic IRS/AR-11/internet queue while Housing remains implicit; that would optimize available task metadata instead of consequence.",
+        "review": "Reverse only if the transaction is cancelled, already closed, or the date materially changes."
       },
       "context_actions": [
         {
-          "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
-          "label": "Check IRS filing status",
+          "label": "Establish authoritative closing readiness",
           "state": "current",
-          "move": "Capture the current state and any exact next requirement.",
-          "done_when": "Timestamped status or exact access blocker exists."
-        },
-        {
-          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "label": "Advance AR-11",
-          "state": "current",
-          "move": "Move the form to a verified next state.",
-          "done_when": "Confirmation, verified progress, requirement, or exact blocker exists."
-        },
-        {
-          "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-          "label": "Resolve internet warning",
-          "state": "current",
-          "move": "Give the warning an owner and next state.",
-          "done_when": "Resolved warning or provider ticket exists."
+          "move": "Collect the lender/attorney/closing-party checklist, exact outstanding states, dates, owners, funds/documents, and calendar constraints.",
+          "done_when": "One authoritative source shows what is complete, what remains, who owns each item, and when it is due.",
+          "source_refs": [
+            "outliner:bc5dc69e-ab85-4b8c-a718-9c474cd04388@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:c0eb5252-9b48-4390-a2ac-e7cb842faa48@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+          ]
         }
       ],
-      "disagreement": "Control favors immediate feedback; decision-risk warns against treating one completion burst as a durable throughput shift. The sequence takes the feedback sample but preserves cautious forecasts.",
+      "disagreement": "The project metadata implied retirement, while body, schedule, recent completions, and the user’s explicit override establish current consequence. Substance now governs scope.",
+      "status": "current",
+      "confidence": "high",
+      "is_current": true,
+      "expert_ids": [
+        "expert-whole-life-systems",
+        "expert-behavior-measurement"
+      ],
+      "evidence_ids": [
+        "evidence-home-base-transition",
+        "evidence-life-architecture",
+        "evidence-external-closure",
+        "evidence-schedule-gap"
+      ]
+    },
+    {
+      "id": "solution-continuity-engine",
+      "title": "Return Quickly and Finish Finite Chains",
+      "model": "Multi-Timescale Control · Bayesian Measurement · Feedback Control",
+      "problem": "The identity system favors an unbroken daily jet stream and legacy fixed allocation, while observed outcomes arrive in episodic finite workflows and fixed schedules are explicitly recorded as not working.",
+      "solution": "Use trigger → checklist → confirmation → brief reflection as the operating unit. Preserve the large direction, but judge continuity by rapid return and attributable states rather than an unbroken chain or rigid hourly plan.",
+      "context_applications": [
+        {
+          "source_type": "expert",
+          "source_id": "expert-behavior-measurement",
+          "label": "Behavior & Measurement",
+          "application": "Parents trip and Taxes show sequential closure chains; the July tax burst followed a review that expected continued carryover.",
+          "source_refs": [
+            "outliner:3721153a-4d6f-49a6-ae04-a35513e27696@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+          ],
+          "decision_implication": "Design for recoverable bursts and record activation conditions before claiming a universal daily mechanism."
+        },
+        {
+          "source_type": "expert",
+          "source_id": "expert-whole-life-systems",
+          "label": "Whole-Life Systems",
+          "application": "Colossal targets can orient the system while one small task, next-hour thinking, and easy-mode-first control the immediate interval.",
+          "source_refs": [
+            "outliner:a1b52001-f102-41cd-a237-a49272a44989@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:ea6baeaa-e72b-46a1-a11a-cb08e2771c15@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:aa3cd17e-ad8e-4e4e-a78f-d94798b50405@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+          ],
+          "decision_implication": "Separate strategic direction from the small control unit instead of forcing one scale to do both jobs."
+        }
+      ],
+      "context_decision": {
+        "choice": "Replace never-break-the-chain with return-quickly-and-finish-the-next-finite-chain.",
+        "why": "It matches observed bursty closure and the user’s small-unit rules without lowering ambition.",
+        "alternative": "Add another rigid schedule or interpret a missed day as system failure.",
+        "review": "Keep if separate closure sessions recur and context survives between them."
+      },
+      "context_actions": [
+        {
+          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+          "label": "One bounded external workflow",
+          "state": "current",
+          "move": "Advance AR-11 only after the Housing closing state is visible.",
+          "done_when": "A confirmation, exact requirement, or exact blocker exists."
+        },
+        {
+          "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+          "label": "Honor a recorded feedback interval",
+          "state": "current",
+          "move": "Recheck IRS on or after the one-week interval recorded July 28.",
+          "done_when": "A dated status or exact next requirement exists."
+        }
+      ],
+      "disagreement": "Daily-chain language motivates continuity, but auto-checked habits and episodic outcomes do not verify a daily behavioral mechanism. Rapid return is the safer operational hypothesis.",
       "status": "current",
       "confidence": "medium-high",
       "is_current": true,
       "expert_ids": [
-        "expert-orientation-control",
-        "expert-decision-risk",
-        "expert-execution-systems"
+        "expert-whole-life-systems",
+        "expert-behavior-measurement"
       ],
       "evidence_ids": [
-        "evidence-tax-closures",
-        "evidence-irs-gate",
-        "evidence-wip-real-drop",
-        "evidence-output-shift"
+        "evidence-two-scale-rules",
+        "evidence-external-closure",
+        "evidence-enacted-family-role",
+        "evidence-schedule-gap",
+        "evidence-habit-asymmetry"
       ]
     },
     {
-      "id": "solution-cue-as-attribution",
-      "title": "Cue Identity Is an Attribution Aid, Not a Prerequisite",
-      "model": "Information Theory · Bayesian Updating",
-      "problem": "Prior guidance risked treating task-ID cue coverage as necessary for execution.",
-      "solution": "Keep task identity for attribution and review, but do not confuse a missing cue with inability to act. Useful output occurred with zero cue coverage.",
+      "id": "solution-seasonal-portfolio",
+      "title": "Seasonal Concentration, Whole-Life Preservation",
+      "model": "Pareto Portfolio Design · Option Value · Signaling Theory",
+      "problem": "The system represents nearly every life domain and legacy schedules allocate 75 nominal hours weekly, while current work/skill/social outcomes and actual time use are under-observed.",
+      "solution": "Use one seasonal emphasis—Housing now—while maintaining simple foundations and preserving other domains as inactive options. After stabilization, select one 30–90 day capability lane from health, work, skill, social, identity, or problem solving.",
       "context_applications": [
         {
           "source_type": "expert",
-          "source_id": "expert-orientation-control",
-          "label": "Information",
-          "application": "A task ID improves routing and auditability, but the completion burst proves action can originate elsewhere.",
+          "source_id": "expert-identity-options",
+          "label": "Identity & Options",
+          "application": "Reliable stewardship is already visible through family coordination, maintenance, Taxes, and Housing documents; this is stronger present identity evidence than deficit labels.",
           "source_refs": [
-            "evidence-cue-decoupling"
+            "outliner:3721153a-4d6f-49a6-ae04-a35513e27696@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:c670d939-f76f-4a03-a05f-a6dac4bc7f52@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
           ],
-          "decision_implication": "Use exact IDs in the new queue without making cue coverage a causal requirement."
+          "decision_implication": "Build identity from enacted stewardship now; choose a capability lane after the transition."
         },
         {
           "source_type": "expert",
-          "source_id": "expert-decision-risk",
-          "label": "Bayesian",
-          "application": "Observed output lowers belief in cue alignment as a necessary condition while leaving its helpfulness unresolved.",
+          "source_id": "expert-whole-life-systems",
+          "label": "Whole-Life Systems",
+          "application": "The FOMO/sacrifice node supplies the allocation rule the 360-degree architecture lacks.",
           "source_refs": [
-            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+            "outliner:c1dd0034-98b0-4468-a6c2-e4f391a7c4ac@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:265639d6-5349-48c9-a1ad-f0b6c3eb3006@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
           ],
-          "decision_implication": "Keep the schedule-alignment test pending through 2026-08-02."
+          "decision_implication": "Name the seasonal emphasis and the domains receiving minimum viable continuity."
         }
       ],
       "context_decision": {
-        "choice": "Use task IDs for attribution, not as a gate on valid outcomes.",
-        "why": "This preserves auditability without discarding real action outside the cue channel.",
-        "alternative": "Require schedule alignment before counting action; that would misclassify three completions.",
-        "review": "Weaken further if eligible artifacts repeatedly occur without aligned cues through 2026-08-02."
+        "choice": "Use Housing as the seasonal emphasis and postpone selection of one growth lane until closing stability is visible.",
+        "why": "This protects consequence without shrinking the whole-life map to administration.",
+        "alternative": "Run every bucket simultaneously or treat administration as the permanent life strategy.",
+        "review": "Select the next lane after closing readiness/stabilization or sooner if a higher-consequence event emerges."
       },
       "context_actions": [
         {
-          "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "label": "Use one exact task identity",
-          "state": "current",
-          "move": "Treat AR-11 as the selected obligation, independent of generic schedule text.",
-          "done_when": "Its next state is attributable to this task ID."
+          "label": "Select one post-close capability lane",
+          "state": "conditional",
+          "move": "After the transition is stable, choose one health, work, skill, social, identity, or problem-solving lane with an observable outcome.",
+          "done_when": "One lane, one outcome, one review signal, and explicit sacrifices are named.",
+          "source_refs": [
+            "outliner:265639d6-5349-48c9-a1ad-f0b6c3eb3006@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+            "outliner:c1dd0034-98b0-4468-a6c2-e4f391a7c4ac@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+          ]
         }
       ],
-      "disagreement": null,
-      "status": "refined-solution",
+      "disagreement": "Whole-life scope argues for domain coverage; finite capacity argues for concentration. Seasonal allocation preserves both.",
+      "status": "current",
       "confidence": "medium",
-      "is_current": false,
+      "is_current": true,
       "expert_ids": [
-        "expert-orientation-control",
-        "expert-decision-risk"
+        "expert-whole-life-systems",
+        "expert-identity-options"
       ],
       "evidence_ids": [
-        "evidence-cue-decoupling",
-        "evidence-tax-closures"
-      ]
-    },
-    {
-      "id": "solution-measure-real-closure",
-      "title": "Real Closure, Not Display Cleanup",
-      "model": "Control Theory · Theory of Constraints · Little's Law",
-      "problem": "Previous WIP declines were dominated by scope cleanup, so lower counts did not prove execution.",
-      "solution": "Count the three dated tax completions as real throughput and the new IRS task as new inflow. Preserve separate accounting for completion, exclusion, and new work.",
-      "context_applications": [
-        {
-          "source_type": "expert",
-          "source_id": "expert-orientation-control",
-          "label": "Control",
-          "application": "The 9→7 change has attributable inputs: three exits and one arrival.",
-          "source_refs": [
-            "aggregate:eligible-open-tasks-20260726=9",
-            "aggregate:eligible-open-tasks-20260727=7@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
-          ],
-          "decision_implication": "Strengthen the real-closure measurement model without claiming sustained flow."
-        },
-        {
-          "source_type": "expert",
-          "source_id": "expert-execution-systems",
-          "label": "Execution",
-          "application": "Completed tax steps leave active WIP; only the new status task enters. ",
-          "source_refs": [
-            "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-            "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
-          ],
-          "decision_implication": "Protect the net reduction by not reopening completed steps."
-        }
-      ],
-      "context_decision": {
-        "choice": "Treat the net WIP decline as real closure evidence.",
-        "why": "It is attributable to dated task completions, unlike earlier reclassification drops.",
-        "alternative": "Wait for more weeks before updating any insight; that would ignore a clear special-cause event.",
-        "review": "Strengthen further only if at least one current action also reaches a verified state this cycle."
-      },
-      "context_actions": [
-        {
-          "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
-          "label": "Preserve the closure handoff",
-          "state": "current",
-          "move": "Use only the new monitoring task for tax follow-up.",
-          "done_when": "The status is captured without reopening completed tasks."
-        }
-      ],
-      "disagreement": null,
-      "status": "strengthened-solution",
-      "confidence": "medium",
-      "is_current": false,
-      "expert_ids": [
-        "expert-orientation-control",
-        "expert-execution-systems"
-      ],
-      "evidence_ids": [
-        "evidence-tax-closures",
-        "evidence-wip-real-drop"
+        "evidence-life-architecture",
+        "evidence-identity-horizon",
+        "evidence-vitality-portfolio",
+        "evidence-social-skill-options",
+        "evidence-enacted-family-role",
+        "evidence-research-pipeline"
       ]
     }
   ],
   "decisions": [
     {
-      "id": "decision-read-irs-state",
-      "label": "Read the new filing state once",
+      "id": "decision-home-base-critical-path",
+      "label": "Protect the August 14 transition",
+      "choice": "prioritize",
+      "rationale": "Housing is the highest-consequence documented commitment and was hidden by stale scope metadata.",
+      "tradeoff": "Lower-consequence tasks and exploration become subordinate.",
+      "review": "Reverse if the closing is cancelled, complete, or materially rescheduled.",
+      "solution_ids": [
+        "solution-home-base-transition"
+      ]
+    },
+    {
+      "id": "decision-rapid-return",
+      "label": "Use finite closure chains",
+      "choice": "adopt",
+      "rationale": "Observed completion is bursty and sequential; rigid scheduling is explicitly recorded as ineffective.",
+      "tradeoff": "The unbroken-chain identity is replaced by rapid return and attributable closure.",
+      "review": "Keep only if closure sessions recur and context survives between them.",
+      "solution_ids": [
+        "solution-continuity-engine"
+      ]
+    },
+    {
+      "id": "decision-seasonal-lane",
+      "label": "Concentrate seasonally",
       "choice": "sequence",
-      "rationale": "One portal read completes the feedback loop after three tax closures.",
-      "tradeoff": "Consumes the first short block.",
-      "review": "Stop after the status and exact next requirement are saved.",
+      "rationale": "Whole-life ambition needs one temporary emphasis plus minimum viable continuity elsewhere.",
+      "tradeoff": "Most valid domains remain inactive options during closing.",
+      "review": "Choose the next capability lane after closing stabilization.",
       "solution_ids": [
-        "solution-feedback-handoff",
-        "solution-measure-real-closure"
-      ]
-    },
-    {
-      "id": "decision-return-shared-obligations",
-      "label": "Return to AR-11 and internet",
-      "choice": "protect",
-      "rationale": "They remain shared, eligible obligations after the prior lung-versus-Life-OS conflict is removed from the current queue.",
-      "tradeoff": "Health scheduling and growth work remain deferred absent an exception.",
-      "review": "Reverse for documented medical, safety, legal, financial, or explicit-user priority evidence.",
-      "solution_ids": [
-        "solution-feedback-handoff",
-        "solution-cue-as-attribution"
-      ]
-    },
-    {
-      "id": "decision-count-real-outcomes",
-      "label": "Count real outcomes wherever they occur",
-      "choice": "monitor",
-      "rationale": "The tax burst is valid evidence even though it missed the forecasted controller.",
-      "tradeoff": "Controller adherence and total output must be reported separately.",
-      "review": "At the next two-week review, compare selected-action outcomes with all eligible closures.",
-      "solution_ids": [
-        "solution-measure-real-closure",
-        "solution-cue-as-attribution"
+        "solution-seasonal-portfolio"
       ]
     }
   ],
   "actions": [
     {
-      "id": "action-irs-status",
-      "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
-      "label": "Check IRS filing status",
-      "timebox": "15 minutes",
-      "first_step": "Open the official IRS portal and navigate to filing status.",
-      "done_when": "Timestamped status, exact next requirement, or access blocker is saved.",
+      "id": "action-housing-readiness",
+      "label": "Establish authoritative closing readiness",
+      "source_refs": [
+        "outliner:bc5dc69e-ab85-4b8c-a718-9c474cd04388@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+        "outliner:c0eb5252-9b48-4390-a2ac-e7cb842faa48@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+      ],
+      "timebox": "45–60 minutes",
+      "first_step": "Open the latest lender, attorney, and closing-party communications plus the Housing project body.",
+      "done_when": "A single checklist states every remaining item, owner, due date, funds/document requirement, and closing/calendar constraint.",
       "decision_ids": [
-        "decision-read-irs-state",
-        "decision-count-real-outcomes"
+        "decision-home-base-critical-path"
       ],
       "status": "active-1"
     },
     {
       "id": "action-ar11",
       "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-      "label": "Advance AR-11",
+      "label": "Advance AR-11 after closing state is visible",
       "timebox": "25 minutes",
       "first_step": "Open the official AR-11 page with current details beside it.",
-      "done_when": "Confirmation, verified progress, exact requirement, or blocker is saved.",
+      "done_when": "Confirmation, verified progress, one exact requirement, or one exact blocker is saved.",
       "decision_ids": [
-        "decision-return-shared-obligations",
-        "decision-count-real-outcomes"
+        "decision-rapid-return"
       ],
       "status": "queued-2"
     },
     {
-      "id": "action-internet",
-      "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-      "label": "Resolve internet warning",
-      "timebox": "15 minutes",
-      "first_step": "Open the warning and record provider, account, and requested remedy.",
-      "done_when": "Warning is cleared or a provider ticket/response window is saved.",
+      "id": "action-irs-followup",
+      "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+      "label": "Recheck IRS after one week",
+      "timebox": "15 minutes on or after 2026-08-04",
+      "first_step": "On or after the recorded interval, open the same IRS status view.",
+      "done_when": "A dated status or exact next requirement is recorded without reopening completed tax steps.",
       "decision_ids": [
-        "decision-return-shared-obligations",
-        "decision-count-real-outcomes"
+        "decision-rapid-return"
       ],
-      "status": "queued-3"
+      "status": "scheduled-3"
     }
   ],
   "blueprint": {
-    "title": "Outcome-to-Feedback Blueprint",
-    "timeframe": "2026-07-27 to 2026-08-10",
-    "objective": "Preserve the tax closure gain, read the new state, and turn two shared obligations into verified outcomes.",
-    "current_constraint": "Clean handoff from completed work to the next information gate.",
+    "title": "Home Base Transition Blueprint",
+    "timeframe": "Now through the next 90 days",
+    "objective": "Protect the August 14 closing, preserve continuity across essential domains, then convert stewardship capacity into one chosen growth lane.",
+    "current_constraint": "The highest-consequence commitment was hidden by stale scope metadata and lacks an open native task/authoritative remaining-state checklist.",
     "operating_rules": [
-      "One hands-on task at a time",
-      "Completed tasks do not reenter without contrary evidence",
-      "Every block ends with a verified state or exact blocker",
-      "Only external waiting overlaps",
-      "Documented safety, medical, legal, financial, or explicit-user priority overrides sequence"
+      "Consequence before queue order",
+      "One authoritative closing checklist, not scattered assumptions",
+      "Return quickly and finish the next finite chain",
+      "Preserve minimum viable health, work, and relationship continuity during the transition",
+      "Tasks implement strategy but do not determine what is strategically visible",
+      "Professional/legal/financial evidence and changed closing facts override this sequence"
     ],
     "phases": [
       {
@@ -1148,85 +1224,74 @@
         "order": 1,
         "status": "active",
         "horizon": "Now — 24–72 hours",
-        "window": "2026-07-27 to 2026-07-30",
-        "title": "Close the feedback loop",
-        "decision": "Run IRS status, AR-11, then internet with WIP=1.",
+        "window": "2026-07-29 to 2026-08-01",
+        "title": "Make closing reality visible",
+        "decision": "Establish the authoritative August 14 closing state and protect its critical path.",
         "decision_ids": [
-          "decision-read-irs-state",
-          "decision-return-shared-obligations",
-          "decision-count-real-outcomes"
+          "decision-home-base-critical-path"
         ],
         "action_ids": [
-          "action-irs-status",
-          "action-ar11",
-          "action-internet"
+          "action-housing-readiness"
         ],
         "queue": [],
-        "gate": "Each task has a timestamped next state or exact blocker; tax continues only if the IRS state requires it."
+        "gate": "One source of truth names remaining items, owners, dates, funds/documents, and constraints."
       },
       {
         "id": "phase-cycle",
         "order": 2,
-        "status": "conditional",
+        "status": "active",
         "horizon": "This cycle — two weeks",
-        "window": "2026-07-27 to 2026-08-10",
-        "title": "Protect one growth or health option",
-        "decision": "After the immediate gate, choose at most one queued option using documented timing, consequence of delay, reversibility, and information value.",
+        "window": "2026-07-29 to 2026-08-12",
+        "title": "Reach closing-ready while preserving continuity",
+        "decision": "Close the documented Housing chain; advance only essential external obligations and minimum viable foundations around it.",
         "decision_ids": [
-          "decision-return-shared-obligations"
+          "decision-home-base-critical-path",
+          "decision-rapid-return"
         ],
-        "action_ids": [],
-        "queue": [
-          {
-            "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-            "label": "Schedule lung-health scan",
-            "depends_on": "documented professional urgency, lead time, or explicit priority override"
-          },
-          {
-            "task_id": "6ed76b92-aa75-4883-a573-33c6531fbca6",
-            "label": "Book NYC and Niagara flights",
-            "depends_on": "real travel timing, cost, and cancellation evidence"
-          },
-          {
-            "task_id": "c18cb05c-d523-4268-9d9a-eff602c29149",
-            "label": "Research latest hair-loss evidence",
-            "depends_on": "one bounded decision question"
-          }
+        "action_ids": [
+          "action-ar11",
+          "action-irs-followup"
         ],
-        "gate": "Activate one only when its decision evidence dominates the alternatives; otherwise preserve slack."
+        "queue": [],
+        "gate": "Closing readiness is externally verified before August 14; at least one separate continuity session occurs without expanding WIP."
       },
       {
         "id": "phase-horizon",
         "order": 3,
         "status": "conditional",
         "horizon": "Horizon — 30–90 days",
-        "window": "2026-08-11 to 2026-10-25",
-        "title": "Build from verified wins",
-        "decision": "Use repeated closure evidence—not a single burst—to decide whether to expand daily execution capacity.",
+        "window": "2026-08-13 to 2026-10-27",
+        "title": "Stabilize home base, then choose one capability lane",
+        "decision": "Complete post-close stabilization and select one growth lane while preserving other domains as options.",
         "decision_ids": [
-          "decision-count-real-outcomes"
+          "decision-seasonal-lane"
         ],
         "action_ids": [],
         "queue": [
           {
+            "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
+            "label": "Resolve one professionally grounded health question",
+            "depends_on": "closing stability plus professional urgency, lead time, or explicit user priority"
+          },
+          {
             "task_id": "d6135502-df76-48ff-824e-c8af2975b890",
-            "label": "Operationalize Tiger mode ON",
-            "depends_on": "rewrite its broad checklist into one user-chosen observable next state outside this read-only run"
+            "label": "Operationalize one identity behavior",
+            "depends_on": "identity becomes the explicitly chosen post-close capability lane"
           }
         ],
-        "gate": "At least two cycles show attributable current-action outcomes before increasing active WIP."
+        "gate": "Home-base stabilization is visible; one capability lane, observable outcome, and explicit sacrifices are selected."
       }
     ],
     "checkpoints": [
       {
-        "at": "2026-07-30",
-        "question": "What did the IRS report, and what verified state did AR-11 and internet reach?",
-        "decision": "Continue only obligations established by those facts."
+        "at": "2026-08-01",
+        "question": "Is there one authoritative closing checklist and any unowned/due-soon item?",
+        "decision": "Escalate the unowned or irreversible item before returning to generic queue order."
       },
       {
-        "at": "2026-08-10",
-        "question": "Did selected actions and total eligible closures both improve?",
-        "decision": "Strengthen the handoff model only if closure persists beyond the tax burst."
+        "at": "2026-08-12",
+        "question": "Is the closing externally ready for August 14, and what continuity survived around it?",
+        "decision": "Protect final closing/stabilization work; choose the post-close lane only when readiness is clear."
       }
     ]
   },
@@ -1234,147 +1299,204 @@
     "title": "Life Strategy Board",
     "timeframe": "Now through the next 90 days",
     "position": {
-      "headline": "Protect the breakthrough: turn a burst of closure into a repeatable finish–observe–choose rhythm.",
-      "summary": "Your Outliner no longer supports a zero-action story: three tax tasks closed in one day and a clean monitoring task appeared next. The strategic tension is that this output happened outside the protected queue, so the best move is neither celebration-as-certainty nor rigid loyalty to the old plan. Read the new tax state once, close two shared obligations, then invest recovered attention in one health or growth option.",
-      "momentum": "Special-cause positive: real closures reduced eligible WIP 9→7.",
-      "tension": "A completion burst changed reality, but one day is not yet a stable execution rate.",
-      "leverage": "A clean feedback handoff prevents completed work from remaining mentally active and turns every result into a better next choice.",
-      "confidence": "Medium-high on the state change; medium on whether it will repeat.",
+      "headline": "Protect the August 14 home-base transition—and use it as proof of the steward you are becoming.",
+      "summary": "Your Outliner is a whole-life reconstruction architecture, but the decisive present reality is an August 14 Housing closing that connects home, finance, administration, time, and future stability. Recent Taxes, Parents trip, Maintenance, and two Housing document completions show a pattern of consequential stewardship—not universal paralysis. The strategy is to make closing reality authoritative, operate through finite closure chains and rapid return, preserve minimum viable continuity elsewhere, then direct the freed capacity into one chosen 30–90 day capability lane.",
+      "momentum": "Eleven dated closures now span Housing, Maintenance, Taxes, and Parents trip; July shows bursty sequential follow-through rather than uniform daily execution.",
+      "tension": "The highest-consequence commitment had stale retired metadata and no open native task, while abundant identity and scheduling architecture could distract from closing reality.",
+      "leverage": "Turn Housing into a temporary whole-life convergence point, then convert demonstrated stewardship into one deliberately chosen growth lane.",
+      "confidence": "High that Housing is the immediate organizing center after the user override; medium on post-close lane selection because work, skill, social, and actual-time evidence remain sparse.",
       "source_refs": [
-        "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-        "aggregate:eligible-open-tasks-7@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+        "evidence-home-base-transition",
+        "evidence-life-architecture",
+        "evidence-external-closure",
+        "evidence-enacted-family-role",
+        "evidence-two-scale-rules",
+        "evidence-social-skill-options"
+      ]
+    },
+    "evidence_balance": {
+      "summary": "All 181 records were enumerated before action filtering. The board integrates project bodies, hierarchy, habits, schedule, notes, links/tags, completed trajectory, and task state across nine domains; Housing is active by explicit user override despite stale metadata.",
+      "evidence_classes": [
+        "project structure and bodies",
+        "non-task hierarchy",
+        "habit logs with verification quality",
+        "schedule allocation",
+        "notes and reflections",
+        "native links and tags",
+        "completed history",
+        "task state"
+      ],
+      "non_task_classes": [
+        "project structure and bodies",
+        "non-task hierarchy",
+        "habit logs with verification quality",
+        "schedule allocation",
+        "notes and reflections",
+        "native links and tags"
+      ],
+      "domains": [
+        "home base and housing",
+        "finance and administration",
+        "identity and agency",
+        "cognition and self-regulation",
+        "physical vitality",
+        "family and social life",
+        "work and skill growth",
+        "time and execution design",
+        "research travel and opportunity"
+      ],
+      "task_evidence_share": 0.18181818181818182,
+      "omitted_domains": [
+        "Partner/friendship outcomes are not represented in the exposed data",
+        "Actual time use, current work outcomes, and external closing artifacts remain unavailable",
+        "Unknown agent-note contexts and binary attachments remain unavailable through the API"
       ]
     },
     "winning_moves": [
       {
         "rank": 1,
-        "title": "Seal the tax win with one status read",
-        "move": "Check the IRS portal once, record the state, and continue tax work only if it names a real obligation.",
-        "why_now": "Three closures created a new information gate within hours.",
+        "title": "Make August 14 closing readiness authoritative",
+        "move": "Build one source of truth for every remaining Housing item, owner, date, fund/document requirement, and calendar constraint; protect it above generic queue order.",
+        "why_now": "Housing is the highest-consequence documented transition and was hidden only because metadata lagged reality.",
         "unlocks": [
-          "Confidence that the chain reached the outside world",
-          "A finite tax state instead of background uncertainty",
-          "Protection against reopening finished steps"
+          "Lower irreversible closing risk",
+          "A stable home base for future growth",
+          "Clear capacity and calendar decisions"
         ],
-        "tradeoff": "Uses one short block before other obligations.",
-        "timeframe": "Next 24 hours",
-        "win_condition": "Timestamped filing status or exact access blocker exists.",
-        "task_ids": [
-          "259d5a2c-2a92-4734-8027-49eb663c8486"
-        ],
+        "tradeoff": "Lower-consequence administration and optimization remain subordinate until readiness is verified.",
+        "timeframe": "Now through August 14",
+        "win_condition": "A closing party confirms readiness or every remaining item has an owner, due date, and verified next state.",
+        "task_ids": [],
         "source_refs": [
-          "evidence-tax-closures",
-          "evidence-irs-gate"
+          "evidence-home-base-transition",
+          "evidence-external-closure",
+          "evidence-schedule-gap"
         ],
         "model_ids": [
-          "information-theory",
-          "control-theory",
-          "ooda-loop"
+          "pareto-portfolio",
+          "multi-timescale-control",
+          "feedback-control"
         ]
       },
       {
         "rank": 2,
-        "title": "Convert the burst into two independent closures",
-        "move": "Advance AR-11, then resolve or ticket the internet warning; end each block at a verifiable state.",
-        "why_now": "A second life domain must move before the tax burst can count as repeatable throughput.",
+        "title": "Return quickly and finish the next finite chain",
+        "move": "Use trigger → checklist → confirmation → brief reflection. Judge momentum by attributable states and return speed, not a never-miss chain or a rigid hourly plan.",
+        "why_now": "Parents trip, Taxes, Maintenance, and Housing show sequential closure bursts; fixed schedules are recorded as not working, and the apparent abstinence streak is auto-checked.",
         "unlocks": [
-          "Evidence the rhythm transfers beyond Taxes",
-          "Administrative continuity",
-          "More reliable daily infrastructure"
+          "Continuity after interruptions",
+          "Context preserved between sessions",
+          "A mechanism grounded in observed outcomes"
         ],
-        "tradeoff": "Lung scheduling and expansion options stay deferred absent an exception.",
-        "timeframe": "Next 24–72 hours",
-        "win_condition": "Both tasks have confirmations, tickets, exact requirements, or precise blockers; at least one materially advances.",
+        "tradeoff": "You give up the emotionally clean story that momentum must look uniform every day.",
+        "timeframe": "Now through this cycle",
+        "win_condition": "Two separate closure sessions reach verified external states and leave a clear next-state record.",
         "task_ids": [
           "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-          "e7e77f16-2155-45a3-a975-f37eafd6efe2"
+          "259d5a2c-2a92-4734-8027-49eb663c8486"
         ],
         "source_refs": [
-          "evidence-output-shift",
-          "evidence-wip-real-drop"
+          "evidence-external-closure",
+          "evidence-enacted-family-role",
+          "evidence-two-scale-rules",
+          "evidence-habit-asymmetry"
         ],
         "model_ids": [
-          "theory-of-constraints",
-          "littles-law",
-          "thinking-in-bets"
+          "multi-timescale-control",
+          "bayesian-measurement",
+          "feedback-control"
         ]
       },
       {
         "rank": 3,
-        "title": "Exercise one option, not every ambition",
-        "move": "After the immediate gate, deliberately select at most one of lung scheduling, travel, or bounded hair research using real timing and consequence evidence.",
-        "why_now": "Your strategy needs expansion after maintenance, but activating every option would erase the new WIP gain.",
+        "title": "Use seasonal concentration without shrinking your life",
+        "move": "Let Housing be the temporary emphasis. Preserve simple health, work, and relationship continuity; after stabilization, select one capability lane and explicitly keep the others as options.",
+        "why_now": "The 360-degree map is valuable for coverage but legacy allocation exceeds observed capacity and outcome evidence.",
         "unlocks": [
-          "Growth without portfolio sprawl",
-          "A clear sacrifice decision",
-          "Protected slack"
+          "Whole-life scope without simultaneous WIP",
+          "Growth beyond administration after closing",
+          "Identity built from enacted stewardship"
         ],
-        "tradeoff": "Two valid options remain inactive by choice.",
-        "timeframe": "This cycle to 90 days",
-        "win_condition": "One option is explicitly active with a bounded outcome; the others remain intentionally preserved.",
-        "task_ids": [
-          "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-          "6ed76b92-aa75-4883-a573-33c6531fbca6",
-          "c18cb05c-d523-4268-9d9a-eff602c29149"
-        ],
+        "tradeoff": "Most valid aspirations remain consciously inactive during the transition.",
+        "timeframe": "30–90 days",
+        "win_condition": "Home base is stabilized and one capability lane has an observable outcome, review signal, and named sacrifices.",
+        "task_ids": [],
         "source_refs": [
-          "evidence-wip-real-drop"
+          "evidence-life-architecture",
+          "evidence-identity-horizon",
+          "evidence-vitality-portfolio",
+          "evidence-social-skill-options",
+          "evidence-enacted-family-role"
         ],
         "model_ids": [
-          "thinking-in-bets",
-          "bayesian-updating",
-          "littles-law"
+          "pareto-portfolio",
+          "option-value",
+          "signaling-theory"
         ]
       }
     ],
     "hidden_leverage": [
       {
-        "title": "Completion changes the right question",
-        "insight": "After three tax closures, the useful question changed from “how do I start?” to “what does the system report now?”",
-        "why_it_matters": "Staying in initiation mode after an outcome wastes the information the outcome created.",
-        "mechanism": "Feedback control retires completed commands and samples the new state before issuing another.",
-        "falsifier": "The status check provides no decision-relevant state or the tasks reopen because completion was only bookkeeping.",
+        "title": "Stewardship is already stronger identity evidence than deficit labels",
+        "insight": "Family coordination, taxes, maintenance, and Housing documents show reliability under consequence; these records coexist with self-critical power/status language.",
+        "why_it_matters": "You can build agency from demonstrated care and stewardship now rather than waiting to feel cognitively or socially “fixed.”",
+        "mechanism": "Signaling theory weights costly, externally consequential behavior more than aspiration labels.",
+        "falsifier": "The completion states lack external outcomes or the stewardship pattern does not recur.",
         "source_refs": [
-          "evidence-tax-closures",
-          "evidence-irs-gate"
+          "evidence-enacted-family-role",
+          "evidence-external-closure",
+          "evidence-identity-horizon",
+          "evidence-home-base-transition"
         ],
         "model_ids": [
-          "control-theory",
-          "information-theory",
-          "ooda-loop"
+          "signaling-theory",
+          "bayesian-measurement"
         ]
       },
       {
-        "title": "The old controller can miss progress without being useless",
-        "insight": "Zero of three selected actions closed, yet three other eligible tasks did; selected-action adherence and whole-life output are different metrics.",
-        "why_it_matters": "You can learn from a plan miss without erasing real progress or pretending the plan predicted it.",
-        "mechanism": "Bayesian updating separates outcome evidence from intervention attribution.",
-        "falsifier": "The tax completion labels lack real artifacts or later revert.",
+        "title": "Your effective rhythm may be sequential bursts, not daily uniformity",
+        "insight": "Taxes closed as a linked cluster after a review expected carryover; Parents trip also used a finite checklist. The data supports episodic closure, not yet a universal daily habit mechanism.",
+        "why_it_matters": "Designing for rapid return can preserve ambition without treating a missed day as identity failure.",
+        "mechanism": "Feedback control preserves next-state continuity across interrupted control intervals.",
+        "falsifier": "Separate closure sessions do not recur or context records fail to improve re-entry.",
         "source_refs": [
-          "evidence-output-shift",
-          "evidence-tax-closures"
+          "evidence-external-closure",
+          "evidence-enacted-family-role",
+          "evidence-habit-asymmetry"
         ],
         "model_ids": [
-          "bayesian-updating",
-          "thinking-in-bets"
+          "feedback-control",
+          "bayesian-measurement"
         ]
       },
       {
-        "title": "Real WIP reduction creates option value",
-        "insight": "The 9→7 decline is attributable to three exits and one arrival, so recovered attention can be allocated rather than merely relabeled.",
-        "why_it_matters": "The gain should buy either closure in another domain or one chosen expansion option—not automatic backlog refill.",
-        "mechanism": "Little’s Law lowers carrying inventory; Thinking in Bets preserves optionality by activating one choice.",
-        "falsifier": "Completed tax work reopens or the lower eligible count produces no usable attention across two cycles.",
+        "title": "Big direction and small control are complementary",
+        "insight": "Colossal targets can orient the season while the next hour, one small task, and easy-mode-first govern immediate execution.",
+        "why_it_matters": "You do not need to choose between ambition and small steps; you need each at its correct timescale.",
+        "mechanism": "Multi-timescale control separates reference state from immediate control action.",
+        "falsifier": "The two-scale structure increases planning overhead or produces no attributable progress.",
         "source_refs": [
-          "evidence-wip-real-drop"
+          "evidence-identity-horizon",
+          "evidence-two-scale-rules"
         ],
         "model_ids": [
-          "littles-law",
-          "thinking-in-bets",
-          "theory-of-constraints"
+          "multi-timescale-control",
+          "feedback-control"
+        ]
+      },
+      {
+        "title": "Housing can consolidate more than paperwork",
+        "insight": "A successful home-base transition can reduce uncertainty across finance, administration, calendar, environment, and future planning—if post-close stabilization is included.",
+        "why_it_matters": "The closing is a whole-life state transition, not merely a document deadline.",
+        "mechanism": "Pareto portfolio design concentrates temporary capacity where one outcome affects several domains.",
+        "falsifier": "The transaction is inactive or stabilization produces no meaningful reduction in cross-domain uncertainty.",
+        "source_refs": [
+          "evidence-home-base-transition",
+          "evidence-life-architecture"
+        ],
+        "model_ids": [
+          "pareto-portfolio",
+          "option-value"
         ]
       }
     ],
@@ -1383,92 +1505,104 @@
         "id": "now",
         "label": "Now",
         "window": "24–72 hours",
-        "objective": "Capture IRS state, advance AR-11, and resolve or ticket internet.",
+        "objective": "Make the August 14 closing state authoritative.",
         "moves": [
-          "Winning Move 1",
-          "Winning Move 2"
+          "Collect the lender/attorney/closing-party checklist",
+          "Name every remaining item, owner, date, funds/document requirement, and calendar constraint",
+          "Escalate any unowned or irreversible item"
         ],
-        "win_condition": "Three verified states or blockers; at least one non-tax task materially advances.",
-        "pivot_if": "Documented health, safety, legal, financial, or explicit-user priority evidence appears."
+        "win_condition": "One source of truth defines closing readiness and the exact gap.",
+        "pivot_if": "The transaction is cancelled, complete, rescheduled, or a closing professional identifies a different critical path."
       },
       {
         "id": "cycle",
         "label": "This Cycle",
         "window": "Two weeks",
-        "objective": "Test whether closure transfers beyond the tax burst while keeping active WIP at one.",
+        "objective": "Reach closing-ready while preserving essential continuity.",
         "moves": [
-          "Winning Move 2",
-          "Winning Move 3"
+          "Complete the documented Housing chain",
+          "Run at least one separate finite closure session for AR-11 or the dated IRS check",
+          "Maintain minimum viable vitality/work/relationship continuity without new architecture"
         ],
-        "win_condition": "At least two attributable current-action outcomes and one explicit option decision.",
-        "pivot_if": "The IRS creates a concrete obligation or repeated blockers identify a different constraint."
+        "win_condition": "Closing readiness is externally verified before August 14 and continuity survives outside the transition.",
+        "pivot_if": "A legal, financial, medical, family, or closing-party deadline carries greater consequence or delay cost."
       },
       {
         "id": "horizon",
         "label": "Horizon",
         "window": "30–90 days",
-        "objective": "Scale only the execution pattern that repeatedly produces verified external states.",
+        "objective": "Stabilize home base and convert stewardship capacity into one growth lane.",
         "moves": [
-          "Winning Move 3"
+          "Complete post-close stabilization",
+          "Choose one health, work, skill, social, identity, or problem-solving lane",
+          "Preserve unchosen domains as explicit options"
         ],
-        "win_condition": "One chosen health or growth option reaches a bounded outcome without rebuilding portfolio sprawl.",
-        "pivot_if": "Two cycles fail to reproduce closure or a dominant official deadline creates a critical path."
+        "win_condition": "One chosen capability lane produces an observable outcome while the home base remains stable.",
+        "pivot_if": "Post-close demands consume expected capacity or a higher-value time-sensitive opportunity emerges."
       }
     ],
     "pivot_signals": [
       {
-        "signal": "IRS portal names a specific action or unresolved filing issue.",
-        "meaning": "Tax remains active despite the three closures.",
-        "response": "Follow only the stated next obligation before expansion.",
+        "signal": "A closing professional confirms the August 14 transaction and names outstanding requirements.",
+        "meaning": "Housing remains the immediate critical path with an evidence-backed sequence.",
+        "response": "Execute and track that checklist above lower-consequence queue items.",
         "source_refs": [
-          "outliner:259d5a2c-2a92-4734-8027-49eb663c8486@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+          "evidence-home-base-transition"
         ]
       },
       {
-        "signal": "A clinician or provider supplies urgency, referral, or long lead-time evidence for the lung scan.",
-        "meaning": "Health may legitimately override the current sequence.",
-        "response": "Move the lung task forward and defer a lower-consequence option.",
+        "signal": "The closing is cancelled, complete, or materially rescheduled.",
+        "meaning": "The seasonal emphasis has changed.",
+        "response": "Remove Housing from immediate priority and re-rank the portfolio from current evidence.",
         "source_refs": [
-          "outliner:6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+          "evidence-home-base-transition"
         ]
       },
       {
-        "signal": "AR-11 or internet reaches a verified external state.",
-        "meaning": "The closure rhythm transferred beyond Taxes.",
-        "response": "Strengthen the handoff model and open one option slot.",
+        "signal": "Two separate finite workflows reach externally verified states.",
+        "meaning": "Rapid-return continuity is reproducing beyond one burst.",
+        "response": "Keep the workflow unit and cautiously transfer it to the chosen capability lane.",
         "source_refs": [
-          "outliner:2db41016-0ca9-42b4-8acb-b7e4c6dd5711@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-          "outliner:e7e77f16-2155-45a3-a975-f37eafd6efe2@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+          "evidence-external-closure",
+          "evidence-enacted-family-role"
         ]
       },
       {
-        "signal": "The three tax tasks reopen or lack corresponding external progress.",
-        "meaning": "The apparent burst may be bookkeeping rather than closure.",
-        "response": "Downgrade the insight and re-establish the actual tax state.",
+        "signal": "Professional evidence establishes medical urgency or long lead time.",
+        "meaning": "A health path now has greater decision value than its task wording alone provided.",
+        "response": "Advance that health question and deliberately defer a lower-consequence lane.",
         "source_refs": [
-          "outliner:0f5276b2-6ba2-4fef-8dcc-39551555e2c4@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-          "outliner:79f13db5-e1f2-40f4-95ca-7c2073a2f772@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-          "outliner:8329b464-dab9-4362-811c-dadf15a1cbdd@05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2"
+          "evidence-vitality-portfolio"
+        ]
+      },
+      {
+        "signal": "Post-close capacity is materially lower or higher than expected.",
+        "meaning": "The feasible 30–90 day portfolio has changed.",
+        "response": "Resize minimum viable continuity and select the capability lane using actual capacity.",
+        "source_refs": [
+          "evidence-home-base-transition",
+          "evidence-life-architecture"
         ]
       }
     ],
     "reasoning_provenance": {
-      "summary": "Observed state changes were routed independently through orientation/control, decision/risk, and execution-systems experts; causal claims remain bounded.",
-      "wiki_fingerprint": "05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
-      "evidence_scope": "Verified 180-node Outliner mirror, complete known-context notes, targeted full node pages, dashboard history, calibration, and 11 durable connections.",
+      "summary": "The verified whole-life map was analyzed before task filtering, independently challenged by three reviewers, corrected for auto-checked habit evidence, and updated after the user explicitly reactivated Housing.",
+      "wiki_fingerprint": "11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+      "evidence_scope": "Verified 181-node mirror: 163 non-task nodes, 18 task nodes, 10 attached bodies, 11 projects, four habit streams with verification metadata, ten notes, schedule, eight tags, native links, 11 in-scope completions, and prior-snapshot delta.",
       "model_ids": [
-        "information-theory",
-        "control-theory",
-        "bayesian-updating",
-        "thinking-in-bets",
-        "theory-of-constraints",
-        "ooda-loop",
-        "littles-law"
+        "multi-timescale-control",
+        "pareto-portfolio",
+        "bayesian-measurement",
+        "exploration-exploitation",
+        "option-value",
+        "signaling-theory",
+        "feedback-control"
       ],
       "uncertainty": [
-        "No prior immutable wiki snapshot was available; delta baseline uses the prior deployed run plus native timestamps.",
-        "Task completion dates do not prove external artifacts exist.",
-        "Unknown note contexts and binary attachments cannot be enumerated by the API."
+        "The external closing checklist and actual readiness are not mirrored.",
+        "Actual time use and current work/social outcomes are sparse.",
+        "Auto-checked habit dates do not independently verify adherence.",
+        "Unknown note contexts and binary attachments cannot be enumerated through the API."
       ]
     }
   }

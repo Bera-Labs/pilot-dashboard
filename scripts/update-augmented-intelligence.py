@@ -101,8 +101,9 @@ def validate(payload: dict) -> None:
     for index, action in enumerate(actions, 1):
         if not isinstance(action, dict):
             fail(f"top_actions[{index}] must be an object")
-        for key in ("task_id", "action", "time", "impact", "status", "first_step", "done_when", "fallback"):
+        for key in ("action", "time", "impact", "status", "first_step", "done_when", "fallback"):
             require(action, key, str)
+        require_action_anchor(action, f"top_actions[{index}]")
 
     forecast = require(payload, "forecast", dict)
     probabilities = []
@@ -136,6 +137,25 @@ def require_string_list(mapping: dict, key: str, owner: str) -> list[str]:
     return value
 
 
+def require_optional_string_list(mapping: dict, key: str, owner: str) -> list[str]:
+    value = require(mapping, key, list)
+    if not all(isinstance(item, str) and item.strip() for item in value):
+        fail(f"{owner}.{key} must contain only non-empty strings")
+    return value
+
+
+def require_action_anchor(mapping: dict, owner: str) -> str | None:
+    task_id = mapping.get("task_id")
+    if task_id is not None:
+        if not isinstance(task_id, str) or not task_id.strip():
+            fail(f"{owner}.task_id must be a nonblank string when provided")
+        return task_id
+    refs = mapping.get("source_refs")
+    if not isinstance(refs, list) or not refs or not all(isinstance(ref, str) and ref.strip() for ref in refs):
+        fail(f"{owner} without task_id must contain non-empty source_refs")
+    return None
+
+
 def require_strategy_text(mapping: dict, key: str, owner: str) -> str:
     value = require(mapping, key, str)
     if not value.strip():
@@ -155,6 +175,22 @@ def validate_life_strategy(
         require_strategy_text(position, key, "life_strategy.position")
     require_string_list(position, "source_refs", "life_strategy.position")
 
+    balance = require(strategy, "evidence_balance", dict)
+    require_strategy_text(balance, "summary", "life_strategy.evidence_balance")
+    evidence_classes = require_string_list(balance, "evidence_classes", "life_strategy.evidence_balance")
+    non_task_classes = require_string_list(balance, "non_task_classes", "life_strategy.evidence_balance")
+    domains = require_string_list(balance, "domains", "life_strategy.evidence_balance")
+    if len(set(evidence_classes)) < 4:
+        fail("life_strategy.evidence_balance requires at least four distinct evidence classes")
+    if len(set(non_task_classes)) < 2 or not set(non_task_classes).issubset(evidence_classes):
+        fail("life_strategy.evidence_balance requires at least two non-task classes drawn from evidence_classes")
+    if len(set(domains)) < 4:
+        fail("life_strategy.evidence_balance requires at least four materially analyzed domains")
+    task_share = require(balance, "task_evidence_share", (int, float))
+    if isinstance(task_share, bool) or not 0 <= task_share <= 0.5:
+        fail("life_strategy.evidence_balance.task_evidence_share must be between 0 and 0.5")
+    require_optional_string_list(balance, "omitted_domains", "life_strategy.evidence_balance")
+
     moves = require(strategy, "winning_moves", list)
     if not 1 <= len(moves) <= 3:
         fail("life_strategy.winning_moves must contain one to three moves")
@@ -168,7 +204,7 @@ def validate_life_strategy(
         for key in ("title", "move", "why_now", "tradeoff", "timeframe", "win_condition"):
             require_strategy_text(move, key, owner)
         require_string_list(move, "unlocks", owner)
-        move_tasks = require_string_list(move, "task_ids", owner)
+        move_tasks = require_optional_string_list(move, "task_ids", owner)
         require_references(owner, move_tasks, task_ids, "tasks")
         require_string_list(move, "source_refs", owner)
         move_models = require_string_list(move, "model_ids", owner)
@@ -341,23 +377,25 @@ def validate_intelligence_spec(spec: dict, payload: dict) -> None:
         for index, action in enumerate(context_actions):
             if not isinstance(action, dict):
                 fail(f"{row['id']}.context_actions[{index}] must be an object")
-            for key in ("task_id", "label", "state", "move", "done_when"):
+            for key in ("label", "state", "move", "done_when"):
                 require(action, key, str)
-            if action["task_id"] not in contextual_task_ids:
-                fail(f"{row['id']} context action references task outside current/conditional blueprint: {action['task_id']}")
+            task_id = require_action_anchor(action, f"{row['id']}.context_actions[{index}]")
+            if task_id is not None and task_id not in contextual_task_ids:
+                fail(f"{row['id']} context action references task outside current/conditional blueprint: {task_id}")
             if action["state"] not in {"current", "conditional"}:
                 fail(f"{row['id']} context action state must be current or conditional")
-            if action["state"] == "current" and action["task_id"] not in current_task_ids:
+            if task_id is not None and action["state"] == "current" and task_id not in current_task_ids:
                 fail(f"{row['id']} current context action must reference a current controller task")
-            if action["state"] == "conditional" and action["task_id"] not in conditional_task_ids:
+            if task_id is not None and action["state"] == "conditional" and task_id not in conditional_task_ids:
                 fail(f"{row['id']} conditional context action must reference a gated queue task")
     for row in decisions:
         for key in ("label", "rationale"):
             require(row, key, str)
         require_references(row["id"], require(row, "solution_ids", list), synthesis_ids, "solutions")
     for row in actions:
-        for key in ("label", "task_id", "timebox", "first_step", "done_when"):
+        for key in ("label", "timebox", "first_step", "done_when"):
             require(row, key, str)
+        require_action_anchor(row, row["id"])
         require_references(row["id"], require(row, "decision_ids", list), decision_ids, "decisions")
     for row in phases:
         require(row, "order", int)
@@ -372,10 +410,16 @@ def validate_intelligence_spec(spec: dict, payload: dict) -> None:
             for key in ("task_id", "label", "depends_on"):
                 require(queued, key, str)
 
-    spec_task_ids = {item["task_id"] for item in actions}
-    payload_task_ids = {item["task_id"] for item in payload["top_actions"]}
-    if len(spec_task_ids) != 3 or spec_task_ids != payload_task_ids:
-        fail("intelligence spec actions must match three unique analysis top_actions task IDs")
+    def anchor_key(item: dict) -> tuple[str, object]:
+        task_id = item.get("task_id")
+        if isinstance(task_id, str) and task_id:
+            return ("task", task_id)
+        return ("source", tuple(item.get("source_refs", [])))
+
+    spec_anchors = {anchor_key(item) for item in actions}
+    payload_anchors = {anchor_key(item) for item in payload["top_actions"]}
+    if len(spec_anchors) != 3 or spec_anchors != payload_anchors:
+        fail("intelligence spec actions must match three unique analysis top_actions anchors")
 
 
 
@@ -406,8 +450,14 @@ def strategy_text(value: dict) -> str:
 
 
 def canonical_markdown(payload: dict, spec: dict) -> str:
+    def anchor_label(action: dict) -> str:
+        task_id = action.get("task_id")
+        if isinstance(task_id, str) and task_id:
+            return f"`{task_id}`"
+        return "evidence-backed strategic action"
+
     actions = "\n".join(
-        f"{i}. **{a['action']}** (`{a['task_id']}`) — {a['time']}. "
+        f"{i}. **{a['action']}** ({anchor_label(a)}) — {a['time']}. "
         f"First: {a['first_step']} Done when: {a['done_when']} Fallback: {a['fallback']}"
         for i, a in enumerate(payload["top_actions"], 1)
     )

@@ -65,6 +65,13 @@ def require_string_list(mapping: dict[str, Any], key: str, owner: str) -> list[s
     return cast(list[str], value)
 
 
+def require_optional_string_list(mapping: dict[str, Any], key: str, owner: str) -> list[str]:
+    value = mapping.get(key)
+    if not isinstance(value, list) or not all(isinstance(item, str) and item.strip() for item in value):
+        fail(f"{owner}.{key} must be a list of non-empty strings")
+    return cast(list[str], value)
+
+
 def validate_life_strategy(
     strategy: Any,
     known_models: set[str],
@@ -82,6 +89,24 @@ def validate_life_strategy(
         require_text(position, key, "life_strategy.position")
     require_string_list(position, "source_refs", "life_strategy.position")
 
+    balance = strategy.get("evidence_balance")
+    if not isinstance(balance, dict):
+        fail("life_strategy.evidence_balance must be an object")
+    require_text(balance, "summary", "life_strategy.evidence_balance")
+    evidence_classes = require_string_list(balance, "evidence_classes", "life_strategy.evidence_balance")
+    non_task_classes = require_string_list(balance, "non_task_classes", "life_strategy.evidence_balance")
+    domains = require_string_list(balance, "domains", "life_strategy.evidence_balance")
+    if len(set(evidence_classes)) < 4:
+        fail("life_strategy.evidence_balance requires at least four distinct evidence classes")
+    if len(set(non_task_classes)) < 2 or not set(non_task_classes).issubset(evidence_classes):
+        fail("life_strategy.evidence_balance requires at least two non-task classes drawn from evidence_classes")
+    if len(set(domains)) < 4:
+        fail("life_strategy.evidence_balance requires at least four materially analyzed domains")
+    task_share = balance.get("task_evidence_share")
+    if isinstance(task_share, bool) or not isinstance(task_share, (int, float)) or not 0 <= task_share <= 0.5:
+        fail("life_strategy.evidence_balance.task_evidence_share must be between 0 and 0.5")
+    require_optional_string_list(balance, "omitted_domains", "life_strategy.evidence_balance")
+
     moves = require_list(strategy, "winning_moves")
     if not 1 <= len(moves) <= 3:
         fail("life_strategy.winning_moves must contain one to three moves")
@@ -95,7 +120,7 @@ def validate_life_strategy(
         for key in ("title", "move", "why_now", "tradeoff", "timeframe", "win_condition"):
             require_text(move, key, owner)
         require_string_list(move, "unlocks", owner)
-        task_ids = require_string_list(move, "task_ids", owner)
+        task_ids = require_optional_string_list(move, "task_ids", owner)
         require_refs(owner, task_ids, known_tasks, "tasks")
         require_string_list(move, "source_refs", owner)
         model_ids = require_string_list(move, "model_ids", owner)
@@ -186,10 +211,20 @@ def main() -> None:
     action_by_id = index_unique(actions, "action")
     index_unique(phases, "phase")
 
-    if len(actions) != 3 or len({row.get("task_id") for row in actions}) != 3:
-        fail("exactly three unique current task-backed actions are required")
+    if len(actions) != 3:
+        fail("exactly three current actions are required")
 
-    current_task_ids = {require_text(row, "task_id", row["id"]) for row in actions}
+    current_task_ids: set[str] = set()
+    for row in actions:
+        task_id = row.get("task_id")
+        if task_id is None:
+            require_string_list(row, "source_refs", row["id"])
+        elif not isinstance(task_id, str) or not task_id.strip():
+            fail(f"{row['id']}.task_id must be a nonblank string when provided")
+        elif task_id in current_task_ids:
+            fail(f"duplicate current action task_id: {task_id}")
+        else:
+            current_task_ids.add(task_id)
     conditional_task_ids: set[str] = set()
     for phase in phases:
         for queued in phase.get("queue", []):
@@ -297,16 +332,21 @@ def main() -> None:
         for action in context_actions:
             if not isinstance(action, dict):
                 fail(f"{row['id']}.context_actions must contain objects")
-            task_id = require_text(action, "task_id", row["id"])
+            task_id = action.get("task_id")
             state = require_text(action, "state", row["id"])
             for key in ("label", "move", "done_when"):
                 require_text(action, key, row["id"])
-            if task_id not in contextual_task_ids:
-                fail(f"{row['id']} context action references task outside the blueprint: {task_id}")
-            if state == "current" and task_id not in current_task_ids:
-                fail(f"{row['id']} current context action is not in the controller: {task_id}")
-            if state == "conditional" and task_id not in conditional_task_ids:
-                fail(f"{row['id']} conditional context action is not gated: {task_id}")
+            if task_id is None:
+                require_string_list(action, "source_refs", row["id"])
+            elif not isinstance(task_id, str) or not task_id.strip():
+                fail(f"{row['id']} context action task_id must be nonblank when provided")
+            else:
+                if task_id not in contextual_task_ids:
+                    fail(f"{row['id']} context action references task outside the blueprint: {task_id}")
+                if state == "current" and task_id not in current_task_ids:
+                    fail(f"{row['id']} current context action is not in the controller: {task_id}")
+                if state == "conditional" and task_id not in conditional_task_ids:
+                    fail(f"{row['id']} conditional context action is not gated: {task_id}")
             if state not in {"current", "conditional"}:
                 fail(f"{row['id']} context action state must be current or conditional")
         nodes.append(
@@ -350,6 +390,7 @@ def main() -> None:
                 "action",
                 row["done_when"],
                 task_id=row.get("task_id"),
+                source_refs=row.get("source_refs", []),
                 timebox=row.get("timebox"),
                 status=row.get("status"),
                 order=position,

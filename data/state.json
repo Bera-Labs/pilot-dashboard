@@ -2,12 +2,12 @@
   "mission_start": "2026-07-04T00:00:00",
   "metrics": {
     "wip": 7,
-    "completed": 7,
+    "completed": 11,
     "ooda_last": null,
     "avg_latency": null,
     "compound_velocity": 2.0,
-    "bottleneck": "The controller is slower to adapt than real execution: tax work closed and created a monitoring gate while the protected queue remained unchanged.",
-    "nightly_run": "2026-07-27",
+    "bottleneck": "The August 14 Home Base Transition lacks one authoritative remaining-state checklist and was hidden by stale retired metadata.",
+    "nightly_run": "2026-07-29",
     "detail": {
       "Lung health scan": 1,
       "maintenance": 2,
@@ -16,10 +16,16 @@
       "Taxes": 1,
       "Hairloss": 1
     },
-    "completed_detail": "Latest: three Taxes tasks completed on 2026-07-26; tracked cumulative completions: 7."
+    "completed_detail": "Eleven attributable in-scope completions: two Housing tasks on 2026-07-28, three Taxes tasks on 2026-07-26, one Parents trip task, and five Maintenance tasks."
   },
   "decisions": [],
   "activity_log": [
+    {
+      "time": "04:09:35",
+      "type": "AUGMENTED",
+      "run_id": "2026-07-29T04:09:35Z",
+      "message": "Fresh verified Outliner state: WIP=7 | Tracked completions=11 | Velocity=2.0"
+    },
     {
       "time": "05:20:30",
       "type": "AUGMENTED",
@@ -131,11 +137,11 @@
     }
   ],
   "momentum_analysis": {
-    "last_run": "2026-07-27T05:20:30Z",
+    "last_run": "2026-07-29T04:09:35Z",
     "compound_velocity": 2.0,
     "wip_count": 7,
-    "cumulative_completions": 7,
-    "completion_summary": "Latest: three Taxes tasks completed on 2026-07-26; tracked cumulative completions: 7.",
+    "cumulative_completions": 11,
+    "completion_summary": "Eleven attributable in-scope completions: two Housing tasks on 2026-07-28, three Taxes tasks on 2026-07-26, one Parents trip task, and five Maintenance tasks.",
     "wip_by_project": {
       "Lung health scan": 1,
       "maintenance": 2,
@@ -146,186 +152,194 @@
     },
     "action_completion_rate": 0.0,
     "bottleneck": {
-      "what": "The controller is slower to adapt than real execution: tax work closed and created a monitoring gate while the protected queue remained unchanged.",
-      "why": "Observed: three tax tasks completed and one new IRS-status task appeared, but AR-11, lung scheduling, and internet remain open. Calculated: eligible WIP fell from 9 to 7 through real closures. Inferred: the immediate constraint is now clean handoff from outcome to next information gate, not absence of all action.",
-      "unlocked_by": "Use the new IRS status check as a bounded feedback action, then return to the shared AR-11 and internet obligations; do not reopen completed tax steps.",
+      "what": "The August 14 Home Base Transition lacks one authoritative remaining-state checklist and was hidden by stale retired metadata.",
+      "why": "Observed: the Housing body records an August 14 closing, the schedule says house document paperwork, and two Housing descendants completed July 28. Calculated: 11 in-scope completions now span four domains. Inferred: the immediate constraint is closing-state visibility and ownership, while the broader operating challenge is continuity across finite workflows—not task quantity.",
+      "unlocked_by": "Make closing readiness authoritative, protect its critical path, preserve essential continuity, and choose one post-close capability lane.",
       "recurring": false,
-      "recurrence_count": 0
+      "recurrence_count": 1
     },
     "trajectories": {
-      "execution outcomes": {
-        "trend": "up-special-cause",
+      "home base transition": {
+        "trend": "active-critical",
+        "confidence": 0.99,
+        "delta": "Observed: August 14 closing body, schedule cue, and two Housing document completions on July 28; user explicitly reactivated scope."
+      },
+      "external stewardship": {
+        "trend": "strengthening",
         "confidence": 0.98,
-        "delta": "Observed: three explicit tax completions on 2026-07-26 versus zero eligible completions in the prior seven-day window."
+        "delta": "Calculated: 11 completions across Housing, Maintenance, Taxes, and Parents trip; July contains seven completions."
       },
-      "work inventory": {
-        "trend": "down-through-real-closure",
-        "confidence": 0.98,
-        "delta": "Calculated: eligible open tasks fell 9→7 despite one new IRS-status task."
+      "execution rhythm": {
+        "trend": "bursty-sequential",
+        "confidence": 0.88,
+        "delta": "Observed: linked tax and family workflows closed in clusters; uniform daily execution is not established."
       },
-      "controller fit": {
-        "trend": "misaligned-with-output",
-        "confidence": 0.95,
-        "delta": "Calculated: 0/3 controller tasks closed while 3/3 conditional tax tasks closed."
+      "habit evidence": {
+        "trend": "mixed-verification",
+        "confidence": 0.99,
+        "delta": "Observed: abstinence entries are auto-checked; exercise is sparse; sleep and Taking action are unlogged."
       },
-      "execution cue alignment": {
-        "trend": "still-misaligned-but-not-necessary",
+      "growth domains": {
+        "trend": "under-observed",
         "confidence": 0.9,
-        "delta": "Calculated: cue coverage remains 0/7, yet tax output occurred."
-      },
-      "habit measurement": {
-        "trend": "low-signal",
-        "confidence": 0.95,
-        "delta": "Observed: autoCheck extended one day; Taking action remains empty despite task completions."
+        "delta": "Observed: work, skill, social, identity, and health structures are broad, but outcome evidence remains sparse."
       }
     },
     "top_actions": [
       {
-        "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
-        "action": "Check the IRS portal and capture the updated filing status",
-        "time": "15 minutes in the next available 24-hour execution block",
-        "impact": "Converts the tax completion burst into one verified feedback state without reopening finished work.",
-        "status": "NEW",
-        "first_step": "Open the official IRS portal and navigate to the filing-status view.",
-        "done_when": "The current status, timestamp, and any stated next requirement are saved.",
-        "fallback": "Save the exact access or identity-verification blocker and the official recovery channel."
+        "source_refs": [
+          "outliner:bc5dc69e-ab85-4b8c-a718-9c474cd04388@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+          "outliner:44999be6-447c-4769-b77a-7f6ca922c187@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6",
+          "outliner:c0eb5252-9b48-4390-a2ac-e7cb842faa48@11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6"
+        ],
+        "action": "Establish authoritative August 14 closing readiness",
+        "time": "45–60 minutes in the next 24–72 hours",
+        "impact": "Protects the highest-consequence current transition across home, finance, administration, and calendar capacity.",
+        "status": "NEW-CRITICAL",
+        "first_step": "Open the latest lender, attorney, and closing-party communications plus the Housing body.",
+        "done_when": "One checklist states every remaining item, owner, due date, funds/document requirement, and constraint.",
+        "fallback": "Record the exact missing authority and contact the responsible closing party for the current checklist."
       },
       {
         "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-        "action": "Advance the AR-11 form to a verified next state",
-        "time": "25 minutes after the IRS check is done or bounded, within 24–72 hours",
-        "impact": "Returns attention to the shared administrative priority that both prior systems selected.",
+        "action": "Advance AR-11 after the closing state is visible",
+        "time": "25 minutes within this two-week cycle",
+        "impact": "Maintains one consequential external continuity chain without competing with Housing visibility.",
         "status": "RECURRING",
-        "first_step": "Open the official AR-11 page with current address and identity details beside it.",
-        "done_when": "Submission confirmation, verified progress, or one exact missing requirement is saved.",
-        "fallback": "Save the exact form blocker and official support channel."
+        "first_step": "Open the official AR-11 page with current details beside it.",
+        "done_when": "Confirmation, verified progress, one exact requirement, or one exact blocker is saved.",
+        "fallback": "Save the exact blocker and official support channel."
       },
       {
-        "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-        "action": "Resolve the internet warning or create a provider ticket",
-        "time": "15 minutes after AR-11 is done or bounded, within 24–72 hours",
-        "impact": "Removes a recurring reliability drag with a small externally verifiable outcome.",
-        "status": "RECURRING",
-        "first_step": "Open the warning and record the provider, account, and requested remedy.",
-        "done_when": "The warning is cleared or a ticket number and response window are saved.",
-        "fallback": "Save the warning and first available official support window."
+        "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+        "action": "Recheck IRS only after the recorded one-week interval",
+        "time": "15 minutes on or after 2026-08-04",
+        "impact": "Completes the tax feedback chain while respecting the recorded waiting period.",
+        "status": "SCHEDULED",
+        "first_step": "On or after the interval, open the same IRS status view.",
+        "done_when": "A dated status or exact next requirement is recorded.",
+        "fallback": "Save the exact access blocker and official recovery route."
       }
     ],
     "forecast": {
       "bear": {
-        "scenario": "None of the three selected actions reaches a verified next state by the next two-week review.",
-        "probability": 0.55
+        "probability": 0.35,
+        "scenario": "No authoritative closing checklist is established within 72 hours; the transition remains distributed across messages and assumptions."
       },
       "base": {
-        "scenario": "Exactly one selected action reaches a verified next state; the others remain open or yield bounded blockers.",
-        "probability": 0.35
+        "probability": 0.5,
+        "scenario": "Closing readiness becomes visible with named owners/dates, and at least one separate external workflow reaches a bounded state."
       },
       "bull": {
-        "scenario": "At least two selected actions reach verified next states, including the IRS status check.",
-        "probability": 0.1
+        "probability": 0.15,
+        "scenario": "The closing path is externally confirmed ready ahead of August 14 and both AR-11 and IRS reach verified next states without expanding WIP."
       }
     },
     "stem_strategy": {
       "euclidean": {
-        "evidence_class": "observed plus calculated",
-        "blocking_assumption": "The protected controller is the only valid measure of action.",
-        "reframe": "Separate decision quality from outcome location: tax completion is real even though it occurred outside the selected queue."
+        "evidence_class": "observed plus inferred",
+        "blocking_assumption": "Retired metadata and native task availability accurately define current strategic importance.",
+        "reframe": "Substance and consequence govern scope: Housing is active by body, schedule, recent completions, and explicit user override despite lacking an open task."
       },
       "probabilistic": {
-        "evidence_class": "calculated plus inferred",
-        "highest_ev_allocation": "Take one information-rich tax status sample, then return to shared obligations.",
-        "do_not_fund": "Do not infer that fixed cues caused the completion burst or that all administrative work will now flow."
+        "evidence_class": "observed plus calculated",
+        "highest_ev_allocation": "Reduce irreversible closing uncertainty first, then test rapid-return continuity and one post-close capability lane.",
+        "do_not_fund": "Do not treat auto-checked habits as verified behavior or completion clusters as proof of a universal daily mechanism."
       },
       "bets": {
-        "evidence_class": "inferred",
-        "decision": "Treat the IRS check as a low-cost option-preserving bet.",
-        "trigger": "Continue tax work only if the portal shows a specific obligation.",
-        "hedge": "Cap the check at 15 minutes and preserve safety or official-deadline overrides."
+        "evidence_class": "observed plus inferred",
+        "decision": "Concentrate temporarily on Housing while preserving other life domains as options.",
+        "trigger": "Closing readiness or status changes re-rank the seasonal portfolio.",
+        "hedge": "Maintain essential health, work, family, immigration, and tax continuity; professional evidence can override."
       },
       "warp_speed": {
-        "evidence_class": "observed plus inferred",
-        "constraint": "Outcome-to-feedback handoff.",
-        "sequence": "IRS status → AR-11 verified state → internet resolution/ticket.",
-        "parallelization": "Only external waiting may overlap; hands-on WIP remains one.",
-        "defer": "Keep lung scheduling, travel, hair research, and identity work outside the active queue absent a documented exception."
+        "evidence_class": "observed plus calculated",
+        "constraint": "Authoritative closing-state visibility and ownership.",
+        "sequence": "Closing checklist → close the finite Housing chain → stabilize home base → choose one capability lane.",
+        "parallelization": "Only minimum viable continuity and dated essential obligations run alongside closing.",
+        "defer": "Defer generic queue order, broad optimization, and simultaneous bucket activation."
       }
     },
     "patterns": [
-      "The tax portfolio crossed from a three-item completion burst into a single explicit monitoring gate within hours.",
-      "Three real closures occurred outside the protected three-action controller, while all controller tasks remained open.",
-      "Real tax closures reduced eligible inventory from nine to seven even after one new tax-monitoring task was added.",
-      "Useful execution occurred despite zero eligible-task coverage in the daily cue channel."
+      "Housing is a cross-domain state transition with an August 14 date, not a paperwork task.",
+      "Consequential stewardship is already visible across family, taxes, maintenance, and Housing.",
+      "Observed execution is bursty and sequential; daily uniformity and causal streak mechanisms are not established.",
+      "Colossal direction and small control units are complementary timescales.",
+      "The 360-degree architecture needs seasonal allocation and explicit sacrifice, not another fixed schedule.",
+      "Task availability can hide strategically important commitments; source-backed actions are therefore necessary."
     ],
-    "mantra": "Close the loop, read the new state, then choose again.",
+    "mantra": "Protect the transition. Finish the finite chain. Return quickly.",
     "data_sources": {
-      "outliner_wiki": "verified — 180/180 nodes, fingerprint 05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2, mutations 0",
-      "outliner_notes": "verified — 10 known-context notes; latest weekly review 2026-07-24",
-      "dashboard_state": "current local deployed repository state read",
-      "growth_history": "current through 2026-07-26 before apply",
-      "calibration": "before apply: total_runs 10, recurrence metric 8, three formal prediction rows",
-      "augmented_connections": "all 11 durable files plus canonical synthesis evaluated",
-      "sessions": "not needed for the primary evidence delta",
-      "honcho": "degraded — no query tool exposed; omitted"
+      "outliner_wiki": "verified — 181/181 nodes, 10 attached bodies, fingerprint 11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6, mutations 0; Housing explicitly reactivated by user",
+      "outliner_notes": "verified — 10 known-context notes across synthesis, timeline, and weekly-review",
+      "habits": "verified — four streams with complete exposed logs",
+      "schedule": "verified — one schedule channel, one populated cue, six blank entries",
+      "hierarchy_links_tags": "verified — full hierarchy, eight tags, and native links enumerated",
+      "previous_snapshot": "compared with 2026-07-27 fingerprint 05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2",
+      "dashboard_state": "current local production-aligned repository read before apply",
+      "calibration": "preserve historical counters and append this methodological rerun once",
+      "honcho": "not used; complete current Outliner evidence was sufficient",
+      "independent_review": "three-agent whole-life cartography, longitudinal analysis, and adversarial strategy challenge completed before final candidate"
     },
-    "evidence_summary": "Verified Outliner wiki fingerprint 05281fcaa2d459ab090d539e93d8c558c0e36e1a94f007bc068b7850499b7fc2: 180 nodes, 16 tasks, 7 eligible open tasks, three tax completions on 2026-07-26, one new IRS-status task, and zero Outliner mutations. Known note contexts are complete; unknown contexts and binary attachments remain API limitations.",
+    "evidence_summary": "Whole-life evidence map from verified fingerprint 11156453f12521c98b73259b7d0ec65dd4b999ebdd4853f528fbc54533c7e4f6: 181 nodes, 163 non-task nodes, 18 task nodes, 10 attached bodies, 11 projects, four habit streams with verification metadata, ten notes, schedule, eight tags, native links, 11 in-scope completed tasks, seven eligible open tasks, and zero Outliner mutations. Housing is active by explicit user override.",
     "confidence": 0.9,
     "previous_action_reconciliation": [
       {
-        "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
-        "status": "pending—not due",
-        "evidence": "Open before the 2026-07-27 noon gate."
+        "task_id": "housing-source-backed-transition",
+        "status": "reactivated-critical",
+        "evidence": "August 14 body, schedule cue, two July 28 completions, and explicit user override; no eligible open native task exists."
       },
       {
-        "task_id": "6f9639e7-dd02-4b3f-80f4-8d0417b8a8cd",
-        "status": "pending—not due; removed from current queue",
-        "evidence": "Open; latest Life OS explicitly placed it outside the cycle absent new professional urgency evidence."
+        "task_id": "259d5a2c-2a92-4734-8027-49eb663c8486",
+        "status": "checked—waiting",
+        "evidence": "Attached body says checked 2026-07-28 and check again after one week; remains open."
+      },
+      {
+        "task_id": "2db41016-0ca9-42b4-8acb-b7e4c6dd5711",
+        "status": "open-subordinate",
+        "evidence": "No completion date; remains consequential but subordinate until closing state is visible."
       },
       {
         "task_id": "e7e77f16-2155-45a3-a975-f37eafd6efe2",
-        "status": "pending—not due",
-        "evidence": "Open before the gate."
-      },
-      {
-        "task_id": "tax-conditional-chain",
-        "status": "3/3 completed",
-        "evidence": "0f5276b2-6ba2-4fef-8dcc-39551555e2c4, 79f13db5-e1f2-40f4-95ca-7c2073a2f772, and 8329b464-dab9-4362-811c-dadf15a1cbdd completed 2026-07-26."
+        "status": "open-not-selected",
+        "evidence": "No completion date; not selected because Housing, AR-11, and dated IRS feedback carry higher current consequence."
       }
     ],
     "focused_decisions": [
       {
         "rank": 1,
-        "choice": "sequence",
-        "support": "Tax sequence-to-monitor observation.",
-        "nearest_alternative": "Reopen completed tax steps or ignore the new status gate.",
-        "why_higher_ev": "One portal read buys maximum filing-state information at low cost.",
-        "opportunity_cost": "Uses the first 15-minute block.",
-        "review_stop": "Stop after the status and exact next requirement are captured.",
-        "outcome_signal": "Timestamped IRS status artifact."
+        "choice": "prioritize",
+        "support": "August 14 Housing body, schedule cue, two July 28 completions, and explicit user override.",
+        "nearest_alternative": "Keep generic task-controller order.",
+        "why_higher_ev": "Closing has the highest documented consequence and cross-domain impact.",
+        "opportunity_cost": "Lower-consequence admin and optimization are deferred.",
+        "review_stop": "Reverse if cancelled, complete, or rescheduled.",
+        "outcome_signal": "Authoritative checklist and externally verified readiness."
       },
       {
         "rank": 2,
-        "choice": "protect",
-        "support": "AR-11 is the remaining shared administrative priority.",
-        "nearest_alternative": "Keep the prior lung override without new urgency evidence.",
-        "why_higher_ev": "It resolves the prior policy conflict while preserving a health pivot signal.",
-        "opportunity_cost": "Lung scheduling stays deferred unless professional evidence changes priority.",
-        "review_stop": "Review after one bounded AR-11 block or a documented health exception.",
-        "outcome_signal": "AR-11 confirmation, verified progress, or exact blocker."
+        "choice": "adopt",
+        "support": "Bursty linked closures plus explicit evidence fixed schedules are not working.",
+        "nearest_alternative": "Require an unbroken daily chain or another fixed plan.",
+        "why_higher_ev": "Rapid return and finite workflows fit observed outcomes while preserving ambition.",
+        "opportunity_cost": "Uniform daily-momentum identity is weakened.",
+        "review_stop": "Reject if separate closure sessions do not recur.",
+        "outcome_signal": "Two separate workflows reach verified states with preserved context."
       },
       {
         "rank": 3,
         "choice": "sequence",
-        "support": "Internet remains a small recurring maintenance obligation.",
-        "nearest_alternative": "Open travel or research work immediately.",
-        "why_higher_ev": "A ticket or resolution creates an external owner and reduces reliability uncertainty.",
-        "opportunity_cost": "Growth options wait through the immediate horizon.",
-        "review_stop": "Stop at resolution, ticket, or exact blocker.",
-        "outcome_signal": "Cleared warning or provider ticket."
+        "support": "Whole-life architecture plus finite capacity and explicit sacrifice language.",
+        "nearest_alternative": "Activate all buckets simultaneously.",
+        "why_higher_ev": "Seasonal concentration protects consequence without shrinking whole-life ambition.",
+        "opportunity_cost": "Most growth arenas remain temporarily inactive.",
+        "review_stop": "Re-rank after closing stabilization or a higher-consequence event.",
+        "outcome_signal": "One post-close capability lane with observable outcome and named sacrifices."
       }
     ],
-    "velocity_delta": 1.0,
-    "velocity_trend": "up",
-    "wip_delta": -2
+    "velocity_delta": 0.0,
+    "velocity_trend": "flat",
+    "wip_delta": 0
   },
   "wiki_stats": {
     "superhuman_pages": 22,
@@ -334,5 +348,5 @@
     "stem_concepts": 7,
     "updated": "2026-07-04"
   },
-  "updated": "2026-07-27T05:20:30Z"
+  "updated": "2026-07-29T04:09:35Z"
 }
