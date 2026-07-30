@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/momentum.html", "destination": "/assets/momentum.html" },
+    { "source": "/three-times-wiser.html", "destination": "/assets/three-times-wiser.html" },
     { "source": "/index.html", "destination": "/assets/index.html" }
   ]
 }

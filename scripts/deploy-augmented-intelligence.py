@@ -18,11 +18,14 @@ ALLOWED = {
     "data/augmented-graph.json",
 }
 CODE_CHANGE_ALLOWED = {
+    "assets/three-times-wiser.html",
     "assets/momentum.html",
+    "index.html",
     "main.py",
     "scripts/deploy-augmented-intelligence.py",
     "scripts/generate-augmented-graph.py",
     "scripts/update-augmented-intelligence.py",
+    "vercel.json",
 }
 
 

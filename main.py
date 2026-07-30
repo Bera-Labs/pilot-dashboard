@@ -224,3 +224,8 @@ def momentum():
 @app.get("/masterplan.html")
 def masterplan():
     return FileResponse(ROOT / "assets" / "masterplan.html")
+
+
+@app.get("/three-times-wiser.html")
+def three_times_wiser():
+    return FileResponse(ROOT / "assets" / "three-times-wiser.html")
