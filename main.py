@@ -218,6 +218,7 @@ def dashboard():
     return FileResponse(ROOT / "index.html")
 
 @app.get("/momentum.html")
+@app.get("/assets/momentum.html")
 def momentum():
     return FileResponse(ROOT / "assets" / "momentum.html")
 
