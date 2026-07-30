@@ -227,5 +227,6 @@ def masterplan():
 
 
 @app.get("/three-times-wiser.html")
+@app.get("/assets/three-times-wiser.html")
 def three_times_wiser():
     return FileResponse(ROOT / "assets" / "three-times-wiser.html")
