@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="STEM LifeOS V1 — approved design plan only. No system implementation.">
+<title>STEM LIFEOS V1 // PLAN // SAI BERA</title>
+<style>
+  :root {
+    --bg: #0a0e14;
+    --surface: #131820;
+    --surface-2: #171e28;
+    --border: #1e2a3a;
+    --border-strong: #2b3c50;
+    --text: #b3c7d6;
+    --text-bright: #edf6fb;
+    --text-dim: #647588;
+    --accent: #39bae6;
+    --accent-soft: rgba(57, 186, 230, 0.10);
+    --green: #7fd962;
+    --green-soft: rgba(127, 217, 98, 0.10);
+    --yellow: #ffb454;
+    --yellow-soft: rgba(255, 180, 84, 0.10);
+    --red: #f26d78;
+    --red-soft: rgba(242, 109, 120, 0.10);
+    --purple: #b378d1;
+    --purple-soft: rgba(179, 120, 209, 0.10);
+    --mono: 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+    --sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    min-width: 1080px;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(57, 186, 230, 0.06), transparent 31%),
+      radial-gradient(circle at 92% 8%, rgba(179, 120, 209, 0.05), transparent 28%),
+      var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  .shell { width: 1180px; margin: 0 auto; padding: 34px 0 72px; }
+
+  .topbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .topbar h1 {
+    margin-top: 5px;
+    color: var(--text-bright);
+    font-family: var(--mono);
+    font-size: 21px;
+    letter-spacing: 2px;
+  }
+  .back-link {
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 7px 12px;
+    text-decoration: none;
+    transition: border-color .2s, color .2s;
+  }
+  .back-link:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.55fr .75fr;
+    gap: 24px;
+    margin: 30px 0 18px;
+  }
+  .hero-main, .hero-status {
+    background: linear-gradient(145deg, rgba(19, 24, 32, .97), rgba(15, 21, 29, .97));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .hero-main { padding: 34px 36px; border-left: 4px solid var(--accent); }
+  .hero-main h2 {
+    color: var(--text-bright);
+    font-size: 34px;
+    line-height: 1.14;
+    letter-spacing: -1px;
+    margin: 12px 0 16px;
+  }
+  .hero-main p { max-width: 760px; font-size: 15px; }
+  .hero-principle {
+    margin-top: 22px;
+    padding: 15px 18px;
+    background: var(--accent-soft);
+    border-left: 2px solid var(--accent);
+    color: var(--text-bright);
+    font-size: 14px;
+  }
+  .hero-principle strong { color: var(--accent); }
+
+  .hero-status { padding: 24px; }
+  .status-title {
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+  }
+  .status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+  .status-row:last-child { border-bottom: 0; }
+  .status-value { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: .5px; }
+  .approved { color: var(--green); }
+  .pending { color: var(--yellow); }
+  .blocked { color: var(--red); }
+  .static { color: var(--accent); }
+
+  .scope-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    background: var(--red-soft);
+    border: 1px solid rgba(242, 109, 120, .38);
+    border-radius: var(--radius);
+    color: var(--text-bright);
+    padding: 13px 18px;
+    margin-bottom: 18px;
+  }
+  .scope-banner strong {
+    color: var(--red);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  .scope-banner span { color: var(--text); font-size: 12px; }
+
+  .contents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 13px;
+    background: rgba(19, 24, 32, .84);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 30px;
+  }
+  .contents a {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .7px;
+    padding: 5px 9px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .contents a:hover { color: var(--accent); border-color: var(--accent); }
+
+  .section { scroll-margin-top: 18px; margin-top: 38px; }
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 17px;
+  }
+  .section-index {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .section h2 { color: var(--text-bright); font-size: 21px; letter-spacing: -.2px; }
+  .section-note { color: var(--text-dim); font-family: var(--mono); font-size: 9px; text-transform: uppercase; }
+  .lead { color: var(--text); font-size: 14px; max-width: 980px; margin-bottom: 16px; }
+  .lead strong { color: var(--text-bright); }
+
+  .formula {
+    background: #080c11;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: .4px;
+    padding: 18px 20px;
+    text-align: center;
+    margin: 17px 0;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 19px 20px;
+  }
+  .card h3 {
+    color: var(--text-bright);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .card p { color: var(--text); font-size: 12px; }
+  .card-label {
+    color: var(--accent);
+    display: block;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+  }
+  .card.accent { border-top: 3px solid var(--accent); }
+  .card.green { border-top: 3px solid var(--green); }
+  .card.yellow { border-top: 3px solid var(--yellow); }
+  .card.purple { border-top: 3px solid var(--purple); }
+
+  ul, ol { padding-left: 19px; }
+  li { margin: 6px 0; font-size: 12px; }
+  li::marker { color: var(--accent); }
+  .axioms {
+    counter-reset: axiom;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .axioms li {
+    counter-increment: axiom;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 13px 15px 13px 48px;
+    position: relative;
+    min-height: 72px;
+  }
+  .axioms li::before {
+    content: counter(axiom, decimal-leading-zero);
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .axioms strong { color: var(--text-bright); }
+
+  .architecture {
+    background: #080c11;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 22px;
+    margin: 18px 0;
+  }
+  .arch-top {
+    border: 1px solid rgba(179, 120, 209, .48);
+    background: var(--purple-soft);
+    border-radius: 5px;
+    color: var(--purple);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 10px;
+    text-align: center;
+  }
+  .arch-arrow { color: var(--text-dim); font-family: var(--mono); text-align: center; padding: 7px 0; }
+  .arch-flow {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr;
+    align-items: stretch;
+  }
+  .arch-node {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 78px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 12px;
+    text-align: center;
+  }
+  .arch-node strong { color: var(--text-bright); font-family: var(--mono); font-size: 10px; }
+  .arch-node span { color: var(--text-dim); font-size: 9px; margin-top: 4px; }
+  .arch-side-arrow { align-self: center; color: var(--accent); font-family: var(--mono); text-align: center; }
+  .feedback {
+    border: 1px dashed rgba(127, 217, 98, .4);
+    border-radius: 5px;
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 10px;
+    margin-top: 13px;
+    padding: 9px;
+    text-align: center;
+  }
+
+  .module-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .module {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .module-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+  .module-id {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    background: var(--accent-soft);
+    border: 1px solid rgba(57, 186, 230, .35);
+    border-radius: 4px;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .module h3 { color: var(--text-bright); font-size: 15px; line-height: 1.3; }
+  .module .question { color: var(--text-dim); font-family: var(--mono); font-size: 9px; margin-top: 3px; }
+  .module p, .module li { font-size: 12px; }
+
+  .expert-table, .decision-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 16px;
+  }
+  .expert-table th, .expert-table td,
+  .decision-table th, .decision-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+    font-size: 11px;
+  }
+  .expert-table th, .decision-table th {
+    color: var(--accent);
+    background: #0f141b;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+  }
+  .expert-table tr:last-child td, .decision-table tr:last-child td { border-bottom: 0; }
+  .expert-table td:first-child, .decision-table td:first-child { color: var(--text-bright); font-weight: 600; }
+
+  .protocol {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    counter-reset: protocol;
+  }
+  .protocol-step {
+    counter-increment: protocol;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    min-height: 122px;
+    padding: 16px;
+  }
+  .protocol-step::before {
+    content: counter(protocol, decimal-leading-zero);
+    display: block;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+  .protocol-step h3 { color: var(--text-bright); font-size: 13px; margin-bottom: 5px; }
+  .protocol-step p { font-size: 11px; color: var(--text); }
+
+  .loop {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .loop-step {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 14px 11px;
+    min-height: 92px;
+  }
+  .loop-step strong { color: var(--text-bright); display: block; font-family: var(--mono); font-size: 10px; margin-bottom: 5px; }
+  .loop-step span { color: var(--text-dim); font-size: 10px; }
+  .loop-step:nth-child(8), .loop-step:nth-child(9), .loop-step:nth-child(10) { border-color: rgba(127, 217, 98, .28); }
+
+  .cadence {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 11px;
+    margin-top: 14px;
+  }
+  .cadence-card {
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    border-radius: 5px;
+    padding: 14px;
+  }
+  .cadence-card strong { color: var(--text-bright); display: block; font-size: 12px; }
+  .cadence-card span { color: var(--text-dim); font-size: 10px; }
+
+  .board-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .board-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 17px;
+  }
+  .board-card h3 { color: var(--accent); font-family: var(--mono); font-size: 10px; letter-spacing: .7px; text-transform: uppercase; margin-bottom: 7px; }
+  .board-card p { font-size: 12px; }
+
+  .quality-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .quality-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 11px;
+    min-height: 68px;
+    padding: 13px 14px 13px 36px;
+    position: relative;
+  }
+  .quality-item::before { content: '✓'; position: absolute; left: 13px; color: var(--green); font-family: var(--mono); }
+
+  .boundary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .boundary-card {
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .boundary-card h3 { font-size: 14px; margin-bottom: 10px; }
+  .boundary-card.in { background: var(--green-soft); border: 1px solid rgba(127, 217, 98, .35); }
+  .boundary-card.in h3 { color: var(--green); }
+  .boundary-card.out { background: var(--red-soft); border: 1px solid rgba(242, 109, 120, .35); }
+  .boundary-card.out h3 { color: var(--red); }
+
+  .sequence { counter-reset: sequence; display: grid; gap: 9px; }
+  .sequence-step {
+    counter-increment: sequence;
+    display: grid;
+    grid-template-columns: 54px 1fr 170px;
+    gap: 14px;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 13px 16px;
+  }
+  .sequence-step::before {
+    content: 'S' counter(sequence);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .sequence-step strong { color: var(--text-bright); display: block; font-size: 13px; }
+  .sequence-step p { color: var(--text-dim); font-size: 10px; }
+  .sequence-state { color: var(--red); font-family: var(--mono); font-size: 9px; text-align: right; text-transform: uppercase; }
+
+  .follow-through {
+    margin-top: 44px;
+    background: linear-gradient(145deg, rgba(19, 24, 32, .98), rgba(13, 18, 25, .98));
+    border: 1px solid rgba(255, 180, 84, .38);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+  .follow-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .follow-header h2 { color: var(--text-bright); font-size: 22px; }
+  .follow-header p { color: var(--text-dim); font-size: 12px; max-width: 720px; margin-top: 5px; }
+  .awaiting-badge {
+    white-space: nowrap;
+    border: 1px solid rgba(255, 180, 84, .45);
+    border-radius: 4px;
+    color: var(--yellow);
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    padding: 6px 9px;
+  }
+
+  .question-list { display: grid; gap: 10px; }
+  .question-card {
+    display: grid;
+    grid-template-columns: 44px 1fr 190px;
+    gap: 15px;
+    background: #0e141b;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 15px;
+  }
+  .question-id { color: var(--yellow); font-family: var(--mono); font-size: 11px; font-weight: 700; }
+  .question-card h3 { color: var(--text-bright); font-size: 13px; margin-bottom: 3px; }
+  .question-card p { color: var(--text); font-size: 11px; }
+  .answer-shape { color: var(--text-dim); font-family: var(--mono); font-size: 9px; border-left: 1px solid var(--border); padding-left: 13px; }
+  .answer-shape strong { color: var(--accent); display: block; font-size: 8px; letter-spacing: .7px; text-transform: uppercase; margin-bottom: 3px; }
+
+  .reply-template {
+    margin-top: 17px;
+    background: #070b10;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+  .reply-template strong { color: var(--accent); display: block; font-family: var(--mono); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 9px; }
+  pre {
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+  }
+
+  .gates { margin-top: 24px; }
+  .gates h3 { color: var(--text-bright); font-size: 15px; margin-bottom: 11px; }
+  .gate {
+    display: grid;
+    grid-template-columns: 75px 1fr 150px;
+    gap: 15px;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding: 11px 3px;
+  }
+  .gate-id { color: var(--accent); font-family: var(--mono); font-size: 10px; font-weight: 700; }
+  .gate strong { color: var(--text-bright); display: block; font-size: 12px; }
+  .gate p { color: var(--text-dim); font-size: 10px; }
+  .gate-status { font-family: var(--mono); font-size: 9px; font-weight: 700; text-align: right; }
+  .gate-rule {
+    margin-top: 15px;
+    background: var(--red-soft);
+    border-left: 2px solid var(--red);
+    color: var(--text-bright);
+    font-size: 12px;
+    padding: 12px 14px;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 9px;
+    margin-top: 38px;
+    padding-top: 17px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">Pilot Dashboard / Strategic Design Document</div>
+      <h1>◆ STEM LIFEOS V1</h1>
+    </div>
+    <a class="back-link" href="/">Return to Dashboard</a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-main">
+      <span class="card-label">Personal Adaptive Strategy System</span>
+      <h2>A scientific operating architecture for drastic, compounding life change.</h2>
+      <p>This design externalizes strategic cognition: it converts values and evidence into models, decisions, plans, actions, outcomes, and learning. It is intended to evolve as evidence changes without allowing metrics, automation, or the system itself to become sovereign.</p>
+      <div class="hero-principle"><strong>Design correction:</strong> Do not become a person who serves a system. Become the sovereign operator of a scientific system that serves your values.</div>
+    </div>
+
+    <aside class="hero-status" aria-label="Plan status">
+      <div class="status-title">Document Control</div>
+      <div class="status-row"><span>Artifact</span><span class="status-value static">DESIGN PLAN</span></div>
+      <div class="status-row"><span>Plan page</span><span class="status-value approved">APPROVED</span></div>
+      <div class="status-row"><span>System implementation</span><span class="status-value blocked">NOT APPROVED</span></div>
+      <div class="status-row"><span>Next dependency</span><span class="status-value pending">SAI'S ANSWERS</span></div>
+      <div class="status-row"><span>Browser mode</span><span class="status-value static">READ ONLY</span></div>
+    </aside>
+  </section>
+
+  <div class="scope-banner">
+    <strong>PLAN ONLY — SYSTEM NOT IMPLEMENTED</strong>
+    <span>This page authorizes documentation visibility only. It does not authorize data collection, automation, system logic, Outliner changes, cron jobs, or autonomous action.</span>
+  </div>
+
+  <nav class="contents" aria-label="Page contents">
+    <a href="#mission">Mission</a>
+    <a href="#constitution">Constitution</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#modules">Modules</a>
+    <a href="#decision">Decision Protocol</a>
+    <a href="#loop">Operating Loop</a>
+    <a href="#outputs">V1 Outputs</a>
+    <a href="#quality">Quality Gates</a>
+    <a href="#boundaries">Boundaries</a>
+    <a href="#sequence">Design Sequence</a>
+    <a href="#follow-through">Follow-through</a>
+  </nav>
+
+  <section class="section" id="mission">
+    <div class="section-heading">
+      <div><div class="section-index">01 / Mission</div><h2>What the system exists to do</h2></div>
+      <div class="section-note">Values → Evidence → Action → Learning</div>
+    </div>
+    <p class="lead"><strong>Mission:</strong> Build a continuously evolving personal strategy system that turns whole-life evidence into high-quality choices and executable moves while preserving Sai's values, agency, safety, and ability to change direction.</p>
+    <div class="formula">VALUES → EVIDENCE → MODELS → DECISIONS → PLANS → ACTIONS → OUTCOMES → LEARNING</div>
+    <div class="grid-3">
+      <article class="card accent"><span class="card-label">Plan like chess</span><h3>Sequence and dependencies</h3><p>Model prerequisites, countermoves, resource conflicts, downstream consequences, and conditional branches.</p></article>
+      <article class="card yellow"><span class="card-label">Reason like poker</span><h3>Uncertainty and hidden information</h3><p>Use base rates, probabilities when defensible, asymmetric bets, option value, and explicit unknowns.</p></article>
+      <article class="card green"><span class="card-label">Learn like science</span><h3>Prediction and correction</h3><p>Form falsifiable hypotheses, run bounded experiments, reconcile outcomes, and retire failed models.</p></article>
+    </div>
+    <div class="card purple" style="margin-top:14px">
+      <span class="card-label">Objective portfolio — not one life score</span>
+      <p>The system should improve capability, health and resilience, agency, knowledge and judgment, financial and career optionality, relationships and social capital, meaningful impact, and compounding rate. These remain separate objectives on a Pareto frontier so one convenient metric cannot consume the whole life.</p>
+    </div>
+  </section>
+
+  <section class="section" id="constitution">
+    <div class="section-heading">
+      <div><div class="section-index">02 / Constitution</div><h2>The rules above optimization</h2></div>
+      <div class="section-note">Highest authority layer</div>
+    </div>
+    <p class="lead">Before the system can optimize anything, it must know what it is forbidden to sacrifice. The constitution will eventually hold Sai's values, anti-goals, non-negotiables, risk limits, and definitions of success.</p>
+    <ol class="axioms">
+      <li><strong>Sai retains sovereignty.</strong> The system recommends; Sai authorizes.</li>
+      <li><strong>Values outrank metrics.</strong> Measurements describe reality; they do not define what deserves a life.</li>
+      <li><strong>Evidence outranks narrative.</strong> Claims remain distinguishable from calculations, inferences, and unknowns.</li>
+      <li><strong>Decision quality differs from outcome quality.</strong> Luck must not teach the wrong lesson.</li>
+      <li><strong>Prefer reversible experiments.</strong> Buy information before making avoidable irreversible commitments.</li>
+      <li><strong>Attack the active constraint.</strong> Improving a non-constraint creates motion without system-level progress.</li>
+      <li><strong>Expose trade-offs.</strong> Every major recommendation names its nearest alternative and opportunity cost.</li>
+      <li><strong>No model is sacred.</strong> Confidence rises or falls through predictions, evidence, and outcomes.</li>
+      <li><strong>No hidden autonomy.</strong> The system cannot silently execute, change authority, or rewrite its constitution.</li>
+      <li><strong>Protect hard constraints.</strong> Health, legality, financial survival, relationships, and recovery capacity override speed.</li>
+    </ol>
+  </section>
+
+  <section class="section" id="architecture">
+    <div class="section-heading">
+      <div><div class="section-index">03 / Architecture</div><h2>Closed-loop personal strategy system</h2></div>
+      <div class="section-note">Auditable / adaptive / human-governed</div>
+    </div>
+    <p class="lead">The architecture separates evidence, interpretation, choice, execution, and learning. That separation prevents attractive stories from becoming facts and prevents individual outcomes from rewriting prior reasoning.</p>
+    <div class="architecture" aria-label="STEM LifeOS architecture diagram">
+      <div class="arch-top">STEM CONSTITUTION — VALUES, ANTI-GOALS, HARD CONSTRAINTS, AUTHORITY</div>
+      <div class="arch-arrow">↓ governs every transformation ↓</div>
+      <div class="arch-flow">
+        <div class="arch-node"><strong>EVIDENCE LEDGER</strong><span>Atomic facts, provenance, freshness, unknowns</span></div>
+        <div class="arch-side-arrow">→</div>
+        <div class="arch-node"><strong>STATE ESTIMATOR</strong><span>Current whole-life position and constraints</span></div>
+        <div class="arch-side-arrow">→</div>
+        <div class="arch-node"><strong>REASONING ENGINE</strong><span>Competing STEM expert models</span></div>
+        <div class="arch-side-arrow">→</div>
+        <div class="arch-node"><strong>DECISION + ACTION</strong><span>Rolling plan and observable moves</span></div>
+      </div>
+      <div class="feedback">OUTCOMES → CALIBRATION → HYPOTHESIS LIFECYCLE → MODEL AND STATE UPDATES ↺</div>
+    </div>
+    <div class="grid-2">
+      <article class="card"><span class="card-label">Evidence classes</span><ul><li><strong>Observed:</strong> directly recorded fact</li><li><strong>Calculated:</strong> reproducible transformation</li><li><strong>Inferred:</strong> interpretation with assumptions</li><li><strong>External:</strong> research, expert evidence, base rates</li><li><strong>Unknown:</strong> unavailable or unresolved information</li></ul></article>
+      <article class="card"><span class="card-label">Dynamic personal state</span><ul><li>Goals, values, commitments, opportunities</li><li>Capabilities, skills, resources, and demonstrated strengths</li><li>Time, energy, attention, money, and social support</li><li>Habits, schedule, environment, constraints, and dependencies</li><li>Past decisions, active hypotheses, uncertainty, and outcomes</li></ul></article>
+    </div>
+    <p class="lead" style="margin-top:14px">Life domains should be derived dynamically from evidence. They may appear, merge, split, become dormant, or become strategically dominant; a fixed task taxonomy must not define the whole person.</p>
+  </section>
+
+  <section class="section" id="modules">
+    <div class="section-heading">
+      <div><div class="section-index">04 / Modules</div><h2>Seven components of V1</h2></div>
+      <div class="section-note">Each has one irreducible job</div>
+    </div>
+    <div class="module-grid">
+      <article class="module"><div class="module-head"><div class="module-id">A</div><div><h3>Evidence Ledger</h3><div class="question">What is actually known?</div></div></div><p>Stores atomic observations with source, timestamp, freshness, evidence class, quality, and contradictions. Interpretations never masquerade as facts.</p></article>
+      <article class="module"><div class="module-head"><div class="module-id">B</div><div><h3>Dynamic State Model</h3><div class="question">What position is Sai currently in?</div></div></div><p>Maintains a bounded personal “digital twin” of resources, constraints, commitments, capabilities, opportunities, relationships, and uncertainty—without pretending to perfectly simulate a life.</p></article>
+      <article class="module"><div class="module-head"><div class="module-id">C</div><div><h3>Scientific Reasoning Engine</h3><div class="question">Which mechanisms best explain the position?</div></div></div><p>Routes serious observations through multiple relevant expert families, preserves disagreement, and rejects contributions that cannot trace to evidence or change a real choice.</p></article>
+      <article class="module"><div class="module-head"><div class="module-id">D</div><div><h3>Strategy and Move-Tree Engine</h3><div class="question">What moves could change the state?</div></div></div><p>Generates alternatives, includes no-action, maps dependencies and responses, compares optionality and downside, and keeps later branches conditional.</p></article>
+      <article class="module"><div class="module-head"><div class="module-id">E</div><div><h3>Decision Compiler</h3><div class="question">Which move deserves commitment?</div></div></div><p>Classifies decisions by impact and reversibility, exposes trade-offs, runs premortems, and defines review or reversal conditions before commitment.</p></article>
+      <article class="module"><div class="module-head"><div class="module-id">F</div><div><h3>Plan and Action Compiler</h3><div class="question">What exact move happens next?</div></div></div><p>Translates a decision into dependencies, a first physical or digital step, a bounded action, an observable done condition, and a fallback.</p></article>
+      <article class="module" style="grid-column:1 / -1"><div class="module-head"><div class="module-id">G</div><div><h3>Outcome-Learning Engine</h3><div class="question">What did reality teach the system?</div></div></div><p>Separates process quality from outcome quality, reconciles predictions, estimates the contribution of skill versus randomness, and strengthens, weakens, contradicts, generalizes, or retires hypotheses without deleting history.</p></article>
+    </div>
+
+    <table class="expert-table">
+      <thead><tr><th>Expert family</th><th>Core models</th><th>Contribution</th></tr></thead>
+      <tbody>
+        <tr><td>Orientation &amp; Control</td><td>Euclidean reasoning, systems thinking, control theory, information theory, statistical process control</td><td>Clarifies definitions and assumptions, identifies feedback, drift, delays, and decision-relevant information loss.</td></tr>
+        <tr><td>Decision &amp; Risk</td><td>Bayesian updating, expected utility, Thinking in Bets, real options, minimax, margin of safety, game theory</td><td>Handles uncertainty, base rates, asymmetric payoff, strategic actors, downside protection, and reversibility.</td></tr>
+        <tr><td>Execution Systems</td><td>Theory of Constraints, Little's Law, critical path, OODA, Amdahl's Law, Pareto frontier</td><td>Finds bottlenecks, controls WIP, sequences dependencies, and converts strategy into throughput without sacrificing protected values.</td></tr>
+        <tr><td>Scientific Learning</td><td>Experimental design, N-of-1 trials, causal diagrams, counterfactuals, calibration, falsification</td><td>Tests mechanisms, prevents causal overclaiming, evaluates forecasts, and evolves the model from outcomes.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="decision">
+    <div class="section-heading">
+      <div><div class="section-index">05 / Decision Protocol</div><h2>Different decisions receive different rigor</h2></div>
+      <div class="section-note">No bureaucracy for trivial choices</div>
+    </div>
+    <table class="decision-table">
+      <thead><tr><th>Decision class</th><th>Default treatment</th><th>Required protection</th></tr></thead>
+      <tbody>
+        <tr><td>Low-impact + reversible</td><td>Default rule or rapid checklist</td><td>Timebox; do not over-analyze.</td></tr>
+        <tr><td>High-impact + reversible</td><td>Bounded experiment</td><td>Success, failure, cost, and review signals.</td></tr>
+        <tr><td>Low-impact + irreversible</td><td>Deliberate review</td><td>Confirm necessity and nearest reversible substitute.</td></tr>
+        <tr><td>High-impact + irreversible</td><td>Full decision packet</td><td>Premortem, cooling period, outside expertise when appropriate, explicit approval.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="protocol" style="margin-top:14px">
+      <article class="protocol-step"><h3>Define</h3><p>State the real decision, desired outcome, protected values, constraints, and decision deadline.</p></article>
+      <article class="protocol-step"><h3>Establish Evidence</h3><p>Separate observations, calculations, inferences, external base rates, and unknowns.</p></article>
+      <article class="protocol-step"><h3>Generate Options</h3><p>Create genuine alternatives—including doing nothing or buying more information.</p></article>
+      <article class="protocol-step"><h3>Model Consequences</h3><p>Compare upside, downside, optionality, dependencies, second-order effects, and response branches.</p></article>
+      <article class="protocol-step"><h3>Challenge</h3><p>Run a premortem, seek disconfirming evidence, test reverse causality, and surface model disagreement.</p></article>
+      <article class="protocol-step"><h3>Select</h3><p>Choose the strongest risk-adjusted move and state why it dominates the nearest alternative.</p></article>
+      <article class="protocol-step"><h3>Pre-register</h3><p>Record confidence only when defensible, plus success, failure, pivot, stop, and reversal conditions.</p></article>
+      <article class="protocol-step"><h3>Compile</h3><p>Produce the first action, dependencies, bounded effort, observable completion, and fallback.</p></article>
+      <article class="protocol-step"><h3>Reconcile</h3><p>Judge the process with information available at the time; then update the model from outcomes.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="loop">
+    <div class="section-heading">
+      <div><div class="section-index">06 / Operating Loop</div><h2>Rolling-horizon control, not rigid life planning</h2></div>
+      <div class="section-note">Precise near-term / conditional long-term</div>
+    </div>
+    <p class="lead">The system should use model-predictive control: make the immediate moves precise, leave distant moves conditional, observe the new state, and replan whenever meaningful evidence changes.</p>
+    <div class="loop">
+      <div class="loop-step"><strong>01 OBSERVE</strong><span>Gather current evidence.</span></div>
+      <div class="loop-step"><strong>02 ESTIMATE</strong><span>Construct the best current state.</span></div>
+      <div class="loop-step"><strong>03 ORIENT</strong><span>Find changes, contradictions, and constraints.</span></div>
+      <div class="loop-step"><strong>04 GENERATE</strong><span>Create multiple moves and no-action.</span></div>
+      <div class="loop-step"><strong>05 CHALLENGE</strong><span>Stress-test models and assumptions.</span></div>
+      <div class="loop-step"><strong>06 DECIDE</strong><span>Select the risk-adjusted choice.</span></div>
+      <div class="loop-step"><strong>07 COMPILE</strong><span>Convert choice into an action packet.</span></div>
+      <div class="loop-step"><strong>08 ACT</strong><span>Create an observable external result.</span></div>
+      <div class="loop-step"><strong>09 MEASURE</strong><span>Compare predicted and actual change.</span></div>
+      <div class="loop-step"><strong>10 UPDATE</strong><span>Revise state, strategy, and confidence.</span></div>
+    </div>
+    <div class="cadence">
+      <div class="cadence-card"><strong>Event-driven</strong><span>Consequential decisions when they arise</span></div>
+      <div class="cadence-card"><strong>Daily</strong><span>State check and next high-leverage move</span></div>
+      <div class="cadence-card"><strong>Weekly / Biweekly</strong><span>Tactical reconciliation and replanning</span></div>
+      <div class="cadence-card"><strong>Quarterly</strong><span>Strategy portfolio and constitutional review</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="outputs">
+    <div class="section-heading">
+      <div><div class="section-index">07 / V1 Outputs</div><h2>One compact Life Strategy Board</h2></div>
+      <div class="section-note">Whole-life synthesis before tasks</div>
+    </div>
+    <p class="lead">The visible output should explain Sai's position, real choices, protected values, and concrete moves. Tasks remain downstream implementation—not the center of the synthesis.</p>
+    <div class="board-grid">
+      <article class="board-card"><h3>Your Position</h3><p>A concise whole-life synthesis of trajectory, tension, leverage, evidence quality, and uncertainty.</p></article>
+      <article class="board-card"><h3>Current Constraint</h3><p>The bottleneck whose improvement would most change overall system performance.</p></article>
+      <article class="board-card"><h3>Winning Moves</h3><p>Up to three ranked choices with why now, expected unlock, trade-off, evidence, models, win condition, and reversal condition.</p></article>
+      <article class="board-card"><h3>Hidden Leverage</h3><p>Non-obvious cross-domain mechanisms and opportunities that isolated task review would miss.</p></article>
+      <article class="board-card"><h3>Three Horizons</h3><p>Detailed immediate moves, the current operating cycle, and a conditional strategic horizon.</p></article>
+      <article class="board-card"><h3>Pivot Signals</h3><p>Facts that reverse a recommendation, change priority, or unlock the next move.</p></article>
+      <article class="board-card"><h3>Unknowns</h3><p>Information gaps where acquiring evidence may have higher expected value than acting.</p></article>
+      <article class="board-card"><h3>Downstream Actions</h3><p>Only after strategy: first step, dependencies, bounded effort, done condition, expected state change, and fallback.</p></article>
+    </div>
+  </section>
+
+  <section class="section" id="quality">
+    <div class="section-heading">
+      <div><div class="section-index">08 / Scientific Quality Gates</div><h2>What “Ivy League grade” means here</h2></div>
+      <div class="section-note">Methodological rigor, not ornate language</div>
+    </div>
+    <div class="quality-grid">
+      <div class="quality-item">Terms and objectives are defined before reasoning begins.</div>
+      <div class="quality-item">Assumptions and dependencies are explicit.</div>
+      <div class="quality-item">Every consequential claim has source provenance.</div>
+      <div class="quality-item">Base rates and comparison classes are considered.</div>
+      <div class="quality-item">Alternative explanations and reverse causality are tested.</div>
+      <div class="quality-item">Disconfirming evidence is actively sought.</div>
+      <div class="quality-item">Correlation is not silently upgraded to causation.</div>
+      <div class="quality-item">Premortems expose failure paths before commitment.</div>
+      <div class="quality-item">Every hypothesis has an observable falsifier when feasible.</div>
+      <div class="quality-item">Opportunity cost and the nearest alternative are visible.</div>
+      <div class="quality-item">Stop, review, pivot, or reversal conditions are predeclared.</div>
+      <div class="quality-item">Due predictions and outcomes are reconciled without rewriting history.</div>
+    </div>
+    <div class="card yellow" style="margin-top:14px"><span class="card-label">Valid system conclusion</span><p>“The available evidence does not justify a decision yet. The highest-value move is to acquire specific information.” The system must never manufacture certainty merely to produce an action.</p></div>
+  </section>
+
+  <section class="section" id="boundaries">
+    <div class="section-heading">
+      <div><div class="section-index">09 / Boundaries</div><h2>V1 scope and non-goals</h2></div>
+      <div class="section-note">YAGNI / safety / anti-Goodhart</div>
+    </div>
+    <div class="boundary-grid">
+      <article class="boundary-card in"><h3>V1 is designed to</h3><ul><li>Map the whole-life position from attributable evidence.</li><li>Identify the current constraint and high-leverage options.</li><li>Produce explicit decisions, trade-offs, and conditional plans.</li><li>Compile selected choices into bounded observable moves.</li><li>Learn from forecasts, experiments, actions, and outcomes.</li><li>Preserve uncertainty and human approval boundaries.</li></ul></article>
+      <article class="boundary-card out"><h3>V1 must not</h3><ul><li>Autonomously make or execute irreversible decisions.</li><li>Diagnose psychological or medical conditions.</li><li>Optimize every hour or reduce life to one score.</li><li>Generate artificial probabilities or causal certainty.</li><li>Reward activity instead of real state change.</li><li>Change its constitution, authority, data access, or risk limits without approval.</li></ul></article>
+    </div>
+  </section>
+
+  <section class="section" id="sequence">
+    <div class="section-heading">
+      <div><div class="section-index">10 / Design Sequence</div><h2>The dependency chain before any build</h2></div>
+      <div class="section-note">No implementation authorization implied</div>
+    </div>
+    <div class="sequence">
+      <div class="sequence-step"><div><strong>Define the Constitution</strong><p>Mission, values, anti-goals, hard constraints, and authority boundaries.</p></div><span class="sequence-state">Awaiting Sai</span></div>
+      <div class="sequence-step"><div><strong>Define the Evidence Ontology</strong><p>Observable surfaces, provenance, claim classes, freshness, uncertainty, and exclusions.</p></div><span class="sequence-state">Blocked by S1</span></div>
+      <div class="sequence-step"><div><strong>Specify the Dynamic State Model</strong><p>Resources, commitments, opportunities, constraints, capabilities, relationships, and uncertainty.</p></div><span class="sequence-state">Blocked by S1–S2</span></div>
+      <div class="sequence-step"><div><strong>Specify Reasoning Protocols</strong><p>Expert routing, challenge process, model comparison, and scientific evidence standards.</p></div><span class="sequence-state">Blocked by S1–S3</span></div>
+      <div class="sequence-step"><div><strong>Specify Decision and Authority Protocols</strong><p>Decision classes, approval gates, risk thresholds, and reversal rules.</p></div><span class="sequence-state">Blocked by Sai</span></div>
+      <div class="sequence-step"><div><strong>Specify Strategy and Action Compilation</strong><p>Rolling horizons, dependencies, action packets, done conditions, and pivot signals.</p></div><span class="sequence-state">Blocked by S1–S5</span></div>
+      <div class="sequence-step"><div><strong>Specify the Learning System</strong><p>Predictions, experiments, calibration, causal restraint, and hypothesis lifecycle.</p></div><span class="sequence-state">Blocked by S2–S6</span></div>
+      <div class="sequence-step"><div><strong>Red-team the Complete V1 Design</strong><p>Attack Goodhart risks, rigidity, false causality, over-optimization, and authority leakage.</p></div><span class="sequence-state">Final design gate</span></div>
+    </div>
+  </section>
+
+  <section class="follow-through" id="follow-through">
+    <div class="follow-header">
+      <div><div class="section-index">11 / Follow-through</div><h2>Questions that unlock the next design gate</h2><p>Answer these in chat when ready. They are intentionally upstream of technical design: architecture should be shaped by your mission, constraints, risk posture, and authority—not the reverse.</p></div>
+      <div class="awaiting-badge">AWAITING SAI</div>
+    </div>
+
+    <div class="question-list">
+      <article class="question-card"><div class="question-id">Q1</div><div><h3>What would “drastically changed” mean three years from now?</h3><p>Describe observable changes rather than labels such as successful, optimized, or extraordinary.</p></div><div class="answer-shape"><strong>Answer shape</strong>Outcomes / evidence / horizon</div></article>
+      <article class="question-card"><div class="question-id">Q2</div><div><h3>What must never be sacrificed for faster growth?</h3><p>Name protected relationships, health boundaries, ethical commitments, recovery needs, identity values, or financial floors.</p></div><div class="answer-shape"><strong>Answer shape</strong>Non-negotiable / reason / minimum</div></article>
+      <article class="question-card"><div class="question-id">Q3</div><div><h3>What risk posture should govern V1?</h3><p>Choose the default posture and describe domains where the posture must differ.</p></div><div class="answer-shape"><strong>Answer shape</strong>Stable / balanced asymmetric / aggressive</div></article>
+      <article class="question-card"><div class="question-id">Q4</div><div><h3>Where does the system's authority end?</h3><p>Separate recommendation-only decisions from any low-risk actions that might someday become eligible for predefined approval.</p></div><div class="answer-shape"><strong>Answer shape</strong>Recommend / draft / execute-never</div></article>
+      <article class="question-card"><div class="question-id">Q5</div><div><h3>What evidence burden is sustainable?</h3><p>State how much manual daily input is acceptable and which passive data sources, if any, may eventually be considered.</p></div><div class="answer-shape"><strong>Answer shape</strong>Minutes / sources / forbidden data</div></article>
+      <article class="question-card"><div class="question-id">Q6</div><div><h3>What currently limits your trajectory most?</h3><p>Name the suspected constraint and the evidence for it without assuming the diagnosis is already correct.</p></div><div class="answer-shape"><strong>Answer shape</strong>Constraint / evidence / uncertainty</div></article>
+      <article class="question-card"><div class="question-id">Q7</div><div><h3>How should the eventual system present itself?</h3><p>Define the role of Outliner, Pilot, conversational briefs, and review cadence while preserving manual control.</p></div><div class="answer-shape"><strong>Answer shape</strong>Primary surface / secondary surface / cadence</div></article>
+    </div>
+
+    <div class="reply-template">
+      <strong>Copy-ready reply template</strong>
+      <pre>Q1 — Three-year transformation:
+Q2 — Non-negotiables:
+Q3 — Risk posture:
+Q4 — Authority boundary:
+Q5 — Sustainable evidence burden:
+Q6 — Suspected current constraint:
+Q7 — Preferred surfaces and cadence:</pre>
+    </div>
+
+    <div class="gates">
+      <h3>Explicit approval chain</h3>
+      <div class="gate"><div class="gate-id">GATE 0</div><div><strong>Publish this V1 design page</strong><p>Documentation visibility only.</p></div><div class="gate-status approved">APPROVED</div></div>
+      <div class="gate"><div class="gate-id">GATE 1</div><div><strong>Personal constitution</strong><p>Approve mission, values, anti-goals, protected constraints, and success definitions.</p></div><div class="gate-status pending">AWAITING ANSWERS</div></div>
+      <div class="gate"><div class="gate-id">GATE 2</div><div><strong>Evidence and privacy contract</strong><p>Approve sources, classifications, retention, exclusions, and data boundaries.</p></div><div class="gate-status blocked">BLOCKED</div></div>
+      <div class="gate"><div class="gate-id">GATE 3</div><div><strong>Decision authority and risk policy</strong><p>Approve what the system may recommend, draft, never execute, and escalate.</p></div><div class="gate-status blocked">BLOCKED</div></div>
+      <div class="gate"><div class="gate-id">GATE 4</div><div><strong>Complete V1 architecture</strong><p>Approve state model, reasoning protocols, operating cadence, outputs, and validation.</p></div><div class="gate-status blocked">BLOCKED</div></div>
+      <div class="gate"><div class="gate-id">GATE 5</div><div><strong>Implementation plan</strong><p>Approve exact scope, files, integrations, tests, security, rollback, and deployment steps.</p></div><div class="gate-status blocked">NOT CREATED</div></div>
+      <div class="gate"><div class="gate-id">GATE 6</div><div><strong>Implementation and bounded pilot</strong><p>Separate explicit authorization required after Gate 5.</p></div><div class="gate-status blocked">NOT AUTHORIZED</div></div>
+      <div class="gate-rule"><strong>No downstream gate opens automatically.</strong> Approval of this page is not approval of the STEM LifeOS system, its data access, automation, integrations, or implementation.</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>STEM LIFEOS V1 / DESIGN PLAN</span>
+    <span>READ-ONLY / HUMAN-SOVEREIGN / IMPLEMENTATION BLOCKED</span>
+  </footer>
+</main>
+</body>
+</html>

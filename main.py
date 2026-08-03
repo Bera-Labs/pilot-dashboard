@@ -227,6 +227,12 @@ def masterplan():
     return FileResponse(ROOT / "assets" / "masterplan.html")
 
 
+@app.get("/stem-lifeos-v1.html")
+@app.get("/assets/stem-lifeos-v1.html")
+def stem_lifeos_v1():
+    return FileResponse(ROOT / "assets" / "stem-lifeos-v1.html")
+
+
 @app.get("/three-times-wiser.html")
 @app.get("/assets/three-times-wiser.html")
 def three_times_wiser():
