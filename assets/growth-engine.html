@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Engine — Augmented Intelligence v8</title>
+<style>
+:root {
+  --bg: #0a0e14; --surface: #131820; --border: #1e2a3a; --text: #b3c7d6;
+  --text-dim: #7190a2; --accent: #39bae6; --accent-glow: rgba(57,186,230,0.15);
+  --green: #c2d94c; --red: #ff8f40; --yellow: #ffb454; --purple: #d2a6ff;
+  --font-mono: 'Space Mono', 'SF Mono', Consolas, monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+.header { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid var(--border); padding-bottom:20px; margin-bottom:26px; }
+.header h1 { font-family: var(--font-mono); font-size:20px; color: var(--accent); letter-spacing:2px; }
+.subtitle { color: var(--text-dim); font-size:13px; margin-top:4px; }
+.btn-back { color: var(--text-dim); text-decoration:none; font-size:13px; border:1px solid var(--border); padding:6px 12px; border-radius:4px; }
+.btn-back:hover { color: var(--accent); border-color: var(--accent); }
+.card { background: var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px 22px; margin-bottom:18px; }
+.card h2 { font-family: var(--font-mono); font-size:12px; letter-spacing:2px; color: var(--text-dim); text-transform:uppercase; margin-bottom:12px; }
+.verdict-row { display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; }
+.verdict-big { font-family: var(--font-mono); font-size:38px; font-weight:bold; }
+.verdict-rising { color: var(--green); } .verdict-falling { color: var(--red); } .verdict-flat { color: var(--yellow); }
+.driver { color: var(--text-dim); font-size:13px; max-width:640px; line-height:1.5; }
+.vec { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-top:16px; }
+.vec-item { border:1px solid var(--border); border-radius:6px; padding:10px 12px; }
+.vec-item .k { font-size:10px; color: var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
+.vec-item .v { font-family: var(--font-mono); font-size:20px; margin-top:2px; }
+.position { font-size:14px; line-height:1.7; }
+.block-label { font-family: var(--font-mono); font-size:11px; letter-spacing:1px; padding:2px 8px; border-radius:3px; display:inline-block; margin-bottom:8px; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media (max-width:800px){ .grid2{grid-template-columns:1fr;} }
+.engine-loop { font-family: var(--font-mono); font-size:14px; color: var(--green); margin-bottom:10px; }
+.small { font-size:13px; line-height:1.6; color: var(--text); }
+.dim { color: var(--text-dim); }
+.pol-col h3 { font-family: var(--font-mono); font-size:11px; letter-spacing:1px; margin-bottom:8px; }
+.pol-feed h3 { color: var(--green); } .pol-maint h3 { color: var(--yellow); } .pol-starve h3 { color: var(--red); }
+.pol-col ul { list-style:none; }
+.pol-col li { font-size:13px; padding:6px 0; border-bottom:1px solid var(--border); line-height:1.5; }
+.pol-col li:last-child { border-bottom:none; }
+.pol-cost { display:block; font-size:11px; color: var(--text-dim); margin-top:2px; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+@media (max-width:800px){ .grid3{grid-template-columns:1fr;} }
+.move { border:1px solid var(--border); border-radius:6px; padding:14px; margin-bottom:12px; }
+.move-title { font-weight:600; font-size:14px; color: var(--accent); }
+.move-meta { font-family: var(--font-mono); font-size:10px; color: var(--text-dim); margin-top:4px; }
+.move-why { font-size:13px; color: var(--text); margin-top:8px; line-height:1.5; }
+.move-done { font-size:12px; color: var(--green); margin-top:6px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { text-align:left; font-family: var(--font-mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; color: var(--text-dim); padding:6px 8px; border-bottom:1px solid var(--border); }
+td { padding:8px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.5; }
+tr:last-child td { border-bottom:none; }
+.pill { font-family: var(--font-mono); font-size:10px; padding:2px 7px; border-radius:10px; border:1px solid; }
+.pill-compounding { color: var(--green); border-color: var(--green); }
+.pill-linear { color: var(--yellow); border-color: var(--yellow); }
+.pill-decaying { color: var(--red); border-color: var(--red); }
+.pill-rising { color: var(--green); border-color: var(--green); }
+.pill-flat { color: var(--yellow); border-color: var(--yellow); }
+.pill-falling, .pill-dormant { color: var(--text-dim); border-color: var(--border); }
+.pill-pending { color: var(--yellow); border-color: var(--yellow); }
+.pill-supported { color: var(--green); border-color: var(--green); }
+.pill-failed { color: var(--red); border-color: var(--red); }
+.pill-unverifiable { color: var(--text-dim); border-color: var(--border); }
+.prov { font-family: var(--font-mono); font-size:11px; color: var(--text-dim); line-height:1.8; }
+#error { display:none; color: var(--red); font-family: var(--font-mono); font-size:13px; padding:20px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div>
+    <h1>◆ GROWTH ENGINE</h1>
+    <div class="subtitle">Augmented Intelligence v8 — closed-loop strategy &amp; execution blueprint · <span id="gen-date"></span></div>
+  </div>
+  <a class="btn-back" href="/">← Dashboard</a>
+</div>
+
+<div id="error"></div>
+
+<div class="card" id="momentum-card">
+  <h2>Momentum</h2>
+  <div class="verdict-row"><div class="verdict-big" id="verdict"></div><div class="driver" id="driver"></div></div>
+  <div class="vec" id="vector"></div>
+</div>
+
+<div class="card"><h2>Position</h2><div class="position" id="position"></div></div>
+
+<div class="grid2">
+  <div class="card">
+    <h2>Engine — feed this loop</h2>
+    <div class="engine-loop" id="engine-loop"></div>
+    <div class="small" id="engine-mech"></div>
+    <div class="small" style="margin-top:10px"><span class="dim">Feed:</span> <span id="engine-feed"></span></div>
+  </div>
+  <div class="card">
+    <h2>Constraint — break this</h2>
+    <div class="small" style="font-weight:600;color:var(--red)" id="constraint-what"></div>
+    <div class="small dim" style="margin-top:8px" id="constraint-ev"></div>
+    <div class="small" style="margin-top:10px"><span class="dim">Breaking move:</span> <span id="constraint-move"></span></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Policy — allocation rule</h2>
+  <div class="grid3">
+    <div class="pol-col pol-feed"><h3>FEED</h3><ul id="pol-feed"></ul></div>
+    <div class="pol-col pol-maint"><h3>MAINTAIN</h3><ul id="pol-maintain"></ul></div>
+    <div class="pol-col pol-starve"><h3>STARVE</h3><ul id="pol-starve"></ul></div>
+  </div>
+</div>
+
+<div class="card"><h2>Moves — next 14 days</h2><div id="moves"></div></div>
+
+<div class="grid2">
+  <div class="card">
+    <h2>Predictions — open</h2>
+    <table><thead><tr><th>ID</th><th>Statement</th><th>Check by</th><th></th></tr></thead><tbody id="predictions"></tbody></table>
+  </div>
+  <div class="card">
+    <h2>Verdict — last run scored</h2>
+    <table><thead><tr><th>Statement</th><th>Result</th><th>Evidence</th></tr></thead><tbody id="prev-predictions"></tbody></table>
+    <div class="small dim" style="margin-top:12px" id="model-updates"></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Domains — growth-loop classification</h2>
+  <table><thead><tr><th>Domain</th><th>Class</th><th>Trajectory</th><th>Status</th></tr></thead><tbody id="domains"></tbody></table>
+</div>
+
+<div class="card"><h2>Provenance</h2><div class="prov" id="provenance"></div></div>
+
+<script>
+function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':String(s)); return d.innerHTML; }
+function render(d){
+  document.getElementById('gen-date').textContent = (d.generated_at||'').slice(0,10);
+  var m=d.momentum||{};
+  var v=document.getElementById('verdict');
+  v.textContent=(m.verdict||'?').toUpperCase();
+  v.className='verdict-big verdict-'+(m.verdict||'flat');
+  document.getElementById('driver').textContent=m.driver||'';
+  var vec=m.vector||{}; var vh='';
+  vh+='<div class="vec-item"><div class="k">Completions 14d</div><div class="v">'+esc(vec.completions_14d)+'</div></div>';
+  vh+='<div class="vec-item"><div class="k">Completions 30d</div><div class="v">'+esc(vec.completions_30d)+'</div></div>';
+  vh+='<div class="vec-item"><div class="k">Open WIP</div><div class="v">'+esc(vec.wip)+'</div></div>';
+  vh+='<div class="vec-item"><div class="k">WIP mean age</div><div class="v">'+esc(vec.wip_mean_age_days)+'d</div></div>';
+  vh+='<div class="vec-item"><div class="k">Compounding share 30d</div><div class="v" style="color:'+((vec.compounding_share_30d>0)?'var(--green)':'var(--red)')+'">'+esc(Math.round((vec.compounding_share_30d||0)*100))+'%</div></div>';
+  var hd=vec.habit_days_14d||{};
+  for (var k in hd){ if(hd[k]>0) vh+='<div class="vec-item"><div class="k">'+esc(k)+' 14d</div><div class="v">'+esc(hd[k])+'</div></div>'; }
+  document.getElementById('vector').innerHTML=vh;
+  document.getElementById('position').textContent=d.position||'';
+  var e=d.engine||{};
+  document.getElementById('engine-loop').textContent=e.loop||'';
+  document.getElementById('engine-mech').textContent=e.mechanism||'';
+  document.getElementById('engine-feed').textContent=e.feed||'';
+  var c=d.constraint||{};
+  document.getElementById('constraint-what').textContent=c.what||'';
+  document.getElementById('constraint-ev').textContent=c.evidence||'';
+  document.getElementById('constraint-move').textContent=c.breaking_move||'';
+  var p=d.policy||{};
+  document.getElementById('pol-feed').innerHTML=(p.feed||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+  document.getElementById('pol-maintain').innerHTML=(p.maintain||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
+  document.getElementById('pol-starve').innerHTML=(p.starve||[]).map(function(x){return '<li>'+esc(x.item)+'<span class="pol-cost">cost: '+esc(x.cost)+'</span></li>';}).join('');
+  document.getElementById('moves').innerHTML=(d.moves||[]).map(function(mv,i){
+    return '<div class="move"><div class="move-title">'+(i+1)+'. '+esc(mv.title)+'</div>'+
+      '<div class="move-meta">'+esc(mv.horizon)+(mv.task_id?' · task '+esc(mv.task_id.slice(0,8)):'')+'</div>'+
+      '<div class="move-why">'+esc(mv.why)+'</div>'+
+      '<div class="move-done">done when: '+esc(mv.done_when)+'</div></div>';
+  }).join('');
+  document.getElementById('predictions').innerHTML=(d.predictions||[]).map(function(pr){
+    return '<tr><td>'+esc(pr.id)+'</td><td>'+esc(pr.statement)+'</td><td>'+esc(pr.check_by)+'</td><td><span class="pill pill-'+esc(pr.result)+'">'+esc(pr.result)+'</span></td></tr>';
+  }).join('');
+  var vd=d.verdict||{};
+  document.getElementById('prev-predictions').innerHTML=(vd.previous_predictions||[]).map(function(pr){
+    return '<tr><td>'+esc(pr.statement)+'</td><td><span class="pill pill-'+esc(pr.result)+'">'+esc(pr.result)+'</span></td><td class="dim">'+esc(pr.evidence)+'</td></tr>';
+  }).join('') || '<tr><td colspan="3" class="dim">First run — nothing to score yet.</td></tr>';
+  document.getElementById('model-updates').innerHTML=(vd.model_updates||[]).map(function(u){return '• '+esc(u);}).join('<br>');
+  document.getElementById('domains').innerHTML=(d.domains||[]).map(function(dm){
+    return '<tr><td>'+esc(dm.name)+'</td><td><span class="pill pill-'+esc(dm.class)+'">'+esc(dm.class)+'</span></td><td><span class="pill pill-'+esc(dm.trajectory)+'">'+esc(dm.trajectory)+'</span></td><td class="dim">'+esc(dm.status)+'</td></tr>';
+  }).join('');
+  var pv=d.provenance||{};
+  document.getElementById('provenance').innerHTML=
+    'fingerprint: '+esc((d.fingerprint||'').slice(0,16))+'… · nodes '+esc(pv.nodes)+' · tasks '+esc(pv.tasks)+' · notes '+esc(pv.notes)+' · bodies read '+esc(pv.bodies_read)+
+    ((pv.quality_flags&&pv.quality_flags.length)?('<br>flags: '+pv.quality_flags.map(esc).join(' · ')):'');
+}
+function fail(msg){ var el=document.getElementById('error'); el.style.display='block'; el.textContent='Growth Engine data unavailable: '+msg; console.error('growth-engine load failed:', msg); }
+fetch('/api/growth-engine').then(function(r){ if(!r.ok) throw new Error('api '+r.status); return r.json(); }).then(render)
+.catch(function(e1){
+  fetch('data/growth-engine.json').then(function(r){ if(!r.ok) throw new Error('file '+r.status); return r.json(); }).then(render)
+  .catch(function(e2){ fail(e1.message+' / '+e2.message); });
+});
+</script>
+</body>
+</html>

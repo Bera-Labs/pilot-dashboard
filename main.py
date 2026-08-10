@@ -81,6 +81,13 @@ def api_growth():
     except FileNotFoundError:
         return JSONResponse({"error": "growth.json not found"}, status_code=404)
 
+@app.get("/api/growth-engine")
+def api_growth_engine():
+    try:
+        return json.loads((DATA_DIR / "growth-engine.json").read_text())
+    except FileNotFoundError:
+        return JSONResponse({"error": "growth-engine.json not found"}, status_code=404)
+
 @app.post("/api/growth")
 async def post_growth(req: Request):
     body = await req.json()
@@ -232,6 +239,11 @@ def masterplan():
 def stem_lifeos_v1():
     return FileResponse(ROOT / "assets" / "stem-lifeos-v1.html")
 
+
+@app.get("/growth-engine.html")
+@app.get("/assets/growth-engine.html")
+def growth_engine():
+    return FileResponse(ROOT / "assets" / "growth-engine.html")
 
 @app.get("/three-times-wiser.html")
 @app.get("/assets/three-times-wiser.html")
