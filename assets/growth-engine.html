@@ -3,193 +3,272 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Growth Engine — Augmented Intelligence v8</title>
+<title>The Board — Personal Strategy OS</title>
 <style>
 :root {
-  --bg: #0a0e14; --surface: #131820; --border: #1e2a3a; --text: #b3c7d6;
-  --text-dim: #7190a2; --accent: #39bae6; --accent-glow: rgba(57,186,230,0.15);
-  --green: #c2d94c; --red: #ff8f40; --yellow: #ffb454; --purple: #d2a6ff;
-  --font-mono: 'Space Mono', 'SF Mono', Consolas, monospace;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --bg:#0a0e14; --surface:#131820; --border:#1e2a3a; --text:#b3c7d6;
+  --text-dim:#7190a2; --accent:#39bae6; --green:#c2d94c; --red:#ff8f40;
+  --yellow:#ffb454; --purple:#d2a6ff;
+  --font-mono:'Space Mono','SF Mono',Consolas,monospace;
+  --font-sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
-.header { display:flex; justify-content:space-between; align-items:flex-end; border-bottom:1px solid var(--border); padding-bottom:20px; margin-bottom:26px; }
-.header h1 { font-family: var(--font-mono); font-size:20px; color: var(--accent); letter-spacing:2px; }
-.subtitle { color: var(--text-dim); font-size:13px; margin-top:4px; }
-.btn-back { color: var(--text-dim); text-decoration:none; font-size:13px; border:1px solid var(--border); padding:6px 12px; border-radius:4px; }
-.btn-back:hover { color: var(--accent); border-color: var(--accent); }
-.card { background: var(--surface); border:1px solid var(--border); border-radius:8px; padding:20px 22px; margin-bottom:18px; }
-.card h2 { font-family: var(--font-mono); font-size:12px; letter-spacing:2px; color: var(--text-dim); text-transform:uppercase; margin-bottom:12px; }
-.verdict-row { display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; }
-.verdict-big { font-family: var(--font-mono); font-size:38px; font-weight:bold; }
-.verdict-rising { color: var(--green); } .verdict-falling { color: var(--red); } .verdict-flat { color: var(--yellow); }
-.driver { color: var(--text-dim); font-size:13px; max-width:640px; line-height:1.5; }
-.vec { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-top:16px; }
-.vec-item { border:1px solid var(--border); border-radius:6px; padding:10px 12px; }
-.vec-item .k { font-size:10px; color: var(--text-dim); text-transform:uppercase; letter-spacing:1px; }
-.vec-item .v { font-family: var(--font-mono); font-size:20px; margin-top:2px; }
-.position { font-size:14px; line-height:1.7; }
-.block-label { font-family: var(--font-mono); font-size:11px; letter-spacing:1px; padding:2px 8px; border-radius:3px; display:inline-block; margin-bottom:8px; }
-.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-@media (max-width:800px){ .grid2{grid-template-columns:1fr;} }
-.engine-loop { font-family: var(--font-mono); font-size:14px; color: var(--green); margin-bottom:10px; }
-.small { font-size:13px; line-height:1.6; color: var(--text); }
-.dim { color: var(--text-dim); }
-.pol-col h3 { font-family: var(--font-mono); font-size:11px; letter-spacing:1px; margin-bottom:8px; }
-.pol-feed h3 { color: var(--green); } .pol-maint h3 { color: var(--yellow); } .pol-starve h3 { color: var(--red); }
-.pol-col ul { list-style:none; }
-.pol-col li { font-size:13px; padding:6px 0; border-bottom:1px solid var(--border); line-height:1.5; }
-.pol-col li:last-child { border-bottom:none; }
-.pol-cost { display:block; font-size:11px; color: var(--text-dim); margin-top:2px; }
-.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-@media (max-width:800px){ .grid3{grid-template-columns:1fr;} }
-.move { border:1px solid var(--border); border-radius:6px; padding:14px; margin-bottom:12px; }
-.move-title { font-weight:600; font-size:14px; color: var(--accent); }
-.move-meta { font-family: var(--font-mono); font-size:10px; color: var(--text-dim); margin-top:4px; }
-.move-why { font-size:13px; color: var(--text); margin-top:8px; line-height:1.5; }
-.move-done { font-size:12px; color: var(--green); margin-top:6px; }
-table { width:100%; border-collapse:collapse; font-size:13px; }
-th { text-align:left; font-family: var(--font-mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; color: var(--text-dim); padding:6px 8px; border-bottom:1px solid var(--border); }
-td { padding:8px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.5; }
-tr:last-child td { border-bottom:none; }
-.pill { font-family: var(--font-mono); font-size:10px; padding:2px 7px; border-radius:10px; border:1px solid; }
-.pill-compounding { color: var(--green); border-color: var(--green); }
-.pill-linear { color: var(--yellow); border-color: var(--yellow); }
-.pill-decaying { color: var(--red); border-color: var(--red); }
-.pill-rising { color: var(--green); border-color: var(--green); }
-.pill-flat { color: var(--yellow); border-color: var(--yellow); }
-.pill-falling, .pill-dormant { color: var(--text-dim); border-color: var(--border); }
-.pill-pending { color: var(--yellow); border-color: var(--yellow); }
-.pill-supported { color: var(--green); border-color: var(--green); }
-.pill-failed { color: var(--red); border-color: var(--red); }
-.pill-unverifiable { color: var(--text-dim); border-color: var(--border); }
-.prov { font-family: var(--font-mono); font-size:11px; color: var(--text-dim); line-height:1.8; }
-#error { display:none; color: var(--red); font-family: var(--font-mono); font-size:13px; padding:20px; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;padding:36px 20px;max-width:1180px;margin:0 auto}
+.header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:22px}
+.header h1{font-family:var(--font-mono);font-size:20px;color:var(--accent);letter-spacing:2px}
+.subtitle{color:var(--text-dim);font-size:12px;margin-top:4px}
+.btn-back{color:var(--text-dim);text-decoration:none;font-size:13px;border:1px solid var(--border);padding:6px 12px;border-radius:4px}
+.btn-back:hover{color:var(--accent);border-color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:18px 20px;margin-bottom:16px}
+.card h2{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:var(--text-dim);text-transform:uppercase;margin-bottom:12px}
+.card h2 .toggle{float:right;cursor:pointer;color:var(--accent);font-size:10px;letter-spacing:1px}
+.hidden{display:none}
+.verdict-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.verdict-big{font-family:var(--font-mono);font-size:34px;font-weight:bold}
+.verdict-rising{color:var(--green)}.verdict-falling{color:var(--red)}.verdict-flat{color:var(--yellow)}
+.driver{color:var(--text-dim);font-size:13px;max-width:700px;line-height:1.55}
+.headline{font-size:18px;font-weight:600;color:var(--accent);margin-bottom:10px;line-height:1.4}
+.position{font-size:14px;line-height:1.7}
+.vec{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px}
+.vec-item{border:1px solid var(--border);border-radius:6px;padding:10px 12px}
+.vec-item .k{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+.vec-item .v{font-family:var(--font-mono);font-size:18px;margin-top:2px}
+.compact{border:1px solid var(--accent);border-radius:8px;padding:18px 20px;margin-bottom:16px;background:linear-gradient(180deg,rgba(57,186,230,0.06),transparent)}
+.compact h2{color:var(--accent)}
+.kv{display:grid;grid-template-columns:140px 1fr;gap:8px 14px;font-size:13px;line-height:1.55}
+.kv .k{font-family:var(--font-mono);font-size:10px;letter-spacing:1px;color:var(--text-dim);padding-top:3px}
+.kv .v{color:var(--text)}
+.move{border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:10px}
+.move.primary{border-color:var(--accent)}
+.move-title{font-weight:600;font-size:14px;color:var(--accent)}
+.move-meta{font-family:var(--font-mono);font-size:10px;color:var(--text-dim);margin-top:4px}
+.move-body{font-size:13px;margin-top:8px;line-height:1.55}
+.pill{font-family:var(--font-mono);font-size:10px;padding:2px 7px;border-radius:10px;border:1px solid;display:inline-block}
+.pill-ACTIVE{color:var(--accent);border-color:var(--accent)}
+.pill-PASSIVE{color:var(--green);border-color:var(--green)}
+.pill-SETUP{color:var(--yellow);border-color:var(--yellow)}
+.pill-OPTIONALITY{color:var(--purple);border-color:var(--purple)}
+.pill-WATCH,.pill-WATCH-TRIGGER{color:var(--text-dim);border-color:var(--border)}
+.pill-BLOCKED{color:var(--red);border-color:var(--red)}
+.pill-advancing{color:var(--green);border-color:var(--green)}
+.pill-stalled{color:var(--yellow);border-color:var(--yellow)}
+.pill-dormant,.pill-blocked{color:var(--text-dim);border-color:var(--border)}
+.pill-pending{color:var(--yellow);border-color:var(--yellow)}
+.pill-supported{color:var(--green);border-color:var(--green)}
+.pill-failed{color:var(--red);border-color:var(--red)}
+.pill-unverifiable{color:var(--text-dim);border-color:var(--border)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}.kv{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);padding:6px 8px;border-bottom:1px solid var(--border)}
+td{padding:8px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:none}
+.dim{color:var(--text-dim)}
+.list li{font-size:13px;padding:6px 0;border-bottom:1px solid var(--border);line-height:1.5;list-style:none}
+.list li:last-child{border-bottom:none}
+.threat{border-left:2px solid var(--red);padding-left:10px;margin-bottom:10px}
+.opening{border-left:2px solid var(--green);padding-left:10px;margin-bottom:10px}
+.prov{font-family:var(--font-mono);font-size:11px;color:var(--text-dim);line-height:1.8}
+#error{display:none;color:var(--red);font-family:var(--font-mono);font-size:13px;padding:20px}
 </style>
 </head>
 <body>
 <div class="header">
   <div>
-    <h1>◆ GROWTH ENGINE</h1>
-    <div class="subtitle">Augmented Intelligence v8 — closed-loop strategy &amp; execution blueprint · <span id="gen-date"></span></div>
+    <h1>◆ THE BOARD</h1>
+    <div class="subtitle">Personal Strategy OS · Growth Engine v9 · <span id="gen-date"></span></div>
   </div>
   <a class="btn-back" href="/">← Dashboard</a>
 </div>
-
 <div id="error"></div>
 
-<div class="card" id="momentum-card">
-  <h2>Momentum</h2>
+<div class="card" id="position-card">
+  <h2>Position</h2>
+  <div class="headline" id="headline"></div>
   <div class="verdict-row"><div class="verdict-big" id="verdict"></div><div class="driver" id="driver"></div></div>
+  <div class="position" id="position-summary" style="margin-top:12px"></div>
   <div class="vec" id="vector"></div>
 </div>
 
-<div class="card"><h2>Position</h2><div class="position" id="position"></div></div>
+<div class="compact" id="compact-card">
+  <h2>Decision card</h2>
+  <div class="kv" id="compact-kv"></div>
+</div>
 
 <div class="grid2">
   <div class="card">
-    <h2>Engine — feed this loop</h2>
-    <div class="engine-loop" id="engine-loop"></div>
-    <div class="small" id="engine-mech"></div>
-    <div class="small" style="margin-top:10px"><span class="dim">Feed:</span> <span id="engine-feed"></span></div>
+    <h2>Primary move</h2>
+    <div id="primary-moves"></div>
   </div>
   <div class="card">
-    <h2>Constraint — break this</h2>
-    <div class="small" style="font-weight:600;color:var(--red)" id="constraint-what"></div>
-    <div class="small dim" style="margin-top:8px" id="constraint-ev"></div>
-    <div class="small" style="margin-top:10px"><span class="dim">Breaking move:</span> <span id="constraint-move"></span></div>
+    <h2>Parallel processes</h2>
+    <div id="parallel"></div>
+  </div>
+</div>
+
+<div class="grid3">
+  <div class="card">
+    <h2>Do not touch</h2>
+    <ul class="list" id="dnt"></ul>
+  </div>
+  <div class="card">
+    <h2>Openings</h2>
+    <div id="openings"></div>
+  </div>
+  <div class="card">
+    <h2>Threats</h2>
+    <div id="threats"></div>
   </div>
 </div>
 
 <div class="card">
-  <h2>Policy — allocation rule</h2>
-  <div class="grid3">
-    <div class="pol-col pol-feed"><h3>FEED</h3><ul id="pol-feed"></ul></div>
-    <div class="pol-col pol-maint"><h3>MAINTAIN</h3><ul id="pol-maintain"></ul></div>
-    <div class="pol-col pol-starve"><h3>STARVE</h3><ul id="pol-starve"></ul></div>
-  </div>
+  <h2>Watch for</h2>
+  <ul class="list" id="watch"></ul>
 </div>
 
-<div class="card"><h2>Moves — next 14 days</h2><div id="moves"></div></div>
-
-<div class="grid2">
-  <div class="card">
-    <h2>Predictions — open</h2>
-    <table><thead><tr><th>ID</th><th>Statement</th><th>Check by</th><th></th></tr></thead><tbody id="predictions"></tbody></table>
-  </div>
-  <div class="card">
-    <h2>Verdict — last run scored</h2>
-    <table><thead><tr><th>Statement</th><th>Result</th><th>Evidence</th></tr></thead><tbody id="prev-predictions"></tbody></table>
-    <div class="small dim" style="margin-top:12px" id="model-updates"></div>
+<div class="card">
+  <h2>Campaigns <span class="toggle" data-target="campaigns-body">show</span></h2>
+  <div id="campaigns-body" class="hidden">
+    <table><thead><tr><th>Campaign</th><th>Status</th><th>Horizon</th><th>Distance</th></tr></thead><tbody id="campaigns"></tbody></table>
   </div>
 </div>
 
 <div class="card">
-  <h2>Domains — growth-loop classification</h2>
-  <table><thead><tr><th>Domain</th><th>Class</th><th>Trajectory</th><th>Status</th></tr></thead><tbody id="domains"></tbody></table>
+  <h2>Council &amp; alternatives <span class="toggle" data-target="council-body">show</span></h2>
+  <div id="council-body" class="hidden">
+    <div id="council"></div>
+  </div>
 </div>
 
-<div class="card"><h2>Provenance</h2><div class="prov" id="provenance"></div></div>
+<div class="grid2">
+  <div class="card">
+    <h2>Predictions</h2>
+    <table><thead><tr><th>ID</th><th>Claim</th><th>Check</th><th></th></tr></thead><tbody id="predictions"></tbody></table>
+  </div>
+  <div class="card">
+    <h2>Debrief / verdict</h2>
+    <table><thead><tr><th>Prior claim</th><th>Result</th><th>Evidence</th></tr></thead><tbody id="prev-pred"></tbody></table>
+    <div class="dim" style="margin-top:12px;font-size:13px;line-height:1.6" id="model-updates"></div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Provenance</h2>
+  <div class="prov" id="provenance"></div>
+</div>
 
 <script>
-function esc(s){ var d=document.createElement('div'); d.textContent=(s==null?'':String(s)); return d.innerHTML; }
+function esc(s){var d=document.createElement('div');d.textContent=(s==null?'':String(s));return d.innerHTML}
+function pill(cls,text){return '<span class="pill pill-'+esc(cls)+'">'+esc(text||cls)+'</span>'}
 function render(d){
-  document.getElementById('gen-date').textContent = (d.generated_at||'').slice(0,10);
-  var m=d.momentum||{};
+  document.getElementById('gen-date').textContent=(d.generated_at||'').slice(0,10);
+  var p=d.position||{};
+  document.getElementById('headline').textContent=p.headline||'';
   var v=document.getElementById('verdict');
-  v.textContent=(m.verdict||'?').toUpperCase();
-  v.className='verdict-big verdict-'+(m.verdict||'flat');
-  document.getElementById('driver').textContent=m.driver||'';
-  var vec=m.vector||{}; var vh='';
+  v.textContent=(p.momentum||'?').toUpperCase();
+  v.className='verdict-big verdict-'+(p.momentum||'flat');
+  document.getElementById('driver').textContent='Strategic momentum · position over task count';
+  document.getElementById('position-summary').textContent=p.summary||'';
+  var vec=p.vector||{}, vh='';
   vh+='<div class="vec-item"><div class="k">Completions 14d</div><div class="v">'+esc(vec.completions_14d)+'</div></div>';
   vh+='<div class="vec-item"><div class="k">Completions 30d</div><div class="v">'+esc(vec.completions_30d)+'</div></div>';
   vh+='<div class="vec-item"><div class="k">Open WIP</div><div class="v">'+esc(vec.wip)+'</div></div>';
   vh+='<div class="vec-item"><div class="k">WIP mean age</div><div class="v">'+esc(vec.wip_mean_age_days)+'d</div></div>';
-  vh+='<div class="vec-item"><div class="k">Compounding share 30d</div><div class="v" style="color:'+((vec.compounding_share_30d>0)?'var(--green)':'var(--red)')+'">'+esc(Math.round((vec.compounding_share_30d||0)*100))+'%</div></div>';
+  var cs=Math.round((vec.compounding_share_30d||0)*100);
+  vh+='<div class="vec-item"><div class="k">Compounding share</div><div class="v" style="color:'+(cs>0?'var(--green)':'var(--red)')+'">'+cs+'%</div></div>';
   var hd=vec.habit_days_14d||{};
-  for (var k in hd){ if(hd[k]>0) vh+='<div class="vec-item"><div class="k">'+esc(k)+' 14d</div><div class="v">'+esc(hd[k])+'</div></div>'; }
+  for(var k in hd){ if(hd[k]>0) vh+='<div class="vec-item"><div class="k">'+esc(k)+' 14d</div><div class="v">'+esc(hd[k])+'</div></div>'; }
   document.getElementById('vector').innerHTML=vh;
-  document.getElementById('position').textContent=d.position||'';
-  var e=d.engine||{};
-  document.getElementById('engine-loop').textContent=e.loop||'';
-  document.getElementById('engine-mech').textContent=e.mechanism||'';
-  document.getElementById('engine-feed').textContent=e.feed||'';
-  var c=d.constraint||{};
-  document.getElementById('constraint-what').textContent=c.what||'';
-  document.getElementById('constraint-ev').textContent=c.evidence||'';
-  document.getElementById('constraint-move').textContent=c.breaking_move||'';
-  var p=d.policy||{};
-  document.getElementById('pol-feed').innerHTML=(p.feed||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
-  document.getElementById('pol-maintain').innerHTML=(p.maintain||[]).map(function(x){return '<li>'+esc(x)+'</li>';}).join('');
-  document.getElementById('pol-starve').innerHTML=(p.starve||[]).map(function(x){return '<li>'+esc(x.item)+'<span class="pol-cost">cost: '+esc(x.cost)+'</span></li>';}).join('');
-  document.getElementById('moves').innerHTML=(d.moves||[]).map(function(mv,i){
-    return '<div class="move"><div class="move-title">'+(i+1)+'. '+esc(mv.title)+'</div>'+
-      '<div class="move-meta">'+esc(mv.horizon)+(mv.task_id?' · task '+esc(mv.task_id.slice(0,8)):'')+'</div>'+
-      '<div class="move-why">'+esc(mv.why)+'</div>'+
-      '<div class="move-done">done when: '+esc(mv.done_when)+'</div></div>';
+
+  // compact card
+  var dec=(d.decisions&&d.decisions[0])||{};
+  var cc=dec.compact_card||{};
+  var order=['BEST_MOVE','WHY_NOW','PARALLEL','DO_NOT_TOUCH','WATCH_FOR','NEXT_24H','CONFIDENCE','POSITION_CHANGE'];
+  var labels={BEST_MOVE:'BEST MOVE',WHY_NOW:'WHY NOW',PARALLEL:'PARALLEL',DO_NOT_TOUCH:'DO NOT TOUCH',WATCH_FOR:'WATCH FOR',NEXT_24H:'NEXT 24H',CONFIDENCE:'CONFIDENCE',POSITION_CHANGE:'POSITION CHANGE'};
+  document.getElementById('compact-kv').innerHTML=order.map(function(k){
+    return '<div class="k">'+esc(labels[k])+'</div><div class="v">'+esc(cc[k]||'—')+'</div>';
   }).join('');
+
+  // primary
+  var moves=d.moves||{};
+  document.getElementById('primary-moves').innerHTML=(moves.primary||[]).map(function(m){
+    return '<div class="move primary"><div class="move-title">'+esc(m.title)+'</div>'+
+      '<div class="move-meta">'+pill(m.class,m.class)+(m.score!=null?' · prior score '+esc(m.score):'')+(m.task_ids&&m.task_ids.length?' · tasks '+m.task_ids.map(function(t){return esc(t.slice(0,8))}).join(', '):'')+'</div>'+
+      '<div class="move-body"><span class="dim">why now:</span> '+esc(m.why_now)+'</div>'+
+      '<div class="move-body"><span class="dim">next 24h:</span> '+esc(m.next_24h)+'</div>'+
+      '<div class="move-body"><span class="dim">done when:</span> '+esc(m.done_when)+'</div>'+
+      '<div class="move-body"><span class="dim">stop:</span> '+esc(m.stop_condition)+'</div>'+
+      '<div class="move-body"><span class="dim">position change:</span> '+esc(m.position_change)+'</div></div>';
+  }).join('')||'<div class="dim">None</div>';
+
+  document.getElementById('parallel').innerHTML=(moves.parallel||[]).map(function(m){
+    return '<div class="move"><div class="move-title">'+esc(m.title)+'</div>'+
+      '<div class="move-meta">'+pill(m.class,m.class)+(m.score!=null?' · prior '+esc(m.score):'')+'</div>'+
+      '<div class="move-body dim">'+esc(m.state)+(m.trigger?' · trigger: '+esc(m.trigger):'')+'</div></div>';
+  }).join('')||'<div class="dim">None</div>';
+
+  document.getElementById('dnt').innerHTML=(moves.do_not_touch||[]).map(function(x){
+    return '<li><strong>'+esc(x.item)+'</strong><br><span class="dim">'+esc(x.reason)+(x.until?' · until '+esc(x.until):'')+'</span></li>';
+  }).join('')||'<li class="dim">None</li>';
+
+  document.getElementById('openings').innerHTML=(d.openings||[]).map(function(o){
+    return '<div class="opening"><strong>'+esc(o.what)+'</strong><div class="dim" style="font-size:12px;margin-top:4px">window: '+esc(o.window)+' · needs: '+esc(o.prerequisite)+'</div></div>';
+  }).join('')||'<div class="dim">None</div>';
+
+  document.getElementById('threats').innerHTML=(d.threats||[]).map(function(t){
+    return '<div class="threat"><strong>'+esc(t.what)+'</strong><div class="dim" style="font-size:12px;margin-top:4px">impact: '+esc(t.impact)+' · warn: '+esc(t.early_warning)+'<br>mitigation: '+esc(t.mitigation)+'</div></div>';
+  }).join('')||'<div class="dim">None</div>';
+
+  document.getElementById('watch').innerHTML=(d.watch_for||[]).map(function(w){
+    return '<li><strong>'+esc(w.condition)+'</strong><br><span class="dim">→ '+esc(w.then)+'</span></li>';
+  }).join('')||'<li class="dim">None</li>';
+
+  document.getElementById('campaigns').innerHTML=(d.campaigns||[]).map(function(c){
+    return '<tr><td>'+esc(c.name)+'</td><td>'+pill(c.status,c.status)+'</td><td class="dim">'+esc(c.horizon)+'</td><td class="dim">'+esc(c.distance)+'</td></tr>';
+  }).join('');
+
+  document.getElementById('council').innerHTML=(d.decisions||[]).map(function(dec){
+    return '<div style="margin-bottom:14px"><div style="font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-bottom:8px">'+esc(dec.id)+' · council: '+esc(dec.council)+
+      (dec.council_roles?' · '+dec.council_roles.map(esc).join(', '):'')+'</div>'+
+      '<div class="move-body"><span class="dim">baseline:</span> '+esc(dec.baseline)+'</div>'+
+      '<div class="move-body"><span class="dim">alternatives:</span><ul class="list">'+(dec.alternatives||[]).map(function(a){return '<li>'+esc(a)+'</li>'}).join('')+'</ul></div>'+
+      '<div class="move-body"><span class="dim">disagreements resolved:</span><ul class="list">'+(dec.disagreements||[]).map(function(a){return '<li>'+esc(a)+'</li>'}).join('')+'</ul></div>'+
+      '<div class="move-body"><span class="dim">confidence:</span> '+esc(dec.confidence)+'</div>'+
+      '<div class="move-body"><span class="dim">changes if:</span> '+esc(dec.changes_if)+'</div></div>';
+  }).join('')||'<div class="dim">No council run</div>';
+
   document.getElementById('predictions').innerHTML=(d.predictions||[]).map(function(pr){
-    return '<tr><td>'+esc(pr.id)+'</td><td>'+esc(pr.statement)+'</td><td>'+esc(pr.check_by)+'</td><td><span class="pill pill-'+esc(pr.result)+'">'+esc(pr.result)+'</span></td></tr>';
+    return '<tr><td>'+esc(pr.id)+'</td><td>'+esc(pr.statement)+'</td><td>'+esc(pr.check_by)+'</td><td>'+pill(pr.result,pr.result)+'</td></tr>';
   }).join('');
+
   var vd=d.verdict||{};
-  document.getElementById('prev-predictions').innerHTML=(vd.previous_predictions||[]).map(function(pr){
-    return '<tr><td>'+esc(pr.statement)+'</td><td><span class="pill pill-'+esc(pr.result)+'">'+esc(pr.result)+'</span></td><td class="dim">'+esc(pr.evidence)+'</td></tr>';
-  }).join('') || '<tr><td colspan="3" class="dim">First run — nothing to score yet.</td></tr>';
-  document.getElementById('model-updates').innerHTML=(vd.model_updates||[]).map(function(u){return '• '+esc(u);}).join('<br>');
-  document.getElementById('domains').innerHTML=(d.domains||[]).map(function(dm){
-    return '<tr><td>'+esc(dm.name)+'</td><td><span class="pill pill-'+esc(dm.class)+'">'+esc(dm.class)+'</span></td><td><span class="pill pill-'+esc(dm.trajectory)+'">'+esc(dm.trajectory)+'</span></td><td class="dim">'+esc(dm.status)+'</td></tr>';
-  }).join('');
+  document.getElementById('prev-pred').innerHTML=(vd.previous_predictions||[]).map(function(pr){
+    return '<tr><td>'+esc(pr.statement)+'</td><td>'+pill(pr.result,pr.result)+'</td><td class="dim">'+esc(pr.evidence)+'</td></tr>';
+  }).join('')||'<tr><td colspan="3" class="dim">No prior predictions scored</td></tr>';
+  document.getElementById('model-updates').innerHTML=(vd.model_updates||[]).map(function(u){return '• '+esc(u)}).join('<br>');
+
   var pv=d.provenance||{};
   document.getElementById('provenance').innerHTML=
-    'fingerprint: '+esc((d.fingerprint||'').slice(0,16))+'… · nodes '+esc(pv.nodes)+' · tasks '+esc(pv.tasks)+' · notes '+esc(pv.notes)+' · bodies read '+esc(pv.bodies_read)+
-    ((pv.quality_flags&&pv.quality_flags.length)?('<br>flags: '+pv.quality_flags.map(esc).join(' · ')):'');
+    'fingerprint: '+esc((d.fingerprint||pv.fingerprint||'').slice(0,16))+'… · nodes '+esc(pv.nodes)+
+    ' · tasks '+esc(pv.tasks)+' · notes '+esc(pv.notes)+' · bodies '+esc(pv.bodies_read)+
+    ((pv.quality_flags&&pv.quality_flags.length)?'<br>flags: '+pv.quality_flags.map(esc).join(' · '):'');
 }
-function fail(msg){ var el=document.getElementById('error'); el.style.display='block'; el.textContent='Growth Engine data unavailable: '+msg; console.error('growth-engine load failed:', msg); }
-fetch('/api/growth-engine').then(function(r){ if(!r.ok) throw new Error('api '+r.status); return r.json(); }).then(render)
+document.addEventListener('click',function(e){
+  var t=e.target;
+  if(t.classList.contains('toggle')){
+    var el=document.getElementById(t.getAttribute('data-target'));
+    if(!el) return;
+    var open=el.classList.toggle('hidden')===false;
+    // classList.toggle returns false if now hidden? actually returns bool of force. simpler:
+    if(el.classList.contains('hidden')){t.textContent='show'} else {t.textContent='hide'}
+  }
+});
+function fail(msg){var el=document.getElementById('error');el.style.display='block';el.textContent='Board data unavailable: '+msg;console.error(msg)}
+fetch('/api/growth-engine').then(function(r){if(!r.ok)throw new Error('api '+r.status);return r.json()}).then(render)
 .catch(function(e1){
-  fetch('data/growth-engine.json').then(function(r){ if(!r.ok) throw new Error('file '+r.status); return r.json(); }).then(render)
-  .catch(function(e2){ fail(e1.message+' / '+e2.message); });
+  fetch('data/growth-engine.json').then(function(r){if(!r.ok)throw new Error('file '+r.status);return r.json()}).then(render)
+  .catch(function(e2){fail(e1.message+' / '+e2.message)});
 });
 </script>
 </body>
