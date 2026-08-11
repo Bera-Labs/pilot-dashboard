@@ -1,5 +1,5 @@
 {
-  "schema": "psos-board/1",
+  "schema": "psos-board/2",
   "generated_at": "2026-08-11T03:35:00Z",
   "fingerprint": "59fd2fb6ac3836d8ef9615e020e265874cd69aa975735ffd59e5f9966ed1598e",
   "position": {
@@ -11,17 +11,395 @@
       "completions_30d": 5,
       "wip": 9,
       "wip_mean_age_days": 51.0,
-      "habit_days_14d": {"abstinence": 11, "exercise": 2, "early adequate sleep": 0, "Taking action": 0},
+      "habit_days_14d": {
+        "abstinence": 11,
+        "exercise": 2,
+        "early adequate sleep": 0,
+        "Taking action": 0
+      },
       "compounding_share_30d": 0.0
-    }
+    },
+    "territory": [
+      {
+        "id": "home",
+        "label": "Home base",
+        "status": "contested",
+        "fill": 0.72,
+        "note": "Closing in 3d · 2 verification open"
+      },
+      {
+        "id": "reg",
+        "label": "Self-reg",
+        "status": "held",
+        "fill": 0.78,
+        "note": "36d streak · exercise restart"
+      },
+      {
+        "id": "mission",
+        "label": "AI/software",
+        "status": "unowned",
+        "fill": 0.0,
+        "note": "Zero footprint"
+      },
+      {
+        "id": "vitality",
+        "label": "Vitality",
+        "status": "weak",
+        "fill": 0.28,
+        "note": "Lung scan 155d stale"
+      },
+      {
+        "id": "status",
+        "label": "Status/HVM",
+        "status": "unowned",
+        "fill": 0.12,
+        "note": "Intent only"
+      },
+      {
+        "id": "admin",
+        "label": "Admin/finance",
+        "status": "held",
+        "fill": 0.62,
+        "note": "Taxes done · IRS overdue"
+      }
+    ],
+    "resources": [
+      {
+        "label": "Attention",
+        "level": "scarce",
+        "detail": "1 deep block/day under stress"
+      },
+      {
+        "label": "Streak capital",
+        "level": "strong",
+        "detail": "36d running (low-verify)"
+      },
+      {
+        "label": "Deadline force",
+        "level": "active",
+        "detail": "Aug 14 external"
+      },
+      {
+        "label": "Cash-to-close",
+        "level": "unknown",
+        "detail": "Verify on CD"
+      }
+    ],
+    "constraints_visual": [
+      {
+        "label": "Aug 14 close",
+        "kind": "hard",
+        "urgency": 1.0
+      },
+      {
+        "label": "Attention bottleneck",
+        "kind": "hard",
+        "urgency": 0.85
+      },
+      {
+        "label": "3rd-party lag 24–72h",
+        "kind": "hard",
+        "urgency": 0.9
+      }
+    ]
   },
   "campaigns": [
-    {"id": "camp-home-base", "name": "Home base transition", "target_state": "Closed, moved, utilities live, address updated", "horizon": "immediate-30d", "status": "advancing", "distance": "3 days; 2 verification tasks open", "refs": ["bc5dc69e", "f66be521", "6031e3c9"]},
-    {"id": "camp-self-regulation", "name": "Self-regulation engine", "target_state": "Stable abstinence + exercise default", "horizon": "ongoing", "status": "advancing", "distance": "36d streak (autoCheck); exercise 2/14d", "refs": ["ca5f246b", "093f4471"]},
-    {"id": "camp-mission-ai", "name": "AI/software mastery (3-year)", "target_state": "Ship real product capability", "horizon": "3y", "status": "dormant", "distance": "ZERO Outliner footprint — structural gap", "refs": []},
-    {"id": "camp-vitality", "name": "Physical vitality", "target_state": "Medical unknowns cleared; training sustainable", "horizon": "90d", "status": "stalled", "distance": "Lung scan open 155d", "refs": ["6f9639e7"]},
-    {"id": "camp-status", "name": "High-value / main-character energy", "target_state": "Behaviors match desired identity", "horizon": "1y", "status": "dormant", "distance": "Body text strong, zero open tasks", "refs": ["cd2f40d0"]},
-    {"id": "camp-admin-finance", "name": "Finance & admin hygiene", "target_state": "Taxes closed; AR-11 current", "horizon": "30d", "status": "advancing", "distance": "Tax done; IRS overdue; AR-11 near", "refs": ["259d5a2c", "2db41016"]}
+    {
+      "id": "camp-home-base",
+      "name": "Home base transition",
+      "target_state": "Closed, moved, utilities live, address updated",
+      "horizon": "immediate-30d",
+      "status": "advancing",
+      "distance": "3 days; 2 verification tasks open",
+      "refs": [
+        "bc5dc69e",
+        "f66be521",
+        "6031e3c9"
+      ],
+      "tree": {
+        "nodes": [
+          {
+            "id": "v",
+            "label": "Verify today",
+            "status": "now"
+          },
+          {
+            "id": "c",
+            "label": "Close Aug 14",
+            "status": "next"
+          },
+          {
+            "id": "a",
+            "label": "Admin batch",
+            "status": "gated"
+          },
+          {
+            "id": "m",
+            "label": "Mission option",
+            "status": "option"
+          },
+          {
+            "id": "l",
+            "label": "Lung scan",
+            "status": "option"
+          }
+        ],
+        "edges": [
+          {
+            "from": "v",
+            "to": "c",
+            "label": "unlocks"
+          },
+          {
+            "from": "c",
+            "to": "a",
+            "label": "unlocks"
+          },
+          {
+            "from": "c",
+            "to": "m",
+            "label": "opens window"
+          },
+          {
+            "from": "c",
+            "to": "l",
+            "label": "opens slot"
+          }
+        ],
+        "note": "Doing Verify → opens Close → opens Admin + Mission window + Lung slot. Skipping Verify closes the clean-close option."
+      },
+      "progress": 0.72
+    },
+    {
+      "id": "camp-self-regulation",
+      "name": "Self-regulation engine",
+      "target_state": "Stable abstinence + exercise default",
+      "horizon": "ongoing",
+      "status": "advancing",
+      "distance": "36d streak (autoCheck); exercise 2/14d",
+      "refs": [
+        "ca5f246b",
+        "093f4471"
+      ],
+      "tree": {
+        "nodes": [
+          {
+            "id": "s",
+            "label": "Streak holds",
+            "status": "running"
+          },
+          {
+            "id": "e",
+            "label": "Exercise snacks",
+            "status": "running"
+          },
+          {
+            "id": "t",
+            "label": "Self-trust",
+            "status": "building"
+          },
+          {
+            "id": "b",
+            "label": "Bigger bets",
+            "status": "future"
+          }
+        ],
+        "edges": [
+          {
+            "from": "s",
+            "to": "t",
+            "label": "feeds"
+          },
+          {
+            "from": "e",
+            "to": "t",
+            "label": "feeds"
+          },
+          {
+            "from": "t",
+            "to": "b",
+            "label": "unlocks"
+          }
+        ],
+        "note": "Passive loop. Interfering with streak risks breaking the only compounding engine currently spinning."
+      },
+      "progress": 0.55
+    },
+    {
+      "id": "camp-mission-ai",
+      "name": "AI/software mastery (3-year)",
+      "target_state": "Ship real product capability",
+      "horizon": "3y",
+      "status": "dormant",
+      "distance": "ZERO Outliner footprint — structural gap",
+      "refs": [],
+      "tree": {
+        "nodes": [
+          {
+            "id": "f",
+            "label": "Create footprint",
+            "status": "missing"
+          },
+          {
+            "id": "t",
+            "label": "First 60-min task",
+            "status": "blocked"
+          },
+          {
+            "id": "o",
+            "label": "Observable output",
+            "status": "blocked"
+          }
+        ],
+        "edges": [
+          {
+            "from": "f",
+            "to": "t",
+            "label": "enables"
+          },
+          {
+            "from": "t",
+            "to": "o",
+            "label": "produces"
+          }
+        ],
+        "note": "Entire tree is dark. One structural move (create project) lights the first node."
+      },
+      "progress": 0.0
+    },
+    {
+      "id": "camp-vitality",
+      "name": "Physical vitality",
+      "target_state": "Medical unknowns cleared; training sustainable",
+      "horizon": "90d",
+      "status": "stalled",
+      "distance": "Lung scan open 155d",
+      "refs": [
+        "6f9639e7"
+      ],
+      "tree": {
+        "nodes": [
+          {
+            "id": "call",
+            "label": "Book scan",
+            "status": "armed"
+          },
+          {
+            "id": "scan",
+            "label": "Get scanned",
+            "status": "blocked"
+          },
+          {
+            "id": "clear",
+            "label": "Clear unknown",
+            "status": "blocked"
+          }
+        ],
+        "edges": [
+          {
+            "from": "call",
+            "to": "scan",
+            "label": "schedules"
+          },
+          {
+            "from": "scan",
+            "to": "clear",
+            "label": "resolves"
+          }
+        ],
+        "note": "155d stale. Protected medical — not starved. Fires post-close."
+      },
+      "progress": 0.1
+    },
+    {
+      "id": "camp-status",
+      "name": "High-value / main-character energy",
+      "target_state": "Behaviors match desired identity",
+      "horizon": "1y",
+      "status": "dormant",
+      "distance": "Body text strong, zero open tasks",
+      "refs": [
+        "cd2f40d0"
+      ],
+      "tree": {
+        "nodes": [
+          {
+            "id": "i",
+            "label": "Identity intent",
+            "status": "exists"
+          },
+          {
+            "id": "b",
+            "label": "Behavior change",
+            "status": "missing"
+          },
+          {
+            "id": "s",
+            "label": "Status signal",
+            "status": "blocked"
+          }
+        ],
+        "edges": [
+          {
+            "from": "i",
+            "to": "b",
+            "label": "needs"
+          },
+          {
+            "from": "b",
+            "to": "s",
+            "label": "produces"
+          }
+        ],
+        "note": "Stewardship (parents trip, house) is real counter-evidence to 'beta' label — already in motion via other campaigns."
+      },
+      "progress": 0.15
+    },
+    {
+      "id": "camp-admin-finance",
+      "name": "Finance & admin hygiene",
+      "target_state": "Taxes closed; AR-11 current",
+      "horizon": "30d",
+      "status": "advancing",
+      "distance": "Tax done; IRS overdue; AR-11 near",
+      "refs": [
+        "259d5a2c",
+        "2db41016"
+      ],
+      "tree": {
+        "nodes": [
+          {
+            "id": "tax",
+            "label": "Taxes filed",
+            "status": "done"
+          },
+          {
+            "id": "irs",
+            "label": "IRS recheck",
+            "status": "overdue"
+          },
+          {
+            "id": "ar11",
+            "label": "AR-11",
+            "status": "gated"
+          }
+        ],
+        "edges": [
+          {
+            "from": "tax",
+            "to": "irs",
+            "label": "next"
+          },
+          {
+            "from": "irs",
+            "to": "ar11",
+            "label": "then (post-move)"
+          }
+        ],
+        "note": "Mostly done. Residual in post-close SETUP batch."
+      },
+      "progress": 0.7
+    }
   ],
   "moves": {
     "primary": [
@@ -33,46 +411,208 @@
         "next_24h": "Open lender + attorney + agent threads beside the Housing body. Line-by-line check of Closing Disclosure figures (6031e3c9). Demand WRITTEN repair confirmation or re-inspection/credit (f66be521 — 'dont budge'). Output one checklist: remaining items, owners, dates.",
         "done_when": "Written repair confirmation (or credit/re-inspection path) exists AND settlement figures verified line-by-line, OR a named blocker with owner+date is recorded for each.",
         "campaign_id": "camp-home-base",
-        "task_ids": ["f66be521-98cb-4f87-9031-61b56038f185", "6031e3c9-4217-49a6-ad6c-cf3dc8693e4c"],
+        "task_ids": [
+          "f66be521-98cb-4f87-9031-61b56038f185",
+          "6031e3c9-4217-49a6-ad6c-cf3dc8693e4c"
+        ],
         "stop_condition": "Any settlement-figure mismatch → do not sign until resolved. Overrides all sequencing.",
         "position_change": "Closing risk collapses from unknown to enumerated; slack to react before Aug 14.",
         "score": 68.3,
-        "score_note": "Internal prior; AI-lane scored 68.2 — hard deadline constraint breaks the tie, not the number."
+        "score_note": "Internal prior; AI-lane scored 68.2 — hard deadline constraint breaks the tie, not the number.",
+        "leverage": "One batch collapses unknown closing risk into enumerated items with slack to react",
+        "effort": "90 min · one sitting · high focus",
+        "risk": "Low if done today; high if delayed (tail risk on closing day)",
+        "expected_position_gain": "Closes the irreversible gate cleanly; unlocks the post-close window as a real option",
+        "execute": "Open lender + attorney + agent threads beside the Housing body. Line-by-line check of Closing Disclosure figures (6031e3c9). Demand WRITTEN repair confirmation or re-inspection/credit (f66be521 — 'dont budge'). Output one checklist: remaining items, owners, dates."
       }
     ],
     "parallel": [
-      {"title": "Abstinence streak continues", "class": "PASSIVE", "state": "maturing — 36d, continuity framing (process > perfection)", "trigger": null, "expiry": null, "campaign_id": "camp-self-regulation", "refs": ["ca5f246b"], "score": null},
-      {"title": "Exercise movement snacks 2–3×/week", "class": "PASSIVE", "state": "maturing — rewire protocol; fog-day controller", "trigger": null, "expiry": null, "campaign_id": "camp-self-regulation", "refs": ["093f4471", "f6e7b5ce"], "score": null},
-      {"title": "Post-close SETUP batch: lease + internet + IRS + AR-11", "class": "SETUP", "state": "gated on closing complete", "trigger": "closing externally confirmed done", "expiry": "2026-08-24", "campaign_id": "camp-home-base", "refs": ["ed5f00ee", "e7e77f16", "259d5a2c", "2db41016"], "score": 24.1},
-      {"title": "AI/software Outliner project + one <60-min first task", "class": "OPTIONALITY", "state": "watch — user creates (engine read-only); external commitment device recommended", "trigger": "project exists in Outliner", "expiry": "2026-08-20", "campaign_id": "camp-mission-ai", "refs": [], "score": 68.2},
-      {"title": "Schedule lung scan — one phone call", "class": "WATCH", "state": "deferred to Aug 15–17 medical slot; not starved", "trigger": "closing complete", "expiry": null, "campaign_id": "camp-vitality", "refs": ["6f9639e7"], "score": 55.6}
+      {
+        "title": "Abstinence streak continues",
+        "class": "PASSIVE",
+        "state": "maturing — 36d, continuity framing (process > perfection)",
+        "trigger": null,
+        "expiry": null,
+        "campaign_id": "camp-self-regulation",
+        "refs": [
+          "ca5f246b"
+        ],
+        "score": null,
+        "progress": 0.72,
+        "maturation": "elapsed",
+        "indicator": "36 days elapsed · time is the worker · do not intervene",
+        "days_running": 36,
+        "target_days": 50
+      },
+      {
+        "title": "Exercise movement snacks 2–3×/week",
+        "class": "PASSIVE",
+        "state": "maturing — rewire protocol; fog-day controller",
+        "trigger": null,
+        "expiry": null,
+        "campaign_id": "camp-self-regulation",
+        "refs": [
+          "093f4471",
+          "f6e7b5ce"
+        ],
+        "score": null,
+        "progress": 0.25,
+        "maturation": "building",
+        "indicator": "2 sessions/14d · restarting · fog-day protocol armed",
+        "days_running": 7,
+        "target_days": 28
+      },
+      {
+        "title": "Post-close SETUP batch: lease + internet + IRS + AR-11",
+        "class": "SETUP",
+        "state": "gated on closing complete",
+        "trigger": "closing externally confirmed done",
+        "expiry": "2026-08-24",
+        "campaign_id": "camp-home-base",
+        "refs": [
+          "ed5f00ee",
+          "e7e77f16",
+          "259d5a2c",
+          "2db41016"
+        ],
+        "score": 24.1,
+        "progress": 0.0,
+        "maturation": "gated",
+        "indicator": "Waiting on closing · 4 items batched",
+        "days_running": 0,
+        "target_days": null
+      },
+      {
+        "title": "AI/software Outliner project + one <60-min first task",
+        "class": "OPTIONALITY",
+        "state": "watch — user creates (engine read-only); external commitment device recommended",
+        "trigger": "project exists in Outliner",
+        "expiry": "2026-08-20",
+        "campaign_id": "camp-mission-ai",
+        "refs": [],
+        "score": 68.2,
+        "progress": 0.0,
+        "maturation": "unopened",
+        "indicator": "Option exists only after Outliner footprint created",
+        "days_running": 0,
+        "target_days": null
+      },
+      {
+        "title": "Schedule lung scan — one phone call",
+        "class": "WATCH",
+        "state": "deferred to Aug 15–17 medical slot; not starved",
+        "trigger": "closing complete",
+        "expiry": null,
+        "campaign_id": "camp-vitality",
+        "refs": [
+          "6f9639e7"
+        ],
+        "score": 55.6,
+        "progress": 0.05,
+        "maturation": "armed",
+        "indicator": "Medical protected · fires post-close",
+        "days_running": 155,
+        "target_days": null
+      }
     ],
     "do_not_touch": [
-      {"item": "Abstinence process itself", "reason": "Time is advancing it; controller action risks destabilizing a working passive process. Continuity > perfection.", "until": "indefinite (revisit only on multi-day spiral)"},
-      {"item": "Hairloss research", "reason": "Cosmetic; 86d old; nothing irreversible. Starved one cycle.", "until": "2026-08-24"},
-      {"item": "NYC & Niagara booking", "reason": "54d old; no external deadline this cycle.", "until": "2026-08-24"},
-      {"item": "Any new non-closing work before Aug 14", "reason": "Attention is the bottleneck; fragmentation is the failure mode.", "until": "2026-08-14"}
+      {
+        "item": "Abstinence process itself",
+        "reason": "Time is advancing it; controller action risks destabilizing a working passive process. Continuity > perfection.",
+        "until": "indefinite (revisit only on multi-day spiral)"
+      },
+      {
+        "item": "Hairloss research",
+        "reason": "Cosmetic; 86d old; nothing irreversible. Starved one cycle.",
+        "until": "2026-08-24"
+      },
+      {
+        "item": "NYC & Niagara booking",
+        "reason": "54d old; no external deadline this cycle.",
+        "until": "2026-08-24"
+      },
+      {
+        "item": "Any new non-closing work before Aug 14",
+        "reason": "Attention is the bottleneck; fragmentation is the failure mode.",
+        "until": "2026-08-14"
+      }
     ],
     "blocked": [
-      {"title": "Hairloss research", "class": "BLOCKED", "state": "starved", "dependency": "post-cycle capacity", "refs": ["c18cb05c"]},
-      {"title": "NYC flight booking", "class": "BLOCKED", "state": "starved", "dependency": "post-cycle capacity", "refs": ["6ed76b92"]}
+      {
+        "title": "Hairloss research",
+        "class": "BLOCKED",
+        "state": "starved",
+        "dependency": "post-cycle capacity",
+        "refs": [
+          "c18cb05c"
+        ]
+      },
+      {
+        "title": "NYC flight booking",
+        "class": "BLOCKED",
+        "state": "starved",
+        "dependency": "post-cycle capacity",
+        "refs": [
+          "6ed76b92"
+        ]
+      }
     ]
   },
   "openings": [
-    {"what": "Aug 15–24 post-close window — streak intact, obligations mostly cleared, highest-leverage moment of the year for compounding investment", "window": "2026-08-15..2026-08-24", "prerequisite": "closing complete; admin batch bounded"},
-    {"what": "Create AI/software mission footprint in Outliner (project + one first task) — converts structural zero into schedulable work", "window": "any; target by Aug 20", "prerequisite": "user action (engine read-only)"}
+    {
+      "what": "Aug 15–24 post-close window — streak intact, obligations mostly cleared, highest-leverage moment of the year for compounding investment",
+      "window": "2026-08-15..2026-08-24",
+      "prerequisite": "closing complete; admin batch bounded"
+    },
+    {
+      "what": "Create AI/software mission footprint in Outliner (project + one first task) — converts structural zero into schedulable work",
+      "window": "any; target by Aug 20",
+      "prerequisite": "user action (engine read-only)"
+    }
   ],
   "threats": [
-    {"what": "Unverified repair or figure surfaces on/after Aug 14", "impact": "high irreversible", "early_warning": "party unresponsive by Aug 12 noon; figure mismatch", "mitigation": "front-load verification today; do-not-sign stop rule"},
-    {"what": "Verification becomes a polite status check (confrontation avoidance)", "impact": "medium-high", "early_warning": "no written repair confirmation by Aug 13", "mitigation": "hard done-conditions (P4)"},
-    {"what": "Move logistics consume entire post-close window; compounding share stays 0", "impact": "medium (position)", "early_warning": "no AI project in Outliner by Aug 20", "mitigation": "explicit admin lane + P3; external commitment device"},
-    {"what": "Stress-window lapse → narrative collapse", "impact": "medium", "early_warning": "multi-day gap after Aug 10", "mitigation": "continuity framing; movement snacks; no gamification"}
+    {
+      "what": "Unverified repair or figure surfaces on/after Aug 14",
+      "impact": "high irreversible",
+      "early_warning": "party unresponsive by Aug 12 noon; figure mismatch",
+      "mitigation": "front-load verification today; do-not-sign stop rule"
+    },
+    {
+      "what": "Verification becomes a polite status check (confrontation avoidance)",
+      "impact": "medium-high",
+      "early_warning": "no written repair confirmation by Aug 13",
+      "mitigation": "hard done-conditions (P4)"
+    },
+    {
+      "what": "Move logistics consume entire post-close window; compounding share stays 0",
+      "impact": "medium (position)",
+      "early_warning": "no AI project in Outliner by Aug 20",
+      "mitigation": "explicit admin lane + P3; external commitment device"
+    },
+    {
+      "what": "Stress-window lapse → narrative collapse",
+      "impact": "medium",
+      "early_warning": "multi-day gap after Aug 10",
+      "mitigation": "continuity framing; movement snacks; no gamification"
+    }
   ],
   "watch_for": [
-    {"condition": "Lender/attorney/agent unresponsive by Aug 12 noon", "then": "Escalate same day through agent; do not wait"},
-    {"condition": "Closing delayed or cancelled", "then": "Re-run Housing campaign only; do not auto-start post-close admin"},
-    {"condition": "AI/software project appears in Outliner", "then": "Schedule first <60-min block within 72h"},
-    {"condition": "Settlement-figure mismatch on Closing Disclosure", "then": "STOP — do not sign until resolved"}
+    {
+      "condition": "Lender/attorney/agent unresponsive by Aug 12 noon",
+      "then": "Escalate same day through agent; do not wait"
+    },
+    {
+      "condition": "Closing delayed or cancelled",
+      "then": "Re-run Housing campaign only; do not auto-start post-close admin"
+    },
+    {
+      "condition": "AI/software project appears in Outliner",
+      "then": "Schedule first <60-min block within 72h"
+    },
+    {
+      "condition": "Settlement-figure mismatch on Closing Disclosure",
+      "then": "STOP — do not sign until resolved"
+    }
   ],
   "decisions": [
     {
@@ -91,7 +631,15 @@
       "changes_if": "Closing delayed/cancelled; repair confirmation refused; any settlement-figure mismatch",
       "reversibility": "Verification fully reversible; signing is not — hence sequencing",
       "council": "full",
-      "council_roles": ["problem-framer", "or-optimizer", "bayesian-analyst", "systems-control", "execution-engineer", "red-team", "adjudicator"],
+      "council_roles": [
+        "problem-framer",
+        "or-optimizer",
+        "bayesian-analyst",
+        "systems-control",
+        "execution-engineer",
+        "red-team",
+        "adjudicator"
+      ],
       "disagreements": [
         "Post-close compounding confidence: downgraded to OPTIONALITY+WATCH (red team A2 wins)",
         "Admin sizing: explicit expanding lane (red team A4)",
@@ -106,18 +654,76 @@
         "NEXT_24H": "One 90-min sitting: lender + attorney + agent threads open; verify figures; demand written repair confirmation; write the checklist.",
         "CONFIDENCE": "High on verification (deadline-forced). Low-moderate on post-close compounding without external commitment.",
         "POSITION_CHANGE": "Closing risk becomes enumerated; post-close window pre-designed; compounding option preserved with an honest test (P3)."
-      }
+      },
+      "council_views": [
+        {
+          "role": "OR Optimizer",
+          "favors": "A — front-load verification today",
+          "why": "Critical path + third-party latency is the real risk"
+        },
+        {
+          "role": "Bayesian",
+          "favors": "A + protect streak + honest low conf on post-close compounding",
+          "why": "VoI maximal today; B3 supports close; B5/history against compounding without external force"
+        },
+        {
+          "role": "Systems/Control",
+          "favors": "A + storm mode (lower all other expectations)",
+          "why": "Closing is a disturbance on a fragile reinforcing loop; don't add load"
+        },
+        {
+          "role": "Execution",
+          "favors": "A with hard done-conditions",
+          "why": "Compile to 90-min batch + kill criteria"
+        },
+        {
+          "role": "Red Team",
+          "favors": "A only if written confirmation; rejects polite check; rejects confident post-close promise",
+          "why": "A1 confrontation avoidance; A2 two prior windows missed; A3 streak gamification risk"
+        },
+        {
+          "role": "Adjudicator",
+          "favors": "A hardened + post-close compounding as OPTIONALITY/WATCH not promise",
+          "why": "Survives all red-team attacks except A2, which is honestly downgraded"
+        }
+      ],
+      "disagreement_summary": "OR/Bayesian/Systems/Execution converge on A (verify today). Red team accepts A only with written-confirmation done-conditions and rejects confident post-close compounding. Adjudicator: A hardened; compounding downgraded to option+watch (P3)."
     }
   ],
   "predictions": [
-    {"id": "P1", "statement": "Closing completes + both Housing tasks completed by Aug 17", "check_by": "2026-08-24", "result": "pending"},
-    {"id": "P2", "statement": "If streak holds through Aug 14 → ≥2 completions Aug 15–24", "check_by": "2026-08-24", "result": "pending"},
-    {"id": "P3", "statement": "If no AI project by Aug 24 → zero compounding completions", "check_by": "2026-08-24", "result": "pending"},
-    {"id": "P4", "statement": "Written repair confirmation or credit path exists by Aug 13 EOD", "check_by": "2026-08-14", "result": "pending"}
+    {
+      "id": "P1",
+      "statement": "Closing completes + both Housing tasks completed by Aug 17",
+      "check_by": "2026-08-24",
+      "result": "pending"
+    },
+    {
+      "id": "P2",
+      "statement": "If streak holds through Aug 14 → ≥2 completions Aug 15–24",
+      "check_by": "2026-08-24",
+      "result": "pending"
+    },
+    {
+      "id": "P3",
+      "statement": "If no AI project by Aug 24 → zero compounding completions",
+      "check_by": "2026-08-24",
+      "result": "pending"
+    },
+    {
+      "id": "P4",
+      "statement": "Written repair confirmation or credit path exists by Aug 13 EOD",
+      "check_by": "2026-08-14",
+      "result": "pending"
+    }
   ],
   "verdict": {
     "previous_predictions": [
-      {"id": "v7-forecast", "statement": "v7 (Jul 29): authoritative closing checklist within 72h (base 50%)", "result": "unverifiable", "evidence": "No checklist artifact; Housing progressed (docs Jul 28, verification tasks Aug 1)."}
+      {
+        "id": "v7-forecast",
+        "statement": "v7 (Jul 29): authoritative closing checklist within 72h (base 50%)",
+        "result": "unverifiable",
+        "evidence": "No checklist artifact; Housing progressed (docs Jul 28, verification tasks Aug 1)."
+      }
     ],
     "model_updates": [
       "B1 burst-executor, B3 deadline-forcing, B4 instrument-decay remain supported.",
@@ -127,7 +733,10 @@
   },
   "sources_active": [],
   "provenance": {
-    "nodes": 143, "tasks": 21, "notes": 10, "bodies_read": 13,
+    "nodes": 143,
+    "tasks": 21,
+    "notes": 10,
+    "bodies_read": 13,
     "fingerprint": "59fd2fb6ac3836d8ef9615e020e265874cd69aa975735ffd59e5f9966ed1598e",
     "quality_flags": [
       "abstinence habit autoCheck:true — low-verification (gaps Aug 6–7)",
@@ -135,5 +744,118 @@
       "no time-use or external closing artifacts available via API",
       "scores are uncalibrated initial priors (calibration_runs=0)"
     ]
+  },
+  "hidden_leverage": [
+    {
+      "title": "Post-close window is the real prize",
+      "depth": 5,
+      "baseline_missed": "Treat closing as the finish line",
+      "reframe": "Closing is a gate. The Aug 15–24 window — streak intact, obligations cleared — is the highest-leverage moment of the year for compounding investment. History (April missed window, July 0% compounding) says it will be lost without an external commitment device.",
+      "why_non_obvious": "Depth-5 reframe: the stated task (close house) is a proxy; the actual objective is position after the gate.",
+      "models": [
+        "Real options",
+        "Deadline-forcing (B3)",
+        "Post-event overshoot control"
+      ]
+    },
+    {
+      "title": "Verification fails via confrontation avoidance, not ignorance",
+      "depth": 4,
+      "baseline_missed": "Call the agent and ask if everything is fine",
+      "reframe": "Sai already knows what to check. The failure mode is a polite status call that verifies nothing. Done-conditions must require WRITTEN repair confirmation + line-by-line CD check — 'dont budge' is his own standing order.",
+      "why_non_obvious": "Environment/incentives depth: changes the verification mechanism, not the effort.",
+      "models": [
+        "Red team A1",
+        "Signaling / BATNA",
+        "HVM body evidence"
+      ]
+    },
+    {
+      "title": "Mission lane has zero footprint — compounding share is 0 by construction",
+      "depth": 3,
+      "baseline_missed": "Prioritize open tasks harder",
+      "reframe": "Outliner captures obligations, not ambitions. No AI/software project exists, so growth work cannot be scheduled. Creating the footprint is a structural move, not a productivity tip.",
+      "why_non_obvious": "Mechanism change: alter the system that allocates attention, not the willpower applied to it.",
+      "models": [
+        "B5 mission-execution gap",
+        "Theory of Constraints",
+        "Information architecture"
+      ]
+    }
+  ],
+  "position_after": {
+    "headline": "Closing risk enumerated · post-close window unlocked as a real option",
+    "summary": "After the verification batch: unknown third-party state becomes a named checklist with owners and dates. Tail risk on Aug 14 collapses. The Aug 15–24 window becomes reachable instead of theoretical. Mission lane still dormant until footprint is created — that option is preserved, not yet exercised.",
+    "territory_delta": [
+      {
+        "id": "home",
+        "label": "Home base",
+        "before": 0.72,
+        "after": 0.88,
+        "change": "+enumerated"
+      },
+      {
+        "id": "reg",
+        "label": "Self-reg",
+        "before": 0.78,
+        "after": 0.78,
+        "change": "held (protected)"
+      },
+      {
+        "id": "mission",
+        "label": "AI/software",
+        "before": 0.0,
+        "after": 0.0,
+        "change": "option preserved"
+      },
+      {
+        "id": "vitality",
+        "label": "Vitality",
+        "before": 0.28,
+        "after": 0.28,
+        "change": "armed post-close"
+      },
+      {
+        "id": "status",
+        "label": "Status/HVM",
+        "before": 0.12,
+        "after": 0.15,
+        "change": "stewardship signal"
+      },
+      {
+        "id": "admin",
+        "label": "Admin/finance",
+        "before": 0.62,
+        "after": 0.62,
+        "change": "queued"
+      }
+    ],
+    "opens": [
+      "Post-close SETUP batch",
+      "Lung scan slot",
+      "Mission footprint window"
+    ],
+    "closes": [
+      "Freedom to ignore closing details",
+      "Ability to start new non-closing work before Aug 14"
+    ],
+    "risks_removed": [
+      "Unknown repair state",
+      "Unknown settlement figures"
+    ],
+    "risks_remaining": [
+      "Move logistics overrun",
+      "Post-close compounding miss (P3)",
+      "Streak stress-window"
+    ]
+  },
+  "ui": {
+    "hierarchy": [
+      "CURRENT POSITION",
+      "BEST MOVE NOW",
+      "RUNNING IN PARALLEL",
+      "WHAT OPENS NEXT"
+    ],
+    "version": "strategy-game-v1"
   }
 }
