@@ -200,6 +200,33 @@ a{color:inherit;text-decoration:none}
 .hl .ob b,.hl .hi b{display:block;font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--dim);margin-bottom:3px}
 .hl .models{font-family:var(--mono);font-size:9px;color:var(--mute);margin-top:8px}
 
+/* FLYWHEEL / STATE-SPACE */
+.fw{background:var(--surf);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:4px}
+.fw .eq{font-family:var(--mono);font-size:11px;color:var(--blue);line-height:1.6;padding:10px 12px;background:var(--blue-d);border:1px solid var(--blue-b);border-radius:8px;margin-bottom:12px}
+.fw .eq .j{color:var(--dim);font-size:10px}
+.fw-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px}
+@media(max-width:900px){.fw-grid{grid-template-columns:1fr}}
+.fw-card{background:var(--surf2);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.fw-card h4{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;color:var(--dim);margin-bottom:8px}
+.fw-row{display:flex;justify-content:space-between;gap:8px;font-size:11px;padding:3px 0;border-bottom:1px solid var(--line)}
+.fw-row:last-child{border-bottom:none}
+.fw-row .n{color:var(--tx)}
+.fw-row .v{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.fw-row .v.pos{color:var(--green)}.fw-row .v.neg{color:var(--red)}
+.fw-note{font-size:12px;line-height:1.5;color:var(--dim);margin-top:10px}
+.fw-note b{color:var(--tx);font-weight:600}
+.fw-rank{font-size:11px;padding:4px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px}
+.fw-rank:last-child{border-bottom:none}
+.fw-rank .id{font-family:var(--mono);font-size:9px;color:var(--mute);min-width:70px}
+.fw-rank.win .n{color:var(--blue);font-weight:600}
+.fw-badge{display:inline-block;font-family:var(--mono);font-size:8px;letter-spacing:1px;padding:1px 5px;border-radius:3px;margin-left:4px}
+.fw-badge.hard{border:1px solid var(--red-b);color:var(--red)}
+.fw-badge.soft{border:1px solid var(--purple-b);color:var(--purple)}
+.loop{font-size:11px;padding:5px 0;border-bottom:1px solid var(--line);color:var(--dim)}
+.loop:last-child{border-bottom:none}
+.loop .pol{font-family:var(--mono);font-size:9px;color:var(--green)}
+.loop .pol.bad{color:var(--red)}
+
 /* DISCLOSURE BLOCKS */
 details.blk{margin-top:14px;background:var(--surf);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 details.blk>summary{cursor:pointer;list-style:none;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--dim);padding:12px 14px;user-select:none}
@@ -559,6 +586,48 @@ function renderBoard(d){
       h+='</div>';
       h+='<div class="models">'+(hl.models||[]).map(esc).join(' · ')+'</div></div>';
     });
+    h+='</div>';
+  }
+
+  // Life flywheel — state-space / minimax
+  if(d.flywheel){
+    var fw=d.flywheel, eq=fw.equation||{}, st=fw.state_x||{}, xd=fw.x_dot_free||{};
+    h+='<div class="sec">Life flywheel · state-space path</div><div class="fw">';
+    h+='<div class="eq">'+esc(eq.dynamics||"x' = A x + B u")+'<br>';
+    h+='<span class="j">'+esc(eq.objective||'')+' · J_worst='+esc(eq.worst_case_J)+' · '+esc(eq.worst_scenario||'')+'</span></div>';
+    h+='<div class="fw-grid">';
+    // state
+    h+='<div class="fw-card"><h4>STATE x · FREE DRIFT ẋ</h4>';
+    Object.keys(st).forEach(function(k){
+      var dot=xd[k]||0, cls=dot>0.01?'pos':dot<-0.01?'neg':'';
+      h+='<div class="fw-row"><span class="n">'+esc(k)+'</span><span class="v">x='+esc(st[k])+' <span class="'+cls+'">ẋ='+esc(dot)+'</span></span></div>';
+    });
+    h+='</div>';
+    // loops
+    h+='<div class="fw-card"><h4>COUPLING LOOPS</h4>';
+    (fw.loops||[]).forEach(function(L){
+      var pol=L.polarity||'';
+      h+='<div class="loop"><span class="pol'+(pol==='decaying'||pol==='balancing'?' bad':'')+'">'+esc(pol)+'</span> · ';
+      h+=esc((L.nodes||[]).join(' ⇄ '))+' · str '+esc(L.strength_now)+'</div>';
+    });
+    if(!(fw.loops||[]).length) h+='<div class="loop">No strong loops detected</div>';
+    h+='</div>';
+    // ranking
+    h+='<div class="fw-card"><h4>MINIMAX RANK · CONTROLS u</h4>';
+    (fw.minimax_ranking||[]).forEach(function(r,i){
+      var win=r.id===fw.primary;
+      var soft=fw.soft_primary&&r.id===fw.soft_primary&&r.id!==fw.primary;
+      h+='<div class="fw-rank'+(win?' win':'')+'"><span class="id">'+esc(r.id)+'</span>';
+      h+='<span class="n">'+esc((r.title||'').slice(0,42))+(win?'<span class="fw-badge hard">HARD</span>':'')+(soft?'<span class="fw-badge soft">SOFT</span>':'')+'</span>';
+      h+='<span class="v">J̱='+esc(r.worst_J)+'</span></div>';
+    });
+    h+='</div></div>';
+    if(fw.hard_gate&&fw.hard_gate.binding){
+      h+='<div class="fw-note"><b>Hard gate binding.</b> '+esc(fw.hard_gate.reason||'')+' — '+esc(fw.selection_note||'')+'</div>';
+    }
+    h+='<div class="fw-note"><b>Path.</b> NOW: '+(fw.path&&fw.path.now_T0?esc(fw.path.now_T0.intent):'—');
+    h+=' · WINDOW: '+(fw.path&&fw.path.window_T3_14d?esc(fw.path.window_T3_14d.intent):'—')+'</div>';
+    h+='<div class="fw-note" style="color:var(--mute)">'+esc(fw.disclaimer||'')+'</div>';
     h+='</div>';
   }
 
