@@ -1,7 +1,7 @@
 {
   "schema": "psos-board/10",
   "version": "v10",
-  "generated_at": "2026-08-14T04:23:29Z",
+  "generated_at": "2026-08-14T04:44:32Z",
   "fingerprint": "59fd2fb6ac3836d8ef9615e020e265874cd69aa975735ffd59e5f9966ed1598e",
   "last_sync": "2026-08-11T03:35:00Z",
   "modes": [
@@ -1234,7 +1234,7 @@
   },
   "flywheel": {
     "schema": "psos-flywheel/1",
-    "generated_at": "2026-08-14T04:23:29Z",
+    "generated_at": "2026-08-14T04:44:32Z",
     "equation": {
       "state": "x = [home, finance, health, personal, career, social]ᵀ ∈ [0,1]⁶",
       "dynamics": "x_{t+1} = Π_{[0,1]}( x_t + Δt (A x_t + B u) )",
