@@ -660,8 +660,8 @@ function renderV1Surfaces(d){
   h+='<div class="sec">Current constraint · Theory of Constraints</div>';
   h+='<div class="toc">';
   h+='<div class="col"><div class="k">SYSTEM</div><div class="ttl">Whole-life throughput</div><div class="why">Improving a non-constraint creates motion without position change.</div></div>';
-  h+='<div class="mid"><div class="k">BINDING CONSTRAINT</div><div class="ttl">'+esc(c.title||c.text||'—')+'</div><div class="why">'+esc(c.why||'')+'</div></div>';
-  h+='<div class="col"><div class="k">UNLOCK IF FIXED</div><div class="ttl">'+esc(clip(c.unlocks_if_fixed||c.unlock||'',120))+'</div><div class="why">'+asList(c.evidence).map(esc).join(' · ')+'</div></div>';
+  h+='<div class="mid"><div class="k">BINDING CONSTRAINT</div><div class="ttl">'+esc(c.title||'—')+'</div><div class="why">'+esc(c.why||'')+'</div></div>';
+  h+='<div class="col"><div class="k">UNLOCK IF FIXED</div><div class="ttl">'+esc(clip(c.unlocks_if_fixed||'',120))+'</div><div class="why">'+asList(c.evidence).map(esc).join(' · ')+'</div></div>';
   h+='</div>';
 
   var moves=v.winning_moves||[];
@@ -671,22 +671,21 @@ function renderV1Surfaces(d){
       h+='<div class="wm'+(m.rank===1?' r1':'')+'">';
       h+='<div class="rk">MOVE '+esc(m.rank)+'</div><h3>'+esc(m.title)+'</h3>';
       h+='<div class="kv"><b>WHY NOW</b>'+esc(m.why_now)+'</div>';
-      h+='<div class="kv"><b>EXPECTED UNLOCK</b>'+esc(m.expected_unlock||m.unlock||'')+'</div>';
-      h+='<div class="kv"><b>TRADE-OFF</b>'+esc(m.tradeoff||m.trade_off||'')+'</div>';
-      h+='<div class="kv"><b>WIN</b>'+esc(m.win_condition||m.win||'')+'</div>';
-      h+='<div class="kv"><b>REVERSE IF</b>'+esc(m.reversal_condition||m.reverse||'')+'</div>';
-      h+='<div class="models">'+asList(m.models).map(esc).join(' · ')+'</div>';
+      h+='<div class="kv"><b>EXPECTED UNLOCK</b>'+esc(m.expected_unlock)+'</div>';
+      h+='<div class="kv"><b>TRADE-OFF</b>'+esc(m.tradeoff)+'</div>';
+      h+='<div class="kv"><b>WIN</b>'+esc(m.win_condition)+'</div>';
+      h+='<div class="kv"><b>REVERSE IF</b>'+esc(m.reversal_condition)+'</div>';
+      h+='<div class="models">'+(m.models||[]).map(esc).join(' · ')+'</div>';
       h+='</div>';
     });
     h+='</div>';
   }
 
   var hz=v.horizons||{};
-  if(hz.now||hz.cycle||hz.later||hz.NOW||hz.CYCLE||hz.LATER){
+  if(hz.now||hz.cycle||hz.later){
     h+='<div class="sec">Three horizons · precise near-term / conditional later</div><div class="hz">';
     ['now','cycle','later'].forEach(function(k,i){
-      var n=hz[k]||hz[k.toUpperCase()]||{};
-      if(typeof n==='string') n={label:k.toUpperCase(), move:n};
+      var n=hz[k]||{};
       h+='<div class="hz-n '+k+'"><div class="k">'+esc(n.label||k.toUpperCase())+'</div>';
       h+='<div class="w">'+esc(n.window||'')+'</div><div class="m">'+esc(n.move||'')+'</div></div>';
       if(i<2) h+='<div class="hz-e">→</div>';
@@ -697,16 +696,15 @@ function renderV1Surfaces(d){
   h+='<div class="sec">Unknowns · pivot signals</div><div class="fog">';
   h+='<div class="unk"><h3>◎ UNKNOWNS — BUY INFORMATION</h3>';
   (v.unknowns||[]).forEach(function(u){
-    if(typeof u==='string') u={gap:u, why_it_matters:'', highest_value_next:''};
     h+='<div class="unk-i"><div class="g">'+esc(u.gap)+'</div>';
-    h+='<div class="d">'+esc(u.why_it_matters||'')+'</div>';
-    h+='<div class="d">NEXT · '+esc(u.highest_value_next||'')+'</div></div>';
+    h+='<div class="d">'+esc(u.why_it_matters)+'</div>';
+    h+='<div class="d">NEXT · '+esc(u.highest_value_next)+'</div></div>';
   });
   h+='</div>';
   h+='<div class="piv"><h3>◇ PIVOT SIGNALS — CHANGE THE BOARD</h3>';
   (v.pivot_signals||[]).forEach(function(p){
-    h+='<div class="piv-i"><div class="if">IF '+esc(p.signal||p['if']||'')+'</div>';
-    h+='<div class="d">THEN '+esc(p.changes||p.then||'')+'</div>';
+    h+='<div class="piv-i"><div class="if">IF '+esc(p.signal)+'</div>';
+    h+='<div class="d">THEN '+esc(p.changes)+'</div>';
     h+='<div class="d">'+esc(p.kind||'')+'</div></div>';
   });
   h+='</div></div></div>';
