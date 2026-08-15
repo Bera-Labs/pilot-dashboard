@@ -8,12 +8,8 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
-import os
-import sys
 
 ROOT = Path(__file__).parent
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
 DATA_DIR = ROOT / "data"
 STATE_FILE = DATA_DIR / "state.json"
 
@@ -91,71 +87,6 @@ def api_growth_engine():
         return json.loads((DATA_DIR / "growth-engine.json").read_text())
     except FileNotFoundError:
         return JSONResponse({"error": "growth-engine.json not found"}, status_code=404)
-
-def _graph_store():
-    from graph.store import GraphStore
-    return GraphStore(DATA_DIR / "graph")
-
-def _writable(req: Request) -> bool:
-    from graph.store import can_write
-    host = req.client.host if req.client else ""
-    return can_write(os.environ.get("GRAPH_WRITE_TOKEN"), req.headers.get("x-graph-token"), host)
-
-@app.get("/api/graph")
-def api_graph(req: Request):
-    path = DATA_DIR / "graph" / "current.json"
-    try:
-        snap = json.loads(path.read_text())
-    except FileNotFoundError:
-        return JSONResponse({"error": "graph not materialized"}, status_code=404)
-    snap["writable"] = _writable(req)
-    return snap
-
-@app.post("/api/graph/commit")
-async def api_graph_commit(req: Request):
-    if not _writable(req):
-        return JSONResponse({"error": "write disabled"}, status_code=403)
-    from graph.packet import PacketError, compile_text, validate_packet
-    body = await req.json()
-    store = _graph_store()
-    try:
-        if body.get("text") and not body.get("kind"):
-            packet = compile_text(body["text"], body.get("kind_hint"))
-        else:
-            packet = validate_packet(body)
-        node = store.commit(packet, parent_id=body.get("parent_id"), rel=body.get("rel") or "child_of", actor="source-ui")
-    except (PacketError, ValueError) as e:
-        return JSONResponse({"error": str(e)}, status_code=400)
-    snap = json.loads(store.current_path.read_text())
-    snap["writable"] = True
-    snap["last_id"] = node["id"]
-    return snap
-
-@app.post("/api/graph/status")
-async def api_graph_status(req: Request):
-    if not _writable(req):
-        return JSONResponse({"error": "write disabled"}, status_code=403)
-    body = await req.json()
-    store = _graph_store()
-    try:
-        snap = store.set_status(body["id"], body["status"])
-    except KeyError:
-        return JSONResponse({"error": "not found"}, status_code=404)
-    snap["writable"] = True
-    return snap
-
-@app.post("/api/graph/habit")
-async def api_graph_habit(req: Request):
-    if not _writable(req):
-        return JSONResponse({"error": "write disabled"}, status_code=403)
-    body = await req.json()
-    store = _graph_store()
-    try:
-        snap = store.habit_check(body["id"], body["day"])
-    except KeyError:
-        return JSONResponse({"error": "not found"}, status_code=404)
-    snap["writable"] = True
-    return snap
 
 @app.post("/api/growth")
 async def post_growth(req: Request):
@@ -313,11 +244,6 @@ def stem_lifeos_v1():
 @app.get("/assets/growth-engine.html")
 def growth_engine():
     return FileResponse(ROOT / "assets" / "growth-engine.html")
-
-@app.get("/source.html")
-@app.get("/assets/source.html")
-def source_portal():
-    return FileResponse(ROOT / "assets" / "source.html")
 
 @app.get("/three-times-wiser.html")
 @app.get("/assets/three-times-wiser.html")
