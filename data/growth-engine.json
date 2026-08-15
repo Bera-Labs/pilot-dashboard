@@ -873,12 +873,18 @@
   "v1_surfaces": {
     "current_constraint": {
       "text": "Aug 17 close with two Housing verify tasks still open \u2014 48h slack, then irreversible.",
-      "evidence": "observed",
+      "evidence": [
+        "user:close-aug-17",
+        "open Housing tasks f66be521 + 6031e3c9"
+      ],
       "refs": [
         "user:close-aug-17",
         "outliner:f66be521",
         "outliner:6031e3c9"
-      ]
+      ],
+      "title": "Aug 17 close \u2014 2 verify tasks still open",
+      "why": "Aug 17 close with two Housing verify tasks still open \u2014 48h slack, then irreversible.",
+      "unlocks_if_fixed": "Controlled signing Monday; admin + mission window start Aug 18"
     },
     "winning_moves": [
       {
@@ -887,7 +893,16 @@
         "unlock": "Controlled Aug 17 sign",
         "trade_off": "No new work this weekend",
         "win": "Ready or named block",
-        "reverse": "If already verified offline, log it in Outliner today"
+        "reverse": "If already verified offline, log it in Outliner today",
+        "rank": 1,
+        "expected_unlock": "Controlled Aug 17 sign",
+        "tradeoff": "No new work this weekend",
+        "win_condition": "Ready or named block",
+        "reversal_condition": "If already verified offline, log it in Outliner today",
+        "models": [
+          "ToC",
+          "VoI"
+        ]
       },
       {
         "title": "Do-not-sign rule",
@@ -895,7 +910,16 @@
         "unlock": "Avoid irreversible bad close",
         "trade_off": "Possible further delay",
         "win": "Option to renegotiate",
-        "reverse": "Only if both tasks truly clean"
+        "reverse": "Only if both tasks truly clean",
+        "rank": 2,
+        "expected_unlock": "Avoid irreversible bad close",
+        "tradeoff": "Possible further delay",
+        "win_condition": "Option to renegotiate",
+        "reversal_condition": "Only if both tasks truly clean",
+        "models": [
+          "ToC",
+          "VoI"
+        ]
       },
       {
         "title": "Protect streak through the 17th",
@@ -903,31 +927,67 @@
         "unlock": "Post-close energy",
         "trade_off": "Zero optimization",
         "win": "Continuity",
-        "reverse": "Don't gamify"
+        "reverse": "Don't gamify",
+        "rank": 3,
+        "expected_unlock": "Post-close energy",
+        "tradeoff": "Zero optimization",
+        "win_condition": "Continuity",
+        "reversal_condition": "Don't gamify",
+        "models": [
+          "ToC",
+          "VoI"
+        ]
       }
     ],
     "horizons": {
-      "NOW": "Housing verification batch",
-      "CYCLE": "Aug 17 close \u2192 Aug 18\u201327 admin + mission footprint",
-      "LATER": "90d vitality \u00b7 AI shipping cadence"
+      "now": {
+        "label": "NOW",
+        "window": "Aug 15\u201316",
+        "move": "Housing verification batch"
+      },
+      "cycle": {
+        "label": "CYCLE",
+        "window": "Aug 17\u201327",
+        "move": "Aug 17 close \u2192 Aug 18\u201327 admin + mission footprint"
+      },
+      "later": {
+        "label": "LATER",
+        "window": "90d",
+        "move": "90d vitality \u00b7 AI shipping cadence"
+      }
     },
     "unknowns": [
-      "Written repair/credit status today?",
-      "CD/mortgage terms match expectations?",
-      "Any chance of another slip past Aug 17?"
+      {
+        "gap": "Written repair/credit status today?",
+        "why_it_matters": "Changes whether you sign",
+        "highest_value_next": "Verify today"
+      },
+      {
+        "gap": "CD/mortgage terms match expectations?",
+        "why_it_matters": "Changes whether you sign",
+        "highest_value_next": "Verify today"
+      },
+      {
+        "gap": "Any chance of another slip past Aug 17?",
+        "why_it_matters": "Changes whether you sign",
+        "highest_value_next": "Verify today"
+      }
     ],
     "pivot_signals": [
       {
-        "if": "Repair/CD mismatch",
-        "then": "Do not sign; only housing exists"
+        "signal": "Repair/CD mismatch",
+        "changes": "Do not sign; only housing exists",
+        "kind": "observed"
       },
       {
-        "if": "Both tasks closed clean before Aug 17",
-        "then": "Protect streak; admin queued for Aug 18; no new scope"
+        "signal": "Both tasks closed clean before Aug 17",
+        "changes": "Protect streak; admin queued for Aug 18; no new scope",
+        "kind": "observed"
       },
       {
-        "if": "Close slips again past Aug 17",
-        "then": "Re-Board same night; verify stays primary"
+        "signal": "Close slips again past Aug 17",
+        "changes": "Re-Board same night; verify stays primary",
+        "kind": "observed"
       }
     ]
   },
