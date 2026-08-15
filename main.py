@@ -103,11 +103,11 @@ def _writable(req: Request) -> bool:
 
 @app.get("/api/graph")
 def api_graph(req: Request):
-    store = _graph_store()
-    if store.current_path.exists():
-        snap = json.loads(store.current_path.read_text())
-    else:
-        snap = store.snapshot()
+    path = DATA_DIR / "graph" / "current.json"
+    try:
+        snap = json.loads(path.read_text())
+    except FileNotFoundError:
+        return JSONResponse({"error": "graph not materialized"}, status_code=404)
     snap["writable"] = _writable(req)
     return snap
 
