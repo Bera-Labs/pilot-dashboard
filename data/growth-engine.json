@@ -1,9 +1,9 @@
 {
   "schema": "psos-board/10",
   "version": "v10",
-  "generated_at": "2026-08-15T19:06:03Z",
+  "generated_at": "2026-08-15T19:26:07Z",
   "fingerprint": "9cf78aaa2b064228be8e0c17778d414313bbf44e4f11e18f8871471a44b7f553",
-  "last_sync": "2026-08-15T19:06:03Z",
+  "last_sync": "2026-08-15T19:26:07Z",
   "modes": [
     "BOARD",
     "FOCUS",
@@ -14,37 +14,37 @@
   ],
   "active_mode": "BOARD",
   "strategic_momentum": {
-    "direction": "mixed",
-    "label": "INFLECTION",
-    "summary": "Deadline force expired. Streak held. Housing truth still open. Post-close window is live \u2014 or already leaking into admin.",
+    "direction": "up",
+    "label": "PRE-CLOSE",
+    "summary": "Close slipped to Aug 17. Deadline force still live. 48h slack to finish verification \u2014 or walk into the same unprepared signing.",
     "signals": [
       {
-        "text": "Aug 14 close date passed; 2 Housing verify tasks still open",
+        "text": "Close date now Aug 17 (was Aug 14) \u2014 user observed",
+        "kind": "timing"
+      },
+      {
+        "text": "2 Housing verify tasks still open",
         "kind": "bottleneck"
       },
       {
-        "text": "Abstinence checks through Aug 15 (40 total, autoCheck)",
+        "text": "Abstinence through Aug 15 (40 checks, autoCheck)",
         "kind": "passive"
       },
       {
-        "text": "9 open loops; maintenance 3 + housing 2 dominate",
+        "text": "Admin (lease/internet/AR-11) stays gated until close",
         "kind": "process"
       },
       {
-        "text": "Mission/AI footprint still 0 \u2014 compounding share 0",
+        "text": "Mission footprint still 0",
         "kind": "option"
-      },
-      {
-        "text": "Life-aura stack live (wiki-life + Life* FTS)",
-        "kind": "process"
       }
     ],
     "not_a_score": true
   },
   "position": {
-    "headline": "Day-after-close: get housing truth, then bound admin before the window dies.",
-    "summary": "Scheduled close was yesterday. Outliner still shows inspection + mortgage verify open \u2014 so either the deal closed with unfinished tracking, or residual risk is real. Primary leverage is a same-day truth pass, then a tight post-close admin batch. Streak is holding (protect it). Mission lane still dark.",
-    "momentum": "inflection",
+    "headline": "T-2: finish housing verification before the Aug 17 close.",
+    "summary": "Closing will complete Aug 17 \u2014 not yesterday, not done. Two verify tasks (inspection bugs, mortgage terms) are still open. The slip bought 48 hours. Use them. Streak holds. Admin and mission stay behind the gate.",
+    "momentum": "rising",
     "vector": {
       "completions_14d": null,
       "completions_30d": null,
@@ -63,24 +63,24 @@
       {
         "id": "home",
         "label": "Home / Environment",
-        "direction": "unstable",
-        "status": "CRITICAL",
+        "direction": "up",
+        "status": "ADVANCING",
         "momentum": "high",
-        "constraint": "close outcome unknown; 2 verify tasks open",
-        "opening": "truth pass today \u2192 clean settlement",
-        "risk": "high if ghost residual defects",
-        "uncertainty": "high",
+        "constraint": "verify before Aug 17 sign",
+        "opening": "48h slack from slip",
+        "risk": "high if sign unverified",
+        "uncertainty": "medium",
         "relevance": "critical",
-        "fill": 0.55
+        "fill": 0.62
       },
       {
         "id": "finance",
         "label": "Money / Admin",
         "direction": "up",
-        "status": "ACTIVE",
+        "status": "GATED",
         "momentum": "medium",
-        "constraint": "lease + internet + AR-11 open",
-        "opening": "bounded post-close batch",
+        "constraint": "admin after close",
+        "opening": "post-Aug-17 batch",
         "risk": "medium overrun",
         "uncertainty": "low",
         "relevance": "high",
@@ -163,58 +163,51 @@
     ],
     "constraints_visual": [
       {
-        "label": "Housing truth unknown",
+        "label": "Aug 17 close",
         "kind": "hard",
         "urgency": 1.0
       },
       {
-        "label": "Post-close window Aug 15\u201324",
-        "kind": "soft",
-        "urgency": 0.85
+        "label": "2 verify tasks open",
+        "kind": "hard",
+        "urgency": 0.95
       },
       {
         "label": "Attention bottleneck",
         "kind": "hard",
-        "urgency": 0.9
+        "urgency": 0.85
       }
     ],
-    "timing": "T+1 day after scheduled close \u00b7 window day 1/10"
+    "timing": "T-2 days to Aug 17 close"
   },
   "primary_move": {
-    "id": "PM-2026-08-15-001",
-    "title": "Housing truth pass \u2014 45 min, one sitting",
+    "id": "PM-2026-08-15-002",
+    "title": "Pre-close verification \u2014 today, 60\u201390 min",
     "type": "active",
-    "objective": "Replace unknown close state with a named reality: closed or not; residual defects; mortgage terms OK or not",
-    "why_now": "Aug 14 is past. Two verify tasks still open. Every other move (admin, mission, lung) is downstream of knowing whether residual housing risk is real.",
-    "mechanism": "VoI: force written/clear status on inspection bugs + CD/mortgage terms; mark Outliner done or park with owner+date",
-    "leverage": "Asymmetric \u2014 unlocks admin batch and stops false WIP",
-    "effort": "45 min \u00b7 one sitting \u00b7 high focus",
-    "risk": "Low process risk; high position risk if skipped (ghost defects / false open loops)",
-    "reversibility": "Easy (status update) / residual legal risk not reversible if ignored",
+    "objective": "Walk into Aug 17 with written repair status + line-by-line mortgage/CD check \u2014 or a named blocker",
+    "why_now": "Close is Aug 17. Third-party lag is 24\u201372h. Today is the last cheap day to start. Slip is slack, not a gift to wait.",
+    "mechanism": "VoI: written repair/credit path + CD/terms check; hard done-conditions; do-not-sign if mismatch",
+    "leverage": "Asymmetric",
+    "effort": "60\u201390 min \u00b7 one sitting",
+    "risk": "Low if today; high tail if you first look on the 17th",
+    "reversibility": "Easy (verify) / signing is Difficult",
     "confidence": {
-      "label": "High on doing the pass",
-      "detail": "B3 class residual. Close external outcome unknown until you confirm.",
+      "label": "High on process",
+      "detail": "B3 deadline-forced. Date slip does not change the mechanism.",
       "numeric": null
     },
     "attention_required": "high",
     "energy_required": "medium",
-    "estimated_focus_minutes": 45,
+    "estimated_focus_minutes": 75,
     "interruptibility": "low",
-    "expected_effect": "Housing state becomes truth; admin batch can fire; Board stops pretending T-3",
+    "expected_effect": "Aug 17 is a controlled signing, not a fog signing",
     "expected_position_change": [
       {
         "id": "home",
-        "label": "Home base",
-        "before": 0.55,
-        "after": 0.75,
-        "change": "+truth"
-      },
-      {
-        "id": "admin",
-        "label": "Admin",
-        "before": 0.5,
-        "after": 0.55,
-        "change": "unblocked"
+        "label": "Home",
+        "before": 0.62,
+        "after": 0.82,
+        "change": "+verified"
       },
       {
         "id": "reg",
@@ -228,14 +221,21 @@
         "label": "AI/software",
         "before": 0.0,
         "after": 0.0,
-        "change": "option preserved"
+        "change": "still gated"
+      },
+      {
+        "id": "admin",
+        "label": "Admin",
+        "before": 0.35,
+        "after": 0.35,
+        "change": "still gated"
       },
       {
         "id": "vitality",
         "label": "Vitality",
         "before": 0.4,
         "after": 0.4,
-        "change": "armed next"
+        "change": "post-close"
       },
       {
         "id": "status",
@@ -246,24 +246,24 @@
       }
     ],
     "options_opened": [
-      "Bounded admin batch",
-      "Lung scan call",
-      "Mission footprint this week"
+      "Clean Aug 17 close",
+      "Post-close admin starting Aug 18"
     ],
     "options_closed": [
-      "Pretending pre-close mode",
-      "Ignoring verify tasks as noise"
+      "Treating slip as extra vacation",
+      "Starting mission/trips before gate"
     ],
     "dependencies": [
-      "access to agent/lender docs or memory of close"
+      "lender/attorney/agent response"
     ],
     "prediction_ids": [
       "P5",
+      "P7",
       "P1"
     ],
     "source_ids": [],
     "journal_evidence_ids": [
-      "outliner:bc5dc69e",
+      "user:close-aug-17",
       "outliner:f66be521",
       "outliner:6031e3c9",
       "wiki-life:entities/project-housing.md"
@@ -272,10 +272,10 @@
       "f66be521-98cb-4f87-9031-61b56038f185",
       "6031e3c9-4217-49a6-ad6c-cf3dc8693e4c"
     ],
-    "stop_condition": "If close did NOT happen or major defect unpaid \u2192 escalate; do not start optional trips/mission until risk named.",
-    "execute": "1) Answer: Did closing complete Aug 14? Y/N. 2) Inspection bugs: written fix/credit/waiver? Update task f66be521. 3) Mortgage/CD terms as expected? Update task 6031e3c9. 4) If done externally, mark complete in Outliner. If not, list residual owners+dates in task body.",
-    "done_when": "Both Housing tasks completed in Outliner OR each has explicit residual risk note with owner+date; you can state close outcome in one sentence.",
-    "review_trigger": "Cannot confirm close outcome within 24h",
+    "stop_condition": "Any settlement-figure mismatch or unpaid inspection defect \u2192 do not sign Aug 17 until resolved.",
+    "execute": "Same two tasks: (1) inspection bugs \u2014 written fix/credit/waiver (f66be521, don't budge). (2) mortgage/CD terms line-by-line (6031e3c9). Output: ready-to-close checklist or named blockers with owners+dates.",
+    "done_when": "Written repair/credit status exists AND CD/terms checked, OR each open item has owner+date. You can say 'ready to sign Aug 17' or 'blocked because X'.",
+    "review_trigger": "Party unresponsive by Aug 16 noon",
     "actions": [
       "EXECUTE",
       "WHY THIS?",
@@ -285,36 +285,29 @@
     ]
   },
   "position_after": {
-    "headline": "Housing truth known \u00b7 admin batch can run without ghost risk",
-    "summary": "After truth pass: either residual legal/repair risk is named, or open loops are closed as done. Attention frees for lease/internet/AR-11 and a deliberate mission footprint before Aug 20.",
+    "headline": "Ready-to-sign Aug 17 \u00b7 or named blockers with owners",
+    "summary": "After verification: either you sign Monday with eyes open, or you delay with a reason. Post-close window starts Aug 18.",
     "current_label": "CURRENT",
     "next_label": "AFTER MOVE",
     "branches": [
       {
         "id": "A",
-        "label": "Clean closed",
-        "effect": "Mark tasks done \u00b7 fire admin batch \u00b7 open mission window"
+        "label": "Clean path",
+        "effect": "Sign Aug 17 \u00b7 admin fires Aug 18"
       },
       {
         "id": "B",
-        "label": "Residual risk",
-        "effect": "Named owners \u00b7 pause optional spend \u00b7 protect streak"
+        "label": "Blocker path",
+        "effect": "Do-not-sign \u00b7 renegotiate/credit \u00b7 new date"
       }
     ],
     "territory_delta": [
       {
         "id": "home",
-        "label": "Home base",
-        "before": 0.55,
-        "after": 0.75,
-        "change": "+truth"
-      },
-      {
-        "id": "admin",
-        "label": "Admin",
-        "before": 0.5,
-        "after": 0.55,
-        "change": "unblocked"
+        "label": "Home",
+        "before": 0.62,
+        "after": 0.82,
+        "change": "+verified"
       },
       {
         "id": "reg",
@@ -328,14 +321,21 @@
         "label": "AI/software",
         "before": 0.0,
         "after": 0.0,
-        "change": "option preserved"
+        "change": "still gated"
+      },
+      {
+        "id": "admin",
+        "label": "Admin",
+        "before": 0.35,
+        "after": 0.35,
+        "change": "still gated"
       },
       {
         "id": "vitality",
         "label": "Vitality",
         "before": 0.4,
         "after": 0.4,
-        "change": "armed next"
+        "change": "post-close"
       },
       {
         "id": "status",
@@ -346,55 +346,37 @@
       }
     ],
     "opens": [
+      "Aug 18\u201327 window",
       "Admin batch",
-      "Lung slot",
-      "Mission footprint"
+      "Mission footprint after close"
     ],
     "closes": [
-      "Pre-close theater",
-      "Infinite housing fog"
+      "Signing blind",
+      "Starting optional trips this weekend as if closed"
     ],
     "bottlenecks_affected": [
-      "Unknown close state \u2192 named"
+      "Unverified close \u2192 enumerated"
     ],
     "risks_introduced": [
-      "Admin overrun if batch unbounded"
+      "Third-party no-show"
     ],
     "risks_removed": [
-      "Ghost WIP",
-      "Untracked residual defects (if named)"
+      "Fog signing"
     ],
     "information_gained": [
-      "Close Y/N",
       "Repair status",
-      "Mortgage terms status"
+      "CD/terms",
+      "Ready vs blocked"
     ],
     "processes_accelerated": [
-      "Post-close admin"
+      "Home base"
     ],
     "processes_delayed": [
-      "Optional trips until truth"
+      "Admin, mission, optional trips until Aug 17+"
     ]
   },
   "parallel_lanes": {
-    "ACTIVE": [
-      {
-        "id": "p-admin",
-        "name": "Post-close admin batch",
-        "type": "active",
-        "state": "ready_after_truth",
-        "progress": 0.1,
-        "progress_basis": "lease + internet + AR-11 open",
-        "attention_required": "medium",
-        "intervention_rule": "Bound to 3 items; no new scope",
-        "indicator": "3 open maintenance tasks",
-        "campaign_ids": [
-          "camp-home-base",
-          "camp-admin-finance"
-        ],
-        "trigger": "housing truth pass done or parallel if close known-good"
-      }
-    ],
+    "ACTIVE": [],
     "PASSIVE": [
       {
         "id": "p-abs",
@@ -430,7 +412,24 @@
         ]
       }
     ],
-    "SETUP": [],
+    "SETUP": [
+      {
+        "id": "p-admin",
+        "name": "Post-close admin batch",
+        "type": "setup",
+        "state": "gated",
+        "progress": 0.1,
+        "progress_basis": "lease + internet + AR-11 open",
+        "attention_required": "medium",
+        "intervention_rule": "Bound to 3 items; no new scope",
+        "indicator": "3 open maintenance tasks",
+        "campaign_ids": [
+          "camp-home-base",
+          "camp-admin-finance"
+        ],
+        "trigger": "close confirmed Aug 17"
+      }
+    ],
     "OPTIONALITY": [
       {
         "id": "p-ai",
@@ -468,139 +467,120 @@
   },
   "do_not_touch": [
     {
-      "process": "Abstinence process itself",
-      "reason": "Working passive; controller fiddling risks spiral under move stress.",
+      "process": "Abstinence process",
+      "reason": "Working passive through close stress.",
       "revisit": "Only on multi-day gap"
     },
     {
-      "process": "Hairloss research",
-      "reason": "Cosmetic; not irreversible this week.",
-      "revisit": "2026-08-24"
+      "process": "Hairloss / NYC booking / parents-trip expansion",
+      "reason": "Optional until after Aug 17.",
+      "revisit": "2026-08-18"
     },
     {
-      "process": "NYC & Niagara booking",
-      "reason": "Optional spend until housing truth known.",
-      "revisit": "after housing truth"
+      "process": "Mission footprint this weekend",
+      "reason": "Attention is the bottleneck until close.",
+      "revisit": "2026-08-18"
     },
     {
-      "process": "Parents trip expansion",
-      "reason": "Weekend plan only if attention surplus after admin bound.",
+      "process": "Any new non-closing work before Aug 17",
+      "reason": "Slip is for verification, not new scope.",
       "revisit": "2026-08-17"
     }
   ],
   "openings": [
     {
       "id": "o1",
-      "title": "Post-close compounding window (LIVE)",
+      "title": "48h verification slack (from slip)",
       "status": "open",
-      "mechanism": "Streak intact + deadline force spent",
+      "mechanism": "Date moved to Aug 17",
       "window_start": "2026-08-15",
-      "window_end": "2026-08-24",
-      "trigger": "housing truth + admin bounded",
+      "window_end": "2026-08-17",
+      "trigger": "use today",
       "preparation_required": [
-        "truth pass",
-        "3-item admin batch"
+        "verify batch"
       ],
-      "potential_upside": "First compounding investment of year",
-      "confidence": "medium",
-      "urgency": 0.9,
+      "potential_upside": "Controlled signing",
+      "confidence": "high",
+      "urgency": 1.0,
       "related_campaigns": [
-        "camp-mission-ai",
-        "camp-self-regulation"
+        "camp-home-base"
       ],
-      "why_exists": "Calendar entered the window; history says it gets missed"
+      "why_exists": "User stated Aug 17 close"
     },
     {
       "id": "o2",
-      "title": "Mission footprint creation",
-      "status": "available",
-      "mechanism": "One Outliner project + <60min task",
-      "window_start": "2026-08-15",
-      "window_end": "2026-08-20",
-      "trigger": "user action",
+      "title": "Post-close window (shifted)",
+      "status": "developing",
+      "mechanism": "After Aug 17 close",
+      "window_start": "2026-08-18",
+      "window_end": "2026-08-27",
+      "trigger": "close confirmed",
       "preparation_required": [
-        "decide first 60-min task"
+        "clean close",
+        "bounded admin"
       ],
-      "potential_upside": "Ends 0% compounding by construction",
-      "confidence": "high",
-      "urgency": 0.7,
+      "potential_upside": "First compounding investment",
+      "confidence": "medium",
+      "urgency": 0.4,
       "related_campaigns": [
         "camp-mission-ai"
       ],
-      "why_exists": "Absence is observed structural gap"
-    },
-    {
-      "id": "o3",
-      "title": "Life evidence stack",
-      "status": "available",
-      "mechanism": "Board now reads Aura via wiki-life + LifeFact",
-      "window_start": "2026-08-15",
-      "window_end": null,
-      "trigger": "always",
-      "preparation_required": [],
-      "potential_upside": "No more stale wiki-outliner Board",
-      "confidence": "high",
-      "urgency": 0.3,
-      "related_campaigns": [],
-      "why_exists": "life-aura shipped 2026-08-15"
+      "why_exists": "Window tracks the gate"
     }
   ],
   "threats": [
     {
       "id": "t1",
-      "title": "Ghost close \u2014 residual housing risk untracked",
-      "probability": "elevated while tasks open past date",
-      "impact": "high",
+      "title": "Sign Aug 17 unverified",
+      "probability": "elevated if verify delayed again",
+      "impact": "high irreversible",
       "evidence": [
-        "open f66be521",
-        "open 6031e3c9",
-        "date passed"
+        "tasks still open",
+        "P4 process miss",
+        "already slipped once"
       ],
-      "early_warning_signal": "cannot state close outcome in one sentence",
-      "mitigation": "truth pass today (PM)",
+      "early_warning_signal": "no written status by Aug 16 noon",
+      "mitigation": "verify today; do-not-sign rule",
       "requires_action_now": true,
       "kind": "observed"
     },
     {
       "id": "t2",
-      "title": "Admin overrun burns Aug 15\u201324 window",
-      "probability": "plausible",
-      "impact": "medium (position)",
+      "title": "Slip used as wait",
+      "probability": "plausible (B3: self-time fails)",
+      "impact": "high",
       "evidence": [
-        "3 maintenance opens",
-        "B3 self-deadlines fail",
-        "P3 still relevant"
+        "B3",
+        "open since Aug 1"
       ],
-      "early_warning_signal": "no AI project by Aug 20",
-      "mitigation": "bound admin to 3; schedule mission footprint",
-      "requires_action_now": false,
-      "kind": "inferred"
-    },
-    {
-      "id": "t3",
-      "title": "Polite status without written done-conditions",
-      "probability": "plausible",
-      "impact": "medium-high",
-      "evidence": [
-        "P4 unresolved overdue",
-        "HVM confrontation pattern"
-      ],
-      "early_warning_signal": "tasks open with no artifact",
-      "mitigation": "hard done_when on PM",
+      "early_warning_signal": "no contact started today",
+      "mitigation": "same-day batch",
       "requires_action_now": true,
       "kind": "inferred"
     },
     {
+      "id": "t3",
+      "title": "Another slip / 3rd-party stall",
+      "probability": "plausible",
+      "impact": "medium-high",
+      "evidence": [
+        "already slipped Aug 14\u219217"
+      ],
+      "early_warning_signal": "party unresponsive Aug 16",
+      "mitigation": "named blockers; don't pretend it's fine",
+      "requires_action_now": false,
+      "kind": "inferred"
+    },
+    {
       "id": "t4",
-      "title": "Move-stress streak spiral",
+      "title": "Streak spiral into close weekend",
       "probability": "moderate",
       "impact": "medium",
       "evidence": [
-        "autoCheck gaps history",
-        "move logistics"
+        "move stress"
       ],
-      "early_warning_signal": "multi-day gap after Aug 15",
-      "mitigation": "DNT streak; movement snacks",
+      "early_warning_signal": "multi-day gap",
+      "mitigation": "DNT streak",
       "requires_action_now": false,
       "kind": "inferred"
     }
@@ -608,31 +588,31 @@
   "watch_for": [
     {
       "id": "w1",
-      "condition": "Cannot confirm whether closing completed",
-      "signal_source": "self + agent/lender",
-      "if_true": "escalate truth pass; pause optional trips",
-      "related": "t1"
+      "condition": "Unresponsive party by Aug 16 noon",
+      "signal_source": "lender/attorney/agent",
+      "if_true": "named blocker; consider delay; do not sign fog",
+      "related": "t3"
     },
     {
       "id": "w2",
-      "condition": "No AI/software project by Aug 20",
-      "signal_source": "Outliner / wiki-life projects",
-      "if_true": "P3/P6 fire; window miss likely",
-      "related": "t2"
+      "condition": "CD/repair mismatch",
+      "signal_source": "docs",
+      "if_true": "do-not-sign until resolved",
+      "related": "t1"
     },
     {
       "id": "w3",
-      "condition": "Multi-day abstinence gap",
-      "signal_source": "habit LifeFact / Outliner",
-      "if_true": "continuity protocol; no gamified restart shame",
-      "related": "t4"
+      "condition": "Close delayed past Aug 17",
+      "signal_source": "user + parties",
+      "if_true": "recompute Board; keep verify primary",
+      "related": "P7"
     },
     {
       "id": "w4",
-      "condition": "Admin batch grows beyond lease+internet+AR-11",
-      "signal_source": "Outliner maintenance",
-      "if_true": "cut scope; protect mission slot",
-      "related": "t2"
+      "condition": "Multi-day streak gap",
+      "signal_source": "habit",
+      "if_true": "continuity protocol",
+      "related": "t4"
     }
   ],
   "hidden_leverage": [
@@ -653,140 +633,135 @@
     {
       "id": "camp-home-base",
       "name": "Home base transition",
-      "status": "critical",
-      "objective": "Settled home with truth-closed housing + live utilities/admin",
-      "progress": 0.55,
+      "status": "advancing",
+      "objective": "Verified Aug 17 close then settle",
+      "progress": 0.62,
       "active_moves": [
-        "PM-2026-08-15-001"
+        "PM-2026-08-15-002"
       ],
-      "horizon": "14d",
+      "horizon": "48h",
       "risks": [
-        "ghost close"
+        "unverified sign"
       ],
-      "next": "truth pass"
+      "next": "verify today"
     },
     {
       "id": "camp-self-regulation",
       "name": "Self-regulation",
       "status": "advancing",
-      "objective": "Streak + exercise continuity through move",
+      "objective": "Streak through close",
       "progress": 0.8,
       "active_moves": [],
       "horizon": "ongoing",
       "risks": [
-        "stress spiral"
+        "stress"
       ],
-      "next": "DNT / snacks"
+      "next": "DNT"
     },
     {
       "id": "camp-admin-finance",
       "name": "Admin / finance",
-      "status": "active",
-      "objective": "Lease end \u00b7 internet \u00b7 AR-11",
-      "progress": 0.35,
-      "active_moves": [
-        "post-close admin"
-      ],
-      "horizon": "14d",
+      "status": "gated",
+      "objective": "Lease \u00b7 internet \u00b7 AR-11",
+      "progress": 0.2,
+      "active_moves": [],
+      "horizon": "post-Aug-17",
       "risks": [
         "overrun"
       ],
-      "next": "after truth"
+      "next": "after close"
     },
     {
       "id": "camp-mission-ai",
-      "name": "AI / software mastery",
+      "name": "AI / software",
       "status": "dormant",
-      "objective": "Footprint + first ship loop",
+      "objective": "Footprint after close",
       "progress": 0.0,
       "active_moves": [],
       "horizon": "3y",
       "risks": [
         "window miss"
       ],
-      "next": "create project by Aug 20"
+      "next": "from Aug 18"
     },
     {
       "id": "camp-vitality",
       "name": "Vitality",
       "status": "watch",
-      "objective": "Lung scan scheduled",
+      "objective": "Lung scan after close",
       "progress": 0.1,
       "active_moves": [],
       "horizon": "90d",
       "risks": [
-        "indefinite deferral"
+        "deferral"
       ],
-      "next": "after housing truth"
+      "next": "after close"
     },
     {
       "id": "camp-status",
       "name": "Status / HVM",
       "status": "dormant",
-      "objective": "Identity-consistent action",
+      "objective": "Stewardship via clean close",
       "progress": 0.12,
       "active_moves": [],
       "horizon": "1y",
-      "risks": [
-        "talk without tasks"
-      ],
-      "next": "stewardship via settlement"
+      "risks": [],
+      "next": "close well"
     }
   ],
   "council": {
-    "decision_id": "DEC-2026-08-15-001",
+    "decision_id": "DEC-2026-08-15-002",
     "mode": "light",
-    "note": "Reversible status/admin sequencing \u2014 full 12-role council not required. Light synthesis only.",
+    "note": "User correction: close is Aug 17, not done. Retract post-close Board.",
     "roles_engaged": [
       "Problem Framer",
       "Execution Engineer",
-      "Human-Factors",
       "Adjudicator"
     ],
-    "disagreement": "None material \u2014 all agree truth before optional expansion",
-    "adjudication": "Primary = housing truth pass; parallel = protect streak; next = bound admin then mission footprint",
-    "baseline": "Continue as if pre-close verification still the only move (stale)",
+    "disagreement": "None \u2014 slip does not change verify-first",
+    "adjudication": "Primary = pre-close verify; admin/mission gated until Aug 17+",
+    "baseline": "Wait until the 17th and figure it out at the table (reject)",
     "alternatives_considered": [
-      "Jump straight to admin batch without housing truth",
-      "Mission footprint first (rejected: residual legal risk unknown)",
-      "Intentional wait 48h (rejected: window already burning; tasks overdue)"
+      "Treat as already closed (contradicted)",
+      "Start admin now (premature)",
+      "Wait (B3 fail)"
     ],
-    "recommendation": "Housing truth pass \u2014 45 min, one sitting"
+    "recommendation": "Pre-close verification \u2014 today, 60\u201390 min"
   },
   "predictions": [
     {
       "id": "P1",
-      "claim": "Closing completes and both open Housing tasks (f66be521, 6031e3c9) have completion dates by Aug 17.",
+      "claim": "Close + both Housing tasks done by window",
+      "status": "pending",
+      "window": "2026-08-18"
+    },
+    {
+      "id": "P5",
+      "claim": "Verify ready-to-close by Aug 16 EOD",
+      "status": "pending",
+      "window": "2026-08-16"
+    },
+    {
+      "id": "P7",
+      "claim": "Closing completes Aug 17",
       "status": "pending",
       "window": "2026-08-17"
     },
     {
       "id": "P2",
-      "claim": "If abstinence streak holds through Aug 14, at least 2 further task completions occur Aug 15\u201324.",
+      "claim": "Streak through close \u2192 \u22652 completions after",
       "status": "pending",
       "window": "2026-08-24"
     },
     {
       "id": "P3",
-      "claim": "If no AI/software project exists in Outliner by Aug 24, zero compounding-class completions will have occurred.",
+      "claim": "No AI project by Aug 24 \u2192 0 compounding",
       "status": "pending",
       "window": "2026-08-24"
     },
     {
-      "id": "P4",
-      "claim": "Written repair confirmation or re-inspection/credit path exists in Sai's possession by Aug 13 EOD.",
-      "status": "unresolved_overdue",
-      "window": "2026-08-13"
-    },
-    {
-      "id": "P5",
-      "claim": "Housing tasks closed or annotated by Aug 16 EOD",
-      "status": "pending",
-      "window": "2026-08-16"
-    },
-    {
       "id": "P6",
-      "claim": "AI/software project exists by Aug 20",
+      "claim": "AI project by Aug 20 (may slip with close)",
       "status": "pending",
       "window": "2026-08-20"
     }
@@ -796,28 +771,28 @@
       {
         "id": "P1",
         "status": "pending",
-        "note": "Date passed; tasks still open \u2014 needs user close confirmation"
-      },
-      {
-        "id": "P2",
-        "status": "pending",
-        "note": "Streak held through Aug 15; completions window Aug 15\u201324 open"
-      },
-      {
-        "id": "P3",
-        "status": "pending",
-        "note": "Antecedent still true (no AI project)"
+        "note": "Close date now Aug 17; tasks still open"
       },
       {
         "id": "P4",
         "status": "unresolved_overdue",
-        "note": "Missed resolution discipline; treat as process miss"
+        "note": "Process miss; slip bought time"
+      },
+      {
+        "id": "P5",
+        "status": "pending",
+        "note": "Retargeted to ready-to-close by Aug 16"
+      },
+      {
+        "id": "P7",
+        "status": "pending",
+        "note": "Close completes Aug 17"
       }
     ],
     "model_updates": [
-      "B3 still supported \u2014 deadline force works; post-deadline tracking lags",
-      "B5 still open \u2014 mission footprint absent",
-      "New operating note: post-close boards must force truth pass day+1"
+      "B3: deadline slipped once \u2014 extra slack is not a new self-deadline, it's still external",
+      "Retracted: post-close mode (user correction)",
+      "Tracking lag after announced dates remains a pattern"
     ]
   },
   "sources_active": [
@@ -855,105 +830,104 @@
       "LifeFact open_task + practices"
     ],
     "quality_flags": [
-      "close_outcome_unknown",
+      "close_date_user_aug17",
+      "prior_postclose_board_retracted",
       "habit_autocheck_low_verify",
-      "completion_counts_not_recomputed",
       "light_council_only"
     ]
   },
   "delta": {
-    "since": "2026-08-14T05:09:56Z",
+    "since": "2026-08-15T19:06:03Z",
     "changes": [
-      "Calendar crossed Aug 14 close without Outliner task completion",
-      "Evidence path switched to life-aura (Aura+wiki-life+Life*)",
-      "Primary move retargeted from pre-close verify to day-after truth pass",
-      "P4 marked unresolved_overdue",
-      "Post-close window status: open (day 1)"
+      "USER CORRECTION: closing will complete Aug 17 (not completed, not Aug 14)",
+      "Retracted post-close Board; restored pre-close verify primary",
+      "Post-close window shifted to Aug 18\u201327",
+      "Added P7"
     ]
   },
   "why_drawer": {
-    "why_this_move": "Aug 14 is past. Two verify tasks still open. Every other move (admin, mission, lung) is downstream of knowing whether residual housing risk is real.",
-    "why_not_mission_first": "Residual housing risk unknown; B3 says external risk first",
-    "why_not_wait": "Window already open; overdue tasks compound fog",
+    "why_this_move": "Close is Aug 17. Third-party lag is 24\u201372h. Today is the last cheap day to start. Slip is slack, not a gift to wait.",
+    "why_not_admin": "Close not done \u2014 admin gated",
+    "why_not_wait": "Slip is 48h of 3rd-party lag, not rest",
     "evidence": [
-      "outliner:bc5dc69e",
+      "user:close-aug-17",
       "outliner:f66be521",
       "outliner:6031e3c9",
       "wiki-life:entities/project-housing.md"
     ]
   },
   "focus_tunnel": {
-    "move_id": "PM-2026-08-15-001",
-    "title": "Housing truth pass \u2014 45 min, one sitting",
-    "timer_minutes": 45,
+    "move_id": "PM-2026-08-15-002",
+    "title": "Pre-close verification \u2014 today, 60\u201390 min",
+    "timer_minutes": 75,
     "steps": [
-      "State close outcome in one sentence",
-      "Update inspection task",
-      "Update mortgage/CD task",
-      "List residuals or mark done"
+      "Inspection written status",
+      "CD/mortgage line-by-line",
+      "Ready vs blocked in one sentence",
+      "Update Outliner two tasks"
     ],
-    "done_when": "Both Housing tasks completed in Outliner OR each has explicit residual risk note with owner+date; you can state close outcome in one sentence.",
-    "stop_condition": "If close did NOT happen or major defect unpaid \u2192 escalate; do not start optional trips/mission until risk named.",
-    "after": "Start admin batch OR escalate residual"
+    "done_when": "Written repair/credit status exists AND CD/terms checked, OR each open item has owner+date. You can say 'ready to sign Aug 17' or 'blocked because X'.",
+    "stop_condition": "Any settlement-figure mismatch or unpaid inspection defect \u2192 do not sign Aug 17 until resolved.",
+    "after": "Hold until Aug 17 \u00b7 then admin batch"
   },
   "v1_surfaces": {
     "current_constraint": {
-      "text": "Unknown housing close outcome while verify tasks remain open (day after scheduled close).",
+      "text": "Aug 17 close with two Housing verify tasks still open \u2014 48h slack, then irreversible.",
       "evidence": "observed",
       "refs": [
-        "wiki-life:entities/open-loops.md",
+        "user:close-aug-17",
         "outliner:f66be521",
         "outliner:6031e3c9"
       ]
     },
     "winning_moves": [
       {
-        "title": "Housing truth pass (45m)",
-        "why_now": "Date passed; residual risk or false WIP",
-        "unlock": "Admin batch + mission window",
-        "trade_off": "Delays optional trips",
-        "win": "Named close state",
-        "reverse": "If already documented elsewhere, just mark Outliner done"
+        "title": "Pre-close verify (60\u201390m)",
+        "why_now": "T-2; 3rd-party lag",
+        "unlock": "Controlled Aug 17 sign",
+        "trade_off": "No new work this weekend",
+        "win": "Ready or named block",
+        "reverse": "If already verified offline, log it in Outliner today"
       },
       {
-        "title": "Bound admin: lease \u00b7 internet \u00b7 AR-11",
-        "why_now": "Post-close necessities; 3 open",
-        "unlock": "Attention for mission",
-        "trade_off": "No cosmetic projects",
-        "win": "Home base operable",
-        "reverse": "If already done offline, log completion"
+        "title": "Do-not-sign rule",
+        "why_now": "Mismatch risk after one slip",
+        "unlock": "Avoid irreversible bad close",
+        "trade_off": "Possible further delay",
+        "win": "Option to renegotiate",
+        "reverse": "Only if both tasks truly clean"
       },
       {
-        "title": "Mission footprint (project + 60m task)",
-        "why_now": "Window day 1; compounding still 0%",
-        "unlock": "Schedulable ambition",
-        "trade_off": "After truth, not before if residual legal risk",
-        "win": "Ends structural zero",
-        "reverse": "If housing crisis, slip to Aug 18 still inside window"
+        "title": "Protect streak through the 17th",
+        "why_now": "Passive win already running",
+        "unlock": "Post-close energy",
+        "trade_off": "Zero optimization",
+        "win": "Continuity",
+        "reverse": "Don't gamify"
       }
     ],
     "horizons": {
-      "NOW": "Housing truth + start admin batch",
-      "CYCLE": "Aug 15\u201324: admin done \u00b7 mission footprint \u00b7 streak held \u00b7 lung scheduled",
-      "LATER": "90d vitality clear \u00b7 AI skill shipping cadence"
+      "NOW": "Housing verification batch",
+      "CYCLE": "Aug 17 close \u2192 Aug 18\u201327 admin + mission footprint",
+      "LATER": "90d vitality \u00b7 AI shipping cadence"
     },
     "unknowns": [
-      "Did closing actually complete Aug 14?",
-      "Any unpaid inspection defects or CD mismatches?",
-      "Cash/energy left for mission block this week?"
+      "Written repair/credit status today?",
+      "CD/mortgage terms match expectations?",
+      "Any chance of another slip past Aug 17?"
     ],
     "pivot_signals": [
       {
-        "if": "Close did not complete or major defect unpaid",
-        "then": "All optional trips/mission pause; housing becomes sole active"
+        "if": "Repair/CD mismatch",
+        "then": "Do not sign; only housing exists"
       },
       {
-        "if": "Both housing tasks closed clean",
-        "then": "Admin batch primary; mission footprint within 72h"
+        "if": "Both tasks closed clean before Aug 17",
+        "then": "Protect streak; admin queued for Aug 18; no new scope"
       },
       {
-        "if": "No mission project by Aug 20",
-        "then": "Treat as confirmed B5 miss this window; redesign commitment device"
+        "if": "Close slips again past Aug 17",
+        "then": "Re-Board same night; verify stays primary"
       }
     ]
   },
