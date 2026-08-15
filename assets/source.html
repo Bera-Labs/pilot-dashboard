@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Source — Life Graph</title>
+<style>
+:root{
+  --bg:#0a0e14;--surf:#121a24;--line:#1e2a3a;--text:#c8d5e0;--bright:#edf6fb;
+  --dim:#647588;--mute:#4a5a6a;--blue:#39bae6;--blue-b:rgba(57,186,230,.4);--blue-d:rgba(57,186,230,.12);
+  --green:#7fd962;--amber:#ffb454;--red:#f26d78;--purple:#b378d1;
+  --mono:'SF Mono',ui-monospace,monospace;--sans:Inter,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-width:1080px;background:radial-gradient(ellipse at 12% 0,rgba(57,186,230,.06),transparent 40%),var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+a{color:inherit;text-decoration:none}
+.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:flex-end;padding:18px 28px 12px;background:rgba(10,14,20,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.top h1{font-family:var(--mono);font-size:18px;letter-spacing:2px;color:var(--bright)}
+.sub{font-family:var(--mono);font-size:10px;letter-spacing:1.4px;color:var(--dim);margin-top:4px}
+.nav{display:flex;gap:8px;align-items:center}
+.nav a{font-family:var(--mono);font-size:10px;letter-spacing:1px;border:1px solid var(--line);padding:6px 10px;border-radius:4px;color:var(--dim)}
+.nav a:hover{border-color:var(--blue);color:var(--blue)}
+.badge{font-family:var(--mono);font-size:9px;letter-spacing:1.4px;padding:4px 8px;border-radius:3px}
+.badge.on{color:var(--green);border:1px solid rgba(127,217,98,.4)}
+.badge.off{color:var(--amber);border:1px solid rgba(255,180,84,.4)}
+.shell{width:1280px;margin:0 auto;padding:18px 0 48px}
+.omni{background:var(--surf);border:1px solid var(--blue-b);border-radius:14px;padding:14px 16px;margin-bottom:16px}
+.omni-row{display:flex;gap:8px}
+.omni input{flex:1;background:#0c121a;border:1px solid var(--line);border-radius:8px;color:var(--bright);font-size:15px;padding:12px 14px;outline:none}
+.omni input:focus{border-color:var(--blue)}
+.omni button,.chip{font-family:var(--mono);font-size:10px;letter-spacing:1px;border:1px solid var(--line);background:transparent;color:var(--text);padding:10px 12px;border-radius:8px;cursor:pointer}
+.omni button.primary{background:var(--blue-d);border-color:var(--blue-b);color:var(--blue)}
+.chips{display:flex;gap:6px;margin-top:10px}
+.chip.on{border-color:var(--blue);color:var(--blue)}
+.preview{margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--blue);min-height:16px}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.grid{display:grid;grid-template-columns:1fr 1.15fr .85fr;gap:12px}
+.col{background:var(--surf);border:1px solid var(--line);border-radius:14px;min-height:560px;padding:14px}
+.col h2{font-family:var(--mono);font-size:10px;letter-spacing:1.8px;color:var(--dim);margin-bottom:12px}
+.item{padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.item:hover{background:rgba(57,186,230,.04)}
+.item .k{font-family:var(--mono);font-size:8px;letter-spacing:1.2px;color:var(--mute);margin-bottom:3px}
+.item .t{font-size:13px;color:var(--bright);line-height:1.35}
+.item .d{font-size:11px;color:var(--dim);margin-top:4px;line-height:1.4}
+.kind-journal .k{color:var(--amber)}
+.kind-project .k{color:var(--purple)}
+.kind-task .k{color:var(--blue)}
+.kind-habit .k{color:var(--green)}
+.kind-milestone .k{color:var(--red)}
+.map{position:relative;height:520px}
+.map svg{width:100%;height:100%}
+.now-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--line)}
+.now-item button{font-family:var(--mono);font-size:10px;border:1px solid var(--line);background:transparent;color:var(--dim);padding:4px 7px;border-radius:4px;cursor:pointer}
+.now-item button:hover{border-color:var(--green);color:var(--green)}
+.drawer{position:fixed;top:0;right:0;width:380px;height:100vh;background:#0e1520;border-left:1px solid var(--line);padding:22px;transform:translateX(100%);transition:transform .2s;z-index:30;overflow:auto}
+.drawer.on{transform:none}
+.drawer h3{color:var(--bright);margin:8px 0 12px;font-size:18px}
+.drawer .meta{font-family:var(--mono);font-size:10px;color:var(--dim);margin-bottom:12px}
+.ro-note{font-size:12px;color:var(--amber);margin:8px 0 0}
+</style>
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>THE SOURCE</h1>
+    <div class="sub">LIFE GRAPH · CAPTURE + MAP · <span id="counts"></span></div>
+  </div>
+  <div class="nav">
+    <span id="write-badge" class="badge off">READ ONLY</span>
+    <a href="/">DASHBOARD</a>
+    <a href="/growth-engine.html">THE BOARD</a>
+  </div>
+</header>
+<main class="shell">
+  <section class="omni">
+    <div class="omni-row">
+      <input id="cap" placeholder="Type anything — project: …  /  task … done when …  /  journal: …" autocomplete="off">
+      <button class="primary" id="go">COMMIT</button>
+    </div>
+    <div class="chips">
+      <button class="chip on" data-k="">AUTO</button>
+      <button class="chip" data-k="journal">JOURNAL</button>
+      <button class="chip" data-k="project">PROJECT</button>
+      <button class="chip" data-k="task">TASK</button>
+      <button class="chip" data-k="habit">HABIT</button>
+    </div>
+    <div class="preview" id="preview"></div>
+    <div class="err" id="err"></div>
+    <div class="ro-note" id="ro" style="display:none">Live site is read-only. Type locally (or tell Hermes) to write.</div>
+  </section>
+  <div class="grid">
+    <section class="col"><h2>JOURNAL STREAM</h2><div id="stream"></div></section>
+    <section class="col"><h2>PROJECT MAP</h2><div class="map" id="map"></div></section>
+    <section class="col"><h2>NOW</h2><div id="now"></div></section>
+  </div>
+</main>
+<aside class="drawer" id="drawer"></aside>
+<script>
+var DATA={nodes:[],edges:[],writable:false};
+var HINT='';
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])})}
+function today(){return new Date().toISOString().slice(0,10)}
+function load(){
+  return fetch('/api/graph').then(function(r){return r.json()}).then(render).catch(function(e){
+    document.getElementById('err').textContent='graph load failed: '+e;
+  });
+}
+function render(d){
+  DATA=d||DATA;
+  var c=d.counts||{};
+  document.getElementById('counts').textContent=Object.keys(c).map(function(k){return c[k]+' '+k}).join(' · ')||'empty';
+  var w=!!d.writable;
+  document.getElementById('write-badge').textContent=w?'WRITABLE':'READ ONLY';
+  document.getElementById('write-badge').className='badge '+(w?'on':'off');
+  document.getElementById('ro').style.display=w?'none':'block';
+  var stream=document.getElementById('stream'); stream.innerHTML='';
+  (d.nodes||[]).filter(function(n){return n.kind==='journal'||n.kind==='episode'}).slice().reverse().forEach(function(n){
+    stream.appendChild(itemEl(n));
+  });
+  drawMap(d);
+  var now=document.getElementById('now'); now.innerHTML='';
+  (d.nodes||[]).filter(function(n){return n.kind==='task'&&n.status!=='done'&&n.status!=='retired'}).forEach(function(n){
+    var row=document.createElement('div'); row.className='now-item';
+    row.innerHTML='<div style="flex:1"><div class="k">TASK</div><div class="t">'+esc(n.title)+'</div><div class="d">'+esc((n.properties||{}).done_when||'')+'</div></div>';
+    var b=document.createElement('button'); b.textContent='DONE';
+    b.onclick=function(e){e.stopPropagation(); act('/api/graph/status',{id:n.id,status:'done'})};
+    row.appendChild(b); now.appendChild(row);
+  });
+  (d.nodes||[]).filter(function(n){return n.kind==='habit'}).forEach(function(n){
+    var log=(n.properties||{}).log||[];
+    var on=log.indexOf(today())>=0;
+    var row=document.createElement('div'); row.className='now-item';
+    row.innerHTML='<div style="flex:1"><div class="k">HABIT</div><div class="t">'+esc(n.title)+'</div><div class="d">'+log.length+' checks</div></div>';
+    var b=document.createElement('button'); b.textContent=on?'UNDO':'CHECK';
+    b.onclick=function(e){e.stopPropagation(); act('/api/graph/habit',{id:n.id,day:today()})};
+    row.appendChild(b); now.appendChild(row);
+  });
+}
+function itemEl(n){
+  var el=document.createElement('div');
+  el.className='item kind-'+n.kind;
+  el.innerHTML='<div class="k">'+esc(n.kind.toUpperCase())+' · '+esc((n.properties||{}).date||n.created_at||'').slice(0,10)+'</div><div class="t">'+esc(n.title)+'</div>';
+  el.onclick=function(){openNode(n)};
+  return el;
+}
+function openNode(n){
+  var d=document.getElementById('drawer');
+  d.className='drawer on';
+  d.innerHTML='<div class="meta">'+esc(n.kind)+' · '+esc(n.evidence_class)+' · '+esc(n.status)+'</div><h3>'+esc(n.title)+'</h3><p style="white-space:pre-wrap;font-size:13px;line-height:1.5">'+esc(n.body||'')+'</p><div class="meta" style="margin-top:16px">'+esc(JSON.stringify(n.properties||{},null,2))+'</div><button class="chip" style="margin-top:16px" onclick="document.getElementById(\'drawer\').className=\'drawer\'">CLOSE</button>';
+}
+function drawMap(d){
+  var el=document.getElementById('map');
+  var projects=(d.nodes||[]).filter(function(n){return n.kind==='project'});
+  var W=420,H=500,cx=210,cy=250;
+  var svg='<svg viewBox="0 0 '+W+' '+H+'">';
+  svg+='<circle cx="'+cx+'" cy="'+cy+'" r="28" fill="#121a24" stroke="#39bae6"/><text x="'+cx+'" y="'+(cy+4)+'" text-anchor="middle" fill="#39bae6" font-size="9" font-family="SF Mono,monospace">YOU</text>';
+  projects.forEach(function(p,i){
+    var a=-Math.PI/2+(i*2*Math.PI/Math.max(projects.length,1));
+    var x=cx+Math.cos(a)*150, y=cy+Math.sin(a)*170;
+    var kids=(d.edges||[]).filter(function(e){return e.to===p.id && e.rel==='child_of' && !e.valid_to}).length;
+    svg+='<line x1="'+cx+'" y1="'+cy+'" x2="'+x+'" y2="'+y+'" stroke="#1e2a3a"/>';
+    svg+='<rect x="'+(x-70)+'" y="'+(y-16)+'" width="140" height="32" rx="8" fill="#121a24" stroke="#b378d1"/>';
+    svg+='<text x="'+x+'" y="'+(y+4)+'" text-anchor="middle" fill="#c8d5e0" font-size="10">'+esc((p.title||'').slice(0,22))+'</text>';
+  });
+  if(!projects.length) svg+='<text x="'+cx+'" y="40" text-anchor="middle" fill="#647588" font-size="12">No projects yet</text>';
+  svg+='</svg>';
+  el.innerHTML=svg;
+}
+function preview(){
+  var t=document.getElementById('cap').value.trim();
+  if(!t){document.getElementById('preview').textContent='';return}
+  var kind=HINT, rest=t;
+  var m=t.match(/^(project|task|habit|journal|note|milestone):\s*/i);
+  if(m){kind=m[1].toLowerCase(); rest=t.slice(m[0].length)}
+  else if(!kind && /done when/i.test(t)) kind='task';
+  else if(!kind) kind=t.length>160?'journal':'note';
+  document.getElementById('preview').textContent='→ '+kind.toUpperCase()+' · '+rest.slice(0,80);
+}
+function act(url,body){
+  if(!DATA.writable){document.getElementById('err').textContent='read-only';return}
+  fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(function(r){return r.json().then(function(j){if(!r.ok) throw new Error(j.error||r.status);return j})})
+    .then(render)
+    .catch(function(e){document.getElementById('err').textContent=e.message});
+}
+document.querySelectorAll('.chip[data-k]').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.chip[data-k]').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); HINT=b.getAttribute('data-k')||''; preview();
+  };
+});
+document.getElementById('cap').addEventListener('input',preview);
+document.getElementById('cap').addEventListener('keydown',function(e){
+  if(e.key==='Enter' && (e.metaKey||e.ctrlKey||!e.shiftKey)){e.preventDefault();document.getElementById('go').click()}
+});
+document.getElementById('go').onclick=function(){
+  var t=document.getElementById('cap').value.trim();
+  if(!t) return;
+  document.getElementById('err').textContent='';
+  act('/api/graph/commit', HINT?{text:t,kind_hint:HINT}:{text:t});
+  document.getElementById('cap').value=''; preview();
+};
+load();
+</script>
+</body>
+</html>

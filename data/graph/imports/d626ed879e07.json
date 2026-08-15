@@ -1,0 +1,14 @@
+{
+  "source": "/root/outliner_data.json",
+  "fingerprint": "d626ed879e077d1b3726c6e81090dad11cc88378bc94c1931cbb5979d787f754",
+  "imported_nodes": 143,
+  "outliner_nodes": 143,
+  "snapshot": {
+    "habit": 4,
+    "journal": 3,
+    "milestone": 3,
+    "note": 108,
+    "project": 11,
+    "task": 21
+  }
+}

@@ -3,6 +3,7 @@
     { "source": "/momentum.html", "destination": "/assets/momentum.html" },
     { "source": "/growth-engine.html", "destination": "/assets/growth-engine.html" },
     { "source": "/three-times-wiser.html", "destination": "/assets/three-times-wiser.html" },
+    { "source": "/source.html", "destination": "/assets/source.html" },
     { "source": "/index.html", "destination": "/assets/index.html" }
   ]
 }
