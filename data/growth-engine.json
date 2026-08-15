@@ -1210,6 +1210,119 @@
       "unrelated openings"
     ]
   },
+  "v1_surfaces": {
+    "current_constraint": {
+      "title": "Unverified closing state under an irreversible Aug 14 gate",
+      "why": "Two Housing controls remain open (repair confirmation + settlement figures). Third-party lag is 24–72h. Attention is the throughput bottleneck — improving non-closing work will not change system performance.",
+      "unlocks_if_fixed": "Closing risk becomes a named checklist; the Aug 15–24 compounding window becomes reachable instead of theoretical.",
+      "evidence": [
+        "open tasks f66be521, 6031e3c9",
+        "T-3 days to irreversible closing gate",
+        "0 bottlenecks removed this cycle"
+      ]
+    },
+    "winning_moves": [
+      {
+        "rank": 1,
+        "title": "Closing verification batch — today, 90 min, one sitting",
+        "why_now": "Aug 14 is 3 days out. Third-party lag is 24–72h. Today is the last low-risk day to start.",
+        "expected_unlock": "Unknown repair/figure state becomes owners + dates; do-not-sign stop rule can actually fire.",
+        "tradeoff": "All non-closing active work waits until Aug 14.",
+        "win_condition": "Written repair confirmation (or credit/re-inspection path) AND settlement figures verified line-by-line, OR a named blocker with owner+date for each.",
+        "reversal_condition": "Any settlement-figure mismatch → do not sign. Overrides sequencing.",
+        "evidence": ["outliner:f66be521", "outliner:6031e3c9", "outliner:bc5dc69e"],
+        "models": ["VoI", "Deadline-forcing (B3)", "Red team A1"]
+      },
+      {
+        "rank": 2,
+        "title": "After the housing gate is green, create the AI/software footprint",
+        "why_now": "Mission lane has zero Outliner footprint, so compounding share is 0% by construction. The option is preserved, not yet exercisable.",
+        "expected_unlock": "One project + <60-min task converts structural zero into schedulable work.",
+        "tradeoff": "Narrows AI ambition; rejects new non-closing work before the gate.",
+        "win_condition": "AI/software project exists in Outliner and first <60-min block is scheduled within 72h of the footprint.",
+        "reversal_condition": "Closing delayed/cancelled, or a hard-floor medical/legal/financial risk appears.",
+        "evidence": ["opening o2", "hidden leverage: mission footprint", "P3"],
+        "models": ["Theory of Constraints", "Real options", "B5 mission-execution gap"]
+      },
+      {
+        "rank": 3,
+        "title": "Protect compounding processes — score by evidence, not activity",
+        "why_now": "Streak is a working passive process. History (April missed window, July 0% compounding) says the post-close prize is lost without protection.",
+        "expected_unlock": "Time keeps working the streak; the Aug 15–24 window survives logistics.",
+        "tradeoff": "Feels slower than starting new work. Cosmetic/travel items stay parked.",
+        "win_condition": "No new non-closing work before Aug 14; streak continuity held; revisit only on multi-day spiral.",
+        "reversal_condition": "Multi-day spiral after Aug 10, or closing already fully evidenced as complete.",
+        "evidence": ["do_not_touch: abstinence", "hidden leverage: post-close window", "36d streak (low-verify)"],
+        "models": ["Passive-maturing process", "Anti-Goodhart", "Post-event overshoot control"]
+      }
+    ],
+    "horizons": {
+      "now": {
+        "label": "NOW",
+        "window": "through Aug 14",
+        "move": "Make the two open closing controls explicit, evidenced, owned, and time-bound in one 90-min pass."
+      },
+      "cycle": {
+        "label": "CYCLE",
+        "window": "Aug 15–24",
+        "move": "If housing gate is green: bounded admin batch + lung-scan booking + first mission footprint. Do not let move logistics eat the window."
+      },
+      "later": {
+        "label": "LATER",
+        "window": "conditional",
+        "move": "Turn successful external-demo cycles into a repeatable shipping cadence. Healthspan behaviors stay hard floors."
+      }
+    },
+    "unknowns": [
+      {
+        "gap": "Written repair status",
+        "why_it_matters": "Unknown third-party state is the binding constraint. Acting as if it is fine manufactures certainty.",
+        "highest_value_next": "Demand written confirmation or credit/re-inspection path today."
+      },
+      {
+        "gap": "Settlement figures line-by-line",
+        "why_it_matters": "Signing is difficult-to-reverse. Verification is easy-to-reverse.",
+        "highest_value_next": "Line-by-line Closing Disclosure check (6031e3c9)."
+      },
+      {
+        "gap": "Cash-to-close",
+        "why_it_matters": "Resource level is labeled unknown. Do not invent a number.",
+        "highest_value_next": "Read it off the CD; do not estimate."
+      },
+      {
+        "gap": "Lung scan (155d stale)",
+        "why_it_matters": "Medical unknown is protected, not starved. Not today's attention slot.",
+        "highest_value_next": "One phone call after close — watch trigger, not a now-move."
+      },
+      {
+        "gap": "First AI artifact + demo recipient",
+        "why_it_matters": "Mission option is dark until a footprint exists. Buying this information before the gate steals the constraint slot.",
+        "highest_value_next": "Decide after Aug 14, not instead of verification."
+      }
+    ],
+    "pivot_signals": [
+      {
+        "signal": "Lender/attorney/agent unresponsive by Aug 12 noon",
+        "changes": "Escalate same day. Remaining slack is gone.",
+        "kind": "reverse-priority"
+      },
+      {
+        "signal": "Any settlement-figure mismatch on the Closing Disclosure",
+        "changes": "STOP — do not sign. Verification recommendation becomes a halt.",
+        "kind": "reverse-recommendation"
+      },
+      {
+        "signal": "Closing delayed or cancelled",
+        "changes": "Re-run Housing only. Do not auto-start post-close admin or mission.",
+        "kind": "unlock-next / halt-cascade"
+      },
+      {
+        "signal": "AI/software project appears in Outliner",
+        "changes": "Option becomes executable — schedule first <60-min block within 72h.",
+        "kind": "unlock-next"
+      }
+    ]
+  },
   "empty_states": {
     "watch": "Hermes has not identified a condition that would currently justify changing strategy.",
     "threats": "No material threats exceed the current display threshold.",
