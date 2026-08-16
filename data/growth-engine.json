@@ -3,7 +3,7 @@
   "version": "v10",
   "generated_at": "2026-08-15T19:33:59Z",
   "fingerprint": "9cf78aaa2b064228be8e0c17778d414313bbf44e4f11e18f8871471a44b7f553",
-  "last_sync": "2026-08-15T19:33:59Z",
+  "last_sync": "2026-08-16T02:29:17Z",
   "modes": [
     "BOARD",
     "FOCUS",
@@ -1044,27 +1044,27 @@
     },
     "sources_used": [
       {
-        "name": "Outliner journal evidence",
+        "name": "Life Aura / Outliner Neo4j (read-only)",
         "used": true
       },
       {
-        "name": "Theory of Constraints / OR",
+        "name": "wiki-life LLM compile",
         "used": true
       },
       {
-        "name": "Bayesian / VoI",
+        "name": "LifeFact temporal layer",
         "used": true
       },
       {
-        "name": "Control theory (disturbance)",
+        "name": "Predictions ledger",
         "used": true
       },
       {
-        "name": "Red team / premortem",
+        "name": "Model of Sai",
         "used": true
       },
       {
-        "name": "External STEM library",
+        "name": "STEM external research pack",
         "used": false
       }
     ]
@@ -1072,45 +1072,157 @@
   "predictions": [
     {
       "id": "P1",
-      "statement": "Closing completes + both Housing tasks completed by Aug 17",
+      "claim": "Closing completes and both open Housing tasks (f66be521, 6031e3c9) have completion dates by Aug 17.",
+      "statement": "Closing completes and both open Housing tasks (f66be521, 6031e3c9) have completion dates by Aug 17.",
       "check_by": "2026-08-24",
-      "result": "pending"
+      "result": "pending",
+      "status": "pending",
+      "window": "2026-08-18"
     },
     {
       "id": "P2",
-      "statement": "If streak holds through Aug 14 \u2192 \u22652 completions Aug 15\u201324",
+      "claim": "If abstinence streak holds through Aug 14, at least 2 further task completions occur Aug 15\u201324.",
+      "statement": "If abstinence streak holds through Aug 14, at least 2 further task completions occur Aug 15\u201324.",
       "check_by": "2026-08-24",
-      "result": "pending"
+      "result": "pending",
+      "status": "pending",
+      "window": "2026-08-24"
     },
     {
       "id": "P3",
-      "statement": "If no AI project by Aug 24 \u2192 zero compounding completions",
+      "claim": "If no AI/software project exists in Outliner by Aug 24, zero compounding-class completions will have occurred.",
+      "statement": "If no AI/software project exists in Outliner by Aug 24, zero compounding-class completions will have occurred.",
       "check_by": "2026-08-24",
-      "result": "pending"
+      "result": "pending",
+      "status": "pending",
+      "window": "2026-08-24"
     },
     {
       "id": "P4",
-      "statement": "Written repair confirmation or credit path exists by Aug 13 EOD",
+      "claim": "Written repair confirmation or re-inspection/credit path exists in Sai's possession by Aug 13 EOD.",
+      "statement": "Written repair confirmation or re-inspection/credit path exists in Sai's possession by Aug 13 EOD.",
       "check_by": "2026-08-14",
-      "result": "pending"
+      "result": "unresolved_overdue",
+      "status": "unresolved_overdue",
+      "window": "2026-08-13"
+    },
+    {
+      "id": "P5",
+      "claim": "By Aug 16 EOD, Housing tasks f66be521 and 6031e3c9 are completed in Outliner OR have explicit residual/owner notes, with user confirming ready-to-close.",
+      "statement": "By Aug 16 EOD, Housing tasks f66be521 and 6031e3c9 are completed in Outliner OR have explicit residual/owner notes, with user confirming ready-to-close.",
+      "check_by": "2026-08-17",
+      "result": "pending",
+      "status": "pending",
+      "window": "2026-08-16"
+    },
+    {
+      "id": "P6",
+      "claim": "An AI/software-related project exists in Outliner by Aug 20.",
+      "statement": "An AI/software-related project exists in Outliner by Aug 20.",
+      "check_by": "2026-08-21",
+      "result": "pending",
+      "status": "pending",
+      "window": "2026-08-20"
+    },
+    {
+      "id": "P7",
+      "claim": "Closing completes on Aug 17 (user-stated date).",
+      "statement": "Closing completes on Aug 17 (user-stated date).",
+      "check_by": "2026-08-18",
+      "result": "pending",
+      "status": "pending",
+      "window": "2026-08-17"
     }
   ],
   "verdict": {
     "previous_predictions": [
       {
-        "id": "v7-forecast",
-        "statement": "v7 (Jul 29): authoritative closing checklist within 72h (base 50%)",
-        "result": "unverifiable",
-        "evidence": "No checklist artifact; Housing progressed (docs Jul 28, verification tasks Aug 1)."
+        "id": "P4",
+        "statement": "Written repair confirmation or re-inspection/credit path exists in Sai's possession by Aug 13 EOD.",
+        "result": "unresolved_overdue",
+        "evidence": "No written confirmation logged by Aug 13; Housing verify tasks still open on Aug 15"
+      },
+      {
+        "id": "P1",
+        "statement": "Closing completes and both open Housing tasks (f66be521, 6031e3c9) have completion dates by Aug 17.",
+        "result": "pending",
+        "evidence": "Close date slipped to Aug 17 (user). External close not done. Housing tasks still open. Window extended; claim still pending until Aug 17 close + task completions."
+      },
+      {
+        "id": "P2",
+        "statement": "If abstinence streak holds through Aug 14, at least 2 further task completions occur Aug 15\u201324.",
+        "result": "pending",
+        "evidence": "open"
+      },
+      {
+        "id": "P3",
+        "statement": "If no AI/software project exists in Outliner by Aug 24, zero compounding-class completions will have occurred.",
+        "result": "pending",
+        "evidence": "open"
+      },
+      {
+        "id": "P5",
+        "statement": "By Aug 16 EOD, Housing tasks f66be521 and 6031e3c9 are completed in Outliner OR have explicit residual/owner notes, with user confirming ready-to-close.",
+        "result": "pending",
+        "evidence": "Retargeted: close is Aug 17, not already done."
+      },
+      {
+        "id": "P7",
+        "statement": "Closing completes on Aug 17 (user-stated date).",
+        "result": "pending",
+        "evidence": "open"
       }
     ],
     "model_updates": [
-      "B1 burst-executor, B3 deadline-forcing, B4 instrument-decay remain supported.",
-      "B2 abstinence-action and B5 mission-gap remain hypotheses under test (P2, P3).",
-      "New red-team hypothesis A1 (confrontation-avoidance on verification) entered as interpretation; tested by P4."
+      "Evidence stack is life-aura-wiki (Aura read-only + wiki-life + Life*), not wiki-outliner",
+      "Close date user-corrected to Aug 17 \u2014 pre-close verify mode",
+      "B3 still supported; B5 mission footprint still open",
+      "P4 unresolved_overdue (process miss on written confirmation)"
     ]
   },
-  "sources_active": [],
+  "sources_active": [
+    {
+      "id": "life-aura",
+      "name": "Outliner Aura + Life* temporal",
+      "tier": "primary",
+      "status": "online",
+      "path": "neo4j Aura (read-only Outliner labels; LifeEntity/LifeEpisode/LifeFact)",
+      "last_sync": "2026-08-15T18:57:13Z",
+      "fingerprint": "9cf78aaa2b064228",
+      "counts": {
+        "entities": null,
+        "episodes": null,
+        "facts_active": null
+      },
+      "used": true
+    },
+    {
+      "id": "wiki-life",
+      "name": "LLM wiki (Karpathy compile)",
+      "tier": "primary",
+      "status": "online",
+      "path": "/root/wiki-life",
+      "pages": 24,
+      "used": true
+    },
+    {
+      "id": "predictions-ledger",
+      "name": "Predictions ledger",
+      "tier": "secondary",
+      "status": "online",
+      "path": "/root/psos/predictions/ledger.json",
+      "records": 7,
+      "used": true
+    },
+    {
+      "id": "model-of-sai",
+      "name": "Model of Sai",
+      "tier": "secondary",
+      "status": "online",
+      "path": "/root/psos/state/model-of-sai.md",
+      "used": true
+    }
+  ],
   "provenance": {
     "stack": "life-aura-wiki",
     "fingerprint": "9cf78aaa2b064228be8e0c17778d414313bbf44e4f11e18f8871471a44b7f553",
@@ -1119,8 +1231,15 @@
     "habits": 4,
     "quality_flags": [
       "close_date_user_aug17",
-      "visual_schema_restored_78b8602"
-    ]
+      "visual_schema_restored_78b8602",
+      "intelligence_sources_filled",
+      "life-aura-primary"
+    ],
+    "last_life_sync": "2026-08-15T18:57:13Z",
+    "life_entities": null,
+    "life_episodes": null,
+    "life_facts_active": null,
+    "wiki_pages": 24
   },
   "delta": {
     "since": "2026-08-14T05:09:56Z",
