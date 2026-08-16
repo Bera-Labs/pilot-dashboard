@@ -1,25 +1,33 @@
 {
   "mission_start": "2026-07-04T00:00:00",
   "metrics": {
-    "wip": 7,
-    "completed": 11,
+    "wip": 6,
+    "completed": 1,
     "ooda_last": null,
     "avg_latency": null,
     "compound_velocity": 2.0,
     "bottleneck": "The August 14 Home Base Transition lacks one authoritative remaining-state checklist and was hidden by stale retired metadata.",
     "nightly_run": "2026-07-29",
     "detail": {
+      "maintenance": 3,
+      "Hairloss": 1,
       "Lung health scan": 1,
-      "maintenance": 2,
-      "The high value male or main character energy project": 1,
-      "NYC & Niagara Trip": 1,
-      "Taxes": 1,
-      "Hairloss": 1
+      "NYC & Niagara Trip": 1
     },
     "completed_detail": "Eleven attributable in-scope completions: two Housing tasks on 2026-07-28, three Taxes tasks on 2026-07-26, one Parents trip task, and five Maintenance tasks."
   },
   "decisions": [],
   "activity_log": [
+    {
+      "time": "11:01:22",
+      "type": "WEEKLY",
+      "message": "Fresh Outliner refresh: 6 eligible open tasks across 4 task-bearing active projects; 1 eligible completion in the preceding 7 days (Taxes: IRS filing-status check, 2026-08-15)."
+    },
+    {
+      "time": "11:01:20",
+      "type": "WEEKLY",
+      "message": "Fresh Outliner refresh: 7 eligible open tasks across 5 task-bearing active projects; 0 eligible completions in the preceding 7 days."
+    },
     {
       "time": "04:09:35",
       "type": "AUGMENTED",
@@ -61,31 +69,24 @@
       "time": "03:16:21",
       "type": "MILESTONE",
       "message": "6-week PMO abstinence streak v1.0-alpha1 achieved (Jun 8)"
-    },
-    {
-      "time": "20:32:16",
-      "type": "BOOT",
-      "message": "Dashboard initialized"
-    },
-    {
-      "time": "20:32:16",
-      "type": "LOAD",
-      "message": "STEM Stack v2.0 active"
-    },
-    {
-      "time": "20:32:16",
-      "type": "STATUS",
-      "message": "Read-Only mode active"
     }
   ],
   "skills": [
+    {
+      "name": "personal-intelligence-synthesis",
+      "tags": [
+        "personal-intelligence",
+        "synthesis"
+      ],
+      "desc": "Translates Sai’s six open tasks and one recent completion into grounded choices without turning sparse evidence into unsupported life conclusions."
+    },
     {
       "name": "augmented-intelligence-engine",
       "tags": [
         "STEM",
         "synthesis"
       ],
-      "desc": "Connects fresh Outliner evidence to tested insights, focused decisions, and task-backed actions for Sai’s weekly momentum review."
+      "desc": "Connects fresh Outliner project ancestry and task outcomes to testable cross-domain insights while keeping retired Housing evidence out of current recommendations."
     },
     {
       "name": "pilot-dashboard",
@@ -93,7 +94,7 @@
         "dashboard",
         "read-only"
       ],
-      "desc": "Displays Sai’s current eligible work, evidence-derived momentum analysis, and longitudinal intelligence without browser-side mutation."
+      "desc": "Publishes Sai’s current eligible WIP, seven-day completion count, and project breakdown through the existing read-only JSON display surface."
     },
     {
       "name": "stem-gist",
@@ -101,7 +102,7 @@
         "STEM",
         "heuristics"
       ],
-      "desc": "Supplies compact evidence-first heuristics used to challenge assumptions, calibrate forecasts, and isolate execution constraints."
+      "desc": "Supplies evidence-first heuristics for interpreting the current maintenance, health, and travel queues without forcing a fixed domain story."
     },
     {
       "name": "warp-speed-execution",
@@ -109,7 +110,7 @@
         "STEM",
         "velocity"
       ],
-      "desc": "Applies WIP limits, constraint isolation, sequencing, and artifact-based throughput to Sai’s active execution chain."
+      "desc": "Applies WIP limits and constraint-focused sequencing to Sai’s six eligible open tasks across four active task-bearing projects."
     },
     {
       "name": "thinking-in-bets",
@@ -117,7 +118,7 @@
         "STEM",
         "decisions"
       ],
-      "desc": "Frames Sai’s focused choices as reversible bets with explicit alternatives, opportunity costs, review gates, and outcome signals."
+      "desc": "Frames choices across maintenance, health research, and travel as revisable bets with explicit trade-offs and observable outcomes."
     },
     {
       "name": "probabilistic-thinking",
@@ -125,7 +126,7 @@
         "STEM",
         "uncertainty"
       ],
-      "desc": "Anchors Sai’s momentum forecasts in observed completion history, separates signal from noise, and updates confidence from outcomes."
+      "desc": "Treats the single eligible seven-day completion as limited evidence and prevents it from being promoted into an invented momentum trend."
     },
     {
       "name": "euclidean-thinking",
@@ -133,7 +134,7 @@
         "STEM",
         "first-principles"
       ],
-      "desc": "Separates explicit Outliner facts from assumptions and validates ancestry, eligibility, and causal reasoning before recommendations."
+      "desc": "Validates explicit task types, project ancestry, completion dates, completed-project suppression, and the retired Housing exclusion before publication."
     }
   ],
   "momentum_analysis": {
@@ -348,5 +349,5 @@
     "stem_concepts": 7,
     "updated": "2026-07-04"
   },
-  "updated": "2026-07-29T04:09:35Z"
+  "updated": "2026-08-16T11:01:22Z"
 }
